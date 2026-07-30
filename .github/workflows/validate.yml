@@ -1,0 +1,32 @@
+name: validate
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+
+      # No gems: scripts/validate.rb implements the JSON Schema subset the
+      # corpus schemas use, and rejects any schema keyword it cannot check.
+      #
+      # A run that finds no corpus files fails, so an empty tree can never be
+      # mistaken for a passing one. If this ever lands on a branch without
+      # corpus/, add --allow-empty until the data arrives — and remove it in
+      # the commit that adds corpus/.
+      - run: ruby scripts/validate.rb
