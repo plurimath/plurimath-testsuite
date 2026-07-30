@@ -266,11 +266,16 @@ module CorpusGenerator
     platforms = []
     in_specs = false
     in_bundled = false
+    in_platforms = false
 
     File.readlines(path, chomp: true).each do |line|
       if line.match?(/\A\S/)
         in_specs = false
         in_bundled = line == "BUNDLED WITH"
+        # Only PLATFORMS holds platform names. Without this, every indented
+        # line of any unrecognised section (DEPENDENCIES, CHECKSUMS, ...) was
+        # collected as a platform.
+        in_platforms = line == "PLATFORMS"
         current = nil
         case line
         when "PATH", "GIT", "GEM"
@@ -303,7 +308,7 @@ module CorpusGenerator
           current["specs"] << name
           specs[name] = spec
         end
-      elsif line.match?(/\A {2}\S/)
+      elsif in_platforms && line.match?(/\A {2}\S/)
         platforms << line.strip
       end
     end
