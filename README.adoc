@@ -1,0 +1,52 @@
+= Plurimath testsuite
+
+== Purpose
+
+Conformance tests for https://github.com/plurimath/plurimath[Plurimath]
+implementations, encoded as data rather than code.
+
+The Ruby gem's expectations currently live inside its own spec files, where
+only Ruby can read them. This repository holds the same knowledge as YAML, so
+every implementation — the Ruby gem, the TypeScript port, and any future one —
+can be checked against identical answers.
+
+== Status
+
+Early. The AsciiMath cases are the first to be extracted.
+
+== Format
+
+Each case records one input and what Plurimath produced for it:
+
+[source,yaml]
+----
+- id: frac-simple
+  input: a/b
+  input_format: asciimath
+  expected:
+    asciimath: frac(a)(b)
+    latex: \frac{a}{b}
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mfrac><mi>a</mi><mi>b</mi></mfrac>
+        </mstyle>
+      </math>
+----
+
+`id`:: stable identifier for the case
+`input`:: the source expression
+`input_format`:: the notation `input` is written in
+`expected`:: expected output, keyed by target format
+
+An implementation reads these files and asserts its own output matches.
+
+== Layout
+
+`corpus/`:: the test cases, grouped by feature
+`schema/`:: JSON Schema describing the file formats, validated in CI
+`scripts/`:: generation from the Ruby gem
+
+== Copyright and license
+
+Copyright Ribose. BSD 2-clause license.
