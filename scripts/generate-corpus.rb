@@ -13,14 +13,14 @@
 #                    (default: the checkout bundler resolved `plurimath` from)
 #   --out PATH       output root (default: <repo>/corpus)
 #   --allow-dirty    generate from a dirty checkout; the output is marked
-#                    non-committable in every sidecar manifest (§7)
+#                    non-committable in corpus/provenance.yaml (§7)
 #   --help
 #
-# Outputs (payload + sidecar manifest per payload, §7):
+# Outputs (the payloads, plus one shared provenance file, §7):
 #   corpus/asciimath/<group>.yaml   conformance cases, grouped by feature
 #   corpus/census.yaml              every Math::Core descendant, classified
 #   corpus/exclusions.yaml          cases withheld because of a deferred feature
-#   corpus/**/<payload>.manifest.yaml
+#   corpus/provenance.yaml          how the payloads above were produced
 #
 # The generator is deterministic: two runs over the same oracle produce
 # byte-identical output. No timestamps, no absolute paths, sorted keys.
@@ -37,7 +37,17 @@ module CorpusGenerator
   CORPUS_SCHEMA = "plurimath-corpus/asciimath/1"
   CENSUS_SCHEMA = "plurimath-corpus/census/1"
   EXCLUSIONS_SCHEMA = "plurimath-corpus/exclusions/1"
-  MANIFEST_SCHEMA = "plurimath-corpus/manifest/1"
+  PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
+
+  # One provenance document for the whole corpus, not one sidecar per payload.
+  # The sidecars repeated 190 identical lines fifteen times; the only facts
+  # that ever differed are the three the `payloads` list now carries.
+  PROVENANCE_PATH = "provenance.yaml"
+
+  # What a dependency looks like when nothing about it is noteworthy. An entry
+  # matching all of these records its version alone (see `direct_runtime_value`).
+  DEFAULT_GEM_SOURCE = "https://rubygems.org/"
+  DEFAULT_GEM_PLATFORM = "ruby"
 
   INPUT_FORMAT = "asciimath"
   TARGET_FORMATS = %w[asciimath latex mathml].freeze
@@ -326,40 +336,51 @@ module CorpusGenerator
     end
 
     direct = gem_spec.dependencies.select { |d| d.type == :runtime }
-      .map(&:name).sort.map do |name|
+      .map(&:name).sort.to_h do |name|
       spec = lock[:specs][name]
       raise Error, "#{name} is not resolved in #{path}" unless spec
 
-      entry = {
-        "name" => spec["name"],
-        "version" => spec["version"],
-        "platform" => spec["platform"],
-        "source_kind" => spec["source"]["kind"],
-        "source" => spec["source"]["remote"],
-      }
-      entry["revision"] = spec["source"]["revision"] if spec["source"]["revision"]
-      entry
+      [spec["name"], direct_runtime_value(spec)]
     end
 
+    # The per-source gem-name lists are deliberately not recorded: names
+    # without versions reproduce nothing, and `lockfile.sha256` already pins
+    # every gem at an exact version. `direct_runtime` stays because it carries
+    # the versions, which are readable without the lockfile in hand.
     {
-      provenance: {
-        "lockfile" => {
-          "path" => "Gemfile.lock",
-          "sha256" => sha256(File.binread(path)),
-          "resolved_gems" => lock[:specs].size,
-          "platforms" => lock[:platforms],
-          "bundler" => lock[:bundled_with],
-        },
-        "sources" => lock[:sources].map do |source|
-          entry = { "kind" => source["kind"], "remote" => source["remote"],
-                    "gems" => source["specs"].sort }
-          entry["revision"] = source["revision"] if source["revision"]
-          entry
-        end,
-        "direct_runtime" => direct,
+      lockfile: {
+        "path" => "Gemfile.lock",
+        "sha256" => sha256(File.binread(path)),
+        "resolved_gems" => lock[:specs].size,
+        "platforms" => lock[:platforms],
+        "bundler" => lock[:bundled_with],
       },
+      direct_runtime: direct,
       external_path_sources: external_path_sources.map { |s| s["remote"] },
     }
+  end
+
+  # A dependency resolved plainly from rubygems for the generic Ruby platform
+  # records just its version — the other three fields would be the same string
+  # repeated once per gem, which is the duplication this format exists to
+  # avoid. Anything unusual (a git source, a platform-specific build, a pinned
+  # revision) keeps the full mapping, so nothing is lost where it matters.
+  def direct_runtime_value(spec)
+    source = spec["source"]
+    plain = spec["platform"] == DEFAULT_GEM_PLATFORM &&
+            source["kind"] == "gem" &&
+            source["remote"] == DEFAULT_GEM_SOURCE &&
+            source["revision"].nil?
+    return spec["version"] if plain
+
+    entry = {
+      "version" => spec["version"],
+      "platform" => spec["platform"],
+      "source_kind" => source["kind"],
+      "source" => source["remote"],
+    }
+    entry["revision"] = source["revision"] if source["revision"]
+    entry
   end
 
   def configuration_provenance
@@ -832,16 +853,21 @@ module CorpusGenerator
     body
   end
 
-  def write_manifest(payload_path, payload_bytes, out_root, provenance)
-    manifest = provenance.merge(
-      "payload" => {
-        "path" => relative(payload_path, out_root),
-        "sha256" => sha256(payload_bytes),
-        "bytes" => payload_bytes.bytesize,
-      },
+  # `payloads` is a list of [absolute path, written bytes]. Sorted by the
+  # recorded path so the document does not depend on the order the payloads
+  # happened to be written in.
+  def write_provenance(out_root, provenance, payloads)
+    document = provenance.merge(
+      "payloads" => payloads.map { |payload_path, bytes|
+        {
+          "path" => relative(payload_path, out_root),
+          "sha256" => sha256(bytes),
+          "bytes" => bytes.bytesize,
+        }
+      }.sort_by { |entry| entry["path"] },
     )
-    path = "#{payload_path.delete_suffix('.yaml')}.manifest.yaml"
-    File.binwrite(path, "#{manifest_header}#{dump_yaml(manifest)}")
+    path = File.join(out_root, PROVENANCE_PATH)
+    File.binwrite(path, "#{provenance_header}#{dump_yaml(document)}")
     path
   end
 
@@ -853,14 +879,16 @@ module CorpusGenerator
     <<~HEADER
       # #{kind}
       # Generated by #{GENERATOR_PATH} from the Ruby plurimath gem. Do not edit.
-      # Provenance lives in the sidecar manifest beside this file.
+      # Provenance lives in corpus/provenance.yaml.
     HEADER
   end
 
-  def manifest_header
+  def provenance_header
     <<~HEADER
-      # Sidecar provenance manifest. Generated by #{GENERATOR_PATH}; do not edit.
-      # `payload.sha256` covers the whole payload file, header comments included.
+      # Provenance shared by every payload listed below. Generated by
+      # #{GENERATOR_PATH}; do not edit.
+      # Each `payloads[].sha256` covers that whole payload file, header comments
+      # included.
     HEADER
   end
 
@@ -945,7 +973,7 @@ module CorpusGenerator
     end
 
     {
-      "schema" => MANIFEST_SCHEMA,
+      "schema" => PROVENANCE_SCHEMA,
       "committable" => warnings.empty?,
       "warnings" => warnings,
       "generator" => {
@@ -964,7 +992,8 @@ module CorpusGenerator
       },
       "xml_engine" => Plurimath.xml_engine.to_s,
       "configuration" => configuration_provenance,
-      "dependencies" => dependencies[:provenance],
+      "lockfile" => dependencies[:lockfile],
+      "direct_runtime" => dependencies[:direct_runtime],
     }
   end
 
@@ -999,7 +1028,7 @@ module CorpusGenerator
     census = build_census(gem_dir)
 
     out_root = options[:out]
-    written = []
+    payloads = []
 
     groups.each do |name, description, cases|
       payload = {
@@ -1012,7 +1041,7 @@ module CorpusGenerator
       }
       path = File.join(out_root, "asciimath", "#{name}.yaml")
       bytes = write_payload(path, payload_header("AsciiMath conformance cases: #{name}."), payload)
-      written << [path, write_manifest(path, bytes, out_root, provenance)]
+      payloads << [path, bytes]
     end
 
     exclusions_payload = {
@@ -1026,17 +1055,19 @@ module CorpusGenerator
     path = File.join(out_root, "exclusions.yaml")
     bytes = write_payload(path, payload_header("Deferred-feature exclusion manifest."),
                           exclusions_payload)
-    written << [path, write_manifest(path, bytes, out_root, provenance)]
+    payloads << [path, bytes]
 
     path = File.join(out_root, "census.yaml")
     bytes = write_payload(path, payload_header("Plurimath::Math::Core node census."), census)
-    written << [path, write_manifest(path, bytes, out_root, provenance)]
+    payloads << [path, bytes]
+
+    provenance_path = write_provenance(out_root, provenance, payloads)
 
     case_count = groups.sum { |_name, _description, cases| cases.length }
-    written.each do |payload_path, manifest_path|
+    payloads.map(&:first).sort.each do |payload_path|
       puts "  #{relative(payload_path, REPO_ROOT)}"
-      puts "  #{relative(manifest_path, REPO_ROOT)}"
     end
+    puts "  #{relative(provenance_path, REPO_ROOT)}"
     puts "#{case_count} cases in #{groups.length} groups, " \
          "#{exclusions.length} excluded, #{census['summary']['total']} classes"
     puts "committable: #{provenance['committable']}"
