@@ -28,14 +28,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: x
       expr:
-        sequence:
-          symbol: "+"
         expr:
           sequence:
             symbol: "y"
+        sequence:
+          symbol: "+"
+      sequence:
+        symbol: x
   model:
     class: Math::Formula
     fields:
@@ -68,11 +68,11 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        number: '2'
       expr:
         sequence:
           symbol: x
+      sequence:
+        number: '2'
   model:
     class: Math::Formula
     fields:
@@ -106,14 +106,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: a
       expr:
-        sequence:
-          symbol: "*"
         expr:
           sequence:
             symbol: b
+        sequence:
+          symbol: "*"
+      sequence:
+        symbol: a
   model:
     class: Math::Formula
     fields:
@@ -147,14 +147,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: a
       expr:
-        sequence:
-          symbol: "-"
         expr:
           sequence:
             symbol: b
+        sequence:
+          symbol: "-"
+      sequence:
+        symbol: a
   model:
     class: Math::Formula
     fields:
@@ -188,14 +188,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: x
       expr:
-        sequence:
-          symbol: "="
         expr:
           sequence:
             symbol: "y"
+        sequence:
+          symbol: "="
+      sequence:
+        symbol: x
   model:
     class: Math::Formula
     fields:
@@ -231,20 +231,20 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: a
       expr:
-        sequence:
-          symbol: "+"
         expr:
-          sequence:
-            symbol: b
           expr:
-            sequence:
-              symbol: "+"
             expr:
               sequence:
                 symbol: c
+            sequence:
+              symbol: "+"
+          sequence:
+            symbol: b
+        sequence:
+          symbol: "+"
+      sequence:
+        symbol: a
   model:
     class: Math::Formula
     fields:

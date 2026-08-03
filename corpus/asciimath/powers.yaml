@@ -30,11 +30,11 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: x
         power:
           power_value:
             number: '2'
+        power_base:
+          symbol: x
   model:
     class: Math::Formula
     fields:
@@ -78,23 +78,23 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: x
         power:
           power_value:
             intermediate_exp:
-              lparen: "("
               expr:
                 expr:
-                  sequence:
-                    symbol: "n"
                   expr:
-                    sequence:
-                      symbol: "+"
                     expr:
                       sequence:
                         number: '1'
+                    sequence:
+                      symbol: "+"
+                  sequence:
+                    symbol: "n"
+              lparen: "("
               rparen: ")"
+        power_base:
+          symbol: x
   model:
     class: Math::Formula
     fields:
@@ -145,11 +145,11 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: a
         base:
           base_value:
             number: '1'
+        power_base:
+          symbol: a
   model:
     class: Math::Formula
     fields:
@@ -193,23 +193,23 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: a
         base:
           base_value:
             intermediate_exp:
-              lparen: "("
               expr:
                 expr:
-                  sequence:
-                    symbol: "n"
                   expr:
-                    sequence:
-                      symbol: "+"
                     expr:
                       sequence:
                         number: '1'
+                    sequence:
+                      symbol: "+"
+                  sequence:
+                    symbol: "n"
+              lparen: "("
               rparen: ")"
+        power_base:
+          symbol: a
   model:
     class: Math::Formula
     fields:
@@ -261,10 +261,10 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: x
         base_value:
           number: '1'
+        power_base:
+          symbol: x
         power_value:
           number: '2'
   model:
@@ -313,11 +313,11 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          symbol: e
         power:
           power_value:
             symbol: x
+        power_base:
+          symbol: e
   model:
     class: Math::Formula
     fields:
@@ -354,11 +354,11 @@ cases:
   parse_tree:
     expr:
       power_base:
-        power_base:
-          number: '2'
         power:
           power_value:
             number: '10'
+        power_base:
+          number: '2'
   model:
     class: Math::Formula
     fields:
@@ -404,16 +404,16 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          power_base:
-            power_base:
-              symbol: x
-            power:
-              power_value:
-                number: '2'
         denominator:
           sequence:
             number: '4'
+        numerator:
+          power_base:
+            power:
+              power_value:
+                number: '2'
+            power_base:
+              symbol: x
   model:
     class: Math::Formula
     fields:

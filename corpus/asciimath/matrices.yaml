@@ -42,15 +42,6 @@ cases:
   parse_tree:
     left_right:
       table:
-        table_left:
-          table_left: "("
-        table_row:
-          open_tr: "("
-          tds_list:
-            td:
-              expr:
-                sequence:
-                  symbol: a
         expr:
           table_row:
             open_tr: "("
@@ -59,8 +50,17 @@ cases:
                 expr:
                   sequence:
                     symbol: b
+        table_left:
+          table_left: "("
         table_right:
           table_right: ")"
+        table_row:
+          open_tr: "("
+          tds_list:
+            td:
+              expr:
+                sequence:
+                  symbol: a
   model:
     class: Math::Formula
     fields:
@@ -137,35 +137,35 @@ cases:
   parse_tree:
     left_right:
       table:
-        table_left:
-          table_left: "["
-        table_row:
-          open_tr: "["
-          tds_list:
-            td:
-              expr:
-                sequence:
-                  symbol: a
-                expr:
-                  comma: ","
-                  expr:
-                    sequence:
-                      symbol: b
         expr:
           table_row:
             open_tr: "["
             tds_list:
               td:
                 expr:
-                  sequence:
-                    symbol: c
                   expr:
                     comma: ","
                     expr:
                       sequence:
                         symbol: d
+                  sequence:
+                    symbol: c
+        table_left:
+          table_left: "["
         table_right:
           table_right: "]"
+        table_row:
+          open_tr: "["
+          tds_list:
+            td:
+              expr:
+                expr:
+                  comma: ","
+                  expr:
+                    sequence:
+                      symbol: b
+                sequence:
+                  symbol: a
   model:
     class: Math::Formula
     fields:

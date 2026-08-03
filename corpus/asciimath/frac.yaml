@@ -30,11 +30,11 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          symbol: a
         denominator:
           sequence:
             symbol: b
+        numerator:
+          symbol: a
   model:
     class: Math::Formula
     fields:
@@ -71,11 +71,11 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          number: '2'
         denominator:
           sequence:
             number: '3'
+        numerator:
+          number: '2'
   model:
     class: Math::Formula
     fields:
@@ -122,23 +122,23 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          intermediate_exp:
-            lparen: "("
-            expr:
-              expr:
-                sequence:
-                  symbol: a
-                expr:
-                  sequence:
-                    symbol: "+"
-                  expr:
-                    sequence:
-                      symbol: b
-            rparen: ")"
         denominator:
           sequence:
             symbol: c
+        numerator:
+          intermediate_exp:
+            expr:
+              expr:
+                expr:
+                  expr:
+                    sequence:
+                      symbol: b
+                  sequence:
+                    symbol: "+"
+                sequence:
+                  symbol: a
+            lparen: "("
+            rparen: ")"
   model:
     class: Math::Formula
     fields:
@@ -190,23 +190,23 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          symbol: x
         denominator:
           sequence:
             intermediate_exp:
-              lparen: "("
               expr:
                 expr:
-                  sequence:
-                    symbol: "y"
                   expr:
-                    sequence:
-                      symbol: "+"
                     expr:
                       sequence:
                         symbol: z
+                    sequence:
+                      symbol: "+"
+                  sequence:
+                    symbol: "y"
+              lparen: "("
               rparen: ")"
+        numerator:
+          symbol: x
   model:
     class: Math::Formula
     fields:
@@ -258,22 +258,22 @@ cases:
       </math>
   parse_tree:
     expr:
-      frac:
-        numerator:
-          symbol: a
-        denominator:
-          sequence:
-            symbol: b
       expr:
-        sequence:
-          symbol: "+"
         expr:
           frac:
-            numerator:
-              symbol: c
             denominator:
               sequence:
                 symbol: d
+            numerator:
+              symbol: c
+        sequence:
+          symbol: "+"
+      frac:
+        denominator:
+          sequence:
+            symbol: b
+        numerator:
+          symbol: a
   model:
     class: Math::Formula
     fields:
@@ -323,22 +323,22 @@ cases:
   parse_tree:
     expr:
       power_base:
-        binary_class: frac
         base_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: a
+            lparen: "("
             rparen: ")"
+        binary_class: frac
         power_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: b
+            lparen: "("
             rparen: ")"
   model:
     class: Math::Formula

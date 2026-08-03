@@ -32,11 +32,11 @@ cases:
     expr:
       sequence:
         intermediate_exp:
-          lparen: "("
           expr:
             expr:
               sequence:
                 symbol: x
+          lparen: "("
           rparen: ")"
   model:
     class: Math::Formula
@@ -83,17 +83,17 @@ cases:
     expr:
       sequence:
         intermediate_exp:
-          lparen: "("
           expr:
             expr:
-              sequence:
-                symbol: x
               expr:
-                sequence:
-                  symbol: "+"
                 expr:
                   sequence:
                     symbol: "y"
+                sequence:
+                  symbol: "+"
+              sequence:
+                symbol: x
+          lparen: "("
           rparen: ")"
   model:
     class: Math::Formula
@@ -146,16 +146,16 @@ cases:
     expr:
       sequence:
         intermediate_exp:
-          lparen: "["
           expr:
             expr:
-              sequence:
-                symbol: a
               expr:
                 comma: ","
                 expr:
                   sequence:
                     symbol: b
+              sequence:
+                symbol: a
+          lparen: "["
           rparen: "]"
   model:
     class: Math::Formula
@@ -206,11 +206,11 @@ cases:
     expr:
       sequence:
         intermediate_exp:
-          lparen: "{"
           expr:
             expr:
               sequence:
                 symbol: x
+          lparen: "{"
           rparen: "}"
   model:
     class: Math::Formula
@@ -259,21 +259,21 @@ cases:
     expr:
       sequence:
         intermediate_exp:
-          lparen: "("
           expr:
             expr:
-              sequence:
-                symbol: a
               expr:
                 comma: ","
                 expr:
-                  sequence:
-                    symbol: b
                   expr:
                     comma: ","
                     expr:
                       sequence:
                         symbol: c
+                  sequence:
+                    symbol: b
+              sequence:
+                symbol: a
+          lparen: "("
           rparen: ")"
   model:
     class: Math::Formula
@@ -332,23 +332,23 @@ cases:
   parse_tree:
     expr:
       frac:
-        numerator:
-          intermediate_exp:
-            lparen: "("
-            expr:
-              expr:
-                sequence:
-                  symbol: x
-                expr:
-                  sequence:
-                    symbol: "+"
-                  expr:
-                    sequence:
-                      symbol: "y"
-            rparen: ")"
         denominator:
           sequence:
             number: '2'
+        numerator:
+          intermediate_exp:
+            expr:
+              expr:
+                expr:
+                  expr:
+                    sequence:
+                      symbol: "y"
+                  sequence:
+                    symbol: "+"
+                sequence:
+                  symbol: x
+            lparen: "("
+            rparen: ")"
   model:
     class: Math::Formula
     fields:

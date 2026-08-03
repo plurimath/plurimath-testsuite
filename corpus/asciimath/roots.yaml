@@ -30,14 +30,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sqrt
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   number: '2'
+            lparen: "("
             rparen: ")"
+          unary_class: sqrt
   model:
     class: Math::Formula
     fields:
@@ -77,20 +77,20 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sqrt
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                sequence:
-                  symbol: x
                 expr:
-                  sequence:
-                    symbol: "+"
                   expr:
                     sequence:
                       number: '1'
+                  sequence:
+                    symbol: "+"
+                sequence:
+                  symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: sqrt
   model:
     class: Math::Formula
     fields:
@@ -147,28 +147,28 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sqrt
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                power_base:
-                  power_base:
-                    symbol: a
-                  power:
-                    power_value:
-                      number: '2'
                 expr:
-                  sequence:
-                    symbol: "+"
                   expr:
                     power_base:
-                      power_base:
-                        symbol: b
                       power:
                         power_value:
                           number: '2'
+                      power_base:
+                        symbol: b
+                  sequence:
+                    symbol: "+"
+                power_base:
+                  power:
+                    power_value:
+                      number: '2'
+                  power_base:
+                    symbol: a
+            lparen: "("
             rparen: ")"
+          unary_class: sqrt
   model:
     class: Math::Formula
     fields:
@@ -236,28 +236,28 @@ cases:
   parse_tree:
     expr:
       power_base:
-        binary_class: root
         base_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   number: '3'
+            lparen: "("
             rparen: ")"
+        binary_class: root
         power_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                sequence:
-                  symbol: x
                 expr:
-                  sequence:
-                    symbol: "+"
                   expr:
                     sequence:
                       number: '1'
+                  sequence:
+                    symbol: "+"
+                sequence:
+                  symbol: x
+            lparen: "("
             rparen: ")"
   model:
     class: Math::Formula

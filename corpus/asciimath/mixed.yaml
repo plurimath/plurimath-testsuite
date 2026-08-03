@@ -28,14 +28,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        number: '2'
       expr:
-        sequence:
-          symbol: pi
         expr:
           sequence:
             symbol: r
+        sequence:
+          symbol: pi
+      sequence:
+        number: '2'
   model:
     class: Math::Formula
     fields:
@@ -72,14 +72,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: alpha
       expr:
-        sequence:
-          symbol: beta
         expr:
           sequence:
             symbol: gamma
+        sequence:
+          symbol: beta
+      sequence:
+        symbol: alpha
   model:
     class: Math::Formula
     fields:
@@ -121,27 +121,27 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: f
       expr:
+        expr:
+          expr:
+            power_base:
+              power:
+                power_value:
+                  number: '2'
+              power_base:
+                symbol: x
+          sequence:
+            symbol: "="
         sequence:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
-        expr:
-          sequence:
-            symbol: "="
-          expr:
-            power_base:
-              power_base:
-                symbol: x
-              power:
-                power_value:
-                  number: '2'
+      sequence:
+        symbol: f
   model:
     class: Math::Formula
     fields:
@@ -221,56 +221,56 @@ cases:
       </math>
   parse_tree:
     expr:
-      power_base:
-        power_base:
-          intermediate_exp:
-            lparen: "("
-            expr:
-              expr:
-                sequence:
-                  symbol: x
-                expr:
-                  sequence:
-                    symbol: "+"
-                  expr:
-                    sequence:
-                      symbol: "y"
-            rparen: ")"
-        power:
-          power_value:
-            number: '2'
       expr:
-        sequence:
-          symbol: "="
         expr:
-          power_base:
-            power_base:
-              symbol: x
-            power:
-              power_value:
-                number: '2'
           expr:
-            sequence:
-              symbol: "+"
             expr:
-              sequence:
-                number: '2'
               expr:
-                sequence:
-                  symbol: x
                 expr:
-                  sequence:
-                    symbol: "y"
                   expr:
-                    sequence:
-                      symbol: "+"
                     expr:
                       power_base:
-                        power_base:
-                          symbol: "y"
                         power:
                           power_value:
                             number: '2'
+                        power_base:
+                          symbol: "y"
+                    sequence:
+                      symbol: "+"
+                  sequence:
+                    symbol: "y"
+                sequence:
+                  symbol: x
+              sequence:
+                number: '2'
+            sequence:
+              symbol: "+"
+          power_base:
+            power:
+              power_value:
+                number: '2'
+            power_base:
+              symbol: x
+        sequence:
+          symbol: "="
+      power_base:
+        power:
+          power_value:
+            number: '2'
+        power_base:
+          intermediate_exp:
+            expr:
+              expr:
+                expr:
+                  expr:
+                    sequence:
+                      symbol: "y"
+                  sequence:
+                    symbol: "+"
+                sequence:
+                  symbol: x
+            lparen: "("
+            rparen: ")"
   model:
     class: Math::Formula
     fields:
@@ -406,72 +406,72 @@ cases:
       </math>
   parse_tree:
     expr:
-      ternary:
-        ternary_class: sum
-        base_value:
-          intermediate_exp:
-            lparen: "("
-            expr:
-              expr:
-                sequence:
-                  symbol: i
-                expr:
-                  sequence:
-                    symbol: "="
-                  expr:
-                    sequence:
-                      number: '1'
-            rparen: ")"
-        power_value:
-          symbol: "n"
-        third_value:
-          power_base:
-            power_base:
-              symbol: i
-            power:
-              power_value:
-                number: '3'
       expr:
-        sequence:
-          symbol: "="
         expr:
           power_base:
-            power_base:
-              intermediate_exp:
-                lparen: "("
-                expr:
-                  expr:
-                    frac:
-                      numerator:
-                        intermediate_exp:
-                          lparen: "("
-                          expr:
-                            expr:
-                              sequence:
-                                symbol: "n"
-                              expr:
-                                sequence:
-                                  intermediate_exp:
-                                    lparen: "("
-                                    expr:
-                                      expr:
-                                        sequence:
-                                          symbol: "n"
-                                        expr:
-                                          sequence:
-                                            symbol: "+"
-                                          expr:
-                                            sequence:
-                                              number: '1'
-                                    rparen: ")"
-                          rparen: ")"
-                      denominator:
-                        sequence:
-                          number: '2'
-                rparen: ")"
             power:
               power_value:
                 number: '2'
+            power_base:
+              intermediate_exp:
+                expr:
+                  expr:
+                    frac:
+                      denominator:
+                        sequence:
+                          number: '2'
+                      numerator:
+                        intermediate_exp:
+                          expr:
+                            expr:
+                              expr:
+                                sequence:
+                                  intermediate_exp:
+                                    expr:
+                                      expr:
+                                        expr:
+                                          expr:
+                                            sequence:
+                                              number: '1'
+                                          sequence:
+                                            symbol: "+"
+                                        sequence:
+                                          symbol: "n"
+                                    lparen: "("
+                                    rparen: ")"
+                              sequence:
+                                symbol: "n"
+                          lparen: "("
+                          rparen: ")"
+                lparen: "("
+                rparen: ")"
+        sequence:
+          symbol: "="
+      ternary:
+        base_value:
+          intermediate_exp:
+            expr:
+              expr:
+                expr:
+                  expr:
+                    sequence:
+                      number: '1'
+                  sequence:
+                    symbol: "="
+                sequence:
+                  symbol: i
+            lparen: "("
+            rparen: ")"
+        power_value:
+          symbol: "n"
+        ternary_class: sum
+        third_value:
+          power_base:
+            power:
+              power_value:
+                number: '3'
+            power_base:
+              symbol: i
   model:
     class: Math::Formula
     fields:

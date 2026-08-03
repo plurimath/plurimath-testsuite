@@ -163,14 +163,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: x
       expr:
-        sequence:
-          symbol: "y"
         expr:
           sequence:
             symbol: z
+        sequence:
+          symbol: "y"
+      sequence:
+        symbol: x
   model:
     class: Math::Formula
     fields:
@@ -203,11 +203,11 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: x
       expr:
         sequence:
           symbol: "y"
+      sequence:
+        symbol: x
   model:
     class: Math::Formula
     fields:

@@ -38,14 +38,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sin
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: sin
   model:
     class: Math::Formula
     fields:
@@ -94,8 +94,8 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sin
           symbol: x
+          unary_class: sin
   model:
     class: Math::Formula
     fields:
@@ -137,17 +137,17 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: cos
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                sequence:
-                  number: '2'
                 expr:
                   sequence:
                     symbol: x
+                sequence:
+                  number: '2'
+            lparen: "("
             rparen: ")"
+          unary_class: cos
   model:
     class: Math::Formula
     fields:
@@ -200,14 +200,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: abs
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: abs
   model:
     class: Math::Formula
     fields:
@@ -241,14 +241,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: hat
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: hat
   model:
     class: Math::Formula
     fields:
@@ -283,14 +283,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: bar
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: bar
   model:
     class: Math::Formula
     fields:
@@ -325,14 +325,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: vec
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: v
+            lparen: "("
             rparen: ")"
+          unary_class: vec
   model:
     class: Math::Formula
     fields:

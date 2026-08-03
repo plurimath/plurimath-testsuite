@@ -30,14 +30,14 @@ cases:
       </math>
   parse_tree:
     expr:
-      power_base:
-        binary_class: log
-        base:
-          base_value:
-            number: '2'
       expr:
         sequence:
           number: '8'
+      power_base:
+        base:
+          base_value:
+            number: '2'
+        binary_class: log
   model:
     class: Math::Formula
     fields:
@@ -89,35 +89,35 @@ cases:
       </math>
   parse_tree:
     expr:
-      power_base:
-        binary_class: lim
-        base:
-          base_value:
-            intermediate_exp:
-              lparen: "("
-              expr:
-                expr:
-                  sequence:
-                    symbol: x
-                  expr:
-                    sequence:
-                      symbol: "->"
-                    expr:
-                      sequence:
-                        symbol: oo
-              rparen: ")"
       expr:
-        sequence:
-          symbol: f
         expr:
           sequence:
             intermediate_exp:
-              lparen: "("
               expr:
                 expr:
                   sequence:
                     symbol: x
+              lparen: "("
               rparen: ")"
+        sequence:
+          symbol: f
+      power_base:
+        base:
+          base_value:
+            intermediate_exp:
+              expr:
+                expr:
+                  expr:
+                    expr:
+                      sequence:
+                        symbol: oo
+                    sequence:
+                      symbol: "->"
+                  sequence:
+                    symbol: x
+              lparen: "("
+              rparen: ")"
+        binary_class: lim
   model:
     class: Math::Formula
     fields:
@@ -188,23 +188,23 @@ cases:
   parse_tree:
     expr:
       ternary:
-        ternary_class: sum
         base_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                sequence:
-                  symbol: i
                 expr:
-                  sequence:
-                    symbol: "="
                   expr:
                     sequence:
                       number: '1'
+                  sequence:
+                    symbol: "="
+                sequence:
+                  symbol: i
+            lparen: "("
             rparen: ")"
         power_value:
           symbol: "n"
+        ternary_class: sum
         third_value:
           sequence:
             symbol: i
@@ -269,20 +269,20 @@ cases:
       </math>
   parse_tree:
     expr:
-      ternary:
-        ternary_class: int
-        base_value:
-          number: '0'
-        power_value:
-          number: '1'
-        third_value:
-          sequence:
-            symbol: x
       expr:
         sequence:
           intermediate_exp:
             d: d
             x: x
+      ternary:
+        base_value:
+          number: '0'
+        power_value:
+          number: '1'
+        ternary_class: int
+        third_value:
+          sequence:
+            symbol: x
   model:
     class: Math::Formula
     fields:
@@ -348,23 +348,23 @@ cases:
   parse_tree:
     expr:
       ternary:
-        ternary_class: prod
         base_value:
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
-                sequence:
-                  symbol: k
                 expr:
-                  sequence:
-                    symbol: "="
                   expr:
                     sequence:
                       number: '1'
+                  sequence:
+                    symbol: "="
+                sequence:
+                  symbol: k
+            lparen: "("
             rparen: ")"
         power_value:
           symbol: "n"
+        ternary_class: prod
         third_value:
           sequence:
             symbol: k
@@ -419,10 +419,10 @@ cases:
       </math>
   parse_tree:
     expr:
-      ternary_class: sum
       expr:
         sequence:
           symbol: x
+      ternary_class: sum
   model:
     class: Math::Formula
     fields:

@@ -28,16 +28,16 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: x
       expr:
         expr:
-          sequence:
-            symbol: "+"
           expr:
             expr:
               sequence:
                 symbol: "y"
+          sequence:
+            symbol: "+"
+      sequence:
+        symbol: x
   model:
     class: Math::Formula
     fields:
@@ -70,12 +70,12 @@ cases:
       </math>
   parse_tree:
     expr:
-      sequence:
-        symbol: a
       expr:
         expr:
           sequence:
             symbol: b
+      sequence:
+        symbol: a
   model:
     class: Math::Formula
     fields:
@@ -113,28 +113,28 @@ cases:
       </math>
   parse_tree:
     expr:
-      ternary:
-        ternary_class: sum
-        base_value:
-          intermediate_exp:
-            lparen: "("
-            expr:
-              expr:
-                sequence:
-                  symbol: i
-                expr:
-                  sequence:
-                    symbol: "="
-                  expr:
-                    sequence:
-                      number: '1'
-            rparen: ")"
-        power_value:
-          symbol: "n"
-        third_value: " "
       expr:
         sequence:
           symbol: i
+      ternary:
+        base_value:
+          intermediate_exp:
+            expr:
+              expr:
+                expr:
+                  expr:
+                    sequence:
+                      number: '1'
+                  sequence:
+                    symbol: "="
+                sequence:
+                  symbol: i
+            lparen: "("
+            rparen: ")"
+        power_value:
+          symbol: "n"
+        ternary_class: sum
+        third_value: " "
   model:
     class: Math::Formula
     fields:
@@ -217,14 +217,14 @@ cases:
     expr:
       sequence:
         unary:
-          unary_class: sqrt
           intermediate_exp:
-            lparen: "("
             expr:
               expr:
                 sequence:
                   symbol: x
+            lparen: "("
             rparen: ")"
+          unary_class: sqrt
   model:
     class: Math::Formula
     fields:
