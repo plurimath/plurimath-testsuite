@@ -449,11 +449,26 @@ module CorpusGenerator
     when ::Symbol then node.to_s
     when ::Parslet::Slice then node.to_s
     when ::Array then node.each_with_index.map { |n, i| serialize_tree(n, "#{path}[#{i}]") }
-    when ::Hash
-      node.to_h { |key, value| [key.to_s, serialize_tree(value, "#{path}.#{key}")] }
+    when ::Hash then serialize_tree_hash(node, path)
     else
       raise Error, "cannot serialize parse tree node #{node.class} at #{path}"
     end
+  end
+
+  # Same shape as `serialize_hash`, and sorted for the same reason: Parslet
+  # hands back the keys in the order its rules happened to match, which is an
+  # implementation detail of the parslet version in the lockfile. Preserving
+  # that order would let a parslet upgrade rewrite every committed parse tree
+  # without a single case having changed meaning.
+  def serialize_tree_hash(hash, path)
+    result = {}
+    hash.each do |key, value|
+      name = key.to_s
+      raise Error, "duplicate key #{name.inspect} at #{path}" if result.key?(name)
+
+      result[name] = serialize_tree(value, "#{path}.#{name}")
+    end
+    result.sort.to_h
   end
 
   # --- corpus --------------------------------------------------------------
@@ -578,14 +593,28 @@ module CorpusGenerator
     options = { gem: nil, out: File.join(REPO_ROOT, "corpus"), allow_dirty: false }
     until argv.empty?
       case (arg = argv.shift)
-      when "--gem" then options[:gem] = File.expand_path(argv.shift.to_s)
-      when "--out" then options[:out] = File.expand_path(argv.shift.to_s)
+      when "--gem" then options[:gem] = File.expand_path(option_value(argv, arg))
+      when "--out" then options[:out] = File.expand_path(option_value(argv, arg))
       when "--allow-dirty" then options[:allow_dirty] = true
       when "--help", "-h" then options[:help] = true
       else raise Error, "unknown option #{arg.inspect}"
       end
     end
     options
+  end
+
+  # A value-taking option must actually be given one. `argv.shift` is nil when
+  # the flag is last, and `File.expand_path("")` resolves to the working
+  # directory without complaint — so `--out` would quietly write the corpus over
+  # whatever directory the command happened to run in, and `--gem` would name
+  # that directory as the oracle.
+  def option_value(argv, option)
+    value = argv.shift
+    if value.nil? || value.empty?
+      raise Error, "missing value for option #{option.inspect}"
+    end
+
+    value
   end
 
   def usage
