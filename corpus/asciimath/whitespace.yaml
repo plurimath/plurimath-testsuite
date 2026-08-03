@@ -50,7 +50,7 @@ cases:
           value: x
       - class: Math::Symbols::Plus
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: "y"
@@ -155,14 +155,14 @@ cases:
                   value: i
               - class: Math::Symbols::Equal
                 fields:
-                  value: 
+                  value:
               - class: Math::Number
                 fields:
-                  base: 
+                  base:
                   mini_sub_sized: false
                   mini_sup_sized: false
                   value: '1'
-          parameter_three: 
+          parameter_three:
           parameter_two:
             class: Math::Symbols::Symbol
             fields:

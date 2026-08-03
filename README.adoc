@@ -23,23 +23,73 @@ Each case records one input and what Plurimath produced for it:
 - id: frac-simple
   input: a/b
   input_format: asciimath
+  preprocessed: a/b
   expected:
     asciimath: frac(a)(b)
-    latex: \frac{a}{b}
+    latex: "\\frac{a}{b}"
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
-          <mfrac><mi>a</mi><mi>b</mi></mfrac>
+          <mfrac>
+            <mi>a</mi>
+            <mi>b</mi>
+          </mfrac>
         </mstyle>
       </math>
+  parse_tree:
+    expr:
+      frac:
+        numerator:
+          symbol: a
+        denominator:
+          sequence:
+            symbol: b
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: a/b
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Frac
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: a
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: b
 ----
 
 `id`:: stable identifier for the case
 `input`:: the source expression
 `input_format`:: the notation `input` is written in
+`preprocessed`:: `input` after the reader's preprocessing pass — what the
+grammar is actually handed
 `expected`:: expected output, keyed by target format
+`parse_tree`:: what the grammar produced, before it became a model
+`model`:: the parsed expression as a tree of nodes
 
 An implementation reads these files and asserts its own output matches.
+
+=== What `model:` means
+
+A `model:` block is a node's *portable semantic state* — the fields any
+implementation must reproduce to be equivalent — and not a dump of every Ruby
+instance variable the gem happens to carry.
+
+The two usually coincide, so the generator reads the instance variables. Where
+they do not, `scripts/generate-corpus.rb` declares that class's portable state
+explicitly, in `MODEL_PROJECTIONS`, and the declaration is the contract.
+`Math::Function::Unitsml` is the standing case: it caches a parsed
+`Unitsml::Formula` beside the `text` it was built from, and only `text` is
+state — the gem itself compares and clones by `text` alone.
+
+A field absent from a `model:` block is therefore absent by decision, not by
+accident. An implementation is conformant when it reproduces every field that
+is present; how it represents anything else is its own business.
 
 == Layout
 

@@ -48,7 +48,7 @@ cases:
           value: x
       - class: Math::Symbols::Plus
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: "y"
@@ -82,7 +82,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '2'
@@ -126,7 +126,7 @@ cases:
           value: a
       - class: Math::Symbols::Cdot
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: b
@@ -167,7 +167,7 @@ cases:
           value: a
       - class: Math::Symbols::Minus
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: b
@@ -208,7 +208,7 @@ cases:
           value: x
       - class: Math::Symbols::Equal
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: "y"
@@ -257,13 +257,13 @@ cases:
           value: a
       - class: Math::Symbols::Plus
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: b
       - class: Math::Symbols::Plus
         fields:
-          value: 
+          value:
       - class: Math::Symbols::Symbol
         fields:
           value: c

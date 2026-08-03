@@ -64,7 +64,7 @@ cases:
       value:
       - class: Math::Symbols::Alpha
         fields:
-          value: 
+          value:
 - id: symbol-greek-pi
   input: pi
   input_format: asciimath
@@ -91,7 +91,7 @@ cases:
       value:
       - class: Math::Symbols::Pi
         fields:
-          value: 
+          value:
 - id: symbol-greek-sigma
   input: sigma
   input_format: asciimath
@@ -118,7 +118,7 @@ cases:
       value:
       - class: Math::Symbols::Sigma
         fields:
-          value: 
+          value:
 - id: symbol-infinity
   input: oo
   input_format: asciimath
@@ -145,7 +145,7 @@ cases:
       value:
       - class: Math::Symbols::Oo
         fields:
-          value: 
+          value:
 - id: symbol-adjacent-letters
   input: xyz
   input_format: asciimath

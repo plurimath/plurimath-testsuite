@@ -1,9 +1,9 @@
 # frozen_string_literal: true
 
-# Generates the AsciiMath conformance corpus and the node census from the Ruby
-# plurimath gem, which is the oracle (ARCHITECTURE.md §1).
+# Generates the AsciiMath conformance corpus from the Ruby plurimath gem,
+# which is the oracle.
 #
-# Usage, from the plurimath-ts repository root:
+# Usage, from the plurimath-testsuite repository root:
 #
 #   BUNDLE_GEMFILE=/path/to/plurimath/Gemfile \
 #     mise x -- bundle exec ruby scripts/generate-corpus.rb
@@ -13,13 +13,11 @@
 #                    (default: the checkout bundler resolved `plurimath` from)
 #   --out PATH       output root (default: <repo>/corpus)
 #   --allow-dirty    generate from a dirty checkout; the output is marked
-#                    non-committable in corpus/provenance.yaml (§7)
+#                    non-committable in corpus/provenance.yaml
 #   --help
 #
-# Outputs (the payloads, plus one shared provenance file, §7):
+# Outputs (the payloads, plus one shared provenance file):
 #   corpus/asciimath/<group>.yaml   conformance cases, grouped by feature
-#   corpus/census.yaml              every Math::Core descendant, classified
-#   corpus/exclusions.yaml          cases withheld because of a deferred feature
 #   corpus/provenance.yaml          how the payloads above were produced
 #
 # The generator is deterministic: two runs over the same oracle produce
@@ -35,8 +33,6 @@ module CorpusGenerator
   GENERATOR_PATH = "scripts/generate-corpus.rb"
 
   CORPUS_SCHEMA = "plurimath-corpus/asciimath/1"
-  CENSUS_SCHEMA = "plurimath-corpus/census/1"
-  EXCLUSIONS_SCHEMA = "plurimath-corpus/exclusions/1"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
 
   # One provenance document for the whole corpus, not one sidecar per payload.
@@ -52,63 +48,36 @@ module CorpusGenerator
   INPUT_FORMAT = "asciimath"
   TARGET_FORMATS = %w[asciimath latex mathml].freeze
 
-  # Deferred features are matched on the INPUT TEXT, never on a parsed class:
-  # the gem raises while constructing an invalid UnitsML node, so no formula
-  # exists to inspect for the rejection cases (ARCHITECTURE.md §5).
-  DEFERRED_INPUT_PATTERNS = {
-    "unitsml" => /unitsml\(/,
+  # A `model:` block records a node's *portable semantic state* — what a second
+  # implementation has to reproduce — not a dump of every Ruby instance
+  # variable. For almost every class the two coincide, so the generic
+  # serializer below reads the ivars and that is the model.
+  #
+  # A class listed here declares its portable state instead. The lambda is
+  # given the node and the path of the field being written, and returns the
+  # `fields` mapping. This is a positive declaration, not a skip list: a field
+  # the projection does not name is out of the model by decision, and an ivar
+  # added upstream later stays out until someone decides it belongs — which is
+  # exactly what a blacklist of omitted fields could not promise, since it
+  # would silently adopt the new field.
+  #
+  # `Math::Function::Unitsml` holds `@text` and `@unitsml`. Only `@text` is
+  # state: the gem builds `@unitsml` as `::Unitsml.parse(text)`, compares two
+  # nodes by `text` alone, and clones as `self.class.new(text)`. Serializing
+  # `@unitsml` would also drag a second gem's object graph into the corpus —
+  # `Unitsml::Formula` reaches `Unitsdb::Prefix`, a units-database record whose
+  # lutaml bookkeeping the node only memoizes once something has rendered it,
+  # so the field would depend on render order and the generator promises
+  # determinism.
+  MODEL_PROJECTIONS = {
+    "Math::Function::Unitsml" => lambda { |node, path|
+      { "text" => serialize_value(node.text, "#{path}.text") }
+    },
   }.freeze
-
-  # Classes the port deliberately does not implement (§5). A deferred class may
-  # never appear in a generated case; that invariant is checked, not assumed.
-  DEFERRED_CLASSES = %w[
-    Math::Function::Unitsml
-  ].freeze
-
-  # The direct `Math::Core` descendants. Each is a structural family the port
-  # models in its own right. A new direct descendant is an unclassified new
-  # family and fails generation.
-  FAMILY_ROOTS = %w[
-    Math::Formula
-    Math::Function::BinaryFunction
-    Math::Function::Nary
-    Math::Function::Table
-    Math::Function::TernaryFunction
-    Math::Function::UnaryFunction
-    Math::Function::Unitsml
-    Math::Number
-    Math::Symbols::Symbol
-  ].freeze
-
-  # Base classes the gem never instantiates. Declared, then machine-checked:
-  # each must still have subclasses, must never be constructed anywhere in the
-  # gem's own source, and must not appear in any generated case.
-  ABSTRACT_CLASSES = %w[
-    Math::Function::BinaryFunction
-    Math::Function::TernaryFunction
-    Math::Function::UnaryFunction
-    Math::Symbols::Paren
-  ].freeze
-
-  # Receiver methods in an `==` body that test identity rather than compare a
-  # field.
-  EQUALITY_NON_FIELDS = %w[class is_a? kind_of? instance_of? respond_to?].freeze
-
-  # Helpers an `==` body applies to the whole operand before comparing, mapped
-  # to the field they read. An unlisted helper fails generation, so a new
-  # upstream normalizer cannot silently drop a field from the projection.
-  EQUALITY_WHOLE_OPERAND_HELPERS = {
-    "comparable_value" => "value",
-  }.freeze
-
-  # Ivar prefixes `Core#variables` itself rejects: framework bookkeeping, not
-  # model state.
-  NON_FIELD_IVAR_PREFIXES = %w[@__ @lutaml].freeze
-  NON_FIELD_IVARS = %w[@using_default].freeze
 
   # Seed corpus. Ids are stable and hand-assigned: they are the join key
-  # between the payload, the exclusion manifest, and the TypeScript suite, so
-  # they must not move when a case is inserted.
+  # between the payload and every implementation's own suite, so they must not
+  # move when a case is inserted.
   GROUPS = [
     ["numbers", "Integer and decimal literals", [
       ["number-integer", "2"],
@@ -179,7 +148,9 @@ module CorpusGenerator
       ["text-function", "text(hello)"],
       ["text-quoted", "\"hello world\""],
       ["text-unitsml-valid", "\"unitsml(kg)\""],
-      ["text-unitsml-invalid", "\"unitsml(zzz)\""],
+      # "unitsml(zzz)" is deliberately absent: the gem raises
+      # Plurimath::Math::ParseError for it, and a case records what the gem
+      # rendered, so there is no shape here for an expected error.
     ]],
     ["nary", "n-ary operators and limit-bearing functions", [
       ["nary-log-base", "log_2 8"],
@@ -230,7 +201,7 @@ module CorpusGenerator
 
   # Paths under `except` are ignored. The generator's own output cannot make
   # the run unreproducible — it is overwritten — and excluding it is what lets
-  # a committed corpus be regenerated and diffed (§7).
+  # a committed corpus be regenerated and diffed.
   def dirty_paths(dir, except: [])
     git(dir, "status", "--porcelain").lines.filter_map do |line|
       path = line[3..].to_s.strip
@@ -262,12 +233,13 @@ module CorpusGenerator
 
     raise Error, <<~MESSAGE
       No Gemfile.lock in #{gem_dir}.
-      Run `mise x -- bundle install` there first; §7 records its checksum.
+      Run `mise x -- bundle install` there first; the provenance records its
+      checksum.
     MESSAGE
   end
 
   # A deliberately small Gemfile.lock reader: enough to record each dependency
-  # by source kind (§7), not a general lockfile parser.
+  # by source kind, not a general lockfile parser.
   def parse_lockfile(path)
     sources = []
     specs = {}
@@ -406,14 +378,8 @@ module CorpusGenerator
 
     raise Error, <<~MESSAGE
       Canonical payloads are generated with Ox; this process loaded #{engine}.
-      Unset PLURIMATH_OGA and re-run. Oga is a parity check only (§7).
+      Unset PLURIMATH_OGA and re-run. Oga is a parity check only.
     MESSAGE
-  end
-
-  # --- deferred features ---------------------------------------------------
-
-  def deferred_feature_for(input)
-    DEFERRED_INPUT_PATTERNS.find { |_feature, pattern| input.match?(pattern) }&.first
   end
 
   # --- serialization -------------------------------------------------------
@@ -448,13 +414,33 @@ module CorpusGenerator
     end
   end
 
+  # Either the class declares its portable state (MODEL_PROJECTIONS) or every
+  # instance variable is that state. Keys are sorted here rather than trusted
+  # from either source, so a projection cannot make the payload depend on the
+  # order its fields happen to be written in.
   def serialize_node(node, path)
     name = class_key(node.class)
-    fields = node.variables.sort.to_h do |ivar|
-      field = ivar.to_s.delete_prefix("@")
-      [field, serialize_value(node.get(ivar), "#{path}.#{field}")]
+    projection = MODEL_PROJECTIONS[name]
+    fields =
+      if projection
+        project_fields(projection, node, path, name)
+      else
+        node.variables.to_h { |ivar|
+          field = ivar.to_s.delete_prefix("@")
+          [field, serialize_value(node.get(ivar), "#{path}.#{field}")]
+        }
+      end
+    { "class" => name, "fields" => fields.sort.to_h }
+  end
+
+  def project_fields(projection, node, path, name)
+    fields = projection.call(node, path)
+    unless fields.is_a?(::Hash) && fields.keys.all?(::String)
+      raise Error, "the #{name} projection must return a String-keyed Hash " \
+                   "at #{path}, got #{fields.class}"
     end
-    { "class" => name, "fields" => fields }
+
+    fields
   end
 
   def serialize_tree(node, path)
@@ -468,17 +454,6 @@ module CorpusGenerator
     else
       raise Error, "cannot serialize parse tree node #{node.class} at #{path}"
     end
-  end
-
-  def node_classes(value, acc = [])
-    case value
-    when Plurimath::Math::Core
-      acc << class_key(value.class)
-      value.variables.each { |ivar| node_classes(value.get(ivar), acc) }
-    when ::Array then value.each { |v| node_classes(v, acc) }
-    when ::Hash then value.each_value { |v| node_classes(v, acc) }
-    end
-    acc
   end
 
   # --- corpus --------------------------------------------------------------
@@ -500,324 +475,22 @@ module CorpusGenerator
       },
       "parse_tree" => serialize_tree(tree, id),
       "model" => serialize_node(formula, id),
-      "_classes" => node_classes(formula).uniq.sort,
     }
   end
 
+  # An input the gem cannot render is a hard failure, not a silent omission:
+  # the corpus records what the gem produced, so a case that produces nothing
+  # must be noticed and removed from GROUPS by hand, with a reason.
   def build_corpus
-    groups = []
-    exclusions = []
-
-    GROUPS.each do |name, description, cases|
-      built = cases.filter_map do |id, input|
-        feature = deferred_feature_for(input)
-        if feature
-          exclusions << {
-            "id" => id,
-            "group" => name,
-            "input" => input,
-            "input_format" => INPUT_FORMAT,
-            "feature" => feature,
-            "matched" => DEFERRED_INPUT_PATTERNS.fetch(feature).source,
-            "reason" => "#{feature} is deferred (ARCHITECTURE.md §5); matched " \
-                        "on the input text, since the gem raises for invalid " \
-                        "#{feature} and produces no formula to inspect",
-          }
-          next
-        end
-
-        begin
-          build_case(id, input)
-        rescue StandardError => e
-          raise Error, "case #{id} (#{input.inspect}) failed: #{e.class}: #{e.message}"
-        end
+    GROUPS.map do |name, description, cases|
+      built = cases.map do |id, input|
+        build_case(id, input)
+      rescue StandardError => e
+        raise Error, "case #{id} (#{input.inspect}) failed: #{e.class}: #{e.message}"
       end
 
-      groups << [name, description, built]
+      [name, description, built]
     end
-
-    [groups, exclusions]
-  end
-
-  # --- census --------------------------------------------------------------
-
-  def all_descendants(klass, acc = [])
-    (klass.descendants || []).sort_by(&:name).each do |descendant|
-      acc << descendant
-      all_descendants(descendant, acc)
-    end
-    acc
-  end
-
-  # Force-loads the autoloaded model namespaces so `descendants` is complete.
-  def load_model_classes!(gem_dir)
-    Dir.glob(File.join(gem_dir, "lib/plurimath/math/**/*.rb")).sort.each do |file|
-      require file
-    end
-  end
-
-  def source_body(path, line_index)
-    lines = File.readlines(path, chomp: true)
-    opening = lines[line_index]
-    raise Error, "no source at #{path}:#{line_index + 1}" unless opening
-
-    indent = opening[/\A\s*/]
-    body = [opening]
-    ((line_index + 1)...lines.length).each do |i|
-      body << lines[i]
-      break if lines[i] == "#{indent}end"
-    end
-    body
-  end
-
-  def class_body(klass)
-    location = Object.const_source_location(klass.name)
-    unless location && location.first
-      raise Error, "cannot locate the source of #{klass.name}"
-    end
-
-    source_body(location.first, location.last - 1)
-  end
-
-  def declared_fields(klass)
-    fields = []
-    body = class_body(klass)
-    collecting = false
-
-    body.each do |line|
-      if collecting
-        fields.concat(line.scan(/:([a-z_][A-Za-z0-9_]*)/).flatten)
-        collecting = line.rstrip.end_with?(",")
-        next
-      end
-
-      if line.match?(/\A\s*attr_(accessor|reader|writer)\s/)
-        fields.concat(line.scan(/:([a-z_][A-Za-z0-9_]*)/).flatten)
-        collecting = line.rstrip.end_with?(",")
-      end
-
-      line.scan(/(@[a-z_][A-Za-z0-9_]*)\s*=(?![=~>])/).flatten.each do |ivar|
-        next if NON_FIELD_IVARS.include?(ivar)
-        next if NON_FIELD_IVAR_PREFIXES.any? { |prefix| ivar.start_with?(prefix) }
-
-        fields << ivar.delete_prefix("@")
-      end
-    end
-
-    fields.uniq.sort
-  end
-
-  def equality_owner(klass)
-    owner = klass.instance_method(:==).owner
-    owner < Plurimath::Math::Core || owner == Plurimath::Math::Core ? owner : nil
-  end
-
-  def equality_definition(owner)
-    location = owner.instance_method(:==).source_location
-    raise Error, "cannot locate #{owner.name}#==" unless location
-
-    body = source_body(location.first, location.last - 1)
-    source = body.join("\n")
-    indent = body.first[/\A\s*/]
-    trimmed = body.map { |line| line.start_with?(indent) ? line[indent.length..] : line }
-
-    normalized = {}
-    source.scan(/([a-z_][A-Za-z0-9_]*)\((?:object|other)&?\.([a-z_][A-Za-z0-9_]*)\)/)
-      .each { |helper, field| normalized[field] = helper }
-    source.scan(/([a-z_][A-Za-z0-9_]*)\((?:object|other)\)/).each do |(helper)|
-      field = EQUALITY_WHOLE_OPERAND_HELPERS[helper]
-      unless field
-        raise Error, <<~MESSAGE
-          #{owner.name}#== applies the unclassified helper `#{helper}` to the
-          whole operand. Add it to EQUALITY_WHOLE_OPERAND_HELPERS with the field
-          it reads, so the equality projection stays complete.
-        MESSAGE
-      end
-
-      normalized[field] = helper
-    end
-
-    fields = source.scan(/(?:object|other)&?\.([a-z_][A-Za-z0-9_]*[?!]?)/).flatten
-    fields -= EQUALITY_NON_FIELDS
-    fields = (fields + normalized.keys).uniq.sort
-
-    {
-      "class" => class_key(owner),
-      "compares_class" => source.match?(/(?:object|other)\.class\s*==|==\s*(?:object|other)\.class/),
-      "calls_super" => source.match?(/(?<![.\w])super(?![\w])/) ? true : false,
-      "own_fields" => fields,
-      "normalized_by" => normalized.sort.to_h,
-      "source" => trimmed.join("\n"),
-    }
-  end
-
-  # Every `==` an entry can reach, including the ancestors its `super` calls
-  # delegate to, flattened to the fields each projection effectively compares.
-  def equality_definitions(classes)
-    pending = classes.filter_map { |klass| equality_owner(klass) }.uniq
-    definitions = {}
-
-    until pending.empty?
-      owner = pending.shift
-      key = class_key(owner)
-      next if definitions.key?(key)
-
-      definition = equality_definition(owner)
-      definitions[key] = definition
-      next unless definition["calls_super"]
-
-      parent = equality_owner(owner.superclass)
-      unless parent
-        raise Error, "#{owner.name}#== calls super outside the model hierarchy"
-      end
-
-      definition["super"] = class_key(parent)
-      pending << parent
-    end
-
-    definitions.each_key do |key|
-      definitions[key]["fields"] = effective_equality_fields(definitions, key)
-    end
-    definitions.sort.to_h
-  end
-
-  def effective_equality_fields(definitions, key, seen = [])
-    raise Error, "cyclic super chain at #{key}" if seen.include?(key)
-
-    definition = definitions.fetch(key)
-    fields = definition["own_fields"].dup
-    if definition["super"]
-      fields += effective_equality_fields(definitions, definition["super"], seen + [key])
-    end
-    fields.uniq.sort
-  end
-
-  def abstract_check!(gem_dir, descendants)
-    by_key = descendants.to_h { |klass| [class_key(klass), klass] }
-    sources = Dir.glob(File.join(gem_dir, "lib/**/*.rb")).sort
-      .map { |file| File.read(file) }
-
-    ABSTRACT_CLASSES.each do |key|
-      klass = by_key[key]
-      raise Error, "declared-abstract #{key} is not a Math::Core descendant" unless klass
-
-      if (klass.descendants || []).empty?
-        raise Error, "declared-abstract #{key} has no subclasses; reclassify it"
-      end
-
-      short = klass.name.split("::").last
-      pattern = /(?<![A-Za-z0-9_])#{Regexp.escape(short)}\.new(?![A-Za-z0-9_])/
-      next unless sources.any? { |source| source.match?(pattern) }
-
-      raise Error, "declared-abstract #{key} is instantiated in the gem; reclassify it"
-    end
-  end
-
-  def build_census(gem_dir)
-    descendants = all_descendants(Plurimath::Math::Core).uniq
-    abstract_check!(gem_dir, descendants)
-
-    direct = Plurimath::Math::Core.descendants.map { |k| class_key(k) }.uniq.sort
-    unknown = direct - FAMILY_ROOTS
-    unless unknown.empty?
-      raise Error, <<~MESSAGE
-        Unclassified new model #{unknown.length == 1 ? 'family' : 'families'}: #{unknown.join(', ')}.
-        A direct Math::Core descendant is a structural family the port must
-        model. Add it to FAMILY_ROOTS once its disposition is decided.
-      MESSAGE
-    end
-
-    definitions = equality_definitions(descendants)
-    own_fields = descendants.to_h { |klass| [klass, declared_fields(klass)] }
-
-    inherited_fields = lambda do |klass|
-      fields = []
-      current = klass.superclass
-      while current && current != Plurimath::Math::Core
-        fields += own_fields.fetch(current, [])
-        current = current.superclass
-      end
-      fields.uniq
-    end
-
-    own_equality = descendants.to_h { |klass| [klass, equality_owner(klass) == klass] }
-    new_fields = descendants.to_h do |klass|
-      [klass, own_fields.fetch(klass) - inherited_fields.call(klass)]
-    end
-
-    disposition_of = lambda do |klass|
-      key = class_key(klass)
-      if DEFERRED_CLASSES.include?(key) then "deferred"
-      elsif FAMILY_ROOTS.include?(key) then "implemented"
-      elsif !new_fields.fetch(klass).empty? || own_equality.fetch(klass) then "implemented"
-      else "aliased"
-      end
-    end
-
-    entries = descendants.sort_by(&:name).map do |klass|
-      disposition = disposition_of.call(klass)
-      entry = {
-        "name" => class_key(klass),
-        "parent" => class_key(klass.superclass),
-        "disposition" => disposition,
-        "abstract" => ABSTRACT_CLASSES.include?(class_key(klass)),
-        "direct_subclasses" => (klass.descendants || []).uniq.length,
-      }
-
-      if disposition == "aliased"
-        target = klass.superclass
-        target = target.superclass while disposition_of.call(target) == "aliased"
-        entry["aliases"] = class_key(target)
-      else
-        owner = equality_owner(klass)
-        entry["fields"] = (own_fields.fetch(klass) + inherited_fields.call(klass)).uniq.sort
-        entry["own_fields"] = new_fields.fetch(klass)
-        entry["equality"] = {
-          "defined_by" => class_key(owner),
-          "fields" => definitions.fetch(class_key(owner))["fields"],
-        }
-      end
-
-      entry
-    end
-
-    counts = entries.group_by { |e| e["disposition"] }.transform_values(&:length)
-
-    {
-      "schema" => CENSUS_SCHEMA,
-      "root" => class_key(Plurimath::Math::Core),
-      "policy" => {
-        "dispositions" => {
-          "implemented" => "The port models this class: it is a family root, " \
-                           "adds a field, or compares differently from its parent.",
-          "aliased" => "Adds no field and no equality of its own; the port " \
-                       "represents it as its alias target plus a name.",
-          "deferred" => "Deliberately not implemented (ARCHITECTURE.md §5). " \
-                        "A deferred class may not appear in any generated case.",
-        },
-        "fails_generation_on" => [
-          "a direct Math::Core descendant that is not a declared family root",
-          "a declared-abstract class that has no subclasses or is instantiated " \
-          "in the gem",
-          "a class whose source, fields or `==` cannot be read",
-          "an `==` helper applied to the whole operand that is not classified",
-          "a deferred class appearing in a generated corpus case",
-        ],
-        "family_roots" => FAMILY_ROOTS,
-        "abstract" => ABSTRACT_CLASSES,
-        "deferred" => DEFERRED_CLASSES,
-      },
-      "summary" => {
-        "total" => entries.length,
-        "implemented" => counts.fetch("implemented", 0),
-        "aliased" => counts.fetch("aliased", 0),
-        "deferred" => counts.fetch("deferred", 0),
-        "abstract" => entries.count { |e| e["abstract"] },
-        "concrete" => entries.count { |e| !e["abstract"] },
-      },
-      "equality_definitions" => definitions,
-      "classes" => entries,
-    }
   end
 
   # --- output --------------------------------------------------------------
@@ -840,6 +513,13 @@ module CorpusGenerator
     # references by design — so rebuild the structure to break identity.
     data = unshare(data)
     yaml = Psych.dump(data, line_width: -1)
+    # Psych writes a nil value as `key: `, with a trailing space. Parsers do not
+    # care, but these are committed data files, so every regeneration would
+    # reintroduce whitespace a linter or reviewer flags. Stripping it is safe
+    # only because the round-trip below verifies it: had it altered anything
+    # real — content inside a block scalar, say — the payload would no longer
+    # match, and this raises.
+    yaml = yaml.gsub(/[ \t]+$/, "")
     round_trip = Psych.safe_load(yaml, aliases: false)
     raise Error, "YAML round-trip changed the payload" unless round_trip == data
 
@@ -923,7 +603,8 @@ module CorpusGenerator
 
   def check_checkouts!(gem_dir, requested_gem_dir, out_root, allow_dirty)
     unless git_repository?(gem_dir)
-      raise Error, "#{gem_dir} is not a git checkout; the oracle must be one (§7)"
+      raise Error, "#{gem_dir} is not a git checkout; the oracle must be one, " \
+                   "so the provenance can name the commit it ran"
     end
 
     gem_dirty = dirty_paths(gem_dir)
@@ -932,7 +613,8 @@ module CorpusGenerator
 
     if !allow_dirty && !(gem_dirty.empty? && repo_dirty.empty?)
       raise Error, <<~MESSAGE
-        Refusing to generate from a dirty checkout (ARCHITECTURE.md §7).
+        Refusing to generate from a dirty checkout: the output would record a
+        commit that does not describe the code that ran.
           gem       #{gem_dir}: #{gem_dirty.empty? ? 'clean' : gem_dirty.join(', ')}
           generator #{REPO_ROOT}: #{repo_dirty.empty? ? 'clean' : repo_dirty.join(', ')}
         Commit or stash, or pass --allow-dirty to produce non-committable output.
@@ -955,7 +637,7 @@ module CorpusGenerator
     dependencies = dependency_provenance(gem_dir, gem_spec)
 
     unless dependencies[:external_path_sources].empty?
-      message = "path-pinned gems are rejected for canonical generation (§7): " \
+      message = "path-pinned gems are rejected for canonical generation: " \
                 "#{dependencies[:external_path_sources].join(', ')}"
       raise Error, message unless allow_dirty
     end
@@ -997,18 +679,6 @@ module CorpusGenerator
     }
   end
 
-  def assert_no_deferred_classes!(groups)
-    deferred = groups.flat_map { |_name, _description, cases| cases }
-      .flat_map { |kase| kase["_classes"].map { |k| [kase["id"], k] } }
-      .select { |_id, key| DEFERRED_CLASSES.include?(key) }
-    return if deferred.empty?
-
-    raise Error, <<~MESSAGE
-      Deferred classes reached the corpus: #{deferred.map { |id, k| "#{id}=>#{k}" }.join(', ')}.
-      The deferred-feature classifier matches input text; widen it (§5).
-    MESSAGE
-  end
-
   def run(argv)
     options = parse_options(argv)
     if options[:help]
@@ -1020,12 +690,9 @@ module CorpusGenerator
     gem_dir = options[:gem] || loaded_gem_dir
     dirty = check_checkouts!(gem_dir, options[:gem], options[:out],
                              options[:allow_dirty])
-    load_model_classes!(gem_dir)
 
     provenance = build_provenance(gem_dir, dirty, options[:allow_dirty])
-    groups, exclusions = build_corpus
-    assert_no_deferred_classes!(groups)
-    census = build_census(gem_dir)
+    groups = build_corpus
 
     out_root = options[:out]
     payloads = []
@@ -1037,29 +704,12 @@ module CorpusGenerator
         "description" => description,
         "input_format" => INPUT_FORMAT,
         "targets" => TARGET_FORMATS,
-        "cases" => cases.map { |kase| kase.reject { |key, _| key == "_classes" } },
+        "cases" => cases,
       }
       path = File.join(out_root, "asciimath", "#{name}.yaml")
       bytes = write_payload(path, payload_header("AsciiMath conformance cases: #{name}."), payload)
       payloads << [path, bytes]
     end
-
-    exclusions_payload = {
-      "schema" => EXCLUSIONS_SCHEMA,
-      "description" => "Cases withheld from every generator because their " \
-                       "input matches a deferred construct (ARCHITECTURE.md §5).",
-      "features" => DEFERRED_INPUT_PATTERNS.keys.sort,
-      "classes" => DEFERRED_CLASSES,
-      "excluded" => exclusions.sort_by { |e| e["id"] },
-    }
-    path = File.join(out_root, "exclusions.yaml")
-    bytes = write_payload(path, payload_header("Deferred-feature exclusion manifest."),
-                          exclusions_payload)
-    payloads << [path, bytes]
-
-    path = File.join(out_root, "census.yaml")
-    bytes = write_payload(path, payload_header("Plurimath::Math::Core node census."), census)
-    payloads << [path, bytes]
 
     provenance_path = write_provenance(out_root, provenance, payloads)
 
@@ -1068,8 +718,7 @@ module CorpusGenerator
       puts "  #{relative(payload_path, REPO_ROOT)}"
     end
     puts "  #{relative(provenance_path, REPO_ROOT)}"
-    puts "#{case_count} cases in #{groups.length} groups, " \
-         "#{exclusions.length} excluded, #{census['summary']['total']} classes"
+    puts "#{case_count} cases in #{groups.length} groups"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }
     0

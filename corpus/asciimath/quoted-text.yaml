@@ -38,7 +38,7 @@ cases:
       value:
       - class: Math::Function::Text
         fields:
-          lang: 
+          lang:
           parameter_one: hello
 - id: text-quoted
   input: '"hello world"'
@@ -66,5 +66,36 @@ cases:
       value:
       - class: Math::Function::Text
         fields:
-          lang: 
+          lang:
           parameter_one: hello world
+- id: text-unitsml-valid
+  input: '"unitsml(kg)"'
+  input_format: asciimath
+  preprocessed: '"unitsml(kg)"'
+  expected:
+    asciimath: rm(kg)
+    latex: "\\mathrm{kg}"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mrow>
+            <mstyle mathvariant="normal">
+              <mi>kg</mi>
+            </mstyle>
+          </mrow>
+        </mstyle>
+      </math>
+  parse_tree:
+    expr:
+      sequence:
+        unitsml: kg
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: '"unitsml(kg)"'
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Unitsml
+        fields:
+          text: kg

@@ -37,7 +37,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '2'
@@ -67,7 +67,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '2.5'
@@ -97,7 +97,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '0'
@@ -127,7 +127,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '123'
@@ -157,7 +157,7 @@ cases:
       value:
       - class: Math::Number
         fields:
-          base: 
+          base:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '3.14159'

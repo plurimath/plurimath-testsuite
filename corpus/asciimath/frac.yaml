@@ -88,14 +88,14 @@ cases:
           parameter_one:
             class: Math::Number
             fields:
-              base: 
+              base:
               mini_sub_sized: false
               mini_sup_sized: false
               value: '2'
           parameter_two:
             class: Math::Number
             fields:
-              base: 
+              base:
               mini_sub_sized: false
               mini_sup_sized: false
               value: '3'
@@ -159,7 +159,7 @@ cases:
                   value: a
               - class: Math::Symbols::Plus
                 fields:
-                  value: 
+                  value:
               - class: Math::Symbols::Symbol
                 fields:
                   value: b
@@ -231,7 +231,7 @@ cases:
                   value: "y"
               - class: Math::Symbols::Plus
                 fields:
-                  value: 
+                  value:
               - class: Math::Symbols::Symbol
                 fields:
                   value: z
@@ -293,7 +293,7 @@ cases:
               value: b
       - class: Math::Symbols::Plus
         fields:
-          value: 
+          value:
       - class: Math::Function::Frac
         fields:
           parameter_one:
