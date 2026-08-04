@@ -10,9 +10,39 @@ only Ruby can read them. This repository holds the same knowledge as YAML, so
 every implementation — the Ruby gem, the TypeScript port, and any future one —
 can be checked against identical answers.
 
-== Status
+== What is covered
 
-Early. The AsciiMath cases are the first to be extracted.
+Early. AsciiMath input is the first notation extracted, and the only one so
+far. A tick means cases exist here today, not that Plurimath supports it —
+Plurimath supports every row.
+
+[cols="1,2,2",options="header"]
+|===
+| Notation | As input | As output
+
+| AsciiMath   | ✅ 70 cases, 13 groups | ✅ checked for all 70
+| LaTeX       | ❌ no cases yet        | ✅ checked for all 70
+| MathML      | ❌ no cases yet        | ✅ checked for all 70
+| OMML        | ❌ no cases yet        | ❌ no cases yet
+| UnicodeMath | ❌ no cases yet        | ❌ no cases yet
+| HTML        | ❌ no cases yet        | ❌ no cases yet
+|===
+
+Groups, and the cases in each:
+
+`numbers` 5, `symbols` 7, `operators` 6, `fences` 6, `frac` 6, `powers` 8,
+`roots` 4, `unary-functions` 7, `quoted-text` 3, `nary` 6, `matrices` 2,
+`mixed` 5, `whitespace` 5.
+
+== Using it
+
+Consumers pin this repository — as a git submodule, or however their language
+prefers — and read the YAML directly. Each payload names the schema it follows,
+and `corpus/provenance.yaml` records which gem commit produced everything,
+along with a checksum per payload so a consumer can tell whether a file has
+been edited by hand.
+
+There is no build step and no published package. The YAML is the artifact.
 
 == Format
 
@@ -94,8 +124,13 @@ is present; how it represents anything else is its own business.
 == Layout
 
 `corpus/`:: the test cases, grouped by feature
+`corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
+version, generator checksum, and a `sha256` and byte count per payload
 `schema/`:: JSON Schema describing the file formats, validated in CI
-`scripts/`:: generation from the Ruby gem
+`scripts/generate-corpus.rb`:: writes the corpus from the Ruby gem
+`scripts/validate.rb`:: checks the corpus against the schemas, and checks what
+a schema cannot — that every payload is recorded, and that each one still
+hashes to what `provenance.yaml` says
 
 == Copyright and license
 
