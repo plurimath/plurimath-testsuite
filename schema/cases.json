@@ -31,7 +31,7 @@
       "$ref": "#/$defs/input_format"
     },
     "targets": {
-      "description": "Output formats every case in this group carries expectations for.",
+      "description": "Output formats every case in this group carries expectations for. JSON Schema cannot compare two fields, so scripts/validate.rb — not this schema — reconciles this list with each case's `expected` keys.",
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,
@@ -111,7 +111,7 @@
           "type": "string"
         },
         "expected": {
-          "description": "Expected output keyed by target format; every key must appear in the group's `targets`.",
+          "description": "Expected output keyed by target format. The keys are exactly the group's `targets`; that is a constraint between two fields, so scripts/validate.rb checks it rather than this schema, which can only require the keys to be target formats at all.",
           "type": "object",
           "minProperties": 1,
           "propertyNames": {

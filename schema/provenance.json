@@ -207,7 +207,7 @@
       }
     },
     "payloads": {
-      "description": "Every payload this provenance describes, sorted by path. A corpus file that is not listed here is unattributed, and a listed file that is missing makes the record wrong; the validator checks both.",
+      "description": "Every payload this provenance describes, sorted by path. A corpus file that is not listed here is unattributed, and a listed file that is missing makes the record wrong. This schema can require neither the ordering nor the correspondence with the files on disk; scripts/validate.rb checks all three.",
       "type": "array",
       "minItems": 1,
       "uniqueItems": true,

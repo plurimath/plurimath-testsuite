@@ -54,6 +54,28 @@ module Testsuite
 
     TYPES = %w[null boolean object array number integer string].freeze
 
+    # The JSON type name of a value, for error messages. Shared, so a schema
+    # violation and a malformed payload name the same thing the same way.
+    def self.type_name(value)
+      case value
+      when nil then "null"
+      when true, false then "boolean"
+      when Integer then "integer"
+      when Float then "number"
+      when String then "string"
+      when Array then "array"
+      when Hash then "object"
+      else value.class.to_s
+      end
+    end
+
+    # A value inspected for an error message, cut short so one oversized value
+    # cannot flood the report.
+    def self.truncate(value)
+      text = value.inspect
+      text.length > 60 ? "#{text[0, 57]}..." : text
+    end
+
     class Schema
       attr_reader :path, :id, :root
 
@@ -228,19 +250,6 @@ module Testsuite
         value.is_a?(Numeric) && !value.is_a?(TrueClass) && !value.is_a?(FalseClass)
       end
 
-      def type_name(value)
-        case value
-        when nil then "null"
-        when true, false then "boolean"
-        when Integer then "integer"
-        when Float then "number"
-        when String then "string"
-        when Array then "array"
-        when Hash then "object"
-        else value.class.to_s
-        end
-      end
-
       def matches_type?(type, value)
         case type
         when "null" then value.nil?
@@ -262,7 +271,9 @@ module Testsuite
         wanted.each { |t| raise Failure, "#{@path}: unknown type #{t.inspect}" unless TYPES.include?(t) }
         return if wanted.any? { |t| matches_type?(t, instance) }
 
-        errors << Error.new(path, "expected #{wanted.join(' or ')}, got #{type_name(instance)}")
+        errors << Error.new(path,
+                            "expected #{wanted.join(' or ')}, " \
+                            "got #{JsonSchema.type_name(instance)}")
       end
 
       def check_enum(schema, instance, path, errors)
@@ -285,7 +296,7 @@ module Testsuite
         end
         return unless (pattern = schema["pattern"]) && !regexp(pattern).match(instance)
 
-        errors << Error.new(path, "#{truncate(instance)} does not match #{pattern}")
+        errors << Error.new(path, "#{JsonSchema.truncate(instance)} does not match #{pattern}")
       end
 
       def check_number(schema, instance, path, errors)
@@ -342,10 +353,10 @@ module Testsuite
         end
 
         if (min = schema["minProperties"]) && instance.size < min
-          errors << Error.new(path, "has #{instance.size} propertie(s), needs at least #{min}")
+          errors << Error.new(path, "has #{properties(instance.size)}, needs at least #{min}")
         end
         if (max = schema["maxProperties"]) && instance.size > max
-          errors << Error.new(path, "has #{instance.size} propertie(s), allows at most #{max}")
+          errors << Error.new(path, "has #{properties(instance.size)}, allows at most #{max}")
         end
 
         (schema["required"] || []).each do |key|
@@ -459,9 +470,8 @@ module Testsuite
         key.gsub("~", "~0").gsub("/", "~1")
       end
 
-      def truncate(value)
-        text = value.inspect
-        text.length > 60 ? "#{text[0, 57]}..." : text
+      def properties(count)
+        "#{count} #{count == 1 ? 'property' : 'properties'}"
       end
     end
   end
@@ -598,7 +608,14 @@ module Testsuite
 
       declared = document["schema"]
       unless declared.is_a?(String)
-        return failure(shown, [Error.new("/schema", "missing; every payload declares the schema it follows")])
+        # An absent key and a key holding the wrong kind of value are different
+        # mistakes, and dispatch cannot proceed on either: say which happened.
+        reason = if document.key?("schema")
+                   "must name a schema as a string, got #{describe_value(declared)}"
+                 else
+                   "missing; every payload declares the schema it follows"
+                 end
+        return failure(shown, [Error.new("/schema", reason)])
       end
 
       matched = schemas.select { |schema| schema.accepts_declaration?(declared) }
@@ -628,10 +645,84 @@ module Testsuite
         @report.add_cases(document["cases"].length) if document["cases"].is_a?(Array)
       end
 
+      # Only once the shape is known good: these checks read fields the schema
+      # has just guaranteed are there and are the right type.
+      errors = cross_field_errors(document) if errors.empty?
+
       if errors.empty?
         puts "  OK    #{shown.ljust(52)} #{kind}, #{count_of(document)}"
       else
         failure(shown, errors)
+      end
+    end
+
+    # A type name, plus the value itself when the name alone does not say what
+    # arrived. A payload can put anything here, so the value is bounded.
+    def describe_value(value)
+      name = JsonSchema.type_name(value)
+      value.nil? ? name : "#{name} #{JsonSchema.truncate(value)}"
+    end
+
+    # JSON Schema constrains one field at a time, so a constraint relating two
+    # fields has to live here. The schemas describe these constraints; this is
+    # what makes the descriptions true.
+    def cross_field_errors(document)
+      if listed_payloads?(document)
+        payload_order_errors(document["payloads"])
+      elsif grouped_cases?(document)
+        target_coverage_errors(document["targets"], document["cases"])
+      else
+        []
+      end
+    end
+
+    # Dispatch is on the shape a payload carries, not the schema that accepted
+    # it, so a payload kind added later is skipped rather than crashing these
+    # checks. For the kinds that do match, the schema has already guaranteed
+    # the shape by the time this runs.
+    def listed_payloads?(document)
+      entries = document["payloads"]
+      entries.is_a?(Array) &&
+        entries.all? { |entry| entry.is_a?(Hash) && entry["path"].is_a?(String) }
+    end
+
+    def grouped_cases?(document)
+      cases = document["cases"]
+      document["targets"].is_a?(Array) && cases.is_a?(Array) &&
+        cases.all? { |kase| kase.is_a?(Hash) && kase["expected"].is_a?(Hash) }
+    end
+
+    # `targets` is declared once for the whole group, so it and every case's
+    # `expected` keys are the same set: a key outside `targets` is an
+    # expectation the group never declared, and a target with no key is a
+    # promise the case does not keep.
+    def target_coverage_errors(targets, cases)
+      cases.each_with_index.flat_map do |kase, index|
+        expected = kase["expected"].keys
+        id = kase["id"]
+
+        (expected - targets).sort.map do |target|
+          Error.new("/cases/#{index}/expected/#{target}",
+                    "case `#{id}` expects `#{target}`, which is not one of the " \
+                    "group's targets (#{targets.join(', ')})")
+        end +
+          (targets - expected).sort.map do |target|
+            Error.new("/cases/#{index}/expected",
+                      "case `#{id}` carries no expectation for `#{target}`, " \
+                      "which the group lists in `targets`")
+          end
+      end
+    end
+
+    # The provenance says `payloads` is sorted by path, and a diff of the corpus
+    # is only readable while it stays that way.
+    def payload_order_errors(payloads)
+      paths = payloads.map { |entry| entry["path"] }
+      paths.each_cons(2).with_index.filter_map do |(previous, current), index|
+        next if current >= previous
+
+        Error.new("/payloads/#{index + 1}/path",
+                  "records #{current} after #{previous}; `payloads` is sorted by path")
       end
     end
 
