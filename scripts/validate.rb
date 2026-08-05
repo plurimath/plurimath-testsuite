@@ -870,9 +870,12 @@ module Testsuite
     end
 
     # A JSON-pointer token for a key that, this early, may not even be a
-    # string yet — the schema rejects non-string keys later.
+    # string yet — the schema rejects non-string keys later. Escaping applies
+    # to whatever token is produced: a non-string key's `inspect` can carry
+    # `~` or `/` too, and an unescaped one renders an ambiguous pointer.
     def pointer_token(key)
-      key.is_a?(String) ? key.gsub("~", "~0").gsub("/", "~1") : JsonSchema.truncate(key)
+      token = key.is_a?(String) ? key : JsonSchema.truncate(key)
+      token.gsub("~", "~0").gsub("/", "~1")
     end
 
     # `aliases: false` is a check, not a precaution: an anchor would make the
