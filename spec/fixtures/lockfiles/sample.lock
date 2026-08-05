@@ -1,0 +1,31 @@
+PATH
+  remote: .
+  specs:
+    plurimath (0.11.6)
+      parslet (~> 2.0)
+
+GIT
+  remote: https://github.com/example/dep.git
+  revision: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+  specs:
+    dep (1.2.3)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    parslet (2.0.0)
+    nokogiri (1.16.5-x86_64-linux)
+
+PLATFORMS
+  x86_64-linux
+  ruby
+
+DEPENDENCIES
+  dep!
+  plurimath!
+
+CHECKSUMS
+  parslet (2.0.0) sha256=0000
+
+BUNDLED WITH
+   2.6.9

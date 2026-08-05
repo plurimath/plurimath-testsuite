@@ -1,0 +1,38 @@
+schema: plurimath-corpus/provenance/2
+committable: true
+warnings: []
+generator:
+  path: scripts/generate-corpus.rb
+  sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+  repository:
+    commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    clean: true
+    dirty_paths: []
+oracle:
+  gem: plurimath
+  version: 0.11.6
+  kind: git-checkout
+  commit: bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb
+  clean: true
+  dirty_paths: []
+ruby:
+  engine: ruby
+  version: 3.4.5
+xml_engine: Plurimath::XmlEngine::OxEngine
+configuration: {}
+lockfile:
+  path: Gemfile.lock
+  sha256: '1111111111111111111111111111111111111111111111111111111111111111'
+  resolved_gems: 2
+  platforms:
+  - ruby
+  bundler: 2.6.9
+direct_runtime:
+  parslet: 2.0.0
+payloads:
+- path: asciimath/zzz.yaml
+  sha256: '2222222222222222222222222222222222222222222222222222222222222222'
+  bytes: 10
+- path: asciimath/aaa.yaml
+  sha256: '3333333333333333333333333333333333333333333333333333333333333333'
+  bytes: 10

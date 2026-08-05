@@ -1,0 +1,22 @@
+schema: plurimath-corpus/asciimath/1
+group: numbers
+description: Minimal healthy fixture group.
+input_format: asciimath
+targets:
+- asciimath
+cases:
+- id: number-integer
+  input: &val "2"
+  input_format: asciimath
+  preprocessed: *val
+  expected:
+    asciimath: "2"
+  parse_tree:
+    number: "2"
+  model:
+    class: Math::Formula
+    fields:
+      value:
+      - class: Math::Number
+        fields:
+          value: "2"

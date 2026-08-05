@@ -1,0 +1,7 @@
+schema: plurimath-corpus/asciimath/1
+group: numbers
+description: Minimal healthy fixture group.
+input_format: asciimath
+targets:
+- asciimath
+cases: []

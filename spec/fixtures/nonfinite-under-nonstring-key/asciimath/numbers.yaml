@@ -1,0 +1,3 @@
+schema: plurimath-corpus/asciimath/1
+? ["a/b"]
+: .nan

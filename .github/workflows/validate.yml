@@ -30,3 +30,8 @@ jobs:
       # corpus/, add --allow-empty until the data arrives — and remove it in
       # the commit that adds corpus/.
       - run: ruby scripts/validate.rb
+
+      # The spec suite guards the validator itself (and the generator's
+      # gem-free helpers). Minitest ships with the Ruby distribution, so this
+      # too runs without bundler or a Gemfile.
+      - run: ruby spec/all.rb
