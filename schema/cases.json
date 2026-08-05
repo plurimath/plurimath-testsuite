@@ -20,7 +20,7 @@
       "pattern": "^plurimath-corpus/(asciimath|html|latex|mathml|omml|unicode|unitsml)/1$"
     },
     "group": {
-      "description": "Feature group; matches the file name without its extension.",
+      "description": "Feature group; matches the file name without its extension. A schema cannot see the file name, so scripts/validate.rb enforces the match.",
       "$ref": "#/$defs/slug"
     },
     "description": {
@@ -28,6 +28,7 @@
       "minLength": 1
     },
     "input_format": {
+      "description": "Agrees with the `schema` declaration's middle segment, with the directory the file sits in, and with every case's `input_format`; scripts/validate.rb reconciles all four.",
       "$ref": "#/$defs/input_format"
     },
     "targets": {
@@ -96,7 +97,7 @@
       "additionalProperties": false,
       "properties": {
         "id": {
-          "description": "Stable identifier, unique within the group.",
+          "description": "Stable identifier, unique within the group; scripts/validate.rb enforces the uniqueness, which one schema item cannot see of its siblings.",
           "$ref": "#/$defs/slug"
         },
         "input": {
@@ -104,6 +105,7 @@
           "minLength": 1
         },
         "input_format": {
+          "description": "Equals the group's `input_format`; scripts/validate.rb enforces the agreement.",
           "$ref": "#/$defs/input_format"
         },
         "preprocessed": {

@@ -532,11 +532,12 @@ module Testsuite
            "#{schemas.map { |schema| schema.id.split('/').last(2).join('/') }.join(', ')}"
       puts
 
-      files = corpus_files
-      if files.empty?
+      files, strays = corpus_files.partition { |path| allowed_layout?(path) }
+      if files.empty? && strays.empty?
         return empty_result
       end
 
+      strays.each { |path| reject_stray(path) }
       @corpus_paths = files
       files.each { |file| validate_file(file, schemas) }
       check_integrity if @integrity
@@ -572,6 +573,9 @@ module Testsuite
       schemas
     end
 
+    # Every file under the corpus root, not just what looks like a payload:
+    # a file this validator would not validate must fail the run, never sit
+    # invisibly beside it. `allowed_layout?` decides what may exist.
     def corpus_files
       unless File.directory?(@corpus_root)
         return [] if @allow_empty
@@ -579,7 +583,39 @@ module Testsuite
         raise Failure, "no corpus directory at #{display(@corpus_root)}"
       end
 
-      Dir.glob(File.join(@corpus_root, "**", "*.{yaml,yml}")).sort
+      entries = Dir.glob(File.join(@corpus_root, "**", "*"), File::FNM_DOTMATCH).sort
+
+      # Symlinks are rejected before the directory filter, because that filter
+      # FOLLOWS links: a directory symlink would vanish from the listing
+      # entirely, and a file symlink with an allowed name would be validated
+      # through whatever external target it points at. Both were demonstrated
+      # passing. `lstat` is the whole point — it looks at the link itself.
+      links = entries.select { |entry| File.symlink?(entry) }
+      unless links.empty?
+        listed = links.map { |entry| display(entry) }.join(", ")
+        raise Failure, "the corpus may not contain symlinks: #{listed}"
+      end
+
+      entries.reject { |entry| File.directory?(entry) }
+    end
+
+    # The corpus holds exactly two kinds of file: the provenance document at
+    # its root, and payload groups at `<input-format>/<group>.yaml`. This is
+    # an allowlist rather than a wider glob on purpose — a wider glob still
+    # ignores the next stray artifact, an allowlist rejects it.
+    PAYLOAD_LAYOUT = %r{\A[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.yaml\z}
+
+    def allowed_layout?(path)
+      relative = relative_to_corpus(File.expand_path(path))
+      relative == PROVENANCE_PATH || relative.match?(PAYLOAD_LAYOUT)
+    end
+
+    def reject_stray(path)
+      @report.seen!
+      failure(display(path),
+              [Error.new("", "is not a file the corpus layout allows; expected " \
+                             "#{PROVENANCE_PATH} at the root, or a payload at " \
+                             "<input-format>/<group>.yaml (lowercase, `.yaml`)")])
     end
 
     def empty_result
@@ -605,6 +641,13 @@ module Testsuite
       unless document.is_a?(Hash)
         return failure(shown, [Error.new("", "a payload must be a mapping, got #{document.class}")])
       end
+
+      nonfinite = begin
+        nonfinite_errors(document, "")
+      rescue SystemStackError
+        [Error.new("", "nests too deeply to validate")]
+      end
+      return failure(shown, nonfinite) unless nonfinite.empty?
 
       declared = document["schema"]
       unless declared.is_a?(String)
@@ -647,7 +690,9 @@ module Testsuite
 
       # Only once the shape is known good: these checks read fields the schema
       # has just guaranteed are there and are the right type.
-      errors = cross_field_errors(document) if errors.empty?
+      if errors.empty?
+        errors = cross_field_errors(document, relative_to_corpus(File.expand_path(path)))
+      end
 
       if errors.empty?
         puts "  OK    #{shown.ljust(52)} #{kind}, #{count_of(document)}"
@@ -664,13 +709,17 @@ module Testsuite
     end
 
     # JSON Schema constrains one field at a time, so a constraint relating two
-    # fields has to live here. The schemas describe these constraints; this is
-    # what makes the descriptions true.
-    def cross_field_errors(document)
+    # fields — or a field and the file it sits in — has to live here. The
+    # schemas describe these constraints; this is what makes the descriptions
+    # true. `relative` is the file's path below the corpus root.
+    def cross_field_errors(document, relative)
       if listed_payloads?(document)
         payload_order_errors(document["payloads"])
       elsif grouped_cases?(document)
-        target_coverage_errors(document["targets"], document["cases"])
+        group_name_errors(document, relative) +
+          input_format_errors(document, relative) +
+          case_id_errors(document["cases"]) +
+          target_coverage_errors(document["targets"], document["cases"])
       else
         []
       end
@@ -690,6 +739,77 @@ module Testsuite
       cases = document["cases"]
       document["targets"].is_a?(Array) && cases.is_a?(Array) &&
         cases.all? { |kase| kase.is_a?(Hash) && kase["expected"].is_a?(Hash) }
+    end
+
+    # The schema says `group` matches the file name without its extension; a
+    # schema cannot see the file name, so the promise is kept here.
+    def group_name_errors(document, relative)
+      group = document["group"]
+      stem = File.basename(relative, ".*")
+      return [] unless group.is_a?(String) && group != stem
+
+      [Error.new("/group",
+                 "is #{group.inspect}, but the file is named " \
+                 "#{File.basename(relative)}; `group` matches the file name " \
+                 "without its extension")]
+    end
+
+    # A group's input format is written down four times: in the `schema`
+    # value's middle segment, in the payload's own `input_format`, in the
+    # directory the file sits in, and in every case. One fact, four spellings
+    # — all four must agree, and a mismatch names the spelling that disagrees.
+    def input_format_errors(document, relative)
+      format = document["input_format"]
+      return [] unless format.is_a?(String)
+
+      errors = []
+      declared = document["schema"].split("/")[1]
+      if declared != format
+        errors << Error.new("/input_format",
+                            "is #{format.inspect}, but the payload declares " \
+                            "`schema: #{document['schema']}`, whose middle " \
+                            "segment is the input format")
+      end
+
+      directory = File.dirname(relative)
+      if directory != format
+        errors << Error.new("/input_format",
+                            "is #{format.inspect}, but the file sits in " \
+                            "#{directory}/; a group lives in the directory " \
+                            "named after its input format")
+      end
+
+      document["cases"].each_with_index do |kase, index|
+        case_format = kase["input_format"]
+        next if case_format == format
+
+        errors << Error.new("/cases/#{index}/input_format",
+                            "is #{case_format.inspect}, but the group's " \
+                            "`input_format` is #{format.inspect}; a case does " \
+                            "not switch formats mid-group")
+      end
+      errors
+    end
+
+    # `id` is the join key downstream reporting uses; two cases sharing one
+    # make every result ambiguous. The schema calls ids unique within the
+    # group, and uniqueness across sibling items is another comparison a
+    # schema cannot make.
+    def case_id_errors(cases)
+      first_seen = {}
+      cases.each_with_index.filter_map do |kase, index|
+        id = kase["id"]
+        next unless id.is_a?(String)
+
+        if (earlier = first_seen[id])
+          Error.new("/cases/#{index}/id",
+                    "reuses #{id.inspect}, which case #{earlier} already " \
+                    "uses; ids are unique within a group")
+        else
+          first_seen[id] = index
+          nil
+        end
+      end
     end
 
     # `targets` is declared once for the whole group, so it and every case's
@@ -734,6 +854,39 @@ module Testsuite
       return "#{payloads.length} payload#{'s' unless payloads.length == 1}" if payloads.is_a?(Array)
 
       "ok"
+    end
+
+    # YAML happily reads `.nan` and `.inf`, but JSON has no way to write them
+    # back, and these payloads exist for ordinary JSON Schema consumers.
+    # Rejected before schema evaluation: to a type check a NaN is just a
+    # number, so the schema would wave it through.
+    def nonfinite_errors(value, path)
+      case value
+      when Float
+        return [] if value.finite?
+
+        label = value.nan? ? "NaN" : value.to_s
+        [Error.new(path, "is #{label}, which JSON cannot represent; corpus " \
+                         "values are limited to what a JSON parser can read")]
+      when Array
+        value.each_with_index.flat_map { |item, index| nonfinite_errors(item, "#{path}/#{index}") }
+      when Hash
+        value.flat_map do |key, item|
+          pointer = "#{path}/#{pointer_token(key)}"
+          nonfinite_errors(key, pointer) + nonfinite_errors(item, pointer)
+        end
+      else
+        []
+      end
+    end
+
+    # A JSON-pointer token for a key that, this early, may not even be a
+    # string yet — the schema rejects non-string keys later. Escaping applies
+    # to whatever token is produced: a non-string key's `inspect` can carry
+    # `~` or `/` too, and an unescaped one renders an ambiguous pointer.
+    def pointer_token(key)
+      token = key.is_a?(String) ? key : JsonSchema.truncate(key)
+      token.gsub("~", "~0").gsub("/", "~1")
     end
 
     # `aliases: false` is a check, not a precaution: an anchor would make the
@@ -840,8 +993,11 @@ module Testsuite
       path.delete_prefix("#{@corpus_root}/")
     end
 
+    # Identical (path, message) pairs collapse to one line: two rules can
+    # legitimately reach the same complaint, and repeating it informs nobody.
     def failure(shown, errors)
       @report.fail!
+      errors = errors.uniq
       puts "  FAIL  #{shown}"
       errors.first(25).each { |error| puts "          #{error}" }
       puts "          ... #{errors.length - 25} more" if errors.length > 25
@@ -870,7 +1026,10 @@ module Testsuite
     USAGE = <<~TEXT
       usage: validate.rb [corpus-root] [options]
 
-      Validates every YAML file under corpus-root against the schema it declares.
+      Validates every corpus file against the schema it declares. A file the
+      corpus layout does not allow (anything but provenance.yaml and
+      <input-format>/<group>.yaml payloads) fails the run rather than being
+      skipped.
 
         corpus-root        directory to validate (default: corpus)
         --schema DIR       schema directory (default: schema)
