@@ -48,10 +48,21 @@ module SpecHelpers
   end
 
   # The fixture must fail (exit 1) and the report must name the reason.
-  def assert_rejects(corpus_root, *flags, message:, schema_dir: SCHEMA_DIR)
+  #
+  # `violations:` pins the TOTAL count of reported violations — pass 1 for a
+  # one-defect fixture. Without it, a fixture that rots and starts failing for
+  # a second, unintended reason still passes its spec; a review proved exactly
+  # that by adding a second defect to a broken fixture and watching the suite
+  # stay green. Violation lines are the report's indented pointer lines.
+  def assert_rejects(corpus_root, *flags, message:, violations: nil, schema_dir: SCHEMA_DIR)
     status, out = run_validator(corpus_root, *flags, schema_dir: schema_dir)
     assert_equal 1, status, "expected a validation failure, got:\n#{out}"
     Array(message).each { |m| assert_includes out, m }
+    unless violations.nil?
+      count = out.lines.count { |line| line.match?(/\A\s+\S*: /) }
+      assert_equal violations, count,
+                   "expected exactly #{violations} violation(s), got #{count}:\n#{out}"
+    end
     out
   end
 

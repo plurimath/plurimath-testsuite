@@ -9,53 +9,53 @@ require_relative "spec_helper"
 describe "provenance presence" do
   it "rejects a corpus with payloads but no provenance" do
     assert_rejects fixture("integrity-missing-provenance"),
-                   message: ["provenance.yaml",
+                   violations: 1, message: ["provenance.yaml",
                              "is missing; without it every payload here is unattributed"]
   end
 
   it "rejects a corpus where two files declare the provenance schema" do
     assert_rejects fixture("integrity-two-provenance"),
-                   message: "the corpus has one provenance document, but 2 declare it"
+                   violations: 1, message: "the corpus has one provenance document, but 2 declare it"
   end
 
   it "rejects a provenance document that is not at the corpus root" do
     assert_rejects fixture("integrity-provenance-not-at-root"),
-                   message: "must be the corpus root's"
+                   violations: 1, message: "must be the corpus root's"
   end
 end
 
 describe "digests and coverage" do
   it "rejects a payload whose sha256 does not match" do
     assert_rejects fixture("integrity-sha-mismatch"),
-                   message: ["/payloads/0/sha256", "but that file hashes to"]
+                   violations: 1, message: ["/payloads/0/sha256", "but that file hashes to"]
   end
 
   it "rejects a payload whose byte count does not match" do
     assert_rejects fixture("integrity-bytes-mismatch"),
-                   message: ["/payloads/0/bytes: records 999999 bytes",
+                   violations: 1, message: ["/payloads/0/bytes: records 999999 bytes",
                              "but that file is"]
   end
 
   it "rejects a payload on disk that provenance never mentions" do
     assert_rejects fixture("integrity-unrecorded-payload"),
-                   message: ["extra.yaml", "is not recorded in"]
+                   violations: 1, message: ["extra.yaml", "is not recorded in"]
   end
 
   it "rejects a recorded payload that is not on disk" do
     assert_rejects fixture("integrity-ghost-payload"),
-                   message: ["records asciimath/ghost.yaml, which is not a payload in"]
+                   violations: 1, message: ["records asciimath/ghost.yaml, which is not a payload in"]
   end
 
   it "rejects a payload recorded twice" do
     assert_rejects fixture("integrity-duplicate-entry"),
-                   message: "records asciimath/numbers.yaml a second time"
+                   violations: 1, message: "records asciimath/numbers.yaml a second time"
   end
 end
 
 describe "integrity and the provenance's own validity" do
   it "does not run integrity against a provenance that failed its schema" do
     out = assert_rejects fixture("integrity-skips-broken-provenance"),
-                         message: "/committable: expected false, got true"
+                         violations: 1, message: "/committable: expected false, got true"
     refute_includes out, "is not recorded",
                     "integrity ran against a provenance there is no reason to trust"
   end
@@ -72,7 +72,7 @@ describe "--no-integrity" do
 
   it "still validates every file against its schema" do
     assert_rejects fixture("cases-missing-required"), "--no-integrity",
-                   message: "is missing the required property `description`"
+                   violations: 1, message: "is missing the required property `description`"
   end
 end
 

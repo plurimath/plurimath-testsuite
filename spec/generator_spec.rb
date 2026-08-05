@@ -217,6 +217,18 @@ describe "provenance assembly" do
     assert_includes header, "Do not edit"
     assert_includes header, "corpus/provenance.yaml"
   end
+
+  it "carries the kind it was given, not a fixed label" do
+    # A review mutation gutted `payload_header` to discard its argument and
+    # emit a fixed string — and the suite stayed green, because only the fixed
+    # text above was asserted. The kind is the part that varies per file, so it
+    # is the part a mutation corrupts.
+    numbers = CorpusGenerator.payload_header("AsciiMath conformance cases: numbers.")
+    frac = CorpusGenerator.payload_header("AsciiMath conformance cases: frac.")
+    assert_includes numbers, "# AsciiMath conformance cases: numbers.\n"
+    assert_includes frac, "# AsciiMath conformance cases: frac.\n"
+    refute_equal numbers, frac
+  end
 end
 
 describe "usage" do

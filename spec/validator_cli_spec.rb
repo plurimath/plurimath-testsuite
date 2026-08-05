@@ -56,11 +56,16 @@ describe "validate.rb as a process" do
     end
   end
 
-  it "exits 2 on a symlink in the corpus" do
+  it "fails loudly on a symlink in the corpus" do
+    # Deliberately NOT pinned to a specific exit code. Today a symlink raises
+    # `Failure` (exit 2) while a stray file reports per-file (exit 1) — a
+    # recorded inconsistency and an open decision, not a contract. Asserting 2
+    # would make this spec fight the fix if 1 is ever chosen. What IS
+    # contract: the run fails, and the message names the problem.
     with_fixture_copy("healthy-minimal") do |dir|
       File.symlink("/etc/hostname", File.join(dir, "asciimath", "link.yaml"))
       status, _out, err = run_validator_process(dir)
-      assert_equal 2, status
+      refute_equal 0, status, "a symlinked corpus must not validate"
       assert_includes err, "the corpus may not contain symlinks"
     end
   end
