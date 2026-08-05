@@ -583,9 +583,20 @@ module Testsuite
         raise Failure, "no corpus directory at #{display(@corpus_root)}"
       end
 
-      Dir.glob(File.join(@corpus_root, "**", "*"), File::FNM_DOTMATCH)
-         .reject { |entry| File.directory?(entry) }
-         .sort
+      entries = Dir.glob(File.join(@corpus_root, "**", "*"), File::FNM_DOTMATCH).sort
+
+      # Symlinks are rejected before the directory filter, because that filter
+      # FOLLOWS links: a directory symlink would vanish from the listing
+      # entirely, and a file symlink with an allowed name would be validated
+      # through whatever external target it points at. Both were demonstrated
+      # passing. `lstat` is the whole point — it looks at the link itself.
+      links = entries.select { |entry| File.symlink?(entry) }
+      unless links.empty?
+        listed = links.map { |entry| display(entry) }.join(", ")
+        raise Failure, "the corpus may not contain symlinks: #{listed}"
+      end
+
+      entries.reject { |entry| File.directory?(entry) }
     end
 
     # The corpus holds exactly two kinds of file: the provenance document at
