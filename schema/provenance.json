@@ -24,7 +24,7 @@
       "const": "plurimath-corpus/provenance/2"
     },
     "committable": {
-      "description": "False when anything made the run unreproducible; such output must not be committed. True exactly when `warnings` is empty.",
+      "description": "False when anything made the run unreproducible; such output must not be committed. True exactly when `warnings` is empty, and never alongside a dirty checkout.",
       "type": "boolean"
     },
     "warnings": {
@@ -91,7 +91,12 @@
         "dirty_paths": {
           "$ref": "#/$defs/path_list"
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/clean_matches_dirty_paths"
+        }
+      ]
     },
     "ruby": {
       "type": "object",
@@ -196,14 +201,15 @@
         "$ref": "#/$defs/gem_name"
       },
       "additionalProperties": {
-        "anyOf": [
-          {
-            "$ref": "#/$defs/gem_version"
-          },
-          {
-            "$ref": "#/$defs/resolution"
-          }
-        ]
+        "if": {
+          "type": "object"
+        },
+        "then": {
+          "$ref": "#/$defs/resolution"
+        },
+        "else": {
+          "$ref": "#/$defs/gem_version"
+        }
       }
     },
     "payloads": {
@@ -216,32 +222,77 @@
       }
     }
   },
-  "if": {
-    "required": [
-      "warnings"
-    ],
-    "properties": {
-      "warnings": {
-        "minItems": 1
+  "allOf": [
+    {
+      "if": {
+        "required": [
+          "warnings"
+        ],
+        "properties": {
+          "warnings": {
+            "minItems": 1
+          }
+        }
+      },
+      "then": {
+        "description": "A run that produced warnings is not reproducible, so its output is not committable.",
+        "properties": {
+          "committable": {
+            "const": false
+          }
+        }
+      },
+      "else": {
+        "description": "A run with no warnings is reproducible, so its output is committable.",
+        "properties": {
+          "committable": {
+            "const": true
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "required": [
+          "committable"
+        ],
+        "properties": {
+          "committable": {
+            "const": true
+          }
+        }
+      },
+      "then": {
+        "description": "Committable output can only have come from clean checkouts: a dirty oracle or generator makes the run unreproducible.",
+        "properties": {
+          "oracle": {
+            "properties": {
+              "clean": {
+                "const": true
+              },
+              "dirty_paths": {
+                "maxItems": 0
+              }
+            }
+          },
+          "generator": {
+            "properties": {
+              "repository": {
+                "properties": {
+                  "clean": {
+                    "const": true
+                  },
+                  "dirty_paths": {
+                    "maxItems": 0
+                  }
+                }
+              }
+            }
+          }
+        }
       }
     }
-  },
-  "then": {
-    "description": "A run that produced warnings is not reproducible, so its output is not committable.",
-    "properties": {
-      "committable": {
-        "const": false
-      }
-    }
-  },
-  "else": {
-    "description": "A run with no warnings is reproducible, so its output is committable.",
-    "properties": {
-      "committable": {
-        "const": true
-      }
-    }
-  },
+  ],
   "$defs": {
     "sha256": {
       "type": "string",
@@ -291,7 +342,55 @@
         "dirty_paths": {
           "$ref": "#/$defs/path_list"
         }
-      }
+      },
+      "allOf": [
+        {
+          "$ref": "#/$defs/clean_matches_dirty_paths"
+        }
+      ]
+    },
+    "clean_matches_dirty_paths": {
+      "description": "`clean` and `dirty_paths` tell one story: a clean checkout lists no dirty paths, and a dirty one names at least one.",
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "clean"
+            ],
+            "properties": {
+              "clean": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dirty_paths": {
+                "maxItems": 0
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "clean"
+            ],
+            "properties": {
+              "clean": {
+                "const": false
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "dirty_paths": {
+                "minItems": 1
+              }
+            }
+          }
+        }
+      ]
     },
     "resolution": {
       "description": "A dependency worth recording in full: a git or path source, a platform-specific build, or a pinned revision.",
@@ -326,6 +425,22 @@
         "revision": {
           "$ref": "#/$defs/commit"
         }
+      },
+      "if": {
+        "required": [
+          "source_kind"
+        ],
+        "properties": {
+          "source_kind": {
+            "const": "git"
+          }
+        }
+      },
+      "then": {
+        "description": "A git source without its commit reproduces nothing.",
+        "required": [
+          "revision"
+        ]
       }
     },
     "payload": {
