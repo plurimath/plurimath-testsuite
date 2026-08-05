@@ -1,0 +1,355 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/provenance/2",
+  "title": "Corpus provenance",
+  "description": "Recorded once for the whole corpus: everything needed to reproduce the payloads listed in `payloads`, namely the oracle gem's commit and version, the resolved dependency set, the Ruby and XML engine that ran, the generator's own checksum, and a digest of each payload.",
+  "type": "object",
+  "required": [
+    "schema",
+    "committable",
+    "warnings",
+    "generator",
+    "oracle",
+    "ruby",
+    "xml_engine",
+    "configuration",
+    "lockfile",
+    "direct_runtime",
+    "payloads"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "plurimath-corpus/provenance/2"
+    },
+    "committable": {
+      "description": "False when anything made the run unreproducible; such output must not be committed. True exactly when `warnings` is empty.",
+      "type": "boolean"
+    },
+    "warnings": {
+      "description": "Why the output is not committable: a dirty checkout, a path-pinned gem, or generation forced with --allow-dirty.",
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "generator": {
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "repository"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "description": "The generator script, relative to its own repository root.",
+          "$ref": "#/$defs/relative_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "repository": {
+          "$ref": "#/$defs/checkout"
+        }
+      }
+    },
+    "oracle": {
+      "description": "The gem the payloads were generated from.",
+      "type": "object",
+      "required": [
+        "gem",
+        "version",
+        "kind",
+        "commit",
+        "clean",
+        "dirty_paths"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "gem": {
+          "type": "string",
+          "pattern": "^[a-z0-9][a-z0-9_-]*$"
+        },
+        "version": {
+          "$ref": "#/$defs/gem_version"
+        },
+        "kind": {
+          "type": "string",
+          "enum": [
+            "git-checkout"
+          ]
+        },
+        "commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "dirty_paths": {
+          "$ref": "#/$defs/path_list"
+        }
+      }
+    },
+    "ruby": {
+      "type": "object",
+      "required": [
+        "engine",
+        "version"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "engine": {
+          "description": "RUBY_ENGINE, e.g. `ruby` or `jruby`.",
+          "type": "string",
+          "pattern": "^[a-z][a-z0-9_+-]*$"
+        },
+        "version": {
+          "type": "string",
+          "pattern": "^[0-9]+\\.[0-9]+\\.[0-9]+([.a-zA-Z0-9-]*)$"
+        }
+      }
+    },
+    "xml_engine": {
+      "description": "The XML backend that produced the MathML and OMML output. Canonical payloads are generated with Ox.",
+      "type": "string",
+      "pattern": "^Plurimath::XmlEngine::[A-Za-z0-9_]+$"
+    },
+    "configuration": {
+      "description": "Plurimath configuration that differed from its defaults at generation time. Empty when nothing was overridden.",
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "locale": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "number_formatter": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "evaluation_max_iterations": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "decimal": {
+          "type": [
+            "string",
+            "null"
+          ]
+        }
+      }
+    },
+    "lockfile": {
+      "description": "The lockfile that pinned every gem in the run. Its checksum stands in for the per-source gem lists, which without versions reproduce nothing.",
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "resolved_gems",
+        "platforms",
+        "bundler"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/relative_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "resolved_gems": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "platforms": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "bundler": {
+          "description": "The BUNDLED WITH version, or null when the lockfile records none.",
+          "anyOf": [
+            {
+              "$ref": "#/$defs/gem_version"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      }
+    },
+    "direct_runtime": {
+      "description": "The oracle gem's own runtime dependencies, resolved: gem name to version. A dependency that did not resolve plainly — anything but the `ruby` platform from https://rubygems.org/ with no pinned revision — records its full resolution instead of a bare version.",
+      "type": "object",
+      "minProperties": 1,
+      "propertyNames": {
+        "$ref": "#/$defs/gem_name"
+      },
+      "additionalProperties": {
+        "anyOf": [
+          {
+            "$ref": "#/$defs/gem_version"
+          },
+          {
+            "$ref": "#/$defs/resolution"
+          }
+        ]
+      }
+    },
+    "payloads": {
+      "description": "Every payload this provenance describes, sorted by path. A corpus file that is not listed here is unattributed, and a listed file that is missing makes the record wrong. This schema can require neither the ordering nor the correspondence with the files on disk; scripts/validate.rb checks all three.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/payload"
+      }
+    }
+  },
+  "if": {
+    "required": [
+      "warnings"
+    ],
+    "properties": {
+      "warnings": {
+        "minItems": 1
+      }
+    }
+  },
+  "then": {
+    "description": "A run that produced warnings is not reproducible, so its output is not committable.",
+    "properties": {
+      "committable": {
+        "const": false
+      }
+    }
+  },
+  "else": {
+    "description": "A run with no warnings is reproducible, so its output is committable.",
+    "properties": {
+      "committable": {
+        "const": true
+      }
+    }
+  },
+  "$defs": {
+    "sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "commit": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "gem_name": {
+      "type": "string",
+      "pattern": "^[a-zA-Z0-9][a-zA-Z0-9._-]*$"
+    },
+    "gem_version": {
+      "type": "string",
+      "pattern": "^[0-9]+(\\.[0-9]+)*([.a-zA-Z0-9-]*)$"
+    },
+    "relative_path": {
+      "description": "A relative path: no leading slash, no `..` segment.",
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(^|/)\\.\\.(/|$))[^\\\\]+$"
+    },
+    "path_list": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "checkout": {
+      "type": "object",
+      "required": [
+        "commit",
+        "clean",
+        "dirty_paths"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "commit": {
+          "$ref": "#/$defs/commit"
+        },
+        "clean": {
+          "type": "boolean"
+        },
+        "dirty_paths": {
+          "$ref": "#/$defs/path_list"
+        }
+      }
+    },
+    "resolution": {
+      "description": "A dependency worth recording in full: a git or path source, a platform-specific build, or a pinned revision.",
+      "type": "object",
+      "required": [
+        "version",
+        "platform",
+        "source_kind",
+        "source"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "version": {
+          "$ref": "#/$defs/gem_version"
+        },
+        "platform": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_kind": {
+          "type": "string",
+          "enum": [
+            "gem",
+            "git",
+            "path"
+          ]
+        },
+        "source": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "$ref": "#/$defs/commit"
+        }
+      }
+    },
+    "payload": {
+      "description": "One generated file. `sha256` covers the whole file, header comments included.",
+      "type": "object",
+      "required": [
+        "path",
+        "sha256",
+        "bytes"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "description": "Relative to the corpus root, which is the directory this file sits in.",
+          "$ref": "#/$defs/relative_path"
+        },
+        "sha256": {
+          "$ref": "#/$defs/sha256"
+        },
+        "bytes": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    }
+  }
+}

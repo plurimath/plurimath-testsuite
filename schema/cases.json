@@ -1,0 +1,221 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/cases/1",
+  "title": "Plurimath conformance case group",
+  "description": "One file of conformance cases for a single input format, grouped by feature. Payloads declare `schema: plurimath-corpus/<input_format>/1`.",
+  "type": "object",
+  "required": [
+    "schema",
+    "group",
+    "description",
+    "input_format",
+    "targets",
+    "cases"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "description": "Schema this payload follows. The middle segment is the input format, so an AsciiMath group declares `plurimath-corpus/asciimath/1`.",
+      "type": "string",
+      "pattern": "^plurimath-corpus/(asciimath|html|latex|mathml|omml|unicode|unitsml)/1$"
+    },
+    "group": {
+      "description": "Feature group; matches the file name without its extension.",
+      "$ref": "#/$defs/slug"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_format": {
+      "$ref": "#/$defs/input_format"
+    },
+    "targets": {
+      "description": "Output formats every case in this group carries expectations for. JSON Schema cannot compare two fields, so scripts/validate.rb — not this schema — reconciles this list with each case's `expected` keys.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/target_format"
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "input_format": {
+      "description": "A format Plurimath can parse (Plurimath::Math::VALID_TYPES).",
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicode",
+        "unitsml"
+      ]
+    },
+    "target_format": {
+      "description": "A format Plurimath can render (Math::Formula#to_*).",
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicodemath"
+      ]
+    },
+    "class_name": {
+      "description": "A Plurimath model class, with the `Plurimath::` prefix stripped.",
+      "type": "string",
+      "pattern": "^Math(::[A-Za-z][A-Za-z0-9_]*)+$"
+    },
+    "case": {
+      "type": "object",
+      "required": [
+        "id",
+        "input",
+        "input_format",
+        "preprocessed",
+        "expected",
+        "parse_tree",
+        "model"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Stable identifier, unique within the group.",
+          "$ref": "#/$defs/slug"
+        },
+        "input": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_format": {
+          "$ref": "#/$defs/input_format"
+        },
+        "preprocessed": {
+          "description": "The input after the format's preprocessing pass, which may shift offsets.",
+          "type": "string"
+        },
+        "expected": {
+          "description": "Expected output keyed by target format. The keys are exactly the group's `targets`; that is a constraint between two fields, so scripts/validate.rb checks it rather than this schema, which can only require the keys to be target formats at all.",
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/$defs/target_format"
+          },
+          "additionalProperties": {
+            "type": "string"
+          }
+        },
+        "parse_tree": {
+          "$ref": "#/$defs/parse_tree"
+        },
+        "model": {
+          "$ref": "#/$defs/node"
+        }
+      }
+    },
+    "parse_tree": {
+      "description": "The parser's tree, serialized as plain data. Numbers and booleans are excluded deliberately: no parse tree has ever produced one, so a new scalar kind should be a validation failure rather than a silent shape change.",
+      "anyOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parse_tree"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/parse_tree"
+          }
+        }
+      ]
+    },
+    "node": {
+      "description": "A Plurimath::Math::Core node: its class, and its instance variables serialized by name.",
+      "type": "object",
+      "required": [
+        "class",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "class": {
+          "$ref": "#/$defs/class_name"
+        },
+        "fields": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/field_name"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/field_value"
+          }
+        }
+      }
+    },
+    "field_name": {
+      "type": "string",
+      "pattern": "^[a-z_][A-Za-z0-9_]*[?!]?$"
+    },
+    "field_value": {
+      "anyOf": [
+        {
+          "type": [
+            "string",
+            "boolean",
+            "number",
+            "null"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_value"
+          }
+        },
+        {
+          "$ref": "#/$defs/object_field_value"
+        }
+      ]
+    },
+    "object_field_value": {
+      "description": "An object-valued field is either a nested node or a plain map such as `options` or `attributes`. A `class` key means it claims to be a node, so it must be a well-formed one.",
+      "type": "object",
+      "if": {
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/node"
+      },
+      "else": {
+        "additionalProperties": {
+          "$ref": "#/$defs/field_value"
+        }
+      }
+    }
+  }
+}
