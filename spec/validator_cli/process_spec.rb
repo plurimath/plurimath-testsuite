@@ -2,20 +2,21 @@
 
 # The process contract, exercised through a real `ruby scripts/validate.rb`
 # subprocess: exit 0 when every file is valid, 1 on any violation, 2 on a
-# usage or schema error — plus the option parser and the empty-corpus rules.
-# The first spec is CI's own invocation, so the real corpus is the healthy
-# case here; the broken fixtures never duplicate it.
+# usage or schema error. The first spec is CI's own invocation, so the real
+# corpus is the healthy case here; the broken fixtures never duplicate it.
 
-require_relative "spec_helper"
+require_relative "../spec_helper"
 
-RSpec.describe "validate.rb as a process" do
+RSpec.describe Testsuite::CLI, "as a process" do
   it "exits 0 on the real corpus, invoked exactly as CI invokes it" do
     status, out, = run_validator_process
     expect(status).to eq(0), out
     # Every count is optionally plural: the validator prints `1 file`,
     # `1 payload`, `1 case` — the corpus growing or shrinking through 1 of
     # anything must not fail CI's own invocation.
-    expect(out).to match(/\d+ files?: \d+ payloads? \(\d+ cases?\), 1 provenance — all valid/)
+    expect(out).to match(
+      /\d+ files?: \d+ payloads? \(\d+ cases?\), 1 provenance — all valid/,
+    )
   end
 
   it "exits 1 on a corpus violation" do
@@ -33,7 +34,8 @@ RSpec.describe "validate.rb as a process" do
   end
 
   it "exits 2 when --schema is given no directory" do
-    status, _out, err = run_validator_process(fixture("healthy-minimal"), "--schema")
+    status, _out, err = run_validator_process(fixture("healthy-minimal"),
+                                              "--schema")
     expect(status).to eq(2)
     expect(err).to include("--schema needs a directory")
   end
@@ -82,41 +84,5 @@ RSpec.describe "validate.rb as a process" do
     expect(status).to eq(0)
     expect(out).to include("usage: validate.rb")
     expect(out).to include("Exits 0 when every file is valid")
-  end
-end
-
-RSpec.describe "empty and missing corpora" do
-  it "exits 2 when the corpus directory does not exist" do
-    status, _out, err = run_validator_process("/nonexistent/corpus")
-    expect(status).to eq(2)
-    expect(err).to include("no corpus directory at")
-  end
-
-  it "exits 0 for a missing corpus directory under --allow-empty" do
-    status, out, = run_validator_process("/nonexistent/corpus", "--allow-empty")
-    expect(status).to eq(0)
-    expect(out).to include("schemas checked, no payloads validated")
-  end
-
-  it "exits 1 when the corpus directory exists but holds nothing" do
-    Dir.mktmpdir do |empty|
-      status, out, = run_validator_process(empty)
-      expect(status).to eq(1)
-      expect(out).to include("A validator that validates nothing is not a pass")
-    end
-  end
-
-  it "exits 0 for an existing empty corpus under --allow-empty" do
-    Dir.mktmpdir do |empty|
-      status, out, = run_validator_process(empty, "--allow-empty")
-      expect(status).to eq(0)
-      expect(out).to include("(--allow-empty)")
-    end
-  end
-
-  it "does not let --allow-empty excuse a corpus that has broken files" do
-    status, _out, = run_validator_process(fixture("cases-missing-required"),
-                                          "--allow-empty", "--no-integrity")
-    expect(status).to eq(1)
   end
 end
