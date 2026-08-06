@@ -1,7 +1,7 @@
 schema: plurimath-corpus/asciimath/1
 group: numbers
 notes: scratch
-description: Minimal healthy fixture group.
+description: "Healthy template with one planted defect: a root property the schema does not allow."
 input_format: asciimath
 targets:
 - asciimath

@@ -1,7 +1,7 @@
 schema: plurimath-corpus/asciimath/1
 group: numbers
 we/ird~key: true
-description: Minimal healthy fixture group.
+description: "Healthy template with one planted defect: a property name needing JSON-pointer escaping."
 input_format: asciimath
 targets:
 - asciimath

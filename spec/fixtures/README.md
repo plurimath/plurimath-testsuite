@@ -11,6 +11,12 @@ tmpdir at runtime (see `with_fixture_copy` / `with_corpus` in
 Integrity fixtures embed computed sha256/bytes values; when the base payload
 changes they must be recomputed, not hand-edited.
 
+A payload's `description` names the defect the file itself carries
+("Healthy template with one planted defect: …"). Payloads inside
+`integrity-*` roots keep the plain healthy description on purpose: the file
+is genuinely healthy, the defect lives in the provenance record beside it —
+and rewording them would invalidate the recorded byte counts.
+
 | Fixture | Check it exists for |
 |---|---|
 | `cases-missing-required` | schema: required property enforcement (`description` absent) |

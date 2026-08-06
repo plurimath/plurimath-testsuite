@@ -1,6 +1,6 @@
 schema: plurimath-corpus/asciimath/1
 group: numbers
-description: Minimal healthy fixture group.
+description: "Healthy template with one planted defect: a class-bearing node that is not well formed."
 input_format: asciimath
 targets:
 - asciimath

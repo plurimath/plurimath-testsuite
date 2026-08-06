@@ -1,6 +1,6 @@
 schema: plurimath-corpus/asciimath/1
 group: numbers
-description: Minimal healthy fixture group.
+description: "Healthy group; the planted defect is this file's .yml extension."
 input_format: asciimath
 targets:
 - asciimath

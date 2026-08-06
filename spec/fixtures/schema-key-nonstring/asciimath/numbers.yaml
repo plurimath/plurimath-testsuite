@@ -1,6 +1,6 @@
 schema: 5
 group: numbers
-description: Minimal healthy fixture group.
+description: "Healthy template with one planted defect: a schema key that is not a string."
 input_format: asciimath
 targets:
 - asciimath
