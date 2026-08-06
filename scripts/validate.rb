@@ -49,7 +49,7 @@ module Testsuite
       "minimum" => :none, "maximum" => :none, "exclusiveMinimum" => :none,
       "exclusiveMaximum" => :none, "multipleOf" => :none,
       "allOf" => :list, "anyOf" => :list, "oneOf" => :list,
-      "not" => :schema, "if" => :schema, "then" => :schema, "else" => :schema,
+      "not" => :schema, "if" => :schema, "then" => :schema, "else" => :schema
     }.freeze
 
     TYPES = %w[null boolean object array number integer string].freeze
@@ -98,7 +98,9 @@ module Testsuite
 
         constraint = @root.dig("properties", "schema") || {}
         return constraint["const"] == value if constraint.key?("const")
-        return !regexp(constraint["pattern"]).match(value).nil? if constraint.key?("pattern")
+        if constraint.key?("pattern")
+          return !regexp(constraint["pattern"]).match(value).nil?
+        end
 
         false
       end
@@ -118,12 +120,14 @@ module Testsuite
           raise Failure, "#{@path}: a schema must be a JSON object"
         end
         unless @root["$schema"] == DIALECT
-          raise Failure, "#{@path}: $schema must be #{DIALECT}, got #{@root['$schema'].inspect}"
+          raise Failure,
+                "#{@path}: $schema must be #{DIALECT}, " \
+                "got #{@root['$schema'].inspect}"
         end
         unless @root["$id"].is_a?(String) && @root["$id"].match?(%r{/\d+\z})
           raise Failure,
-                "#{@path}: $id must end in a version segment, e.g. .../cases/1 " \
-                "(got #{@root['$id'].inspect})"
+                "#{@path}: $id must end in a version segment, " \
+                "e.g. .../cases/1 (got #{@root['$id'].inspect})"
         end
         unless declares
           raise Failure,
@@ -135,7 +139,7 @@ module Testsuite
       end
 
       def lint_subschema(schema, where)
-        return if schema == true || schema == false
+        return if [true, false].include?(schema)
 
         unless schema.is_a?(Hash)
           raise Failure, "#{@path}: #{where} is not a schema (#{schema.class})"
@@ -144,8 +148,8 @@ module Testsuite
         schema.each_key do |keyword|
           unless KEYWORDS.key?(keyword)
             raise Failure,
-                  "#{@path}: #{where} uses `#{keyword}`, which this validator " \
-                  "does not implement; implement it or drop it"
+                  "#{@path}: #{where} uses `#{keyword}`, which this " \
+                  "validator does not implement; implement it or drop it"
           end
         end
 
@@ -170,7 +174,9 @@ module Testsuite
               raise Failure, "#{@path}: #{where}/#{keyword} must be an array"
             end
 
-            value.each_with_index { |v, i| lint_subschema(v, "#{where}/#{keyword}/#{i}") }
+            value.each_with_index do |v, i|
+              lint_subschema(v, "#{where}/#{keyword}/#{i}")
+            end
           end
         end
       end
@@ -178,15 +184,16 @@ module Testsuite
       def resolve(ref, where = "#")
         unless ref.start_with?("#/")
           raise Failure,
-                "#{@path}: #{where} uses the external reference #{ref.inspect}; " \
-                "only local #/... references are supported"
+                "#{@path}: #{where} uses the external reference " \
+                "#{ref.inspect}; only local #/... references are supported"
         end
 
         node = @root
         ref.delete_prefix("#/").split("/").each do |token|
           token = token.gsub("~1", "/").gsub("~0", "~")
           unless node.is_a?(Hash) && node.key?(token)
-            raise Failure, "#{@path}: #{where} references #{ref}, which does not exist"
+            raise Failure,
+                  "#{@path}: #{where} references #{ref}, which does not exist"
           end
 
           node = node[token]
@@ -210,9 +217,15 @@ module Testsuite
             end
 
             case char
-            when "\\" then source << char; escaped = true
-            when "[" then in_class = true; source << char
-            when "]" then in_class = false; source << char
+            when "\\"
+              source << char
+              escaped = true
+            when "["
+              in_class = true
+              source << char
+            when "]"
+              in_class = false
+              source << char
             when "^" then source << (in_class ? char : '\A')
             when "$" then source << (in_class ? char : '\z')
             else source << char
@@ -221,7 +234,9 @@ module Testsuite
           begin
             Regexp.new(source)
           rescue RegexpError => e
-            raise Failure, "#{@path}: pattern #{pattern.inspect} does not compile: #{e.message}"
+            raise Failure,
+                  "#{@path}: pattern #{pattern.inspect} does not compile: " \
+                  "#{e.message}"
           end
         end
       end
@@ -230,6 +245,7 @@ module Testsuite
 
       def check(schema, instance, path, errors)
         return if schema == true
+
         if schema == false
           errors << Error.new(path, "no value is allowed here")
           return
@@ -247,18 +263,20 @@ module Testsuite
       end
 
       def number?(value)
-        value.is_a?(Numeric) && !value.is_a?(TrueClass) && !value.is_a?(FalseClass)
+        value.is_a?(Numeric) &&
+          !value.is_a?(TrueClass) && !value.is_a?(FalseClass)
       end
 
       def matches_type?(type, value)
         case type
         when "null" then value.nil?
-        when "boolean" then value == true || value == false
+        when "boolean" then [true, false].include?(value)
         when "object" then value.is_a?(Hash)
         when "array" then value.is_a?(Array)
         when "string" then value.is_a?(String)
         when "integer"
-          value.is_a?(Integer) || (value.is_a?(Float) && value.finite? && value == value.truncate)
+          value.is_a?(Integer) ||
+            (value.is_a?(Float) && value.finite? && value == value.truncate)
         when "number" then number?(value)
         else raise Failure, "#{@path}: unknown type #{type.inspect}"
         end
@@ -268,7 +286,11 @@ module Testsuite
         return unless (type = schema["type"])
 
         wanted = Array(type)
-        wanted.each { |t| raise Failure, "#{@path}: unknown type #{t.inspect}" unless TYPES.include?(t) }
+        wanted.each do |t|
+          next if TYPES.include?(t)
+
+          raise Failure, "#{@path}: unknown type #{t.inspect}"
+        end
         return if wanted.any? { |t| matches_type?(t, instance) }
 
         errors << Error.new(path,
@@ -284,19 +306,28 @@ module Testsuite
         end
         return unless schema.key?("const") && schema["const"] != instance
 
-        errors << Error.new(path, "expected #{schema['const'].inspect}, got #{instance.inspect}")
+        errors << Error.new(path,
+                            "expected #{schema['const'].inspect}, " \
+                            "got #{instance.inspect}")
       end
 
       def check_string(schema, instance, path, errors)
         if (min = schema["minLength"]) && instance.length < min
-          errors << Error.new(path, "is shorter than #{min} character#{'s' unless min == 1}")
+          errors << Error.new(path,
+                              "is shorter than #{min} " \
+                              "character#{'s' unless min == 1}")
         end
         if (max = schema["maxLength"]) && instance.length > max
-          errors << Error.new(path, "is longer than #{max} character#{'s' unless max == 1}")
+          errors << Error.new(path,
+                              "is longer than #{max} " \
+                              "character#{'s' unless max == 1}")
         end
-        return unless (pattern = schema["pattern"]) && !regexp(pattern).match(instance)
+        pattern = schema["pattern"]
+        return unless pattern && !regexp(pattern).match(instance)
 
-        errors << Error.new(path, "#{JsonSchema.truncate(instance)} does not match #{pattern}")
+        errors << Error.new(path,
+                            "#{JsonSchema.truncate(instance)} " \
+                            "does not match #{pattern}")
       end
 
       def check_number(schema, instance, path, errors)
@@ -319,14 +350,20 @@ module Testsuite
 
       def check_array(schema, instance, path, errors)
         if (min = schema["minItems"]) && instance.length < min
-          errors << Error.new(path, "has #{instance.length} item(s), needs at least #{min}")
+          errors << Error.new(path,
+                              "has #{instance.length} item(s), " \
+                              "needs at least #{min}")
         end
         if (max = schema["maxItems"]) && instance.length > max
-          errors << Error.new(path, "has #{instance.length} item(s), allows at most #{max}")
+          errors << Error.new(path,
+                              "has #{instance.length} item(s), " \
+                              "allows at most #{max}")
         end
         if schema["uniqueItems"] && instance.length != instance.uniq.length
           duplicates = instance.tally.select { |_, n| n > 1 }.keys
-          errors << Error.new(path, "has duplicate item(s): #{duplicates.map(&:inspect).join(', ')}")
+          errors << Error.new(path,
+                              "has duplicate item(s): " \
+                              "#{duplicates.map(&:inspect).join(', ')}")
         end
 
         (schema["prefixItems"] || []).each_with_index do |sub, index|
@@ -353,10 +390,14 @@ module Testsuite
         end
 
         if (min = schema["minProperties"]) && instance.size < min
-          errors << Error.new(path, "has #{properties(instance.size)}, needs at least #{min}")
+          errors << Error.new(path,
+                              "has #{properties(instance.size)}, " \
+                              "needs at least #{min}")
         end
         if (max = schema["maxProperties"]) && instance.size > max
-          errors << Error.new(path, "has #{properties(instance.size)}, allows at most #{max}")
+          errors << Error.new(path,
+                              "has #{properties(instance.size)}, " \
+                              "allows at most #{max}")
         end
 
         (schema["required"] || []).each do |key|
@@ -389,7 +430,9 @@ module Testsuite
             name_errors = []
             check(names, key, pointer, name_errors)
             unless name_errors.empty?
-              errors << Error.new(pointer, "is not an allowed property name (#{name_errors.first.message})")
+              errors << Error.new(pointer,
+                                  "is not an allowed property name " \
+                                  "(#{name_errors.first.message})")
             end
           end
 
@@ -405,11 +448,15 @@ module Testsuite
       end
 
       def check_logic(schema, instance, path, errors)
-        (schema["allOf"] || []).each { |sub| check(sub, instance, path, errors) }
+        (schema["allOf"] || []).each do |sub|
+          check(sub, instance, path, errors)
+        end
 
         if (branches = schema["anyOf"])
           attempts = attempt(branches, instance, path)
-          report_branches(attempts, path, errors, "anyOf") unless attempts.any?(&:empty?)
+          unless attempts.any?(&:empty?)
+            report_branches(attempts, path, errors, "anyOf")
+          end
         end
 
         if (branches = schema["oneOf"])
@@ -418,12 +465,16 @@ module Testsuite
           if valid.zero?
             report_branches(attempts, path, errors, "oneOf")
           elsif valid > 1
-            errors << Error.new(path, "matches #{valid} of the oneOf alternatives, expected exactly 1")
+            errors << Error.new(path,
+                                "matches #{valid} of the oneOf alternatives, " \
+                                "expected exactly 1")
           end
         end
 
         if (sub = schema["not"]) && valid?(sub, instance)
-          errors << Error.new(path, "matches a form that is not allowed here#{describe(sub)}")
+          errors << Error.new(path,
+                              "matches a form that is not " \
+                              "allowed here#{describe(sub)}")
         end
 
         return unless schema.key?("if")
@@ -445,8 +496,8 @@ module Testsuite
       def report_branches(attempts, path, errors, keyword)
         best = attempts.min_by(&:length) || []
         errors << Error.new(path,
-                            "matches none of the #{attempts.length} #{keyword} " \
-                            "alternatives; the closest one reports:")
+                            "matches none of the #{attempts.length} " \
+                            "#{keyword} alternatives; the closest one reports:")
         errors.concat(best)
       end
 
@@ -460,7 +511,9 @@ module Testsuite
         return "" unless schema.is_a?(Hash)
 
         required = schema["required"] ||
-                   schema["anyOf"]&.filter_map { |s| s["required"] if s.is_a?(Hash) }&.flatten
+          schema["anyOf"]&.filter_map do |s|
+            s["required"] if s.is_a?(Hash)
+          end&.flatten
         return "" unless required&.any?
 
         " (has #{required.map { |r| "`#{r}`" }.join(', ')})"
@@ -515,6 +568,13 @@ module Testsuite
     PROVENANCE_PATH = "provenance.yaml"
     PROVENANCE_KIND = "provenance"
 
+    # The corpus holds exactly two kinds of file: the provenance document at
+    # its root, and payload groups at `<input-format>/<group>.yaml`. This is
+    # an allowlist rather than a wider glob on purpose — a wider glob still
+    # ignores the next stray artifact, an allowlist rejects it.
+    PAYLOAD_LAYOUT =
+      %r{\A[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.yaml\z}
+
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
       @corpus_root = File.expand_path(corpus_root)
       @schema_dir = File.expand_path(schema_dir)
@@ -528,8 +588,8 @@ module Testsuite
 
     def run
       schemas = load_schemas
-      puts "schemas  #{display(@schema_dir)}: " \
-           "#{schemas.map { |schema| schema.id.split('/').last(2).join('/') }.join(', ')}"
+      names = schemas.map { |schema| schema.id.split("/").last(2).join("/") }
+      puts "schemas  #{display(@schema_dir)}: #{names.join(', ')}"
       puts
 
       files, strays = corpus_files.partition { |path| allowed_layout?(path) }
@@ -550,7 +610,7 @@ module Testsuite
     private
 
     def load_schemas
-      paths = Dir.glob(File.join(@schema_dir, "*.json")).sort
+      paths = Dir.glob(File.join(@schema_dir, "*.json"))
       if paths.empty?
         raise Failure, "no schemas in #{display(@schema_dir)}"
       end
@@ -567,7 +627,9 @@ module Testsuite
       declared = schemas.map(&:declares)
       duplicates = declared.tally.select { |_, n| n > 1 }.keys
       unless duplicates.empty?
-        raise Failure, "two schemas claim #{duplicates.join(', ')}; dispatch would be ambiguous"
+        raise Failure,
+              "two schemas claim #{duplicates.join(', ')}; " \
+              "dispatch would be ambiguous"
       end
 
       schemas
@@ -583,7 +645,8 @@ module Testsuite
         raise Failure, "no corpus directory at #{display(@corpus_root)}"
       end
 
-      entries = Dir.glob(File.join(@corpus_root, "**", "*"), File::FNM_DOTMATCH).sort
+      entries = Dir.glob(File.join(@corpus_root, "**", "*"),
+                         File::FNM_DOTMATCH).sort
 
       # Symlinks are rejected before the directory filter, because that filter
       # FOLLOWS links: a directory symlink would vanish from the listing
@@ -599,12 +662,6 @@ module Testsuite
       entries.reject { |entry| File.directory?(entry) }
     end
 
-    # The corpus holds exactly two kinds of file: the provenance document at
-    # its root, and payload groups at `<input-format>/<group>.yaml`. This is
-    # an allowlist rather than a wider glob on purpose — a wider glob still
-    # ignores the next stray artifact, an allowlist rejects it.
-    PAYLOAD_LAYOUT = %r{\A[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.yaml\z}
-
     def allowed_layout?(path)
       relative = relative_to_corpus(File.expand_path(path))
       relative == PROVENANCE_PATH || relative.match?(PAYLOAD_LAYOUT)
@@ -612,10 +669,10 @@ module Testsuite
 
     def reject_stray(path)
       @report.seen!
-      failure(display(path),
-              [Error.new("", "is not a file the corpus layout allows; expected " \
-                             "#{PROVENANCE_PATH} at the root, or a payload at " \
-                             "<input-format>/<group>.yaml (lowercase, `.yaml`)")])
+      message = "is not a file the corpus layout allows; expected " \
+                "#{PROVENANCE_PATH} at the root, or a payload at " \
+                "<input-format>/<group>.yaml (lowercase, `.yaml`)"
+      failure(display(path), [Error.new("", message)])
     end
 
     def empty_result
@@ -623,12 +680,13 @@ module Testsuite
       unless @allow_empty
         puts "FAIL  #{message}"
         puts
-        puts "0 files validated. A validator that validates nothing is not a pass; " \
-             "pass --allow-empty if that is genuinely expected."
+        puts "0 files validated. A validator that validates nothing is not " \
+             "a pass; pass --allow-empty if that is genuinely expected."
         return 1
       end
 
-      puts "note  #{message} (--allow-empty); schemas checked, no payloads validated"
+      puts "note  #{message} (--allow-empty); " \
+           "schemas checked, no payloads validated"
       0
     end
 
@@ -639,7 +697,8 @@ module Testsuite
       return unless document
 
       unless document.is_a?(Hash)
-        return failure(shown, [Error.new("", "a payload must be a mapping, got #{document.class}")])
+        return failure(shown, [Error.new("", "a payload must be a mapping, " \
+                                             "got #{document.class}")])
       end
 
       nonfinite = begin
@@ -654,19 +713,25 @@ module Testsuite
         # An absent key and a key holding the wrong kind of value are different
         # mistakes, and dispatch cannot proceed on either: say which happened.
         reason = if document.key?("schema")
-                   "must name a schema as a string, got #{describe_value(declared)}"
+                   "must name a schema as a string, " \
+                     "got #{describe_value(declared)}"
                  else
                    "missing; every payload declares the schema it follows"
                  end
         return failure(shown, [Error.new("/schema", reason)])
       end
 
-      matched = schemas.select { |schema| schema.accepts_declaration?(declared) }
+      matched = schemas.select do |schema|
+        schema.accepts_declaration?(declared)
+      end
       if matched.empty?
-        return failure(shown, [Error.new("/schema", "no schema in #{display(@schema_dir)} claims #{declared.inspect}")])
+        message = "no schema in #{display(@schema_dir)} " \
+                  "claims #{declared.inspect}"
+        return failure(shown, [Error.new("/schema", message)])
       end
       if matched.length > 1
-        return failure(shown, [Error.new("/schema", "#{declared.inspect} is claimed by #{matched.length} schemas")])
+        message = "#{declared.inspect} is claimed by #{matched.length} schemas"
+        return failure(shown, [Error.new("/schema", message)])
       end
 
       schema = matched.first
@@ -685,13 +750,15 @@ module Testsuite
         @provenance[path] = document if errors.empty?
       else
         @report.count(:payload)
-        @report.add_cases(document["cases"].length) if document["cases"].is_a?(Array)
+        cases = document["cases"]
+        @report.add_cases(cases.length) if cases.is_a?(Array)
       end
 
       # Only once the shape is known good: these checks read fields the schema
       # has just guaranteed are there and are the right type.
       if errors.empty?
-        errors = cross_field_errors(document, relative_to_corpus(File.expand_path(path)))
+        errors = cross_field_errors(document,
+                                    relative_to_corpus(File.expand_path(path)))
       end
 
       if errors.empty?
@@ -732,7 +799,9 @@ module Testsuite
     def listed_payloads?(document)
       entries = document["payloads"]
       entries.is_a?(Array) &&
-        entries.all? { |entry| entry.is_a?(Hash) && entry["path"].is_a?(String) }
+        entries.all? do |entry|
+          entry.is_a?(Hash) && entry["path"].is_a?(String)
+        end
     end
 
     def grouped_cases?(document)
@@ -785,8 +854,8 @@ module Testsuite
 
         errors << Error.new("/cases/#{index}/input_format",
                             "is #{case_format.inspect}, but the group's " \
-                            "`input_format` is #{format.inspect}; a case does " \
-                            "not switch formats mid-group")
+                            "`input_format` is #{format.inspect}; a case " \
+                            "does not switch formats mid-group")
       end
       errors
     end
@@ -823,8 +892,8 @@ module Testsuite
 
         (expected - targets).sort.map do |target|
           Error.new("/cases/#{index}/expected/#{target}",
-                    "case `#{id}` expects `#{target}`, which is not one of the " \
-                    "group's targets (#{targets.join(', ')})")
+                    "case `#{id}` expects `#{target}`, which is not one of " \
+                    "the group's targets (#{targets.join(', ')})")
         end +
           (targets - expected).sort.map do |target|
             Error.new("/cases/#{index}/expected",
@@ -842,16 +911,21 @@ module Testsuite
         next if current >= previous
 
         Error.new("/payloads/#{index + 1}/path",
-                  "records #{current} after #{previous}; `payloads` is sorted by path")
+                  "records #{current} after #{previous}; " \
+                  "`payloads` is sorted by path")
       end
     end
 
     def count_of(document)
       cases = document["cases"]
-      return "#{cases.length} case#{'s' unless cases.length == 1}" if cases.is_a?(Array)
+      if cases.is_a?(Array)
+        return "#{cases.length} case#{'s' unless cases.length == 1}"
+      end
 
       payloads = document["payloads"]
-      return "#{payloads.length} payload#{'s' unless payloads.length == 1}" if payloads.is_a?(Array)
+      if payloads.is_a?(Array)
+        return "#{payloads.length} payload#{'s' unless payloads.length == 1}"
+      end
 
       "ok"
     end
@@ -869,7 +943,9 @@ module Testsuite
         [Error.new(path, "is #{label}, which JSON cannot represent; corpus " \
                          "values are limited to what a JSON parser can read")]
       when Array
-        value.each_with_index.flat_map { |item, index| nonfinite_errors(item, "#{path}/#{index}") }
+        value.each_with_index.flat_map do |item, index|
+          nonfinite_errors(item, "#{path}/#{index}")
+        end
       when Hash
         value.flat_map do |key, item|
           pointer = "#{path}/#{pointer_token(key)}"
@@ -894,7 +970,8 @@ module Testsuite
     def load_yaml(path)
       YAML.safe_load_file(path, aliases: false)
     rescue Psych::Exception => e
-      failure(display(path), [Error.new("", "is not portable YAML: #{e.class}: #{e.message}")])
+      failure(display(path),
+              [Error.new("", "is not portable YAML: #{e.class}: #{e.message}")])
       nil
     rescue SystemStackError
       failure(display(path), [Error.new("", "nests too deeply to read")])
@@ -909,15 +986,15 @@ module Testsuite
       expected = File.join(@corpus_root, PROVENANCE_PATH)
 
       if @provenance_paths.empty?
-        return failure(display(expected),
-                       [Error.new("", "is missing; without it every payload here is " \
-                                      "unattributed and unreproducible")])
+        message = "is missing; without it every payload here is " \
+                  "unattributed and unreproducible"
+        return failure(display(expected), [Error.new("", message)])
       end
       if @provenance_paths.length > 1
         listed = @provenance_paths.map { |path| display(path) }.join(", ")
-        return failure(display(expected),
-                       [Error.new("", "the corpus has one provenance document, but " \
-                                      "#{@provenance_paths.length} declare it: #{listed}")])
+        message = "the corpus has one provenance document, but " \
+                  "#{@provenance_paths.length} declare it: #{listed}"
+        return failure(display(expected), [Error.new("", message)])
       end
 
       path = @provenance_paths.first
@@ -927,21 +1004,22 @@ module Testsuite
       shown = display(path)
       errors = []
       unless File.expand_path(path) == File.expand_path(expected)
-        errors << Error.new("", "must be the corpus root's #{display(expected)}, " \
-                                "since `payloads` paths are relative to it")
+        errors << Error.new("",
+                            "must be the corpus root's #{display(expected)}, " \
+                            "since `payloads` paths are relative to it")
       end
 
       unrecorded = check_payloads(document, errors)
       failure(shown, errors) unless errors.empty?
       unrecorded.each do |file|
         failure(display(file),
-                [Error.new("", "is not recorded in #{shown}; every payload has a " \
-                               "`payloads` entry")])
+                [Error.new("", "is not recorded in #{shown}; every payload " \
+                               "has a `payloads` entry")])
       end
     end
 
-    # Fills `errors` with what the provenance gets wrong, and returns the payload
-    # files it never mentions.
+    # Fills `errors` with what the provenance gets wrong, and returns the
+    # payload files it never mentions.
     def check_payloads(document, errors)
       on_disk = payload_files
       recorded = {}
@@ -950,15 +1028,16 @@ module Testsuite
         pointer = "/payloads/#{index}"
         name = entry["path"]
         if recorded.key?(name)
-          next errors << Error.new("#{pointer}/path", "records #{name} a second time")
+          next errors << Error.new("#{pointer}/path",
+                                   "records #{name} a second time")
         end
 
         recorded[name] = true
         file = File.expand_path(File.join(@corpus_root, name))
         unless on_disk.include?(file)
           next errors << Error.new("#{pointer}/path",
-                                   "records #{name}, which is not a payload in " \
-                                   "#{display(@corpus_root)}")
+                                   "records #{name}, which is not a payload " \
+                                   "in #{display(@corpus_root)}")
         end
 
         check_digest(entry, pointer, file, name, errors)
@@ -1006,13 +1085,15 @@ module Testsuite
 
     def summary
       counts = "#{@report.files} file#{'s' unless @report.files == 1}: " \
-               "#{@report.payloads} payload#{'s' unless @report.payloads == 1} " \
+               "#{@report.payloads} " \
+               "payload#{'s' unless @report.payloads == 1} " \
                "(#{@report.cases} case#{'s' unless @report.cases == 1}), " \
                "#{@report.provenance} provenance"
       if @report.failures.zero?
         puts "#{counts} — all valid"
       else
-        puts "#{counts} — #{@report.failures} file#{'s' unless @report.failures == 1} failed"
+        failed = @report.failures
+        puts "#{counts} — #{failed} file#{'s' unless failed == 1} failed"
       end
     end
 
@@ -1060,14 +1141,19 @@ module Testsuite
         when "--no-integrity" then options[:integrity] = false
         when "--allow-empty" then options[:allow_empty] = true
         when "--schema"
-          options[:schema_dir] = argv.shift or raise Failure, "--schema needs a directory"
-        when /\A--schema=(.*)\z/ then options[:schema_dir] = Regexp.last_match(1)
+          value = argv.shift or raise Failure, "--schema needs a directory"
+          options[:schema_dir] = value
+        when /\A--schema=(.*)\z/
+          options[:schema_dir] = Regexp.last_match(1)
         when /\A-/ then raise Failure, "unknown option #{argument}\n\n#{USAGE}"
         else positional << argument
         end
       end
 
-      raise Failure, "expected at most one corpus root, got #{positional.length}" if positional.length > 1
+      if positional.length > 1
+        raise Failure,
+              "expected at most one corpus root, got #{positional.length}"
+      end
 
       options[:corpus_root] = positional.first if positional.first
 
@@ -1079,10 +1165,7 @@ end
 if $PROGRAM_NAME == __FILE__
   begin
     exit Testsuite::CLI.run(ARGV)
-  rescue Testsuite::Failure => e
-    warn "validate: #{e.message}"
-    exit 2
-  rescue Errno::ENOENT => e
+  rescue Testsuite::Failure, Errno::ENOENT => e
     warn "validate: #{e.message}"
     exit 2
   end
