@@ -1,0 +1,7 @@
+schema: plurimath-corpus/asciimath/1
+group: numbers
+description: "Healthy template with one planted defect: the cases list is empty."
+input_format: asciimath
+targets:
+- asciimath
+cases: []

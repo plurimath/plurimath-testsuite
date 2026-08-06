@@ -1,0 +1,44 @@
+inherit_from:
+  - https://raw.githubusercontent.com/riboseinc/oss-guides/master/ci/rubocop.yml
+  - .rubocop_todo.yml
+
+plugins:
+- rubocop-performance
+- rubocop-rake
+- rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 3.4
+  NewCops: enable
+  Exclude:
+    - 'vendor/**/*'
+    # Generated corpus data, described by corpus/provenance.yaml — not code.
+    - 'corpus/**/*'
+    # Broken-fixture corpora: each file carries exactly one deliberate defect
+    # (spec/fixtures/README.md names it), so style tooling stays out.
+    - 'spec/fixtures/**/*'
+
+# Local departures from the inherited defaults, each forced by a deliberate
+# property of this suite:
+
+# An example asserts one behaviour through several related expectations — a
+# rejection plus its exact report, an accepting probe beside a rejecting one.
+# Splitting them would multiply examples without adding coverage.
+RSpec/MultipleExpectations:
+  Enabled: false
+
+# Subprocess contract examples and multi-step probes legitimately run past
+# the 5-line default; 15 still catches real bloat.
+RSpec/ExampleLength:
+  Max: 15
+
+# Top-level describes name the constant plus a facet string — the measured
+# sibling-repo style for grouped units (e.g. `Fontist::Font, "license
+# confirmation"`). This cop would insist the second argument be a method.
+RSpec/DescribeMethod:
+  Enabled: false
+
+# Specs are grouped by subject area (spec/validator_files/...) with the facet
+# in the file name, not by mirrored class paths — one Runner has many facets.
+RSpec/SpecFilePathFormat:
+  Enabled: false

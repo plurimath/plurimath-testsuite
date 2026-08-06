@@ -1,0 +1,23 @@
+schema: plurimath-corpus/asciimath/1
+group: numbers
+we/ird~key: true
+description: "Healthy template with one planted defect: a property name needing JSON-pointer escaping."
+input_format: asciimath
+targets:
+- asciimath
+cases:
+- id: number-integer
+  input: "2"
+  input_format: asciimath
+  preprocessed: "2"
+  expected:
+    asciimath: "2"
+  parse_tree:
+    number: "2"
+  model:
+    class: Math::Formula
+    fields:
+      value:
+      - class: Math::Number
+        fields:
+          value: "2"

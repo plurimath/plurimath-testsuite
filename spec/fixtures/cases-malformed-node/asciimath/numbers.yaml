@@ -1,0 +1,20 @@
+schema: plurimath-corpus/asciimath/1
+group: numbers
+description: "Healthy template with one planted defect: a class-bearing node that is not well formed."
+input_format: asciimath
+targets:
+- asciimath
+cases:
+- id: number-integer
+  input: "2"
+  input_format: asciimath
+  preprocessed: "2"
+  expected:
+    asciimath: "2"
+  parse_tree:
+    number: "2"
+  model:
+    class: Math::Formula
+    fields:
+      value:
+      - class: Math::Number

@@ -1,0 +1,7 @@
+schema: plurimath-corpus/asciimath/1
+nan_value: .nan
+inf_value: .inf
+plus_inf_value: +.inf
+nested:
+  values:
+  - -.inf

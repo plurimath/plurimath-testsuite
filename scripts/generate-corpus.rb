@@ -40,8 +40,9 @@ module CorpusGenerator
   # that ever differed are the three the `payloads` list now carries.
   PROVENANCE_PATH = "provenance.yaml"
 
-  # What a dependency looks like when nothing about it is noteworthy. An entry
-  # matching all of these records its version alone (see `direct_runtime_value`).
+  # What a dependency looks like when nothing about it is noteworthy. An
+  # entry matching all of these records its version alone (see
+  # `direct_runtime_value`).
   DEFAULT_GEM_SOURCE = "https://rubygems.org/"
   DEFAULT_GEM_PLATFORM = "ruby"
 
@@ -340,9 +341,9 @@ module CorpusGenerator
   def direct_runtime_value(spec)
     source = spec["source"]
     plain = spec["platform"] == DEFAULT_GEM_PLATFORM &&
-            source["kind"] == "gem" &&
-            source["remote"] == DEFAULT_GEM_SOURCE &&
-            source["revision"].nil?
+      source["kind"] == "gem" &&
+      source["remote"] == DEFAULT_GEM_SOURCE &&
+      source["revision"].nil?
     return spec["version"] if plain
 
     entry = {
@@ -392,7 +393,10 @@ module CorpusGenerator
     result = {}
     hash.each do |key, value|
       name = key.to_s
-      raise Error, "duplicate key #{name.inspect} at #{path}" if result.key?(name)
+      if result.key?(name)
+        raise Error,
+              "duplicate key #{name.inspect} at #{path}"
+      end
 
       result[name] = serialize_value(value, "#{path}.#{name}")
     end
@@ -404,9 +408,9 @@ module CorpusGenerator
   def serialize_value(value, path)
     case value
     when nil, true, false, ::String, ::Integer, ::Float then value
-    when ::Symbol then value.to_s
-    when ::Parslet::Slice then value.to_s
-    when ::Array then value.each_with_index.map { |v, i| serialize_value(v, "#{path}[#{i}]") }
+    when ::Symbol, ::Parslet::Slice then value.to_s
+    when ::Array
+      value.each_with_index.map { |v, i| serialize_value(v, "#{path}[#{i}]") }
     when ::Hash then serialize_hash(value, path)
     when Plurimath::Math::Core then serialize_node(value, path)
     else
@@ -425,10 +429,10 @@ module CorpusGenerator
       if projection
         project_fields(projection, node, path, name)
       else
-        node.variables.to_h { |ivar|
+        node.variables.to_h do |ivar|
           field = ivar.to_s.delete_prefix("@")
           [field, serialize_value(node.get(ivar), "#{path}.#{field}")]
-        }
+        end
       end
     { "class" => name, "fields" => fields.sort.to_h }
   end
@@ -446,9 +450,9 @@ module CorpusGenerator
   def serialize_tree(node, path)
     case node
     when nil, true, false, ::String, ::Integer, ::Float then node
-    when ::Symbol then node.to_s
-    when ::Parslet::Slice then node.to_s
-    when ::Array then node.each_with_index.map { |n, i| serialize_tree(n, "#{path}[#{i}]") }
+    when ::Symbol, ::Parslet::Slice then node.to_s
+    when ::Array
+      node.each_with_index.map { |n, i| serialize_tree(n, "#{path}[#{i}]") }
     when ::Hash then serialize_tree_hash(node, path)
     else
       raise Error, "cannot serialize parse tree node #{node.class} at #{path}"
@@ -464,7 +468,10 @@ module CorpusGenerator
     result = {}
     hash.each do |key, value|
       name = key.to_s
-      raise Error, "duplicate key #{name.inspect} at #{path}" if result.key?(name)
+      if result.key?(name)
+        raise Error,
+              "duplicate key #{name.inspect} at #{path}"
+      end
 
       result[name] = serialize_tree(value, "#{path}.#{name}")
     end
@@ -501,7 +508,8 @@ module CorpusGenerator
       built = cases.map do |id, input|
         build_case(id, input)
       rescue StandardError => e
-        raise Error, "case #{id} (#{input.inspect}) failed: #{e.class}: #{e.message}"
+        raise Error,
+              "case #{id} (#{input.inspect}) failed: #{e.class}: #{e.message}"
       end
 
       [name, description, built]
@@ -553,13 +561,13 @@ module CorpusGenerator
   # happened to be written in.
   def write_provenance(out_root, provenance, payloads)
     document = provenance.merge(
-      "payloads" => payloads.map { |payload_path, bytes|
+      "payloads" => payloads.map do |payload_path, bytes|
         {
           "path" => relative(payload_path, out_root),
           "sha256" => sha256(bytes),
           "bytes" => bytes.bytesize,
         }
-      }.sort_by { |entry| entry["path"] },
+      end.sort_by { |entry| entry["path"] },
     )
     path = File.join(out_root, PROVENANCE_PATH)
     File.binwrite(path, "#{provenance_header}#{dump_yaml(document)}")
@@ -590,11 +598,14 @@ module CorpusGenerator
   # --- driver --------------------------------------------------------------
 
   def parse_options(argv)
-    options = { gem: nil, out: File.join(REPO_ROOT, "corpus"), allow_dirty: false }
+    options = { gem: nil, out: File.join(REPO_ROOT, "corpus"),
+                allow_dirty: false }
     until argv.empty?
       case (arg = argv.shift)
-      when "--gem" then options[:gem] = File.expand_path(option_value(argv, arg))
-      when "--out" then options[:out] = File.expand_path(option_value(argv, arg))
+      when "--gem"
+        options[:gem] = File.expand_path(option_value(argv, arg))
+      when "--out"
+        options[:out] = File.expand_path(option_value(argv, arg))
       when "--allow-dirty" then options[:allow_dirty] = true
       when "--help", "-h" then options[:help] = true
       else raise Error, "unknown option #{arg.inspect}"
@@ -625,15 +636,18 @@ module CorpusGenerator
 
   def loaded_gem_dir
     loaded = Gem.loaded_specs["plurimath"]
-    raise Error, "the plurimath gem is not loaded; set BUNDLE_GEMFILE" unless loaded
+    unless loaded
+      raise Error,
+            "the plurimath gem is not loaded; set BUNDLE_GEMFILE"
+    end
 
     File.expand_path(loaded.full_gem_path)
   end
 
   def check_checkouts!(gem_dir, requested_gem_dir, out_root, allow_dirty)
     unless git_repository?(gem_dir)
-      raise Error, "#{gem_dir} is not a git checkout; the oracle must be one, " \
-                   "so the provenance can name the commit it ran"
+      raise Error, "#{gem_dir} is not a git checkout; the oracle must be " \
+                   "one, so the provenance can name the commit it ran"
     end
 
     gem_dirty = dirty_paths(gem_dir)
@@ -680,7 +694,8 @@ module CorpusGenerator
       warnings << "generator checkout dirty: #{dirty['generator'].join(', ')}"
     end
     unless dependencies[:external_path_sources].empty?
-      warnings << "path-pinned gems: #{dependencies[:external_path_sources].join(', ')}"
+      pinned = dependencies[:external_path_sources].join(", ")
+      warnings << "path-pinned gems: #{pinned}"
     end
 
     {
@@ -736,7 +751,8 @@ module CorpusGenerator
         "cases" => cases,
       }
       path = File.join(out_root, "asciimath", "#{name}.yaml")
-      bytes = write_payload(path, payload_header("AsciiMath conformance cases: #{name}."), payload)
+      header = payload_header("AsciiMath conformance cases: #{name}.")
+      bytes = write_payload(path, header, payload)
       payloads << [path, bytes]
     end
 

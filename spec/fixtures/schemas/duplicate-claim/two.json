@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/schema/two/1",
+  "properties": { "schema": { "const": "plurimath-corpus/asciimath/1" } }
+}
