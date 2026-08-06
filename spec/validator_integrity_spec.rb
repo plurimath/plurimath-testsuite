@@ -6,7 +6,7 @@
 
 require_relative "spec_helper"
 
-describe "provenance presence" do
+RSpec.describe "provenance presence" do
   it "rejects a corpus with payloads but no provenance" do
     assert_rejects fixture("integrity-missing-provenance"),
                    violations: 1, message: ["provenance.yaml",
@@ -24,7 +24,7 @@ describe "provenance presence" do
   end
 end
 
-describe "digests and coverage" do
+RSpec.describe "digests and coverage" do
   it "rejects a payload whose sha256 does not match" do
     assert_rejects fixture("integrity-sha-mismatch"),
                    violations: 1, message: ["/payloads/0/sha256", "but that file hashes to"]
@@ -52,16 +52,16 @@ describe "digests and coverage" do
   end
 end
 
-describe "integrity and the provenance's own validity" do
+RSpec.describe "integrity and the provenance's own validity" do
   it "does not run integrity against a provenance that failed its schema" do
     out = assert_rejects fixture("integrity-skips-broken-provenance"),
                          violations: 1, message: "/committable: expected false, got true"
-    refute_includes out, "is not recorded",
-                    "integrity ran against a provenance there is no reason to trust"
+    expect(out).not_to include("is not recorded"),
+                       "integrity ran against a provenance there is no reason to trust"
   end
 end
 
-describe "--no-integrity" do
+RSpec.describe "--no-integrity" do
   it "skips the digest comparison" do
     assert_accepts fixture("integrity-sha-mismatch"), "--no-integrity"
   end
@@ -76,10 +76,10 @@ describe "--no-integrity" do
   end
 end
 
-describe "healthy corpora" do
+RSpec.describe "healthy corpora" do
   it "passes the minimal healthy corpus, integrity included" do
     out = assert_accepts fixture("healthy-minimal")
-    assert_includes out, "2 files: 1 payload (1 case), 1 provenance — all valid"
+    expect(out).to include("2 files: 1 payload (1 case), 1 provenance — all valid")
   end
 
   it "still passes when a tmpdir copy is re-validated in place" do

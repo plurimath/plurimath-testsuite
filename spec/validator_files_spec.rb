@@ -8,7 +8,7 @@
 
 require_relative "spec_helper"
 
-describe "corpus layout" do
+RSpec.describe "corpus layout" do
   it "rejects a stray file at the corpus root" do
     assert_rejects fixture("stray-root-file"), "--no-integrity",
                    violations: 1, message: ["NOTES.txt", "is not a file the corpus layout allows"]
@@ -36,10 +36,15 @@ describe "corpus layout" do
 
   it "rejects a file symlink even when its name is allowed" do
     with_fixture_copy("healthy-minimal") do |dir|
-      File.symlink("/etc/hostname", File.join(dir, "asciimath", "link.yaml"))
-      error = assert_raises(Testsuite::Failure) { run_validator(dir) }
-      assert_includes error.message, "the corpus may not contain symlinks"
-      assert_includes error.message, "link.yaml"
+      # The link's target is a file inside the copied fixture: what is being
+      # tested is the link, and an OS file like /etc/hostname is not present
+      # on every platform the suite runs on.
+      File.symlink(File.join(dir, "provenance.yaml"),
+                   File.join(dir, "asciimath", "link.yaml"))
+      expect { run_validator(dir) }.to raise_error(Testsuite::Failure) { |error|
+        expect(error.message).to include("the corpus may not contain symlinks")
+        expect(error.message).to include("link.yaml")
+      }
     end
   end
 
@@ -47,21 +52,23 @@ describe "corpus layout" do
     with_fixture_copy("healthy-minimal") do |dir|
       File.symlink(File.join(fixture("healthy-minimal"), "asciimath"),
                    File.join(dir, "latex"))
-      error = assert_raises(Testsuite::Failure) { run_validator(dir) }
-      assert_includes error.message, "the corpus may not contain symlinks"
+      expect { run_validator(dir) }.to raise_error(Testsuite::Failure) { |error|
+        expect(error.message).to include("the corpus may not contain symlinks")
+      }
     end
   end
 
   it "rejects a dangling symlink" do
     with_fixture_copy("healthy-minimal") do |dir|
       File.symlink("/nonexistent/target", File.join(dir, "asciimath", "gone.yaml"))
-      error = assert_raises(Testsuite::Failure) { run_validator(dir) }
-      assert_includes error.message, "the corpus may not contain symlinks"
+      expect { run_validator(dir) }.to raise_error(Testsuite::Failure) { |error|
+        expect(error.message).to include("the corpus may not contain symlinks")
+      }
     end
   end
 end
 
-describe "payload reading" do
+RSpec.describe "payload reading" do
   it "rejects YAML anchors and aliases as non-portable" do
     assert_rejects fixture("yaml-anchor-alias"), "--no-integrity",
                    violations: 1, message: "is not portable YAML"
@@ -87,33 +94,33 @@ describe "payload reading" do
   end
 end
 
-describe "non-JSON numbers" do
+RSpec.describe "non-JSON numbers" do
   it "rejects .nan, .inf, +.inf and -.inf, each at its pointer" do
     out = assert_rejects fixture("nonfinite-numbers"), "--no-integrity",
                          # the fixture carries all four spellings on purpose
                          violations: 4, message: "which JSON cannot represent"
-    assert_includes out, "/nan_value: is NaN"
-    assert_includes out, "/inf_value: is Infinity"
-    assert_includes out, "/plus_inf_value: is Infinity"
-    assert_includes out, "/nested/values/0: is -Infinity"
+    expect(out).to include("/nan_value: is NaN")
+    expect(out).to include("/inf_value: is Infinity")
+    expect(out).to include("/plus_inf_value: is Infinity")
+    expect(out).to include("/nested/values/0: is -Infinity")
   end
 
   it "rejects them before schema evaluation, so a NaN never reaches a type check" do
     out = assert_rejects fixture("nonfinite-numbers"), "--no-integrity",
                          # the fixture carries all four spellings on purpose
                          violations: 4, message: "is NaN"
-    refute_includes out, "missing the required property",
-                    "schema evaluation ran on a payload holding a NaN"
+    expect(out).not_to include("missing the required property"),
+                       "schema evaluation ran on a payload holding a NaN"
   end
 
   it "escapes the pointer token even for a non-string key" do
     out = assert_rejects fixture("nonfinite-under-nonstring-key"), "--no-integrity",
                          violations: 1, message: "is NaN"
-    assert_includes out, '/["a~1b"]: is NaN'
+    expect(out).to include('/["a~1b"]: is NaN')
   end
 end
 
-describe "schema dispatch" do
+RSpec.describe "schema dispatch" do
   it "rejects a payload with no schema key" do
     assert_rejects fixture("schema-key-missing"), "--no-integrity",
                    violations: 1, message: "/schema: missing; every payload declares the schema it follows"
@@ -136,32 +143,35 @@ describe "schema dispatch" do
   end
 
   it "refuses to load two schemas claiming the same declaration" do
-    error = assert_raises(Testsuite::Failure) do
+    expect do
       run_validator(fixture("healthy-minimal"),
                     schema_dir: fixture("schemas/duplicate-claim"))
-    end
-    assert_includes error.message, "two schemas claim plurimath-corpus/asciimath/1"
+    end.to raise_error(Testsuite::Failure) { |error|
+      expect(error.message).to include("two schemas claim plurimath-corpus/asciimath/1")
+    }
   end
 
   it "refuses a schema file that is not valid JSON" do
-    error = assert_raises(Testsuite::Failure) do
+    expect do
       run_validator(fixture("healthy-minimal"),
                     schema_dir: fixture("schemas/invalid-json"))
-    end
-    assert_includes error.message, "invalid JSON"
+    end.to raise_error(Testsuite::Failure) { |error|
+      expect(error.message).to include("invalid JSON")
+    }
   end
 
   it "refuses an empty schema directory" do
     Dir.mktmpdir do |empty|
-      error = assert_raises(Testsuite::Failure) do
+      expect do
         run_validator(fixture("healthy-minimal"), schema_dir: empty)
-      end
-      assert_includes error.message, "no schemas in"
+      end.to raise_error(Testsuite::Failure) { |error|
+        expect(error.message).to include("no schemas in")
+      }
     end
   end
 end
 
-describe "cases schema violations" do
+RSpec.describe "cases schema violations" do
   it "rejects a payload missing a required property" do
     assert_rejects fixture("cases-missing-required"), "--no-integrity",
                    violations: 1, message: "is missing the required property `description`"
@@ -207,7 +217,7 @@ describe "cases schema violations" do
                    violations: 1, message: ["/cases/0/id", "does not match"]
   end
 
-# The two rejections below land at the CONTAINER pointer, not at the deep
+  # The two rejections below land at the CONTAINER pointer, not at the deep
   # defect: the anyOf closest-branch heuristic picks the branch with the
   # fewest complaints, and the shallow scalar branch always complains exactly
   # once. Pinned as observed behaviour; flagged in the suite's review notes.
@@ -234,7 +244,7 @@ describe "cases schema violations" do
   end
 end
 
-describe "provenance schema violations" do
+RSpec.describe "provenance schema violations" do
   it "rejects committable: true alongside warnings" do
     assert_rejects fixture("prov-committable-with-warnings"), "--no-integrity",
                    violations: 1, message: "/committable: expected false, got true"
@@ -254,8 +264,8 @@ describe "provenance schema violations" do
   it "rejects clean: true alongside dirty_paths, and reports it once" do
     out = assert_rejects fixture("prov-clean-with-dirty-paths"), "--no-integrity",
                          violations: 1, message: "/generator/repository/dirty_paths: has 1 item(s), allows at most 0"
-    assert_equal 1, out.scan("allows at most 0").length,
-                 "two rules reached the same complaint; the report must dedupe it"
+    expect(out.scan("allows at most 0").length).to eq(1),
+      "two rules reached the same complaint; the report must dedupe it"
   end
 
   it "rejects clean: false with no dirty path named" do

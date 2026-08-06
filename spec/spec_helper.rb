@@ -2,16 +2,17 @@
 
 # Shared setup for the validator and generator specs.
 #
-# Harness: minitest (spec mode), which ships with the Ruby distribution.
-# CI runs plain `ruby` with no bundler and no Gemfile, and the validator's
-# whole point is running gem-free; the spec suite honours the same constraint.
+# Harness: RSpec, installed through the dev-only Gemfile — the spec suite is
+# the only thing in this repository that bundles. CI still runs
+# scripts/validate.rb with plain `ruby`, no bundler and no gems, and the
+# validator's whole point is running gem-free; nothing under scripts/ may
+# come to depend on anything the Gemfile drags in.
 #
 # TESTSUITE_VALIDATOR may point at an alternative copy of validate.rb (used
 # for mutation runs: perturb a copy, point the suite at it, and every spec
 # guarding the perturbed check must fail). TESTSUITE_GENERATOR does the same
 # for generator_spec.rb.
 
-require "minitest/autorun"
 require "digest"
 require "fileutils"
 require "open3"
@@ -54,29 +55,44 @@ module SpecHelpers
   # a second, unintended reason still passes its spec; a review proved exactly
   # that by adding a second defect to a broken fixture and watching the suite
   # stay green. Violation lines are the report's indented pointer lines.
+  #
+  # Kept under its minitest name on purpose: the name is the suite's
+  # vocabulary (fixture README, mutation notes, review logs all use it), and
+  # renaming it buys nothing.
   def assert_rejects(corpus_root, *flags, message:, violations: nil, schema_dir: SCHEMA_DIR)
     status, out = run_validator(corpus_root, *flags, schema_dir: schema_dir)
-    assert_equal 1, status, "expected a validation failure, got:\n#{out}"
-    Array(message).each { |m| assert_includes out, m }
+    expect(status).to eq(1), "expected a validation failure, got:\n#{out}"
+    Array(message).each { |m| expect(out).to include(m) }
     unless violations.nil?
-      count = out.lines.count { |line| line.match?(/\A\s+\S*: /) }
-      assert_equal violations, count,
-                   "expected exactly #{violations} violation(s), got #{count}:\n#{out}"
+      # An indented line opening with a JSON pointer. `/\S*: /` was tried and
+      # missed pointers containing spaces (`/bad key: ...`) — reviewer-proven.
+      count = out.lines.count { |line| line.match?(%r{\A\s+/.*?: }) }
+      expect(count).to eq(violations),
+                       "expected exactly #{violations} violation(s), got #{count}:\n#{out}"
     end
     out
   end
 
   def assert_accepts(corpus_root, *flags, schema_dir: SCHEMA_DIR)
     status, out = run_validator(corpus_root, *flags, schema_dir: schema_dir)
-    assert_equal 0, status, "expected a pass, got:\n#{out}"
+    expect(status).to eq(0), "expected a pass, got:\n#{out}"
     out
   end
 
   # Subprocess run of the same validator file, for the process contract
   # (exit codes, stderr). Returns [exit_status, stdout, stderr].
+  #
+  # The subprocess runs outside the suite's bundler environment: `bundle
+  # exec` exports RUBYOPT=-rbundler/setup, which would make every child load
+  # the bundle — but the validator's contract is plain `ruby
+  # scripts/validate.rb`, gem-free, and these specs prove that exact
+  # invocation (it is also measurably faster).
   def run_validator_process(*argv, chdir: REPO_ROOT)
-    out, err, status = Open3.capture3(RbConfig.ruby, VALIDATOR_PATH, *argv,
-                                      chdir: chdir)
+    capture = lambda do
+      Open3.capture3(RbConfig.ruby, VALIDATOR_PATH, *argv, chdir: chdir)
+    end
+    out, err, status =
+      defined?(Bundler) ? Bundler.with_unbundled_env(&capture) : capture.call
     [status.exitstatus, out, err]
   end
 
@@ -117,4 +133,16 @@ module SpecHelpers
   end
 end
 
-Minitest::Test.include(SpecHelpers)
+RSpec.configure do |config|
+  # Enable flags like --only-failures and --next-failure
+  config.example_status_persistence_file_path = ".rspec_status"
+
+  # Disable RSpec exposing methods globally on `Module` and `main`
+  config.disable_monkey_patching!
+
+  config.expect_with :rspec do |c|
+    c.syntax = :expect
+  end
+
+  config.include SpecHelpers
+end

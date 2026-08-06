@@ -24,6 +24,9 @@ jobs:
 
       # No gems: scripts/validate.rb implements the JSON Schema subset the
       # corpus schemas use, and rejects any schema keyword it cannot check.
+      # The Gemfile below exists for the spec suite only — this step runs
+      # before `bundle install` on purpose, and must keep passing with no
+      # bundle installed.
       #
       # A run that finds no corpus files fails, so an empty tree can never be
       # mistaken for a passing one. If this ever lands on a branch without
@@ -32,6 +35,8 @@ jobs:
       - run: ruby scripts/validate.rb
 
       # The spec suite guards the validator itself (and the generator's
-      # gem-free helpers). Minitest ships with the Ruby distribution, so this
-      # too runs without bundler or a Gemfile.
-      - run: ruby spec/all.rb
+      # gem-free helpers). It is the one thing here that takes a dependency:
+      # RSpec, from the dev-only Gemfile — the same harness every sibling
+      # repo uses.
+      - run: bundle install
+      - run: bundle exec rspec

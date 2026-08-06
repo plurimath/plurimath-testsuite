@@ -7,14 +7,14 @@
 
 require_relative "spec_helper"
 
-describe "group and file name" do
+RSpec.describe "group and file name" do
   it "rejects a group that is not the file's stem" do
     assert_rejects fixture("group-vs-filename"), "--no-integrity",
                    violations: 1, message: ['/group: is "numbers", but the file is named misnamed.yaml']
   end
 end
 
-describe "input_format agreement (one fact, four spellings)" do
+RSpec.describe "input_format agreement (one fact, four spellings)" do
   it "rejects an input_format that disagrees with the schema declaration" do
     assert_rejects fixture("format-vs-schema-segment"), "--no-integrity",
                    violations: 1, message: ["/input_format", "whose middle segment is the input format"]
@@ -32,14 +32,14 @@ describe "input_format agreement (one fact, four spellings)" do
   end
 end
 
-describe "case ids" do
+RSpec.describe "case ids" do
   it "rejects an id another case already uses" do
     assert_rejects fixture("duplicate-case-ids"), "--no-integrity",
                    violations: 1, message: ['/cases/1/id: reuses "number-integer", which case 0 already uses']
   end
 end
 
-describe "targets and expected agree in both directions" do
+RSpec.describe "targets and expected agree in both directions" do
   it "rejects an expectation outside the group's targets" do
     assert_rejects fixture("expected-outside-targets"), "--no-integrity",
                    violations: 1, message: ["/cases/0/expected/latex",
@@ -53,7 +53,7 @@ describe "targets and expected agree in both directions" do
   end
 end
 
-describe "provenance payload ordering" do
+RSpec.describe "provenance payload ordering" do
   it "rejects a payloads list that is not sorted by path" do
     assert_rejects fixture("payloads-unsorted"), "--no-integrity",
                    violations: 1, message: ["/payloads/1/path",
