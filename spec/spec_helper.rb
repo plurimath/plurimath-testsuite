@@ -15,6 +15,7 @@
 require "digest"
 require "fileutils"
 require "open3"
+require "rbconfig"
 require "stringio"
 require "tmpdir"
 require "yaml"
