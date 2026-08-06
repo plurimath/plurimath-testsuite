@@ -32,6 +32,10 @@ module Testsuite
   module JsonSchema
     DIALECT = "https://json-schema.org/draft/2020-12/schema"
 
+    # The two values a boolean schema (or a "boolean"-typed instance) may
+    # take. Frozen once so the membership test allocates nothing per call.
+    BOOLEANS = [true, false].freeze
+
     # Keyword => how to recurse into its value. Anything absent from this table
     # is rejected at load time: a keyword this validator does not implement
     # must fail loudly, never be ignored into a false pass.
@@ -139,7 +143,7 @@ module Testsuite
       end
 
       def lint_subschema(schema, where)
-        return if [true, false].include?(schema)
+        return if BOOLEANS.include?(schema)
 
         unless schema.is_a?(Hash)
           raise Failure, "#{@path}: #{where} is not a schema (#{schema.class})"
@@ -270,7 +274,7 @@ module Testsuite
       def matches_type?(type, value)
         case type
         when "null" then value.nil?
-        when "boolean" then [true, false].include?(value)
+        when "boolean" then BOOLEANS.include?(value)
         when "object" then value.is_a?(Hash)
         when "array" then value.is_a?(Array)
         when "string" then value.is_a?(String)
