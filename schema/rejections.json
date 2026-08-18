@@ -4,7 +4,13 @@
   "title": "Plurimath conformance rejection group",
   "description": "Inputs the oracle gem REFUSES, so an implementation can be checked on what it must not accept. A positive corpus records only successes, which means a port returning something plausible wherever the gem raises passes every case in `cases/1` and is still wrong. This is a separate payload kind rather than a variant of a case: `expected`, `parse_tree` and `model` are all required there and none of them exists for an input that never parsed, and a rejection group has no `targets` because nothing is rendered.",
   "type": "object",
-  "required": ["schema", "group", "description", "input_format", "cases"],
+  "required": [
+    "schema",
+    "group",
+    "description",
+    "input_format",
+    "cases"
+  ],
   "additionalProperties": false,
   "properties": {
     "schema": {
@@ -26,7 +32,9 @@
     "cases": {
       "type": "array",
       "minItems": 1,
-      "items": { "$ref": "#/$defs/rejection" }
+      "items": {
+        "$ref": "#/$defs/rejection"
+      }
     }
   },
   "$defs": {
@@ -36,16 +44,32 @@
     },
     "input_format": {
       "type": "string",
-      "enum": ["asciimath", "html", "latex", "mathml", "omml", "unicode", "unitsml"]
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicode",
+        "unitsml"
+      ]
     },
     "error_category": {
-      "description": "What the gem raised, at the coarseness its public boundary actually exposes. `Plurimath::Math.parse` rescues everything and re-raises `Math::ParseError` with `cause: nil`, so a grammar failure cannot be told apart from any other parse-time failure from outside; anything finer has to be captured inside the generator before the detail is discarded.",
+      "description": "What the gem raised. Only `parse_error` today, and deliberately so: this corpus records bad *inputs*, and every bad input reaches the same public boundary. `Plurimath::Math.parse` rescues everything and re-raises `Math::ParseError` with `cause: nil`, so a grammar failure cannot be told apart from any other parse-time failure from outside. The gem's other errors were probed and come from bad *arguments* rather than bad input (`Math::InvalidTypeError` for an unknown format, `Math::ParseOptionError` for a bad `formatter:`, `Errors::UnsupportedLocale` for a bad `locale:`), which is a different axis this corpus does not cover. Naming them here would put values in a shared contract that nothing produces; a later kind of case gets a schema version instead.",
       "type": "string",
-      "enum": ["parse_error", "invalid_type", "parse_option", "unsupported_locale"]
+      "enum": [
+        "parse_error"
+      ]
     },
     "rejection": {
       "type": "object",
-      "required": ["id", "input", "input_format", "preprocessed", "error"],
+      "required": [
+        "id",
+        "input",
+        "input_format",
+        "preprocessed",
+        "error"
+      ],
       "additionalProperties": false,
       "properties": {
         "id": {
@@ -67,10 +91,14 @@
         },
         "error": {
           "type": "object",
-          "required": ["category"],
+          "required": [
+            "category"
+          ],
           "additionalProperties": false,
           "properties": {
-            "category": { "$ref": "#/$defs/error_category" },
+            "category": {
+              "$ref": "#/$defs/error_category"
+            },
             "index": {
               "description": "Character offset into `preprocessed` where the parse failed, when the gem exposed one. The public `Math::ParseError` carries no position; this comes from `Parslet::ParseFailed#parse_failure_cause.pos` underneath it, so it is absent whenever the failure did not come from the grammar.",
               "type": "integer",

@@ -524,10 +524,14 @@ module CorpusGenerator
       [nil, nil]
     rescue Plurimath::Math::ParseError => e
       ["parse_error", e.message.to_s]
-    rescue Plurimath::Math::InvalidTypeError => e
-      ["invalid_type", e.message.to_s]
-    rescue Plurimath::Math::ParseOptionError => e
-      ["parse_option", e.message.to_s]
+    rescue StandardError => e
+      # Anything else is a category the schema has no value for, and inventing
+      # one would be worse than stopping: a mislabelled rejection makes every
+      # implementation assert the wrong thing. Probed, the gem's other errors
+      # come from bad *arguments* rather than bad input, so an input-driven
+      # sweep should never reach here.
+      raise Error, "#{input.inspect} raised #{e.class}, which is not a " \
+                   "category the rejections schema names"
     end
 
     if category.nil?
