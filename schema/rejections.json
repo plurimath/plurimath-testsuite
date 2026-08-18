@@ -100,7 +100,7 @@
               "$ref": "#/$defs/error_category"
             },
             "index": {
-              "description": "Character offset into `preprocessed` where the parse failed, when the gem exposed one. The public `Math::ParseError` carries no position; this comes from `Parslet::ParseFailed#parse_failure_cause.pos` underneath it, so it is absent whenever the failure did not come from the grammar.",
+              "description": "Character offset into `preprocessed` where the parse failed, when the gem exposed one. The public `Math::ParseError` carries no position, so this comes from the `Parslet::ParseFailed` underneath it — but NOT from `parse_failure_cause.pos` directly, which is 0 for every rejection recorded here because the root cause is the whole-input rule. The generator walks that cause tree and takes the furthest position any branch reached, which is the offset a reader means by \"where it failed\". Absent whenever the failure did not come from the grammar at all.",
               "type": "integer",
               "minimum": 0
             }
