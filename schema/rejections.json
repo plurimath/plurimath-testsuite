@@ -103,12 +103,9 @@
               "description": "Character offset into `preprocessed` where the parse failed, when the gem exposed one. The public `Math::ParseError` carries no position; this comes from `Parslet::ParseFailed#parse_failure_cause.pos` underneath it, so it is absent whenever the failure did not come from the grammar.",
               "type": "integer",
               "minimum": 0
-            },
-            "message": {
-              "description": "The gem's message, recorded for diagnosis only. Never assert on it: message text is not a contract in the gem or in any port.",
-              "type": "string"
             }
-          }
+          },
+          "description": "What the gem did, at the coarseness its public boundary exposes. The gem's message is deliberately NOT recorded: it is a multi-line banner carrying an issue-tracker URL, no consumer may assert on it, and embedding it would make an upstream wording change rewrite every payload's bytes and every provenance digest without a single conformance change."
         }
       }
     }

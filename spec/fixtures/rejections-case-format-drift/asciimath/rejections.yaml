@@ -1,0 +1,12 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: "Healthy template with one planted defect: a case switches input format mid-group."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: latex
+  preprocessed: a/
+  error:
+    category: parse_error

@@ -1,0 +1,12 @@
+---
+schema: plurimath-corpus/rejections/1
+group: wrong
+description: "Healthy template with one planted defect: the group does not match the file name."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/
+  error:
+    category: parse_error

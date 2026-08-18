@@ -519,11 +519,11 @@ module CorpusGenerator
   def build_rejection(id, input)
     preprocessed = Plurimath::Asciimath::Parser.new(input).text
 
-    category, message = begin
+    category = begin
       Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
-      [nil, nil]
-    rescue Plurimath::Math::ParseError => e
-      ["parse_error", e.message.to_s]
+      nil
+    rescue Plurimath::Math::ParseError
+      "parse_error"
     rescue StandardError => e
       # Anything else is a category the schema has no value for, and inventing
       # one would be worse than stopping: a mislabelled rejection makes every
@@ -548,8 +548,6 @@ module CorpusGenerator
       # The failure did not come from the grammar, so no offset exists.
       nil
     end
-    error["message"] = message unless message.nil? || message.empty?
-
     {
       "id" => id,
       "input" => input,

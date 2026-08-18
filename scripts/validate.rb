@@ -791,6 +791,11 @@ module Testsuite
           input_format_errors(document, relative) +
           case_id_errors(document["cases"]) +
           target_coverage_errors(document["targets"], document["cases"])
+      elsif rejection_cases?(document)
+        group_name_errors(document, relative) +
+          rejection_format_errors(document, relative) +
+          case_id_errors(document["cases"]) +
+          rejection_index_errors(document["cases"])
       else
         []
       end
@@ -816,6 +821,63 @@ module Testsuite
 
     # The schema says `group` matches the file name without its extension; a
     # schema cannot see the file name, so the promise is kept here.
+    # A rejection payload carries `cases` but no `targets`, and every case an
+    # `error` instead of an `expected`. Dispatching on that shape rather than
+    # on the schema keeps this in step with how `listed_payloads?` and
+    # `grouped_cases?` already work.
+    def rejection_cases?(document)
+      cases = document["cases"]
+      document["targets"].nil? && cases.is_a?(Array) &&
+        cases.all? { |kase| kase.is_a?(Hash) && kase["error"].is_a?(Hash) }
+    end
+
+    # Same fact-in-several-places check as `input_format_errors`, minus the
+    # schema segment: a rejection schema's middle segment is the payload KIND
+    # (`rejections`), not the input format, so comparing them would report a
+    # mismatch on every valid file.
+    def rejection_format_errors(document, relative)
+      format = document["input_format"]
+      return [] unless format.is_a?(String)
+
+      errors = []
+      directory = File.dirname(relative)
+      if directory != format
+        errors << Error.new("/input_format",
+                            "is #{format.inspect}, but the file sits in " \
+                            "#{directory}/; a group lives in the directory " \
+                            "named after its input format")
+      end
+
+      document["cases"].each_with_index do |kase, index|
+        case_format = kase["input_format"]
+        next if case_format == format
+
+        errors << Error.new("/cases/#{index}/input_format",
+                            "is #{case_format.inspect}, but the group's " \
+                            "`input_format` is #{format.inspect}; a case " \
+                            "does not switch formats mid-group")
+      end
+      errors
+    end
+
+    # `index` is an offset into `preprocessed`, so it has to be inside it.
+    # `== length` is legitimate: a premature-end failure points just past the
+    # last character. Past that is a position in no text, which a consumer
+    # mapping offsets would read straight off the end.
+    def rejection_index_errors(cases)
+      cases.each_with_index.filter_map do |kase, index|
+        offset = kase.dig("error", "index")
+        text = kase["preprocessed"]
+        next unless offset.is_a?(Integer) && text.is_a?(String)
+        next unless offset > text.length
+
+        Error.new("/cases/#{index}/error/index",
+                  "is #{offset}, but `preprocessed` is #{text.length} " \
+                  "character(s); the offset points outside the text it " \
+                  "describes")
+      end
+    end
+
     def group_name_errors(document, relative)
       group = document["group"]
       stem = File.basename(relative, ".*")

@@ -54,4 +54,43 @@ RSpec.describe Testsuite::Runner, "rejections schema" do
       .to fail_validation.with_violations(1)
       .reporting("/cases/0/error/index")
   end
+
+  # The checks below are cross-field: no single schema item can see a sibling,
+  # so the validator makes them. They existed for `cases/1` payloads and did
+  # not run for rejections at all, because the dispatch predicate required
+  # `targets` and a per-case `expected` — exactly the two fields a rejection
+  # forbids. A wrong group, a case switching format, and a duplicate id all
+  # validated clean before this.
+  it "rejects a group that does not match the file name" do
+    expect(validation_of(fixture("rejections-wrong-group"), "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("is \"wrong\", but the file is named rejections.yaml")
+  end
+
+  it "rejects a case that switches input format mid-group" do
+    expect(validation_of(fixture("rejections-case-format-drift"),
+                         "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("a case does not switch formats mid-group")
+  end
+
+  it "rejects two cases sharing an id, the join key downstream reports on" do
+    expect(validation_of(fixture("rejections-duplicate-id"), "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("reuses \"frac-trailing\"")
+  end
+
+  it "rejects a failure offset pointing outside the text it describes" do
+    expect(validation_of(fixture("rejections-index-past-end"),
+                         "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("the offset points outside the text it describes")
+  end
+
+  it "accepts an offset just past the last character, as premature-end gives" do
+    # `index == preprocessed.length` is legitimate and must not be swept up by
+    # the check above; without this the obvious fix would be `>=`.
+    expect(validation_of(fixture("rejections-index-at-end"), "--no-integrity"))
+      .to pass_validation
+  end
 end
