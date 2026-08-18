@@ -46,7 +46,8 @@ There is no build step and no published package. The YAML is the artifact.
 
 == Format
 
-Each case records one input and what Plurimath produced for it:
+There are two kinds of payload. A **case** records one input and what
+Plurimath produced for it:
 
 [source,yaml]
 ----
@@ -103,6 +104,49 @@ grammar is actually handed
 `model`:: the parsed expression as a tree of nodes
 
 An implementation reads these files and asserts its own output matches.
+
+=== Rejection payloads
+
+The other kind. A **rejection** records an input Plurimath *refuses*, so an
+implementation can be checked on what it must not accept. A corpus of successes
+alone cannot do that: an implementation that returns something plausible
+wherever the gem raises passes every case above and is still wrong.
+
+They live beside the cases, at `<input-format>/rejections.yaml`, and declare
+`schema: plurimath-corpus/rejections/1` — a payload *kind*, like `provenance`,
+with the format carried in the payload's own `input_format`.
+
+[source,yaml]
+----
+schema: plurimath-corpus/rejections/1
+group: rejections
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/
+  error:
+    category: parse_error
+    index: 1
+----
+
+A rejection has no `targets`, no `expected`, no `parse_tree` and no `model`,
+because nothing parsed and nothing was rendered.
+
+`error.category`:: what the gem raised. `parse_error` is the only value, and
+deliberately so: `Plurimath::Math.parse` rescues everything and re-raises
+`Math::ParseError`, so from outside a grammar failure cannot be told apart from
+any other parse-time failure. The gem's other errors come from bad *arguments*
+rather than bad input, which this corpus does not cover.
+`error.index`:: optional. A character offset into `preprocessed` — **not** into
+`input` — because preprocessing rewrites `{:` and friends to single characters
+and shifts every later offset. An implementation maps it back through its own
+offset map. Absent when the failure did not come from the grammar.
+
+An implementation is conformant when it refuses every one of these. Asserting
+the offset is a stronger claim and needs that mapping; asserting the refusal
+alone is a valid, weaker conformance.
 
 === What `model:` means
 
