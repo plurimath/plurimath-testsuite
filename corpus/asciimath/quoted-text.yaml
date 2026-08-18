@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: text-function
   input: text(hello)
@@ -24,6 +25,7 @@ cases:
           <mtext>hello</mtext>
         </mstyle>
       </math>
+    unicodemath: '"hello"'
   parse_tree:
     expr:
       sequence:
@@ -53,6 +55,7 @@ cases:
           <mtext>hello world</mtext>
         </mstyle>
       </math>
+    unicodemath: '"hello world"'
   parse_tree:
     expr:
       sequence:
@@ -85,6 +88,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "\\mupkg"
   parse_tree:
     expr:
       sequence:

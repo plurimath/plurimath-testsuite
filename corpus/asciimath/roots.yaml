@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: root-sqrt-number
   input: sqrt(2)
@@ -26,6 +27,7 @@ cases:
           </msqrt>
         </mstyle>
       </math>
+    unicodemath: "√(2)"
   parse_tree:
     expr:
       sequence:
@@ -73,6 +75,7 @@ cases:
           </msqrt>
         </mstyle>
       </math>
+    unicodemath: "√(x + 1)"
   parse_tree:
     expr:
       sequence:
@@ -143,6 +146,7 @@ cases:
           </msqrt>
         </mstyle>
       </math>
+    unicodemath: "√(a^(2) + b^(2))"
   parse_tree:
     expr:
       sequence:
@@ -233,6 +237,7 @@ cases:
           </mroot>
         </mstyle>
       </math>
+    unicodemath: "√(3&x + 1)"
   parse_tree:
     expr:
       power_base:

@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: unary-sin-fenced
   input: sin(x)
@@ -34,6 +35,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: sin⁡(x)
   parse_tree:
     expr:
       sequence:
@@ -90,6 +92,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: sin⁡x
   parse_tree:
     expr:
       sequence:
@@ -133,6 +136,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: cos⁡(2 x)
   parse_tree:
     expr:
       sequence:
@@ -196,6 +200,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "⒜(x)"
   parse_tree:
     expr:
       sequence:
@@ -237,6 +242,7 @@ cases:
           </mover>
         </mstyle>
       </math>
+    unicodemath: "(x)̂"
   parse_tree:
     expr:
       sequence:
@@ -279,6 +285,7 @@ cases:
           </mover>
         </mstyle>
       </math>
+    unicodemath: "(x)̅"
   parse_tree:
     expr:
       sequence:
@@ -321,6 +328,7 @@ cases:
           </mover>
         </mstyle>
       </math>
+    unicodemath: "(v)⃗"
   parse_tree:
     expr:
       sequence:
