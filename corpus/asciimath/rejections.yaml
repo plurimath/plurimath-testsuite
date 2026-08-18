@@ -14,14 +14,6 @@ cases:
   error:
     category: parse_error
     index: 1
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      a/
-      ---- FORMULA END ----
 - id: frac-leading
   input: "/b"
   input_format: asciimath
@@ -29,14 +21,6 @@ cases:
   error:
     category: parse_error
     index: 0
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      /b
-      ---- FORMULA END ----
 - id: frac-bare
   input: "/"
   input_format: asciimath
@@ -44,14 +28,6 @@ cases:
   error:
     category: parse_error
     index: 0
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      /
-      ---- FORMULA END ----
 - id: frac-trailing-space
   input: 'a / '
   input_format: asciimath
@@ -59,7 +35,6 @@ cases:
   error:
     category: parse_error
     index: 2
-    message: "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\na / \n---- FORMULA END ----\n"
 - id: backtick-bare
   input: "`"
   input_format: asciimath
@@ -67,14 +42,6 @@ cases:
   error:
     category: parse_error
     index: 0
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      `
-      ---- FORMULA END ----
 - id: right-without-left
   input: right
   input_format: asciimath
@@ -82,14 +49,6 @@ cases:
   error:
     category: parse_error
     index: 0
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      right
-      ---- FORMULA END ----
 - id: right-unclosed
   input: left( x right
   input_format: asciimath
@@ -97,11 +56,3 @@ cases:
   error:
     category: parse_error
     index: 13
-    message: |
-      [plurimath] Error: Failed to parse the following formula with type `asciimath`.
-      [plurimath] Please first manually validate the formula.
-      [plurimath] If this is a bug, please report the formula at our issue tracker at:
-      [plurimath] https://github.com/plurimath/plurimath/issues
-      ---- FORMULA BEGIN ----
-      left( x right
-      ---- FORMULA END ----
