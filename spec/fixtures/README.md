@@ -76,4 +76,10 @@ and rewording them would invalidate the recorded byte counts.
 | `integrity-duplicate-entry` | integrity: a path is recorded once |
 | `integrity-skips-broken-provenance` | integrity: skipped when the provenance failed its schema |
 | `healthy-minimal` | healthy twin: passes with integrity on; base for runtime mutations |
+| `rejections-healthy` | healthy twin: a valid rejection payload, so the six below fail only on their planted defect |
+| `rejections-missing-error` | rejections schema: `error` required, which is the whole record |
+| `rejections-unknown-category` | rejections schema: `error.category` enum, so a typo cannot become a category nothing matches |
+| `rejections-with-expected` | rejections schema: `additionalProperties: false` on a case, so a rejection cannot also claim a rendering |
+| `rejections-empty-input` | rejections schema: `input` minLength, since an implementation must be given something to refuse |
+| `rejections-negative-index` | rejections schema: `error.index` minimum |
 | `lockfiles/sample.lock` | generator: `parse_lockfile` fixture (all source kinds, leak tripwires) |

@@ -1,0 +1,13 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: "Healthy template with one planted defect: a negative failure offset."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/
+  error:
+    category: parse_error
+    index: -1

@@ -33,6 +33,9 @@ module CorpusGenerator
   GENERATOR_PATH = "scripts/generate-corpus.rb"
 
   CORPUS_SCHEMA = "plurimath-corpus/asciimath/1"
+  REJECTIONS_SCHEMA = "plurimath-corpus/rejections/1"
+  REJECTIONS_DESCRIPTION =
+    "Inputs the gem refuses, so a port can be checked on what it rejects"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
 
   # One provenance document for the whole corpus, not one sidecar per payload.
@@ -480,6 +483,92 @@ module CorpusGenerator
 
   # --- corpus --------------------------------------------------------------
 
+  # Candidate malformed inputs, swept rather than assumed. AsciiMath is far
+  # more permissive than it looks: `x^`, `(a`, `a)`, `sqrt(`, `))))` and a bare
+  # `$` all parse, and even `a/ + b` parses although `a/` does not. Every
+  # candidate here is expected to be REFUSED, and `build_rejections` fails the
+  # run if the gem accepts one, so this list can never quietly drift into
+  # documenting acceptance.
+  REJECTION_CANDIDATES = [
+    ["frac-trailing", "a/"],
+    ["frac-leading", "/b"],
+    ["frac-bare", "/"],
+    ["frac-trailing-space", "a / "],
+    ["backtick-bare", "`"],
+    ["right-without-left", "right"],
+    ["right-unclosed", "left( x right"],
+  ].freeze
+
+  # Parslet reports the *root* rule's failure position, which is 0 for every
+  # rejection measured — the root fails at the start whatever went wrong
+  # further in. The informative offset is in the deepest cause, so this walks
+  # to the leaves and takes the furthest one reached. Recording the root's
+  # position instead would fill the corpus with zeros that every
+  # implementation would then "match" without checking anything.
+  def failure_position(cause)
+    children = cause.children || []
+    return cause.pos.charpos if children.empty?
+
+    children.map { |child| failure_position(child) }.max
+  end
+
+  # The gem's public boundary discards the detail: `Plurimath::Math.parse`
+  # rescues everything and re-raises `Math::ParseError` with `cause: nil`. So
+  # the category is taken from the public error, and the position from the
+  # Parslet layer underneath it, which is the only place it survives.
+  def build_rejection(id, input)
+    preprocessed = Plurimath::Asciimath::Parser.new(input).text
+
+    category, message = begin
+      Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
+      [nil, nil]
+    rescue Plurimath::Math::ParseError => e
+      ["parse_error", e.message.to_s]
+    rescue Plurimath::Math::InvalidTypeError => e
+      ["invalid_type", e.message.to_s]
+    rescue Plurimath::Math::ParseOptionError => e
+      ["parse_option", e.message.to_s]
+    end
+
+    if category.nil?
+      raise Error,
+            "the gem ACCEPTED #{input.inspect}; it is not a rejection"
+    end
+
+    error = { "category" => category }
+    begin
+      Plurimath::Asciimath::Parse.new.parse(preprocessed)
+    rescue Parslet::ParseFailed => e
+      error["index"] = failure_position(e.parse_failure_cause)
+    rescue StandardError
+      # The failure did not come from the grammar, so no offset exists.
+      nil
+    end
+    error["message"] = message unless message.nil? || message.empty?
+
+    {
+      "id" => id,
+      "input" => input,
+      "input_format" => INPUT_FORMAT,
+      "preprocessed" => preprocessed,
+      "error" => error,
+    }
+  end
+
+  # A candidate the gem accepts is a defect in the list, not a case to drop:
+  # it means the list claims something about the grammar that is not true.
+  def build_rejections
+    REJECTION_CANDIDATES.map do |id, input|
+      build_rejection(id, input)
+    rescue Error
+      raise
+    rescue StandardError => e
+      raise Error,
+            "rejection #{id} (#{input.inspect}) failed: " \
+            "#{e.class}: #{e.message}"
+    end
+  end
+
   def build_case(id, input)
     formula = Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
     preprocessed = Plurimath::Asciimath::Parser.new(input).text
@@ -756,6 +845,22 @@ module CorpusGenerator
       payloads << [path, bytes]
     end
 
+    rejections = build_rejections
+    rejection_payload = {
+      "schema" => REJECTIONS_SCHEMA,
+      "group" => "rejections",
+      "description" => REJECTIONS_DESCRIPTION,
+      "input_format" => INPUT_FORMAT,
+      "cases" => rejections,
+    }
+    rejection_path = File.join(out_root, "asciimath", "rejections.yaml")
+    rejection_bytes = write_payload(
+      rejection_path,
+      payload_header("AsciiMath rejection cases."),
+      rejection_payload,
+    )
+    payloads << [rejection_path, rejection_bytes]
+
     provenance_path = write_provenance(out_root, provenance, payloads)
 
     case_count = groups.sum { |_name, _description, cases| cases.length }
@@ -763,7 +868,8 @@ module CorpusGenerator
       puts "  #{relative(payload_path, REPO_ROOT)}"
     end
     puts "  #{relative(provenance_path, REPO_ROOT)}"
-    puts "#{case_count} cases in #{groups.length} groups"
+    puts "#{case_count} cases in #{groups.length} groups, " \
+         "#{rejections.length} rejections"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }
     0
