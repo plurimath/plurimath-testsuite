@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: number-integer
   input: '2'
@@ -24,6 +25,7 @@ cases:
           <mn>2</mn>
         </mstyle>
       </math>
+    unicodemath: '2'
   parse_tree:
     expr:
       sequence:
@@ -54,6 +56,7 @@ cases:
           <mn>2.5</mn>
         </mstyle>
       </math>
+    unicodemath: '2.5'
   parse_tree:
     expr:
       sequence:
@@ -84,6 +87,7 @@ cases:
           <mn>0</mn>
         </mstyle>
       </math>
+    unicodemath: '0'
   parse_tree:
     expr:
       sequence:
@@ -114,6 +118,7 @@ cases:
           <mn>123</mn>
         </mstyle>
       </math>
+    unicodemath: '123'
   parse_tree:
     expr:
       sequence:
@@ -144,6 +149,7 @@ cases:
           <mn>3.14159</mn>
         </mstyle>
       </math>
+    unicodemath: '3.14159'
   parse_tree:
     expr:
       sequence:

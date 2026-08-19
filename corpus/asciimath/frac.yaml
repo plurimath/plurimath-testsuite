@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: frac-simple
   input: a/b
@@ -27,6 +28,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(a)/(b)"
   parse_tree:
     expr:
       frac:
@@ -68,6 +70,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(2)/(3)"
   parse_tree:
     expr:
       frac:
@@ -119,6 +122,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(a + b)/(c)"
   parse_tree:
     expr:
       frac:
@@ -187,6 +191,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(x)/(y + z)"
   parse_tree:
     expr:
       frac:
@@ -256,6 +261,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(a)/(b) + (c)/(d)"
   parse_tree:
     expr:
       expr:
@@ -320,6 +326,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(a)/(b)"
   parse_tree:
     expr:
       power_base:

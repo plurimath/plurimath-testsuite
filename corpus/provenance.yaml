@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 342ec05fe8c870bf23e43f3c358e6a449c0ccd87781b657bec3c221a2d0aa36a
+  sha256: '08691771a9144b929bbc573eccda1aedd2c8ad4e1e39afcc509680cf84cf253d'
   repository:
-    commit: 37ec30cebc03815dbfcc00155b1013db972b293d
+    commit: 2bac80bd8f0e5104239e2c080990c6e51d5e3e61
     clean: true
     dirty_paths: []
 oracle:
@@ -52,47 +52,47 @@ direct_runtime:
   unitsml: 0.6.8
 payloads:
 - path: asciimath/fences.yaml
-  sha256: 21d2881463d62050e9a7bc9cc6936bdc37fe453a67ed6a0f81c07a74a896431d
-  bytes: 9351
+  sha256: 3e944ab8f84610a42e74b9c6ad13abdf45a72224d8dff5c75405bb44289d2956
+  bytes: 9527
 - path: asciimath/frac.yaml
-  sha256: 05db10e4df8f311308b57e7e0b851c422888534b60600bdfb88719cac778c564
-  bytes: 8713
+  sha256: 5bf29355cafbdbf0f6d0886eb1ce0789173777b31b3e6bc9b47c633e29cec923
+  bytes: 8907
 - path: asciimath/matrices.yaml
-  sha256: 8f84310ea485240a165b124263580c9b45b1ef877ddff006a2055f82ab4e247a
-  bytes: 5866
+  sha256: d41690b45c62ba52638975c663fd20f53b798e6b538f2cdd4ae1e580fdda36d8
+  bytes: 5938
 - path: asciimath/mixed.yaml
-  sha256: efd968e3c21eec64651540c24ab448d5929b6ddcf9974e894f329b930bcec8f5
-  bytes: 16069
+  sha256: 24264273163fa2557c9c0cf04a424d5f02dd2072ccb331781993f4cb25103764
+  bytes: 16292
 - path: asciimath/nary.yaml
-  sha256: cb87b74029ec38294070eb4f0370f6274749e7cce76d3b6726099c4e725bae49
-  bytes: 11005
+  sha256: 36daf58791289f8cf42bd16e406b6cea0e7e2c623e93061016941524be165fbd
+  bytes: 11245
 - path: asciimath/numbers.yaml
-  sha256: 8ff27e907ce39904f69a202703717b67d4da35fab1b1df1c6e13393bb5aec127
-  bytes: 3653
+  sha256: 2b69e6f35c952a09f7b6be364ce9fa8fe114fcbd2d582f72be319c2a775e39fb
+  bytes: 3782
 - path: asciimath/operators.yaml
-  sha256: 311ccec6b1503d78ae7f4ce5c5294a75e9e96898c4b708c47e1859eb7876a002
-  bytes: 5873
+  sha256: f405a6e3836b61607fc5d45a852ee43b4f14719944a876ad950b5bf4fdaa1e90
+  bytes: 6031
 - path: asciimath/permissive.yaml
-  sha256: 1afec45e24ec2be4e4725f7d6f5ab6494c1528ac9d2199342133f6eb720c811d
-  bytes: 5478
+  sha256: aaec7436f87e8be619fbf2698cc2de1fa82311c1a5cf5b9a0d4d6fb2c06adabd
+  bytes: 5633
 - path: asciimath/powers.yaml
-  sha256: ed479b0e03a6323c2a2735805183bbd9f0a29a3e4c494f0eb509b4c460a03a5c
-  bytes: 10824
+  sha256: 19a79bca50f51ce8c6365e9fa442cc02e57abe865801e740a5f0201da0d4a4ef
+  bytes: 11043
 - path: asciimath/quoted-text.yaml
-  sha256: af6e1dc07c7f99ecf28b8595e98a46a96fb591bb4ea65fbd6f6facd28e118365
-  bytes: 2455
+  sha256: e85317d6b12ca1d72e44e2f15ea314e83ac3e205b8bd74b4c084d50907ff5318
+  bytes: 2556
 - path: asciimath/rejections.yaml
   sha256: 6cced395f2ef0dbf17b20c1e1fb8ad71c27fbf32a14ff49b2e3b782af7e2b10f
   bytes: 1868
 - path: asciimath/roots.yaml
-  sha256: '09d26ad35c3d6364ecb8b9d386f90b00d8e7e422e74a8e5c71f98f3630a39463'
-  bytes: 7749
+  sha256: a3141c2f34e1a41674770dd06bb40462584d2634f08464221304fac220b06bfe
+  bytes: 7889
 - path: asciimath/symbols.yaml
-  sha256: 313cd1ce1c5dc5ab5b515c13964fefa3899f9a4eb0a5ce497c355d70506d4dc5
-  bytes: 4866
+  sha256: 28108c785e1653c9ef86d6a52472adb81cdad836748adb681b2bcc989b3f5c26
+  bytes: 5026
 - path: asciimath/unary-functions.yaml
-  sha256: 9899187278171e75ac84355681512a70d7118598ae8ac242c94bfbf812c2e48a
-  bytes: 8388
+  sha256: 6f5920ee298e53b11acc16b1a873b79b2698b8979d90a302e8ba43f29b2353f2
+  bytes: 8585
 - path: asciimath/whitespace.yaml
-  sha256: 68677d52cca3fc6e2d13dce1b461d9126f8e812ab58243e4a2f953c00e4e02d4
-  bytes: 5677
+  sha256: 81130efcdc2af63f62d5b1d6b30af32f7c8dcf58ed35e9d7490810c07023fa06
+  bytes: 5817

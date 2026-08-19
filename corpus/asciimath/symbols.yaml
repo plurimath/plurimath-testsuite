@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: symbol-latin-x
   input: x
@@ -24,6 +25,7 @@ cases:
           <mi>x</mi>
         </mstyle>
       </math>
+    unicodemath: x
   parse_tree:
     expr:
       sequence:
@@ -51,6 +53,7 @@ cases:
           <mi>&#x3b1;</mi>
         </mstyle>
       </math>
+    unicodemath: α
   parse_tree:
     expr:
       sequence:
@@ -78,6 +81,7 @@ cases:
           <mi>&#x3c0;</mi>
         </mstyle>
       </math>
+    unicodemath: π
   parse_tree:
     expr:
       sequence:
@@ -105,6 +109,7 @@ cases:
           <mi>&#x3c3;</mi>
         </mstyle>
       </math>
+    unicodemath: σ
   parse_tree:
     expr:
       sequence:
@@ -132,6 +137,7 @@ cases:
           <mo>&#x221e;</mo>
         </mstyle>
       </math>
+    unicodemath: "∞"
   parse_tree:
     expr:
       sequence:
@@ -161,6 +167,7 @@ cases:
           <mi>z</mi>
         </mstyle>
       </math>
+    unicodemath: x y z
   parse_tree:
     expr:
       expr:
@@ -201,6 +208,7 @@ cases:
           <mi>y</mi>
         </mstyle>
       </math>
+    unicodemath: x y
   parse_tree:
     expr:
       expr:

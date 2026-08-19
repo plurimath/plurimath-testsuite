@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: nary-log-base
   input: log_2 8
@@ -28,6 +29,7 @@ cases:
           <mn>8</mn>
         </mstyle>
       </math>
+    unicodemath: log_(2) 8
   parse_tree:
     expr:
       expr:
@@ -87,6 +89,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: lim_(x → ∞) f (x)
   parse_tree:
     expr:
       expr:
@@ -185,6 +188,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "∑_(i = 1)^(n)▒〖i〗"
   parse_tree:
     expr:
       ternary:
@@ -267,6 +271,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "∫_(0)^(1)▒〖x〗 d x"
   parse_tree:
     expr:
       expr:
@@ -345,6 +350,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "∏_(k = 1)^(n)▒〖k〗"
   parse_tree:
     expr:
       ternary:
@@ -417,6 +423,7 @@ cases:
           <mi>x</mi>
         </mstyle>
       </math>
+    unicodemath: "∑ x"
   parse_tree:
     expr:
       expr:

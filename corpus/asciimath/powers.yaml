@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: power-square
   input: x^2
@@ -27,6 +28,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: x^(2)
   parse_tree:
     expr:
       power_base:
@@ -75,6 +77,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: x^(n + 1)
   parse_tree:
     expr:
       power_base:
@@ -142,6 +145,7 @@ cases:
           </msub>
         </mstyle>
       </math>
+    unicodemath: a_(1)
   parse_tree:
     expr:
       power_base:
@@ -190,6 +194,7 @@ cases:
           </msub>
         </mstyle>
       </math>
+    unicodemath: a_(n + 1)
   parse_tree:
     expr:
       power_base:
@@ -258,6 +263,7 @@ cases:
           </msubsup>
         </mstyle>
       </math>
+    unicodemath: x_(1)^(2)
   parse_tree:
     expr:
       power_base:
@@ -310,6 +316,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: e^(x)
   parse_tree:
     expr:
       power_base:
@@ -351,6 +358,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: 2^(10)
   parse_tree:
     expr:
       power_base:
@@ -401,6 +409,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(x^(2))/(4)"
   parse_tree:
     expr:
       frac:

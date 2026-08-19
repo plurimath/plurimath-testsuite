@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: permissive-trailing-caret
   input: x^
@@ -25,6 +26,7 @@ cases:
           <mo>^</mo>
         </mstyle>
       </math>
+    unicodemath: x ^
   parse_tree:
     expr:
       expr:
@@ -62,6 +64,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "(a"
   parse_tree:
     expr:
       sequence:
@@ -105,6 +108,7 @@ cases:
           <mo>)</mo>
         </mstyle>
       </math>
+    unicodemath: a )
   parse_tree:
     expr:
       expr:
@@ -140,6 +144,7 @@ cases:
           <mo>)</mo>
         </mstyle>
       </math>
+    unicodemath: ") ) ) )"
   parse_tree:
     expr:
     - rparen: ")"
@@ -178,6 +183,7 @@ cases:
           <mi>&#x24;</mi>
         </mstyle>
       </math>
+    unicodemath: "$"
   parse_tree:
     expr:
       sequence:
@@ -209,6 +215,7 @@ cases:
           <mi>b</mi>
         </mstyle>
       </math>
+    unicodemath: "(a)/(+) b"
   parse_tree:
     expr:
       expr:

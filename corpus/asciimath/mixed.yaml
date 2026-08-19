@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: mixed-implicit-product
   input: 2pi r
@@ -26,6 +27,7 @@ cases:
           <mi>r</mi>
         </mstyle>
       </math>
+    unicodemath: 2 π r
   parse_tree:
     expr:
       expr:
@@ -70,6 +72,7 @@ cases:
           <mi>&#x3b3;</mi>
         </mstyle>
       </math>
+    unicodemath: α β γ
   parse_tree:
     expr:
       expr:
@@ -119,6 +122,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: f (x) = x^(2)
   parse_tree:
     expr:
       expr:
@@ -219,6 +223,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: "(x + y)^(2) = x^(2) + 2 x y + y^(2)"
   parse_tree:
     expr:
       expr:
@@ -404,6 +409,7 @@ cases:
           </msup>
         </mstyle>
       </math>
+    unicodemath: "∑_(i = 1)^(n)▒〖i^(3)〗 = ((n (n + 1))/(2))^(2)"
   parse_tree:
     expr:
       expr:

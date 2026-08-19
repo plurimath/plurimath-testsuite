@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: whitespace-around-operator
   input: x  +  y
@@ -26,6 +27,7 @@ cases:
           <mi>y</mi>
         </mstyle>
       </math>
+    unicodemath: x + y
   parse_tree:
     expr:
       expr:
@@ -68,6 +70,7 @@ cases:
           <mi>b</mi>
         </mstyle>
       </math>
+    unicodemath: a b
   parse_tree:
     expr:
       expr:
@@ -111,6 +114,7 @@ cases:
           <mi>i</mi>
         </mstyle>
       </math>
+    unicodemath: "∑_(i = 1)^(n) i"
   parse_tree:
     expr:
       expr:
@@ -183,6 +187,7 @@ cases:
           <mi>x</mi>
         </mstyle>
       </math>
+    unicodemath: x
   parse_tree:
     expr:
       expr:
@@ -213,6 +218,7 @@ cases:
           </msqrt>
         </mstyle>
       </math>
+    unicodemath: "√(x)"
   parse_tree:
     expr:
       sequence:

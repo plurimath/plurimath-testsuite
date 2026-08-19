@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: fence-round-single
   input: "(x)"
@@ -28,6 +29,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "(x)"
   parse_tree:
     expr:
       sequence:
@@ -79,6 +81,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "(x + y)"
   parse_tree:
     expr:
       sequence:
@@ -142,6 +145,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "[a , b]"
   parse_tree:
     expr:
       sequence:
@@ -202,6 +206,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "{x}"
   parse_tree:
     expr:
       sequence:
@@ -255,6 +260,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "(a , b , c)"
   parse_tree:
     expr:
       sequence:
@@ -329,6 +335,7 @@ cases:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(x + y)/(2)"
   parse_tree:
     expr:
       frac:

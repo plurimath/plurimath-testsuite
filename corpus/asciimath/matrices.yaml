@@ -10,6 +10,7 @@ targets:
 - asciimath
 - latex
 - mathml
+- unicodemath
 cases:
 - id: matrix-column
   input: "((a),(b))"
@@ -39,6 +40,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: "⒨(a@b)"
   parse_tree:
     left_right:
       table:
@@ -134,6 +136,7 @@ cases:
           </mrow>
         </mstyle>
       </math>
+    unicodemath: ⓢ(a&b@c&d)
   parse_tree:
     left_right:
       table:

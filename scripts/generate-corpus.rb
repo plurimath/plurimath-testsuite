@@ -50,7 +50,7 @@ module CorpusGenerator
   DEFAULT_GEM_PLATFORM = "ruby"
 
   INPUT_FORMAT = "asciimath"
-  TARGET_FORMATS = %w[asciimath latex mathml].freeze
+  TARGET_FORMATS = %w[asciimath latex mathml unicodemath].freeze
 
   # A `model:` block records a node's *portable semantic state* — what a second
   # implementation has to reproduce — not a dump of every Ruby instance
@@ -611,6 +611,7 @@ module CorpusGenerator
         "asciimath" => formula.to_asciimath,
         "latex" => formula.to_latex,
         "mathml" => formula.to_mathml,
+        "unicodemath" => formula.to_unicodemath,
       },
       "parse_tree" => serialize_tree(tree, id),
       "model" => serialize_node(formula, id),
