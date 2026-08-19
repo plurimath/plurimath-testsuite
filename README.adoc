@@ -24,7 +24,7 @@ Plurimath supports every row.
 | LaTeX       | ❌ no cases yet        | ✅ checked for all 70
 | MathML      | ❌ no cases yet        | ✅ checked for all 70
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ❌ no cases yet
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 70
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
 
@@ -67,6 +67,7 @@ Plurimath produced for it:
           </mfrac>
         </mstyle>
       </math>
+    unicodemath: "(a)/(b)"
   parse_tree:
     expr:
       frac:
