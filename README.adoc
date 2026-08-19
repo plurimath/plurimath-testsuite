@@ -20,11 +20,11 @@ Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 70 cases, 13 groups | ✅ checked for all 70
-| LaTeX       | ❌ no cases yet        | ✅ checked for all 70
-| MathML      | ❌ no cases yet        | ✅ checked for all 70
+| AsciiMath   | ✅ 76 cases, 14 groups | ✅ checked for all 76
+| LaTeX       | ❌ no cases yet        | ✅ checked for all 76
+| MathML      | ❌ no cases yet        | ✅ checked for all 76
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ✅ checked for all 70
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 76
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
 
@@ -32,7 +32,10 @@ Groups, and the cases in each:
 
 `numbers` 5, `symbols` 7, `operators` 6, `fences` 6, `frac` 6, `powers` 8,
 `roots` 4, `unary-functions` 7, `quoted-text` 3, `nary` 6, `matrices` 2,
-`mixed` 5, `whitespace` 5.
+`mixed` 5, `permissive` 6, `whitespace` 5.
+
+`scripts/validate.rb` checks these numbers against the corpus, so they cannot
+drift again — they had already drifted twice before the check existed.
 
 == Using it
 
