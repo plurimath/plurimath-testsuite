@@ -8,15 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-<<<<<<< HEAD
-  sha256: b805c3ac72b391012f2cd30c17d9737dbb0d4fec78e57157da32ef791a575f45
+  sha256: '08691771a9144b929bbc573eccda1aedd2c8ad4e1e39afcc509680cf84cf253d'
   repository:
-    commit: 7246692765c155dd02f7ad5a8b9b206d78e5ab3f
-=======
-  sha256: '068298fc4f6a5577207e3cad62d2dd98094d513ca7b7d023a36081ac9bd3655f'
-  repository:
-    commit: 84b8a550affc01966c9cd6b42c4198143f4d4696
->>>>>>> feat/rejection-cases
+    commit: 18b77fd12956f08c67afe61e9011eaae766b7031
     clean: true
     dirty_paths: []
 oracle:
@@ -76,16 +70,11 @@ payloads:
   sha256: 2b69e6f35c952a09f7b6be364ce9fa8fe114fcbd2d582f72be319c2a775e39fb
   bytes: 3782
 - path: asciimath/operators.yaml
-<<<<<<< HEAD
   sha256: f405a6e3836b61607fc5d45a852ee43b4f14719944a876ad950b5bf4fdaa1e90
   bytes: 6031
-=======
-  sha256: 311ccec6b1503d78ae7f4ce5c5294a75e9e96898c4b708c47e1859eb7876a002
-  bytes: 5873
 - path: asciimath/permissive.yaml
-  sha256: 23b81078f32a568a06565b7681eda9469d7c5f891b799f56feef9e59eb146988
-  bytes: 6190
->>>>>>> feat/rejection-cases
+  sha256: aaec7436f87e8be619fbf2698cc2de1fa82311c1a5cf5b9a0d4d6fb2c06adabd
+  bytes: 5633
 - path: asciimath/powers.yaml
   sha256: 19a79bca50f51ce8c6365e9fa442cc02e57abe865801e740a5f0201da0d4a4ef
   bytes: 11043
