@@ -175,6 +175,19 @@ module CorpusGenerator
       ["mixed-binomial-square", "(x+y)^2 = x^2 + 2xy + y^2"],
       ["mixed-sum-of-cubes", "sum_(i=1)^n i^3=((n(n+1))/2)^2"],
     ]],
+    ["permissive", "Inputs that look malformed and parse anyway", [
+      # The acceptance half of the malformed-input sweep. These were measured
+      # as ACCEPTED and then recorded nowhere, so a port could refuse every one
+      # of them and still pass this corpus — the rejection cases alone check
+      # only that a port refuses enough, never that it accepts enough.
+      ["permissive-trailing-caret", "x^"],
+      ["permissive-unclosed-paren", "(a"],
+      ["permissive-unopened-paren", "a)"],
+      ["permissive-bare-sqrt", "sqrt("],
+      ["permissive-closing-run", "))))"],
+      ["permissive-bare-dollar", "$"],
+      ["permissive-frac-then-operator", "a/ + b"],
+    ]],
     ["whitespace", "Whitespace runs, which exercise one-character matching", [
       ["whitespace-around-operator", "x  +  y"],
       ["whitespace-between-letters", "a   b"],
@@ -497,6 +510,14 @@ module CorpusGenerator
     ["backtick-bare", "`"],
     ["right-without-left", "right"],
     ["right-unclosed", "left( x right"],
+    # Rejections whose PREPROCESSED text is a different LENGTH from the input.
+    # Without at least one of these, every recorded offset is an offset into
+    # both texts at once, and a consumer that never maps between them passes
+    # anyway. Measured lengths: 4->3, 7->5, 7->5, 12->8.
+    ["frac-trailing-after-brace", "{:a/"],
+    ["frac-trailing-after-braces", "{:x:}a/"],
+    ["frac-trailing-after-parens", "(:x:)y/"],
+    ["frac-trailing-after-both", "{:a:}(:b:)c/"],
   ].freeze
 
   # Parslet reports the *root* rule's failure position, which is 0 for every
