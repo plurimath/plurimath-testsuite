@@ -1,0 +1,13 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: Healthy payload whose offset sits just past the last character, as a premature-end failure does.
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/
+  error:
+    category: parse_error
+    index: 2

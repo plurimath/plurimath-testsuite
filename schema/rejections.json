@@ -1,0 +1,113 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/rejections/1",
+  "title": "Plurimath conformance rejection group",
+  "description": "Inputs the oracle gem REFUSES, so an implementation can be checked on what it must not accept. A positive corpus records only successes, which means a port returning something plausible wherever the gem raises passes every case in `cases/1` and is still wrong. This is a separate payload kind rather than a variant of a case: `expected`, `parse_tree` and `model` are all required there and none of them exists for an input that never parsed, and a rejection group has no `targets` because nothing is rendered.",
+  "type": "object",
+  "required": [
+    "schema",
+    "group",
+    "description",
+    "input_format",
+    "cases"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "description": "Schema this payload follows. A kind, like `provenance`, not an input format: the format is carried per payload in `input_format`.",
+      "type": "string",
+      "const": "plurimath-corpus/rejections/1"
+    },
+    "group": {
+      "description": "Equals the file's stem; scripts/validate.rb enforces the agreement.",
+      "$ref": "#/$defs/slug"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_format": {
+      "$ref": "#/$defs/input_format"
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/rejection"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+    },
+    "input_format": {
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicode",
+        "unitsml"
+      ]
+    },
+    "error_category": {
+      "description": "What the gem raised. Only `parse_error` today, and deliberately so: this corpus records bad *inputs*, and every bad input reaches the same public boundary. `Plurimath::Math.parse` rescues everything and re-raises `Math::ParseError` with `cause: nil`, so a grammar failure cannot be told apart from any other parse-time failure from outside. The gem's other errors were probed and come from bad *arguments* rather than bad input (`Math::InvalidTypeError` for an unknown format, `Math::ParseOptionError` for a bad `formatter:`, `Errors::UnsupportedLocale` for a bad `locale:`), which is a different axis this corpus does not cover. Naming them here would put values in a shared contract that nothing produces; a later kind of case gets a schema version instead.",
+      "type": "string",
+      "enum": [
+        "parse_error"
+      ]
+    },
+    "rejection": {
+      "type": "object",
+      "required": [
+        "id",
+        "input",
+        "input_format",
+        "preprocessed",
+        "error"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Stable identifier, unique within the group; scripts/validate.rb enforces the uniqueness, which one schema item cannot see of its siblings.",
+          "$ref": "#/$defs/slug"
+        },
+        "input": {
+          "description": "The input as written. Never empty: an implementation has to be given something to refuse.",
+          "type": "string",
+          "minLength": 1
+        },
+        "input_format": {
+          "description": "Equals the group's `input_format`; scripts/validate.rb enforces the agreement.",
+          "$ref": "#/$defs/input_format"
+        },
+        "preprocessed": {
+          "description": "The input after the format's preprocessing pass. Recorded because `index` is an offset into THIS text, not into `input`: AsciiMath's parser rewrites `{:` and friends to single characters before parsing, which shifts every later offset. Each implementation maps back through its own offset map.",
+          "type": "string"
+        },
+        "error": {
+          "type": "object",
+          "required": [
+            "category"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "category": {
+              "$ref": "#/$defs/error_category"
+            },
+            "index": {
+              "description": "Character offset into `preprocessed` where the parse failed, when the gem exposed one. The public `Math::ParseError` carries no position, so this comes from the `Parslet::ParseFailed` underneath it — but NOT from `parse_failure_cause.pos` directly, which is 0 for every rejection recorded here because the root cause is the whole-input rule. The generator walks that cause tree and takes the furthest position any branch reached, which is the offset a reader means by \"where it failed\". Absent whenever the failure did not come from the grammar at all.",
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "description": "What the gem did, at the coarseness its public boundary exposes. The gem's message is deliberately NOT recorded: it is a multi-line banner carrying an issue-tracker URL, no consumer may assert on it, and embedding it would make an upstream wording change rewrite every payload's bytes and every provenance digest without a single conformance change."
+        }
+      }
+    }
+  }
+}

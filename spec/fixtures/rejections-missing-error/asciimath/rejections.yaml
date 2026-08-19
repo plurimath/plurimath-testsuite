@@ -1,0 +1,10 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: "Healthy template with one planted defect: a case carries no error."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/

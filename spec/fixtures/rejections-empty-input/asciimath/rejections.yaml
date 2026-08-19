@@ -1,0 +1,12 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: "Healthy template with one planted defect: the input is empty, so there is nothing to refuse."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: ""
+  input_format: asciimath
+  preprocessed: ""
+  error:
+    category: parse_error

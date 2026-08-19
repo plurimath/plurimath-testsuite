@@ -1,0 +1,18 @@
+---
+schema: plurimath-corpus/rejections/1
+group: rejections
+description: "Healthy template with one planted defect: two cases share an id."
+input_format: asciimath
+cases:
+- id: frac-trailing
+  input: a/
+  input_format: asciimath
+  preprocessed: a/
+  error:
+    category: parse_error
+- id: frac-trailing
+  input: "/b"
+  input_format: asciimath
+  preprocessed: "/b"
+  error:
+    category: parse_error

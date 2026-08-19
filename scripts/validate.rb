@@ -605,6 +605,7 @@ module Testsuite
       @corpus_paths = files
       files.each { |file| validate_file(file, schemas) }
       check_integrity if @integrity
+      check_readme
 
       puts
       summary
@@ -791,6 +792,11 @@ module Testsuite
           input_format_errors(document, relative) +
           case_id_errors(document["cases"]) +
           target_coverage_errors(document["targets"], document["cases"])
+      elsif rejection_cases?(document)
+        group_name_errors(document, relative) +
+          rejection_format_errors(document, relative) +
+          case_id_errors(document["cases"]) +
+          rejection_index_errors(document["cases"])
       else
         []
       end
@@ -816,6 +822,63 @@ module Testsuite
 
     # The schema says `group` matches the file name without its extension; a
     # schema cannot see the file name, so the promise is kept here.
+    # A rejection payload carries `cases` but no `targets`, and every case an
+    # `error` instead of an `expected`. Dispatching on that shape rather than
+    # on the schema keeps this in step with how `listed_payloads?` and
+    # `grouped_cases?` already work.
+    def rejection_cases?(document)
+      cases = document["cases"]
+      document["targets"].nil? && cases.is_a?(Array) &&
+        cases.all? { |kase| kase.is_a?(Hash) && kase["error"].is_a?(Hash) }
+    end
+
+    # Same fact-in-several-places check as `input_format_errors`, minus the
+    # schema segment: a rejection schema's middle segment is the payload KIND
+    # (`rejections`), not the input format, so comparing them would report a
+    # mismatch on every valid file.
+    def rejection_format_errors(document, relative)
+      format = document["input_format"]
+      return [] unless format.is_a?(String)
+
+      errors = []
+      directory = File.dirname(relative)
+      if directory != format
+        errors << Error.new("/input_format",
+                            "is #{format.inspect}, but the file sits in " \
+                            "#{directory}/; a group lives in the directory " \
+                            "named after its input format")
+      end
+
+      document["cases"].each_with_index do |kase, index|
+        case_format = kase["input_format"]
+        next if case_format == format
+
+        errors << Error.new("/cases/#{index}/input_format",
+                            "is #{case_format.inspect}, but the group's " \
+                            "`input_format` is #{format.inspect}; a case " \
+                            "does not switch formats mid-group")
+      end
+      errors
+    end
+
+    # `index` is an offset into `preprocessed`, so it has to be inside it.
+    # `== length` is legitimate: a premature-end failure points just past the
+    # last character. Past that is a position in no text, which a consumer
+    # mapping offsets would read straight off the end.
+    def rejection_index_errors(cases)
+      cases.each_with_index.filter_map do |kase, index|
+        offset = kase.dig("error", "index")
+        text = kase["preprocessed"]
+        next unless offset.is_a?(Integer) && text.is_a?(String)
+        next unless offset > text.length
+
+        Error.new("/cases/#{index}/error/index",
+                  "is #{offset}, but `preprocessed` is #{text.length} " \
+                  "character(s); the offset points outside the text it " \
+                  "describes")
+      end
+    end
+
     def group_name_errors(document, relative)
       group = document["group"]
       stem = File.basename(relative, ".*")
@@ -1085,6 +1148,76 @@ module Testsuite
       errors.first(25).each { |error| puts "          #{error}" }
       puts "          ... #{errors.length - 25} more" if errors.length > 25
       nil
+    end
+
+    # The README states the corpus's size and its group inventory in prose, and
+    # prose drifts. It has already drifted twice: it claimed 70 cases in 13
+    # groups while the corpus held 76 in 14, and then 91 in 18. A consumer
+    # deciding whether this corpus covers their format reads exactly those
+    # numbers, so a stale one is a false claim about a shared contract — the
+    # same class of defect as a wrong schema description, and worth failing on.
+    def check_readme
+      path = File.join(File.dirname(@corpus_root), "README.adoc")
+      return unless File.file?(path)
+
+      text = File.read(path)
+      errors = readme_count_errors(text) + readme_group_errors(text)
+      return failure(relative_to_corpus(path), errors) if errors.any?
+
+      puts "  OK    #{'README.adoc'.ljust(52)} counts and group inventory match the corpus"
+    end
+
+    def readme_count_errors(text)
+      errors = []
+      actual_cases = positive_cases.length
+      actual_groups = positive_groups.length
+
+      stated = text[/^\| AsciiMath\s+\|[^|]*?(\d+) cases, (\d+) groups/, 0]
+      if stated.nil?
+        errors << "no \"N cases, N groups\" claim found in the coverage table"
+      else
+        cases, groups = text.match(/^\| AsciiMath\s+\|[^|]*?(\d+) cases, (\d+) groups/)[1..2].map(&:to_i)
+        errors << "coverage table says #{cases} cases, corpus has #{actual_cases}" if cases != actual_cases
+        errors << "coverage table says #{groups} groups, corpus has #{actual_groups}" if groups != actual_groups
+      end
+
+      text.scan(/checked for all (\d+)/).flatten.map(&:to_i).uniq.each do |claimed|
+        errors << "coverage table says \"checked for all #{claimed}\", corpus has #{actual_cases}" if claimed != actual_cases
+      end
+      errors
+    end
+
+    def readme_group_errors(text)
+      listed = text.scan(/`([a-z][a-z0-9-]*)`\s+(\d+)/).to_h { |name, n| [name, n.to_i] }
+      return ["no group inventory found"] if listed.empty?
+
+      actual = positive_groups
+      errors = []
+      (actual.keys - listed.keys).sort.each { |name| errors << "group inventory omits `#{name}` (#{actual[name]} cases)" }
+      (listed.keys - actual.keys).sort.each { |name| errors << "group inventory lists `#{name}`, which the corpus does not have" }
+      (actual.keys & listed.keys).sort.each do |name|
+        errors << "group inventory says `#{name}` #{listed[name]}, corpus has #{actual[name]}" if listed[name] != actual[name]
+      end
+      errors
+    end
+
+    # Positive (renderable) payloads only: a rejection group has no expectations
+    # and is counted separately everywhere else too.
+    def positive_groups
+      @positive_groups ||= payload_files.each_with_object({}) do |path, groups|
+        document = YAML.safe_load_file(path)
+        # Positive payloads are every payload kind EXCEPT rejections; matching
+        # on a "cases/" segment was wrong, because the case schema is named for
+        # its input format (`plurimath-corpus/asciimath/1`).
+        schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
+        next if schema.empty? || schema.include?("rejections/")
+
+        groups[document["group"].to_s] = Array(document["cases"]).length
+      end
+    end
+
+    def positive_cases
+      @positive_cases ||= positive_groups.values.sum.then { |n| ::Array.new(n) }
     end
 
     def summary
