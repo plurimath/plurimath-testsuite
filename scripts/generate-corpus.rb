@@ -198,6 +198,24 @@ module CorpusGenerator
       ["mod-numeric", "x mod 2"],
       ["mod-in-expression", "(a + b) mod n"],
     ]],
+    ["permissive", "Inputs that look malformed and parse anyway", [
+      # The acceptance half of the malformed-input sweep. These were measured
+      # as ACCEPTED and then recorded nowhere, so a port could refuse every one
+      # of them and still pass this corpus — the rejection cases alone check
+      # only that a port refuses enough, never that it accepts enough.
+      ["permissive-trailing-caret", "x^"],
+      ["permissive-unclosed-paren", "(a"],
+      ["permissive-unopened-paren", "a)"],
+      ["permissive-closing-run", "))))"],
+      # `sqrt(` is deliberately ABSENT. The gem accepts it as AsciiMath input
+      # and renders it to asciimath, latex and mathml — but `to_unicodemath`
+      # RAISES on the resulting formula, so it cannot carry an expectation for
+      # every declared target and this corpus shape has nowhere to put it. It
+      # is the one input in the sweep the gem accepts and then cannot fully
+      # render; recorded here rather than silently dropped.
+      ["permissive-bare-dollar", "$"],
+      ["permissive-frac-then-operator", "a/ + b"],
+    ]],
     ["whitespace", "Whitespace runs, which exercise one-character matching", [
       ["whitespace-around-operator", "x  +  y"],
       ["whitespace-between-letters", "a   b"],
@@ -526,6 +544,14 @@ module CorpusGenerator
     # guessed symmetry would have put all four in the wrong place.
     ["left-right-curly", "left{ x right}"],
     ["left-right-vert", "left| x right|"],
+    # Rejections whose PREPROCESSED text is a different LENGTH from the input.
+    # Without at least one of these, every recorded offset is an offset into
+    # both texts at once, and a consumer that never maps between them passes
+    # anyway. Measured lengths: 4->3, 7->5, 7->5, 12->8.
+    ["frac-trailing-after-brace", "{:a/"],
+    ["frac-trailing-after-braces", "{:x:}a/"],
+    ["frac-trailing-after-parens", "(:x:)y/"],
+    ["frac-trailing-after-both", "{:a:}(:b:)c/"],
   ].freeze
 
   # Parslet reports the *root* rule's failure position, which is 0 for every
