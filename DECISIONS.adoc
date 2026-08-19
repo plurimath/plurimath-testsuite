@@ -1,0 +1,48 @@
+= Open decisions
+
+Questions this corpus has not answered yet. An entry here is a question; a
+comment in `scripts/generate-corpus.rb` is an answer already given. Every entry
+names what would settle it.
+
+== Should a case be able to record a rendering FAILURE for one target?
+
+Status: open. Raised by an adversarial review, 2026-08-19.
+
+`sqrt(` is accepted by the gem as AsciiMath and renders to three of the four
+declared targets:
+
+[source]
+----
+parse=accepted  class=Plurimath::Math::Formula
+asciimath = "sqrt"          latex = "\sqrt{}"
+mathml    = "<...msqrt/...>"  unicodemath = RAISED Plurimath::Math::ParseError
+----
+
+A group declares one `targets` list for all its cases, and every case must
+carry an expectation for each declared target, so there is nowhere to put an
+input that renders to some targets and not others. `sqrt(` is therefore absent
+from the corpus entirely — which means **a port may refuse it outright and
+still pass**, the same acceptance gap the `permissive` group was added to
+close.
+
+Three ways out:
+
+. *Record the failure.* Let an `expected` value be either bytes or a recorded
+  error, so the corpus states "the gem raises here". Most faithful: a port that
+  successfully renders `sqrt(` to UnicodeMath is MORE correct than the gem,
+  which `PORTING-STANDARDS.md` calls a defect, and only this option catches it.
+  Costs a schema version, and changes the validator, the generator, and every
+  consumer's reader.
+. *A group with a narrower `targets` list.* Already legal — `targets` is
+  per-group with `minItems: 1`. Records `sqrt(` as accepted with three renders
+  and closes the acceptance gap, but says nothing about the UnicodeMath raise,
+  so the "more correct than the gem" case stays uncaught. Needs a per-group
+  targets override in the generator and a named exception in the consumer's
+  every-group-declares-every-target check.
+. *Leave it out*, and accept that one measured acceptance is unenforceable.
+
+Settled by: whichever the maintainers choose. It is a shared-contract question,
+not an implementation one — a second implementation reads this schema.
+
+Until then the gap is deliberate and named here rather than silent: option 3 is
+in force, and `scripts/generate-corpus.rb` says so at the `permissive` group.
