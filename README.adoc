@@ -24,7 +24,7 @@ Plurimath supports every row.
 | LaTeX       | ❌ no cases yet        | ✅ checked for all 76
 | MathML      | ❌ no cases yet        | ✅ checked for all 76
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ✅ checked for all 70
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 76
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
 
