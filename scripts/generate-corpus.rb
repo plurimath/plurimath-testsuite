@@ -183,8 +183,13 @@ module CorpusGenerator
       ["permissive-trailing-caret", "x^"],
       ["permissive-unclosed-paren", "(a"],
       ["permissive-unopened-paren", "a)"],
-      ["permissive-bare-sqrt", "sqrt("],
       ["permissive-closing-run", "))))"],
+      # `sqrt(` is deliberately ABSENT. The gem accepts it as AsciiMath input
+      # and renders it to asciimath, latex and mathml — but `to_unicodemath`
+      # RAISES on the resulting formula, so it cannot carry an expectation for
+      # every declared target and this corpus shape has nowhere to put it. It
+      # is the one input in the sweep the gem accepts and then cannot fully
+      # render; recorded here rather than silently dropped.
       ["permissive-bare-dollar", "$"],
       ["permissive-frac-then-operator", "a/ + b"],
     ]],
