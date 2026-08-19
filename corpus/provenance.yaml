@@ -10,7 +10,7 @@ generator:
   path: scripts/generate-corpus.rb
   sha256: '08691771a9144b929bbc573eccda1aedd2c8ad4e1e39afcc509680cf84cf253d'
   repository:
-    commit: 18b77fd12956f08c67afe61e9011eaae766b7031
+    commit: 2bac80bd8f0e5104239e2c080990c6e51d5e3e61
     clean: true
     dirty_paths: []
 oracle:
