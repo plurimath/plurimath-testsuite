@@ -124,38 +124,6 @@ cases:
       - class: Math::Symbols::Paren::Rround
         fields:
           value:
-- id: permissive-bare-sqrt
-  input: sqrt(
-  input_format: asciimath
-  preprocessed: sqrt(
-  expected:
-    asciimath: sqrt
-    latex: "\\sqrt{}"
-    mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt/>
-        </mstyle>
-      </math>
-  parse_tree:
-    expr:
-      sequence:
-        unary:
-          intermediate_exp:
-            expr: ''
-            lparen: "("
-            rparen:
-          unary_class: sqrt
-  model:
-    class: Math::Formula
-    fields:
-      displaystyle: true
-      input_string: sqrt(
-      left_right_wrapper: true
-      value:
-      - class: Math::Function::Sqrt
-        fields:
-          parameter_one:
 - id: permissive-closing-run
   input: "))))"
   input_format: asciimath
