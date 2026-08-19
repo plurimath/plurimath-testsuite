@@ -56,3 +56,31 @@ cases:
   error:
     category: parse_error
     index: 13
+- id: frac-trailing-after-brace
+  input: "{:a/"
+  input_format: asciimath
+  preprocessed: ℒa/
+  error:
+    category: parse_error
+    index: 2
+- id: frac-trailing-after-braces
+  input: "{:x:}a/"
+  input_format: asciimath
+  preprocessed: ℒxℛa/
+  error:
+    category: parse_error
+    index: 4
+- id: frac-trailing-after-parens
+  input: "(:x:)y/"
+  input_format: asciimath
+  preprocessed: ᑕxᑐy/
+  error:
+    category: parse_error
+    index: 4
+- id: frac-trailing-after-both
+  input: "{:a:}(:b:)c/"
+  input_format: asciimath
+  preprocessed: ℒaℛᑕbᑐc/
+  error:
+    category: parse_error
+    index: 7
