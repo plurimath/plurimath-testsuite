@@ -175,6 +175,29 @@ module CorpusGenerator
       ["mixed-binomial-square", "(x+y)^2 = x^2 + 2xy + y^2"],
       ["mixed-sum-of-cubes", "sum_(i=1)^n i^3=((n(n+1))/2)^2"],
     ]],
+    ["fonts", "Font-style commands, which wrap their argument in a FontStyle", [
+      ["font-bold", "bb(x)"],
+      ["font-blackboard", "bbb(x)"],
+      ["font-script", "cc(x)"],
+      ["font-typewriter", "tt(x)"],
+      ["font-fraktur", "fr(x)"],
+      ["font-sans-serif", "sf(x)"],
+      ["font-mixed", "bb(A) + cc(B)"],
+    ]],
+    ["colour", "Colour, whose first argument is a colour name rather than math", [
+      ["colour-named", "color(red)(x)"],
+      ["colour-in-sum", "color(blue)(x) + y"],
+    ]],
+    ["left-right", "Explicit left/right fences, which carry their own paren nodes", [
+      ["left-right-round", "left( x right)"],
+      ["left-right-square", "left[ x right]"],
+      ["left-right-around-frac", "left( a/b right)"],
+    ]],
+    ["mod", "The mod operator, a binary function with no parens of its own", [
+      ["mod-simple", "a mod b"],
+      ["mod-numeric", "x mod 2"],
+      ["mod-in-expression", "(a + b) mod n"],
+    ]],
     ["permissive", "Inputs that look malformed and parse anyway", [
       # The acceptance half of the malformed-input sweep. These were measured
       # as ACCEPTED and then recorded nowhere, so a port could refuse every one
@@ -515,6 +538,12 @@ module CorpusGenerator
     ["backtick-bare", "`"],
     ["right-without-left", "right"],
     ["right-unclosed", "left( x right"],
+    # Measured, not assumed: the gem ACCEPTS `left( x right)` and
+    # `left[ x right]` but REFUSES the curly and vertical forms, so these two
+    # belong here rather than in the positive corpus. A candidate list that
+    # guessed symmetry would have put all four in the wrong place.
+    ["left-right-curly", "left{ x right}"],
+    ["left-right-vert", "left| x right|"],
     # Rejections whose PREPROCESSED text is a different LENGTH from the input.
     # Without at least one of these, every recorded offset is an offset into
     # both texts at once, and a consumer that never maps between them passes

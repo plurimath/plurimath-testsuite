@@ -1181,7 +1181,24 @@ module Testsuite
         errors << "coverage table says #{groups} groups, corpus has #{actual_groups}" if groups != actual_groups
       end
 
-      text.scan(/checked for all (\d+)/).flatten.map(&:to_i).uniq.each do |claimed|
+      # Guarded the way `readme_group_errors` guards its inventory. Without
+      # this, deleting every "checked for all N" row left the loop below with
+      # nothing to iterate and the check reported success — a vacuous pass for
+      # the exact drift this section of the README says it prevents.
+      #
+      # The expected COUNT is derived rather than fixed at "at least one", so
+      # dropping a single target's row fails too: one claim per target the
+      # corpus actually renders.
+      claims = text.scan(/checked for all (\d+)/).flatten.map(&:to_i)
+      expected_claims = positive_targets.length
+      if claims.length != expected_claims
+        errors << "coverage table makes #{claims.length} \"checked for all N\" " \
+                  "claim#{'s' unless claims.length == 1}, corpus renders " \
+                  "#{expected_claims} target#{'s' unless expected_claims == 1} " \
+                  "(#{positive_targets.join(', ')})"
+      end
+
+      claims.uniq.each do |claimed|
         errors << "coverage table says \"checked for all #{claimed}\", corpus has #{actual_cases}" if claimed != actual_cases
       end
       errors
@@ -1218,6 +1235,20 @@ module Testsuite
 
     def positive_cases
       @positive_cases ||= positive_groups.values.sum.then { |n| ::Array.new(n) }
+    end
+
+    # Every target the positive payloads declare, sorted and deduplicated.
+    # `targets` is declared once per payload, so this is the set of formats the
+    # corpus actually checks output for — what the README's "checked for all N"
+    # rows are claiming, one row each.
+    def positive_targets
+      @positive_targets ||= payload_files.each_with_object([]) do |path, targets|
+        document = YAML.safe_load_file(path)
+        schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
+        next if schema.empty? || schema.include?("rejections/")
+
+        targets.concat(Array(document["targets"]).map(&:to_s))
+      end.uniq.sort
     end
 
     def summary

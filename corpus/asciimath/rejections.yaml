@@ -56,6 +56,20 @@ cases:
   error:
     category: parse_error
     index: 13
+- id: left-right-curly
+  input: left{ x right}
+  input_format: asciimath
+  preprocessed: left{ x right}
+  error:
+    category: parse_error
+    index: 8
+- id: left-right-vert
+  input: left| x right|
+  input_format: asciimath
+  preprocessed: left| x right|
+  error:
+    category: parse_error
+    index: 8
 - id: frac-trailing-after-brace
   input: "{:a/"
   input_format: asciimath
