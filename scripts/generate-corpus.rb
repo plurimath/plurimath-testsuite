@@ -33,6 +33,11 @@ module CorpusGenerator
   GENERATOR_PATH = "scripts/generate-corpus.rb"
 
   CORPUS_SCHEMA = "plurimath-corpus/asciimath/1"
+  # Same case shape as CORPUS_SCHEMA, except that every target carries an
+  # OUTCOME — a rendering or a refusal — instead of a string. Used only by the
+  # groups that need it: the `cases/1` groups are not converted, not rewritten,
+  # and not deprecated.
+  OUTCOME_CORPUS_SCHEMA = "plurimath-corpus/asciimath/2"
   REJECTIONS_SCHEMA = "plurimath-corpus/rejections/1"
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
@@ -626,6 +631,82 @@ module CorpusGenerator
     end
   end
 
+  # --- partially renderable cases (cases/2) --------------------------------
+
+  # Inputs the gem ACCEPTS but renders to only SOME targets. `cases/1` cannot
+  # hold one: it demands a rendered string from every case for every target,
+  # so these were simply left out of the corpus — and an input left out is an
+  # input a port may refuse while still passing every case here. They get the
+  # `cases/2` shape, where each target carries an outcome.
+  #
+  # Measured, not assumed. `sqrt(` parses (`Math::Formula`), renders to
+  # asciimath, latex and mathml, and raises `Math::ParseError` from
+  # `to_unicodemath`. `build_partial_cases` fails the run if a candidate here
+  # renders to EVERY target — that one belongs in a `cases/1` group, and a
+  # list that quietly kept it would be claiming a refusal that stopped
+  # happening.
+  PARTIAL_GROUP = "partial-render"
+  PARTIAL_DESCRIPTION =
+    "Inputs the gem accepts but renders to only some targets"
+  PARTIAL_CANDIDATES = [
+    ["partial-sqrt-unclosed", "sqrt("],
+  ].freeze
+
+  # One target's outcome. The category comes from the gem's PUBLIC boundary,
+  # which is the only thing a port can be asked to reproduce: `Formula#to_*`
+  # funnels render failures through `wrap_render_error`, which re-raises
+  # `Math::ParseError` — the underlying error survives as `#cause` alone, so
+  # naming it here would name a Ruby detail no port has. Anything that is not
+  # that public error is a category the schema has no value for, and inventing
+  # one is worse than stopping: a mislabelled outcome makes every port assert
+  # the wrong thing.
+  def render_outcome(formula, target, input)
+    { "output" => formula.public_send("to_#{target}") }
+  rescue Plurimath::Math::ParseError
+    { "error" => { "category" => "parse_error" } }
+  rescue StandardError => e
+    raise Error,
+          "rendering #{input.inspect} to #{target} raised #{e.class}, " \
+          "which is not a category the cases/2 schema names"
+  end
+
+  def build_partial_case(id, input)
+    formula = Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
+    preprocessed = Plurimath::Asciimath::Parser.new(input).text
+    tree = Plurimath::Asciimath::Parse.new.parse(preprocessed)
+    outcomes = TARGET_FORMATS.to_h do |target|
+      [target, render_outcome(formula, target, input)]
+    end
+
+    if outcomes.each_value.none? { |outcome| outcome.key?("error") }
+      raise Error,
+            "the gem rendered #{input.inspect} to every target; it is not a " \
+            "partially renderable case and belongs in a cases/1 group"
+    end
+
+    {
+      "id" => id,
+      "input" => input,
+      "input_format" => INPUT_FORMAT,
+      "preprocessed" => preprocessed,
+      "expected" => outcomes,
+      "parse_tree" => serialize_tree(tree, id),
+      "model" => serialize_node(formula, id),
+    }
+  end
+
+  def build_partial_cases
+    PARTIAL_CANDIDATES.map do |id, input|
+      build_partial_case(id, input)
+    rescue Error
+      raise
+    rescue StandardError => e
+      raise Error,
+            "partial case #{id} (#{input.inspect}) failed: " \
+            "#{e.class}: #{e.message}"
+    end
+  end
+
   def build_case(id, input)
     formula = Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
     preprocessed = Plurimath::Asciimath::Parser.new(input).text
@@ -903,6 +984,23 @@ module CorpusGenerator
       payloads << [path, bytes]
     end
 
+    partial_cases = build_partial_cases
+    partial_payload = {
+      "schema" => OUTCOME_CORPUS_SCHEMA,
+      "group" => PARTIAL_GROUP,
+      "description" => PARTIAL_DESCRIPTION,
+      "input_format" => INPUT_FORMAT,
+      "targets" => TARGET_FORMATS,
+      "cases" => partial_cases,
+    }
+    partial_path = File.join(out_root, "asciimath", "#{PARTIAL_GROUP}.yaml")
+    partial_bytes = write_payload(
+      partial_path,
+      payload_header("AsciiMath conformance cases: #{PARTIAL_GROUP}."),
+      partial_payload,
+    )
+    payloads << [partial_path, partial_bytes]
+
     rejections = build_rejections
     rejection_payload = {
       "schema" => REJECTIONS_SCHEMA,
@@ -927,6 +1025,7 @@ module CorpusGenerator
     end
     puts "  #{relative(provenance_path, REPO_ROOT)}"
     puts "#{case_count} cases in #{groups.length} groups, " \
+         "#{partial_cases.length} partially renderable (cases/2), " \
          "#{rejections.length} rejections"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }

@@ -12,4 +12,10 @@ RSpec.describe Testsuite::Runner, "group and file name" do
       .to fail_validation.with_violations(1)
       .reporting('/group: is "numbers", but the file is named misnamed.yaml')
   end
+
+  it "rejects a group that is not the file's stem in a cases/2 group too" do
+    expect(validation_of(fixture("cases2-wrong-group"), "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting('/group: is "wrong", but the file is named sample.yaml')
+  end
 end

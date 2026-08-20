@@ -1,0 +1,28 @@
+schema: plurimath-corpus/asciimath/2
+group: sample
+description: "Healthy template with one planted defect: an outcome carrying a key beside its output."
+input_format: asciimath
+targets:
+- asciimath
+- unicodemath
+cases:
+- id: sqrt-unclosed
+  input: sqrt(
+  input_format: asciimath
+  preprocessed: sqrt(
+  expected:
+    asciimath:
+      output: sqrt
+      note: hand-checked
+    unicodemath:
+      error:
+        category: parse_error
+  parse_tree:
+    unary_class: sqrt
+  model:
+    class: Math::Formula
+    fields:
+      value:
+      - class: Math::Function::Sqrt
+        fields:
+          parameter_one:

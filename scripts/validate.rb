@@ -91,6 +91,19 @@ module Testsuite
         @id = root["$id"]
       end
 
+      # The kind-and-version this schema describes: its `$id`'s last two
+      # segments, e.g. `cases/1`, `cases/2`, `rejections/1`, `provenance/2`.
+      # This is the key the cross-field checks are registered under, and it
+      # comes from the `$id` rather than from the payload's declared string
+      # because those two are not the same shape: a case payload declares
+      # `plurimath-corpus/asciimath/1`, whose middle segment is the input
+      # FORMAT, while a rejections or provenance payload carries a KIND there.
+      # The `$id` spells the kind one way for all of them, and `lint!` has
+      # already required it to end in a version segment.
+      def kind
+        @id.split("/").last(2).join("/")
+      end
+
       # The value of a payload's `schema:` key that this schema claims.
       def declares
         constraint = @root.dig("properties", "schema") || {}
@@ -579,6 +592,27 @@ module Testsuite
     PAYLOAD_LAYOUT =
       %r{\A[a-z0-9]+(?:-[a-z0-9]+)*/[a-z0-9]+(?:-[a-z0-9]+)*\.yaml\z}
 
+    # Dispatch is on the schema that accepted the payload, keyed by that
+    # schema's `Schema#kind`, and a kind absent from this table FAILS its
+    # payloads. It used to be on the shape the payload happened to carry, with
+    # an `else []` at the end, and that is precisely how the rejections kind
+    # shipped once with no cross-field checks at all: its shape matched none of
+    # the predicates, the `else` returned no errors, and every rejection
+    # payload reported OK while a wrong `group`, a case switching format and a
+    # duplicate id all went unchecked. A table that must be edited to add a
+    # kind cannot repeat that; a chain of shape guesses can, silently, every
+    # time a kind is added.
+    CROSS_FIELD_CHECKS = {
+      "provenance/2" => :provenance_cross_checks,
+      "rejections/1" => :rejection_cross_checks,
+      "cases/1" => :case_cross_checks,
+      # `cases/2` differs from `cases/1` only in the shape of an expectation —
+      # an outcome object rather than a string — and all four checks read the
+      # KEYS of `expected`, never its values. So the same four apply verbatim,
+      # and this entry says that on purpose rather than by falling through.
+      "cases/2" => :case_cross_checks,
+    }.freeze
+
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
       @corpus_root = File.expand_path(corpus_root)
       @schema_dir = File.expand_path(schema_dir)
@@ -762,7 +796,7 @@ module Testsuite
       # Only once the shape is known good: these checks read fields the schema
       # has just guaranteed are there and are the right type.
       if errors.empty?
-        errors = cross_field_errors(document,
+        errors = cross_field_errors(schema, document,
                                     relative_to_corpus(File.expand_path(path)))
       end
 
@@ -783,53 +817,40 @@ module Testsuite
     # JSON Schema constrains one field at a time, so a constraint relating two
     # fields — or a field and the file it sits in — has to live here. The
     # schemas describe these constraints; this is what makes the descriptions
-    # true. `relative` is the file's path below the corpus root.
-    def cross_field_errors(document, relative)
-      if listed_payloads?(document)
-        payload_order_errors(document["payloads"])
-      elsif grouped_cases?(document)
-        group_name_errors(document, relative) +
-          input_format_errors(document, relative) +
-          case_id_errors(document["cases"]) +
-          target_coverage_errors(document["targets"], document["cases"])
-      elsif rejection_cases?(document)
-        group_name_errors(document, relative) +
-          rejection_format_errors(document, relative) +
-          case_id_errors(document["cases"]) +
-          rejection_index_errors(document["cases"])
-      else
-        []
+    # true. Which checks a payload gets is `CROSS_FIELD_CHECKS` above, and
+    # a kind that is not in it fails rather than going unchecked.
+    #
+    # `relative` is the file's path below the corpus root.
+    def cross_field_errors(schema, document, relative)
+      check = CROSS_FIELD_CHECKS[schema.kind]
+      unless check
+        return [Error.new("/schema",
+                          "is validated by #{schema.kind}, which " \
+                          "scripts/validate.rb registers no cross-field " \
+                          "checks for; a payload kind checked by its schema " \
+                          "alone is unchecked on every constraint that " \
+                          "relates two fields")]
       end
+
+      send(check, document, relative)
     end
 
-    # Dispatch is on the shape a payload carries, not the schema that accepted
-    # it, so a payload kind added later is skipped rather than crashing these
-    # checks. For the kinds that do match, the schema has already guaranteed
-    # the shape by the time this runs.
-    def listed_payloads?(document)
-      entries = document["payloads"]
-      entries.is_a?(Array) &&
-        entries.all? do |entry|
-          entry.is_a?(Hash) && entry["path"].is_a?(String)
-        end
+    def provenance_cross_checks(document, _relative)
+      payload_order_errors(document["payloads"])
     end
 
-    def grouped_cases?(document)
-      cases = document["cases"]
-      document["targets"].is_a?(Array) && cases.is_a?(Array) &&
-        cases.all? { |kase| kase.is_a?(Hash) && kase["expected"].is_a?(Hash) }
+    def case_cross_checks(document, relative)
+      group_name_errors(document, relative) +
+        input_format_errors(document, relative) +
+        case_id_errors(document["cases"]) +
+        target_coverage_errors(document["targets"], document["cases"])
     end
 
-    # The schema says `group` matches the file name without its extension; a
-    # schema cannot see the file name, so the promise is kept here.
-    # A rejection payload carries `cases` but no `targets`, and every case an
-    # `error` instead of an `expected`. Dispatching on that shape rather than
-    # on the schema keeps this in step with how `listed_payloads?` and
-    # `grouped_cases?` already work.
-    def rejection_cases?(document)
-      cases = document["cases"]
-      document["targets"].nil? && cases.is_a?(Array) &&
-        cases.all? { |kase| kase.is_a?(Hash) && kase["error"].is_a?(Hash) }
+    def rejection_cross_checks(document, relative)
+      group_name_errors(document, relative) +
+        rejection_format_errors(document, relative) +
+        case_id_errors(document["cases"]) +
+        rejection_index_errors(document["cases"])
     end
 
     # Same fact-in-several-places check as `input_format_errors`, minus the
