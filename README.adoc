@@ -20,20 +20,25 @@ Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 91 cases, 18 groups | ✅ checked for all 91
-| LaTeX       | ❌ no cases yet        | ✅ checked for all 91
-| MathML      | ❌ no cases yet        | ✅ checked for all 91
+| AsciiMath   | ✅ 92 cases, 19 groups | ✅ checked for all 92
+| LaTeX       | ❌ no cases yet        | ✅ checked for all 92
+| MathML      | ❌ no cases yet        | ✅ checked for all 92
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ✅ checked for all 91
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 92, one a refusal
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
+
+Every case carries an expectation for every output format above that is
+ticked. An expectation is usually a rendering; one of them is a refusal, and
+the section on outcome payloads below says why that is recorded rather than
+omitted.
 
 Groups, and the cases in each:
 
 `numbers` 5, `symbols` 7, `operators` 6, `fences` 6, `frac` 6, `powers` 8,
 `roots` 4, `unary-functions` 7, `quoted-text` 3, `nary` 6, `matrices` 2,
 `mixed` 5, `permissive` 6, `fonts` 7, `colour` 2, `left-right` 3,
-`mod` 3, `whitespace` 5.
+`mod` 3, `whitespace` 5, `partial-render` 1.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
 drift again — they had already drifted twice before the check existed.
@@ -50,7 +55,7 @@ There is no build step and no published package. The YAML is the artifact.
 
 == Format
 
-There are two kinds of payload. A **case** records one input and what
+There are three kinds of payload. A **case** records one input and what
 Plurimath produced for it:
 
 [source,yaml]
@@ -152,6 +157,84 @@ offset map. Absent when the failure did not come from the grammar.
 An implementation is conformant when it refuses every one of these. Asserting
 the offset is a stronger claim and needs that mapping; asserting the refusal
 alone is a valid, weaker conformance.
+
+=== Outcome payloads
+
+The third kind. Some inputs Plurimath **accepts** render to only some of the
+targets. `sqrt(` is one: it parses, it renders to AsciiMath, LaTeX and MathML,
+and `to_unicodemath` raises.
+
+The case shape above cannot hold that. A group declares one `targets` list and
+every case must carry an expectation for every target in it, so an input like
+this had nowhere to go and was left out. Leaving it out is not neutral: an
+implementation that refuses `sqrt(` outright passes every case in the corpus
+and is still wrong about an input the gem accepts.
+
+Such groups declare `plurimath-corpus/<input-format>/2` instead, and there
+each target carries an **outcome** — exactly one of a rendering or a refusal:
+
+[source,yaml]
+----
+schema: plurimath-corpus/asciimath/2
+group: partial-render
+input_format: asciimath
+targets:
+- asciimath
+- latex
+- mathml
+- unicodemath
+cases:
+- id: partial-sqrt-unclosed
+  input: sqrt(
+  input_format: asciimath
+  preprocessed: sqrt(
+  expected:
+    asciimath:
+      output: sqrt
+    latex:
+      output: "\\sqrt{}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <msqrt/>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+  parse_tree: ...
+  model: ...
+----
+
+`output`:: exactly the bytes the gem produced, as in a case above.
+`error.category`:: the target refused to render. `parse_error` is the only
+value, for the same reason it is in a rejection: `Math::Formula#to_unicodemath`
+and its siblings funnel render failures through `wrap_render_error`, which
+re-raises `Math::ParseError` — measured on `sqrt(`, the underlying
+`NoMethodError` survives only as `#cause`. The category names what the public
+boundary says, so it stays portable; which target refused, and at which
+operation, is already said by the key the outcome sits under.
+
+There is no `index` here. An offset would point into `preprocessed`, and by
+the time a target renders, `preprocessed` has already parsed: the refusal is
+downstream of the text, and no position in it describes the failure.
+
+`parse_tree` and `model` are still required, and still mean what they mean
+above. The input parsed, so there is a tree and a model to reproduce; only the
+rendering of that model failed.
+
+The schemas use `oneOf` with `additionalProperties: false` in both branches, so
+an outcome carrying both keys is refused and so is an empty one. Two states,
+exhaustive and exclusive, with no third for an implementation to slip through.
+
+This is additive. Nothing in `cases/1` was converted, and `cases/1` is not
+deprecated: a group whose every case renders to every target stays there and
+stays byte-for-byte what it was. A payload names its own schema, and
+`scripts/validate.rb` dispatches on that name, so both kinds sit in the corpus
+side by side. A consumer that understands only `cases/1` keeps working
+untouched — it reads the groups it already read, and skips the ones declaring
+a schema it does not know.
 
 === What `model:` means
 

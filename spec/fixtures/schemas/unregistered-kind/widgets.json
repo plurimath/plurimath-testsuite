@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.test/schema/widgets/1",
+  "description": "A payload kind scripts/validate.rb has no cross-field checks for. It is deliberately permissive: the point is that a payload can satisfy its schema completely and still be unchecked on every constraint that relates two fields, which is what the validator must refuse to do silently.",
+  "type": "object",
+  "required": ["schema", "group"],
+  "properties": {
+    "schema": { "const": "plurimath-corpus/widgets/1" },
+    "group": { "type": "string" }
+  }
+}

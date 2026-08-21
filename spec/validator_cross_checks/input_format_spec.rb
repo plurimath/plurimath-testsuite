@@ -25,4 +25,27 @@ RSpec.describe Testsuite::Runner, "input_format agreement" do
       .reporting("/cases/0/input_format",
                  "a case does not switch formats mid-group")
   end
+
+  it "rejects a cases/2 input_format disagreeing with its declaration" do
+    expect(validation_of(fixture("cases2-format-vs-schema-segment"),
+                         "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("/input_format",
+                 "`schema: plurimath-corpus/asciimath/2`")
+  end
+
+  it "rejects a cases/2 group filed in the wrong directory" do
+    expect(validation_of(fixture("cases2-format-vs-directory"),
+                         "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting('/input_format: is "asciimath", but the file sits in mathml/')
+  end
+
+  it "rejects a cases/2 case that switches format mid-group" do
+    expect(validation_of(fixture("cases2-case-format-drift"),
+                         "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("/cases/0/input_format",
+                 "a case does not switch formats mid-group")
+  end
 end

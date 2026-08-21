@@ -87,4 +87,20 @@ and rewording them would invalidate the recorded byte counts.
 | `rejections-duplicate-id` | rejections cross-field: ids are unique within a group |
 | `rejections-index-past-end` | rejections cross-field: the offset lies inside `preprocessed` |
 | `rejections-index-at-end` | healthy twin: offset == length, as a premature-end failure gives, must still pass |
+| `cases2-healthy` | healthy twin: a valid `cases/2` payload, so the defective ones below fail only on their planted defect |
+| `cases2-outcome-both` | cases/2 schema: `oneOf` exclusivity — an outcome cannot both render and refuse |
+| `cases2-outcome-empty` | cases/2 schema: `oneOf` exhaustiveness — an outcome that says nothing is not a third state |
+| `cases2-outcome-bare-string` | cases/2 schema: the bare string a `cases/1` case writes here is refused, so a v1 case cannot be pasted in and lose its discrimination |
+| `cases2-outcome-extra-key` | cases/2 schema: `additionalProperties: false` inside an outcome branch |
+| `cases2-unknown-error-category` | cases/2 schema: `error.category` enum, so a typo cannot become a category nothing matches |
+| `cases2-error-with-index` | cases/2 schema: no `error.index` — a render-time refusal has no position in `preprocessed` |
+| `cases2-wrong-group` | cases/2 cross-field: `group` matches the file name |
+| `cases2-format-vs-schema-segment` | cases/2 cross-field: `input_format` equals the schema declaration's middle segment |
+| `cases2-format-vs-directory` | cases/2 cross-field: the group lives in the directory named after its format |
+| `cases2-case-format-drift` | cases/2 cross-field: a case does not switch input format mid-group |
+| `cases2-duplicate-id` | cases/2 cross-field: ids are unique within a group |
+| `cases2-expected-outside-targets` | cases/2 cross-field: `expected` keys ⊆ `targets` |
+| `cases2-target-missing-expectation` | cases/2 cross-field: `targets` ⊆ `expected` keys |
+| `unregistered-kind` | dispatch: a payload kind with no cross-field checks registered fails, rather than being checked by its schema alone (with `schemas/unregistered-kind`) |
+| `schemas/unregistered-kind` | schema dir: a valid schema for a kind scripts/validate.rb registers no cross-field checks for |
 | `lockfiles/sample.lock` | generator: `parse_lockfile` fixture (all source kinds, leak tripwires) |
