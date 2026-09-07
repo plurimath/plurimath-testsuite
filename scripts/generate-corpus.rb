@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-# Generates the AsciiMath conformance corpus from the Ruby plurimath gem,
-# which is the oracle.
+# Generates the conformance corpus from the Ruby plurimath gem, which is the
+# oracle. Every fact that belongs to one input format rather than to the
+# corpus as a whole — the parser calls, the target list, the case data — lives
+# in a Format descriptor; FORMATS is the list of them, and holds AsciiMath
+# alone today.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -17,8 +20,8 @@
 #   --help
 #
 # Outputs (the payloads, plus one shared provenance file):
-#   corpus/asciimath/<group>.yaml   conformance cases, grouped by feature
-#   corpus/provenance.yaml          how the payloads above were produced
+#   corpus/<input_format>/<group>.yaml   conformance cases, by feature group
+#   corpus/provenance.yaml               how the payloads above were produced
 #
 # The generator is deterministic: two runs over the same oracle produce
 # byte-identical output. No timestamps, no absolute paths, sorted keys.
@@ -32,12 +35,11 @@ module CorpusGenerator
   REPO_ROOT = File.expand_path("..", __dir__)
   GENERATOR_PATH = "scripts/generate-corpus.rb"
 
-  CORPUS_SCHEMA = "plurimath-corpus/asciimath/1"
-  # Same case shape as CORPUS_SCHEMA, except that every target carries an
-  # OUTCOME — a rendering or a refusal — instead of a string. Used only by the
-  # groups that need it: the `cases/1` groups are not converted, not rewritten,
-  # and not deprecated.
-  OUTCOME_CORPUS_SCHEMA = "plurimath-corpus/asciimath/2"
+  # The `cases/1` and `cases/2` schema names take their middle segment from
+  # the input format, so `case_schema` and `outcome_case_schema` build them per
+  # format instead. `rejections/1` names a KIND rather than a format — the
+  # payload carries the format in its own `input_format` field — so it is one
+  # fixed string.
   REJECTIONS_SCHEMA = "plurimath-corpus/rejections/1"
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
@@ -54,8 +56,36 @@ module CorpusGenerator
   DEFAULT_GEM_SOURCE = "https://rubygems.org/"
   DEFAULT_GEM_PLATFORM = "ruby"
 
-  INPUT_FORMAT = "asciimath"
-  TARGET_FORMATS = %w[asciimath latex mathml unicodemath].freeze
+  # Everything the generator has to know about one input format, in a single
+  # object, so that a case list cannot drift away from the parser it was
+  # measured against.
+  #
+  # `name` is both the corpus's `input_format` and the gem's parse type:
+  # `Plurimath::Math::VALID_TYPES` is keyed by exactly these names as symbols,
+  # which is why `Math.parse` is called with `name.to_sym`, and the `cases/1`
+  # and `cases/2` schema names take their middle segment from the same string.
+  # `label` is the human spelling, used only in the header comment each payload
+  # carries.
+  #
+  # `targets` names the output formats every case in the format's groups
+  # carries an expectation for. Those are `Math::Formula#to_*` names, which are
+  # not input-format names — `unicode` is what the gem parses, `unicodemath`
+  # what it renders — so the two lists stay separate.
+  #
+  # `preprocess` and `parse_tree` are the only places a format's parser classes
+  # are named. Both take a String. `preprocess` returns the text the
+  # `preprocessed` field records, or is nil for a format that has no such pass
+  # (see `preprocessed_text`); `parse_tree` returns the grammar's tree, which
+  # `serialize_tree` writes.
+  #
+  # The three case lists are seed data held per format rather than in shared
+  # constants: an input is measured against one parser, and a list reachable
+  # from every format is a list that will eventually be run against the wrong
+  # one.
+  Format = Data.define(
+    :name, :label, :targets, :preprocess, :parse_tree,
+    :groups, :rejection_candidates, :partial_candidates
+  )
 
   # A `model:` block records a node's *portable semantic state* — what a second
   # implementation has to reproduce — not a dump of every Ruby instance
@@ -84,10 +114,10 @@ module CorpusGenerator
     },
   }.freeze
 
-  # Seed corpus. Ids are stable and hand-assigned: they are the join key
-  # between the payload and every implementation's own suite, so they must not
-  # move when a case is inserted.
-  GROUPS = [
+  # The AsciiMath seed corpus. Ids are stable and hand-assigned: they are the
+  # join key between the payload and every implementation's own suite, so they
+  # must not move when a case is inserted.
+  ASCIIMATH_GROUPS = [
     ["numbers", "Integer and decimal literals", [
       ["number-integer", "2"],
       ["number-decimal", "2.5"],
@@ -529,13 +559,13 @@ module CorpusGenerator
 
   # --- corpus --------------------------------------------------------------
 
-  # Candidate malformed inputs, swept rather than assumed. AsciiMath is far
-  # more permissive than it looks: `x^`, `(a`, `a)`, `sqrt(`, `))))` and a bare
-  # `$` all parse, and even `a/ + b` parses although `a/` does not. Every
+  # Candidate malformed AsciiMath inputs, swept rather than assumed. AsciiMath
+  # is far more permissive than it looks: `x^`, `(a`, `a)`, `sqrt(`, `))))` and
+  # a bare `$` all parse, and even `a/ + b` parses although `a/` does not. Every
   # candidate here is expected to be REFUSED, and `build_rejections` fails the
   # run if the gem accepts one, so this list can never quietly drift into
   # documenting acceptance.
-  REJECTION_CANDIDATES = [
+  ASCIIMATH_REJECTION_CANDIDATES = [
     ["frac-trailing", "a/"],
     ["frac-leading", "/b"],
     ["frac-bare", "/"],
@@ -572,15 +602,35 @@ module CorpusGenerator
     children.map { |child| failure_position(child) }.max
   end
 
+  # The text a case's `preprocessed` field records: what the format's own
+  # preprocessing pass makes of the input before its grammar sees it. A
+  # rejection's `index` is an offset into THIS text rather than into `input`,
+  # which is why it is recorded at all.
+  #
+  # A nil `preprocess` says the format has no such pass. There is nowhere to
+  # put that fact today — `cases/1`, `cases/2` and `rejections/1` all list
+  # `preprocessed` as required — and writing the input back out under a name
+  # that claims a pass ran would put a false statement in the corpus. So the
+  # run stops here instead, and whoever adds such a format decides how the
+  # payload should say it and versions the schema to match.
+  def preprocessed_text(format, input)
+    unless format.preprocess
+      raise Error, "#{format.name} declares no preprocessing pass, and " \
+                   "`preprocessed` is required by every payload schema"
+    end
+
+    format.preprocess.call(input)
+  end
+
   # The gem's public boundary discards the detail: `Plurimath::Math.parse`
   # rescues everything and re-raises `Math::ParseError` with `cause: nil`. So
   # the category is taken from the public error, and the position from the
   # Parslet layer underneath it, which is the only place it survives.
-  def build_rejection(id, input)
-    preprocessed = Plurimath::Asciimath::Parser.new(input).text
+  def build_rejection(format, id, input)
+    preprocessed = preprocessed_text(format, input)
 
     category = begin
-      Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
+      Plurimath::Math.parse(input, format.name.to_sym)
       nil
     rescue Plurimath::Math::ParseError
       "parse_error"
@@ -601,7 +651,7 @@ module CorpusGenerator
 
     error = { "category" => category }
     begin
-      Plurimath::Asciimath::Parse.new.parse(preprocessed)
+      format.parse_tree.call(preprocessed)
     rescue Parslet::ParseFailed => e
       error["index"] = failure_position(e.parse_failure_cause)
     rescue StandardError
@@ -611,7 +661,7 @@ module CorpusGenerator
     {
       "id" => id,
       "input" => input,
-      "input_format" => INPUT_FORMAT,
+      "input_format" => format.name,
       "preprocessed" => preprocessed,
       "error" => error,
     }
@@ -619,9 +669,9 @@ module CorpusGenerator
 
   # A candidate the gem accepts is a defect in the list, not a case to drop:
   # it means the list claims something about the grammar that is not true.
-  def build_rejections
-    REJECTION_CANDIDATES.map do |id, input|
-      build_rejection(id, input)
+  def build_rejections(format)
+    format.rejection_candidates.map do |id, input|
+      build_rejection(format, id, input)
     rescue Error
       raise
     rescue StandardError => e
@@ -639,18 +689,43 @@ module CorpusGenerator
   # input a port may refuse while still passing every case here. They get the
   # `cases/2` shape, where each target carries an outcome.
   #
+  # The group name and description are the same for every format: the payloads
+  # sit in per-format directories, so the names cannot collide.
+  PARTIAL_GROUP = "partial-render"
+  PARTIAL_DESCRIPTION =
+    "Inputs the gem accepts but renders to only some targets"
+
   # Measured, not assumed. `sqrt(` parses (`Math::Formula`), renders to
   # asciimath, latex and mathml, and raises `Math::ParseError` from
   # `to_unicodemath`. `build_partial_cases` fails the run if a candidate here
   # renders to EVERY target — that one belongs in a `cases/1` group, and a
   # list that quietly kept it would be claiming a refusal that stopped
   # happening.
-  PARTIAL_GROUP = "partial-render"
-  PARTIAL_DESCRIPTION =
-    "Inputs the gem accepts but renders to only some targets"
-  PARTIAL_CANDIDATES = [
+  ASCIIMATH_PARTIAL_CANDIDATES = [
     ["partial-sqrt-unclosed", "sqrt("],
   ].freeze
+
+  # AsciiMath: the one input format the corpus covers. Assembled here rather
+  # than beside `Format` because it names the three case lists above.
+  #
+  # `Asciimath::Parser` preprocesses in its constructor — it rewrites `{:`,
+  # `:}`, `(:`, `:)` and both of `|:` and `:|` to single characters — and
+  # `#text` is that rewritten string. `Asciimath::Parse` is the Parslet grammar
+  # the gem then runs over it, and is where a rejection's offset comes from.
+  ASCIIMATH = Format.new(
+    name: "asciimath",
+    label: "AsciiMath",
+    targets: %w[asciimath latex mathml unicodemath].freeze,
+    preprocess: ->(input) { Plurimath::Asciimath::Parser.new(input).text },
+    parse_tree: ->(text) { Plurimath::Asciimath::Parse.new.parse(text) },
+    groups: ASCIIMATH_GROUPS,
+    rejection_candidates: ASCIIMATH_REJECTION_CANDIDATES,
+    partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
+  )
+
+  # Every input format the corpus is generated for, in the order they are
+  # written. A second format is one more `Format` and one more entry here.
+  FORMATS = [ASCIIMATH].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
@@ -670,11 +745,11 @@ module CorpusGenerator
           "which is not a category the cases/2 schema names"
   end
 
-  def build_partial_case(id, input)
-    formula = Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
-    preprocessed = Plurimath::Asciimath::Parser.new(input).text
-    tree = Plurimath::Asciimath::Parse.new.parse(preprocessed)
-    outcomes = TARGET_FORMATS.to_h do |target|
+  def build_partial_case(format, id, input)
+    formula = Plurimath::Math.parse(input, format.name.to_sym)
+    preprocessed = preprocessed_text(format, input)
+    tree = format.parse_tree.call(preprocessed)
+    outcomes = format.targets.to_h do |target|
       [target, render_outcome(formula, target, input)]
     end
 
@@ -687,7 +762,7 @@ module CorpusGenerator
     {
       "id" => id,
       "input" => input,
-      "input_format" => INPUT_FORMAT,
+      "input_format" => format.name,
       "preprocessed" => preprocessed,
       "expected" => outcomes,
       "parse_tree" => serialize_tree(tree, id),
@@ -695,9 +770,9 @@ module CorpusGenerator
     }
   end
 
-  def build_partial_cases
-    PARTIAL_CANDIDATES.map do |id, input|
-      build_partial_case(id, input)
+  def build_partial_cases(format)
+    format.partial_candidates.map do |id, input|
+      build_partial_case(format, id, input)
     rescue Error
       raise
     rescue StandardError => e
@@ -707,22 +782,25 @@ module CorpusGenerator
     end
   end
 
-  def build_case(id, input)
-    formula = Plurimath::Math.parse(input, INPUT_FORMAT.to_sym)
-    preprocessed = Plurimath::Asciimath::Parser.new(input).text
-    tree = Plurimath::Asciimath::Parse.new.parse(preprocessed)
+  def build_case(format, id, input)
+    formula = Plurimath::Math.parse(input, format.name.to_sym)
+    preprocessed = preprocessed_text(format, input)
+    tree = format.parse_tree.call(preprocessed)
+    # Every target the format declares, in the order it declares them. The
+    # payload states that list once for the whole group, and
+    # scripts/validate.rb reconciles it against each case's `expected` keys in
+    # both directions, so a target rendered here but not declared — or
+    # declared but not rendered — fails validation rather than passing quietly.
+    expected = format.targets.to_h do |target|
+      [target, formula.public_send("to_#{target}")]
+    end
 
     {
       "id" => id,
       "input" => input,
-      "input_format" => INPUT_FORMAT,
+      "input_format" => format.name,
       "preprocessed" => preprocessed,
-      # Derived from TARGET_FORMATS, not written out: the payload's `targets:`
-      # key comes from that constant, so a hand-written list here agrees with
-      # the declared targets only by coincidence. Adding a target to the
-      # constant used to leave `expected` one key short, and removing one left
-      # it with a key no payload declared. Same dispatch `render_outcome` uses.
-      "expected" => TARGET_FORMATS.to_h { |target| [target, formula.public_send("to_#{target}")] },
+      "expected" => expected,
       "parse_tree" => serialize_tree(tree, id),
       "model" => serialize_node(formula, id),
     }
@@ -730,11 +808,12 @@ module CorpusGenerator
 
   # An input the gem cannot render is a hard failure, not a silent omission:
   # the corpus records what the gem produced, so a case that produces nothing
-  # must be noticed and removed from GROUPS by hand, with a reason.
-  def build_corpus
-    GROUPS.map do |name, description, cases|
+  # must be noticed and removed from the format's groups by hand, with a
+  # reason.
+  def build_corpus(format)
+    format.groups.map do |name, description, cases|
       built = cases.map do |id, input|
-        build_case(id, input)
+        build_case(format, id, input)
       rescue StandardError => e
         raise Error,
               "case #{id} (#{input.inspect}) failed: #{e.class}: #{e.message}"
@@ -784,6 +863,19 @@ module CorpusGenerator
     body
   end
 
+  # The counterpart to `write_payload` for a payload this run does not produce.
+  #
+  # `cases` is `minItems: 1` in all three schemas, so a format with no rejection
+  # or partially-renderable candidates cannot be given an empty payload — it
+  # would be a file no schema accepts. Skipping the write alone is not enough
+  # either: the generator otherwise only ever writes, so a payload dropped
+  # between runs would survive on disk, stay in the corpus, and no longer appear
+  # in `provenance.yaml`'s `payloads` list. Removing it keeps the directory and
+  # the provenance describing the same set of files.
+  def discard_payload(path)
+    File.delete(path) if File.file?(path)
+  end
+
   # `payloads` is a list of [absolute path, written bytes]. Sorted by the
   # recorded path so the document does not depend on the order the payloads
   # happened to be written in.
@@ -806,6 +898,20 @@ module CorpusGenerator
     path.delete_prefix("#{root}/")
   end
 
+  # The `cases/1` schema name for one format: the middle segment is the input
+  # format, so an AsciiMath group declares `plurimath-corpus/asciimath/1`.
+  def case_schema(format)
+    "plurimath-corpus/#{format.name}/1"
+  end
+
+  # The `cases/2` schema name. Same case shape as `case_schema`, except that
+  # every target carries an OUTCOME — a rendering or a refusal — instead of a
+  # string. Used only by the groups that need it: the `cases/1` groups are not
+  # converted, not rewritten, and not deprecated.
+  def outcome_case_schema(format)
+    "plurimath-corpus/#{format.name}/2"
+  end
+
   def payload_header(kind)
     <<~HEADER
       # #{kind}
@@ -821,6 +927,77 @@ module CorpusGenerator
       # Each `payloads[].sha256` covers that whole payload file, header comments
       # included.
     HEADER
+  end
+
+  # Writes every payload for one input format and returns them as the
+  # [path, written bytes] pairs `write_provenance` takes, paired with the
+  # tally the run summary prints. Each format writes into its own directory,
+  # which scripts/validate.rb reconciles with the payloads' `input_format`.
+  def write_format(out_root, format)
+    payloads = []
+    counts = Hash.new(0)
+
+    build_corpus(format).each do |name, description, cases|
+      payload = {
+        "schema" => case_schema(format),
+        "group" => name,
+        "description" => description,
+        "input_format" => format.name,
+        "targets" => format.targets,
+        "cases" => cases,
+      }
+      path = File.join(out_root, format.name, "#{name}.yaml")
+      header = payload_header("#{format.label} conformance cases: #{name}.")
+      bytes = write_payload(path, header, payload)
+      payloads << [path, bytes]
+      counts[:cases] += cases.length
+      counts[:groups] += 1
+    end
+
+    partial_cases = build_partial_cases(format)
+    partial_path = File.join(out_root, format.name, "#{PARTIAL_GROUP}.yaml")
+    if partial_cases.empty?
+      discard_payload(partial_path)
+    else
+      partial_payload = {
+        "schema" => outcome_case_schema(format),
+        "group" => PARTIAL_GROUP,
+        "description" => PARTIAL_DESCRIPTION,
+        "input_format" => format.name,
+        "targets" => format.targets,
+        "cases" => partial_cases,
+      }
+      partial_bytes = write_payload(
+        partial_path,
+        payload_header("#{format.label} conformance cases: #{PARTIAL_GROUP}."),
+        partial_payload,
+      )
+      payloads << [partial_path, partial_bytes]
+    end
+
+    rejections = build_rejections(format)
+    rejection_path = File.join(out_root, format.name, "rejections.yaml")
+    if rejections.empty?
+      discard_payload(rejection_path)
+    else
+      rejection_payload = {
+        "schema" => REJECTIONS_SCHEMA,
+        "group" => "rejections",
+        "description" => REJECTIONS_DESCRIPTION,
+        "input_format" => format.name,
+        "cases" => rejections,
+      }
+      rejection_bytes = write_payload(
+        rejection_path,
+        payload_header("#{format.label} rejection cases."),
+        rejection_payload,
+      )
+      payloads << [rejection_path, rejection_bytes]
+    end
+    counts[:partial] = partial_cases.length
+    counts[:rejections] = rejections.length
+
+    [payloads, counts]
   end
 
   # --- driver --------------------------------------------------------------
@@ -964,69 +1141,28 @@ module CorpusGenerator
                              options[:allow_dirty])
 
     provenance = build_provenance(gem_dir, dirty, options[:allow_dirty])
-    groups = build_corpus
 
     out_root = options[:out]
     payloads = []
+    # One provenance document covers the whole corpus, so the formats are
+    # written before it, and their tallies added up for the summary line.
+    counts = Hash.new(0)
 
-    groups.each do |name, description, cases|
-      payload = {
-        "schema" => CORPUS_SCHEMA,
-        "group" => name,
-        "description" => description,
-        "input_format" => INPUT_FORMAT,
-        "targets" => TARGET_FORMATS,
-        "cases" => cases,
-      }
-      path = File.join(out_root, "asciimath", "#{name}.yaml")
-      header = payload_header("AsciiMath conformance cases: #{name}.")
-      bytes = write_payload(path, header, payload)
-      payloads << [path, bytes]
+    FORMATS.each do |format|
+      format_payloads, format_counts = write_format(out_root, format)
+      payloads.concat(format_payloads)
+      format_counts.each { |key, value| counts[key] += value }
     end
-
-    partial_cases = build_partial_cases
-    partial_payload = {
-      "schema" => OUTCOME_CORPUS_SCHEMA,
-      "group" => PARTIAL_GROUP,
-      "description" => PARTIAL_DESCRIPTION,
-      "input_format" => INPUT_FORMAT,
-      "targets" => TARGET_FORMATS,
-      "cases" => partial_cases,
-    }
-    partial_path = File.join(out_root, "asciimath", "#{PARTIAL_GROUP}.yaml")
-    partial_bytes = write_payload(
-      partial_path,
-      payload_header("AsciiMath conformance cases: #{PARTIAL_GROUP}."),
-      partial_payload,
-    )
-    payloads << [partial_path, partial_bytes]
-
-    rejections = build_rejections
-    rejection_payload = {
-      "schema" => REJECTIONS_SCHEMA,
-      "group" => "rejections",
-      "description" => REJECTIONS_DESCRIPTION,
-      "input_format" => INPUT_FORMAT,
-      "cases" => rejections,
-    }
-    rejection_path = File.join(out_root, "asciimath", "rejections.yaml")
-    rejection_bytes = write_payload(
-      rejection_path,
-      payload_header("AsciiMath rejection cases."),
-      rejection_payload,
-    )
-    payloads << [rejection_path, rejection_bytes]
 
     provenance_path = write_provenance(out_root, provenance, payloads)
 
-    case_count = groups.sum { |_name, _description, cases| cases.length }
     payloads.map(&:first).sort.each do |payload_path|
       puts "  #{relative(payload_path, REPO_ROOT)}"
     end
     puts "  #{relative(provenance_path, REPO_ROOT)}"
-    puts "#{case_count} cases in #{groups.length} groups, " \
-         "#{partial_cases.length} partially renderable (cases/2), " \
-         "#{rejections.length} rejections"
+    puts "#{counts[:cases]} cases in #{counts[:groups]} groups, " \
+         "#{counts[:partial]} partially renderable (cases/2), " \
+         "#{counts[:rejections]} rejections"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }
     0
