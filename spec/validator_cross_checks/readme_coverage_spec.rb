@@ -75,8 +75,8 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   it "rejects a README whose cases-and-groups line disagrees" do
     wrong = readme.sub(/(\| AsciiMath\s+\| ✅ )\d+ cases, \d+ groups/, '\1999 cases, 888 groups')
     expect(errors_for(wrong)).to include(
-      a_string_matching(/says 999 cases/),
-      a_string_matching(/says 888 groups/),
+      a_string_matching(/says 999 cases for AsciiMath/),
+      a_string_matching(/says 888 groups for AsciiMath/),
     )
   end
 end

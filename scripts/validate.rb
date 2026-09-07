@@ -613,6 +613,23 @@ module Testsuite
       "cases/2" => :case_cross_checks,
     }.freeze
 
+    # The README spells an input format for people ("AsciiMath") and the corpus
+    # spells it for machines ("asciimath"). Neither is derivable from the other
+    # — `unicode` is the corpus's name for UnicodeMath — so the mapping is
+    # written out here, over exactly the format names the payload schemas
+    # enumerate. A corpus format missing from this table FAILS the run rather
+    # than going unchecked: a format whose coverage row nobody compares against
+    # the corpus is the drift this whole check exists to catch.
+    README_FORMAT_LABELS = {
+      "asciimath" => "AsciiMath",
+      "html" => "HTML",
+      "latex" => "LaTeX",
+      "mathml" => "MathML",
+      "omml" => "OMML",
+      "unicode" => "UnicodeMath",
+      "unitsml" => "UnitsML",
+    }.freeze
+
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
       @corpus_root = File.expand_path(corpus_root)
       @schema_dir = File.expand_path(schema_dir)
@@ -1188,19 +1205,51 @@ module Testsuite
       puts "  OK    #{'README.adoc'.ljust(52)} counts and group inventory match the corpus"
     end
 
+    # One "N cases, N groups" claim per input format the corpus holds cases
+    # for, checked against that format's own payloads. A single claim covering
+    # the whole corpus would say nothing about which format the cases are in,
+    # which is the first thing the row is read for.
     def readme_count_errors(text)
-      errors = []
-      actual_cases = positive_cases.length
-      actual_groups = positive_groups.length
-
-      stated = text[/^\| AsciiMath\s+\|[^|]*?(\d+) cases, (\d+) groups/, 0]
-      if stated.nil?
-        errors << "no \"N cases, N groups\" claim found in the coverage table"
-      else
-        cases, groups = text.match(/^\| AsciiMath\s+\|[^|]*?(\d+) cases, (\d+) groups/)[1..2].map(&:to_i)
-        errors << "coverage table says #{cases} cases, corpus has #{actual_cases}" if cases != actual_cases
-        errors << "coverage table says #{groups} groups, corpus has #{actual_groups}" if groups != actual_groups
+      errors = positive_groups.keys.sort.flat_map do |format|
+        readme_format_row_errors(text, format, positive_groups[format])
       end
+      errors + readme_target_claim_errors(text)
+    end
+
+    def readme_format_row_errors(text, format, groups)
+      label = README_FORMAT_LABELS[format]
+      if label.nil?
+        return ["no README label is registered for the input format " \
+                "`#{format}`, so its coverage row goes unchecked"]
+      end
+
+      claimed = text.match(
+        /^\| #{Regexp.escape(label)}\s+\|[^|]*?(\d+) cases, (\d+) groups/,
+      )
+      if claimed.nil?
+        return ["no \"N cases, N groups\" claim for #{label} in the " \
+                "coverage table"]
+      end
+
+      cases, group_count = claimed[1..2].map(&:to_i)
+      errors = []
+      if cases != groups.values.sum
+        errors << "coverage table says #{cases} cases for #{label}, " \
+                  "corpus has #{groups.values.sum}"
+      end
+      if group_count != groups.length
+        errors << "coverage table says #{group_count} groups for #{label}, " \
+                  "corpus has #{groups.length}"
+      end
+      errors
+    end
+
+    # The "checked for all N" claims count every positive case in the corpus,
+    # not one format's: they sit in the table's output column, and a case of
+    # any input format carries an expectation for every target listed there.
+    def readme_target_claim_errors(text)
+      errors = []
+      actual_cases = positive_case_count
 
       # Guarded the way `readme_group_errors` guards its inventory. Without
       # this, deleting every "checked for all N" row left the loop below with
@@ -1225,11 +1274,16 @@ module Testsuite
       errors
     end
 
+    # Inventory entries name a payload by its path stem under `corpus/` —
+    # `` `latex/numbers` 5 `` — rather than by its group alone. Group names
+    # repeat across input formats by design, so a bare `numbers` would name two
+    # different payloads and this check could only ever compare one of them.
     def readme_group_errors(text)
-      listed = text.scan(/`([a-z][a-z0-9-]*)`\s+(\d+)/).to_h { |name, n| [name, n.to_i] }
+      listed = text.scan(%r{`([a-z][a-z0-9]*)/([a-z][a-z0-9-]*)`\s+(\d+)})
+        .to_h { |format, group, n| ["#{format}/#{group}", n.to_i] }
       return ["no group inventory found"] if listed.empty?
 
-      actual = positive_groups
+      actual = positive_payload_counts
       errors = []
       (actual.keys - listed.keys).sort.each { |name| errors << "group inventory omits `#{name}` (#{actual[name]} cases)" }
       (listed.keys - actual.keys).sort.each { |name| errors << "group inventory lists `#{name}`, which the corpus does not have" }
@@ -1241,8 +1295,14 @@ module Testsuite
 
     # Positive (renderable) payloads only: a rejection group has no expectations
     # and is counted separately everywhere else too.
+    #
+    # Keyed by input format FIRST, then by group. Group names repeat across
+    # formats — `asciimath/numbers` and `latex/numbers` are different payloads —
+    # so a single map keyed by group name alone let one format's entry
+    # overwrite another's, and every total derived from it was then short by
+    # the overlap while the README check reported the shortfall as agreement.
     def positive_groups
-      @positive_groups ||= payload_files.each_with_object({}) do |path, groups|
+      @positive_groups ||= payload_files.each_with_object({}) do |path, formats|
         document = YAML.safe_load_file(path)
         # Positive payloads are every payload kind EXCEPT rejections; matching
         # on a "cases/" segment was wrong, because the case schema is named for
@@ -1250,12 +1310,22 @@ module Testsuite
         schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
         next if schema.empty? || schema.include?("rejections/")
 
-        groups[document["group"].to_s] = Array(document["cases"]).length
+        format = formats[document["input_format"].to_s] ||= {}
+        format[document["group"].to_s] = Array(document["cases"]).length
       end
     end
 
-    def positive_cases
-      @positive_cases ||= positive_groups.values.sum.then { |n| ::Array.new(n) }
+    # The same counts flattened to the `<format>/<group>` names the README's
+    # inventory uses.
+    def positive_payload_counts
+      positive_groups.flat_map do |format, groups|
+        groups.map { |group, count| ["#{format}/#{group}", count] }
+      end.to_h
+    end
+
+    def positive_case_count
+      @positive_case_count ||=
+        positive_groups.values.sum { |groups| groups.values.sum }
     end
 
     # Every target the positive payloads declare, sorted and deduplicated.
