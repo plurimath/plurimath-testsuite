@@ -74,9 +74,24 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
 
   it "rejects a README whose cases-and-groups line disagrees" do
     wrong = readme.sub(/(\| AsciiMath\s+\| ✅ )\d+ cases, \d+ groups/, '\1999 cases, 888 groups')
+    # The message names the notation, because the claim is checked per input
+    # format now rather than only for AsciiMath.
     expect(errors_for(wrong)).to include(
-      a_string_matching(/says 999 cases/),
-      a_string_matching(/says 888 groups/),
+      a_string_matching(/says AsciiMath has 999 cases/),
+      a_string_matching(/says AsciiMath has 888 groups/),
     )
+  end
+
+  it "rejects a README with no claim for an input format the corpus carries" do
+    # The corpus is AsciiMath-only today, so this removes the row rather than
+    # adding a second format: the same failure, reached without inventing
+    # corpus data. A `latex/` corpus arriving beside a LaTeX row that still
+    # says "no cases yet" fails here in exactly this way.
+    without_claim = readme.sub(
+      /^\| AsciiMath\s+\| ✅ \d+ cases, \d+ groups/,
+      "| AsciiMath   | ❌ no cases yet",
+    )
+    expect(errors_for(without_claim))
+      .to include(a_string_matching(/no "N cases, N groups" claim in the AsciiMath row/))
   end
 end
