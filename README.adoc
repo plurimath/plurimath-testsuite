@@ -12,19 +12,20 @@ can be checked against identical answers.
 
 == What is covered
 
-Early. AsciiMath input is the first notation extracted, and the only one so
-far. A tick means cases exist here today, not that Plurimath supports it —
-Plurimath supports every row.
+Early. AsciiMath input was the first notation extracted; LaTeX input is the
+second, and so far a first slice of four groups rather than a sweep. A tick
+means cases exist here today, not that Plurimath supports it — Plurimath
+supports every row.
 
 [cols="1,2,2",options="header"]
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups | ✅ checked for all 92
-| LaTeX       | ❌ no cases yet        | ✅ checked for all 92
-| MathML      | ❌ no cases yet        | ✅ checked for all 92
+| AsciiMath   | ✅ 92 cases, 19 groups | ✅ checked for all 111
+| LaTeX       | ✅ 19 cases, 4 groups  | ✅ checked for all 111
+| MathML      | ❌ no cases yet        | ✅ checked for all 111
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ✅ checked for all 92, one a refusal
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 111, one a refusal
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
 
@@ -45,8 +46,15 @@ because group names repeat across input formats — `asciimath/numbers` and
 `asciimath/left-right` 3, `asciimath/mod` 3, `asciimath/whitespace` 5,
 `asciimath/partial-render` 1.
 
+`latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5.
+
+LaTeX has no rejection payload and no outcome payload yet — no input has been
+swept for either — so `corpus/latex/` holds those four groups and nothing else.
+
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
-drift again — they had already drifted twice before the check existed.
+drift again — they had already drifted twice before the check existed. It
+checks one coverage row per input format the corpus holds cases for, so a
+second format's row cannot go uncompared.
 
 == Using it
 

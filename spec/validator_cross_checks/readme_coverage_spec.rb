@@ -79,4 +79,36 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
       a_string_matching(/says 888 groups for AsciiMath/),
     )
   end
+
+  # One row per input format the corpus holds cases for, not one row for the
+  # corpus as a whole. A single claim would say nothing about which format the
+  # cases are in, and the row is read for exactly that — and while the check
+  # keyed on AsciiMath alone, a second format's row could say anything.
+  it "checks one coverage row per input format the corpus holds cases for" do
+    expect(runner.send(:positive_groups).keys.sort).to eq(%w[asciimath latex])
+
+    unstated = readme.sub(/^\| LaTeX\s+\|[^|]*\|/) do |row|
+      row.sub(/\d+ cases, \d+ groups/, "some cases")
+    end
+    expect(errors_for(unstated))
+      .to include(a_string_matching(/no "N cases, N groups" claim for LaTeX/))
+  end
+
+  # A format the corpus holds cases for but the label table does not name has
+  # no row anyone is comparing, which is the drift this check exists to catch.
+  it "rejects a corpus format with no README label registered" do
+    counts = runner.send(:positive_groups)
+      .merge("klingon" => { "numbers" => 1 })
+    runner.instance_variable_set(:@positive_groups, counts)
+    expect(errors_for(readme))
+      .to include(a_string_matching(/no README label is registered.+`klingon`/))
+  end
+
+  # Group names repeat across input formats, so an inventory entry names a
+  # payload by its path stem. A bare group name identifies two payloads at once.
+  it "rejects a group inventory entry whose count disagrees" do
+    wrong = readme.sub(%r{`latex/numbers` \d+}, "`latex/numbers` 42")
+    expect(runner.send(:readme_group_errors, wrong))
+      .to include(a_string_matching(%r{`latex/numbers` 42, corpus has \d+}))
+  end
 end
