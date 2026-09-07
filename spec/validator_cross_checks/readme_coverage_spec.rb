@@ -92,6 +92,18 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     end
     expect(errors_for(unstated))
       .to include(a_string_matching(/no "N cases, N groups" claim for LaTeX/))
+    # And specifically NOT the missing-row wording: the row is right there.
+    expect(errors_for(unstated)).not_to include(a_string_matching(/has no LaTeX row/))
+  end
+
+  it "distinguishes a missing notation row from a row without numbers" do
+    # Deleting the row entirely is a different failure from leaving it in place
+    # without a count, and each sends the reader somewhere different.
+    without_row = readme.sub(/^\| LaTeX\s+\|.*$\n/, "")
+    expect(errors_for(without_row))
+      .to include(a_string_matching(/the coverage table has no LaTeX row, but the corpus has \d+/))
+    expect(errors_for(without_row))
+      .not_to include(a_string_matching(/no "N cases, N groups" claim for LaTeX/))
   end
 
   # A format the corpus holds cases for but the label table does not name has

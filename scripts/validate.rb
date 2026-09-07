@@ -1223,6 +1223,16 @@ module Testsuite
                 "`#{format}`, so its coverage row goes unchecked"]
       end
 
+      # Two different failures, told apart rather than conflated: the table may
+      # carry no row for this notation at all, or a row with no numbers in it.
+      # Reporting the second wording for the first sends the reader looking for
+      # a row that is not there.
+      unless text.match?(/^\| #{Regexp.escape(label)}\s+\|/)
+        return ["the coverage table has no #{label} row, but the corpus has " \
+                "#{groups.values.sum} #{label} case" \
+                "#{'s' unless groups.values.sum == 1}"]
+      end
+
       claimed = text.match(
         /^\| #{Regexp.escape(label)}\s+\|[^|]*?(\d+) cases, (\d+) groups/,
       )
