@@ -585,6 +585,21 @@ module Testsuite
     PROVENANCE_PATH = "provenance.yaml"
     PROVENANCE_KIND = "provenance"
 
+    # Input format (the middle segment of a case payload's `schema`) to the
+    # notation label README.adoc's coverage table uses for its row. The keys
+    # are exactly the formats `schema/cases.json` and `cases2.json` permit; a
+    # format outside this map is an error rather than a skip, so adding one to
+    # the schema without giving it a README row cannot pass unnoticed.
+    NOTATION_LABELS = {
+      "asciimath" => "AsciiMath",
+      "latex" => "LaTeX",
+      "mathml" => "MathML",
+      "omml" => "OMML",
+      "unicode" => "UnicodeMath",
+      "html" => "HTML",
+      "unitsml" => "UnitsML",
+    }.freeze
+
     # The corpus holds exactly two kinds of file: the provenance document at
     # its root, and payload groups at `<input-format>/<group>.yaml`. This is
     # an allowlist rather than a wider glob on purpose — a wider glob still
