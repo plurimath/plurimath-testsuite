@@ -1245,8 +1245,7 @@ module Testsuite
         end
 
         cases, group_count = match[1..2].map(&:to_i)
-        actual = groups.values.sum
-        errors << "coverage table says #{label} has #{cases} cases, corpus has #{actual}" if cases != actual
+        errors << "coverage table says #{label} has #{cases} cases, corpus has #{count}" if cases != count
         if group_count != groups.length
           errors << "coverage table says #{label} has #{group_count} groups, " \
                     "corpus has #{groups.length}"
