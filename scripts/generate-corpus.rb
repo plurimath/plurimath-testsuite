@@ -928,6 +928,19 @@ module CorpusGenerator
     body
   end
 
+  # The counterpart to `write_payload` for a payload this run does not produce.
+  #
+  # `cases` is `minItems: 1` in all three schemas, so a format with no rejection
+  # or partially-renderable candidates cannot be given an empty payload — it
+  # would be a file no schema accepts. Skipping the write alone is not enough
+  # either: the generator otherwise only ever writes, so a payload dropped
+  # between runs would survive on disk, stay in the corpus, and no longer appear
+  # in `provenance.yaml`'s `payloads` list. Removing it keeps the directory and
+  # the provenance describing the same set of files.
+  def discard_payload(path)
+    File.delete(path) if File.file?(path)
+  end
+
   # `payloads` is a list of [absolute path, written bytes]. Sorted by the
   # recorded path so the document does not depend on the order the payloads
   # happened to be written in.
@@ -1013,7 +1026,10 @@ module CorpusGenerator
     # rejections at all, while an absent one claims only that none are recorded
     # yet — which is what a corpus grown one slice per format actually knows.
     partial_cases = build_partial_cases(format)
-    unless partial_cases.empty?
+    partial_path = File.join(out_root, format.name, "#{PARTIAL_GROUP}.yaml")
+    if partial_cases.empty?
+      discard_payload(partial_path)
+    else
       partial_payload = {
         "schema" => outcome_case_schema(format),
         "group" => PARTIAL_GROUP,
@@ -1022,7 +1038,6 @@ module CorpusGenerator
         "targets" => format.targets,
         "cases" => partial_cases,
       }
-      partial_path = File.join(out_root, format.name, "#{PARTIAL_GROUP}.yaml")
       partial_bytes = write_payload(
         partial_path,
         payload_header("#{format.label} conformance cases: #{PARTIAL_GROUP}."),
@@ -1032,7 +1047,10 @@ module CorpusGenerator
     end
 
     rejections = build_rejections(format)
-    unless rejections.empty?
+    rejection_path = File.join(out_root, format.name, "rejections.yaml")
+    if rejections.empty?
+      discard_payload(rejection_path)
+    else
       rejection_payload = {
         "schema" => REJECTIONS_SCHEMA,
         "group" => "rejections",
@@ -1040,7 +1058,6 @@ module CorpusGenerator
         "input_format" => format.name,
         "cases" => rejections,
       }
-      rejection_path = File.join(out_root, format.name, "rejections.yaml")
       rejection_bytes = write_payload(
         rejection_path,
         payload_header("#{format.label} rejection cases."),
@@ -1048,7 +1065,6 @@ module CorpusGenerator
       )
       payloads << [rejection_path, rejection_bytes]
     end
-
     counts[:partial] = partial_cases.length
     counts[:rejections] = rejections.length
 
