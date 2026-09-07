@@ -93,5 +93,18 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     )
     expect(errors_for(without_claim))
       .to include(a_string_matching(/no "N cases, N groups" claim in the AsciiMath row/))
+    # And specifically NOT the missing-row wording: the row is right there.
+    expect(errors_for(without_claim))
+      .not_to include(a_string_matching(/has no AsciiMath row/))
+  end
+
+  it "distinguishes a missing notation row from a row without numbers" do
+    # Deleting the row entirely is a different failure from leaving it in place
+    # without a count, and the reader is sent to a different place by each.
+    without_row = readme.sub(/^\| AsciiMath\s+\|.*$\n/, "")
+    expect(errors_for(without_row))
+      .to include(a_string_matching(/coverage table has no AsciiMath row, but the corpus has \d+/))
+    expect(errors_for(without_row))
+      .not_to include(a_string_matching(/claim in the AsciiMath row/))
   end
 end

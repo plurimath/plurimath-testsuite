@@ -1224,12 +1224,23 @@ module Testsuite
           next
         end
 
+        # Two different failures, told apart rather than conflated: the table
+        # may carry no row for this notation at all, or a row with no numbers
+        # in it. Reporting the second wording for the first sends the reader
+        # looking for a row that is not there.
+        count = groups.values.sum
+        plural = "case#{'s' unless count == 1}"
+        unless text.match?(/^\| #{::Regexp.escape(label)}\s+\|/)
+          errors << "coverage table has no #{label} row, but the corpus has " \
+                    "#{count} #{label} #{plural}"
+          next
+        end
+
         row = /^\| #{::Regexp.escape(label)}\s+\|[^|]*?(\d+) cases, (\d+) groups/
         match = text.match(row)
         if match.nil?
           errors << "coverage table makes no \"N cases, N groups\" claim in the " \
-                    "#{label} row, but the corpus has #{groups.values.sum} " \
-                    "#{label} case#{'s' unless groups.values.sum == 1}"
+                    "#{label} row, but the corpus has #{count} #{label} #{plural}"
           next
         end
 
