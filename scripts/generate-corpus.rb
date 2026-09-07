@@ -717,12 +717,12 @@ module CorpusGenerator
       "input" => input,
       "input_format" => INPUT_FORMAT,
       "preprocessed" => preprocessed,
-      "expected" => {
-        "asciimath" => formula.to_asciimath,
-        "latex" => formula.to_latex,
-        "mathml" => formula.to_mathml,
-        "unicodemath" => formula.to_unicodemath,
-      },
+      # Derived from TARGET_FORMATS, not written out: the payload's `targets:`
+      # key comes from that constant, so a hand-written list here agrees with
+      # the declared targets only by coincidence. Adding a target to the
+      # constant used to leave `expected` one key short, and removing one left
+      # it with a key no payload declared. Same dispatch `render_outcome` uses.
+      "expected" => TARGET_FORMATS.to_h { |target| [target, formula.public_send("to_#{target}")] },
       "parse_tree" => serialize_tree(tree, id),
       "model" => serialize_node(formula, id),
     }
