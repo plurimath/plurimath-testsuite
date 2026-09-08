@@ -78,18 +78,21 @@ still refuse inputs this corpus never puts to it. One outcome candidate is
 measured and waiting: `⎣2.5⎦` parses and then fails to render to every one of
 the four targets.
 
-Six groups — the LaTeX `nary`, `whitespace`, `accents` and `over-under`, and
-the UnicodeMath `symbols` and `operators` — hold cases whose expected output
-is a **placeholder** rather than a rendering.
+Seven groups — the LaTeX `symbols`, `nary`, `whitespace`, `accents` and
+`over-under`, and the UnicodeMath `symbols` and `operators` — hold cases whose
+expected output is a **placeholder** rather than a rendering.
 Where the gem has no name for a construct in a target notation it emits
 `"P{name}"` (asciimath, unicodemath -- the quotes are part of the emitted
 string) or `\text{P[name]}` (latex), and the corpus
 records what the gem produced, so the placeholder is the expectation and a
-port that renders something better fails the case. Each of those six payloads
-says so in its own `description`, because such a case is coverage of the gem's
-gap and not of the construct. The two UnicodeMath ones are `∅` and `a∓b`;
-every target but asciimath names both, and `a∓b` sits deliberately beside
-`a±b`, which asciimath does name.
+port that renders something better fails the case. Each of those seven
+payloads says so in its own `description`, because such a case is coverage of
+the gem's gap and not of the construct.
+
+The two `symbols` groups reach the same gap from opposite sides: LaTeX's
+`\emptyset` and UnicodeMath's `∅` both render to asciimath as
+`"P{emptyset}"` and to the other three targets properly. UnicodeMath's second
+one is `a∓b`, placed deliberately beside `a±b`, which asciimath does name.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
 drift again — they had already drifted twice before the check existed. It
