@@ -793,10 +793,17 @@ module CorpusGenerator
       ["latex-number-negative", "-42"],
       ["latex-number-braced-exponent", "2^{10}"],
     ]],
-    ["symbols", "Backslash-named symbols: Greek letters and constants", [
+    ["symbols",
+     "Backslash-named symbols: Greek letters and constants." +
+     PLACEHOLDER_NOTE, [
       ["latex-symbol-greek-alpha", "\\alpha"],
       ["latex-symbol-infinity", "\\infty"],
       ["latex-symbol-greek-pi", "\\pi"],
+      # This one renders to every target, and its asciimath rendering is the
+      # parsing wrapper: `"P{emptyset}"`, while latex says `\varnothing` and
+      # mathml and unicodemath name the symbol properly. It is why this group
+      # carries the note. The UnicodeMath `symbols` group reaches the SAME gap
+      # from the other side, through the literal `∅`.
       ["latex-symbol-empty-set", "\\emptyset"],
     ]],
     ["operators", "Binary operators, bare and backslash-named", [
