@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 1a26a2f797a6bbf2f8676dd57ad6490374b78e249d1fc5bdc93307faeb1a3d8f
+  sha256: '023459460661c0e35a0de010b464724a0bca405fbaadd5d047a64427699b6f10'
   repository:
-    commit: 72b29fc92a89c44140494dac11d442d467823a97
+    commit: 7988e008a3056ba9f079cff77ffa31cedd6f8ee1
     clean: true
     dirty_paths: []
 oracle:
@@ -161,3 +161,15 @@ payloads:
 - path: latex/whitespace.yaml
   sha256: e0a449fc7630ad0b678151353ed13d0f6a8526fe97945350650e809e3646f54e
   bytes: 6592
+- path: unicode/fences.yaml
+  sha256: d4ef6e15335782a67d39b7444ce2131edd4744b9b6a64a323786d66cd3e74d25
+  bytes: 6186
+- path: unicode/numbers.yaml
+  sha256: fee55a9d6df432b2cb4425094e2a1904c4f87c14b44f9e7607a2806413bcffe1
+  bytes: 4642
+- path: unicode/operators.yaml
+  sha256: 4da3690f360a5b5b72bd507c46c36fc9cc83376f38046fdc245f5f107cbe99ff
+  bytes: 6466
+- path: unicode/symbols.yaml
+  sha256: 28d88fc902843bc5ee0d1b1d22b1d0657634a52cdb5c6d879c8f5ed11b0b7d6e
+  bytes: 3317

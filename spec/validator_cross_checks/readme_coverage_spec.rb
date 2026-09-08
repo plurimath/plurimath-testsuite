@@ -86,8 +86,14 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   # corpus as a whole. A single claim would say nothing about which format the
   # cases are in, and the row is read for exactly that — and while the check
   # keyed on AsciiMath alone, a second format's row could say anything.
+  #
+  # The list is pinned rather than derived, so that adding an input format
+  # has to pass through this spec: a format whose row the README never gains
+  # would otherwise be checked by a rule that silently found nothing to
+  # compare. Extend it in the commit that adds the format.
   it "checks one coverage row per input format the corpus holds cases for" do
-    expect(runner.send(:positive_groups).keys.sort).to eq(%w[asciimath latex])
+    expect(runner.send(:positive_groups).keys.sort)
+      .to eq(%w[asciimath latex unicode])
 
     unstated = readme.sub(/^\| LaTeX\s+\|[^|]*\|/) do |row|
       row.sub(/\d+ cases, \d+ groups/, "some cases")
