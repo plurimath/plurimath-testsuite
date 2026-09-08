@@ -723,10 +723,10 @@ module CorpusGenerator
     partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
   )
 
-  # The LaTeX seed corpus: the first slice, four groups wide. The remaining
-  # groups, the rejection candidates and any partially renderable input come
-  # later; a format may be grown a slice at a time, and `write_format` writes
-  # no payload for a kind whose candidate list is still empty.
+  # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
+  # fourteen below them. The rejection candidates and any partially renderable
+  # input come later, and `write_format` writes no payload for a kind whose
+  # candidate list is still empty.
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
   # decoration: this repository enforces id uniqueness WITHIN a group, while at
@@ -743,6 +743,16 @@ module CorpusGenerator
   # Group NAMES do repeat across formats, and may: a group lives in the
   # directory named after its input format, so `asciimath/numbers` and
   # `latex/numbers` are distinct payloads that no consumer can confuse.
+  #
+  # A candidate is admitted only when the gem renders it to EVERY target
+  # without the parsing wrapper. `Math::Symbols::Symbol#parsing_wrapper` is the
+  # gem's placeholder for a symbol it has no name for in the target notation,
+  # and it has two spellings: `"P{name}"` for asciimath and unicodemath,
+  # `\text{P[name]}` for latex. Recording one would oblige every port to
+  # reproduce the gem's own gap, so such an input is named and excluded in the
+  # group it belongs to rather than dropped in silence — and the exclusion is
+  # measured per target, because an input can render cleanly to latex and still
+  # carry the wrapper in asciimath.
   LATEX_GROUPS = [
     ["numbers", "Number literals: decimal, braced, signed and exponentiated", [
       ["latex-number-integer", "1"],
@@ -770,6 +780,161 @@ module CorpusGenerator
       ["latex-fence-curly-escaped", "\\{a\\}"],
       ["latex-fence-angle", "\\langle a \\rangle"],
       ["latex-fence-ceiling", "\\lceil a \\rceil"],
+    ]],
+    ["frac", "Fractions, whose numerator and denominator are braced groups", [
+      ["latex-frac-simple", "\\frac{1}{2}"],
+      ["latex-frac-nested", "\\frac{\\frac{1}{2}}{3}"],
+      ["latex-frac-sum-numerator", "\\frac{a+b}{c}"],
+      ["latex-frac-sum-denominator", "\\frac{x}{y+z}"],
+      ["latex-frac-sum-of-fracs", "\\frac{1}{2} + \\frac{3}{4}"],
+      ["latex-frac-root-denominator", "\\frac{1}{\\sqrt{2}}"],
+      # `\dfrac` and `\tfrac` are deliberately absent: the gem rejects both.
+      # They belong in a rejection payload, which LaTeX does not have yet.
+    ]],
+    ["powers", "Superscripts and subscripts, braced and bare", [
+      ["latex-power-square", "x^2"],
+      ["latex-power-nested", "x^{y^z}"],
+      ["latex-power-braced-exponent", "x^{n+1}"],
+      ["latex-power-exponential", "e^x"],
+      ["latex-subscript-letter", "x_i"],
+      ["latex-subscript-braced", "a_{n+1}"],
+      ["latex-subscript-and-power", "x_i^2"],
+      # `{}_a^b x`, the prescript spelling, is deliberately absent: the gem
+      # rejects it.
+    ]],
+    ["roots", "Square roots, and the bracketed index of an nth root", [
+      ["latex-root-sqrt-number", "\\sqrt{2}"],
+      ["latex-root-sqrt-sum", "\\sqrt{x+1}"],
+      ["latex-root-sqrt-pythagoras", "\\sqrt{a^2+b^2}"],
+      ["latex-root-sqrt-frac", "\\sqrt{\\frac{1}{2}}"],
+      ["latex-root-cube", "\\sqrt[3]{8}"],
+      ["latex-root-nth-symbolic", "\\sqrt[n]{x}"],
+    ]],
+    ["unary-functions", "Named functions, applied bare and to a fenced group", [
+      ["latex-unary-sin-bare", "\\sin x"],
+      ["latex-unary-sin-fenced", "\\sin(x)"],
+      ["latex-unary-cos-product", "\\cos(2x)"],
+      ["latex-unary-log-bare", "\\log x"],
+      ["latex-unary-ln-bare", "\\ln x"],
+      ["latex-unary-lim-bare", "\\lim x"],
+      ["latex-unary-det", "\\det A"],
+      ["latex-unary-max", "\\max A"],
+      ["latex-unary-gcd-fenced", "\\gcd(a,b)"],
+    ]],
+    ["quoted-text", "Literal text, whose braces hold characters, not math", [
+      ["latex-text-command", "\\text{hello}"],
+      ["latex-text-spaced", "\\text{hello world}"],
+      ["latex-text-mbox", "\\mbox{hi}"],
+      ["latex-text-mbox-spaced", "\\mbox{a b}"],
+      # `\textrm{abc}` is NOT here: measured, it parses as `fonts: "textrm"`,
+      # not `text:`, and renders `\mathrm{a b c}` rather than `\text{...}`.
+      # It is a font command wearing a text-looking name, so it lives in
+      # `fonts` where a reader will expect its behaviour.
+    ]],
+    ["nary", "n-ary operators and limit-bearing functions, bounded and bare", [
+      ["latex-nary-sum-bounded", "\\sum_{i=1}^{n} i"],
+      ["latex-nary-sum-of-squares", "\\sum_{i=1}^{n} i^2"],
+      ["latex-nary-sum-bare", "\\sum x"],
+      ["latex-nary-int-bounded", "\\int_0^1 x"],
+      ["latex-nary-int-definite", "\\int_a^b f(x) dx"],
+      ["latex-nary-prod-subscript", "\\prod_{k} k"],
+      ["latex-nary-prod-bounded", "\\prod_{i=1}^{n} i"],
+      ["latex-nary-oint-subscript", "\\oint_C f"],
+      ["latex-nary-lim-to-infinity", "\\lim_{x \\to \\infty} f(x)"],
+      # `\bigcup_i A_i` and `\bigcap_i A_i` are deliberately absent. The gem
+      # accepts both and renders them to every target, but their asciimath
+      # renderings are `"P{duni}"` and `"P{dint}"` — the parsing wrapper the
+      # note above this list describes, not a name asciimath has.
+    ]],
+    ["matrices", "Matrix environments, one per delimiter pair", [
+      ["latex-matrix-plain", "\\begin{matrix} a & b \\end{matrix}"],
+      ["latex-matrix-parens", "\\begin{pmatrix} a \\\\ b \\end{pmatrix}"],
+      ["latex-matrix-brackets", "\\begin{bmatrix} a \\end{bmatrix}"],
+      ["latex-matrix-bars", "\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}"],
+      ["latex-matrix-braces", "\\begin{Bmatrix} a \\end{Bmatrix}"],
+      ["latex-matrix-array", "\\begin{array}{cc} a & b \\end{array}"],
+    ]],
+    ["fonts", "Font-style commands, which wrap their argument in a FontStyle", [
+      ["latex-font-blackboard", "\\mathbb{R}"],
+      ["latex-font-bold", "\\mathbf{x}"],
+      # Parses as `fonts: "textrm"` and renders `\mathrm{a b c}`; the name
+      # looks like a text command but the gem treats it as a font one.
+      ["latex-font-roman-text", "\\textrm{abc}"],
+      ["latex-font-script", "\\mathcal{L}"],
+      ["latex-font-fraktur", "\\mathfrak{g}"],
+      ["latex-font-sans-serif", "\\mathsf{A}"],
+      ["latex-font-typewriter", "\\mathtt{z}"],
+      ["latex-font-roman", "\\mathrm{d}"],
+      ["latex-font-italic", "\\mathit{x}"],
+      ["latex-font-mixed", "\\mathbf{A} + \\mathbf{B}"],
+    ]],
+    ["colour", "Colour, whose first argument is a colour name, not math", [
+      ["latex-colour-named", "\\color{red} x"],
+      ["latex-colour-in-sum", "\\color{blue} y + z"],
+      ["latex-colour-over-frac", "\\color{red} \\frac{1}{2}"],
+      # `\textcolor{blue}{y}` is deliberately absent: the gem rejects it, while
+      # the `\color` spelling above is accepted.
+    ]],
+    ["left-right", "\\left and \\right fences, which size their delimiters", [
+      ["latex-left-right-round", "\\left( a \\right)"],
+      ["latex-left-right-square", "\\left[ x \\right]"],
+      ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
+      ["latex-left-right-bar", "\\left| x \\right|"],
+      ["latex-left-right-round-sum", "\\left( a + b \\right)"],
+      ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
+    ]],
+    ["mod", "Modulo, in its \\mod, \\bmod and \\pmod spellings", [
+      ["latex-mod-infix", "a \\mod b"],
+      ["latex-mod-bmod", "a \\bmod b"],
+      ["latex-mod-pmod", "a \\pmod{b}"],
+      ["latex-mod-numeric", "x \\mod 2"],
+      ["latex-mod-fenced-left", "(a+b) \\mod n"],
+    ]],
+    ["whitespace", "Spacing commands, which survive the space-deleting pass", [
+      ["latex-whitespace-quad", "a \\quad b"],
+      ["latex-whitespace-two-quads", "a \\quad b \\quad c"],
+      # NOT a thin space, whatever the LaTeX spelling suggests: measured, `\,`
+      # parses as `symbols: ","` and renders `a , b`. Recorded under a name
+      # that says what the gem does, so a port implementing thin-space
+      # semantics is not misled by the id. `\quad` above really is spacing —
+      # it parses as `symbols: "quad"` — which is why the two sit together.
+      ["latex-comma-from-thin-space", "a \\, b"],
+      ["latex-whitespace-medium", "a \\: b"],
+      # `a \hspace{1em} b` is deliberately absent: the gem rejects it. `a \; b`
+      # and `a \qquad b` are absent for the other reason — the gem accepts
+      # both, and renders them to asciimath as `"P{\;}"` and `"P{qquad}"`, the
+      # parsing wrapper the note above this list describes.
+    ]],
+    ["accents", "Accents, which decorate their argument, not fence it", [
+      ["latex-accent-hat", "\\hat{a}"],
+      ["latex-accent-hat-multi", "\\hat{ab}"],
+      ["latex-accent-vec", "\\vec{v}"],
+      ["latex-accent-vec-multi", "\\vec{AB}"],
+      ["latex-accent-bar", "\\bar{x}"],
+      ["latex-accent-dot", "\\dot{x}"],
+      ["latex-accent-ddot", "\\ddot{y}"],
+      ["latex-accent-tilde", "\\tilde{n}"],
+    ]],
+    ["over-under", "Lines and braces drawn above or below an argument", [
+      ["latex-over-under-overline", "\\overline{ab}"],
+      ["latex-over-under-overline-sum", "\\overline{a+b}"],
+      ["latex-over-under-overline-nested", "\\overline{\\overline{a}}"],
+      ["latex-over-under-underbrace", "\\underbrace{ab}"],
+      ["latex-over-under-underbrace-sum", "\\underbrace{a+b}"],
+      ["latex-over-under-underbrace-labelled", "\\underbrace{x}_{y}"],
+      ["latex-over-under-overset", "\\overset{x}{y}"],
+      ["latex-over-under-underset", "\\underset{x}{y}"],
+      ["latex-over-under-stackrel", "\\stackrel{x}{y}"],
+      # `\overbrace{ab}` is absent because it is UNREACHABLE, not because it
+      # was skipped. `Latex::Constants::SYMBOLS` classifies `overbrace:
+      # :underover`, but the grammar's underover alternative reads
+      # `Constants::UNDEROVER_CLASSES`, which holds only `bmod`, `pmod` and
+      # `mod`. No rule reaches the entry, so the gem rejects `\overbrace{ab}`
+      # — measured, and nothing here works around it.
+      #
+      # `\underline{ab}` is absent for the parsing-wrapper reason: the gem
+      # accepts it, but parses `\underline` as a bare symbol and renders it to
+      # asciimath as `"P{underline}"`.
     ]],
   ].freeze
 
