@@ -106,7 +106,7 @@ cases:
       - class: Math::Symbols::Symbol
         fields:
           value: c
-- id: latex-whitespace-thin
+- id: latex-comma-from-thin-space
   input: a \, b
   input_format: latex
   preprocessed: a\,b

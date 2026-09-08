@@ -47,7 +47,7 @@ because group names repeat across input formats — `asciimath/numbers` and
 
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,
-`latex/quoted-text` 5, `latex/nary` 9, `latex/matrices` 6, `latex/fonts` 9,
+`latex/quoted-text` 4, `latex/nary` 9, `latex/matrices` 6, `latex/fonts` 10,
 `latex/colour` 3, `latex/left-right` 6, `latex/mod` 5, `latex/whitespace` 4,
 `latex/accents` 8, `latex/over-under` 9.
 

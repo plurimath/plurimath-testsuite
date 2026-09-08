@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 7144b70b1a0ebe951aeace43143b2ff9f6149af3b33e0d12b28a95703bc749c7
+  sha256: c78c499e356b6cc6c655b84b3a4a7f3853e6d4c00597e34ca94e379777efa6d6
   repository:
-    commit: e85ff7ec07490300e293a9d0e5fe798372118a2a
+    commit: 93d142150c11f6cb118964f15dca09d49860c7dc
     clean: true
     dirty_paths: []
 oracle:
@@ -114,8 +114,8 @@ payloads:
   sha256: b8ddc3bfe16328046638b3a95c1010b87310e572de34a61e663144ecf6f996d9
   bytes: 6188
 - path: latex/fonts.yaml
-  sha256: b54bcf8bdb3d691bbbe47f5a76414802c8c0b663b3d77c4856afb7ac5c623cfb
-  bytes: 8887
+  sha256: a91e8e1eb9da88136c7b046fdd656fd32d025ab049f42d8d8f5bf586de69d863
+  bytes: 10345
 - path: latex/frac.yaml
   sha256: fcf7cfd1f5b8dc1655909a72f415bf48e4481df035c7c3a8a1b7991ffcc36e53
   bytes: 10303
@@ -144,8 +144,8 @@ payloads:
   sha256: 551263053f7f2ee319308128f2f5faffa552ffa287b3a0e0047509445e244f0a
   bytes: 8754
 - path: latex/quoted-text.yaml
-  sha256: 666344aab0ff07bd53abb878087ff9867244b5bf0351fe54ff72f9d3d3cbf4f0
-  bytes: 4534
+  sha256: 84e58ab086404cd66ba5a372b909443905ec0377263471bdc469bf2ab8995b9f
+  bytes: 3080
 - path: latex/roots.yaml
   sha256: 07f153c1af536452cb7ca3a8fd49ebedea9812e9cbdb8137a841c70fb5826286
   bytes: 9486
@@ -156,5 +156,5 @@ payloads:
   sha256: 218a601f751f4660378556b99e5bf7077250afcc63211fdaf7f35e3ebf4f8f90
   bytes: 10786
 - path: latex/whitespace.yaml
-  sha256: b786cb431a9a277f7074b911646524e82a7d96bf26fd3788d643c3cb019cdaae
-  bytes: 4298
+  sha256: 3476a9b1da7bb03d27d23a82cdbcfc80049820607a00fd82f82216fe3903567a
+  bytes: 4304
