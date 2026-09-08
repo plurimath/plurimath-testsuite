@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/latex/1
 group: nary
-description: 'n-ary operators and limit-bearing functions, bounded and bare. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `P{name}` for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
+description: 'n-ary operators and limit-bearing functions, bounded and bare. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `"P{name}"` -- the quotes are part of the emitted string -- for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
 input_format: latex
 targets:
 - asciimath
