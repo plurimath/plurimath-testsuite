@@ -3,8 +3,8 @@
 # Generates the conformance corpus from the Ruby plurimath gem, which is the
 # oracle. Every fact that belongs to one input format rather than to the
 # corpus as a whole — the parser calls, the target list, the case data — lives
-# in a Format descriptor; FORMATS is the list of them, and holds AsciiMath
-# and LaTeX today.
+# in a Format descriptor; FORMATS is the list of them, and holds AsciiMath,
+# LaTeX and UnicodeMath today.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -1089,9 +1089,127 @@ module CorpusGenerator
     partial_candidates: [].freeze,
   )
 
+  # The UnicodeMath seed corpus, the third input format, and the first slice of
+  # it: four groups, the same four LaTeX opened with, so the two formats can be
+  # read side by side.
+  #
+  # The name is `unicode`, not `unicodemath`. That is the gem's PARSE type —
+  # `Math::VALID_TYPES` keys `Plurimath::UnicodeMath` under `:unicode`, and
+  # `LOCALIZED_PARSE_TYPES` spells it the same way — while `unicodemath` is the
+  # RENDER target, the `Formula#to_unicodemath` name every format's `targets`
+  # already lists. So this format both parses `unicode` and renders back to
+  # `unicodemath`, and the corpus's `input_format` and `targets` fields
+  # deliberately disagree in spelling. Conflating them would make
+  # `Math.parse(input, :unicodemath)` the call, which raises `InvalidTypeError`.
+  #
+  # Ids carry a `unicode-` prefix for the reason the LaTeX ids carry `latex-`:
+  # uniqueness is enforced here only WITHIN a group, while a consumer keys every
+  # payload's cases into one map and raises on a repeat. The prefix was checked
+  # against all 244 ids the corpus held before this slice; none began with it.
+  #
+  # UnicodeMath's inputs are the notation itself — literal `α`, `×`, `⌈`, not a
+  # backslash name — so the groups below are the same features written in
+  # characters. That difference is the whole reason this format needs its own
+  # cases rather than a translation of LaTeX's: the gem reaches a DIFFERENT
+  # symbol table on the way in, and two notations that agree on a construct can
+  # still disagree on which target can name it again on the way out.
+  #
+  # Which is exactly what `symbols` and `operators` record. `∅` renders to
+  # latex, mathml and unicodemath properly and to asciimath as `"P{emptyset}"`;
+  # `a∓b` does the same through `"P{mp}"`. Both are `parsing_wrapper` output —
+  # the gem has no asciimath name for the construct — and both are admitted,
+  # because the corpus records what the gem produced and a port that renders
+  # something better diverges from the oracle. Their two groups say so in their
+  # own descriptions, through PLACEHOLDER_NOTE, so that a reader of the payload
+  # does not mistake the case for coverage of the construct: it is coverage of
+  # the gem's gap.
+  #
+  # `∓` is paired with `±` on purpose. They are adjacent operators of the same
+  # shape, one of which asciimath can name and one of which it cannot, and a
+  # port that assumes the pair behaves alike fails on exactly one of them.
+  #
+  # `1,5` is a real comma decimal here rather than a sequence: measured, it
+  # parses as `decimal_number` with `decimal: ","`, one `Math::Number` node —
+  # so the id says decimal-comma truthfully. `-42` is the opposite and the id
+  # is loose in the way LaTeX's already is: it parses as TWO nodes, a
+  # `Symbols::Minus` and a `Number`, not a signed literal.
+  #
+  # Rejections and partially renderable inputs are not in this slice.
+  # `write_format` writes no payload for a kind whose candidate list is empty,
+  # so their absence claims only that none are recorded yet. One partial
+  # candidate is already measured and waiting for that slice: `⎣2.5⎦` parses
+  # and then fails to render to every one of the four targets.
+  UNICODEMATH_GROUPS = [
+    ["numbers", "Number literals: integer, decimal, comma-decimal, signed " \
+                "and exponentiated", [
+      ["unicode-number-integer", "1"],
+      ["unicode-number-decimal", "3.14"],
+      ["unicode-number-decimal-comma", "1,5"],
+      ["unicode-number-negative", "-42"],
+      ["unicode-number-exponent", "2^10"],
+    ]],
+    ["symbols",
+     "Literal Unicode symbols: Greek letters and constants." +
+     PLACEHOLDER_NOTE, [
+      ["unicode-symbol-greek-alpha", "α"],
+      ["unicode-symbol-greek-pi", "π"],
+      ["unicode-symbol-infinity", "∞"],
+      # asciimath renders this one as `"P{emptyset}"`. Measured, and recorded
+      # as measured.
+      ["unicode-symbol-empty-set", "∅"],
+    ]],
+    ["operators",
+     "Binary operators written as the literal Unicode character." +
+     PLACEHOLDER_NOTE, [
+      ["unicode-operator-plus", "a+b"],
+      ["unicode-operator-times", "a×b"],
+      ["unicode-operator-leq", "a≤b"],
+      ["unicode-operator-equiv", "a≡b"],
+      ["unicode-operator-plus-minus", "a±b"],
+      # asciimath renders this one as `a "P{mp}" b`, while its `±` sibling
+      # above renders as `a pm b`.
+      ["unicode-operator-minus-plus", "a∓b"],
+    ]],
+    ["fences", "Fenced groups: ASCII, angle and ceiling delimiters", [
+      ["unicode-fence-round", "(a)"],
+      ["unicode-fence-square", "[a]"],
+      ["unicode-fence-curly", "{a}"],
+      ["unicode-fence-angle", "⟨a⟩"],
+      ["unicode-fence-ceiling", "⌈a⌉"],
+    ]],
+  ].freeze
+
+  # UnicodeMath, the third input format.
+  #
+  # `UnicodeMath::Parser` preprocesses in its constructor as both its siblings
+  # do, and further than either: it splits the input on `#` to lift out a
+  # labelled-row id, encodes the result through HTMLEntities as HEXADECIMAL
+  # entities, then puts `&`, `"` and `\` back, strips a `⫷…⫸` span, rewrites
+  # `\uXXXX` escapes to entities, and strips the ends. So the whole point of
+  # this format — its literal characters — reaches the grammar as `&#x3b1;`
+  # rather than as `α`, which is what each case's `preprocessed` field shows
+  # and what a rejection's `index` would be an offset into.
+  #
+  # `#text` is that rewritten string and `UnicodeMath::Parse` is the Parslet
+  # grammar run over it. One caveat for whoever adds the labelled-row cases:
+  # `Parser#parse` post-processes the grammar's tree when the input carried a
+  # `#`, so for those inputs alone the tree recorded here is not the tree the
+  # parser goes on to transform. No case in this slice contains a `#`.
+  UNICODEMATH = Format.new(
+    name: "unicode",
+    label: "UnicodeMath",
+    targets: %w[asciimath latex mathml unicodemath].freeze,
+    preprocess: ->(input) { Plurimath::UnicodeMath::Parser.new(input).text },
+    parse_tree: ->(text) { Plurimath::UnicodeMath::Parse.new.parse(text) },
+    groups: UNICODEMATH_GROUPS,
+    rejection_candidates: [].freeze,
+    rejection_description: REJECTIONS_DESCRIPTION,
+    partial_candidates: [].freeze,
+  )
+
   # Every input format the corpus is generated for, in the order they are
-  # written. A second format is one more `Format` and one more entry here.
-  FORMATS = [ASCIIMATH, LATEX].freeze
+  # written. A further format is one more `Format` and one more entry here.
+  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
