@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/latex/1
 group: whitespace
-description: Spacing commands, which survive the space-deleting pass
+description: 'Spacing commands, which survive the space-deleting pass. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `P{name}` for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
 input_format: latex
 targets:
 - asciimath
@@ -181,6 +181,86 @@ cases:
         fields:
           value: a
       - class: Math::Symbols::Mathcolon
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: b
+- id: latex-whitespace-thick
+  input: a \; b
+  input_format: latex
+  preprocessed: a\;b
+  expected:
+    asciimath: a "P{\;}" b
+    latex: a \; b
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>a</mi>
+          <mo>&#x2004;</mo>
+          <mi>b</mi>
+        </mstyle>
+      </math>
+    unicodemath: a   b
+  parse_tree:
+    expression:
+      expression:
+        symbols: b
+      sequence:
+        three_per_em_space: "\\;"
+    sequence:
+      symbols: a
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: a \; b
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+      - class: Math::Symbols::ThreePerEmSpace
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: b
+- id: latex-whitespace-qquad
+  input: a \qquad b
+  input_format: latex
+  preprocessed: a\qquadb
+  expected:
+    asciimath: a "P{qquad}" b
+    latex: a \qquad b
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>a</mi>
+          <mi>&#xa0;&#xa0;&#xa0;&#xa0;</mi>
+          <mi>b</mi>
+        </mstyle>
+      </math>
+    unicodemath: a      b
+  parse_tree:
+    expression:
+      expression:
+        symbols: b
+      sequence:
+        symbols: qquad
+    sequence:
+      symbols: a
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: a \qquad b
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+      - class: Math::Symbols::Qquad
         fields:
           value:
       - class: Math::Symbols::Symbol

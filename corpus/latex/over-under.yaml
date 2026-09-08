@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/latex/1
 group: over-under
-description: Lines and braces drawn above or below an argument
+description: 'Lines and braces drawn above or below an argument. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `P{name}` for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
 input_format: latex
 targets:
 - asciimath
@@ -463,3 +463,99 @@ cases:
             class: Math::Symbols::Symbol
             fields:
               value: "y"
+- id: latex-over-under-underline
+  input: "\\underline{ab}"
+  input_format: latex
+  preprocessed: "\\underline{ab}"
+  expected:
+    asciimath: '"P{underline}" a b'
+    latex: "\\underline a b"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x332;</mi>
+          <mrow>
+            <mi>a</mi>
+            <mi>b</mi>
+          </mrow>
+        </mstyle>
+      </math>
+    unicodemath: ̲ a b
+  parse_tree:
+    expression:
+      expression:
+        expression:
+          symbols: b
+        sequence:
+          symbols: a
+    sequence:
+      symbols: underline
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\underline{ab}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Underline
+        fields:
+          value:
+      - class: Math::Formula
+        fields:
+          displaystyle: true
+          left_right_wrapper: true
+          value:
+          - class: Math::Symbols::Symbol
+            fields:
+              value: a
+          - class: Math::Symbols::Symbol
+            fields:
+              value: b
+- id: latex-over-under-overparen
+  input: "\\overparen{ab}"
+  input_format: latex
+  preprocessed: "\\overparen{ab}"
+  expected:
+    asciimath: '"P{wideparen}" a b'
+    latex: "\\overparen a b"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x23dc;</mi>
+          <mrow>
+            <mi>a</mi>
+            <mi>b</mi>
+          </mrow>
+        </mstyle>
+      </math>
+    unicodemath: "⏜ a b"
+  parse_tree:
+    expression:
+      expression:
+        expression:
+          symbols: b
+        sequence:
+          symbols: a
+    sequence:
+      symbols: overparen
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\overparen{ab}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Wideparen
+        fields:
+          value:
+      - class: Math::Formula
+        fields:
+          displaystyle: true
+          left_right_wrapper: true
+          value:
+          - class: Math::Symbols::Symbol
+            fields:
+              value: a
+          - class: Math::Symbols::Symbol
+            fields:
+              value: b
