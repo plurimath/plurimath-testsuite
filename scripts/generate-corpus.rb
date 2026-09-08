@@ -857,7 +857,10 @@ module CorpusGenerator
       ["latex-text-spaced", "\\text{hello world}"],
       ["latex-text-mbox", "\\mbox{hi}"],
       ["latex-text-mbox-spaced", "\\mbox{a b}"],
-      ["latex-text-textrm", "\\textrm{abc}"],
+      # `\textrm{abc}` is NOT here: measured, it parses as `fonts: "textrm"`,
+      # not `text:`, and renders `\mathrm{a b c}` rather than `\text{...}`.
+      # It is a font command wearing a text-looking name, so it lives in
+      # `fonts` where a reader will expect its behaviour.
     ]],
     ["nary",
      "n-ary operators and limit-bearing functions, bounded and bare." +
@@ -892,6 +895,9 @@ module CorpusGenerator
     ["fonts", "Font-style commands, which wrap their argument in a FontStyle", [
       ["latex-font-blackboard", "\\mathbb{R}"],
       ["latex-font-bold", "\\mathbf{x}"],
+      # Parses as `fonts: "textrm"` and renders `\mathrm{a b c}`; the name
+      # looks like a text command but the gem treats it as a font one.
+      ["latex-font-roman-text", "\\textrm{abc}"],
       ["latex-font-script", "\\mathcal{L}"],
       ["latex-font-fraktur", "\\mathfrak{g}"],
       ["latex-font-sans-serif", "\\mathsf{A}"],
@@ -927,7 +933,12 @@ module CorpusGenerator
      PLACEHOLDER_NOTE, [
       ["latex-whitespace-quad", "a \\quad b"],
       ["latex-whitespace-two-quads", "a \\quad b \\quad c"],
-      ["latex-whitespace-thin", "a \\, b"],
+      # NOT a thin space, whatever the LaTeX spelling suggests: measured, `\,`
+      # parses as `symbols: ","` and renders `a , b`. Recorded under a name
+      # that says what the gem does, so a port implementing thin-space
+      # semantics is not misled by the id. `\quad` above really is spacing —
+      # it parses as `symbols: "quad"` — which is why the two sit together.
+      ["latex-comma-from-thin-space", "a \\, b"],
       ["latex-whitespace-medium", "a \\: b"],
       # `a \hspace{1em} b` is deliberately absent: the gem rejects it.
       #
