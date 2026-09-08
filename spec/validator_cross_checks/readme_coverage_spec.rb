@@ -86,8 +86,16 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   # corpus as a whole. A single claim would say nothing about which format the
   # cases are in, and the row is read for exactly that — and while the check
   # keyed on AsciiMath alone, a second format's row could say anything.
+  #
+  # The list is pinned rather than derived because it is an inventory check in
+  # its own right: it asserts WHICH formats the corpus holds, which the rest of
+  # this example then assumes. It is not a guard against a missing row passing
+  # silently -- `readme_format_row_errors` already iterates the corpus's actual
+  # formats and reports a missing row, as the example below it shows. Extend
+  # this list in the commit that adds a format.
   it "checks one coverage row per input format the corpus holds cases for" do
-    expect(runner.send(:positive_groups).keys.sort).to eq(%w[asciimath latex])
+    expect(runner.send(:positive_groups).keys.sort)
+      .to eq(%w[asciimath latex unicode])
 
     unstated = readme.sub(/^\| LaTeX\s+\|[^|]*\|/) do |row|
       row.sub(/\d+ cases, \d+ groups/, "some cases")
