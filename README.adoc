@@ -65,7 +65,8 @@ still refuse them outright and pass everything here.
 Four LaTeX groups — `nary`, `whitespace`, `accents` and `over-under` — hold
 cases whose expected output is a **placeholder** rather than a rendering.
 Where the gem has no name for a construct in a target notation it emits
-`P{name}` (asciimath, unicodemath) or `\text{P[name]}` (latex), and the corpus
+`"P{name}"` (asciimath, unicodemath -- the quotes are part of the emitted
+string) or `\text{P[name]}` (latex), and the corpus
 records what the gem produced, so the placeholder is the expectation and a
 port that renders something better fails the case. Each of those four payloads
 says so in its own `description`, because such a case is coverage of the gem's

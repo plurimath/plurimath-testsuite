@@ -779,7 +779,8 @@ module CorpusGenerator
   PLACEHOLDER_NOTE =
     " Some cases here record a deferred-construct placeholder rather than a " \
     "rendering: where the gem has no name for a construct in a target " \
-    "notation, `Math::Symbols::Symbol#parsing_wrapper` emits `P{name}` for " \
+    "notation, `Math::Symbols::Symbol#parsing_wrapper` emits `\"P{name}\"` " \
+    "-- the quotes are part of the emitted string -- for " \
     "asciimath and unicodemath, or `\\text{P[name]}` for latex. The corpus " \
     "records what the gem produced, so the placeholder IS the expectation " \
     "and a port that renders something better fails the case."
