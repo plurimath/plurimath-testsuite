@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/latex/1
 group: nary
-description: n-ary operators and limit-bearing functions, bounded and bare
+description: 'n-ary operators and limit-bearing functions, bounded and bare. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `"P{name}"` -- the quotes are part of the emitted string -- for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
 input_format: latex
 targets:
 - asciimath
@@ -630,3 +630,272 @@ cases:
           - class: Math::Symbols::Symbol
             fields:
               value: x
+- id: latex-nary-bigcup-subscript
+  input: "\\bigcup_i A_i"
+  input_format: latex
+  preprocessed: "\\bigcup_iA_i"
+  expected:
+    asciimath: '"P{duni}"_(i) A_(i)'
+    latex: "\\bigcup_{i} A_{i}"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <msub>
+            <mi>&#x22c3;</mi>
+            <mi>i</mi>
+          </msub>
+          <msub>
+            <mi>A</mi>
+            <mi>i</mi>
+          </msub>
+        </mstyle>
+      </math>
+    unicodemath: "⋃_(i) A_(i)"
+  parse_tree:
+    expression:
+      base:
+        subscript:
+          symbols: i
+        symbols: A
+    sequence:
+      base:
+        subscript:
+          symbols: i
+        symbols: bigcup
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\bigcup_i A_i"
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Duni
+            fields:
+              value:
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: A
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+- id: latex-nary-bigcap-subscript
+  input: "\\bigcap_i A_i"
+  input_format: latex
+  preprocessed: "\\bigcap_iA_i"
+  expected:
+    asciimath: '"P{dint}"_(i) A_(i)'
+    latex: "\\bigcap_{i} A_{i}"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <msub>
+            <mi>&#x22c2;</mi>
+            <mi>i</mi>
+          </msub>
+          <msub>
+            <mi>A</mi>
+            <mi>i</mi>
+          </msub>
+        </mstyle>
+      </math>
+    unicodemath: "⋂_(i) A_(i)"
+  parse_tree:
+    expression:
+      base:
+        subscript:
+          symbols: i
+        symbols: A
+    sequence:
+      base:
+        subscript:
+          symbols: i
+        symbols: bigcap
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\bigcap_i A_i"
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Dint
+            fields:
+              value:
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: A
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+- id: latex-nary-coprod-subscript
+  input: "\\coprod_i A_i"
+  input_format: latex
+  preprocessed: "\\coprod_iA_i"
+  expected:
+    asciimath: '"P{coprod}"_(i) A_(i)'
+    latex: "\\coprod_{i} A_{i}"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <msub>
+            <mi>&#x2210;</mi>
+            <mi>i</mi>
+          </msub>
+          <msub>
+            <mi>A</mi>
+            <mi>i</mi>
+          </msub>
+        </mstyle>
+      </math>
+    unicodemath: "∐_(i) A_(i)"
+  parse_tree:
+    expression:
+      base:
+        subscript:
+          symbols: i
+        symbols: A
+    sequence:
+      base:
+        subscript:
+          symbols: i
+        symbols: coprod
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\coprod_i A_i"
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Coprod
+            fields:
+              value:
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: A
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+- id: latex-nary-iint-bare
+  input: "\\iint f"
+  input_format: latex
+  preprocessed: "\\iintf"
+  expected:
+    asciimath: '"P{iint}" f'
+    latex: "\\iint f"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x222c;</mi>
+          <mi>f</mi>
+        </mstyle>
+      </math>
+    unicodemath: "∬ f"
+  parse_tree:
+    expression:
+      symbols: f
+    sequence:
+      symbols: iint
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\iint f"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Iint
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: f
+- id: latex-nary-bigoplus-subscript
+  input: "\\bigoplus_i A_i"
+  input_format: latex
+  preprocessed: "\\bigoplus_iA_i"
+  expected:
+    asciimath: '"P{bigoplus}"_(i) A_(i)'
+    latex: "\\bigoplus_{i} A_{i}"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <msub>
+            <mi>&#x2a01;</mi>
+            <mi>i</mi>
+          </msub>
+          <msub>
+            <mi>A</mi>
+            <mi>i</mi>
+          </msub>
+        </mstyle>
+      </math>
+    unicodemath: "⨁_(i) A_(i)"
+  parse_tree:
+    expression:
+      base:
+        subscript:
+          symbols: i
+        symbols: A
+    sequence:
+      base:
+        subscript:
+          symbols: i
+        symbols: bigoplus
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\bigoplus_i A_i"
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Bigoplus
+            fields:
+              value:
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i
+      - class: Math::Function::Base
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: A
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: i

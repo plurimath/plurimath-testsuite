@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/latex/1
 group: accents
-description: Accents, which decorate their argument, not fence it
+description: 'Accents, which decorate their argument, not fence it. Some cases here record a deferred-construct placeholder rather than a rendering: where the gem has no name for a construct in a target notation, `Math::Symbols::Symbol#parsing_wrapper` emits `"P{name}"` -- the quotes are part of the emitted string -- for asciimath and unicodemath, or `\text{P[name]}` for latex. The corpus records what the gem produced, so the placeholder IS the expectation and a port that renders something better fails the case.'
 input_format: latex
 targets:
 - asciimath
@@ -336,3 +336,173 @@ cases:
             class: Math::Symbols::Symbol
             fields:
               value: "n"
+- id: latex-accent-acute
+  input: "\\acute{a}"
+  input_format: latex
+  preprocessed: "\\acute{a}"
+  expected:
+    asciimath: '"P{acute}" a'
+    latex: "\\acute a"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x301;</mi>
+          <mi>a</mi>
+        </mstyle>
+      </math>
+    unicodemath: ́ a
+  parse_tree:
+    expression:
+      expression:
+        symbols: a
+    sequence:
+      symbols: acute
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\acute{a}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Acute
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+- id: latex-accent-grave
+  input: "\\grave{a}"
+  input_format: latex
+  preprocessed: "\\grave{a}"
+  expected:
+    asciimath: '"P{grave}" a'
+    latex: "\\grave a"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x300;</mi>
+          <mi>a</mi>
+        </mstyle>
+      </math>
+    unicodemath: ̀ a
+  parse_tree:
+    expression:
+      expression:
+        symbols: a
+    sequence:
+      symbols: grave
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\grave{a}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Grave
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+- id: latex-accent-check
+  input: "\\check{a}"
+  input_format: latex
+  preprocessed: "\\check{a}"
+  expected:
+    asciimath: '"P{check}" a'
+    latex: "\\check a"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x30c;</mi>
+          <mi>a</mi>
+        </mstyle>
+      </math>
+    unicodemath: ̌ a
+  parse_tree:
+    expression:
+      expression:
+        symbols: a
+    sequence:
+      symbols: check
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\check{a}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Check
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+- id: latex-accent-breve
+  input: "\\breve{a}"
+  input_format: latex
+  preprocessed: "\\breve{a}"
+  expected:
+    asciimath: '"P{breve}" a'
+    latex: "\\breve a"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x306;</mi>
+          <mi>a</mi>
+        </mstyle>
+      </math>
+    unicodemath: ̆ a
+  parse_tree:
+    expression:
+      expression:
+        symbols: a
+    sequence:
+      symbols: breve
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\breve{a}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Breve
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a
+- id: latex-accent-mathring
+  input: "\\mathring{a}"
+  input_format: latex
+  preprocessed: "\\mathring{a}"
+  expected:
+    asciimath: '"P{ring}" a'
+    latex: "\\mathring a"
+    mathml: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mi>&#x30a;</mi>
+          <mi>a</mi>
+        </mstyle>
+      </math>
+    unicodemath: ̊ a
+  parse_tree:
+    expression:
+      expression:
+        symbols: a
+    sequence:
+      symbols: mathring
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: "\\mathring{a}"
+      left_right_wrapper: true
+      value:
+      - class: Math::Symbols::Ring
+        fields:
+          value:
+      - class: Math::Symbols::Symbol
+        fields:
+          value: a

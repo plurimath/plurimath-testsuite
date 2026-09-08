@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: c78c499e356b6cc6c655b84b3a4a7f3853e6d4c00597e34ca94e379777efa6d6
+  sha256: 1a26a2f797a6bbf2f8676dd57ad6490374b78e249d1fc5bdc93307faeb1a3d8f
   repository:
-    commit: 93d142150c11f6cb118964f15dca09d49860c7dc
+    commit: 72b29fc92a89c44140494dac11d442d467823a97
     clean: true
     dirty_paths: []
 oracle:
@@ -105,8 +105,8 @@ payloads:
   sha256: 81130efcdc2af63f62d5b1d6b30af32f7c8dcf58ed35e9d7490810c07023fa06
   bytes: 5817
 - path: latex/accents.yaml
-  sha256: 94cf3abcd2fde5ef60506e179698b9ae1ef74bfcf63913433cb6958d2a15e7a8
-  bytes: 8072
+  sha256: c3824be307f34fefc72279a0dc3487cb673da819c3ae509da28fbff3788880c5
+  bytes: 12436
 - path: latex/colour.yaml
   sha256: 193b7b281cd45e8bfec7f2bed90de231d8f05aad757b40f1d5b712de0f75a58c
   bytes: 4557
@@ -129,8 +129,8 @@ payloads:
   sha256: 33d813efff398f6df6af5dbf90096d03775a831550e2921199296ef44f95470c
   bytes: 6388
 - path: latex/nary.yaml
-  sha256: 46dc13e463182541e133b5da6c16c41293a76ae12479540cadd326553ec0c6da
-  bytes: 16143
+  sha256: 5bea6afd68341aba1d4baa6828ccb8446f768c8776c933660dcd6f0aed3de050
+  bytes: 23098
 - path: latex/numbers.yaml
   sha256: bcd65ae5906360ba8796da6f45f377175514e9b30d177a2fcea371b75b158190
   bytes: 4622
@@ -138,14 +138,17 @@ payloads:
   sha256: df5f49d6fa9e61d719a7ab8d8ce80aed7b922d9930a5eb15bddd8220e67470b9
   bytes: 4767
 - path: latex/over-under.yaml
-  sha256: de27c86a60c40619b02ac0ac741c683b52d15ce337858ed1497907627b2c53fb
-  bytes: 11834
+  sha256: 64c11baa14969ca3febaf21386b09c83d638fec5a70591d22bb9259c336d379c
+  bytes: 14625
 - path: latex/powers.yaml
   sha256: 551263053f7f2ee319308128f2f5faffa552ffa287b3a0e0047509445e244f0a
   bytes: 8754
 - path: latex/quoted-text.yaml
   sha256: 84e58ab086404cd66ba5a372b909443905ec0377263471bdc469bf2ab8995b9f
   bytes: 3080
+- path: latex/rejections.yaml
+  sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+  bytes: 3125
 - path: latex/roots.yaml
   sha256: 07f153c1af536452cb7ca3a8fd49ebedea9812e9cbdb8137a841c70fb5826286
   bytes: 9486
@@ -156,5 +159,5 @@ payloads:
   sha256: 218a601f751f4660378556b99e5bf7077250afcc63211fdaf7f35e3ebf4f8f90
   bytes: 10786
 - path: latex/whitespace.yaml
-  sha256: 3476a9b1da7bb03d27d23a82cdbcfc80049820607a00fd82f82216fe3903567a
-  bytes: 4304
+  sha256: e0a449fc7630ad0b678151353ed13d0f6a8526fe97945350650e809e3646f54e
+  bytes: 6592

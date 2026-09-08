@@ -20,11 +20,11 @@ not that Plurimath supports it — Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 203
-| LaTeX       | ✅ 111 cases, 18 groups | ✅ checked for all 203
-| MathML      | ❌ no cases yet         | ✅ checked for all 203
+| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 217
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 217
+| MathML      | ❌ no cases yet         | ✅ checked for all 217
 | OMML        | ❌ no cases yet         | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet         | ✅ checked for all 203, one a refusal
+| UnicodeMath | ❌ no cases yet         | ✅ checked for all 217, one a refusal
 | HTML        | ❌ no cases yet         | ❌ no cases yet
 |===
 
@@ -47,13 +47,30 @@ because group names repeat across input formats — `asciimath/numbers` and
 
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,
-`latex/quoted-text` 4, `latex/nary` 9, `latex/matrices` 6, `latex/fonts` 10,
-`latex/colour` 3, `latex/left-right` 6, `latex/mod` 5, `latex/whitespace` 4,
-`latex/accents` 8, `latex/over-under` 9.
+`latex/quoted-text` 4, `latex/nary` 14, `latex/matrices` 6, `latex/fonts` 10,
+`latex/colour` 3, `latex/left-right` 6, `latex/mod` 5, `latex/whitespace` 6,
+`latex/accents` 13, `latex/over-under` 11.
 
-LaTeX still has no rejection payload and no outcome payload — no input has been
-swept for either — so `corpus/latex/` holds these eighteen groups and nothing
-else.
+LaTeX now has a rejection payload as well, at `corpus/latex/rejections.yaml`.
+It holds fourteen refusals and is absent from the inventory above on purpose:
+that inventory counts payloads carrying expectations, and a rejection carries
+none.
+
+What LaTeX still has no payload for is the outcome kind. Three inputs were
+measured as candidates for one — `\left( x`, `\sqrt[` and
+`\begin{array}{zz} a \end{array}` all parse and then fail to render, the
+first and third to every target — but none is recorded yet, so a port may
+still refuse them outright and pass everything here.
+
+Four LaTeX groups — `nary`, `whitespace`, `accents` and `over-under` — hold
+cases whose expected output is a **placeholder** rather than a rendering.
+Where the gem has no name for a construct in a target notation it emits
+`"P{name}"` (asciimath, unicodemath -- the quotes are part of the emitted
+string) or `\text{P[name]}` (latex), and the corpus
+records what the gem produced, so the placeholder is the expectation and a
+port that renders something better fails the case. Each of those four payloads
+says so in its own `description`, because such a case is coverage of the gem's
+gap and not of the construct.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
 drift again — they had already drifted twice before the check existed. It
@@ -174,6 +191,14 @@ offset map. Absent when the failure did not come from the grammar.
 An implementation is conformant when it refuses every one of these. Asserting
 the offset is a stronger claim and needs that mapping; asserting the refusal
 alone is a valid, weaker conformance.
+
+The converse does not hold: a refusal absent from a payload is not a promise of
+acceptance. Two of the LaTeX refusals measured against the oracle cannot be
+written in this shape at all — the empty input, which `input` forbids by
+`minLength`, and `&#x110000;`, whose refusal happens inside the preprocessing
+pass, leaving no `preprocessed` text for a field that requires one. Both are
+named in that payload's `description` so the gap is stated rather than merely
+left.
 
 === Outcome payloads
 

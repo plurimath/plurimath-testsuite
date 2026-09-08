@@ -41,6 +41,8 @@ module CorpusGenerator
   # payload carries the format in its own `input_format` field — so it is one
   # fixed string.
   REJECTIONS_SCHEMA = "plurimath-corpus/rejections/1"
+  # The plain description, carried by a format whose rejection list needs no
+  # qualification. A format states its own in `rejection_description`.
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
@@ -82,9 +84,16 @@ module CorpusGenerator
   # constants: an input is measured against one parser, and a list reachable
   # from every format is a list that will eventually be run against the wrong
   # one.
+  #
+  # `rejection_description` is the prose the format's rejection payload
+  # carries. It is per format rather than shared because a rejection list can
+  # hold an entry a reader will misread — one whose name suggests a wider rule
+  # than the gem actually applies — and the only place a payload can say so is
+  # its own `description`: the `rejections/1` case shape is
+  # `additionalProperties: false`, so there is no per-case field for a note.
   Format = Data.define(
     :name, :label, :targets, :preprocess, :parse_tree,
-    :groups, :rejection_candidates, :partial_candidates
+    :groups, :rejection_candidates, :rejection_description, :partial_candidates
   )
 
   # A `model:` block records a node's *portable semantic state* — what a second
@@ -720,13 +729,15 @@ module CorpusGenerator
     parse_tree: ->(text) { Plurimath::Asciimath::Parse.new.parse(text) },
     groups: ASCIIMATH_GROUPS,
     rejection_candidates: ASCIIMATH_REJECTION_CANDIDATES,
+    rejection_description: REJECTIONS_DESCRIPTION,
     partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
   )
 
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
-  # fourteen below them. The rejection candidates and any partially renderable
-  # input come later, and `write_format` writes no payload for a kind whose
-  # candidate list is still empty.
+  # fourteen below them, then the rejection list above and the fourteen
+  # placeholder cases an earlier slice had wrongly excluded. A partially
+  # renderable payload is still outstanding, and `write_format` writes no
+  # payload for a kind whose candidate list is still empty.
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
   # decoration: this repository enforces id uniqueness WITHIN a group, while at
@@ -744,15 +755,36 @@ module CorpusGenerator
   # directory named after its input format, so `asciimath/numbers` and
   # `latex/numbers` are distinct payloads that no consumer can confuse.
   #
-  # A candidate is admitted only when the gem renders it to EVERY target
-  # without the parsing wrapper. `Math::Symbols::Symbol#parsing_wrapper` is the
-  # gem's placeholder for a symbol it has no name for in the target notation,
-  # and it has two spellings: `"P{name}"` for asciimath and unicodemath,
-  # `\text{P[name]}` for latex. Recording one would oblige every port to
-  # reproduce the gem's own gap, so such an input is named and excluded in the
-  # group it belongs to rather than dropped in silence — and the exclusion is
-  # measured per target, because an input can render cleanly to latex and still
-  # carry the wrapper in asciimath.
+  # A candidate is admitted when the gem renders it to EVERY target. Whether a
+  # rendering happens to be the parsing wrapper does NOT bear on admission, and
+  # an earlier slice was wrong to think it did.
+  #
+  # `Math::Symbols::Symbol#parsing_wrapper` is the gem's placeholder for a
+  # construct it has no name for in the target notation, in two spellings:
+  # `"P{name}"` for asciimath and unicodemath, `\text{P[name]}` for latex. The
+  # corpus records what the gem OUTPUTS, and the gem genuinely outputs these,
+  # so a port that renders something better than the placeholder diverges from
+  # the oracle. Excluding them therefore hid real behaviour rather than
+  # protecting anyone from it: the rule dropped fourteen inputs, and they are
+  # back below, in the groups they belong to.
+  #
+  # What a reader still must not do is mistake such a case for coverage of the
+  # construct — it is coverage of the gem's GAP. That distinction cannot live
+  # in this file, which no consumer of the corpus reads, so every group holding
+  # one says it in its own payload description, through PLACEHOLDER_NOTE.
+  #
+  # An input the gem cannot render to EVERY target is still excluded from these
+  # groups: `cases/1` demands a rendered string per target and has no shape for
+  # a refusal. Such an input belongs in `partial_candidates` instead.
+  PLACEHOLDER_NOTE =
+    " Some cases here record a deferred-construct placeholder rather than a " \
+    "rendering: where the gem has no name for a construct in a target " \
+    "notation, `Math::Symbols::Symbol#parsing_wrapper` emits `\"P{name}\"` " \
+    "-- the quotes are part of the emitted string -- for " \
+    "asciimath and unicodemath, or `\\text{P[name]}` for latex. The corpus " \
+    "records what the gem produced, so the placeholder IS the expectation " \
+    "and a port that renders something better fails the case."
+
   LATEX_GROUPS = [
     ["numbers", "Number literals: decimal, braced, signed and exponentiated", [
       ["latex-number-integer", "1"],
@@ -831,7 +863,9 @@ module CorpusGenerator
       # It is a font command wearing a text-looking name, so it lives in
       # `fonts` where a reader will expect its behaviour.
     ]],
-    ["nary", "n-ary operators and limit-bearing functions, bounded and bare", [
+    ["nary",
+     "n-ary operators and limit-bearing functions, bounded and bare." +
+     PLACEHOLDER_NOTE, [
       ["latex-nary-sum-bounded", "\\sum_{i=1}^{n} i"],
       ["latex-nary-sum-of-squares", "\\sum_{i=1}^{n} i^2"],
       ["latex-nary-sum-bare", "\\sum x"],
@@ -841,10 +875,15 @@ module CorpusGenerator
       ["latex-nary-prod-bounded", "\\prod_{i=1}^{n} i"],
       ["latex-nary-oint-subscript", "\\oint_C f"],
       ["latex-nary-lim-to-infinity", "\\lim_{x \\to \\infty} f(x)"],
-      # `\bigcup_i A_i` and `\bigcap_i A_i` are deliberately absent. The gem
-      # accepts both and renders them to every target, but their asciimath
-      # renderings are `"P{duni}"` and `"P{dint}"` — the parsing wrapper the
-      # note above this list describes, not a name asciimath has.
+      # The five below render to every target. Their asciimath renderings are
+      # the parsing wrapper — `"P{duni}"`, `"P{dint}"`, `"P{coprod}"`,
+      # `"P{iint}"`, `"P{bigoplus}"` — while latex, mathml and unicodemath all
+      # name the operator properly. Measured, and recorded as measured.
+      ["latex-nary-bigcup-subscript", "\\bigcup_i A_i"],
+      ["latex-nary-bigcap-subscript", "\\bigcap_i A_i"],
+      ["latex-nary-coprod-subscript", "\\coprod_i A_i"],
+      ["latex-nary-iint-bare", "\\iint f"],
+      ["latex-nary-bigoplus-subscript", "\\bigoplus_i A_i"],
     ]],
     ["matrices", "Matrix environments, one per delimiter pair", [
       ["latex-matrix-plain", "\\begin{matrix} a & b \\end{matrix}"],
@@ -890,7 +929,9 @@ module CorpusGenerator
       ["latex-mod-numeric", "x \\mod 2"],
       ["latex-mod-fenced-left", "(a+b) \\mod n"],
     ]],
-    ["whitespace", "Spacing commands, which survive the space-deleting pass", [
+    ["whitespace",
+     "Spacing commands, which survive the space-deleting pass." +
+     PLACEHOLDER_NOTE, [
       ["latex-whitespace-quad", "a \\quad b"],
       ["latex-whitespace-two-quads", "a \\quad b \\quad c"],
       # NOT a thin space, whatever the LaTeX spelling suggests: measured, `\,`
@@ -900,12 +941,18 @@ module CorpusGenerator
       # it parses as `symbols: "quad"` — which is why the two sit together.
       ["latex-comma-from-thin-space", "a \\, b"],
       ["latex-whitespace-medium", "a \\: b"],
-      # `a \hspace{1em} b` is deliberately absent: the gem rejects it. `a \; b`
-      # and `a \qquad b` are absent for the other reason — the gem accepts
-      # both, and renders them to asciimath as `"P{\;}"` and `"P{qquad}"`, the
-      # parsing wrapper the note above this list describes.
+      # `a \hspace{1em} b` is deliberately absent: the gem rejects it.
+      #
+      # The two below were excluded under the repealed rule, and both really do
+      # match it: asciimath renders them `a "P{\;}" b` and `a "P{qquad}" b`.
+      # The rule, not the reading, was what was wrong — that is what the gem
+      # produced, so that is what the corpus records.
+      ["latex-whitespace-thick", "a \\; b"],
+      ["latex-whitespace-qquad", "a \\qquad b"],
     ]],
-    ["accents", "Accents, which decorate their argument, not fence it", [
+    ["accents",
+     "Accents, which decorate their argument, not fence it." +
+     PLACEHOLDER_NOTE, [
       ["latex-accent-hat", "\\hat{a}"],
       ["latex-accent-hat-multi", "\\hat{ab}"],
       ["latex-accent-vec", "\\vec{v}"],
@@ -914,8 +961,20 @@ module CorpusGenerator
       ["latex-accent-dot", "\\dot{x}"],
       ["latex-accent-ddot", "\\ddot{y}"],
       ["latex-accent-tilde", "\\tilde{n}"],
+      # Accents the gem parses as bare symbols rather than as decorations: it
+      # renders each to asciimath as the parsing wrapper applied to the accent
+      # name, with the argument left beside it — `"P{acute}" a`, not an accent
+      # over `a`. `\mathring` wraps as `"P{ring}"`, which is the gem's own name
+      # for the symbol and not a typo for the command.
+      ["latex-accent-acute", "\\acute{a}"],
+      ["latex-accent-grave", "\\grave{a}"],
+      ["latex-accent-check", "\\check{a}"],
+      ["latex-accent-breve", "\\breve{a}"],
+      ["latex-accent-mathring", "\\mathring{a}"],
     ]],
-    ["over-under", "Lines and braces drawn above or below an argument", [
+    ["over-under",
+     "Lines and braces drawn above or below an argument." +
+     PLACEHOLDER_NOTE, [
       ["latex-over-under-overline", "\\overline{ab}"],
       ["latex-over-under-overline-sum", "\\overline{a+b}"],
       ["latex-over-under-overline-nested", "\\overline{\\overline{a}}"],
@@ -932,11 +991,82 @@ module CorpusGenerator
       # `mod`. No rule reaches the entry, so the gem rejects `\overbrace{ab}`
       # — measured, and nothing here works around it.
       #
-      # `\underline{ab}` is absent for the parsing-wrapper reason: the gem
-      # accepts it, but parses `\underline` as a bare symbol and renders it to
-      # asciimath as `"P{underline}"`.
+      # The two below are the over-under counterparts of the accents above:
+      # the gem parses each as a bare symbol, so asciimath gets the parsing
+      # wrapper with the argument beside it rather than a line or a brace over
+      # it. `\overparen` wraps as `"P{wideparen}"` — again the gem's name for
+      # the symbol, not the command's.
+      ["latex-over-under-underline", "\\underline{ab}"],
+      ["latex-over-under-overparen", "\\overparen{ab}"],
     ]],
   ].freeze
+
+  # Candidate malformed LaTeX inputs, swept rather than assumed. Every entry
+  # is expected to be REFUSED, and `build_rejections` fails the run if the gem
+  # accepts one, so this list cannot quietly drift into documenting acceptance.
+  #
+  # Five candidates were probed and are NOT here, each for a measured reason:
+  #
+  #   `\left( x`, `\sqrt[` and `\begin{array}{zz} a \end{array}` are ACCEPTED.
+  #   The gem parses all three into a `Math::Formula`; what fails is RENDERING.
+  #   `\left( x` and the bad array spec raise from every target, `\sqrt[`
+  #   raises from asciimath, latex and unicodemath and renders to mathml. That
+  #   is the `cases/2` shape, not this one — they are candidates for LaTeX's
+  #   `partial_candidates`, which is still empty, and not rejections.
+  #
+  #   The empty input `""` IS refused, but `rejections/1` gives `input` a
+  #   `minLength` of 1 on purpose: "an implementation has to be given something
+  #   to refuse". `"   "` below is the recordable neighbour — it is refused
+  #   too, and its `preprocessed` is `""`, because the space-deleting pass
+  #   empties it.
+  #
+  #   `&#x110000;` IS refused, and cannot be recorded here at all: the refusal
+  #   happens INSIDE the preprocessing pass, so there is no `preprocessed` text
+  #   to write and the field is required. `Latex::Parser#pre_processing` round
+  #   trips the input through HTMLEntities, and that raises `RangeError:
+  #   1114112 out of char range` before the grammar is ever reached. Writing
+  #   `input` into `preprocessed` would state that a pass ran which did not —
+  #   the same false statement `preprocessed_text` refuses to make for a format
+  #   with no pass at all. Recording it needs a schema that can say "refused
+  #   before preprocessing", which is a version bump, not a case.
+  LATEX_REJECTION_CANDIDATES = [
+    ["latex-unclosed-brace", "\\frac{1"],
+    ["latex-stray-close-brace", "x}"],
+    ["latex-unknown-command", "\\nosuchcommandhere"],
+    ["latex-frac-no-args", "\\frac"],
+    ["latex-frac-one-arg", "\\frac{1}"],
+    ["latex-right-without-left", "x \\right)"],
+    ["latex-begin-without-end", "\\begin{matrix} a"],
+    ["latex-end-without-begin", "a \\end{matrix}"],
+    ["latex-whitespace-only", "   "],
+    ["latex-lone-backslash", "\\"],
+    ["latex-unclosed-text", "\\text{abc"],
+    ["latex-nested-unclosed", "\\frac{\\frac{1}{2}"],
+    ["latex-command-bad-chars", "\\fr@c{1}{2}"],
+    # `~` is ordinary LaTeX for a non-breaking space, so this one is a
+    # divergence candidate rather than an obvious refusal. It is recorded
+    # because the gem refuses it today; if that ever changes, the change is
+    # visible here rather than silent.
+    ["latex-tilde", "a~b"],
+  ].freeze
+
+  # LaTeX states its own rejection prose because two of the things a reader
+  # will want to know about this list are about inputs that are NOT in it. See
+  # the exclusions above `LATEX_REJECTION_CANDIDATES`; this is the part of them
+  # a consumer of the corpus can see.
+  LATEX_REJECTIONS_DESCRIPTION =
+    "Inputs the gem refuses, so a port can be checked on what it rejects. " \
+    "Two notes, because the obvious reading of this list is wrong in both " \
+    "places. `latex-tilde` is a divergence candidate rather than a plain " \
+    "refusal: `~` is ordinary LaTeX for a non-breaking space, and the gem " \
+    "refuses it anyway. And two further refusals measured against this " \
+    "oracle are deliberately absent, because this schema cannot express " \
+    "them — the empty input, which `input` forbids by minLength, and " \
+    "`&#x110000;`, a WELL-FORMED hex entity above the Unicode maximum, whose " \
+    "refusal comes from the HTMLEntities round trip inside the preprocessing " \
+    "pass itself, leaving no `preprocessed` text to record. Malformed " \
+    "entities are the opposite case and are ACCEPTED, falling through as " \
+    "literal characters: `&nosuchentity;`, `&#xZZ;`, `&;` and `&pi` all parse."
 
   # LaTeX, the second input format.
   #
@@ -954,7 +1084,8 @@ module CorpusGenerator
     preprocess: ->(input) { Plurimath::Latex::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::Latex::Parse.new.parse(text) },
     groups: LATEX_GROUPS,
-    rejection_candidates: [].freeze,
+    rejection_candidates: LATEX_REJECTION_CANDIDATES,
+    rejection_description: LATEX_REJECTIONS_DESCRIPTION,
     partial_candidates: [].freeze,
   )
 
@@ -1224,7 +1355,7 @@ module CorpusGenerator
       rejection_payload = {
         "schema" => REJECTIONS_SCHEMA,
         "group" => "rejections",
-        "description" => REJECTIONS_DESCRIPTION,
+        "description" => format.rejection_description,
         "input_format" => format.name,
         "cases" => rejections,
       }
