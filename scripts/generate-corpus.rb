@@ -729,11 +729,16 @@ module CorpusGenerator
   # no payload for a kind whose candidate list is still empty.
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
-  # decoration: this repository enforces id uniqueness WITHIN a group, but the
-  # TypeScript port collects every payload's cases into one map keyed by id
-  # (test/core/corpus-pin.ts) and raises on a repeat, so two formats sharing an
-  # id passes here and breaks there. Prefixing one format's ids is enough to
-  # make the collision impossible, and the AsciiMath ids are already published.
+  # decoration: this repository enforces id uniqueness WITHIN a group, while at
+  # least one consumer collects every payload's cases into a single map keyed by
+  # id and raises on a repeat. Two formats sharing an id therefore PASSES here
+  # and breaks there — a failure this repository's own suite cannot see.
+  # Prefixing one format's ids makes the collision impossible, and the AsciiMath
+  # ids are already published, so the prefix goes on the newer format.
+  #
+  # The consumer measured was the TypeScript port. Its file is deliberately not
+  # named: that path lives in another repository, and naming it here sends a
+  # reader looking for it in this one.
   #
   # Group NAMES do repeat across formats, and may: a group lives in the
   # directory named after its input format, so `asciimath/numbers` and

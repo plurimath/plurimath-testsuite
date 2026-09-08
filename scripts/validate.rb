@@ -586,10 +586,15 @@ module Testsuite
     PROVENANCE_KIND = "provenance"
 
     # Input format (the middle segment of a case payload's `schema`) to the
-    # notation label README.adoc's coverage table uses for its row. The keys
-    # are exactly the formats `schema/cases.json` and `cases2.json` permit; a
-    # format outside this map is an error rather than a skip, so adding one to
-    # the schema without giving it a README row cannot pass unnoticed.
+    # notation label README.adoc's coverage table uses for its row.
+    #
+    # The README spells a format for people ("AsciiMath") and the corpus spells
+    # it for machines ("asciimath"), and neither is derivable from the other —
+    # `unicode` is the corpus's name for UnicodeMath — so the mapping is written
+    # out, over exactly the format names `schema/cases.json` and `cases2.json`
+    # permit. A corpus format missing from this table FAILS the run rather than
+    # going unchecked: a format whose coverage row nobody compares against the
+    # corpus is the drift this check exists to catch.
     NOTATION_LABELS = {
       "asciimath" => "AsciiMath",
       "latex" => "LaTeX",
@@ -626,23 +631,6 @@ module Testsuite
       # KEYS of `expected`, never its values. So the same four apply verbatim,
       # and this entry says that on purpose rather than by falling through.
       "cases/2" => :case_cross_checks,
-    }.freeze
-
-    # The README spells an input format for people ("AsciiMath") and the corpus
-    # spells it for machines ("asciimath"). Neither is derivable from the other
-    # — `unicode` is the corpus's name for UnicodeMath — so the mapping is
-    # written out here, over exactly the format names the payload schemas
-    # enumerate. A corpus format missing from this table FAILS the run rather
-    # than going unchecked: a format whose coverage row nobody compares against
-    # the corpus is the drift this whole check exists to catch.
-    README_FORMAT_LABELS = {
-      "asciimath" => "AsciiMath",
-      "html" => "HTML",
-      "latex" => "LaTeX",
-      "mathml" => "MathML",
-      "omml" => "OMML",
-      "unicode" => "UnicodeMath",
-      "unitsml" => "UnitsML",
     }.freeze
 
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
@@ -1232,7 +1220,7 @@ module Testsuite
     end
 
     def readme_format_row_errors(text, format, groups)
-      label = README_FORMAT_LABELS[format]
+      label = NOTATION_LABELS[format]
       if label.nil?
         return ["no README label is registered for the input format " \
                 "`#{format}`, so its coverage row goes unchecked"]
