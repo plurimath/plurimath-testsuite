@@ -11,7 +11,8 @@ RSpec.describe CorpusGenerator, ".preprocessed_text" do
     CorpusGenerator::Format.new(
       name: "probe", label: "Probe", targets: ["latex"],
       preprocess: preprocess, parse_tree: ->(text) { text },
-      groups: [], rejection_candidates: [], partial_candidates: []
+      groups: [], rejection_candidates: [], rejection_description: "none",
+      partial_candidates: []
     )
   end
 
