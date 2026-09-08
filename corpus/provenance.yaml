@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: e26a58c69e2da50db2aa9a10ba2992f18332dbe865b534b4e4489194b560009c
+  sha256: 0cd2de9de692222eda7035cacb5b64c5031487664608ab0699538bce1710af83
   repository:
-    commit: 282f137a33c82fd76a6885a24eb68e44103d7558
+    commit: 8080fe9fac0c33c92c9512e8caa5a8bdf3e3094a
     clean: true
     dirty_paths: []
 oracle:
@@ -27,17 +27,10 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: 03bdd3de3d9bcd911e87a7d37605f2e8ee5d003a511881779a82490425f18121
+  sha256: c3e7a4b08d05573f17017a0623a1f2af75147015015a281a802bc20230aa7379
   resolved_gems: 77
   platforms:
-  - aarch64-linux-gnu
-  - aarch64-linux-musl
-  - arm-linux-gnu
-  - arm-linux-musl
-  - arm64-darwin
-  - x86_64-darwin
   - x86_64-linux-gnu
-  - x86_64-linux-musl
   bundler: 4.0.3
 direct_runtime:
   bigdecimal: 4.1.2
@@ -46,7 +39,7 @@ direct_runtime:
   mml: 2.4.1
   omml: 0.2.5
   ostruct: 0.6.3
-  ox: 2.14.28
+  ox: 2.14.29
   parslet: 2.0.0
   thor: 1.5.0
   unitsml: 0.6.8
@@ -111,3 +104,15 @@ payloads:
 - path: asciimath/whitespace.yaml
   sha256: 81130efcdc2af63f62d5b1d6b30af32f7c8dcf58ed35e9d7490810c07023fa06
   bytes: 5817
+- path: latex/fences.yaml
+  sha256: b8ddc3bfe16328046638b3a95c1010b87310e572de34a61e663144ecf6f996d9
+  bytes: 6188
+- path: latex/numbers.yaml
+  sha256: bcd65ae5906360ba8796da6f45f377175514e9b30d177a2fcea371b75b158190
+  bytes: 4622
+- path: latex/operators.yaml
+  sha256: df5f49d6fa9e61d719a7ab8d8ce80aed7b922d9930a5eb15bddd8220e67470b9
+  bytes: 4767
+- path: latex/symbols.yaml
+  sha256: 0f489f25e028ee4de9d2ff2d22496f6708eaa0020511668880427a9f7d310d6f
+  bytes: 2772

@@ -12,19 +12,20 @@ can be checked against identical answers.
 
 == What is covered
 
-Early. AsciiMath input is the first notation extracted, and the only one so
-far. A tick means cases exist here today, not that Plurimath supports it —
-Plurimath supports every row.
+Early. AsciiMath input was the first notation extracted; LaTeX input is the
+second, and so far a first slice of four groups rather than a sweep. A tick
+means cases exist here today, not that Plurimath supports it — Plurimath
+supports every row.
 
 [cols="1,2,2",options="header"]
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups | ✅ checked for all 92
-| LaTeX       | ❌ no cases yet        | ✅ checked for all 92
-| MathML      | ❌ no cases yet        | ✅ checked for all 92
+| AsciiMath   | ✅ 92 cases, 19 groups | ✅ checked for all 111
+| LaTeX       | ✅ 19 cases, 4 groups  | ✅ checked for all 111
+| MathML      | ❌ no cases yet        | ✅ checked for all 111
 | OMML        | ❌ no cases yet        | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet        | ✅ checked for all 92, one a refusal
+| UnicodeMath | ❌ no cases yet        | ✅ checked for all 111, one a refusal
 | HTML        | ❌ no cases yet        | ❌ no cases yet
 |===
 
@@ -33,15 +34,27 @@ ticked. An expectation is usually a rendering; one of them is a refusal, and
 the section on outcome payloads below says why that is recorded rather than
 omitted.
 
-Groups, and the cases in each:
+Groups, and the cases in each. A group is named by its path under `corpus/`,
+because group names repeat across input formats — `asciimath/numbers` and
+`latex/numbers` would be different payloads:
 
-`numbers` 5, `symbols` 7, `operators` 6, `fences` 6, `frac` 6, `powers` 8,
-`roots` 4, `unary-functions` 7, `quoted-text` 3, `nary` 6, `matrices` 2,
-`mixed` 5, `permissive` 6, `fonts` 7, `colour` 2, `left-right` 3,
-`mod` 3, `whitespace` 5, `partial-render` 1.
+`asciimath/numbers` 5, `asciimath/symbols` 7, `asciimath/operators` 6,
+`asciimath/fences` 6, `asciimath/frac` 6, `asciimath/powers` 8,
+`asciimath/roots` 4, `asciimath/unary-functions` 7, `asciimath/quoted-text` 3,
+`asciimath/nary` 6, `asciimath/matrices` 2, `asciimath/mixed` 5,
+`asciimath/permissive` 6, `asciimath/fonts` 7, `asciimath/colour` 2,
+`asciimath/left-right` 3, `asciimath/mod` 3, `asciimath/whitespace` 5,
+`asciimath/partial-render` 1.
+
+`latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5.
+
+LaTeX has no rejection payload and no outcome payload yet — no input has been
+swept for either — so `corpus/latex/` holds those four groups and nothing else.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
-drift again — they had already drifted twice before the check existed.
+drift again — they had already drifted twice before the check existed. It
+checks one coverage row per input format the corpus holds cases for, so a
+second format's row cannot go uncompared.
 
 == Using it
 

@@ -77,34 +77,52 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     # The message names the notation, because the claim is checked per input
     # format now rather than only for AsciiMath.
     expect(errors_for(wrong)).to include(
-      a_string_matching(/says AsciiMath has 999 cases/),
-      a_string_matching(/says AsciiMath has 888 groups/),
+      a_string_matching(/says 999 cases for AsciiMath/),
+      a_string_matching(/says 888 groups for AsciiMath/),
     )
   end
 
-  it "rejects a README with no claim for an input format the corpus carries" do
-    # The corpus is AsciiMath-only today, so this removes the row rather than
-    # adding a second format: the same failure, reached without inventing
-    # corpus data. A `latex/` corpus arriving beside a LaTeX row that still
-    # says "no cases yet" fails here in exactly this way.
-    without_claim = readme.sub(
-      /^\| AsciiMath\s+\| ✅ \d+ cases, \d+ groups/,
-      "| AsciiMath   | ❌ no cases yet",
-    )
-    expect(errors_for(without_claim))
-      .to include(a_string_matching(/no "N cases, N groups" claim in the AsciiMath row/))
+  # One row per input format the corpus holds cases for, not one row for the
+  # corpus as a whole. A single claim would say nothing about which format the
+  # cases are in, and the row is read for exactly that — and while the check
+  # keyed on AsciiMath alone, a second format's row could say anything.
+  it "checks one coverage row per input format the corpus holds cases for" do
+    expect(runner.send(:positive_groups).keys.sort).to eq(%w[asciimath latex])
+
+    unstated = readme.sub(/^\| LaTeX\s+\|[^|]*\|/) do |row|
+      row.sub(/\d+ cases, \d+ groups/, "some cases")
+    end
+    expect(errors_for(unstated))
+      .to include(a_string_matching(/no "N cases, N groups" claim for LaTeX/))
     # And specifically NOT the missing-row wording: the row is right there.
-    expect(errors_for(without_claim))
-      .not_to include(a_string_matching(/has no AsciiMath row/))
+    expect(errors_for(unstated)).not_to include(a_string_matching(/has no LaTeX row/))
   end
 
   it "distinguishes a missing notation row from a row without numbers" do
     # Deleting the row entirely is a different failure from leaving it in place
-    # without a count, and the reader is sent to a different place by each.
-    without_row = readme.sub(/^\| AsciiMath\s+\|.*$\n/, "")
+    # without a count, and each sends the reader somewhere different.
+    without_row = readme.sub(/^\| LaTeX\s+\|.*$\n/, "")
     expect(errors_for(without_row))
-      .to include(a_string_matching(/coverage table has no AsciiMath row, but the corpus has \d+/))
+      .to include(a_string_matching(/the coverage table has no LaTeX row, but the corpus has \d+/))
     expect(errors_for(without_row))
-      .not_to include(a_string_matching(/claim in the AsciiMath row/))
+      .not_to include(a_string_matching(/no "N cases, N groups" claim for LaTeX/))
+  end
+
+  # A format the corpus holds cases for but the label table does not name has
+  # no row anyone is comparing, which is the drift this check exists to catch.
+  it "rejects a corpus format with no README label registered" do
+    counts = runner.send(:positive_groups)
+      .merge("klingon" => { "numbers" => 1 })
+    runner.instance_variable_set(:@positive_groups, counts)
+    expect(errors_for(readme))
+      .to include(a_string_matching(/no README label is registered.+`klingon`/))
+  end
+
+  # Group names repeat across input formats, so an inventory entry names a
+  # payload by its path stem. A bare group name identifies two payloads at once.
+  it "rejects a group inventory entry whose count disagrees" do
+    wrong = readme.sub(%r{`latex/numbers` \d+}, "`latex/numbers` 42")
+    expect(runner.send(:readme_group_errors, wrong))
+      .to include(a_string_matching(%r{`latex/numbers` 42, corpus has \d+}))
   end
 end

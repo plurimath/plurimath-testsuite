@@ -4,7 +4,7 @@
 # oracle. Every fact that belongs to one input format rather than to the
 # corpus as a whole — the parser calls, the target list, the case data — lives
 # in a Format descriptor; FORMATS is the list of them, and holds AsciiMath
-# alone today.
+# and LaTeX today.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -705,7 +705,7 @@ module CorpusGenerator
     ["partial-sqrt-unclosed", "sqrt("],
   ].freeze
 
-  # AsciiMath: the one input format the corpus covers. Assembled here rather
+  # AsciiMath, the first input format the corpus covered. Assembled here rather
   # than beside `Format` because it names the three case lists above.
   #
   # `Asciimath::Parser` preprocesses in its constructor — it rewrites `{:`,
@@ -723,9 +723,79 @@ module CorpusGenerator
     partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
   )
 
+  # The LaTeX seed corpus: the first slice, four groups wide. The remaining
+  # groups, the rejection candidates and any partially renderable input come
+  # later; a format may be grown a slice at a time, and `write_format` writes
+  # no payload for a kind whose candidate list is still empty.
+  #
+  # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
+  # decoration: this repository enforces id uniqueness WITHIN a group, while at
+  # least one consumer collects every payload's cases into a single map keyed by
+  # id and raises on a repeat. Two formats sharing an id therefore PASSES here
+  # and breaks there — a failure this repository's own suite cannot see.
+  # Prefixing one format's ids makes the collision impossible, and the AsciiMath
+  # ids are already published, so the prefix goes on the newer format.
+  #
+  # The consumer measured was the TypeScript port. Its file is deliberately not
+  # named: that path lives in another repository, and naming it here sends a
+  # reader looking for it in this one.
+  #
+  # Group NAMES do repeat across formats, and may: a group lives in the
+  # directory named after its input format, so `asciimath/numbers` and
+  # `latex/numbers` are distinct payloads that no consumer can confuse.
+  LATEX_GROUPS = [
+    ["numbers", "Number literals: decimal, braced, signed and exponentiated", [
+      ["latex-number-integer", "1"],
+      ["latex-number-decimal", "3.14"],
+      ["latex-number-decimal-comma", "1{,}5"],
+      ["latex-number-negative", "-42"],
+      ["latex-number-braced-exponent", "2^{10}"],
+    ]],
+    ["symbols", "Backslash-named symbols: Greek letters and constants", [
+      ["latex-symbol-greek-alpha", "\\alpha"],
+      ["latex-symbol-infinity", "\\infty"],
+      ["latex-symbol-greek-pi", "\\pi"],
+      ["latex-symbol-empty-set", "\\emptyset"],
+    ]],
+    ["operators", "Binary operators, bare and backslash-named", [
+      ["latex-operator-plus", "a + b"],
+      ["latex-operator-times", "a \\times b"],
+      ["latex-operator-leq", "a \\le b"],
+      ["latex-operator-equiv", "a \\equiv b"],
+      ["latex-operator-plus-minus", "a \\pm b"],
+    ]],
+    ["fences", "Fenced groups: bare, escaped and backslash-named delimiters", [
+      ["latex-fence-round", "(a)"],
+      ["latex-fence-square", "[a]"],
+      ["latex-fence-curly-escaped", "\\{a\\}"],
+      ["latex-fence-angle", "\\langle a \\rangle"],
+      ["latex-fence-ceiling", "\\lceil a \\rceil"],
+    ]],
+  ].freeze
+
+  # LaTeX, the second input format.
+  #
+  # `Latex::Parser` preprocesses in its constructor exactly as its AsciiMath
+  # sibling does — `#initialize` assigns `@text = pre_processing(text)`, and
+  # `attr_accessor :text` is that rewritten string. The pass round-trips the
+  # input through HTMLEntities and then deletes every space not preceded by a
+  # backslash, so `a + b` reaches the grammar as `a+b` and the two texts differ
+  # in length, which is what a rejection's `index` is an offset into.
+  # `Latex::Parse` is the Parslet grammar the gem then runs over it.
+  LATEX = Format.new(
+    name: "latex",
+    label: "LaTeX",
+    targets: %w[asciimath latex mathml unicodemath].freeze,
+    preprocess: ->(input) { Plurimath::Latex::Parser.new(input).text },
+    parse_tree: ->(text) { Plurimath::Latex::Parse.new.parse(text) },
+    groups: LATEX_GROUPS,
+    rejection_candidates: [].freeze,
+    partial_candidates: [].freeze,
+  )
+
   # Every input format the corpus is generated for, in the order they are
   # written. A second format is one more `Format` and one more entry here.
-  FORMATS = [ASCIIMATH].freeze
+  FORMATS = [ASCIIMATH, LATEX].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
@@ -954,6 +1024,12 @@ module CorpusGenerator
       counts[:groups] += 1
     end
 
+    # `cases` is `minItems: 1` in all three payload schemas, so a format with
+    # no candidates of a kind writes no payload of that kind rather than an
+    # empty one no schema accepts. The two statements differ: an empty payload
+    # would claim the format has no partially renderable inputs and no
+    # rejections at all, while an absent one claims only that none are recorded
+    # yet — which is what a corpus grown one slice per format actually knows.
     partial_cases = build_partial_cases(format)
     partial_path = File.join(out_root, format.name, "#{PARTIAL_GROUP}.yaml")
     if partial_cases.empty?

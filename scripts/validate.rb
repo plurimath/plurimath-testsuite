@@ -586,10 +586,15 @@ module Testsuite
     PROVENANCE_KIND = "provenance"
 
     # Input format (the middle segment of a case payload's `schema`) to the
-    # notation label README.adoc's coverage table uses for its row. The keys
-    # are exactly the formats `schema/cases.json` and `cases2.json` permit; a
-    # format outside this map is an error rather than a skip, so adding one to
-    # the schema without giving it a README row cannot pass unnoticed.
+    # notation label README.adoc's coverage table uses for its row.
+    #
+    # The README spells a format for people ("AsciiMath") and the corpus spells
+    # it for machines ("asciimath"), and neither is derivable from the other —
+    # `unicode` is the corpus's name for UnicodeMath — so the mapping is written
+    # out, over exactly the format names `schema/cases.json` and `cases2.json`
+    # permit. A corpus format missing from this table FAILS the run rather than
+    # going unchecked: a format whose coverage row nobody compares against the
+    # corpus is the drift this check exists to catch.
     NOTATION_LABELS = {
       "asciimath" => "AsciiMath",
       "latex" => "LaTeX",
@@ -1203,54 +1208,61 @@ module Testsuite
       puts "  OK    #{'README.adoc'.ljust(52)} counts and group inventory match the corpus"
     end
 
+    # One "N cases, N groups" claim per input format the corpus holds cases
+    # for, checked against that format's own payloads. A single claim covering
+    # the whole corpus would say nothing about which format the cases are in,
+    # which is the first thing the row is read for.
     def readme_count_errors(text)
+      errors = positive_groups.keys.sort.flat_map do |format|
+        readme_format_row_errors(text, format, positive_groups[format])
+      end
+      errors + readme_target_claim_errors(text)
+    end
+
+    def readme_format_row_errors(text, format, groups)
+      label = NOTATION_LABELS[format]
+      if label.nil?
+        return ["no README label is registered for the input format " \
+                "`#{format}`, so its coverage row goes unchecked"]
+      end
+
+      # Two different failures, told apart rather than conflated: the table may
+      # carry no row for this notation at all, or a row with no numbers in it.
+      # Reporting the second wording for the first sends the reader looking for
+      # a row that is not there.
+      unless text.match?(/^\| #{Regexp.escape(label)}\s+\|/)
+        return ["the coverage table has no #{label} row, but the corpus has " \
+                "#{groups.values.sum} #{label} case" \
+                "#{'s' unless groups.values.sum == 1}"]
+      end
+
+      claimed = text.match(
+        /^\| #{Regexp.escape(label)}\s+\|[^|]*?(\d+) cases, (\d+) groups/,
+      )
+      if claimed.nil?
+        return ["no \"N cases, N groups\" claim for #{label} in the " \
+                "coverage table"]
+      end
+
+      cases, group_count = claimed[1..2].map(&:to_i)
       errors = []
-      actual_cases = positive_cases.length
-
-      # One claim per input format the corpus actually carries, not one claim
-      # for AsciiMath. The row is found by the notation label, so a second
-      # input format checks its OWN row: before this, a `latex/` corpus was
-      # measured into the AsciiMath row's numbers and the LaTeX row went
-      # unchecked.
-      if positive_groups_by_format.empty?
-        errors << "no \"N cases, N groups\" claim found in the coverage table"
+      if cases != groups.values.sum
+        errors << "coverage table says #{cases} cases for #{label}, " \
+                  "corpus has #{groups.values.sum}"
       end
-
-      positive_groups_by_format.each do |format, groups|
-        label = NOTATION_LABELS[format]
-        if label.nil?
-          errors << "corpus carries input format `#{format}`, which the coverage " \
-                    "table has no notation row for"
-          next
-        end
-
-        # Two different failures, told apart rather than conflated: the table
-        # may carry no row for this notation at all, or a row with no numbers
-        # in it. Reporting the second wording for the first sends the reader
-        # looking for a row that is not there.
-        count = groups.values.sum
-        plural = "case#{'s' unless count == 1}"
-        unless text.match?(/^\| #{::Regexp.escape(label)}\s+\|/)
-          errors << "coverage table has no #{label} row, but the corpus has " \
-                    "#{count} #{label} #{plural}"
-          next
-        end
-
-        row = /^\| #{::Regexp.escape(label)}\s+\|[^|]*?(\d+) cases, (\d+) groups/
-        match = text.match(row)
-        if match.nil?
-          errors << "coverage table makes no \"N cases, N groups\" claim in the " \
-                    "#{label} row, but the corpus has #{count} #{label} #{plural}"
-          next
-        end
-
-        cases, group_count = match[1..2].map(&:to_i)
-        errors << "coverage table says #{label} has #{cases} cases, corpus has #{count}" if cases != count
-        if group_count != groups.length
-          errors << "coverage table says #{label} has #{group_count} groups, " \
-                    "corpus has #{groups.length}"
-        end
+      if group_count != groups.length
+        errors << "coverage table says #{group_count} groups for #{label}, " \
+                  "corpus has #{groups.length}"
       end
+      errors
+    end
+
+    # The "checked for all N" claims count every positive case in the corpus,
+    # not one format's: they sit in the table's output column, and a case of
+    # any input format carries an expectation for every target listed there.
+    def readme_target_claim_errors(text)
+      errors = []
+      actual_cases = positive_case_count
 
       # Guarded the way `readme_group_errors` guards its inventory. Without
       # this, deleting every "checked for all N" row left the loop below with
@@ -1275,23 +1287,16 @@ module Testsuite
       errors
     end
 
+    # Inventory entries name a payload by its path stem under `corpus/` —
+    # `` `latex/numbers` 5 `` — rather than by its group alone. Group names
+    # repeat across input formats by design, so a bare `numbers` would name two
+    # different payloads and this check could only ever compare one of them.
     def readme_group_errors(text)
-      # A collision makes the flat inventory below meaningless, so it is
-      # reported instead of compared: the README has to gain a per-format
-      # inventory (or the groups have to be renamed) before this can mean
-      # anything again.
-      unless colliding_group_names.empty?
-        return colliding_group_names.map do |name|
-          users = positive_groups_by_format.select { |_, groups| groups.key?(name) }.keys.sort
-          "group `#{name}` is used by more than one input format (#{users.join(', ')}); " \
-            "the README's flat group inventory cannot represent that"
-        end
-      end
-
-      listed = text.scan(/`([a-z][a-z0-9-]*)`\s+(\d+)/).to_h { |name, n| [name, n.to_i] }
+      listed = text.scan(%r{`([a-z][a-z0-9]*)/([a-z][a-z0-9-]*)`\s+(\d+)})
+        .to_h { |format, group, n| ["#{format}/#{group}", n.to_i] }
       return ["no group inventory found"] if listed.empty?
 
-      actual = positive_groups
+      actual = positive_payload_counts
       errors = []
       (actual.keys - listed.keys).sort.each { |name| errors << "group inventory omits `#{name}` (#{actual[name]} cases)" }
       (listed.keys - actual.keys).sort.each { |name| errors << "group inventory lists `#{name}`, which the corpus does not have" }
@@ -1301,16 +1306,16 @@ module Testsuite
       errors
     end
 
-    # Positive (renderable) payloads only, split by the input format their
-    # schema names: a rejection group has no expectations and is counted
-    # separately everywhere else too.
+    # Positive (renderable) payloads only: a rejection group has no expectations
+    # and is counted separately everywhere else too.
     #
-    # Keyed by FORMAT first because a group name is only unique within one
-    # format. A `latex/numbers.yaml` beside `asciimath/numbers.yaml` shares the
-    # bare name `numbers`, and a flat hash silently kept whichever was read
-    # last — under-reporting the corpus while still passing.
-    def positive_groups_by_format
-      @positive_groups_by_format ||= payload_files.each_with_object({}) do |path, formats|
+    # Keyed by input format FIRST, then by group. Group names repeat across
+    # formats — `asciimath/numbers` and `latex/numbers` are different payloads —
+    # so a single map keyed by group name alone let one format's entry
+    # overwrite another's, and every total derived from it was then short by
+    # the overlap while the README check reported the shortfall as agreement.
+    def positive_groups
+      @positive_groups ||= payload_files.each_with_object({}) do |path, formats|
         document = YAML.safe_load_file(path)
         # Positive payloads are every payload kind EXCEPT rejections; matching
         # on a "cases/" segment was wrong, because the case schema is named for
@@ -1318,30 +1323,22 @@ module Testsuite
         schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
         next if schema.empty? || schema.include?("rejections/")
 
-        format = schema[%r{\Aplurimath-corpus/([^/]+)/}, 1].to_s
-        (formats[format] ||= {})[document["group"].to_s] = Array(document["cases"]).length
+        format = formats[document["input_format"].to_s] ||= {}
+        format[document["group"].to_s] = Array(document["cases"]).length
       end
     end
 
-    # Group names more than one input format uses. The README's inventory is a
-    # single flat list and cannot represent the same name twice, so rather than
-    # report one and hide the other, the check fails and says which.
-    def colliding_group_names
-      @colliding_group_names ||=
-        positive_groups_by_format.values.flat_map(&:keys).tally.select { |_, n| n > 1 }.keys.sort
+    # The same counts flattened to the `<format>/<group>` names the README's
+    # inventory uses.
+    def positive_payload_counts
+      positive_groups.flat_map do |format, groups|
+        groups.map { |group, count| ["#{format}/#{group}", count] }
+      end.to_h
     end
 
-    # The flat view the group inventory compares against. Only meaningful while
-    # `colliding_group_names` is empty, which `readme_group_errors` enforces.
-    def positive_groups
-      @positive_groups ||= positive_groups_by_format.values.reduce({}) { |all, groups| all.merge(groups) }
-    end
-
-    # Summed across formats, not across `positive_groups`, which merges away a
-    # colliding group name and would undercount by that group's size.
-    def positive_cases
-      @positive_cases ||=
-        positive_groups_by_format.values.flat_map(&:values).sum.then { |n| ::Array.new(n) }
+    def positive_case_count
+      @positive_case_count ||=
+        positive_groups.values.sum { |groups| groups.values.sum }
     end
 
     # Every target the positive payloads declare, sorted and deduplicated.
