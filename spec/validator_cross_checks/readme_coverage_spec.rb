@@ -95,7 +95,7 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   # this list in the commit that adds a format.
   it "checks one coverage row per input format the corpus holds cases for" do
     expect(runner.send(:positive_groups).keys.sort)
-      .to eq(%w[asciimath latex unicode])
+      .to eq(%w[asciimath html latex unicode])
 
     unstated = readme.sub(/^\| LaTeX\s+\|[^|]*\|/) do |row|
       row.sub(/\d+ cases, \d+ groups/, "some cases")

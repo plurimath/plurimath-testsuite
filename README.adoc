@@ -13,20 +13,20 @@ can be checked against identical answers.
 == What is covered
 
 Early. AsciiMath input was the first notation extracted; LaTeX input is the
-second, and is now eighteen groups wide; UnicodeMath input is the third, and
-is one four-group slice old. A tick means cases exist here today, not that
-Plurimath supports it — Plurimath supports every row.
+second, and is now eighteen groups wide; UnicodeMath input is the third and
+HTML input the fourth, each one four-group slice old. A tick means cases exist
+here today, not that Plurimath supports it — Plurimath supports every row.
 
 [cols="1,2,2",options="header"]
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 237
-| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 237
-| MathML      | ❌ no cases yet         | ✅ checked for all 237
+| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 260
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 260
+| MathML      | ❌ no cases yet         | ✅ checked for all 260
 | OMML        | ❌ no cases yet         | ❌ no cases yet
-| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 237, one a refusal
-| HTML        | ❌ no cases yet         | ❌ no cases yet
+| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 260, one a refusal
+| HTML        | ✅ 23 cases, 4 groups   | ❌ no cases yet
 |===
 
 Every case carries an expectation for every output format above that is
@@ -55,6 +55,8 @@ because group names repeat across input formats — `asciimath/numbers` and
 `unicode/numbers` 5, `unicode/symbols` 4, `unicode/operators` 6,
 `unicode/fences` 5.
 
+`html/entities` 6, `html/tags` 6, `html/sub-sup` 6, `html/tables` 5.
+
 LaTeX now has a rejection payload as well, at `corpus/latex/rejections.yaml`.
 It holds fourteen refusals and is absent from the inventory above on purpose:
 that inventory counts payloads carrying expectations, and a rejection carries
@@ -77,6 +79,36 @@ UnicodeMath has neither a rejection nor an outcome payload yet, so a port may
 still refuse inputs this corpus never puts to it. One outcome candidate is
 measured and waiting: `⎣2.5⎦` parses and then fails to render to every one of
 the four targets.
+
+HTML is spelled the same on both sides, which UnicodeMath is not: the gem parses
+`html` and renders `html`. The output column above still says no cases, because
+every format in this corpus declares the same four output formats in its
+`targets` and rendering back out to HTML is its own slice, not this one.
+
+Its four groups are not the four the other three formats opened with. HTML's
+surface is the smallest of the four and its shape is markup rather than
+notation, so the groups are the features that distinguish it: character
+entities, inline tags, `<sub>`/`<sup>` scripts and tables. Two of the entity
+cases are the same character written both ways — `&sum;` and `&#x2211;` — and
+the payload shows rather than asserts what the preprocessing pass does with
+them: both reach the grammar as `&#x2211;`.
+
+One thing an HTML payload is otherwise misread on. A bare letter parses as
+text, not as an identifier, so `<i>a</i>` renders to AsciiMath as `"a"` and
+`<table><tr><td>x</td></tr></table>` as `[["x"]]`. Those quotes are AsciiMath's
+text syntax, and not the placeholder described below: no HTML case carries a
+placeholder expectation.
+
+HTML has neither a rejection nor an outcome payload yet either. Candidates for
+both are measured. For the outcome kind, a two-by-two table —
+`<table><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>` —
+parses and then fails to render to every one of the four targets, while the
+single-row and single-column tables the corpus does carry render to all four.
+For the rejection kind, `<i>a`, `</i>`, `<sub>`, `<i></i>`, `<>` and `sqrt(`
+are each refused at parse. `&#x110000;` is refused too and cannot be written in
+the rejection shape at all: it raises inside the preprocessing pass, leaving no
+`preprocessed` text for a field that requires one — the same gap the LaTeX
+rejection payload records for two of its own.
 
 Seven groups — the LaTeX `symbols`, `nary`, `whitespace`, `accents` and
 `over-under`, and the UnicodeMath `symbols` and `operators` — hold cases whose
