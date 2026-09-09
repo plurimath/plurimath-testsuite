@@ -1222,9 +1222,9 @@ module CorpusGenerator
   # `unicodemath`, HTML's two spellings coincide. That is not a reason to put
   # `html` in `targets`. The list is the four output formats every other format
   # in this corpus declares, and the README's output column counts one
-  # N" claim per target across the WHOLE corpus, so a fifth target here would
-  # claim coverage the other three formats' 264 cases do not carry. Rendering to
-  # HTML is its own slice, in the output column, and not this one.
+  # "checked for all N" claim per target across the WHOLE corpus, so a fifth
+  # target here would claim coverage the other three formats' 264 cases do not
+  # carry. Rendering to HTML is its own slice, in the output column, not this.
   #
   # Ids carry an `html-` prefix for the reason the LaTeX and UnicodeMath ids
   # carry theirs: uniqueness is enforced here only WITHIN a group, while a
