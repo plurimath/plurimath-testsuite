@@ -4,7 +4,7 @@
 # oracle. Every fact that belongs to one input format rather than to the
 # corpus as a whole — the parser calls, the target list, the case data — lives
 # in a Format descriptor; FORMATS is the list of them, and holds AsciiMath,
-# LaTeX and UnicodeMath today.
+# LaTeX, UnicodeMath and HTML today.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -1214,9 +1214,140 @@ module CorpusGenerator
     partial_candidates: [].freeze,
   )
 
+  # The HTML seed corpus, the fourth input format, and the first slice of it.
+  #
+  # The name is `html` on both sides. `Math::VALID_TYPES` keys `Plurimath::Html`
+  # under `:html`, and `html` is a render target the gem offers too -- so
+  # unlike UnicodeMath, whose input is `unicode` while its target is
+  # `unicodemath`, HTML's two spellings coincide. That is not a reason to put
+  # `html` in `targets`. The list is the four output formats every other format
+  # in this corpus declares, and the README's output column counts one
+  # "checked for all N" claim per target across the WHOLE corpus, so a fifth
+  # target here would claim coverage the other three formats' 264 cases do not
+  # carry. Rendering to HTML is its own slice, in the output column, not this.
+  #
+  # Ids carry an `html-` prefix for the reason the LaTeX and UnicodeMath ids
+  # carry theirs: uniqueness is enforced here only WITHIN a group, while a
+  # consumer keys every payload's cases into one map and raises on a repeat, so
+  # a collision passes here and breaks there. The prefix was checked against all
+  # 264 ids the corpus held before this slice; none began with it.
+  #
+  # The four groups are NOT the four the other three formats opened with, and
+  # that is deliberate. HTML's surface is the smallest of the four and its shape
+  # is markup rather than notation: what distinguishes it is character entities,
+  # inline tags, `<sub>`/`<sup>` scripts and tables. Those are the four groups.
+  #
+  # Two measured facts a reader of the payloads will otherwise misread.
+  #
+  # First, a bare letter parses as TEXT, not as an identifier. The grammar's
+  # `symbol_text_or_tag` rule matches `match["a-zA-Z"].as(:text)`, one letter at
+  # a time, so `<i>a</i>` renders to asciimath as `"a"` and to latex as
+  # `\text{a}`, and `<table><tr><td>x</td></tr></table>` becomes `[["x"]]`.
+  # Those quotes are the target notation's text syntax and NOT `parsing_wrapper`
+  # output: no case in this slice renders a `"P{...}"` or `\text{P[...]}`
+  # placeholder, which is why no group below carries PLACEHOLDER_NOTE.
+  #
+  # Second, `html-entity-named-sum` and `html-entity-numeric-sum` are the same
+  # character written two ways, and the pair is the point: both preprocess to
+  # `&#x2211;`, so the payloads show the normalization rather than assert it.
+  #
+  # Rejections and partially renderable inputs are not in this slice, and
+  # `write_format` writes no payload for a kind whose candidate list is empty,
+  # so their absence claims only that none are recorded yet. Candidates for both
+  # are already measured and waiting. For the outcome kind:
+  # `<table><tr><td>a</td><td>b</td></tr><tr><td>c</td><td>d</td></tr></table>`
+  # parses and then fails to render to every one of the four targets, while the
+  # single-row and single-column tables below both render to all four. For the
+  # rejection kind: `<i>a`, `</i>`, `<sub>`, `<i></i>`, `<>` and `sqrt(` are all
+  # refused at parse. One measured refusal cannot be written in the rejection
+  # shape at all -- `&#x110000;` raises `RangeError` inside the preprocessing
+  # pass, leaving no `preprocessed` text for a field that requires one, which is
+  # the same gap the LaTeX rejection payload's description already records.
+  HTML_GROUPS = [
+    ["entities",
+     "HTML character entities, named and numeric, beside the literal " \
+     "characters they stand for", [
+      ["html-entity-greek-alpha", "&alpha;"],
+      ["html-entity-greek-omega", "&omega;"],
+      ["html-entity-infinity", "&infin;"],
+      # The same character as the case below it, written the other way. Both
+      # reach the grammar as `&#x2211;`.
+      ["html-entity-named-sum", "&sum;"],
+      ["html-entity-numeric-sum", "&#x2211;"],
+      ["html-entity-literal-greek", "αβγ"],
+    ]],
+    ["tags",
+     "Inline markup: the tag is structure, and what it wraps is the input", [
+      ["html-tag-italic", "<i>a</i>"],
+      ["html-tag-var", "<var>x</var>"],
+      # Tag names are matched case-insensitively; this renders exactly as the
+      # lowercase `<var>` case above does.
+      ["html-tag-uppercase", "<VAR>x</VAR>"],
+      ["html-tag-attributes", "<span class=\"math\">x</span>"],
+      ["html-tag-linebreak", "a<br/>b"],
+      # A tag whose CONTENT is a function name, which the grammar looks up
+      # rather than treating as three letters of text.
+      ["html-tag-function-name", "<i>sin</i>(x)"],
+    ]],
+    ["sub-sup", "`<sub>` and `<sup>` as scripts, alone, paired and on an " \
+                "n-ary operator", [
+      ["html-sup-number", "2<sup>3</sup>"],
+      ["html-sub-number", "2<sub>3</sub>"],
+      ["html-sub-and-sup", "2<sub>3</sub><sup>5</sup>"],
+      ["html-sup-expression", "2<sup>3+4</sup>"],
+      ["html-sup-negative", "<i>a</i><sup>-2</sup>"],
+      ["html-sub-sup-limits", "&sum;<sub>3</sub><sup>5</sup>"],
+    ]],
+    ["tables", "`<table>` markup, which parses to a matrix", [
+      ["html-table-single-cell", "<table><tr><td>x</td></tr></table>"],
+      ["html-table-two-columns",
+       "<table><tr><td>a</td><td>b</td></tr></table>"],
+      ["html-table-two-rows",
+       "<table><tr><td>a</td></tr><tr><td>b</td></tr></table>"],
+      # `Math::Formula` has no header-cell node, so `<th>` parses to the same
+      # `Td` as `<td>`.
+      ["html-table-header-cell",
+       "<table><tr><th>x</th><td>y</td></tr></table>"],
+      ["html-table-sections",
+       "<table><thead><tr><th>a</th></tr></thead>" \
+       "<tbody><tr><td>b</td></tr></tbody></table>"],
+    ]],
+  ].freeze
+
+  # HTML, the fourth input format.
+  #
+  # `Html::Parser` does NOT follow its three siblings here, and the difference
+  # matters to `preprocessed`. Each of the others preprocesses in its
+  # constructor and exposes the result as `#text`; `Html::Parser#initialize`
+  # assigns `@text = text.to_s`, so its `#text` is the RAW input. The
+  # preprocessing pass is the private `#normalized_text` -- it rewrites every
+  # entity to its hexadecimal spelling, so `&alpha;` reaches the grammar as
+  # `&#x3b1;` -- and `#parse` is the only caller. `preprocess` therefore reaches
+  # for that method rather than for `#text`: writing `#text` there would record
+  # the input under a field name claiming a pass had run over it, which is the
+  # false statement `preprocessed_text` exists to keep a format from making.
+  #
+  # `Html::Parse` is the Parslet grammar run over that text. `Parser#parse` also
+  # round-trips the grammar's output through JSON before transforming it, which
+  # is why the tree recorded here is the tree the transform is handed and not a
+  # later form of it.
+  HTML = Format.new(
+    name: "html",
+    label: "HTML",
+    targets: %w[asciimath latex mathml unicodemath].freeze,
+    preprocess: lambda { |input|
+      Plurimath::Html::Parser.new(input).send(:normalized_text)
+    },
+    parse_tree: ->(text) { Plurimath::Html::Parse.new.parse(text) },
+    groups: HTML_GROUPS,
+    rejection_candidates: [].freeze,
+    rejection_description: REJECTIONS_DESCRIPTION,
+    partial_candidates: [].freeze,
+  )
+
   # Every input format the corpus is generated for, in the order they are
   # written. A further format is one more `Format` and one more entry here.
-  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH].freeze
+  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH, HTML].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
