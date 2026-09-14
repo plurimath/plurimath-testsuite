@@ -13,18 +13,19 @@ can be checked against identical answers.
 == What is covered
 
 Early. AsciiMath input was the first notation extracted; LaTeX input is the
-second, and is now eighteen groups wide. A tick means cases exist here today,
-not that Plurimath supports it — Plurimath supports every row.
+second, and is now eighteen groups wide; UnicodeMath input is the third, and
+is one four-group slice old. A tick means cases exist here today, not that
+Plurimath supports it — Plurimath supports every row.
 
 [cols="1,2,2",options="header"]
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 217
-| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 217
-| MathML      | ❌ no cases yet         | ✅ checked for all 217
+| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 237
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 237
+| MathML      | ❌ no cases yet         | ✅ checked for all 237
 | OMML        | ❌ no cases yet         | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet         | ✅ checked for all 217, one a refusal
+| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 237, one a refusal
 | HTML        | ❌ no cases yet         | ❌ no cases yet
 |===
 
@@ -51,6 +52,9 @@ because group names repeat across input formats — `asciimath/numbers` and
 `latex/colour` 3, `latex/left-right` 6, `latex/mod` 5, `latex/whitespace` 6,
 `latex/accents` 13, `latex/over-under` 11.
 
+`unicode/numbers` 5, `unicode/symbols` 4, `unicode/operators` 6,
+`unicode/fences` 5.
+
 LaTeX now has a rejection payload as well, at `corpus/latex/rejections.yaml`.
 It holds fourteen refusals and is absent from the inventory above on purpose:
 that inventory counts payloads carrying expectations, and a rejection carries
@@ -62,15 +66,33 @@ measured as candidates for one — `\left( x`, `\sqrt[` and
 first and third to every target — but none is recorded yet, so a port may
 still refuse them outright and pass everything here.
 
-Four LaTeX groups — `nary`, `whitespace`, `accents` and `over-under` — hold
-cases whose expected output is a **placeholder** rather than a rendering.
+UnicodeMath is the corpus name for the notation, and it is `unicode` rather
+than `unicodemath` because that is what the gem parses: `Math::VALID_TYPES`
+keys the parser under `:unicode`, while `unicodemath` is the name of the
+render target in the output column above. A payload therefore reads
+`input_format: unicode` and lists `unicodemath` among its `targets`, and the
+two spellings are not a typo.
+
+UnicodeMath has neither a rejection nor an outcome payload yet, so a port may
+still refuse inputs this corpus never puts to it. One outcome candidate is
+measured and waiting: `⎣2.5⎦` parses and then fails to render to every one of
+the four targets.
+
+Seven groups — the LaTeX `symbols`, `nary`, `whitespace`, `accents` and
+`over-under`, and the UnicodeMath `symbols` and `operators` — hold cases whose
+expected output is a **placeholder** rather than a rendering.
 Where the gem has no name for a construct in a target notation it emits
 `"P{name}"` (asciimath, unicodemath -- the quotes are part of the emitted
 string) or `\text{P[name]}` (latex), and the corpus
 records what the gem produced, so the placeholder is the expectation and a
-port that renders something better fails the case. Each of those four payloads
-says so in its own `description`, because such a case is coverage of the gem's
-gap and not of the construct.
+port that renders something better fails the case. Each of those seven
+payloads says so in its own `description`, because such a case is coverage of
+the gem's gap and not of the construct.
+
+The two `symbols` groups reach the same gap from opposite sides: LaTeX's
+`\emptyset` and UnicodeMath's `∅` both render to asciimath as
+`"P{emptyset}"` and to the other three targets properly. UnicodeMath's second
+one is `a∓b`, placed deliberately beside `a±b`, which asciimath does name.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
 drift again — they had already drifted twice before the check existed. It
