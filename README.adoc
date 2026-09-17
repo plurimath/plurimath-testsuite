@@ -20,11 +20,11 @@ not that Plurimath supports it — Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 217
-| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 217
-| MathML      | ❌ no cases yet         | ✅ checked for all 217
+| AsciiMath   | ✅ 93 cases, 20 groups  | ✅ checked for all 218
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 218
+| MathML      | ❌ no cases yet         | ✅ checked for all 218
 | OMML        | ❌ no cases yet         | ❌ no cases yet
-| UnicodeMath | ❌ no cases yet         | ✅ checked for all 217, one a refusal
+| UnicodeMath | ❌ no cases yet         | ✅ checked for all 218, one a refusal
 | HTML        | ❌ no cases yet         | ❌ no cases yet
 |===
 
@@ -43,7 +43,7 @@ because group names repeat across input formats — `asciimath/numbers` and
 `asciimath/nary` 6, `asciimath/matrices` 2, `asciimath/mixed` 5,
 `asciimath/permissive` 6, `asciimath/fonts` 7, `asciimath/colour` 2,
 `asciimath/left-right` 3, `asciimath/mod` 3, `asciimath/whitespace` 5,
-`asciimath/partial-render` 1.
+`asciimath/partial-render` 1, `asciimath/number-formatting` 1.
 
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,

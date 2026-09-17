@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/calls/1",
+  "title": "Plurimath conformance case group, for a call other than default-options render",
+  "description": "One file of conformance cases recording a call the gem answered with something OTHER than a plain parse-then-render: a render method invoked with a non-default option, a configuration, or an argument beyond the input itself. `cases/1` and `cases/2` can only ever record `Formula#to_<target>` with no arguments — there is no field either schema offers for `formatter:`, `intent:`, `split_on_linebreak:`, `display_style:`, or `evaluate(bindings)`. This is a SEPARATE payload kind from `cases/*`, the same way `rejections/1` sits beside them rather than folding into them (see that schema's description): its cases carry an extra `call` field naming what was invoked and with what, and its `schema` value names a KIND rather than an input format, exactly as `rejections/1` and `provenance/2` do, because `call.method` — not the input's own notation — is what varies within one payload. `call.method` is deliberately a narrow enum today (`number_formatter` only, TODO.plan/feature-roadmap.md's B1 slice): the other five call kinds the roadmap names (`intent`, `split_on_linebreak`, `display_style`, `to_display`, `evaluate`) are each a later schema version's addition, not a guess made now about a shape none of them has been measured against yet.",
+  "type": "object",
+  "required": [
+    "schema",
+    "group",
+    "description",
+    "input_format",
+    "targets",
+    "cases"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "description": "A kind, like `provenance` and `rejections`, not an input format: the format is carried per payload in `input_format`, and per case in each case's own `input_format`.",
+      "type": "string",
+      "const": "plurimath-corpus/calls/1"
+    },
+    "group": {
+      "description": "Feature group; matches the file name without its extension. A schema cannot see the file name, so scripts/validate.rb enforces the match.",
+      "$ref": "#/$defs/slug"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "input_format": {
+      "description": "Agrees with every case's `input_format`; scripts/validate.rb reconciles the two.",
+      "$ref": "#/$defs/input_format"
+    },
+    "targets": {
+      "description": "Output formats every case in this group carries an outcome for, under the same call. Still one list for the whole group, and still exhaustive per case, exactly as in `cases/2`.",
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "$ref": "#/$defs/target_format"
+      }
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "input_format": {
+      "description": "A format Plurimath can parse (Plurimath::Math::VALID_TYPES).",
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicode",
+        "unitsml"
+      ]
+    },
+    "target_format": {
+      "description": "A format Plurimath can render (Math::Formula#to_*).",
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "html",
+        "latex",
+        "mathml",
+        "omml",
+        "unicodemath"
+      ]
+    },
+    "class_name": {
+      "description": "A Plurimath model class, with the `Plurimath::` prefix stripped.",
+      "type": "string",
+      "pattern": "^Math(::[A-Za-z][A-Za-z0-9_]*)+$"
+    },
+    "error_category": {
+      "description": "What rendering this target did, at the coarseness the gem's public boundary exposes. Identical in meaning to `cases/2`'s definition of the same name: `parse_error` is the only value a render failure can carry, because `Math::Formula#to_*` funnels every render-time failure through `wrap_render_error`. A call whose own arguments are rejected before rendering is attempted (an unsupported `formatter:`/`locale:` value, say) is a different failure this schema version does not yet record; every case here is one where the call itself was accepted.",
+      "type": "string",
+      "enum": [
+        "parse_error"
+      ]
+    },
+    "call": {
+      "description": "What was invoked, beyond a plain parse-then-render. `method` names the KIND of call, not a Ruby method name by itself — `number_formatter` covers every `to_<target>(formatter: ...)` invocation across every target in `targets`, because the same formatter is applied uniformly to each. `args` is deliberately free-form (like a node's own `options`/`attributes` fields already are): typing every call kind's argument shape into this schema would fix a shape not yet settled for kinds this version does not cover, and even for `number_formatter` the argument names are the gem's own keyword names, not independently invented ones, so a reader maps them straight onto its own constructor.",
+      "type": "object",
+      "required": [
+        "method",
+        "args"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "method": {
+          "type": "string",
+          "enum": [
+            "number_formatter"
+          ]
+        },
+        "args": {
+          "type": "object",
+          "minProperties": 1
+        }
+      }
+    },
+    "outcome": {
+      "description": "What one target did with this case, under `call`: exactly one of a rendering or a refusal. Structurally identical to `cases/2`'s `outcome` — see that schema's description for why `oneOf` and the nested `type: object` are both load-bearing here.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "output"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "output": {
+              "description": "Exactly the bytes the gem produced for this target, under `call`. Compared byte for byte.",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "error"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "error": {
+              "type": "object",
+              "required": [
+                "category"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "category": {
+                  "$ref": "#/$defs/error_category"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "case": {
+      "type": "object",
+      "required": [
+        "id",
+        "input",
+        "input_format",
+        "preprocessed",
+        "call",
+        "expected",
+        "parse_tree",
+        "model"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "description": "Stable identifier, unique within the group; scripts/validate.rb enforces the uniqueness, which one schema item cannot see of its siblings.",
+          "$ref": "#/$defs/slug"
+        },
+        "input": {
+          "type": "string",
+          "minLength": 1
+        },
+        "input_format": {
+          "description": "Equals the group's `input_format`; scripts/validate.rb enforces the agreement.",
+          "$ref": "#/$defs/input_format"
+        },
+        "preprocessed": {
+          "description": "The input after the format's preprocessing pass, which may shift offsets.",
+          "type": "string"
+        },
+        "call": {
+          "$ref": "#/$defs/call"
+        },
+        "expected": {
+          "description": "Outcome per target format, under `call`. The keys are exactly the group's `targets`, exactly as in `cases/2`; scripts/validate.rb checks the correspondence.",
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/$defs/target_format"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/outcome"
+          }
+        },
+        "parse_tree": {
+          "$ref": "#/$defs/parse_tree"
+        },
+        "model": {
+          "$ref": "#/$defs/node"
+        }
+      }
+    },
+    "parse_tree": {
+      "description": "The parser's tree, serialized as plain data. Numbers and booleans are excluded deliberately: no parse tree has ever produced one, so a new scalar kind should be a validation failure rather than a silent shape change.",
+      "anyOf": [
+        {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/parse_tree"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/parse_tree"
+          }
+        }
+      ]
+    },
+    "node": {
+      "description": "A Plurimath::Math::Core node: its class, and its instance variables serialized by name.",
+      "type": "object",
+      "required": [
+        "class",
+        "fields"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "class": {
+          "$ref": "#/$defs/class_name"
+        },
+        "fields": {
+          "type": "object",
+          "propertyNames": {
+            "$ref": "#/$defs/field_name"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/field_value"
+          }
+        }
+      }
+    },
+    "field_name": {
+      "type": "string",
+      "pattern": "^[a-z_][A-Za-z0-9_]*[?!]?$"
+    },
+    "field_value": {
+      "anyOf": [
+        {
+          "type": [
+            "string",
+            "boolean",
+            "number",
+            "null"
+          ]
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/field_value"
+          }
+        },
+        {
+          "$ref": "#/$defs/object_field_value"
+        }
+      ]
+    },
+    "object_field_value": {
+      "description": "An object-valued field is either a nested node or a plain map such as `options` or `attributes`. A `class` key means it claims to be a node, so it must be a well-formed one.",
+      "type": "object",
+      "if": {
+        "required": [
+          "class"
+        ]
+      },
+      "then": {
+        "$ref": "#/$defs/node"
+      },
+      "else": {
+        "additionalProperties": {
+          "$ref": "#/$defs/field_value"
+        }
+      }
+    }
+  }
+}

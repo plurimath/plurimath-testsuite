@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 1a26a2f797a6bbf2f8676dd57ad6490374b78e249d1fc5bdc93307faeb1a3d8f
+  sha256: 3ed8bea66db916ad2beb73e204d89a40bd978e867ee580f3132d7521843dcc0d
   repository:
-    commit: 72b29fc92a89c44140494dac11d442d467823a97
+    commit: e5b19834a15ccb0c5f535807c3228332788733a5
     clean: true
     dirty_paths: []
 oracle:
@@ -27,10 +27,17 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: c3e7a4b08d05573f17017a0623a1f2af75147015015a281a802bc20230aa7379
+  sha256: 03bdd3de3d9bcd911e87a7d37605f2e8ee5d003a511881779a82490425f18121
   resolved_gems: 77
   platforms:
+  - aarch64-linux-gnu
+  - aarch64-linux-musl
+  - arm-linux-gnu
+  - arm-linux-musl
+  - arm64-darwin
+  - x86_64-darwin
   - x86_64-linux-gnu
+  - x86_64-linux-musl
   bundler: 4.0.3
 direct_runtime:
   bigdecimal: 4.1.2
@@ -39,7 +46,7 @@ direct_runtime:
   mml: 2.4.1
   omml: 0.2.5
   ostruct: 0.6.3
-  ox: 2.14.29
+  ox: 2.14.28
   parslet: 2.0.0
   thor: 1.5.0
   unitsml: 0.6.8
@@ -71,6 +78,9 @@ payloads:
 - path: asciimath/nary.yaml
   sha256: 36daf58791289f8cf42bd16e406b6cea0e7e2c623e93061016941524be165fbd
   bytes: 11245
+- path: asciimath/number-formatting.yaml
+  sha256: d01a37e70eb066508636c6a1ab77de4ed5b08b6422acfc9fca8c4013a68d689e
+  bytes: 1573
 - path: asciimath/numbers.yaml
   sha256: 2b69e6f35c952a09f7b6be364ce9fa8fe114fcbd2d582f72be319c2a775e39fb
   bytes: 3782

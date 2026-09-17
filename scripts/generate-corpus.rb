@@ -46,6 +46,17 @@ module CorpusGenerator
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
+  # `calls/1` also names a KIND, the same way `rejections/1` does (see above):
+  # its cases carry a `call` naming what was invoked beyond a plain
+  # parse-then-render, and `call.method` is what varies within one payload
+  # rather than the input's own notation.
+  CALLS_SCHEMA = "plurimath-corpus/calls/1"
+  NUMBER_FORMATTER_GROUP = "number-formatting"
+  NUMBER_FORMATTER_DESCRIPTION =
+    "Cases recording Formula#to_<target> invoked with a non-default " \
+    "formatter:, so a port can be checked against a call the gem answered " \
+    "with something other than default options (TODO.plan/feature-roadmap.md, " \
+    "build order B1)."
 
   # One provenance document for the whole corpus, not one sidecar per payload.
   # The sidecars repeated 190 identical lines fifteen times; the only facts
@@ -93,7 +104,8 @@ module CorpusGenerator
   # `additionalProperties: false`, so there is no per-case field for a note.
   Format = Data.define(
     :name, :label, :targets, :preprocess, :parse_tree,
-    :groups, :rejection_candidates, :rejection_description, :partial_candidates
+    :groups, :rejection_candidates, :rejection_description, :partial_candidates,
+    :number_formatter_calls
   )
 
   # A `model:` block records a node's *portable semantic state* — what a second
@@ -714,6 +726,28 @@ module CorpusGenerator
     ["partial-sqrt-unclosed", "sqrt("],
   ].freeze
 
+  # --- number-formatter calls (calls/1) ------------------------------------
+  #
+  # One measured call: a German-style locale override (`,` as the decimal
+  # mark, `.` as the group separator) applied through `Formatter::Standard`,
+  # the gem's own formatter class. Each entry is
+  # `[id, input, formatter_args]`, where `formatter_args` is exactly the
+  # keyword arguments `Formatter::Standard.new` takes — `locale:`,
+  # `string_format:`, `options:`, `precision:` — so the generator's call
+  # matches what the schema's `call.args` records, field for field.
+  ASCIIMATH_NUMBER_FORMATTER_CALLS = [
+    [
+      "number-formatter-de-style-grouping",
+      "123456.789",
+      {
+        locale: "en",
+        string_format: nil,
+        precision: nil,
+        options: { decimal: ",", group: ".", group_digits: 3 },
+      },
+    ],
+  ].freeze
+
   # AsciiMath, the first input format the corpus covered. Assembled here rather
   # than beside `Format` because it names the three case lists above.
   #
@@ -731,6 +765,7 @@ module CorpusGenerator
     rejection_candidates: ASCIIMATH_REJECTION_CANDIDATES,
     rejection_description: REJECTIONS_DESCRIPTION,
     partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
+    number_formatter_calls: ASCIIMATH_NUMBER_FORMATTER_CALLS,
   )
 
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
@@ -1087,6 +1122,7 @@ module CorpusGenerator
     rejection_candidates: LATEX_REJECTION_CANDIDATES,
     rejection_description: LATEX_REJECTIONS_DESCRIPTION,
     partial_candidates: [].freeze,
+    number_formatter_calls: [].freeze,
   )
 
   # Every input format the corpus is generated for, in the order they are
@@ -1144,6 +1180,59 @@ module CorpusGenerator
     rescue StandardError => e
       raise Error,
             "partial case #{id} (#{input.inspect}) failed: " \
+            "#{e.class}: #{e.message}"
+    end
+  end
+
+  # --- number-formatter calls (calls/1) ------------------------------------
+
+  # One `number_formatter` call. `formatter_args` are exactly
+  # `Formatter::Standard.new`'s keyword arguments; they build both the object
+  # the render calls below use and the `call.args` the payload records, so the
+  # two cannot drift apart the way a hand-duplicated pair could.
+  def render_number_formatter_outcome(formula, target, formatter, input)
+    { "output" => formula.public_send("to_#{target}", formatter: formatter) }
+  rescue Plurimath::Math::ParseError
+    { "error" => { "category" => "parse_error" } }
+  rescue StandardError => e
+    raise Error,
+          "rendering #{input.inspect} to #{target} under a number_formatter " \
+          "call raised #{e.class}, which is not a category the calls/1 " \
+          "schema names"
+  end
+
+  def build_number_formatter_case(format, id, input, formatter_args)
+    formula = Plurimath::Math.parse(input, format.name.to_sym)
+    preprocessed = preprocessed_text(format, input)
+    tree = format.parse_tree.call(preprocessed)
+    formatter = Plurimath::Formatter::Standard.new(**formatter_args)
+    expected = format.targets.to_h do |target|
+      [target, render_number_formatter_outcome(formula, target, formatter, input)]
+    end
+
+    {
+      "id" => id,
+      "input" => input,
+      "input_format" => format.name,
+      "preprocessed" => preprocessed,
+      "call" => {
+        "method" => "number_formatter",
+        "args" => serialize_hash(formatter_args, id),
+      },
+      "expected" => expected,
+      "parse_tree" => serialize_tree(tree, id),
+      "model" => serialize_node(formula, id),
+    }
+  end
+
+  def build_number_formatter_cases(format)
+    format.number_formatter_calls.map do |id, input, formatter_args|
+      build_number_formatter_case(format, id, input, formatter_args)
+    rescue Error
+      raise
+    rescue StandardError => e
+      raise Error,
+            "number_formatter case #{id} (#{input.inspect}) failed: " \
             "#{e.class}: #{e.message}"
     end
   end
@@ -1366,8 +1455,31 @@ module CorpusGenerator
       )
       payloads << [rejection_path, rejection_bytes]
     end
+    number_formatter_cases = build_number_formatter_cases(format)
+    number_formatter_path =
+      File.join(out_root, format.name, "#{NUMBER_FORMATTER_GROUP}.yaml")
+    if number_formatter_cases.empty?
+      discard_payload(number_formatter_path)
+    else
+      number_formatter_payload = {
+        "schema" => CALLS_SCHEMA,
+        "group" => NUMBER_FORMATTER_GROUP,
+        "description" => NUMBER_FORMATTER_DESCRIPTION,
+        "input_format" => format.name,
+        "targets" => format.targets,
+        "cases" => number_formatter_cases,
+      }
+      number_formatter_bytes = write_payload(
+        number_formatter_path,
+        payload_header("#{format.label} conformance cases: #{NUMBER_FORMATTER_GROUP}."),
+        number_formatter_payload,
+      )
+      payloads << [number_formatter_path, number_formatter_bytes]
+    end
+
     counts[:partial] = partial_cases.length
     counts[:rejections] = rejections.length
+    counts[:number_formatter] = number_formatter_cases.length
 
     [payloads, counts]
   end
@@ -1534,7 +1646,8 @@ module CorpusGenerator
     puts "  #{relative(provenance_path, REPO_ROOT)}"
     puts "#{counts[:cases]} cases in #{counts[:groups]} groups, " \
          "#{counts[:partial]} partially renderable (cases/2), " \
-         "#{counts[:rejections]} rejections"
+         "#{counts[:rejections]} rejections, " \
+         "#{counts[:number_formatter]} number_formatter calls (calls/1)"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }
     0
