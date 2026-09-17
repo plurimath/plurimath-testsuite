@@ -631,6 +631,15 @@ module Testsuite
       # KEYS of `expected`, never its values. So the same four apply verbatim,
       # and this entry says that on purpose rather than by falling through.
       "cases/2" => :case_cross_checks,
+      # `calls/1` carries the same `group`, `cases[].id`, `targets` and
+      # `cases[].expected` shape as `cases/2` — `call` is a single case's own
+      # field with no other field to relate it to, so JSON Schema alone
+      # already constrains it (`call.method`'s enum, `call.args`'
+      # required-ness). But its schema's middle segment is a KIND (`calls`),
+      # not an input format, the same situation `rejections/1` is in — so it
+      # needs `rejection_format_errors`, not `input_format_errors`, for the
+      # one check that reads the schema segment. See `call_cross_checks`.
+      "calls/1" => :call_cross_checks,
     }.freeze
 
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
@@ -871,6 +880,19 @@ module Testsuite
         rejection_format_errors(document, relative) +
         case_id_errors(document["cases"]) +
         rejection_index_errors(document["cases"])
+    end
+
+    # Same four facts `case_cross_checks` relates, except the schema-segment
+    # half of the format check: `calls/1`'s middle segment is the KIND, not
+    # the format, exactly like `rejections/1` — so this reuses
+    # `rejection_format_errors` (generic despite its name: it checks the
+    # directory and each case's `input_format` against the group's, nothing
+    # rejection-specific) rather than `input_format_errors`.
+    def call_cross_checks(document, relative)
+      group_name_errors(document, relative) +
+        rejection_format_errors(document, relative) +
+        case_id_errors(document["cases"]) +
+        target_coverage_errors(document["targets"], document["cases"])
     end
 
     # Same fact-in-several-places check as `input_format_errors`, minus the

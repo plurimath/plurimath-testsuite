@@ -21,11 +21,11 @@ Plurimath supports it — Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 92 cases, 19 groups  | ✅ checked for all 237
-| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 237
-| MathML      | ❌ no cases yet         | ✅ checked for all 237
+| AsciiMath   | ✅ 93 cases, 20 groups  | ✅ checked for all 238
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 238
+| MathML      | ❌ no cases yet         | ✅ checked for all 238
 | OMML        | ❌ no cases yet         | ❌ no cases yet
-| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 237, one a refusal
+| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 238, one a refusal
 | HTML        | ❌ no cases yet         | ❌ no cases yet
 |===
 
@@ -44,7 +44,7 @@ because group names repeat across input formats — `asciimath/numbers` and
 `asciimath/nary` 6, `asciimath/matrices` 2, `asciimath/mixed` 5,
 `asciimath/permissive` 6, `asciimath/fonts` 7, `asciimath/colour` 2,
 `asciimath/left-right` 3, `asciimath/mod` 3, `asciimath/whitespace` 5,
-`asciimath/partial-render` 1.
+`asciimath/partial-render` 1, `asciimath/number-formatting` 1.
 
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,
@@ -111,7 +111,7 @@ There is no build step and no published package. The YAML is the artifact.
 
 == Format
 
-There are three kinds of payload. A **case** records one input and what
+There are four kinds of payload. A **case** records one input and what
 Plurimath produced for it:
 
 [source,yaml]
@@ -299,6 +299,75 @@ stays byte-for-byte what it was. A payload names its own schema, and
 side by side. A consumer that understands only `cases/1` keeps working
 untouched — it reads the groups it already read, and skips the ones declaring
 a schema it does not know.
+
+=== Call payloads
+
+The fourth kind. A **case** and an **outcome** both record `Formula#to_<target>`
+called with no arguments — `to_asciimath`, `to_latex`, with nothing else. A
+**call** records the gem answering something else: `to_<target>(formatter:
+...)`, `intent: true`, and other non-default invocations the roadmap that
+motivated this kind names. `Plurimath::Formatter::Standard` is the first one
+covered; the rest are each a later schema version's own addition, not
+guessed at now.
+
+They live beside the cases, and declare `schema: plurimath-corpus/calls/1` —
+a payload *kind*, like `rejections`, with the format carried in the payload's
+own `input_format`:
+
+[source,yaml]
+----
+schema: plurimath-corpus/calls/1
+group: number-formatting
+input_format: asciimath
+targets:
+- asciimath
+- latex
+- mathml
+- unicodemath
+cases:
+- id: number-formatter-de-style-grouping
+  input: '123456.789'
+  input_format: asciimath
+  preprocessed: '123456.789'
+  call:
+    method: number_formatter
+    args:
+      locale: en
+      options:
+        decimal: ","
+        group: "."
+        group_digits: 3
+      precision:
+      string_format:
+  expected:
+    asciimath:
+      output: 123.456,789
+    latex:
+      output: 123.456,789
+    mathml: ...
+    unicodemath:
+      output: 123.456,789
+  parse_tree: ...
+  model: ...
+----
+
+`call.method`:: the KIND of call, not a Ruby method name by itself —
+`number_formatter` covers every `to_<target>(formatter: ...)` invocation
+across every target in the group, because the same formatter is applied
+uniformly to each.
+`call.args`:: deliberately free-form, like a node's own `options`/`attributes`
+fields already are: for `number_formatter` these are exactly
+`Formatter::Standard.new`'s keyword arguments (`locale`, `string_format`,
+`options`, `precision`), so a reader maps them straight onto its own
+constructor rather than onto independently invented field names. A key
+present with a `nil`/absent value (`precision:`, `string_format:` above) is
+the gem's own default for that keyword, recorded rather than omitted — the
+call was still explicit about every argument `Formatter::Standard.new` takes.
+
+`expected` is an outcome per target, exactly as in an outcome payload above —
+a rendering or a refusal, never both. `parse_tree` and `model` describe the
+input as parsed, unaffected by `call`: the call only changes how the parsed
+model renders, not what it parses to.
 
 === What `model:` means
 

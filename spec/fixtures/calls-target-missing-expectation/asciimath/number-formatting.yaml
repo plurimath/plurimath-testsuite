@@ -1,0 +1,42 @@
+---
+schema: plurimath-corpus/calls/1
+group: number-formatting
+description: Healthy calls/1 payload, the group declares a target no case's expectation covers.
+input_format: asciimath
+targets:
+- asciimath
+- latex
+cases:
+- id: number-formatter-de-style-grouping
+  input: '123456.789'
+  input_format: asciimath
+  preprocessed: '123456.789'
+  call:
+    method: number_formatter
+    args:
+      locale: en
+      options:
+        decimal: ","
+        group: "."
+      precision:
+      string_format:
+  expected:
+    asciimath:
+      output: 123.456,789
+  parse_tree:
+    expr:
+      sequence:
+        number: '123456.789'
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: '123456.789'
+      left_right_wrapper: true
+      value:
+      - class: Math::Number
+        fields:
+          base:
+          mini_sub_sized: false
+          mini_sup_sized: false
+          value: '123456.789'

@@ -12,7 +12,7 @@ RSpec.describe CorpusGenerator, ".preprocessed_text" do
       name: "probe", label: "Probe", targets: ["latex"],
       preprocess: preprocess, parse_tree: ->(text) { text },
       groups: [], rejection_candidates: [], rejection_description: "none",
-      partial_candidates: []
+      partial_candidates: [], number_formatter_calls: []
     )
   end
 
