@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 0054571ed28c9852e8c3cdde51fc14dbffc8445b88d6dee4d8d4dd87150bcde4
+  sha256: d498fcab4070ad9e0eb131c78239a32dbd24a6156bd39cbf0cb708a297106c61
   repository:
-    commit: c2a973d73abdebbdd50d9f938c652420daaee298
+    commit: 78b88e141d29807f8857f14fb88ee590531b7a39
     clean: true
     dirty_paths: []
 oracle:
@@ -79,8 +79,8 @@ payloads:
   sha256: 36daf58791289f8cf42bd16e406b6cea0e7e2c623e93061016941524be165fbd
   bytes: 11245
 - path: asciimath/number-formatting.yaml
-  sha256: d01a37e70eb066508636c6a1ab77de4ed5b08b6422acfc9fca8c4013a68d689e
-  bytes: 1573
+  sha256: 82c6cd611c6866ece165142880d44e713d739b29d3176e8a1beb5d52a6cc4058
+  bytes: 2599
 - path: asciimath/numbers.yaml
   sha256: 2b69e6f35c952a09f7b6be364ce9fa8fe114fcbd2d582f72be319c2a775e39fb
   bytes: 3782

@@ -728,13 +728,21 @@ module CorpusGenerator
 
   # --- number-formatter calls (calls/1) ------------------------------------
   #
-  # One measured call: a German-style locale override (`,` as the decimal
-  # mark, `.` as the group separator) applied through `Formatter::Standard`,
-  # the gem's own formatter class. Each entry is
-  # `[id, input, formatter_args]`, where `formatter_args` is exactly the
-  # keyword arguments `Formatter::Standard.new` takes — `locale:`,
-  # `string_format:`, `options:`, `precision:` — so the generator's call
-  # matches what the schema's `call.args` records, field for field.
+  # Two measured calls, each `[id, input, formatter_args]` where
+  # `formatter_args` is exactly the keyword arguments `Formatter::Standard.new`
+  # takes — `locale:`, `string_format:`, `options:`, `precision:` — so the
+  # generator's call matches what the schema's `call.args` records, field for
+  # field.
+  #
+  # `number-formatter-de-style-grouping`: a German-style locale override (`,`
+  # as the decimal mark, `.` as the integer group separator) with 3 fraction
+  # digits, one group's worth — it never exercises a second fraction group.
+  #
+  # `number-formatter-fraction-side-grouping`: `fraction_group`/
+  # `fraction_group_digits` grouped the same way `group`/`group_digits`
+  # already groups the integer side (Formatter::Numbers::Fraction#format_groups
+  # in the oracle gem), against 9 fraction digits so `fraction_group_digits: 3`
+  # produces three groups.
   ASCIIMATH_NUMBER_FORMATTER_CALLS = [
     [
       "number-formatter-de-style-grouping",
@@ -744,6 +752,16 @@ module CorpusGenerator
         string_format: nil,
         precision: nil,
         options: { decimal: ",", group: ".", group_digits: 3 },
+      },
+    ],
+    [
+      "number-formatter-fraction-side-grouping",
+      "1.123456789",
+      {
+        locale: "en",
+        string_format: nil,
+        precision: nil,
+        options: { fraction_group: "_", fraction_group_digits: 3 },
       },
     ],
   ].freeze
