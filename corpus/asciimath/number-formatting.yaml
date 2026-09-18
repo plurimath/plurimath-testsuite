@@ -57,3 +57,47 @@ cases:
           mini_sub_sized: false
           mini_sup_sized: false
           value: '123456.789'
+- id: number-formatter-fraction-side-grouping
+  input: '1.123456789'
+  input_format: asciimath
+  preprocessed: '1.123456789'
+  call:
+    method: number_formatter
+    args:
+      locale: en
+      options:
+        fraction_group: _
+        fraction_group_digits: 3
+      precision:
+      string_format:
+  expected:
+    asciimath:
+      output: 1.123_456_789
+    latex:
+      output: 1.123_456_789
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mn>1.123_456_789</mn>
+          </mstyle>
+        </math>
+    unicodemath:
+      output: 1.123_456_789
+  parse_tree:
+    expr:
+      sequence:
+        number: '1.123456789'
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: '1.123456789'
+      left_right_wrapper: true
+      value:
+      - class: Math::Number
+        fields:
+          base:
+          mini_sub_sized: false
+          mini_sup_sized: false
+          value: '1.123456789'
