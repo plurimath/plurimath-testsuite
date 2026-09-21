@@ -51,7 +51,13 @@ module CorpusGenerator
   # parse-then-render, and `call.method` is what varies within one payload
   # rather than the input's own notation.
   CALLS_SCHEMA = "plurimath-corpus/calls/1"
+  # A `calls/1` payload's group name, description and the targets it declares.
+  # `targets` is per group rather than per format: `calls/1` states its target
+  # list once per payload, and the gem's `Formula#to_<target>(formatter:)`
+  # accepts a formatter on all six render methods, so a group can carry more
+  # targets than the format's default four.
   NUMBER_FORMATTER_GROUP = "number-formatting"
+  NumberFormatterGroup = Data.define(:name, :description, :targets, :calls)
   NUMBER_FORMATTER_DESCRIPTION =
     "Cases recording Formula#to_<target> invoked with a non-default " \
     "formatter:, so a port can be checked against a call the gem answered " \
@@ -105,7 +111,7 @@ module CorpusGenerator
   Format = Data.define(
     :name, :label, :targets, :preprocess, :parse_tree,
     :groups, :rejection_candidates, :rejection_description, :partial_candidates,
-    :number_formatter_calls
+    :number_formatter_groups
   )
 
   # A `model:` block records a node's *portable semantic state* — what a second
@@ -766,6 +772,238 @@ module CorpusGenerator
     ],
   ].freeze
 
+  # The same call, shaped the way the two cases above record it: every
+  # `Formatter::Standard.new` keyword present, so a reader maps `call.args`
+  # straight onto the constructor.
+  def self.nf_args(options: {}, precision: nil, locale: "en", string_format: nil)
+    { locale: locale, string_format: string_format, precision: precision,
+      options: options }
+  end
+
+  # The targets whose `to_<target>` takes `formatter:` (Math::Formula in the
+  # oracle gem). The first slice's group keeps the four the format declares;
+  # the groups below carry all six, so a port has oracle data for the OMML and
+  # HTML formatter paths as well.
+  NUMBER_FORMATTER_ALL_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
+
+  ASCIIMATH_NUMBER_FORMATTER_GROUPS = [
+    NumberFormatterGroup.new(
+      name: NUMBER_FORMATTER_GROUP,
+      description: NUMBER_FORMATTER_DESCRIPTION,
+      targets: %w[asciimath latex mathml unicodemath].freeze,
+      calls: ASCIIMATH_NUMBER_FORMATTER_CALLS,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-precision",
+      description: "The `precision:` argument and the `digit_count` option: " \
+                   "fraction digits cut off or zero-padded, and a total-digit " \
+                   "budget that can carry into a new leading digit.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-precision-truncates-fraction", "14236.39239",
+         nf_args(precision: 2)],
+        ["number-formatter-precision-pads-zeros", "3.5",
+         nf_args(precision: 4)],
+        ["number-formatter-precision-zero", "2.5",
+         nf_args(precision: 0)],
+        ["number-formatter-precision-with-separators", "1234.5678",
+         nf_args(precision: 1, options: { group: " ", decimal: "," })],
+        ["number-formatter-precision-wide-fraction-groups", "14236.39239",
+         nf_args(precision: 20,
+                 options: { fraction_group: " ", fraction_group_digits: 3,
+                            group_digits: 3 })],
+        ["number-formatter-digit-count-pads-trailing-zeros", "283.180000000000",
+         nf_args(options: { digit_count: 6 })],
+        ["number-formatter-digit-count-carries-into-new-digit", "999.9",
+         nf_args(options: { digit_count: 3, group_digits: 3, group: ",",
+                            decimal: "." })],
+        ["number-formatter-digit-count-with-fraction-groups", "14236.39239",
+         nf_args(options: { digit_count: 16, fraction_group: " ",
+                            fraction_group_digits: 3, group_digits: 3 })],
+      ].freeze,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-significant",
+      description: "The `significant` option: rounding to a count of " \
+                   "significant digits, on integers, on values below one, " \
+                   "and where rounding carries.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-significant-rounds-integer", "112",
+         nf_args(options: { significant: 2 })],
+        ["number-formatter-significant-carry", "1999",
+         nf_args(options: { significant: 2 })],
+        ["number-formatter-significant-below-one", "0.1999",
+         nf_args(options: { significant: 3 })],
+        ["number-formatter-significant-groups-rounded-integer", "1234567",
+         nf_args(options: { significant: 5, group_digits: 3 })],
+        ["number-formatter-significant-fraction-groups", "327428.7432878432992",
+         nf_args(options: { significant: 9, fraction_group_digits: 2,
+                            fraction_group: "'", group_digits: 3 })],
+        ["number-formatter-significant-pads-small-value", "0.001",
+         nf_args(options: { significant: 3 })],
+      ].freeze,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-notation",
+      description: "The `notation` option: e, scientific and engineering, " \
+                   "with the e, times and exponent_sign symbols, zero, " \
+                   "small values, and precision, significant and digit_count " \
+                   "interacting with a notation.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-notation-e-custom-symbol-precision", "14000",
+         nf_args(precision: 1,
+                 options: { notation: :e, e: :E, decimal: "@" })],
+        ["number-formatter-notation-scientific-exponent-plus", "14000",
+         nf_args(options: { notation: :scientific, exponent_sign: :plus,
+                            fraction_group: " ", fraction_group_digits: 3 })],
+        ["number-formatter-notation-scientific-custom-times", "0.00012",
+         nf_args(options: { notation: :scientific, exponent_sign: :plus,
+                            times: "*" })],
+        ["number-formatter-notation-engineering-precision", "14000",
+         nf_args(precision: 2,
+                 options: { notation: :engineering, decimal: ",", times: "x" })],
+        ["number-formatter-notation-engineering-default", "14236.39239",
+         nf_args(options: { notation: :engineering })],
+        ["number-formatter-notation-e-zero", "0",
+         nf_args(options: { notation: :e })],
+        ["number-formatter-notation-scientific-zero", "0",
+         nf_args(options: { notation: :scientific })],
+        ["number-formatter-notation-engineering-zero", "0",
+         nf_args(options: { notation: :engineering })],
+        ["number-formatter-notation-e-digit-count-small", "0.000568096",
+         nf_args(options: { notation: :e, e: " ", digit_count: 6,
+                            fraction_group_digits: 3, fraction_group: " ",
+                            decimal: "," })],
+        ["number-formatter-notation-e-significant-large", "1000000000000000000000.0",
+         nf_args(options: { notation: :e, significant: 1 })],
+        ["number-formatter-notation-e-significant-small", "0.001",
+         nf_args(options: { notation: :e, significant: 3 })],
+        ["number-formatter-notation-scientific-significant-small", "0.001",
+         nf_args(options: { notation: :scientific, significant: 3 })],
+        ["number-formatter-notation-engineering-significant", "112436",
+         nf_args(options: { notation: :engineering, significant: 5 })],
+        ["number-formatter-notation-scientific-precision-groups",
+         "642121496772645156.4515",
+         nf_args(precision: 7,
+                 options: { notation: :scientific, fraction_group_digits: 4,
+                            fraction_group: "y", group_digits: 3, digit_count: 7,
+                            decimal: ",", group: "x" })],
+        ["number-formatter-notation-scientific-digit-count", "327428.000878432992",
+         nf_args(options: { notation: :scientific, digit_count: 18 })],
+      ].freeze,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-base",
+      description: "The `base` option (2, 8, 16) with base_prefix, " \
+                   "base_postfix and hex_capital. With no prefix or postfix " \
+                   "given, asciimath, latex, mathml, unicodemath and html " \
+                   "render a subscript base and omml renders the default " \
+                   "prefix as text; with one given, every target renders " \
+                   "the literal text.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-base-2-grouped", "1910",
+         nf_args(options: { base: 2, group_digits: 8, group: " " })],
+        ["number-formatter-base-2-fraction", "10.75",
+         nf_args(options: { base: 2, group_digits: 2, group: "," })],
+        ["number-formatter-base-2-precision", "10.75",
+         nf_args(precision: 1, options: { base: 2, group_digits: 2, group: "," })],
+        ["number-formatter-base-8", "255",
+         nf_args(options: { base: 8 })],
+        ["number-formatter-base-16-default-prefix", "255",
+         nf_args(options: { base: 16 })],
+        ["number-formatter-base-16-zero", "0",
+         nf_args(options: { base: 16 })],
+        ["number-formatter-base-16-hex-capital", "48879",
+         nf_args(options: { base: 16, hex_capital: true, group_digits: 2 })],
+        ["number-formatter-base-16-hex-capital-numbers-only", "48879",
+         nf_args(options: { base: 16, hex_capital: "numbers_only",
+                            group_digits: 2, group: "e" })],
+        ["number-formatter-base-16-negative", "-255",
+         nf_args(options: { base: 16 })],
+        ["number-formatter-base-16-significant-fraction", "123.25",
+         nf_args(options: { base: 16, significant: 5, group_digits: 10,
+                            decimal: "." })],
+        ["number-formatter-base-16-digit-count", "0.1",
+         nf_args(options: { base: 16, digit_count: 4 })],
+        ["number-formatter-base-16-padding-digits", "255",
+         nf_args(options: { base: 16, padding_digits: 4, group_digits: 10 })],
+        ["number-formatter-base-prefix-override", "255",
+         nf_args(options: { base: 16, base_prefix: "16#" })],
+        ["number-formatter-base-prefix-empty", "255",
+         nf_args(options: { base: 16, base_prefix: "" })],
+        ["number-formatter-base-prefix-space-negative", "-10.75",
+         nf_args(options: { base: 2, base_prefix: " 0B", group_digits: 2,
+                            group: "," })],
+        ["number-formatter-base-postfix-alone", "255",
+         nf_args(options: { base: 16, base_postfix: "_16" })],
+        ["number-formatter-base-postfix-hex-capital", "48879",
+         nf_args(options: { base: 16, base_postfix: "_h", hex_capital: true,
+                            group_digits: 2 })],
+        ["number-formatter-base-prefix-and-postfix", "255",
+         nf_args(options: { base: 16, base_prefix: "0x", base_postfix: "h" })],
+        ["number-formatter-base-10-ignores-prefix-and-postfix", "255",
+         nf_args(options: { base: 10, base_prefix: "y^", base_postfix: "_x" })],
+      ].freeze,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-sign-padding",
+      description: "The `number_sign` option, alone and under each notation, " \
+                   "and integer padding by `padding_digits`, `padding` and " \
+                   "`padding_group_digits`. A leading `-` in AsciiMath input " \
+                   "is a separate operator node, not part of the number.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-sign-plus-basic", "14236.39239",
+         nf_args(options: { number_sign: :plus })],
+        ["number-formatter-sign-plus-with-minus-operator", "-14236.39239",
+         nf_args(options: { number_sign: :plus })],
+        ["number-formatter-sign-plus-e", "14236.39239",
+         nf_args(options: { number_sign: :plus, notation: :e })],
+        ["number-formatter-sign-plus-scientific", "14236.39239",
+         nf_args(options: { number_sign: :plus, notation: :scientific })],
+        ["number-formatter-sign-plus-engineering", "14236.39239",
+         nf_args(options: { number_sign: :plus, notation: :engineering })],
+        ["number-formatter-padding-digits-grouped", "32",
+         nf_args(options: { padding_digits: 6, group_digits: 3, group: " " })],
+        ["number-formatter-padding-custom-character", "32",
+         nf_args(options: { padding: " ", padding_digits: 6, group_digits: 10 })],
+        ["number-formatter-padding-group-digits", "32123",
+         nf_args(options: { padding_group_digits: 4, group_digits: 10 })],
+      ].freeze,
+    ),
+    NumberFormatterGroup.new(
+      name: "number-formatting-locale-symbols",
+      description: "The `locale`, `string_format`, and separator options " \
+                   "(`decimal`, `group`, `group_digits`) as `Formatter::Standard` " \
+                   "resolves them: including where a locale changes nothing " \
+                   "because Standard fills `decimal` and `group` with its " \
+                   "own defaults.",
+      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      calls: [
+        ["number-formatter-locale-de-standard-defaults", "1234567.891",
+         nf_args(locale: "de")],
+        ["number-formatter-locale-fr-standard-defaults", "1234567.891",
+         nf_args(locale: "fr")],
+        ["number-formatter-locale-unsupported-falls-back", "1234567.891",
+         nf_args(locale: "xx")],
+        ["number-formatter-locale-de-explicit-separators", "1234567.891",
+         nf_args(locale: "de", options: { decimal: ",", group: "." })],
+        ["number-formatter-string-format-alone", "14236.39239",
+         nf_args(string_format: "#,##0.### #")],
+        ["number-formatter-string-format-with-options", "14236.39239",
+         nf_args(string_format: "#,##0.### #",
+                 options: { group_digits: 2, group: "'", decimal: "*" })],
+        ["number-formatter-group-digits-and-decimal", "12345.6789",
+         nf_args(options: { group_digits: 2, group: "'", decimal: "*" })],
+        ["number-formatter-group-empty-disables-grouping", "12345.6789",
+         nf_args(options: { group: "" })],
+      ].freeze,
+    ),
+  ].freeze
+
   # AsciiMath, the first input format the corpus covered. Assembled here rather
   # than beside `Format` because it names the three case lists above.
   #
@@ -783,7 +1021,7 @@ module CorpusGenerator
     rejection_candidates: ASCIIMATH_REJECTION_CANDIDATES,
     rejection_description: REJECTIONS_DESCRIPTION,
     partial_candidates: ASCIIMATH_PARTIAL_CANDIDATES,
-    number_formatter_calls: ASCIIMATH_NUMBER_FORMATTER_CALLS,
+    number_formatter_groups: ASCIIMATH_NUMBER_FORMATTER_GROUPS,
   )
 
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
@@ -1147,7 +1385,7 @@ module CorpusGenerator
     rejection_candidates: LATEX_REJECTION_CANDIDATES,
     rejection_description: LATEX_REJECTIONS_DESCRIPTION,
     partial_candidates: [].freeze,
-    number_formatter_calls: [].freeze,
+    number_formatter_groups: [].freeze,
   )
 
   # The UnicodeMath seed corpus, the third input format, and the first slice of
@@ -1266,7 +1504,7 @@ module CorpusGenerator
     rejection_candidates: [].freeze,
     rejection_description: REJECTIONS_DESCRIPTION,
     partial_candidates: [].freeze,
-    number_formatter_calls: [].freeze,
+    number_formatter_groups: [].freeze,
   )
 
   # Every input format the corpus is generated for, in the order they are
@@ -1345,12 +1583,12 @@ module CorpusGenerator
           "schema names"
   end
 
-  def build_number_formatter_case(format, id, input, formatter_args)
+  def build_number_formatter_case(format, targets, id, input, formatter_args)
     formula = Plurimath::Math.parse(input, format.name.to_sym)
     preprocessed = preprocessed_text(format, input)
     tree = format.parse_tree.call(preprocessed)
     formatter = Plurimath::Formatter::Standard.new(**formatter_args)
-    expected = format.targets.to_h do |target|
+    expected = targets.to_h do |target|
       [target, render_number_formatter_outcome(formula, target, formatter, input)]
     end
 
@@ -1369,9 +1607,9 @@ module CorpusGenerator
     }
   end
 
-  def build_number_formatter_cases(format)
-    format.number_formatter_calls.map do |id, input, formatter_args|
-      build_number_formatter_case(format, id, input, formatter_args)
+  def build_number_formatter_cases(format, group)
+    group.calls.map do |id, input, formatter_args|
+      build_number_formatter_case(format, group.targets, id, input, formatter_args)
     rescue Error
       raise
     rescue StandardError => e
@@ -1599,31 +1837,39 @@ module CorpusGenerator
       )
       payloads << [rejection_path, rejection_bytes]
     end
-    number_formatter_cases = build_number_formatter_cases(format)
-    number_formatter_path =
-      File.join(out_root, format.name, "#{NUMBER_FORMATTER_GROUP}.yaml")
-    if number_formatter_cases.empty?
-      discard_payload(number_formatter_path)
-    else
+    # A format with no groups still discards the payload the first slice
+    # wrote, so removing its calls removes the file rather than leaving it
+    # stale.
+    if format.number_formatter_groups.empty?
+      discard_payload(
+        File.join(out_root, format.name, "#{NUMBER_FORMATTER_GROUP}.yaml"),
+      )
+    end
+    number_formatter_total = 0
+    format.number_formatter_groups.each do |group|
+      number_formatter_cases = build_number_formatter_cases(format, group)
+      number_formatter_path =
+        File.join(out_root, format.name, "#{group.name}.yaml")
       number_formatter_payload = {
         "schema" => CALLS_SCHEMA,
-        "group" => NUMBER_FORMATTER_GROUP,
-        "description" => NUMBER_FORMATTER_DESCRIPTION,
+        "group" => group.name,
+        "description" => group.description,
         "input_format" => format.name,
-        "targets" => format.targets,
+        "targets" => group.targets,
         "cases" => number_formatter_cases,
       }
       number_formatter_bytes = write_payload(
         number_formatter_path,
-        payload_header("#{format.label} conformance cases: #{NUMBER_FORMATTER_GROUP}."),
+        payload_header("#{format.label} conformance cases: #{group.name}."),
         number_formatter_payload,
       )
       payloads << [number_formatter_path, number_formatter_bytes]
+      number_formatter_total += number_formatter_cases.length
     end
 
     counts[:partial] = partial_cases.length
     counts[:rejections] = rejections.length
-    counts[:number_formatter] = number_formatter_cases.length
+    counts[:number_formatter] = number_formatter_total
 
     [payloads, counts]
   end
