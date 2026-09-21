@@ -1284,11 +1284,14 @@ module Testsuite
     # every payload declares that is every positive case in the corpus; a
     # target only some payloads declare (`calls/1` groups carry `omml` and
     # `html` where the other kinds do not) is checked against its own, smaller
-    # count. The table's output column is not keyed by target in a way this
-    # check can read, so the claims are compared as a multiset.
+    # count. Each claim is read off a coverage row whose first cell names the
+    # notation, and that row's label is its target key lowercased (`OMML` is
+    # `omml`), so a claim is compared to the count of ITS OWN row's target —
+    # swapping two rows' numbers is an error even though the set of numbers is
+    # unchanged.
     def readme_target_claim_errors(text)
       errors = []
-      expected = positive_target_case_counts.values
+      counts = positive_target_case_counts
 
       # Guarded the way `readme_group_errors` guards its inventory. Without
       # this, deleting every "checked for all N" row left the loop below with
@@ -1298,25 +1301,40 @@ module Testsuite
       # The expected COUNT is derived rather than fixed at "at least one", so
       # dropping a single target's row fails too: one claim per target the
       # corpus actually renders.
-      claims = text.scan(/checked for all (\d+)/).flatten.map(&:to_i)
+      claim_total = text.scan(/checked for all \d+/).length
       expected_claims = positive_targets.length
-      if claims.length != expected_claims
-        errors << "coverage table makes #{claims.length} \"checked for all N\" " \
-                  "claim#{'s' unless claims.length == 1}, corpus renders " \
+      if claim_total != expected_claims
+        errors << "coverage table makes #{claim_total} \"checked for all N\" " \
+                  "claim#{'s' unless claim_total == 1}, corpus renders " \
                   "#{expected_claims} target#{'s' unless expected_claims == 1} " \
                   "(#{positive_targets.join(', ')})"
       end
 
-      claims.uniq.each do |claimed|
-        next if expected.include?(claimed)
-
-        errors << "coverage table says \"checked for all #{claimed}\", corpus has " \
-                  "#{positive_target_case_counts.map { |target, n| "#{n} for #{target}" }.join(', ')}"
+      rows = text.lines.filter_map do |line|
+        match = line.match(/\A\|\s*([^|\s]+)\s*\|.*checked for all (\d+)/)
+        [match[1], match[2].to_i] if match
       end
-      (expected.uniq - claims).each do |missing|
-        errors << "coverage table has no \"checked for all #{missing}\" claim, but " \
-                  "the corpus checks #{missing} cases for " \
-                  "#{positive_target_case_counts.select { |_, n| n == missing }.keys.join(', ')}"
+      seen = Hash.new(0)
+      rows.each do |label, claimed|
+        target = label.downcase
+        seen[target] += 1
+        unless counts.key?(target)
+          errors << "coverage table row #{label} says \"checked for all #{claimed}\", " \
+                    "but the corpus renders no #{target} target " \
+                    "(#{positive_targets.join(', ')})"
+          next
+        end
+        next if claimed == counts[target]
+
+        errors << "coverage table row #{label} says \"checked for all #{claimed}\", " \
+                  "corpus has #{counts[target]} for #{target}"
+      end
+      seen.each do |target, n|
+        errors << "coverage table has #{n} \"checked for all N\" rows for #{target}" if n > 1
+      end
+      (counts.keys - seen.keys).each do |target|
+        errors << "coverage table has no \"checked for all #{counts[target]}\" row for " \
+                  "#{target}, which the corpus checks #{counts[target]} cases for"
       end
       errors
     end

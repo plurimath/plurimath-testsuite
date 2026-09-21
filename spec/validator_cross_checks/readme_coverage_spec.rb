@@ -81,7 +81,41 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     expect(partial).to be < counts.values.max
     wrong = readme.gsub(/checked for all #{partial}\b/, "checked for all #{counts.values.max}")
     expect(errors_for(wrong))
-      .to include(a_string_matching(/no "checked for all #{partial}" claim/))
+      .to include(a_string_matching(/row OMML says "checked for all #{counts.values.max}", corpus has #{partial} for omml/))
+  end
+
+  # The claims are read per labelled row. Compared as a bag of numbers, two
+  # rows trading claims left the bag unchanged and the README passed while
+  # stating the wrong count for both targets.
+  it "rejects a README whose rows swap their claims" do
+    counts = runner.send(:positive_target_case_counts)
+    swapped = readme
+      .sub(/(\| AsciiMath[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['asciimath']}")
+    expect(swapped).not_to eq(readme)
+    expect(errors_for(swapped)).to include(
+      a_string_matching(/row AsciiMath says "checked for all #{counts['omml']}", corpus has #{counts['asciimath']} for asciimath/),
+      a_string_matching(/row OMML says "checked for all #{counts['asciimath']}", corpus has #{counts['omml']} for omml/),
+    )
+  end
+
+  it "rejects one wrong row even when the multiset of claims is unchanged" do
+    counts = runner.send(:positive_target_case_counts)
+    # LaTeX and HTML trade claims and every other row is left alone.
+    wrong = readme
+      .sub(/(\| LaTeX[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['latex']}")
+    expect(wrong.scan(/checked for all (\d+)/).flatten.sort)
+      .to eq(readme.scan(/checked for all (\d+)/).flatten.sort)
+    expect(errors_for(wrong)).to include(
+      a_string_matching(/row LaTeX says .+corpus has #{counts['latex']} for latex/),
+    )
+  end
+
+  it "rejects a target claimed by two rows" do
+    doubled = readme.sub(/(\| OMML[^\n]*\n)/, "\\1\\1")
+    expect(errors_for(doubled))
+      .to include(a_string_matching(/2 "checked for all N" rows for omml/))
   end
 
   it "rejects a README whose cases-and-groups line disagrees" do
