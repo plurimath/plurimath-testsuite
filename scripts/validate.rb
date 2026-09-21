@@ -1279,12 +1279,16 @@ module Testsuite
       errors
     end
 
-    # The "checked for all N" claims count every positive case in the corpus,
-    # not one format's: they sit in the table's output column, and a case of
-    # any input format carries an expectation for every target listed there.
+    # The "checked for all N" claims count, per output target, the positive
+    # cases in the payloads that declare that target. For the four targets
+    # every payload declares that is every positive case in the corpus; a
+    # target only some payloads declare (`calls/1` groups carry `omml` and
+    # `html` where the other kinds do not) is checked against its own, smaller
+    # count. The table's output column is not keyed by target in a way this
+    # check can read, so the claims are compared as a multiset.
     def readme_target_claim_errors(text)
       errors = []
-      actual_cases = positive_case_count
+      expected = positive_target_case_counts.values
 
       # Guarded the way `readme_group_errors` guards its inventory. Without
       # this, deleting every "checked for all N" row left the loop below with
@@ -1304,7 +1308,15 @@ module Testsuite
       end
 
       claims.uniq.each do |claimed|
-        errors << "coverage table says \"checked for all #{claimed}\", corpus has #{actual_cases}" if claimed != actual_cases
+        next if expected.include?(claimed)
+
+        errors << "coverage table says \"checked for all #{claimed}\", corpus has " \
+                  "#{positive_target_case_counts.map { |target, n| "#{n} for #{target}" }.join(', ')}"
+      end
+      (expected.uniq - claims).each do |missing|
+        errors << "coverage table has no \"checked for all #{missing}\" claim, but " \
+                  "the corpus checks #{missing} cases for " \
+                  "#{positive_target_case_counts.select { |_, n| n == missing }.keys.join(', ')}"
       end
       errors
     end
@@ -1358,11 +1370,6 @@ module Testsuite
       end.to_h
     end
 
-    def positive_case_count
-      @positive_case_count ||=
-        positive_groups.values.sum { |groups| groups.values.sum }
-    end
-
     # Every target the positive payloads declare, sorted and deduplicated.
     # `targets` is declared once per payload, so this is the set of formats the
     # corpus actually checks output for — what the README's "checked for all N"
@@ -1375,6 +1382,18 @@ module Testsuite
 
         targets.concat(Array(document["targets"]).map(&:to_s))
       end.uniq.sort
+    end
+
+    # Positive cases per target: the size of every payload that declares the
+    # target, summed. Keyed by target, in `positive_targets` order.
+    def positive_target_case_counts
+      @positive_target_case_counts ||= payload_files.each_with_object(Hash.new(0)) do |path, counts|
+        document = YAML.safe_load_file(path)
+        schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
+        next if schema.empty? || schema.include?("rejections/")
+
+        Array(document["targets"]).each { |target| counts[target.to_s] += Array(document["cases"]).length }
+      end.sort.to_h
     end
 
     def summary
