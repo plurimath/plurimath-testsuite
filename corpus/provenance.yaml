@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: d498fcab4070ad9e0eb131c78239a32dbd24a6156bd39cbf0cb708a297106c61
+  sha256: 216f0779a1baaf537d6c036695ea9b059cfd3202e1b2b02ea5017a9245654b2f
   repository:
-    commit: 78b88e141d29807f8857f14fb88ee590531b7a39
+    commit: 0a3967478a0ee5eed82eef1590d4e443cdf02ea5
     clean: true
     dirty_paths: []
 oracle:
@@ -78,6 +78,24 @@ payloads:
 - path: asciimath/nary.yaml
   sha256: 36daf58791289f8cf42bd16e406b6cea0e7e2c623e93061016941524be165fbd
   bytes: 11245
+- path: asciimath/number-formatting-base.yaml
+  sha256: 5a7a23c6c7d3cac68cb2b876a1c056663487a956b7248dcbf685593a4466dc25
+  bytes: 47528
+- path: asciimath/number-formatting-locale-symbols.yaml
+  sha256: 19b1c300e32e3bf65ab149e2c383a99d1f8f3c29367d6630b17c5354b4f35009
+  bytes: 20129
+- path: asciimath/number-formatting-notation.yaml
+  sha256: 64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290
+  bytes: 39014
+- path: asciimath/number-formatting-precision.yaml
+  sha256: 1717f95bdd1fc626be1ff7a74217773bde5b2e48edc51c0af6c65185ff832a4d
+  bytes: 20023
+- path: asciimath/number-formatting-sign-padding.yaml
+  sha256: 257aaede41bd9a3fa0b8b55f777486c07d7fbc982a1ac75297948e928cd857d7
+  bytes: 20735
+- path: asciimath/number-formatting-significant.yaml
+  sha256: 93d891ab63ed18bdafa663263fa0e925ea731e4667c3c8f8ac6c864c74c33d21
+  bytes: 14902
 - path: asciimath/number-formatting.yaml
   sha256: 82c6cd611c6866ece165142880d44e713d739b29d3176e8a1beb5d52a6cc4058
   bytes: 2599
