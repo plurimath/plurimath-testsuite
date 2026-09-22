@@ -50,7 +50,7 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
 
   it "derives one expected claim per target the corpus declares" do
     targets = runner.send(:positive_targets)
-    expect(targets).to eq(%w[asciimath latex mathml unicodemath])
+    expect(targets).to eq(%w[asciimath html latex mathml omml unicodemath])
     expect(readme.scan(/checked for all \d+/).length).to eq(targets.length)
   end
 
@@ -63,13 +63,59 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   it "rejects a README that drops a single target's claim" do
     one_less = readme.sub(/checked for all \d+/, "documented elsewhere")
     expect(errors_for(one_less))
-      .to include(a_string_matching(/makes 3 "checked for all N" claims/))
+      .to include(a_string_matching(/makes 5 "checked for all N" claims/))
   end
 
   it "rejects a README whose claimed count disagrees with the corpus" do
     wrong = readme.gsub(/checked for all \d+/, "checked for all 4242")
     expect(errors_for(wrong))
       .to include(a_string_matching(/"checked for all 4242", corpus has \d+/))
+  end
+
+  # A target only some payloads declare is checked against its own count, not
+  # the corpus-wide one: claiming every case for OMML, when only the `calls/1`
+  # groups carry it, is exactly the overclaim this row's wording guards.
+  it "rejects a README that claims the whole corpus for a target only some payloads declare" do
+    counts = runner.send(:positive_target_case_counts)
+    partial = counts.values.min
+    expect(partial).to be < counts.values.max
+    wrong = readme.gsub(/checked for all #{partial}\b/, "checked for all #{counts.values.max}")
+    expect(errors_for(wrong))
+      .to include(a_string_matching(/row OMML says "checked for all #{counts.values.max}", corpus has #{partial} for omml/))
+  end
+
+  # The claims are read per labelled row. Compared as a bag of numbers, two
+  # rows trading claims left the bag unchanged and the README passed while
+  # stating the wrong count for both targets.
+  it "rejects a README whose rows swap their claims" do
+    counts = runner.send(:positive_target_case_counts)
+    swapped = readme
+      .sub(/(\| AsciiMath[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['asciimath']}")
+    expect(swapped).not_to eq(readme)
+    expect(errors_for(swapped)).to include(
+      a_string_matching(/row AsciiMath says "checked for all #{counts['omml']}", corpus has #{counts['asciimath']} for asciimath/),
+      a_string_matching(/row OMML says "checked for all #{counts['asciimath']}", corpus has #{counts['omml']} for omml/),
+    )
+  end
+
+  it "rejects one wrong row even when the multiset of claims is unchanged" do
+    counts = runner.send(:positive_target_case_counts)
+    # LaTeX and HTML trade claims and every other row is left alone.
+    wrong = readme
+      .sub(/(\| LaTeX[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['latex']}")
+    expect(wrong.scan(/checked for all (\d+)/).flatten.sort)
+      .to eq(readme.scan(/checked for all (\d+)/).flatten.sort)
+    expect(errors_for(wrong)).to include(
+      a_string_matching(/row LaTeX says .+corpus has #{counts['latex']} for latex/),
+    )
+  end
+
+  it "rejects a target claimed by two rows" do
+    doubled = readme.sub(/(\| OMML[^\n]*\n)/, "\\1\\1")
+    expect(errors_for(doubled))
+      .to include(a_string_matching(/2 "checked for all N" rows for omml/))
   end
 
   it "rejects a README whose cases-and-groups line disagrees" do

@@ -1279,12 +1279,19 @@ module Testsuite
       errors
     end
 
-    # The "checked for all N" claims count every positive case in the corpus,
-    # not one format's: they sit in the table's output column, and a case of
-    # any input format carries an expectation for every target listed there.
+    # The "checked for all N" claims count, per output target, the positive
+    # cases in the payloads that declare that target. For the four targets
+    # every payload declares that is every positive case in the corpus; a
+    # target only some payloads declare (`calls/1` groups carry `omml` and
+    # `html` where the other kinds do not) is checked against its own, smaller
+    # count. Each claim is read off a coverage row whose first cell names the
+    # notation, and that row's label is its target key lowercased (`OMML` is
+    # `omml`), so a claim is compared to the count of ITS OWN row's target —
+    # swapping two rows' numbers is an error even though the set of numbers is
+    # unchanged.
     def readme_target_claim_errors(text)
       errors = []
-      actual_cases = positive_case_count
+      counts = positive_target_case_counts
 
       # Guarded the way `readme_group_errors` guards its inventory. Without
       # this, deleting every "checked for all N" row left the loop below with
@@ -1294,17 +1301,40 @@ module Testsuite
       # The expected COUNT is derived rather than fixed at "at least one", so
       # dropping a single target's row fails too: one claim per target the
       # corpus actually renders.
-      claims = text.scan(/checked for all (\d+)/).flatten.map(&:to_i)
+      claim_total = text.scan(/checked for all \d+/).length
       expected_claims = positive_targets.length
-      if claims.length != expected_claims
-        errors << "coverage table makes #{claims.length} \"checked for all N\" " \
-                  "claim#{'s' unless claims.length == 1}, corpus renders " \
+      if claim_total != expected_claims
+        errors << "coverage table makes #{claim_total} \"checked for all N\" " \
+                  "claim#{'s' unless claim_total == 1}, corpus renders " \
                   "#{expected_claims} target#{'s' unless expected_claims == 1} " \
                   "(#{positive_targets.join(', ')})"
       end
 
-      claims.uniq.each do |claimed|
-        errors << "coverage table says \"checked for all #{claimed}\", corpus has #{actual_cases}" if claimed != actual_cases
+      rows = text.lines.filter_map do |line|
+        match = line.match(/\A\|\s*([^|\s]+)\s*\|.*checked for all (\d+)/)
+        [match[1], match[2].to_i] if match
+      end
+      seen = Hash.new(0)
+      rows.each do |label, claimed|
+        target = label.downcase
+        seen[target] += 1
+        unless counts.key?(target)
+          errors << "coverage table row #{label} says \"checked for all #{claimed}\", " \
+                    "but the corpus renders no #{target} target " \
+                    "(#{positive_targets.join(', ')})"
+          next
+        end
+        next if claimed == counts[target]
+
+        errors << "coverage table row #{label} says \"checked for all #{claimed}\", " \
+                  "corpus has #{counts[target]} for #{target}"
+      end
+      seen.each do |target, n|
+        errors << "coverage table has #{n} \"checked for all N\" rows for #{target}" if n > 1
+      end
+      (counts.keys - seen.keys).each do |target|
+        errors << "coverage table has no \"checked for all #{counts[target]}\" row for " \
+                  "#{target}, which the corpus checks #{counts[target]} cases for"
       end
       errors
     end
@@ -1358,11 +1388,6 @@ module Testsuite
       end.to_h
     end
 
-    def positive_case_count
-      @positive_case_count ||=
-        positive_groups.values.sum { |groups| groups.values.sum }
-    end
-
     # Every target the positive payloads declare, sorted and deduplicated.
     # `targets` is declared once per payload, so this is the set of formats the
     # corpus actually checks output for — what the README's "checked for all N"
@@ -1375,6 +1400,18 @@ module Testsuite
 
         targets.concat(Array(document["targets"]).map(&:to_s))
       end.uniq.sort
+    end
+
+    # Positive cases per target: the size of every payload that declares the
+    # target, summed. Keyed by target, in `positive_targets` order.
+    def positive_target_case_counts
+      @positive_target_case_counts ||= payload_files.each_with_object(Hash.new(0)) do |path, counts|
+        document = YAML.safe_load_file(path)
+        schema = document.is_a?(::Hash) ? document["schema"].to_s : ""
+        next if schema.empty? || schema.include?("rejections/")
+
+        Array(document["targets"]).each { |target| counts[target.to_s] += Array(document["cases"]).length }
+      end.sort.to_h
     end
 
     def summary
