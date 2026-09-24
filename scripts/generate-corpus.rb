@@ -1479,11 +1479,11 @@ module CorpusGenerator
     ]],
   ].freeze
 
-  # Candidate malformed UnicodeMath inputs, swept rather than assumed: unbalanced
-  # brackets, stray and doubled operators, script and fraction operators with
-  # no operand, and characters the grammar has no rule for. Every entry is
-  # expected to be REFUSED, and `build_rejections` fails the run if the gem
-  # accepts one.
+  # Candidate malformed UnicodeMath inputs, swept rather than assumed:
+  # unbalanced brackets, stray and doubled operators, script and fraction
+  # operators with no operand, and characters the grammar has no rule for.
+  # Every entry is expected to be REFUSED, and `build_rejections` fails the
+  # run if the gem accepts one.
   #
   # Probed and NOT here, each for a measured reason:
   #
