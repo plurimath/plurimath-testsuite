@@ -4,7 +4,7 @@
 # oracle. Every fact that belongs to one input format rather than to the
 # corpus as a whole — the parser calls, the target list, the case data — lives
 # in a Format descriptor; FORMATS is the list of them, and holds AsciiMath,
-# LaTeX and UnicodeMath today.
+# LaTeX, UnicodeMath and HTML today. HTML carries a rejection payload only.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -1433,11 +1433,12 @@ module CorpusGenerator
   # is loose in the way LaTeX's already is: it parses as TWO nodes, a
   # `Symbols::Minus` and a `Number`, not a signed literal.
   #
-  # Rejections and partially renderable inputs are not in this slice.
-  # `write_format` writes no payload for a kind whose candidate list is empty,
-  # so their absence claims only that none are recorded yet. One partial
-  # candidate is already measured and waiting for that slice: `⎣2.5⎦` parses
-  # and then fails to render to every one of the four targets.
+  # Partially renderable inputs are not in this slice; rejections are, in
+  # `UNICODEMATH_REJECTION_CANDIDATES` below. `write_format` writes no payload
+  # for a kind whose candidate list is empty, so the outcome payload's absence
+  # claims only that none is recorded yet. One partial candidate is already
+  # measured and waiting for that slice: `⎣2.5⎦` parses and then fails to
+  # render to every one of the four targets.
   UNICODEMATH_GROUPS = [
     ["numbers", "Number literals: integer, decimal, comma-decimal, signed " \
                 "and exponentiated", [
@@ -1478,6 +1479,90 @@ module CorpusGenerator
     ]],
   ].freeze
 
+  # Candidate malformed UnicodeMath inputs, swept rather than assumed: unbalanced
+  # brackets, stray and doubled operators, script and fraction operators with
+  # no operand, and characters the grammar has no rule for. Every entry is
+  # expected to be REFUSED, and `build_rejections` fails the run if the gem
+  # accepts one.
+  #
+  # Probed and NOT here, each for a measured reason:
+  #
+  #   ACCEPTED, so not rejections: `+`, `a+`, `a×`, `×b`, `∑`, `=`, `a=`, `.`,
+  #   `,`, `1.`, `()`, `[]`, `⟨⟩`, `√()`, `a┴b`, `a#`, and every backslash form
+  #   tried — `\`, `\u`, `\u12`, `\uZZZZ`, `\u{61}`, `\nosuch`, `\alpha`,
+  #   `\frac`. A malformed `\u` escape is not an error: the preprocessing pass
+  #   rewrites only the escapes it recognises and leaves the rest as text.
+  #
+  #   REFUSED, but too slow to generate: the gem's grammar backtracks
+  #   exponentially on some short inputs. Measured on this oracle, recording
+  #   `√` (one `Math.parse` plus one grammar run for the offset) took about
+  #   580 s, `√(`, `(`, `a|`, `├` and `𝑎(` did not finish in 40 s, and `■(`
+  #   and `⒨(` took 18 s and 14 s.
+  #
+  #   REFUSED, and not recordable: `#` makes the preprocessing pass itself
+  #   raise (`NoMethodError: undefined method 'gsub' for nil`), so there is no
+  #   `preprocessed` text for a field that requires one — the same gap the
+  #   LaTeX payload records for `&#x110000;`.
+  #
+  # Most inputs here change length in preprocessing, because every non-ASCII
+  # character becomes a hexadecimal entity: `α)` reaches the grammar as
+  # `&#x3b1;)`. Those rows are what make an offset comparison exercise the
+  # mapping back to the input rather than pass by coincidence.
+  UNICODEMATH_REJECTION_CANDIDATES = [
+    ["unicode-unclosed-paren", "(a"],
+    ["unicode-stray-close-paren", "a)"],
+    ["unicode-lone-close-paren", ")"],
+    ["unicode-close-paren-mid", "a)b"],
+    ["unicode-unclosed-paren-after-operator", "a+(b"],
+    ["unicode-close-paren-after-operator", "a+)"],
+    ["unicode-unclosed-square", "[a"],
+    ["unicode-stray-close-square", "a]"],
+    ["unicode-unclosed-curly", "{a"],
+    ["unicode-stray-close-curly", "a}"],
+    ["unicode-unclosed-angle", "⟨a"],
+    ["unicode-stray-close-angle", "a⟩"],
+    ["unicode-unclosed-ceiling", "⌈a"],
+    ["unicode-stray-close-ceiling", "a⌉"],
+    ["unicode-unclosed-vert", "|a"],
+    ["unicode-greek-stray-close-paren", "α)"],
+    ["unicode-greek-unclosed-paren", "(α"],
+    ["unicode-lone-sup", "^"],
+    ["unicode-trailing-sup", "a^"],
+    ["unicode-greek-trailing-sup", "α^"],
+    ["unicode-lone-sub", "_"],
+    ["unicode-trailing-sub", "a_"],
+    ["unicode-infinity-trailing-sub", "∞_"],
+    ["unicode-doubled-sup", "a^^b"],
+    ["unicode-doubled-sub", "a__b"],
+    ["unicode-sub-then-sup", "a_^b"],
+    ["unicode-lone-slash", "/"],
+    ["unicode-trailing-slash", "a/"],
+    ["unicode-number-trailing-slash", "1/"],
+    ["unicode-leading-slash", "/2"],
+    ["unicode-greek-trailing-slash", "α/"],
+    ["unicode-double-trailing-slash", "a/b/"],
+    ["unicode-lone-ampersand", "&"],
+    ["unicode-ampersand-operator", "a&b"],
+    ["unicode-greek-ampersand", "α&b"],
+    ["unicode-unclosed-quote", "\"abc"],
+    ["unicode-greek-unclosed-quote", "\"αbc"],
+    ["unicode-matrix-unclosed", "■(a&b"],
+    ["unicode-lone-at", "@"],
+    ["unicode-at-operator", "a@b"],
+    ["unicode-greek-at-operator", "α@b"],
+    ["unicode-lone-naryand", "▒"],
+    ["unicode-lone-right-tack", "┤"],
+    ["unicode-trailing-down-tack", "a┬"],
+    ["unicode-lone-broken-bar", "¦"],
+    ["unicode-trailing-broken-bar", "a¦"],
+    ["unicode-greek-broken-bar", "α¦"],
+    ["unicode-lone-function-apply", "\u2061"],
+    ["unicode-trailing-function-apply", "a\u2061"],
+    ["unicode-greek-function-apply", "α\u2061"],
+    ["unicode-lone-parenthesized-letter", "⒜"],
+    ["unicode-whitespace-only", " "],
+  ].freeze
+
   # UnicodeMath, the third input format.
   #
   # `UnicodeMath::Parser` preprocesses in its constructor as both its siblings
@@ -1501,7 +1586,107 @@ module CorpusGenerator
     preprocess: ->(input) { Plurimath::UnicodeMath::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::UnicodeMath::Parse.new.parse(text) },
     groups: UNICODEMATH_GROUPS,
-    rejection_candidates: [].freeze,
+    rejection_candidates: UNICODEMATH_REJECTION_CANDIDATES,
+    rejection_description: REJECTIONS_DESCRIPTION,
+    partial_candidates: [].freeze,
+    number_formatter_groups: [].freeze,
+  )
+
+  # Candidate malformed HTML inputs, swept rather than assumed: unclosed,
+  # stray, crossed and empty tags, bare angle brackets, unbalanced parentheses,
+  # tables missing their rows or their close, and entities beside each of
+  # those so some offsets move in preprocessing. Every entry is expected to be
+  # REFUSED, and `build_rejections` fails the run if the gem accepts one.
+  #
+  # Probed and NOT here, each for a measured reason:
+  #
+  #   ACCEPTED, so not rejections: malformed entities fall through as text —
+  #   `&`, `&alpha`, `&nosuch;`, `&#xZZ;`, `&;` — and so do tags the grammar
+  #   does not know (`<p>x</p>`, `<b>a</b>`, `<em>a</em>`), an unterminated
+  #   attribute (`<span class="x>x</span>`), `<br>` without its slash, a bare
+  #   `<td>x</td>` or `<tr><td>x</td></tr>` outside any table, whitespace alone
+  #   (`   `), and operators with nothing after them (`=`, `+`, `1+`, `a=`).
+  #
+  #   REFUSED, and not recordable: `&#x110000;` (`RangeError: 1114112 out of
+  #   char range`) and `&#55296;` (`RangeError: invalid codepoint 0xD800 in
+  #   UTF-8`) both raise inside the preprocessing pass, leaving no
+  #   `preprocessed` text for a field that requires one.
+  #
+  # One entry is refused AFTER the grammar succeeds: `html-nesting-too-deep`,
+  # 101 letters. `Html::Parser#parse` round-trips the grammar's tree through
+  # JSON, whose default `max_nesting` is 100, and 101 letters nest one level
+  # past it (100 parse). Its rejection therefore carries no `index`, which is
+  # what the schema's optional `index` is for.
+  HTML_REJECTION_CANDIDATES = [
+    ["html-unclosed-tag", "<i>a"],
+    ["html-stray-close-tag", "</i>"],
+    ["html-stray-close-then-text", "</var>x"],
+    ["html-extra-close-tag", "<i>a</i></i>"],
+    ["html-mismatched-close", "<i>a</b>"],
+    ["html-crossed-tags", "<i><b>a</i></b>"],
+    ["html-empty-element", "<i></i>"],
+    ["html-empty-tag-name", "<>"],
+    ["html-unterminated-tag", "<i"],
+    ["html-unclosed-var", "<var>"],
+    ["html-comment", "<!-- c -->"],
+    ["html-lone-lt", "<"],
+    ["html-lone-gt", ">"],
+    ["html-lt-between-letters", "a<b"],
+    ["html-gt-between-letters", "a>b"],
+    ["html-lone-sub", "<sub>"],
+    ["html-unclosed-sub", "<sub>2"],
+    ["html-sup-without-close", "2<sup>"],
+    ["html-empty-sup", "2<sup></sup>"],
+    ["html-unclosed-paren", "(a"],
+    ["html-unclosed-paren-space", "( a"],
+    ["html-stray-close-paren", "a)"],
+    ["html-stray-close-paren-space", "a )"],
+    ["html-function-unclosed-paren", "sqrt("],
+    ["html-unclosed-table", "<table>"],
+    ["html-empty-table", "<table></table>"],
+    ["html-empty-row", "<table><tr></tr></table>"],
+    ["html-table-without-close", "<table><tr><td>x</td></tr>"],
+    ["html-entity-then-lone-sub", "&alpha;<sub>"],
+    ["html-entity-sum-then-lone-sub", "&sum;<sub>"],
+    ["html-numeric-entity-then-sup", "&#x3b1;<sup>"],
+    ["html-entity-then-close-paren", "&alpha;)"],
+    ["html-paren-then-entity", "(&alpha;"],
+    ["html-entity-then-open-tag", "&infin;<i>"],
+    ["html-entity-then-mismatched-close", "&alpha;<i>a</b>"],
+    ["html-unclosed-tag-around-entity", "<i>&alpha;"],
+    ["html-table-without-close-entity", "<table><tr><td>&alpha;</td></tr>"],
+    ["html-nesting-too-deep", "x" * 101],
+  ].freeze
+
+  # HTML, the fourth input format, and the first slice of it: rejections only.
+  # It has no positive groups on this branch of the corpus, so `write_format`
+  # writes `html/rejections.yaml` and nothing else for it, and the README's
+  # HTML input row stays "no cases yet" — that row counts payloads carrying
+  # expectations, and a rejection carries none.
+  #
+  # The name is `html` on both sides: `Math::VALID_TYPES` keys `Plurimath::Html`
+  # under `:html`, and `html` is also a render target. It is not in `targets`,
+  # which lists the output formats a case payload renders to; a rejection
+  # payload renders nothing.
+  #
+  # `Html::Parser` does NOT preprocess in its constructor the way its three
+  # siblings do: `#initialize` assigns `@text = text.to_s`, so `#text` is the
+  # RAW input. The pass is the private `#normalized_text`, which rewrites every
+  # entity to its hexadecimal spelling (`&alpha;` reaches the grammar as
+  # `&#x3b1;`), and `#parse` is its only caller. `preprocess` reaches for that
+  # method: recording `#text` would put the input under a field name claiming a
+  # pass had run over it. `Html::Parse` is the Parslet grammar run over the
+  # result.
+  HTML = Format.new(
+    name: "html",
+    label: "HTML",
+    targets: %w[asciimath latex mathml unicodemath].freeze,
+    preprocess: lambda { |input|
+      Plurimath::Html::Parser.new(input).send(:normalized_text)
+    },
+    parse_tree: ->(text) { Plurimath::Html::Parse.new.parse(text) },
+    groups: [].freeze,
+    rejection_candidates: HTML_REJECTION_CANDIDATES,
     rejection_description: REJECTIONS_DESCRIPTION,
     partial_candidates: [].freeze,
     number_formatter_groups: [].freeze,
@@ -1509,7 +1694,7 @@ module CorpusGenerator
 
   # Every input format the corpus is generated for, in the order they are
   # written. A further format is one more `Format` and one more entry here.
-  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH].freeze
+  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH, HTML].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
