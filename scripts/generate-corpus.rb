@@ -1119,7 +1119,8 @@ module CorpusGenerator
       ["latex-frac-sum-of-fracs", "\\frac{1}{2} + \\frac{3}{4}"],
       ["latex-frac-root-denominator", "\\frac{1}{\\sqrt{2}}"],
       # `\dfrac` and `\tfrac` are deliberately absent: the gem rejects both.
-      # They belong in a rejection payload, which LaTeX does not have yet.
+      # They belong in LaTeX's rejection payload, which does not record them
+      # yet.
     ]],
     ["powers", "Superscripts and subscripts, braced and bare", [
       ["latex-power-square", "x^2"],
