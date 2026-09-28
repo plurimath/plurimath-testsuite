@@ -8,11 +8,18 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: 34751e8ba0c0c03f09a98404a36e27406b5aae2e54b0456c0770d66039f04ff2
+  sha256: 948c863c28e6dd2ea76fc0ffa00f9128d1e9c9a317dcd4255c3fd0a0335471d1
   repository:
-    commit: c5af5c241bb202973a8f310e5fcd2aa8a0c1728f
+    commit: d74e82dde0e0d11d3a88e05379a2bda97d774fea
     clean: true
     dirty_paths: []
+  inputs:
+  - path: scripts/seeds/mathml.yaml
+    sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    bytes: 118636
+  - path: scripts/seeds/omml.yaml
+    sha256: 680fced46133ff0cba2d045be260995a6f3767cd1d21b3483e8d3b145ec62035
+    bytes: 379179
 oracle:
   gem: plurimath
   version: 0.11.6
@@ -214,8 +221,8 @@ payloads:
   sha256: e360561831fab0f799f5a9a161ffc658ea4f91a88d0d460acd503295e70b4951
   bytes: 169609
 - path: mathml/rejections.yaml
-  sha256: c4d50cd96c40433d6d628becd43a146e002db328a5de3125297be4d6598ea6f3
-  bytes: 2661
+  sha256: 1609295b3af5b18a495154312c977a3094f2d774c963c22f61e486d1a9b11e38
+  bytes: 2939
 - path: mathml/roots.yaml
   sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
   bytes: 12364
@@ -265,8 +272,8 @@ payloads:
   sha256: 8f37462ef54262c2de179bc76f3d63edc212b02e730b7d1219408c669843fd40
   bytes: 294124
 - path: omml/rejections.yaml
-  sha256: fe5c705689f2b9aa96cae71bdb705b501058d2dfaa13f405ec0ce73f3f53ba6b
-  bytes: 2576
+  sha256: 39cd9fb62688cd59716ceb6bb1f85ac6c534b39b921e21cd27c8f7e9b1ab9a22
+  bytes: 2854
 - path: omml/roots.yaml
   sha256: 500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37
   bytes: 30600
