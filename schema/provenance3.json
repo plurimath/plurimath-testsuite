@@ -1,8 +1,8 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "https://plurimath.org/testsuite/schema/provenance/2",
+  "$id": "https://plurimath.org/testsuite/schema/provenance/3",
   "title": "Corpus provenance",
-  "description": "Recorded once for the whole corpus: everything needed to reproduce the payloads listed in `payloads`, namely the oracle gem's commit and version, the resolved dependency set, the Ruby and XML engine that ran, the generator's own checksum, and a digest of each payload.",
+  "description": "Recorded once for the whole corpus: everything needed to reproduce the payloads listed in `payloads`, namely the oracle gem's commit and version, the resolved dependency set, the Ruby and XML engine that ran, the generator's own checksum, and a digest of each payload. Version 3 adds `generator.inputs`, the digest of every data file the generator reads besides itself.",
   "type": "object",
   "required": [
     "schema",
@@ -21,7 +21,7 @@
   "properties": {
     "schema": {
       "type": "string",
-      "const": "plurimath-corpus/provenance/2"
+      "const": "plurimath-corpus/provenance/3"
     },
     "committable": {
       "description": "False when anything made the run unreproducible; such output must not be committed. True exactly when `warnings` is empty, and never alongside a dirty checkout.",
@@ -40,7 +40,8 @@
       "required": [
         "path",
         "sha256",
-        "repository"
+        "repository",
+        "inputs"
       ],
       "additionalProperties": false,
       "properties": {
@@ -53,6 +54,32 @@
         },
         "repository": {
           "$ref": "#/$defs/checkout"
+        },
+        "inputs": {
+          "description": "Data files the generator reads besides itself, such as the MathML and OMML case lists under scripts/seeds/, each with its digest, so an edited input is detectable the same way an edited generator is. Paths are relative to the generator's repository root, which scripts/validate.rb takes to be the repository it lives in. Required, and empty for a generator that reads no such file: `provenance/3` differs from `provenance/2` by this field alone, and `/2` is kept so documents written before it stay valid. scripts/validate.rb checks every digest against the file.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256",
+              "bytes"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/relative_path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
         }
       }
     },

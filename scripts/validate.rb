@@ -624,6 +624,9 @@ module Testsuite
     # time a kind is added.
     CROSS_FIELD_CHECKS = {
       "provenance/2" => :provenance_cross_checks,
+      # `provenance/3` adds `generator.inputs` and nothing else, and that
+      # field's digests are checked with the payloads' in `check_integrity`.
+      "provenance/3" => :provenance_cross_checks,
       "rejections/1" => :rejection_cross_checks,
       "cases/1" => :case_cross_checks,
       # `cases/2` differs from `cases/1` only in the shape of an expectation —
@@ -1178,11 +1181,14 @@ module Testsuite
     end
 
     # `generator.inputs` paths are relative to the generator's repository
-    # root, which is the corpus root's parent, as for README.adoc. A recorded
-    # input that is missing is an error, not a skip: the entry claims a file
-    # the reader can no longer check.
+    # root. That is the repository this validator lives in, NOT the corpus
+    # root's parent: the generator's `--out` can write a corpus anywhere, and
+    # its seeds stay where the generator is. A recorded input that is missing
+    # is an error, not a skip: the entry claims a file no one can now check.
+    GENERATOR_ROOT = File.expand_path("..", __dir__)
+
     def check_generator_inputs(document, errors)
-      root = File.dirname(File.expand_path(@corpus_root))
+      root = GENERATOR_ROOT
       Array(document.dig("generator", "inputs")).each_with_index do |entry, index|
         pointer = "/generator/inputs/#{index}"
         name = entry["path"]

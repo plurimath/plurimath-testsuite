@@ -46,7 +46,7 @@ module CorpusGenerator
   # qualification. A format states its own in `rejection_description`.
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
-  PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
+  PROVENANCE_SCHEMA = "plurimath-corpus/provenance/3"
   # `calls/1` also names a KIND, the same way `rejections/1` does (see above):
   # its cases carry a `call` naming what was invoked beyond a plain
   # parse-then-render, and `call.method` is what varies within one payload
@@ -1786,12 +1786,19 @@ module CorpusGenerator
   # The empty string is refused by both XML formats, and `rejections/1`
   # cannot hold it: `input` is `minLength: 1`. The payload says so rather than
   # leaving the refusal to be inferred from its absence.
-  XML_REJECTIONS_DESCRIPTION =
-    "#{REJECTIONS_DESCRIPTION}. The gem also refuses the empty string, which " \
-    "cannot be recorded here because `input` must be non-empty; a port " \
-    "should refuse it too. Every refusal is malformed XML: well-formed XML " \
-    "is accepted however wrong it is as markup, and none carries an " \
-    "`index`, since no grammar ran."
+  XML_EMPTY_NOTE =
+    " The gem also refuses the empty string, which cannot be recorded here " \
+    "because `input` must be non-empty; a port should refuse it too. No " \
+    "refusal carries an `index`, since no grammar ran."
+  MATHML_REJECTIONS_DESCRIPTION =
+    "#{REJECTIONS_DESCRIPTION}. Every refusal here is text the XML reader " \
+    "cannot read: well-formed XML is accepted however wrong it is as " \
+    "MathML.#{XML_EMPTY_NOTE}"
+  OMML_REJECTIONS_DESCRIPTION =
+    "#{REJECTIONS_DESCRIPTION}. Most refusals here are malformed XML, but " \
+    "not all: OMML also refuses well-formed XML whose `m:` prefix is not " \
+    "bound to a namespace, and a well-formed MathML document " \
+    "(`omml-mathml-input`).#{XML_EMPTY_NOTE}"
 
   # Every target `Math::Formula` renders to. The three text formats record
   # four because that is what their first slices measured; these two record
@@ -1815,7 +1822,7 @@ module CorpusGenerator
     parse_tree: ->(_text) {},
     groups: MATHML_SEED_GROUPS,
     rejection_candidates: MATHML_REJECTION_CANDIDATES,
-    rejection_description: XML_REJECTIONS_DESCRIPTION,
+    rejection_description: MATHML_REJECTIONS_DESCRIPTION,
     partial_candidates: MATHML_SEED_PARTIAL,
     number_formatter_groups: [].freeze,
   )
@@ -1829,7 +1836,7 @@ module CorpusGenerator
     parse_tree: ->(_text) {},
     groups: OMML_SEED_GROUPS,
     rejection_candidates: OMML_REJECTION_CANDIDATES,
-    rejection_description: XML_REJECTIONS_DESCRIPTION,
+    rejection_description: OMML_REJECTIONS_DESCRIPTION,
     partial_candidates: OMML_SEED_PARTIAL,
     number_formatter_groups: [].freeze,
   )

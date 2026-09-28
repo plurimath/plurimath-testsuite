@@ -90,9 +90,10 @@ LaTeX, UnicodeMath, HTML, MathML and OMML now have rejection payloads as
 well, at `corpus/latex/rejections.yaml` (fourteen refusals),
 `corpus/unicode/rejections.yaml` (52), `corpus/html/rejections.yaml` (38),
 `corpus/mathml/rejections.yaml` (12) and `corpus/omml/rejections.yaml` (9).
-The XML formats refuse only text their XML reader cannot read: well-formed
-XML is accepted however wrong it is as MathML or OMML, so the refusals are
-all malformed markup. Both also refuse the empty string, which a rejection
+MathML refuses only text its XML reader cannot read: well-formed XML is
+accepted however wrong it is as MathML. OMML refuses malformed XML too, and
+also two well-formed kinds: an `m:` prefix bound to no namespace, and a
+MathML document. Both also refuse the empty string, which a rejection
 cannot hold because `input` must be non-empty; each payload's `description`
 says so.
 HTML has no case payload at all; its rejections are the only HTML payload.

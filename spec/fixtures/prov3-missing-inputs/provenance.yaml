@@ -4,10 +4,6 @@ warnings: []
 generator:
   path: scripts/generate-corpus.rb
   sha256: '0000000000000000000000000000000000000000000000000000000000000000'
-  inputs:
-  - path: spec/fixtures/README.md
-    sha256: '0000000000000000000000000000000000000000000000000000000000000000'
-    bytes: 1
   repository:
     commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
     clean: true
