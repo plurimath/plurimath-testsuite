@@ -4,7 +4,7 @@
 ---
 schema: plurimath-corpus/rejections/1
 group: rejections
-description: 'Inputs the gem refuses, so a port can be checked on what it rejects. The gem also refuses the empty string, which cannot be recorded here because `input` must be non-empty; a port should refuse it too. Every refusal is malformed XML: well-formed XML is accepted however wrong it is as markup, and none carries an `index`, since no grammar ran.'
+description: 'Inputs the gem refuses, so a port can be checked on what it rejects. Every refusal here is text the XML reader cannot read: well-formed XML is accepted however wrong it is as MathML. The gem also refuses the empty string, which cannot be recorded here because `input` must be non-empty; a port should refuse it too. No refusal carries an `index`, since no grammar ran.'
 input_format: mathml
 cases:
 - id: mathml-whitespace-only
