@@ -61,10 +61,12 @@ because group names repeat across input formats — `asciimath/numbers` and
 `unicode/numbers` 5, `unicode/symbols` 4, `unicode/operators` 6,
 `unicode/fences` 5.
 
-LaTeX now has a rejection payload as well, at `corpus/latex/rejections.yaml`.
-It holds fourteen refusals and is absent from the inventory above on purpose:
-that inventory counts payloads carrying expectations, and a rejection carries
-none.
+LaTeX, UnicodeMath and HTML now have rejection payloads as well, at
+`corpus/latex/rejections.yaml` (fourteen refusals),
+`corpus/unicode/rejections.yaml` (52) and `corpus/html/rejections.yaml` (38).
+HTML has no case payload at all; its rejections are the only HTML payload.
+They are absent from the inventory above on purpose: that inventory counts
+payloads carrying expectations, and a rejection carries none.
 
 What LaTeX still has no payload for is the outcome kind. Three inputs were
 measured as candidates for one — `\left( x`, `\sqrt[` and
@@ -79,8 +81,8 @@ render target in the output column above. A payload therefore reads
 `input_format: unicode` and lists `unicodemath` among its `targets`, and the
 two spellings are not a typo.
 
-UnicodeMath has neither a rejection nor an outcome payload yet, so a port may
-still refuse inputs this corpus never puts to it. One outcome candidate is
+UnicodeMath has no outcome payload yet, so a port may still refuse inputs
+this corpus never puts to it. One outcome candidate is
 measured and waiting: `⎣2.5⎦` parses and then fails to render to every one of
 the four targets.
 
