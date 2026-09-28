@@ -3,16 +3,23 @@
 # Each `payloads[].sha256` covers that whole payload file, header comments
 # included.
 ---
-schema: plurimath-corpus/provenance/2
+schema: plurimath-corpus/provenance/3
 committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: f577cd68c99eb869c7e728bec40423e75d993c861c57642103b5bbdfe2b5c0c5
+  sha256: 3fc7535de046232f68e977e56720ade41482d7643ed92d68707d6904d4e25695
   repository:
-    commit: 904bab5a7f26a423a8540f3a8c12381286de96d6
+    commit: 7765ce703149207c00d598ad44bf56e5b7827c3e
     clean: true
     dirty_paths: []
+  inputs:
+  - path: scripts/seeds/mathml.yaml
+    sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    bytes: 118636
+  - path: scripts/seeds/omml.yaml
+    sha256: 680fced46133ff0cba2d045be260995a6f3767cd1d21b3483e8d3b145ec62035
+    bytes: 379179
 oracle:
   gem: plurimath
   version: 0.11.6
@@ -192,6 +199,90 @@ payloads:
 - path: latex/whitespace.yaml
   sha256: e0a449fc7630ad0b678151353ed13d0f6a8526fe97945350650e809e3646f54e
   bytes: 6592
+- path: mathml/elementary-math.yaml
+  sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+  bytes: 47800
+- path: mathml/enclose.yaml
+  sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+  bytes: 3729
+- path: mathml/fences.yaml
+  sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+  bytes: 159855
+- path: mathml/fractions.yaml
+  sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+  bytes: 68670
+- path: mathml/layout.yaml
+  sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+  bytes: 32195
+- path: mathml/over-under.yaml
+  sha256: bd883af6f2201ace34ad913fcf702303c06adf3e76e96e5861b818d23981c478
+  bytes: 189075
+- path: mathml/partial-render.yaml
+  sha256: e360561831fab0f799f5a9a161ffc658ea4f91a88d0d460acd503295e70b4951
+  bytes: 169609
+- path: mathml/rejections.yaml
+  sha256: 7848070cc5a03f14f3950d789df2ecd4c1036b375e58bac7d661ceafba90ade4
+  bytes: 2964
+- path: mathml/roots.yaml
+  sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+  bytes: 12364
+- path: mathml/scripts.yaml
+  sha256: 1d4ba577631dfaaa469befef7aacde4c116340154be5f2e211602440014df99f
+  bytes: 332878
+- path: mathml/tables.yaml
+  sha256: f2ecdc64d31489da0353354aaea3e7ec883076b8ec4ab5e792f748f3129f91dc
+  bytes: 76086
+- path: mathml/text.yaml
+  sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+  bytes: 29368
+- path: mathml/tokens.yaml
+  sha256: bbe240ef8a87af95156bb97b23aaf75c1cb95e31bd74874a0d0ab5ae6ab6dc1b
+  bytes: 305211
+- path: omml/accents.yaml
+  sha256: d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907
+  bytes: 25008
+- path: omml/boxes.yaml
+  sha256: 2522f8bc43c2341a7c361fe31670baa01b489832a01fdedd85da99d51108a9f9
+  bytes: 10555
+- path: omml/delimiters.yaml
+  sha256: 3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05
+  bytes: 121100
+- path: omml/equation-arrays.yaml
+  sha256: e144c51f398891b655270613adcc0b3424599cf99b64f6546a35ed091e0d8abb
+  bytes: 117038
+- path: omml/fractions.yaml
+  sha256: c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699
+  bytes: 58775
+- path: omml/functions.yaml
+  sha256: '039637381e90f3ca97f3a13df3c471d5a788d5074c194a9a2f01f99bae4eb890'
+  bytes: 140387
+- path: omml/group-characters.yaml
+  sha256: ab5bba56ff1a2556a9e20fc99c54f42c582bc8c00b6c3fb4ed289708e8d12cd2
+  bytes: 16512
+- path: omml/limits.yaml
+  sha256: 5cc95c71112d8de5d76b6b083295112b761a35af7f11ffddb6fab78201918e13
+  bytes: 269889
+- path: omml/matrices.yaml
+  sha256: 22bdc33dd8fb9f41d820b53198efc670544c2d16952a507a2bb8069384e4b894
+  bytes: 270347
+- path: omml/nary.yaml
+  sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
+  bytes: 96830
+- path: omml/partial-render.yaml
+  sha256: 8f37462ef54262c2de179bc76f3d63edc212b02e730b7d1219408c669843fd40
+  bytes: 294124
+- path: omml/rejections.yaml
+  sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
+  bytes: 2954
+- path: omml/roots.yaml
+  sha256: 500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37
+  bytes: 30600
+- path: omml/runs.yaml
+  sha256: b4c26086147c28557de0d931d3b07a0e304f4139b4b7002b87cbaddd45e3d7c8
+  bytes: 139464
+- path: omml/scripts.yaml
+  sha256: 75b9b2319d641af627d060c98c10342bb36f2a8e100f1ac9e44bf4d9294770c3
+  bytes: 161595
 - path: unicode/fences.yaml
   sha256: d4ef6e15335782a67d39b7444ce2131edd4744b9b6a64a323786d66cd3e74d25
   bytes: 6186

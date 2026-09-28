@@ -4,7 +4,8 @@
 # oracle. Every fact that belongs to one input format rather than to the
 # corpus as a whole — the parser calls, the target list, the case data — lives
 # in a Format descriptor; FORMATS is the list of them, and holds AsciiMath,
-# LaTeX, UnicodeMath and HTML today. HTML carries a rejection payload only.
+# LaTeX, UnicodeMath, HTML, MathML and OMML today. HTML carries a rejection
+# payload only.
 #
 # Usage, from the plurimath-testsuite repository root:
 #
@@ -45,7 +46,7 @@ module CorpusGenerator
   # qualification. A format states its own in `rejection_description`.
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
-  PROVENANCE_SCHEMA = "plurimath-corpus/provenance/2"
+  PROVENANCE_SCHEMA = "plurimath-corpus/provenance/3"
   # `calls/1` also names a KIND, the same way `rejections/1` does (see above):
   # its cases carry a `call` naming what was invoked beyond a plain
   # parse-then-render, and `call.method` is what varies within one payload
@@ -1693,9 +1694,156 @@ module CorpusGenerator
     number_formatter_groups: [].freeze,
   )
 
+  # --- MathML and OMML: the two XML input formats --------------------------
+  #
+  # Their case inputs are taken from the gem's own spec suite rather than
+  # written here: every distinct string the examples under
+  # spec/plurimath/mathml and spec/plurimath/omml hand to `Mathml::Parser.new`
+  # or `Omml::Parser.new`, recorded by running that suite. There are several
+  # hundred, many of them whole Word equations, so they live in
+  # scripts/seeds/<format>.yaml instead of in this file, each with the spec
+  # file and line it came from. That file is part of the generator's input:
+  # `provenance.generator.inputs` records its sha256 and size the way
+  # `generator.sha256` records this file's, and a dirty seed makes the
+  # generator checkout dirty like any other path.
+  #
+  # A case sits in the first group, in the seed's order, whose construct it
+  # contains, so a fraction inside a table is a `tables` case. Inputs the gem
+  # accepts but cannot render to every target are the seed's `partial` list.
+  SEED_DIR = File.join(REPO_ROOT, "scripts", "seeds")
+
+  def self.load_seed(name)
+    path = File.join(SEED_DIR, "#{name}.yaml")
+    seed = Psych.safe_load_file(path, aliases: false)
+    groups = seed.fetch("groups").map do |group|
+      cases = group.fetch("cases").map { |kase| [kase.fetch("id"), kase.fetch("input")].freeze }
+      [group.fetch("name"), group.fetch("description"), cases.freeze].freeze
+    end
+    partial = seed.fetch("partial").map { |kase| [kase.fetch("id"), kase.fetch("input")].freeze }
+    [groups.freeze, partial.freeze]
+  end
+
+  MATHML_NS = "http://www.w3.org/1998/Math/MathML"
+  OMML_NS = 'xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"'
+
+  # Candidate malformed MathML, swept rather than assumed. Every entry is
+  # expected to be REFUSED, and `build_rejections` fails the run if the gem
+  # accepts one. The gem refuses only what its XML reader cannot read; once
+  # the text is well-formed XML it accepts it, however wrong it is as MathML.
+  #
+  # Probed and NOT here, each ACCEPTED: a missing or foreign default
+  # namespace, a `m:`-prefixed MathML namespace, a root other than `math`
+  # (`<mi>a</mi>` alone), `<math/>`, an unknown element (dropped), an
+  # undefined or HTML-named entity such as `&alpha;` or `&foo;` (kept as
+  # literal text, rendering to asciimath as `&#x26;alpha;`), a malformed
+  # character reference `&#xZZ;`, a duplicated attribute, two `math` roots
+  # (the second wins), comments, CDATA, an XML declaration, and schemata short
+  # of children (`<mfrac><mi>a</mi></mfrac>`, `<mroot>` with one child).
+  #
+  # REFUSED, and not recordable: the empty string, which `input` forbids by
+  # `minLength`.
+  MATHML_REJECTION_CANDIDATES = [
+    ["mathml-whitespace-only", " "],
+    ["mathml-bare-text", "abc"],
+    ["mathml-lone-angle", "<"],
+    ["mathml-empty-angles", "<>"],
+    ["mathml-stray-close", "</math>"],
+    ["mathml-unclosed-math", "<math xmlns='#{MATHML_NS}'>"],
+    ["mathml-unclosed-token", "<math xmlns='#{MATHML_NS}'><mi>a</math>"],
+    ["mathml-unclosed-operator", "<math xmlns='#{MATHML_NS}'><mo>+</math>"],
+    ["mathml-mismatched-close", "<math xmlns='#{MATHML_NS}'><mi>a</mn></math>"],
+    ["mathml-bare-lt-in-token", "<math xmlns='#{MATHML_NS}'><mi>a<b</mi></math>"],
+    ["mathml-unquoted-attribute",
+     "<math xmlns='#{MATHML_NS}'><mi mathvariant=bold>a</mi></math>"],
+    ["mathml-text-after-root", "<math xmlns='#{MATHML_NS}'><mi>a</mi></math>x"],
+  ].freeze
+
+  # Candidate malformed OMML, swept the same way. Unlike MathML, OMML refuses
+  # an unbound `m:` prefix, so the namespace declaration matters here.
+  #
+  # Probed and NOT here, each ACCEPTED: a bare `m:oMath` with no
+  # `m:oMathPara`, an empty `m:oMathPara` or `m:oMath`, an unknown `m:`
+  # element (dropped), an `m:f` without `m:den`, an empty `m:nary` (rendered
+  # as an integral), and an undefined entity kept as literal text.
+  #
+  # REFUSED, and not recordable: the empty string, as for MathML.
+  OMML_REJECTION_CANDIDATES = [
+    ["omml-bare-text", "abc"],
+    ["omml-lone-angle", "<"],
+    ["omml-stray-close", "</m:oMath>"],
+    ["omml-unbound-prefix", "<m:oMath><m:r><m:t>a</m:t></m:r></m:oMath>"],
+    ["omml-unclosed-para",
+     "<m:oMathPara #{OMML_NS}><m:oMath><m:r><m:t>a</m:t></m:r></m:oMath>"],
+    ["omml-crossed-close",
+     "<m:oMath #{OMML_NS}><m:r><m:t>a</m:r></m:t></m:oMath>"],
+    ["omml-bare-lt-in-text",
+     "<m:oMathPara #{OMML_NS}><m:oMath><m:r><m:t>a<b</m:t></m:r></m:oMath></m:oMathPara>"],
+    ["omml-text-after-root",
+     "<m:oMathPara #{OMML_NS}><m:oMath><m:r><m:t>a</m:t></m:r></m:oMath></m:oMathPara>x"],
+    ["omml-mathml-input", "<math xmlns='#{MATHML_NS}'><mi>a</mi></math>"],
+  ].freeze
+
+  # The empty string is refused by both XML formats, and `rejections/1`
+  # cannot hold it: `input` is `minLength: 1`. The payload says so rather than
+  # leaving the refusal to be inferred from its absence.
+  XML_EMPTY_NOTE =
+    " The gem also refuses the empty string, which cannot be recorded here " \
+    "because `input` must be non-empty; a port should refuse it too. No " \
+    "refusal carries an `index`, since no grammar ran."
+  MATHML_REJECTIONS_DESCRIPTION =
+    "#{REJECTIONS_DESCRIPTION}. Every refusal here is text the XML reader " \
+    "cannot read: well-formed XML is accepted however wrong it is as " \
+    "MathML.#{XML_EMPTY_NOTE}"
+  OMML_REJECTIONS_DESCRIPTION =
+    "#{REJECTIONS_DESCRIPTION}. Most refusals here are malformed XML, but " \
+    "not all: OMML also refuses well-formed XML whose `m:` prefix is not " \
+    "bound to a namespace, and a well-formed MathML document " \
+    "(`omml-mathml-input`).#{XML_EMPTY_NOTE}"
+
+  # Every target `Math::Formula` renders to. The three text formats record
+  # four because that is what their first slices measured; these two record
+  # all six from the start, OMML and HTML included.
+  XML_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
+
+  # Neither XML format has a preprocessing pass or a grammar of its own.
+  # `Mathml::Parser#initialize` and `Omml::Parser#initialize` store the text
+  # untouched and `#parse` hands `#text` straight to the `mml` or `omml` gem,
+  # so `preprocessed` records that text, which equals `input` — it IS what the
+  # reader is handed. There is no Parslet tree: the reader builds a
+  # `lutaml-model` object graph belonging to another gem, which is not a
+  # portable tree and is not recorded, so `parse_tree` is null for every case,
+  # and a rejection never carries an `index`.
+  MATHML_SEED_GROUPS, MATHML_SEED_PARTIAL = load_seed("mathml")
+  MATHML = Format.new(
+    name: "mathml",
+    label: "MathML",
+    targets: XML_TARGETS,
+    preprocess: ->(input) { Plurimath::Mathml::Parser.new(input).text },
+    parse_tree: ->(_text) {},
+    groups: MATHML_SEED_GROUPS,
+    rejection_candidates: MATHML_REJECTION_CANDIDATES,
+    rejection_description: MATHML_REJECTIONS_DESCRIPTION,
+    partial_candidates: MATHML_SEED_PARTIAL,
+    number_formatter_groups: [].freeze,
+  )
+
+  OMML_SEED_GROUPS, OMML_SEED_PARTIAL = load_seed("omml")
+  OMML = Format.new(
+    name: "omml",
+    label: "OMML",
+    targets: XML_TARGETS,
+    preprocess: ->(input) { Plurimath::Omml::Parser.new(input).text },
+    parse_tree: ->(_text) {},
+    groups: OMML_SEED_GROUPS,
+    rejection_candidates: OMML_REJECTION_CANDIDATES,
+    rejection_description: OMML_REJECTIONS_DESCRIPTION,
+    partial_candidates: OMML_SEED_PARTIAL,
+    number_formatter_groups: [].freeze,
+  )
+
   # Every input format the corpus is generated for, in the order they are
   # written. A further format is one more `Format` and one more entry here.
-  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH, HTML].freeze
+  FORMATS = [ASCIIMATH, LATEX, UNICODEMATH, HTML, MATHML, OMML].freeze
 
   # One target's outcome. The category comes from the gem's PUBLIC boundary,
   # which is the only thing a port can be asked to reproduce: `Formula#to_*`
@@ -2140,6 +2288,21 @@ module CorpusGenerator
     dirty
   end
 
+  # The seed files the generator reads, digested the way the generator itself
+  # is, so an edited case list is caught by its checksum and not only by the
+  # repository commit. Sorted by path so the entry does not depend on
+  # directory order.
+  def generator_inputs
+    Dir.glob(File.join(SEED_DIR, "*.yaml")).sort.map do |path|
+      bytes = File.binread(path)
+      {
+        "path" => relative(path, REPO_ROOT),
+        "sha256" => sha256(bytes),
+        "bytes" => bytes.bytesize,
+      }
+    end
+  end
+
   def build_provenance(gem_dir, dirty, allow_dirty)
     gem_spec = Gem.loaded_specs.fetch("plurimath")
     dependencies = dependency_provenance(gem_dir, gem_spec)
@@ -2171,6 +2334,7 @@ module CorpusGenerator
         "path" => GENERATOR_PATH,
         "sha256" => sha256(File.binread(File.join(REPO_ROOT, GENERATOR_PATH))),
         "repository" => checkout_provenance(REPO_ROOT, dirty["generator"]),
+        "inputs" => generator_inputs,
       },
       "oracle" => {
         "gem" => "plurimath",

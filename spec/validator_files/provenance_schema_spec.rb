@@ -54,6 +54,14 @@ RSpec.describe Testsuite::Runner, "provenance schema violations" do
                  "is missing the required property `revision`")
   end
 
+  # `provenance/3` differs from `/2` by `generator.inputs` alone, and
+  # requires it; `/2` documents without it stay valid (healthy-minimal).
+  it "rejects a provenance/3 document without generator.inputs" do
+    expect(validation_of(fixture("prov3-missing-inputs"), "--no-integrity"))
+      .to fail_validation.with_violations(1)
+      .reporting("/generator", "inputs")
+  end
+
   it "rejects a malformed sha256" do
     expect(validation_of(fixture("prov-bad-sha256"), "--no-integrity"))
       .to fail_validation.with_violations(1)

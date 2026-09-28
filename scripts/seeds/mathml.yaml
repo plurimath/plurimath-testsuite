@@ -1,0 +1,4493 @@
+---
+groups:
+- name: tokens
+  description: Token elements alone (mi, mn, mo, inside mrow or math) with no layout schema around them
+  cases:
+  - id: mathml-tokens-001
+    source: spec/plurimath/mathml/parser_spec.rb:85
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mo>&#x303;</mo></math>"
+  - id: mathml-tokens-002
+    source: spec/plurimath/mathml/parser_spec.rb:94
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>&#x303;</mi></math>"
+  - id: mathml-tokens-003
+    source: spec/plurimath/mathml/parser_spec.rb:302
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mi>sin</mi>
+      </math>
+  - id: mathml-tokens-004
+    source: spec/plurimath/mathml/parser_spec.rb:560
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mn>12</mn>
+        <mo>mod</mo>
+        <mn>1234</mn>
+        <mi>i</mi>
+      </math>
+  - id: mathml-tokens-005
+    source: spec/plurimath/mathml/parser_spec.rb:1082
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mo>|</mo>
+        <mn>4</mn>
+        <mo>|</mo>
+      </math>
+  - id: mathml-tokens-006
+    source: spec/plurimath/mathml/parser_spec.rb:1479
+    input: |
+      <math>
+        <mo>Δ</mo>
+        <mrow>
+          <mi>ν</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-007
+    source: spec/plurimath/mathml/parser_spec.rb:1499
+    input: |
+      <math>
+        <mrow xref="U_GOhm">
+          <mi mathvariant="normal">GΩ</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-008
+    source: spec/plurimath/mathml/parser_spec.rb:1965
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mrow intent="plus(x, y)">
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>y</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-009
+    source: spec/plurimath/mathml/parser_spec.rb:2256
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mi>bar</mi>
+      </math>
+  - id: mathml-tokens-010
+    source: spec/plurimath/mathml/parser_spec.rb:2273
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mi mathvariant='normal'>bar</mi>
+      </math>
+  - id: mathml-tokens-011
+    source: spec/plurimath/mathml/utility_spec.rb:56
+    input: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>sin</mi></math>
+
+      '
+  - id: mathml-tokens-012
+    source: spec/plurimath/mathml/utility_spec.rb:61
+    input: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mi>frac</mi></math>
+
+      '
+  - id: mathml-tokens-013
+    source: spec/plurimath/mathml/utility_spec.rb:70
+    input: '<math xmlns="http://www.w3.org/1998/Math/MathML"><mo>&#x2211;</mo></math>
+
+      '
+  - id: mathml-tokens-014
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:19
+    input: |
+      <math>
+        <mi> x </mi>
+        <mi> D </mi>
+        <mi> sin </mi>
+        <mi mathvariant='script'> L </mi>
+        <mi></mi>
+      </math>
+  - id: mathml-tokens-015
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:46
+    input: |
+      <math>
+        <mrow>
+          <mi> sin </mi>
+          <mo> &#x2061;<!--FUNCTION APPLICATION--> </mo>
+          <mi> x </mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-016
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:74
+    input: |
+      <math>
+        <mrow>
+          <mn> 1 </mn>
+          <mo> + </mo>
+          <mi> &#x2026;<!--HORIZONTAL ELLIPSIS--> </mi>
+          <mo> + </mo>
+          <mi> n </mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-017
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:99
+    input: |
+      <math>
+        <mi> &#x3C0;<!--GREEK SMALL LETTER PI--> </mi>
+        <mi> &#x2148;<!--DOUBLE-STRUCK ITALIC SMALL I--> </mi>
+        <mi> &#x2147;<!--DOUBLE-STRUCK ITALIC SMALL E--> </mi>
+      </math>
+  - id: mathml-tokens-018
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:124
+    input: |
+      <math>
+        <mn> 2 </mn>
+        <mn> 0.123 </mn>
+        <mn> 1,000,000 </mn>
+        <mn> 2.1e10 </mn>
+        <mn> 0xFFEF </mn>
+        <mn> MCMLXIX </mn>
+        <mn> twenty one </mn>
+      </math>
+  - id: mathml-tokens-019
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:198
+    input: |
+      <math>
+        <mo> + </mo>
+        <mo> &lt; </mo>
+        <mo> &#x2264;<!--LESS-THAN OR EQUAL TO--> </mo>
+        <mo> &lt;= </mo>
+        <mo> ++ </mo>
+        <mo> &#x2211;<!--N-ARY SUMMATION--> </mo>
+        <mo> .NOT. </mo>
+        <mo> and </mo>
+        <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+        <mo mathvariant='bold'> + </mo>
+      </math>
+  - id: mathml-tokens-020
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:235
+    input: |
+      <math>
+        <mrow>
+          <mo> ( </mo>
+          <mrow>
+            <mi> a </mi>
+            <mo> + </mo>
+            <mi> b </mi>
+          </mrow>
+          <mo> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-021
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:270
+    input: |
+      <math>
+        <mrow>
+          <mo> [ </mo>
+          <mrow>
+            <mn> 0 </mn>
+            <mo> , </mo>
+            <mn> 1 </mn>
+          </mrow>
+          <mo> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-022
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:309
+    input: |
+      <math>
+        <mrow>
+          <mi> f </mi>
+          <mo> &#x2061;<!--FUNCTION APPLICATION--> </mo>
+          <mrow>
+            <mo> ( </mo>
+            <mrow>
+              <mi> x </mi>
+              <mo> , </mo>
+              <mi> y </mi>
+            </mrow>
+            <mo> ) </mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-023
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:370
+    input: |
+      <math>
+        <mrow>
+          <mi> x </mi>
+          <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+          <mi> y </mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-024
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:741
+    input: |
+      <math>
+        <mrow>
+          <mo> there exists </mo>
+          <mrow>
+            <mrow>
+              <mi> &#x3B4;<!--GREEK SMALL LETTER DELTA--> </mi>
+              <mo> &gt; </mo>
+              <mn> 0 </mn>
+            </mrow>
+            <mo> such that </mo>
+            <mrow>
+              <mrow>
+                <mi> f </mi>
+                <mo> &#x2061;<!--FUNCTION APPLICATION--> </mo>
+                <mrow>
+                  <mo> ( </mo>
+                  <mi> x </mi>
+                  <mo> ) </mo>
+                </mrow>
+              </mrow>
+              <mo> &lt; </mo>
+              <mn> 1 </mn>
+            </mrow>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-025
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:879
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mn> 2 </mn>
+            <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+            <mi> x </mi>
+          </mrow>
+          <mo> + </mo>
+          <mi> y </mi>
+          <mo> - </mo>
+          <mi> z </mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-026
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:914
+    input: |
+      <math>
+        <mrow>
+          <mo> ( </mo>
+          <mrow>
+            <mi> x </mi>
+            <mo> , </mo>
+            <mi> y </mi>
+          </mrow>
+          <mo> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-027
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:15
+    input: |
+      <math>
+        <mn>0x7F800000</mn>
+      </math>
+  - id: mathml-tokens-028
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:59
+    input: |
+      <math>
+        <mrow>
+          <mn>22</mn>
+          <mo>/</mo>
+          <mn>7</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-029
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:86
+    input: |
+      <math>
+        <mrow>
+           <mn>12.3</mn>
+           <mo>+</mo>
+           <mn>5</mn>
+           <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+           <mi>i</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-030
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:216
+    input: |
+      <math>
+        <mrow>
+          F
+          <mo>&#x2061;</mo>
+          <mrow>
+            <mo fence="true">(</mo>
+            A1
+            <mo separator="true">,</mo>
+            ...
+            <mo separator="true">,</mo>
+            A2
+            <mo separator="true">,</mo>
+            An
+            <mo fence="true">)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-031
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:305
+    input: |
+      <math>
+        <mrow>
+          B
+          <mrow>
+            x1
+            <mo separator="true">,</mo>
+            ...
+            <mo separator="true">,</mo>
+            xn
+          </mrow>
+          <mo separator="true">.</mo>
+          S
+        </mrow>
+      </math>
+  - id: mathml-tokens-032
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:626
+    input: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mo>&#x21a6;<!--RIGHTWARDS ARROW FROM BAR--></mo>
+          <mrow>
+            <mi>sin</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>+</mo>
+              <mn>1</mn>
+              <mo>)</mo>
+            </mrow>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-033
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:666
+    input: |
+      <math>
+        <mrow>
+          <mi>f</mi>
+          <mo>&#x2218;<!--RING OPERATOR--></mo>
+          <mi>g</mi>
+          <mo>&#x2218;<!--RING OPERATOR--></mo>
+          <mi>h</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-034
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1093
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x230a;<!--LEFT FLOOR--></mo>
+          <mi>a</mi>
+          <mo>/</mo>
+          <mi>b</mi>
+          <mo>&#x230b;<!--RIGHT FLOOR--></mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-035
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1121
+    input: |
+      <math>
+        <mrow>
+          <mi>n</mi>
+          <mo>!</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-036
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1145
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>/</mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-037
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1177
+    input: |
+      <math>
+        <mrow>
+          <mi>max</mi>
+          <mrow>
+            <mo>{</mo>
+            <mn>2</mn>
+            <mo>,</mo>
+            <mn>3</mn>
+            <mo>,</mo>
+            <mn>5</mn>
+            <mo>}</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-038
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1275
+    input: |
+      <math>
+        <mrow>
+          <mi>min</mi>
+          <mrow>
+            <mo>{</mo>
+            <mi>a</mi>
+            <mo>,</mo>
+            <mi>b</mi>
+            <mo>}</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-039
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1355
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2212;<!--MINUS SIGN--></mo>
+          <mn>3</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-040
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1379
+    input: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mo>&#x2212;<!--MINUS SIGN--></mo>
+          <mi>y</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-041
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1406
+    input: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>y</mi>
+          <mo>+</mo>
+          <mi>z</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-042
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1456
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>mod</mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-043
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1480
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-044
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1566
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2227;<!--LOGICAL AND--></mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-045
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1649
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2228;<!--LOGICAL OR--></mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-046
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1674
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>xor</mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-047
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1698
+    input: |
+      <math>
+        <mrow>
+          <mo>&#xac;<!--NOT SIGN--></mo>
+          <mi>a</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-048
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1722
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x21d2;<!--RIGHTWARDS DOUBLE ARROW--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-049
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2148
+    input: |
+      <math>
+        <mrow>
+          <mo>|</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-050
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2390
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x230a;<!--LEFT FLOOR--></mo>
+          <mi>a</mi>
+          <mo>&#x230b;<!--RIGHT FLOOR--></mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-051
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2417
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2308;<!--LEFT CEILING--></mo>
+          <mi>a</mi>
+          <mo>&#x2309;<!--RIGHT CEILING--></mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-052
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2452
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mn>2</mn>
+            <mo>/</mo>
+            <mn>4</mn>
+          </mrow>
+          <mo>=</mo>
+          <mrow>
+            <mn>1</mn>
+            <mo>/</mo>
+            <mn>2</mn>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-053
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2485
+    input: |
+      <math>
+        <mrow>
+          <mn>3</mn>
+          <mo>&#x2260;<!--NOT EQUAL TO--></mo>
+          <mn>4</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-054
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2510
+    input: |
+      <math>
+        <mrow>
+          <mn>3</mn>
+          <mo>&gt;</mo>
+          <mn>2</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-055
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2537
+    input: |
+      <math>
+        <mrow>
+          <mn>2</mn>
+          <mo>&lt;</mo>
+          <mn>3</mn>
+          <mo>&lt;</mo>
+          <mn>4</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-056
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2566
+    input: |
+      <math>
+        <mrow>
+          <mn>4</mn>
+          <mo>&#x2265;<!--GREATER-THAN OR EQUAL TO--></mo>
+          <mn>3</mn>
+          <mo>&#x2265;<!--GREATER-THAN OR EQUAL TO--></mo>
+          <mn>3</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-057
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2595
+    input: |
+      <math>
+        <mrow>
+          <mn>3</mn>
+          <mo>&#x2264;<!--LESS-THAN OR EQUAL TO--></mo>
+          <mn>3</mn>
+          <mo>&#x2264;<!--LESS-THAN OR EQUAL TO--></mo>
+          <mn>4</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-058
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2628
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2261;<!--IDENTICAL TO--></mo>
+          <mrow>
+            <mo>&#xac;<!--NOT SIGN--></mo>
+            <mrow>
+              <mo>&#xac;<!--NOT SIGN--></mo>
+              <mi>a</mi>
+            </mrow>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-059
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2663
+    input: |
+      <math>
+        <mrow>
+          <mi>&#x3c0;<!--GREEK SMALL LETTER PI--></mi>
+          <mo>&#x2243;<!--ASYMPTOTICALLY EQUAL TO--></mo>
+          <mrow>
+            <mn>22</mn>
+            <mo>/</mo>
+            <mn>7</mn>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-tokens-060
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2692
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>|</mo>
+          <mi>b</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-061
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2720
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mi>&#x222b;<!--INTEGRAL--></mi>
+            <mi>sin</mi>
+          </mrow>
+          <mo>=</mo>
+          <mi>cos</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-062
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3293
+    input: |
+      <math>
+        <mrow>
+          <mo>∇<!--NABLA--></mo>
+          <mo>⋅<!--DOT OPERATOR--></mo>
+          <mi>E</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-063
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3581
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2207;<!--NABLA--></mo>
+          <mo>&#xd7;<!--MULTIPLICATION SIGN--></mo>
+          <mi>a</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-064
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3724
+    input: |
+      <math>
+        <mrow>
+          <mo>{</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>}</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-065
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3761
+    input: |
+      <math>
+        <mrow>
+          <mo>{</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+          <mrow>
+            <mi>x</mi>
+            <mo>&lt;</mo>
+            <mn>5</mn>
+          </mrow>
+          <mo>}</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-066
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3796
+    input: |
+      <math>
+        <mrow>
+          <mo>{</mo>
+          <mi>S</mi>
+          <mo>|</mo>
+          <mrow><mi>S</mi><mo>&#x2208;<!--ELEMENT OF--></mo><mi>T</mi></mrow>
+          <mo>}</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-067
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3845
+    input: |
+      <math>
+        <mrow>
+          <mo>{</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+          <mrow>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>&lt;</mo>
+              <mn>5</mn>
+              <mo>)</mo>
+            </mrow>
+            <mo>&#x2227;<!--LOGICAL AND--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi mathvariant="double-struck">N</mi>
+            </mrow>
+          </mrow>
+          <mo>}</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-068
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3897
+    input: |
+      <math>
+        <mrow>
+          <mo>(</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>)</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-069
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3934
+    input: |
+      <math>
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+          <mrow>
+            <mi>x</mi>
+            <mo>&lt;</mo>
+            <mn>5</mn>
+          </mrow>
+          <mo>)</mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-070
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3967
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x222a;<!--UNION--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-071
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4021
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2229;<!--INTERSECTION--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-072
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4075
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2208;<!--ELEMENT OF--></mo>
+          <mi>A</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-073
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4100
+    input: |
+      <math>
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2209;<!--NOT AN ELEMENT OF--></mo>
+          <mi>A</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-074
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4125
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2286;<!--SUBSET OF OR EQUAL TO--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-075
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4150
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2282;<!--SUBSET OF--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-076
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4175
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2288;<!--NEITHER A SUBSET OF NOR EQUAL TO--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-077
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4200
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2284;<!--NOT A SUBSET OF--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-078
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4225
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x2216;<!--SET MINUS--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-079
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4254
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mo>|</mo>
+            <mi>A</mi>
+            <mo>|</mo>
+          </mrow>
+          <mo>=</mo>
+          <mn>5</mn>
+        </mrow>
+      </math>
+  - id: mathml-tokens-080
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4285
+    input: |
+      <math>
+        <mrow>
+          <mi>A</mi>
+          <mo>&#xd7;<!--MULTIPLICATION SIGN--></mo>
+          <mi>B</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-081
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4801
+    input: |
+      <math>
+        <mrow>
+          <mi>sin</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-082
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4882
+    input: |
+      <math>
+        <mrow>
+          <mi>arcsin</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-083
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4945
+    input: |
+      <math>
+        <mrow>
+          <mi>sinh</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-084
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4971
+    input: |
+      <math>
+        <mrow>
+          <mi>arcsinh</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-085
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5056
+    input: |
+      <math>
+        <mrow>
+          <mi>ln</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>a</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-086
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5112
+    input: |
+      <math>
+        <mrow>
+          <mi>log</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-tokens-087
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5138
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2329;<!--MATHEMATICAL LEFT ANGLE BRACKET--></mo>
+          <mn>3</mn><mo>,</mo><mn>4</mn><mo>,</mo><mn>3</mn>
+          <mo>,</mo><mn>7</mn><mo>,</mo><mn>4</mn>
+          <mo>&#x232a;<!--MATHEMATICAL RIGHT ANGLE BRACKET--></mo>
+        </mrow>
+      </math>
+  - id: mathml-tokens-088
+    source: spec/plurimath/mathml/v3/section_7_spec.rb:15
+    input: |
+      <math>
+        <mo>''</mo>
+      </math>
+- name: layout
+  description: mstyle, mpadded, mspace, mphantom, merror, semantics and alignment marks, with no higher-priority construct
+  cases:
+  - id: mathml-layout-001
+    source: spec/plurimath/mathml/parser_spec.rb:18
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle displaystyle='true'>
+          <mi>sin</mi>
+          <mn>1</mn>
+        </mstyle>
+      </math>
+  - id: mathml-layout-002
+    source: spec/plurimath/mathml/parser_spec.rb:1103
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="fraktur">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-003
+    source: spec/plurimath/mathml/parser_spec.rb:1125
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="sans-serif">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-004
+    source: spec/plurimath/mathml/parser_spec.rb:1147
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="monospace">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-005
+    source: spec/plurimath/mathml/parser_spec.rb:1169
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="script">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-006
+    source: spec/plurimath/mathml/parser_spec.rb:1191
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="double-struck">
+          <mi>s</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-007
+    source: spec/plurimath/mathml/parser_spec.rb:1213
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="bold">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-008
+    source: spec/plurimath/mathml/parser_spec.rb:1235
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathcolor="red" mathvariant="fraktur">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-009
+    source: spec/plurimath/mathml/parser_spec.rb:1260
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathcolor="red" mathvariant="asci">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  - id: mathml-layout-010
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:792
+    input: |
+      <math>
+        <mspace height="3ex" depth="2ex"/>
+
+        <mrow>
+          <mi>a</mi>
+          <mo id="firstop">+</mo>
+          <mi>b</mi>
+          <mspace linebreak="newline" indentalign="id" indenttarget="firstop"/>
+          <mo>+</mo>
+          <mi>c</mi>
+        </mrow>
+      </math>
+  - id: mathml-layout-011
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1208
+    input: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mpadded lspace="0.2em" voffset="0.3ex">
+            <mi>y</mi>
+          </mpadded>
+          <mi>z</mi>
+        </mrow>
+      </math>
+- name: text
+  description: mtext and ms runs, with no higher-priority construct
+  cases:
+  - id: mathml-text-001
+    source: spec/plurimath/mathml/parser_spec.rb:68
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3b2;b</mtext></math>"
+  - id: mathml-text-002
+    source: spec/plurimath/mathml/parser_spec.rb:68
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3c2;b</mtext></math>"
+  - id: mathml-text-003
+    source: spec/plurimath/mathml/parser_spec.rb:68
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3c9;b</mtext></math>"
+  - id: mathml-text-004
+    source: spec/plurimath/mathml/parser_spec.rb:68
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3a9;b</mtext></math>"
+  - id: mathml-text-005
+    source: spec/plurimath/mathml/parser_spec.rb:80
+    input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x303;b</mtext></math>"
+  - id: mathml-text-006
+    source: spec/plurimath/mathml/parser_spec.rb:319
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mtext>sinsumsom&#x393;gamma</mtext>
+      </math>
+  - id: mathml-text-007
+    source: spec/plurimath/mathml/parser_spec.rb:336
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mtext>sinsumsom&#x393;&#x3B3;</mtext>
+      </math>
+  - id: mathml-text-008
+    source: spec/plurimath/mathml/parser_spec.rb:1874
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mstyle mathcolor="#ff0000">
+          <mtext>Assigned value</mtext>
+        </mstyle>
+      </math>
+  - id: mathml-text-009
+    source: spec/plurimath/mathml/v3/section_2_spec.rb:15
+    input: |
+      <math>
+        <mtext>&#xA0;<!--NO-BREAK SPACE-->Theorem &#xA0;<!--NO-BREAK SPACE-->1:</mtext>
+      </math>
+  - id: mathml-text-010
+    source: spec/plurimath/mathml/v3/section_2_spec.rb:35
+    input: |
+      <math>
+        <mtext>
+          Theorem
+          1:
+        </mtext>
+      </math>
+  - id: mathml-text-011
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:698
+    input: |
+      <math>
+        <mtext> Theorem 1: </mtext>
+        <mtext> &#x2009;<!--THIN SPACE--> </mtext>
+        <mtext> &#x205F;&#x200A;<!--space of width 5/18 em-->&#x205F;&#x200A;<!--space of width 5/18 em--> </mtext>
+        <mtext> /* a comment */ </mtext>
+      </math>
+- name: fences
+  description: mfenced, with no higher-priority construct
+  cases:
+  - id: mathml-fences-001
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1351
+    input: |
+      <math>
+        <mrow>
+          <mo> ( </mo>
+          <mrow>
+            <mi>x</mi>
+            <mo>,</mo>
+            <mi>y</mi>
+          </mrow>
+          <mo> ) </mo>
+        </mrow>
+        <mfenced>
+          <mi>x</mi>
+          <mi>y</mi>
+        </mfenced>
+      </math>
+  - id: mathml-fences-002
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1389
+    input: |
+      <math>
+        <mfenced open="[">
+          <mn> 0 </mn>
+          <mn> 1 </mn>
+        </mfenced>
+      </math>
+  - id: mathml-fences-003
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1420
+    input: |
+      <math>
+        <mrow>
+          <mi> f </mi>
+          <mo> &#x2061;<!--FUNCTION APPLICATION--> </mo>
+          <mfenced>
+            <mi> x </mi>
+            <mi> y </mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-004
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:116
+    input: |
+      <math>
+        <mrow>
+          <mi>Polar</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mn>2</mn>
+            <mn>3.1415</mn>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-005
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:367
+    input: |
+      <math>
+        <mfenced>
+          <mi>x</mi>
+          <mn>1</mn>
+        </mfenced>
+      </math>
+  - id: mathml-fences-006
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:394
+    input: |
+      <math>
+        <mfenced open="[" close="]">
+          <mn>0</mn>
+          <mn>1</mn>
+        </mfenced>
+      </math>
+  - id: mathml-fences-007
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:421
+    input: |
+      <math>
+        <mfenced open="(" close="]">
+          <mn>0</mn>
+          <mn>1</mn>
+        </mfenced>
+      </math>
+  - id: mathml-fences-008
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:448
+    input: |
+      <math>
+        <mfenced open="[" close=")">
+          <mn>0</mn>
+          <mn>1</mn>
+        </mfenced>
+      </math>
+  - id: mathml-fences-009
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:571
+    input: |
+      <math>
+        <mrow>
+          <mi>&#x3bb;<!--GREEK SMALL LETTER LAMDA--></mi>
+          <mi>x</mi>
+          <mo>.</mo>
+          <mfenced>
+            <mrow>
+              <mi>sin</mi>
+              <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+              <mrow>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mo>)</mo>
+              </mrow>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-010
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:717
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mrow>
+              <mo>(</mo>
+              <mi>f</mi>
+              <mo>&#x2218;<!--RING OPERATOR--></mo>
+              <mi>g</mi>
+              <mo>)</mo>
+            </mrow>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>x</mi>
+            </mfenced>
+          </mrow>
+          <mo>=</mo>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mrow>
+                <mi>g</mi>
+                <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+                <mfenced>
+                  <mi>x</mi>
+                </mfenced>
+              </mrow>
+            </mfenced>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-fences-011
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:835
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mi>domain</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>f</mi>
+            </mfenced>
+          </mrow>
+          <mo>=</mo>
+          <mi mathvariant="double-struck">R</mi>
+        </mrow>
+      </math>
+  - id: mathml-fences-012
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:879
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mi>codomain</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>f</mi>
+            </mfenced>
+          </mrow>
+          <mo>=</mo>
+          <mi mathvariant="double-struck">Q</mi>
+        </mrow>
+      </math>
+  - id: mathml-fences-013
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:926
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mi>image</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>sin</mi>
+            </mfenced>
+          </mrow>
+          <mo>=</mo>
+          <mfenced open="[" close="]">
+            <mn>-1</mn>
+            <mn>1</mn>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-014
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1532
+    input: |
+      <math>
+        <mrow>
+          <mi>gcd</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>a</mi>
+            <mi>b</mi>
+            <mi>c</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-015
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1758
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2200;<!--FOR ALL--></mo>
+          <mi>x</mi>
+          <mo>.</mo>
+          <mfenced>
+            <mrow>
+              <mrow>
+                <mi>x</mi>
+                <mo>&#x2212;<!--MINUS SIGN--></mo>
+                <mi>x</mi>
+              </mrow>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-016
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2027
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2203;<!--THERE EXISTS--></mo>
+          <mi>x</mi>
+          <mo>.</mo>
+          <mfenced>
+            <mrow>
+              <mrow><mi>f</mi><mo>&#x2061;<!--FUNCTION APPLICATION--></mo><mfenced><mi>x</mi></mfenced></mrow>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-017
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2092
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2203;<!--THERE EXISTS--></mo>
+          <mi>x</mi>
+          <mo>.</mo>
+          <mfenced separators="">
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi mathvariant="double-struck">Z</mi>
+            </mrow>
+            <mo>&#x2227;<!--LOGICAL AND--></mo>
+            <mrow>
+              <mrow>
+                <mi>f</mi>
+                <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+                <mfenced>
+                  <mi>x</mi>
+                </mfenced>
+              </mrow>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-018
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2223
+    input: |
+      <math>
+        <mrow>
+          <mi>arg</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mrow>
+              <mi>x</mi>
+              <mo>+</mo>
+              <mrow>
+                <mi>i</mi>
+                <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+                <mi>y</mi>
+              </mrow>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-019
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2268
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x211b;<!--SCRIPT CAPITAL R--></mo>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mrow>
+              <mi>x</mi>
+              <mo>+</mo>
+              <mrow><mi>i</mi><mo>&#x2062;<!--INVISIBLE TIMES--></mo><mi>y</mi></mrow>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-020
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2313
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2111;<!--BLACK-LETTER CAPITAL I--></mo>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mrow>
+              <mi>x</mi>
+              <mo>+</mo>
+              <mrow><mi>i</mi><mo>&#x2062;<!--INVISIBLE TIMES--></mo><mi>y</mi></mrow>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-021
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2356
+    input: |
+      <math>
+        <mrow>
+          <mi>lcm</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>a</mi>
+            <mi>b</mi>
+            <mi>c</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-022
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3229
+    input: |
+      <math>
+        <mrow>
+          <mi>div</mi>
+          <mo>⁡<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>a</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-023
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3262
+    input: |
+      <math>
+        <mrow>
+          <mi>div</mi>
+          <mo>⁡<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>E</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-024
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3421
+    input: |
+      <math>
+        <mrow>
+          <mi>grad</mi>
+          <mo>⁡<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>f</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-025
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3454
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2207;<!--NABLA--></mo>
+          <mo>⁡<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>f</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-026
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3501
+    input: |
+      <math>
+        <mrow>
+          <mi>grad</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mrow>
+            <mo>(</mo>
+            <mfenced>
+              <mi>x</mi>
+              <mi>y</mi>
+              <mi>z</mi>
+            </mfenced>
+            <mo>&#x21a6;<!--RIGHTWARDS ARROW FROM BAR--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+              <mi>y</mi>
+              <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+              <mi>z</mi>
+            </mrow>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-fences-027
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3550
+    input: |
+      <math>
+        <mrow>
+          <mi>curl</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>a</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-028
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5200
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x3c3;<!--GREEK SMALL LETTER SIGMA--></mo>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-029
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5236
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x3c3;<!--GREEK SMALL LETTER SIGMA--></mo>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>X</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-030
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5356
+    input: |
+      <math>
+        <mrow>
+          <mi>median</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-fences-031
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5395
+    input: |
+      <math>
+        <mrow>
+          <mi>mode</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+          </mfenced>
+        </mrow>
+      </math>
+- name: enclose
+  description: menclose, with no higher-priority construct
+  cases:
+  - id: mathml-enclose-001
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1452
+    input: |
+      <math>
+        <menclose notation='circle box'>
+          <mi> x </mi>
+          <mo> + </mo>
+          <mi> y </mi>
+        </menclose>
+      </math>
+- name: roots
+  description: msqrt and mroot, with no higher-priority construct
+  cases:
+  - id: mathml-roots-001
+    source: spec/plurimath/mathml/parser_spec.rb:619
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msqrt>
+          <mo>&#x2211;</mo>
+        </msqrt>
+      </math>
+  - id: mathml-roots-002
+    source: spec/plurimath/mathml/parser_spec.rb:677
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msqrt>
+          <mi>s</mi>
+          <mi>t</mi>
+        </msqrt>
+      </math>
+  - id: mathml-roots-003
+    source: spec/plurimath/mathml/parser_spec.rb:892
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mroot>
+          <mi>&#x3B8;</mi>
+          <mi>x</mi>
+        </mroot>
+      </math>
+  - id: mathml-roots-004
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1504
+    input: |
+      <math>
+        <mroot>
+          <mi>a</mi>
+          <mi>n</mi>
+        </mroot>
+      </math>
+- name: fractions
+  description: mfrac, with no higher-priority construct
+  cases:
+  - id: mathml-fractions-001
+    source: spec/plurimath/mathml/parser_spec.rb:2042
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mstyle mathvariant="normal">
+            <mrow>
+              <mi>&#x394;</mi>
+              <mi>A</mi>
+            </mrow>
+          </mstyle>
+          <mo>=</mo>
+          <mstyle mathvariant="normal">
+            <mfrac>
+              <mi>b</mi>
+              <mrow>
+                <mn>2</mn>
+                <mo>&#x22c5;</mo>
+                <mi>C</mi>
+                <mi>C</mi>
+              </mrow>
+            </mfrac>
+          </mstyle>
+        </mstyle>
+      </math>
+  - id: mathml-fractions-002
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:158
+    input: |
+      <math>
+        <mrow>
+          <mn> 2 </mn>
+          <mo> + </mo>
+          <mrow>
+            <mn> 3 </mn>
+            <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+            <mi> &#x2148;<!--DOUBLE-STRUCK ITALIC SMALL I--> </mi>
+          </mrow>
+        </mrow>
+        <mfrac> <mn> 1 </mn> <mn> 2 </mn> </mfrac>
+        <mi> &#x3C0;<!--GREEK SMALL LETTER PI--> </mi>
+        <mi> &#x2147;<!--DOUBLE-STRUCK ITALIC SMALL E--> </mi>
+      </math>
+  - id: mathml-fractions-003
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:429
+    input: |
+      <math>
+        <mrow>
+          <mn> 2 </mn>
+          <mo> &#x2064;<!--INVISIBLE PLUS--> </mo>
+          <mfrac>
+            <mn> 3 </mn>
+            <mn> 4 </mn>
+          </mfrac>
+        </mrow>
+      </math>
+  - id: mathml-fractions-004
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:459
+    input: |
+      <math>
+        <mfrac>
+          <mo> &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+          <mrow>
+            <mo> &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+            <mi> x </mi>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-fractions-005
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:529
+    input: |
+      <math>
+        <mrow>
+          <mo maxsize="100%"> ( </mo>
+          <mfrac>
+            <mi> a </mi> <mi> b </mi>
+          </mfrac>
+          <mo minsize="100%"> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-fractions-006
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:958
+    input: |
+      <math>
+        <mrow>
+           <mo> ( </mo>
+           <mfrac linethickness="0">
+              <mi> a </mi>
+              <mi> b </mi>
+           </mfrac>
+           <mo> ) </mo>
+        </mrow>
+        <mfrac linethickness="200%">
+           <mfrac>
+              <mi> a </mi>
+              <mi> b </mi>
+           </mfrac>
+           <mfrac>
+              <mi> c </mi>
+              <mi> d </mi>
+           </mfrac>
+        </mfrac>
+      </math>
+  - id: mathml-fractions-007
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1079
+    input: |
+      <math>
+        <mfrac>
+          <mrow>
+            <mn>1 </mn>
+            <mo>+ </mo>
+            <msqrt>
+              <mn>5 </mn>
+            </msqrt>
+          </mrow>
+          <mn>2 </mn>
+        </mfrac>
+      </math>
+  - id: mathml-fractions-008
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1109
+    input: |
+      <math>
+        <mrow>
+          <mo maxsize="100%"> ( </mo>
+          <mfrac> <mi> a </mi> <mi> b </mi> </mfrac>
+          <mo maxsize="100%"> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-fractions-009
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1141
+    input: |
+      <math>
+        <mstyle maxsize="100%">
+          <mrow>
+            <mo> ( </mo>
+            <mfrac> <mi> a </mi> <mi> b </mi> </mfrac>
+            <mo> ) </mo>
+          </mrow>
+        </mstyle>
+      </math>
+  - id: mathml-fractions-010
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1176
+    input: |
+      <math>
+        <mfraction>
+          <mrow>
+            <mn> 1 </mn>
+            <mo> + </mo>
+            <msqrt>
+              <mn> 5 </mn>
+            </msqrt>
+          </mrow>
+          <mn> 2 </mn>
+        </mfraction>
+      </math>
+  - id: mathml-fractions-011
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1551
+    input: |
+      <math>
+        <mi>C</mi>
+        <mrow>
+          <menclose notation='phasorangle'>
+            <mrow>
+              <mo>&#x2212;<!--MINUS SIGN--></mo>
+              <mfrac>
+                <mi>&#x3C0;<!--GREEK SMALL LETTER PI--></mi>
+                <mn>2</mn>
+              </mfrac>
+            </mrow>
+          </menclose>
+        </mrow>
+      </math>
+  - id: mathml-fractions-012
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:339
+    input: |
+      <math>
+        <merror>
+          <mtext>DivisionByZero:&#160;</mtext>
+          <mfrac>
+            <mi>x</mi>
+            <mn>0</mn>
+          </mfrac>
+        </merror>
+      </math>
+  - id: mathml-fractions-013
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2856
+    input: |
+      <math>
+        <mrow>
+          <mfrac>
+            <mrow>
+              <mi>d</mi>
+              <mrow>
+                <mi>sin</mi>
+                <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+                <mi>x</mi>
+              </mrow>
+            </mrow>
+            <mrow>
+              <mi>d</mi>
+              <mi>x</mi>
+            </mrow>
+          </mfrac>
+          <mo>=</mo>
+          <mrow>
+            <mi>cos</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mi>x</mi>
+          </mrow>
+        </mrow>
+      </math>
+- name: scripts
+  description: msub, msup and msubsup, with no higher-priority construct
+  cases:
+  - id: mathml-scripts-001
+    source: spec/plurimath/mathml/parser_spec.rb:202
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msub>
+          <mi>sin</mi>
+          <mo>&#x2211;</mo>
+        </msub>
+      </math>
+  - id: mathml-scripts-002
+    source: spec/plurimath/mathml/parser_spec.rb:225
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msup>
+          <mi>sin</mi>
+          <mo>&#x2211;</mo>
+        </msup>
+      </math>
+  - id: mathml-scripts-003
+    source: spec/plurimath/mathml/parser_spec.rb:249
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mi>sin</mi>
+          <mo>&#x220f;</mo>
+          <mo>&#x2211;</mo>
+        </msubsup>
+      </math>
+  - id: mathml-scripts-004
+    source: spec/plurimath/mathml/parser_spec.rb:514
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mi>log</mi>
+          <mn>4</mn>
+          <mtext>4 terms</mtext>
+        </msubsup>
+      </math>
+  - id: mathml-scripts-005
+    source: spec/plurimath/mathml/parser_spec.rb:809
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mo>&#x222B;</mo>
+          <mn>0</mn>
+          <mn>1</mn>
+        </msubsup>
+        <mi>f</mi>
+        <mi>x</mi>
+        <mi>d</mi>
+        <mi>x</mi>
+      </math>
+  - id: mathml-scripts-006
+    source: spec/plurimath/mathml/parser_spec.rb:841
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msup>
+          <mrow>
+            <mi>log</mi>
+            <mn>4</mn>
+          </mrow>
+          <mrow>
+            <mtext>4 terms</mtext>
+          </mrow>
+        </msup>
+      </math>
+  - id: mathml-scripts-007
+    source: spec/plurimath/mathml/parser_spec.rb:1433
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msup>
+          <mtext/>
+          <mn>12</mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-008
+    source: spec/plurimath/mathml/parser_spec.rb:1456
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msup>
+          <mtext></mtext>
+          <mn>12</mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-009
+    source: spec/plurimath/mathml/parser_spec.rb:1825
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <msub>
+          <mrow>
+            <mstyle mathvariant="italic">
+              <mi>D</mi>
+            </mstyle>
+          </mrow>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo>=</mo>
+        <msub>
+          <mrow>
+            <mi>x</mi>
+          </mrow>
+          <mrow>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+        <mo>−</mo>
+        <msub>
+          <mrow>
+            <mi>x</mi>
+          </mrow>
+          <mrow>
+            <mrow>
+              <mi mathvariant="normal">S</mi>
+              <mi mathvariant="normal">R</mi>
+              <mi mathvariant="normal">P</mi>
+              <mn>27</mn>
+            </mrow>
+          </mrow>
+        </msub>
+      </math>
+  - id: mathml-scripts-010
+    source: spec/plurimath/mathml/parser_spec.rb:1922
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mstyle scriptminsize="6pt">
+          <msub>
+            <mrow>
+              <mstyle mathvariant="italic">
+                <mi>W</mi>
+              </mstyle>
+            </mrow>
+            <mrow>
+              <mi>t</mi>
+            </mrow>
+          </msub>
+          <mo rspace="-0.35em"/>
+          <mfenced open="(" close=")" separators="">
+            <mspace width="-0.15em"/>
+            <mrow>
+              <msub>
+                <mrow>
+                  <mstyle mathvariant="italic">
+                    <mi>T</mi>
+                  </mstyle>
+                </mrow>
+                <mrow>
+                  <mn>90</mn>
+                </mrow>
+              </msub>
+            </mrow>
+            <mspace width="-0.1em"/>
+          </mfenced>
+        </mstyle>
+      </math>
+  - id: mathml-scripts-011
+    source: spec/plurimath/mathml/parser_spec.rb:2155
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mstyle mathvariant="normal">
+            <mrow>
+              <mi>t</mi>
+              <mi>g</mi>
+              <mi>t</mi>
+              <msub>
+                <mo>&#x27;</mo>
+                <mrow>
+                  <mi>D</mi>
+                  <mi>C</mi>
+                  <mi>X</mi>
+                </mrow>
+              </msub>
+            </mrow>
+          </mstyle>
+          <mrow>
+            <mo>(</mo>
+            <mi>&#x394;</mi>
+            <msub>
+              <mi>t</mi>
+              <mi>s</mi>
+            </msub>
+            <mo>,</mo>
+            <mi>&#x394;</mi>
+            <mi>f</mi>
+            <mo>&#x27;</mo>
+            <mo>)</mo>
+          </mrow>
+          <mo>=</mo>
+          <mstyle mathvariant="normal">
+            <mrow>
+              <mi>t</mi>
+              <mi>g</mi>
+              <msub>
+                <mi>t</mi>
+                <mrow>
+                  <mi>D</mi>
+                  <mi>C</mi>
+                  <mi>X</mi>
+                </mrow>
+              </msub>
+            </mrow>
+          </mstyle>
+          <mrow>
+            <mo>(</mo>
+            <mi>&#x394;</mi>
+            <msub>
+              <mi>t</mi>
+              <mi>s</mi>
+            </msub>
+            <mo>)</mo>
+          </mrow>
+          <mrow>
+            <mo>[</mo>
+            <mn>1</mn>
+            <mo>+</mo>
+            <mstyle mathvariant="normal">
+              <mrow>
+                <mi>U</mi>
+                <mi>F</mi>
+                <msub>
+                  <mi>D</mi>
+                  <mrow>
+                    <mi>D</mi>
+                    <mi>C</mi>
+                    <mi>X</mi>
+                  </mrow>
+                </msub>
+              </mrow>
+            </mstyle>
+            <mo>&#x22c5;</mo>
+            <mi>&#x394;</mi>
+            <mi>f</mi>
+            <mo>&#x27;</mo>
+            <mo>]</mo>
+          </mrow>
+        </mstyle>
+      </math>
+  - id: mathml-scripts-012
+    source: spec/plurimath/mathml/v3/section_1_spec.rb:48
+    input: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mo>=</mo>
+          <mfrac>
+            <mrow>
+              <mrow>
+                <mo>-</mo>
+                <mi>b</mi>
+              </mrow>
+              <mo>&#xB1;<!--PLUS-MINUS SIGN--></mo>
+              <msqrt>
+                <mrow>
+                  <msup>
+                    <mi>b</mi>
+                    <mn>2</mn>
+                  </msup>
+                  <mo>-</mo>
+                  <mrow>
+                    <mn>4</mn>
+                    <mo>&#x220f;<!--INVISIBLE TIMES--></mo>
+                    <mi>a</mi>
+                    <mo>&#x2211;<!--INVISIBLE TIMES--></mo>
+                    <mi>c</mi>
+                  </mrow>
+                </mrow>
+              </msqrt>
+            </mrow>
+            <mrow>
+              <mn>2</mn>
+              <mo>&#x2221;<!--INVISIBLE TIMES--></mo>
+              <mi>a</mi>
+            </mrow>
+          </mfrac>
+        </mrow>
+      </math>
+  - id: mathml-scripts-013
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:398
+    input: |
+      <math>
+        <msub>
+          <mi> m </mi>
+          <mrow>
+            <mn> 1 </mn>
+            <mo> &#x2063;<!--INVISIBLE SEPARATOR--> </mo>
+            <mn> 2 </mn>
+          </mrow>
+        </msub>
+      </math>
+  - id: mathml-scripts-014
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:610
+    input: |
+      <math>
+        <mrow>
+          <mrow>  <mi>f</mi> <mo>&#x2061;<!--FUNCTION APPLICATION--></mo> <mo>(</mo> <mi>x</mi> <mo>)</mo>  </mrow>
+
+          <mo id='eq1-equals'>=</mo>
+          <mrow>
+           <msup>
+            <mrow> <mo>(</mo> <mrow> <mi>x</mi> <mo>+</mo> <mn>1</mn> </mrow> <mo>)</mo> </mrow>
+            <mn>4</mn>
+           </msup>
+           <mo linebreak='newline' linebreakstyle='before'
+                             indentalign='id' indenttarget='eq1-equals'>=</mo>
+           <mrow>
+            <msup> <mi>x</mi> <mn>4</mn> </msup>
+            <mo id='eq1-plus'>+</mo>
+            <mrow>  <mn>4</mn> <mo>&#x2062;<!--INVISIBLE TIMES--></mo> <msup> <mi>x</mi> <mn>3</mn> </msup>  </mrow>
+            <mo>+</mo>
+            <mrow>  <mn>6</mn> <mo>&#x2062;<!--INVISIBLE TIMES--></mo> <msup> <mi>x</mi> <mn>2</mn> </msup>  </mrow>
+
+            <mo linebreak='newline' linebreakstyle='before'
+                              indentalignlast='id' indenttarget='eq1-plus'>+</mo>
+            <mrow>  <mn>4</mn> <mo>&#x2062;<!--INVISIBLE TIMES--></mo> <mi>x</mi>  </mrow>
+            <mo>+</mo>
+            <mn>1</mn>
+           </mrow>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-015
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:823
+    input: |
+      <math>
+        <msup>
+          <mi> x </mi>
+          <malignmark edge="right"/>
+          <mn> 2 </mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-016
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:849
+    input: |
+      <math>
+        <msup>
+          <mrow>
+            <mi> x </mi>
+            <malignmark edge="right"/>
+          </mrow>
+          <mn> 2 </mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-017
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1024
+    input: |
+      <math>
+        <mfrac>
+          <mn> 1 </mn>
+          <mrow>
+            <msup>
+              <mi> x </mi>
+              <mn> 3 </mn>
+            </msup>
+            <mo> + </mo>
+            <mfrac>
+              <mi> x </mi>
+              <mn> 3 </mn>
+            </mfrac>
+          </mrow>
+        </mfrac>
+        <mo> = </mo>
+        <mfrac bevelled="true">
+          <mn> 1 </mn>
+          <mrow>
+            <msup>
+              <mi> x </mi>
+              <mn> 3 </mn>
+            </msup>
+            <mo> + </mo>
+            <mfrac>
+              <mi> x </mi>
+              <mn> 3 </mn>
+            </mfrac>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-scripts-018
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1513
+    input: |
+      <math>
+        <msub>
+          <mi>a</mi>
+          <mrow>
+            <menclose notation='actuarial'>
+              <mi>n</mi>
+            </menclose>
+            <mo>&#x2063;<!--INVISIBLE SEPARATOR--></mo>
+            <mi>i</mi>
+          </mrow>
+        </msub>
+      </math>
+  - id: mathml-scripts-019
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1589
+    input: |
+      <math>
+        <msup>
+          <mrow>
+            <mo> ( </mo>
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+            </mrow>
+            <mo> ) </mo>
+          </mrow>
+          <mn> 2 </mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-020
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1636
+    input: |
+      <math>
+        <mrow>
+          <msubsup>
+            <mo> &#x222B;<!--INTEGRAL--> </mo>
+            <mn> 0 </mn>
+            <mn> 1 </mn>
+          </msubsup>
+          <mrow>
+            <msup>
+              <mi> &#x2147;<!--DOUBLE-STRUCK ITALIC SMALL E--> </mi>
+              <mi> x </mi>
+            </msup>
+            <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+            <mrow>
+              <mo> &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+              <mi> x </mi>
+            </mrow>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-021
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:35
+    input: |
+      <math>
+        <msub>
+          <mn>7FE0</mn>
+          <mn>16</mn>
+        </msub>
+      </math>
+  - id: mathml-scripts-022
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:147
+    input: |
+      <math>
+        <msup>
+          <mi>C</mi>
+          <mn>2</mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-023
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:479
+    input: |
+      <math>
+        <msup>
+          <mi>f</mi>
+          <mrow>
+            <mo>(</mo>
+            <mn>-1</mn>
+            <mo>)</mo>
+          </mrow>
+        </msup>
+      </math>
+  - id: mathml-scripts-024
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:518
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mi>A</mi>
+            <mrow>
+              <mo>(</mo>
+              <mn>-1</mn>
+              <mo>)</mo>
+            </mrow>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>a</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-025
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:791
+    input: |
+      <math>
+        <mrow>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2218;<!--RING OPERATOR--></mo>
+            <msup>
+              <mi>f</mi>
+              <mrow>
+                <mo>(</mo>
+                <mn>-1</mn>
+                <mo>)</mo>
+              </mrow>
+            </msup>
+          </mrow>
+          <mo>=</mo>
+          <mi>id</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-026
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1225
+    input: |
+      <math>
+        <mrow>
+          <mi>max</mi>
+          <mrow>
+            <mo>{</mo>
+            <mi>y</mi>
+            <mo>|</mo>
+            <mrow>
+              <msup>
+                <mi>y</mi>
+                <mn>3</mn>
+              </msup>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mfenced open="[" close="]">
+                <mn>0</mn>
+                <mn>1</mn>
+              </mfenced>
+            </mrow>
+            <mo>}</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-027
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1318
+    input: |
+      <math>
+        <mrow>
+          <mi>min</mi>
+          <mrow>
+            <mo>{</mo>
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+            <mo>|</mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2209;<!--NOT AN ELEMENT OF--></mo>
+              <mi>B</mi>
+            </mrow>
+            <mo>}</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-028
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1432
+    input: |
+      <math>
+        <msup>
+          <mi>x</mi>
+          <mn>3</mn>
+        </msup>
+      </math>
+  - id: mathml-scripts-029
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1828
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2200;<!--FOR ALL--></mo>
+          <mrow>
+            <mrow>
+              <mi>p</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi mathvariant="double-struck">Q</mi>
+            </mrow>
+            <mo>&#x2227;<!--LOGICAL AND--></mo>
+            <mrow>
+              <mi>q</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi mathvariant="double-struck">Q</mi>
+            </mrow>
+            <mo>&#x2227;<!--LOGICAL AND--></mo>
+            <mrow>
+              <mo>(</mo>
+              <mi>p</mi>
+              <mo>&lt;</mo>
+              <mi>q</mi>
+              <mo>)</mo>
+            </mrow>
+          </mrow>
+          <mo>.</mo>
+          <mfenced>
+            <mrow>
+              <mi>p</mi>
+              <mo>&lt;</mo>
+              <msup>
+                <mi>q</mi>
+                <mn>2</mn>
+              </msup>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-030
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1937
+    input: |
+      <math>
+        <mrow>
+          <mo>&#x2200;<!--FOR ALL--></mo>
+          <mrow>
+            <mi>p</mi>
+            <mo>,</mo>
+            <mi>q</mi>
+          </mrow>
+          <mo>.</mo>
+          <mfenced>
+            <mrow>
+              <mrow>
+                <mo>(</mo>
+                <mrow>
+                  <mi>p</mi>
+                  <mo>&#x2208;<!--ELEMENT OF--></mo>
+                  <mi mathvariant="double-struck">Q</mi>
+                </mrow>
+                <mo>&#x2227;<!--LOGICAL AND--></mo>
+                <mrow>
+                  <mi>q</mi>
+                  <mo>&#x2208;<!--ELEMENT OF--></mo>
+                  <mi mathvariant="double-struck">Q</mi>
+                </mrow>
+                <mo>&#x2227;<!--LOGICAL AND--></mo>
+                <mrow>
+                  <mo>(</mo>
+                  <mi>p</mi>
+                  <mo>&lt;</mo>
+                  <mi>q</mi>
+                  <mo>)</mo>
+                </mrow>
+                <mo>)</mo>
+              </mrow>
+              <mo>&#x21d2;<!--RIGHTWARDS DOUBLE ARROW--></mo>
+              <mrow>
+                <mo>(</mo>
+                <mi>p</mi>
+                <mo>&lt;</mo>
+                <msup>
+                  <mi>q</mi>
+                  <mn>2</mn>
+                </msup>
+                <mo>)</mo>
+              </mrow>
+            </mrow>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-031
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2751
+    input: |
+      <math>
+        <mrow>
+          <msubsup>
+            <mi>&#x222b;<!--INTEGRAL--></mi>
+            <mi>a</mi>
+            <mi>b</mi>
+          </msubsup>
+          <mi>cos</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-032
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2784
+    input: |
+      <math>
+        <mrow>
+          <msubsup>
+            <mi>&#x222b;<!--INTEGRAL--></mi>
+            <mn>0</mn>
+            <mn>1</mn>
+          </msubsup>
+          <msup>
+            <mi>x</mi>
+            <mn>2</mn>
+          </msup>
+          <mi>d</mi>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-033
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2815
+    input: |
+      <math>
+        <msup>
+          <mi>f</mi>
+          <mo>&#x2032;<!--PRIME--></mo>
+        </msup>
+      </math>
+  - id: mathml-scripts-034
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2914
+    input: |
+      <math>
+        <mfrac>
+          <mrow>
+            <msup>
+              <mi>d</mi>
+              <mn>2</mn>
+            </msup>
+            <msup>
+              <mi>x</mi>
+              <mn>4</mn>
+            </msup>
+          </mrow>
+          <mrow>
+            <mi>d</mi>
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-scripts-035
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2961
+    input: |
+      <math>
+        <mrow>
+          <msub>
+            <mi>D</mi>
+            <mrow>
+              <mn>1</mn>
+              <mo>,</mo>
+              <mn>1</mn>
+              <mo>,</mo>
+              <mn>3</mn>
+            </mrow>
+          </msub>
+          <mi>f</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-036
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3019
+    input: |
+      <math>
+        <mfrac>
+          <mrow>
+            <msup>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mn>3</mn>
+            </msup>
+            <mrow>
+              <mi>f</mi>
+              <mo>⁡<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+                <mi>z</mi>
+              </mfenced>
+            </mrow>
+          </mrow>
+          <mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <msup>
+                <mi>x</mi>
+                <mn>2</mn>
+              </msup>
+            </mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mi>z</mi>
+            </mrow>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-scripts-037
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3094
+    input: |
+      <math>
+        <mfrac>
+          <mrow>
+            <msup>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mn>2</mn>
+            </msup>
+            <mrow>
+              <mi>f</mi>
+              <mo>⁡<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+              </mfenced>
+            </mrow>
+          </mrow>
+          <mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mi>x</mi>
+            </mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mi>y</mi>
+            </mrow>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-scripts-038
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3171
+    input: |
+      <math>
+        <mfrac>
+          <mrow>
+            <msup>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <mi>k</mi>
+            </msup>
+            <mrow>
+              <mi>f</mi>
+              <mo>⁡<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+              </mfenced>
+            </mrow>
+          </mrow>
+          <mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <msup>
+                <mi>x</mi>
+                <mi>m</mi>
+              </msup>
+            </mrow>
+            <mrow>
+              <mo>∂<!--PARTIAL DIFFERENTIAL--></mo>
+              <msup>
+                <mi>y</mi>
+                <mi>n</mi>
+              </msup>
+            </mrow>
+          </mrow>
+        </mfrac>
+      </math>
+  - id: mathml-scripts-039
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3611
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mo>&#x2207;<!--NABLA--></mo>
+            <mn>2</mn>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>E</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-040
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3665
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mo>&#x2207;<!--NABLA--></mo>
+            <mn>2</mn>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mrow>
+            <mo>(</mo>
+            <mfenced>
+              <mi>x</mi>
+              <mi>y</mi>
+              <mi>z</mi>
+            </mfenced>
+            <mo>&#x21a6;<!--RIGHTWARDS ARROW FROM BAR--></mo>
+            <mrow>
+              <mi>f</mi>
+              <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+              </mfenced>
+            </mrow>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-041
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4840
+    input: |
+      <math>
+        <mrow>
+          <mi>sin</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mrow>
+            <mo>(</mo>
+            <mrow>
+              <mi>cos</mi>
+              <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+              <mi>x</mi>
+            </mrow>
+            <mo>+</mo>
+            <msup>
+              <mi>x</mi>
+              <mn>3</mn>
+            </msup>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-scripts-042
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4914
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mi>sin</mi>
+            <mrow>
+              <mo>-</mo>
+              <mn>1</mn>
+            </mrow>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-043
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5002
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mi>sinh</mi>
+            <mrow>
+              <mo>-</mo>
+              <mn>1</mn>
+            </mrow>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-044
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5032
+    input: |
+      <math>
+        <msup>
+          <mi>e</mi>
+          <mi>x</mi>
+        </msup>
+      </math>
+  - id: mathml-scripts-045
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5085
+    input: |
+      <math>
+        <mrow>
+          <msub>
+            <mi>log</mi>
+            <mn>3</mn>
+          </msub>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </math>
+  - id: mathml-scripts-046
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5275
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mo>&#x3c3;<!--GREEK SMALL LETTER SIGMA--></mo>
+            <mn>2</mn>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-047
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5317
+    input: |
+      <math>
+        <mrow>
+          <msup>
+            <mo>&#x3c3;<!--GREEK SMALL LETTER SIGMA--></mo>
+            <mn>2</mn>
+          </msup>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mfenced>
+            <mi>X</mi>
+          </mfenced>
+        </mrow>
+      </math>
+  - id: mathml-scripts-048
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5441
+    input: |
+      <math>
+        <msub>
+          <mrow>
+            <mo>&#x2329;<!--MATHEMATICAL LEFT ANGLE BRACKET--></mo>
+            <msup>
+              <mfenced>
+                <mn>6</mn>
+                <mn>4</mn>
+                <mn>2</mn>
+                <mn>2</mn>
+                <mn>5</mn>
+              </mfenced>
+              <mn>3</mn>
+            </msup>
+            <mo>&#x232a;<!--MATHEMATICAL RIGHT ANGLE BRACKET--></mo>
+          </mrow>
+          <mi>mean</mi>
+        </msub>
+      </math>
+  - id: mathml-scripts-049
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5490
+    input: |
+      <math>
+        <msub>
+          <mrow>
+            <mo>&#x2329;<!--MATHEMATICAL LEFT ANGLE BRACKET--></mo>
+            <msup>
+              <mi>X</mi>
+              <mn>3</mn>
+            </msup>
+            <mo>&#x232a;<!--MATHEMATICAL RIGHT ANGLE BRACKET--></mo>
+          </mrow>
+          <mi>p</mi>
+        </msub>
+      </math>
+  - id: mathml-scripts-050
+    source: spec/plurimath/mathml/v3/section_7_spec.rb:35
+    input: |
+      <math>
+        <msup>
+          <mi>x</mi>
+          <mo>&#x2032;<!--PRIME--><!--PRIME--></mo>
+        </msup>
+      </math>
+- name: over-under
+  description: munder, mover and munderover
+  cases:
+  - id: mathml-over-under-001
+    source: spec/plurimath/mathml/parser_spec.rb:39
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mover accent='true'><mi>c</mi><mo>&#x303;</mo></mover>
+      </math>
+  - id: mathml-over-under-002
+    source: spec/plurimath/mathml/parser_spec.rb:117
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mo>&#x220f;</mo>
+          <mo>&#x22c1;</mo>
+        </munderover>
+      </math>
+  - id: mathml-over-under-003
+    source: spec/plurimath/mathml/parser_spec.rb:141
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mi>x</mi>
+          <mi>s</mi>
+        </munderover>
+      </math>
+  - id: mathml-over-under-004
+    source: spec/plurimath/mathml/parser_spec.rb:172
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>s</mi>
+            <mi>x</mi>
+          </mrow>
+          <mrow>
+            <mi>s</mi>
+            <mi>w</mi>
+          </mrow>
+        </munderover>
+        <mtext>something</mtext>
+      </math>
+  - id: mathml-over-under-005
+    source: spec/plurimath/mathml/parser_spec.rb:278
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
+      </math>
+  - id: mathml-over-under-006
+    source: spec/plurimath/mathml/parser_spec.rb:369
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
+        <mo>=</mo>
+        <msup>
+          <mfrac>
+            <mi>n</mi>
+            <mn>2</mn>
+          </mfrac>
+          <mn>2</mn>
+        </msup>
+      </math>
+  - id: mathml-over-under-007
+    source: spec/plurimath/mathml/parser_spec.rb:405
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mi>sin</mi>
+        <mover>
+          <mo>&#x2211;</mo>
+          <mi>&#x3B8;</mi>
+        </mover>
+      </math>
+  - id: mathml-over-under-008
+    source: spec/plurimath/mathml/parser_spec.rb:429
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mover>
+          <mo>&#x2211;</mo>
+          <mn>3</mn>
+        </mover>
+      </math>
+  - id: mathml-over-under-009
+    source: spec/plurimath/mathml/parser_spec.rb:452
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mover>
+          <mo>&#x2211;</mo>
+          <mo>&#x398;</mo>
+        </mover>
+      </math>
+  - id: mathml-over-under-010
+    source: spec/plurimath/mathml/parser_spec.rb:483
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mfrac>
+              <mn>12</mn>
+              <mo>&#x25A1;</mo>
+            </mfrac>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
+      </math>
+  - id: mathml-over-under-011
+    source: spec/plurimath/mathml/parser_spec.rb:537
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mover>
+          <mi>i</mi>
+          <mn>1234</mn>
+        </mover>
+      </math>
+  - id: mathml-over-under-012
+    source: spec/plurimath/mathml/parser_spec.rb:868
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munder>
+          <mo>&#x220F;</mo>
+          <mi>&#x3B8;</mi>
+        </munder>
+        <mi>i</mi>
+      </math>
+  - id: mathml-over-under-013
+    source: spec/plurimath/mathml/parser_spec.rb:915
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mover>
+          <mn>4</mn>
+          <mo>&#x23DF;</mo>
+        </mover>
+      </math>
+  - id: mathml-over-under-014
+    source: spec/plurimath/mathml/parser_spec.rb:937
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munder>
+          <mn>4</mn>
+          <mo>&#x23DE;</mo>
+        </munder>
+      </math>
+  - id: mathml-over-under-015
+    source: spec/plurimath/mathml/parser_spec.rb:966
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mstyle mathcolor='blue'>
+              <mo>&#x2260;</mo>
+            </mstyle>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
+      </math>
+  - id: mathml-over-under-016
+    source: spec/plurimath/mathml/parser_spec.rb:1003
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mo>frac</mo>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
+      </math>
+  - id: mathml-over-under-017
+    source: spec/plurimath/mathml/parser_spec.rb:1046
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
+        <mo>=</mo>
+        <msup>
+          <mrow>
+            <mi>sin</mi>
+            <mfrac>
+              <mi>n</mi>
+              <mn>2</mn>
+            </mfrac>
+          </mrow>
+          <mn>2</mn>
+        </msup>
+      </math>
+  - id: mathml-over-under-018
+    source: spec/plurimath/mathml/parser_spec.rb:1407
+    input: |
+      <math>
+        <msub>
+          <mrow>
+            <mover accent="true">
+              <mrow>
+                <mi>e</mi>
+              </mrow>
+              <mo>^</mo>
+            </mover>
+          </mrow>
+          <mrow>
+            <mi>r</mi>
+          </mrow>
+        </msub>
+      </math>
+  - id: mathml-over-under-019
+    source: spec/plurimath/mathml/parser_spec.rb:1612
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mstyle scriptminsize="6pt">
+          <msub>
+            <mrow>
+              <mstyle mathvariant="italic">
+                <mi>T</mi>
+              </mstyle>
+            </mrow>
+            <mrow>
+              <mn>90</mn>
+            </mrow>
+          </msub>
+          <mo stretchy="false" lspace="0.1em" rspace="0em">/</mo>
+          <mrow xref="U_NISTu5">
+            <mi mathvariant="normal">K</mi>
+          </mrow>
+          <mo>=</mo>
+          <msub>
+            <mrow>
+              <mstyle mathvariant="italic">
+                <mi>A</mi>
+              </mstyle>
+            </mrow>
+            <mrow>
+              <mn>0</mn>
+            </mrow>
+          </msub>
+          <mo>+</mo>
+          <munderover>
+            <mrow>
+              <mo>∑</mo>
+            </mrow>
+            <mrow>
+              <mrow>
+                <mi>i</mi>
+                <mo>=</mo>
+                <mn>1</mn>
+              </mrow>
+            </mrow>
+            <mrow>
+              <mn>9</mn>
+            </mrow>
+          </munderover>
+          <msub>
+            <mrow>
+              <mstyle mathvariant="italic">
+                <mi>A</mi>
+              </mstyle>
+            </mrow>
+            <mrow>
+              <mi>i</mi>
+            </mrow>
+          </msub>
+          <msup>
+            <mrow>
+              <mfenced open="[" close="]" separators="">
+                <mspace width="-0.15em"/>
+                <mrow>
+                  <mfenced open="(" close=")" separators="">
+                    <mspace width="-0.15em"/>
+                    <mrow>
+                      <mi>ln</mi>
+                      <mo rspace="-0.35em"/>
+                      <mfenced open="(" close=")" separators="">
+                        <mspace width="-0.15em"/>
+                        <mrow>
+                          <mi>p</mi>
+                          <mo stretchy="false" lspace="0em" rspace="0em">/</mo>
+                          <mrow xref="U_NISTu12">
+                            <mi mathvariant="normal">Pa</mi>
+                          </mrow>
+                        </mrow>
+                        <mspace width="-0.1em"/>
+                      </mfenced>
+                      <mo>—</mo>
+                      <mstyle mathvariant="italic">
+                        <mi>B</mi>
+                      </mstyle>
+                    </mrow>
+                    <mspace width="-0.1em"/>
+                  </mfenced>
+                  <mo stretchy="false" lspace="0em" rspace="0em">/</mo>
+                  <mstyle mathvariant="italic">
+                    <mi>C</mi>
+                  </mstyle>
+                </mrow>
+                <mspace width="-0.1em"/>
+              </mfenced>
+            </mrow>
+            <mrow>
+              <mi>i</mi>
+            </mrow>
+          </msup>
+          <mo>.</mo>
+        </mstyle>
+      </math>
+  - id: mathml-over-under-020
+    source: spec/plurimath/mathml/parser_spec.rb:1999
+    input: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mover>
+            <mi>&#x3b8;</mi>
+            <mo>.</mo>
+          </mover>
+          <mo>&#x2260;</mo>
+          <mover accent="true">
+            <mi>&#x3b8;</mi>
+            <mo>..</mo>
+          </mover>
+        </mstyle>
+      </math>
+  - id: mathml-over-under-021
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:495
+    input: |
+      <math>
+        <mrow>
+          <munder>
+            <mo> ( </mo>
+            <mo> &#x5F;<!--LOW LINE--> </mo>
+          </munder>
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mover>
+            <mo> ) </mo>
+            <mo> &#x203E;<!--OVERLINE--> </mo>
+          </mover>
+        </mrow>
+      </math>
+  - id: mathml-over-under-022
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:562
+    input: |
+      <math>
+        <mrow>
+          <mi> x </mi>
+          <munder>
+            <mo> &#x2192;<!--RIGHTWARDS ARROW--> </mo>
+            <mtext> maps to </mtext>
+          </munder>
+          <mi> y </mi>
+        </mrow>
+      </math>
+  - id: mathml-over-under-023
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1689
+    input: |
+      <math>
+        <mrow>
+          <munder accentunder="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo> &#x23DF;<!--BOTTOM CURLY BRACKET--> </mo>
+          </munder>
+          <mtext>&#xA0;<!--NO-BREAK SPACE-->versus&#xA0;<!--NO-BREAK SPACE--></mtext>
+          <munder accentunder="false">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo> &#x23DF;<!--BOTTOM CURLY BRACKET--> </mo>
+          </munder>
+        </mrow>
+      </math>
+  - id: mathml-over-under-024
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1738
+    input: |
+      <math>
+        <mrow>
+          <mover accent="true">
+            <mi> x </mi>
+            <mo> &#x5E;<!--CIRCUMFLEX ACCENT--> </mo>
+          </mover>
+          <mtext>&#xA0;<!--NO-BREAK SPACE-->versus&#xA0;<!--NO-BREAK SPACE--></mtext>
+          <mover accent="false">
+            <mi> x </mi>
+            <mo> &#x5E;<!--CIRCUMFLEX ACCENT--> </mo>
+          </mover>
+        </mrow>
+      </math>
+  - id: mathml-over-under-025
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1787
+    input: |
+      <math>
+        <mrow>
+          <mover accent="true">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo> &#x23DE;<!--TOP CURLY BRACKET--> </mo>
+          </mover>
+          <mtext>&#xA0;<!--NO-BREAK SPACE-->versus&#xA0;<!--NO-BREAK SPACE--></mtext>
+          <mover accent="false">
+            <mrow>
+              <mi> x </mi>
+              <mo> + </mo>
+              <mi> y </mi>
+              <mo> + </mo>
+              <mi> z </mi>
+            </mrow>
+            <mo> &#x23DE;<!--TOP CURLY BRACKET--> </mo>
+          </mover>
+        </mrow>
+      </math>
+  - id: mathml-over-under-026
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:1840
+    input: |
+      <math>
+        <mrow>
+          <mover>
+            <munder>
+              <mo> &#x222B;<!--INTEGRAL--> </mo>
+              <mn> 0 </mn>
+            </munder>
+            <mi> &#x221E;<!--INFINITY--> </mi>
+          </mover>
+          <mtext>&#xA0;<!--NO-BREAK SPACE-->versus&#xA0;<!--NO-BREAK SPACE--></mtext>
+          <munderover>
+            <mo> &#x222B;<!--INTEGRAL--> </mo>
+            <mn> 0 </mn>
+            <mi> &#x221E;<!--INFINITY--> </mi>
+          </munderover>
+        </mrow>
+      </math>
+  - id: mathml-over-under-027
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:260
+    input: |
+      <math>
+        <mrow>
+          <munder>
+            Op
+            <mrow> X <mo>&#x2208;</mo><!--ELEMENT OF--> D </mrow>
+          </munder>
+          <mo>&#x2061;</mo><!--FUNCTION APPLICATION-->
+          <mrow>
+            <mo fence="true">(</mo>
+            Expression-in-X
+            <mo fence="true">)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-over-under-028
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:2182
+    input: |
+      <math>
+        <mover>
+          <mrow>
+            <mi>x</mi>
+            <mo>+</mo>
+            <mrow>
+              <mn>&#x2148;<!--DOUBLE-STRUCK ITALIC SMALL I--></mn>
+              <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+              <mi>y</mi>
+            </mrow>
+          </mrow>
+          <mo>&#xaf;<!--MACRON--></mo>
+        </mover>
+      </math>
+  - id: mathml-over-under-029
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4323
+    input: |
+      <math>
+        <mrow>
+          <munderover>
+            <mo>&#x2211;<!--N-ARY SUMMATION--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>=</mo>
+              <mi>a</mi>
+            </mrow>
+            <mi>b</mi>
+          </munderover>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>x</mi>
+            </mfenced>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-over-under-030
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4374
+    input: |
+      <math>
+        <mrow>
+          <munder>
+            <mo>&#x2211;<!--N-ARY SUMMATION--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi>B</mi>
+            </mrow>
+          </munder>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>x</mi>
+            </mfenced>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-over-under-031
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4415
+    input: |
+      <math>
+        <mrow>
+          <munder>
+            <mo>&#x2211;<!--N-ARY SUMMATION--></mo>
+            <mi>B</mi>
+          </munder>
+          <mi>f</mi>
+        </mrow>
+      </math>
+  - id: mathml-over-under-032
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4453
+    input: |
+      <math>
+        <mrow>
+          <munderover>
+            <mo>&#x220f;<!--N-ARY PRODUCT--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>=</mo>
+              <mi>a</mi>
+            </mrow>
+            <mi>b</mi>
+          </munderover>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>x</mi>
+            </mfenced>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-over-under-033
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:4504
+    input: |
+      <math>
+        <mrow>
+          <munder>
+            <mo>&#x220f;<!--N-ARY PRODUCT--></mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2208;<!--ELEMENT OF--></mo>
+              <mi>B</mi>
+            </mrow>
+          </munder>
+          <mrow>
+            <mi>f</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mfenced>
+              <mi>x</mi>
+            </mfenced>
+          </mrow>
+        </mrow>
+      </math>
+  - id: mathml-over-under-034
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:5172
+    input: |
+      <math>
+        <mover>
+          <mi>X</mi>
+          <mo>&#xaf;<!--MACRON--></mo>
+        </mover>
+      </math>
+- name: tables
+  description: mtable, mtr, mtd and mlabeledtr
+  cases:
+  - id: mathml-tables-001
+    source: spec/plurimath/mathml/parser_spec.rb:590
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mo>a</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mtext>4 terms</mtext>
+        </msubsup>
+      </math>
+  - id: mathml-tables-002
+    source: spec/plurimath/mathml/parser_spec.rb:712
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mo>a</mo>
+          <mfenced open='{' close='}'>
+            <mtable columnlines="solid">
+              <mtr>
+                <mtd>
+                  <mn>1</mn>
+                  <mn>1</mn>
+                </mtd>
+              </mtr>
+            </mtable>
+          </mfenced>
+          <mtext>4 terms</mtext>
+        </msubsup>
+      </math>
+  - id: mathml-tables-003
+    source: spec/plurimath/mathml/parser_spec.rb:767
+    input: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <msubsup>
+          <mo>a</mo>
+          <mfenced open='{' close='}'>
+            <mtable columnlines="none">
+              <mtr>
+                <mtd>
+                  <mn>1</mn>
+                  <mn>1</mn>
+                </mtd>
+              </mtr>
+            </mtable>
+          </mfenced>
+          <mtext>4 terms</mtext>
+        </msubsup>
+      </math>
+  - id: mathml-tables-004
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2026
+    input: |
+      <math>
+        <mrow>
+          <mo> ( </mo>
+          <mtable>
+            <mtr>
+              <mtd> <mn>1</mn> </mtd>
+              <mtd> <mn>0</mn> </mtd>
+              <mtd> <mn>0</mn> </mtd>
+            </mtr>
+            <mtr>
+              <mtd> <mn>0</mn> </mtd>
+              <mtd> <mn>1</mn> </mtd>
+              <mtd> <mn>0</mn> </mtd>
+            </mtr>
+            <mtr>
+              <mtd> <mn>0</mn> </mtd>
+              <mtd> <mn>0</mn> </mtd>
+              <mtd> <mn>1</mn> </mtd>
+            </mtr>
+          </mtable>
+          <mo> ) </mo>
+        </mrow>
+      </math>
+  - id: mathml-tables-005
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2202
+    input: |
+      <math>
+        <mtable groupalign=
+                 "{decimalpoint left left decimalpoint left left decimalpoint}">
+          <mtr>
+            <mtd>
+              <mrow>
+                <mrow>
+                  <mrow>
+                    <maligngroup/>
+                    <mn> 8.44 </mn>
+                    <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+                    <maligngroup/>
+                    <mi> x </mi>
+                  </mrow>
+                  <maligngroup/>
+                  <mo> + </mo>
+                  <mrow>
+                    <maligngroup/>
+                    <mn> 55 </mn>
+                    <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+                    <maligngroup/>
+                    <mi> y </mi>
+                  </mrow>
+                </mrow>
+              <maligngroup/>
+              <mo> = </mo>
+              <maligngroup/>
+              <mn> 0 </mn>
+            </mrow>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mrow>
+                <mrow>
+                  <mrow>
+                    <maligngroup/>
+                    <mn> 3.1 </mn>
+                    <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+                    <maligngroup/>
+                    <mi> x </mi>
+                  </mrow>
+                  <maligngroup/>
+                  <mo> - </mo>
+                  <mrow>
+                    <maligngroup/>
+                    <mn> 0.7 </mn>
+                    <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+                    <maligngroup/>
+                    <mi> y </mi>
+                  </mrow>
+                </mrow>
+                <maligngroup/>
+                <mo> = </mo>
+                <maligngroup/>
+                <mrow>
+                  <mo> - </mo>
+                  <mn> 1.1 </mn>
+                </mrow>
+              </mrow>
+            </mtd>
+          </mtr>
+        </mtable>
+      </math>
+  - id: mathml-tables-006
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:1016
+    input: |
+      <math>
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mrow>
+                  <mo>&#x2212;<!--MINUS SIGN--></mo>
+                  <mi>x</mi>
+                </mrow>
+              </mtd>
+              <mtd columnalign="left">
+                <mtext>&#xa0;<!--NO-BREAK SPACE--> if &#xa0;<!--NO-BREAK SPACE--></mtext>
+              </mtd>
+              <mtd>
+                <mrow>
+                  <mi>x</mi>
+                  <mo>&lt;</mo>
+                  <mn>0</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd columnalign="left">
+                <mtext>&#xa0;<!--NO-BREAK SPACE--> if &#xa0;<!--NO-BREAK SPACE--></mtext>
+              </mtd>
+              <mtd>
+                <mrow>
+                  <mi>x</mi>
+                  <mo>=</mo>
+                  <mn>0</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>x</mi>
+              </mtd>
+              <mtd columnalign="left">
+                <mtext>&#xa0;<!--NO-BREAK SPACE--> if &#xa0;<!--NO-BREAK SPACE--></mtext>
+              </mtd>
+              <mtd>
+                <mrow>
+                  <mi>x</mi>
+                  <mo>&gt;</mo>
+                  <mn>0</mn>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+        </mrow>
+      </math>
+  - id: mathml-tables-007
+    source: spec/plurimath/mathml/v3/section_4_spec.rb:3354
+    input: |
+      <math>
+        <mrow>
+          <mi>div</mi>
+          <mo>⁡<!--FUNCTION APPLICATION--></mo>
+          <mo>(</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mi>x</mi>
+                <mo>↦<!--RIGHTWARDS ARROW FROM BAR--></mo>
+                <mrow>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mi>y</mi>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>y</mi>
+                <mo>↦<!--RIGHTWARDS ARROW FROM BAR--></mo>
+                <mrow>
+                  <mi>x</mi>
+                  <mo>+</mo>
+                  <mi>z</mi>
+                </mrow>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>z</mi>
+                <mo>↦<!--RIGHTWARDS ARROW FROM BAR--></mo>
+                <mrow>
+                  <mi>z</mi>
+                  <mo>+</mo>
+                  <mi>y</mi>
+                </mrow>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
+      </math>
+- name: elementary-math
+  description: 'Elementary math layout: mstack, mlongdiv, msgroup, msrow, msline and mscarries'
+  cases:
+  - id: mathml-elementary-math-001
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2272
+    input: |
+      <math>
+        <mstack>
+          <mn>424</mn>
+          <msrow>
+            <mo>+</mo>
+            <mn>33</mn>
+          </msrow>
+          <msline/>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-002
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2306
+    input: |
+      <math>
+        <mstack>
+          <mn>123</mn>
+          <msrow>
+            <mn>456</mn>
+            <mo>+</mo>
+          </msrow>
+          <msline/>
+          <mn>579</mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-003
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2339
+    input: |
+      <math>
+        <mstack>
+          <msrow>
+            <mn>456</mn>
+            <mo>+</mo>
+          </msrow>
+          <msline/>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-004
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2379
+    input: |
+      <math>
+        <mstack>
+          <mscarries crossout='updiagonalstrike'>
+            <mn>2</mn>
+            <mn>12</mn>
+            <mscarry crossout='none'>
+              <none/>
+            </mscarry>
+          </mscarries>
+          <mn>2,327</mn>
+          <msrow>
+            <mo>-</mo>
+            <mn> 1,156</mn>
+          </msrow>
+          <msline/>
+          <mn>1,171</mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-005
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2423
+    input: |
+      <math>
+        <mstack>
+          <mscarries location='nw'>
+            <none/>
+            <mscarry crossout='updiagonalstrike' location='n'> <mn>2</mn> </mscarry>
+            <mn>1</mn>
+            <none/>
+          </mscarries>
+          <mn>2,327</mn>
+          <msrow> <mo>-</mo> <mn> 1,156</mn> </msrow>
+          <msline/>
+          <mn>1,171</mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-006
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2462
+    input: |
+      <math>
+        <mstack>
+          <mscarries>
+            <mscarry crossout='updiagonalstrike'><none/></mscarry>
+            <menclose notation='bottom'> <mn>10</mn> </menclose>
+          </mscarries>
+          <mn>52</mn>
+          <msrow> <mo>-</mo> <mn> 7</mn> </msrow>
+          <msline/>
+          <mn>45</mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-007
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2769
+    input: |
+      <math>
+        <mstack stackalign="right">
+          <msline length="1"/>
+          <mn> 0.3333 </mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-008
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2794
+    input: |
+      <math>
+        <mstack stackalign="right">
+          <msline length="6"/>
+          <mn> 0.142857 </mn>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-009
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2819
+    input: |
+      <math>
+        <mstack stackalign="right">
+          <mn> 0.142857 </mn>
+          <msline length="6"/>
+        </mstack>
+      </math>
+  - id: mathml-elementary-math-010
+    source: spec/plurimath/mathml/v3/section_3_spec.rb:2849
+    input: |
+      <math>
+        <mstack stackalign="right">
+          <msrow>
+            <mo>.</mo>
+            <none/><none/>
+            <none/><none/>
+            <mo>.</mo>
+          </msrow>
+          <mn> 0.142857 </mn>
+        </mstack>
+      </math>
+partial:
+- id: mathml-partial-001
+  source: spec/plurimath/mathml/parser_spec.rb:638
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msqrt/>
+    </math>
+- id: mathml-partial-002
+  source: spec/plurimath/mathml/parser_spec.rb:657
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msqrt>
+        <mi></mi>
+      </msqrt>
+    </math>
+- id: mathml-partial-003
+  source: spec/plurimath/mathml/parser_spec.rb:1283
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msgroup>
+        <mi>33</mi>
+        <mtext>dd</mtext>0
+      </msgroup>
+    </math>
+- id: mathml-partial-004
+  source: spec/plurimath/mathml/parser_spec.rb:1307
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msgroup>
+        <mi>33</mi>
+        <mi>dd</mi>0
+      </msgroup>
+    </math>
+- id: mathml-partial-005
+  source: spec/plurimath/mathml/parser_spec.rb:1332
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msgroup>
+        <mi>n</mi>
+        <mi>&#x3c;</mi>
+        <mn>1</mn>
+      </msgroup>
+    </math>
+- id: mathml-partial-006
+  source: spec/plurimath/mathml/parser_spec.rb:1355
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msgroup>
+        <mn>1.4</mn>
+      </msgroup>
+    </math>
+- id: mathml-partial-007
+  source: spec/plurimath/mathml/parser_spec.rb:1376
+  input: |
+    <math xmlns='http://www.w3.org/1998/Math/MathML'>
+      <msgroup>
+        <mn>1,4</mn>
+      </msgroup>
+    </math>
+- id: mathml-partial-008
+  source: spec/plurimath/mathml/parser_spec.rb:1750
+  input: |
+    <math>
+      <semantics>
+        <mrow>
+          <mstyle displaystyle='true'>
+            <mrow>
+              <msubsup>
+                <mo>∫</mo>
+                <mrow>
+                  <msub>
+                    <mi>t</mi>
+                    <mn>2</mn>
+                  </msub>
+                </mrow>
+                <mrow>
+                  <msub>
+                    <mi>t</mi>
+                    <mn>1</mn>
+                  </msub>
+                </mrow>
+              </msubsup>
+              <mrow>
+                <mi>f</mi>
+                <mo stretchy='false'>(</mo>
+                <mi>t</mi>
+                <mo stretchy='false'>)</mo>
+                <mo>d</mo>
+                <mi>t</mi>
+              </mrow>
+            </mrow>
+          </mstyle>
+        </mrow>
+        <annotation encoding='MathType-MTEF'>MathType@MTEF@5@5@+= feaagKart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbbjxAHX garuavP1wzZbItLDhis9wBH5garmWu51MyVXgarqqtubsr4rNCHbGe aGqipG0dh9qqWrVepG0dbbL8F4rqqrVepeea0xe9LqFf0xc9q8qqaq Fn0lXdHiVcFbIOFHK8Feea0dXdar=Jb9hs0dXdHuk9fr=xfr=xfrpe WZqaaeaaciWacmGadaGadeaabaGaaqaaaOqaamaapedabaGaamOzai aacIcacaWG0bGaaiykaKqzaeGaaiizaOGaamiDaaWcbaGaamiDamaa BaaameaacaaIYaaabeaaaSqaaiaadshadaWgaaadbaGaaGymaaqaba aaniabgUIiYdaaaa@40DD@ </annotation>
+      </semantics>
+    </math>
+- id: mathml-partial-009
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1248
+  input: |
+    <math>
+      <mfrac>
+        <mrow>
+          <mi> x </mi>
+          <mo> + </mo>
+          <mi> y </mi>
+          <mo> + </mo>
+          <mi> z </mi>
+        </mrow>
+        <mrow>
+          <mi> x </mi>
+          <mphantom>
+            <mo form="infix"> + </mo>
+            <mi> y </mi>
+          </mphantom>
+          <mo> + </mo>
+          <mi> z </mi>
+        </mrow>
+      </mfrac>
+    </math>
+- id: mathml-partial-010
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1303
+  input: |
+    <math>
+      <mfrac>
+        <mrow>
+          <mi> x </mi>
+          <mo> + </mo>
+          <mi> y </mi>
+          <mo> + </mo>
+          <mi> z </mi>
+        </mrow>
+        <mrow>
+          <mi> x </mi>
+          <mphantom>
+            <mo> + </mo>
+          </mphantom>
+          <mphantom>
+            <mi> y </mi>
+          </mphantom>
+          <mo> + </mo>
+          <mi> z </mi>
+        </mrow>
+      </mfrac>
+    </math>
+- id: mathml-partial-011
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1480
+  input: |
+    <math>
+      <menclose>
+        <mi> x </mi>
+        <mo> + </mo>
+        <mi> y </mi>
+      </menclose>
+    </math>
+- id: mathml-partial-012
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1889
+  input: |
+    <math>
+      <mrow>
+        <mmultiscripts>
+          <mi> F </mi>
+          <mn> 1 </mn>
+          <none/>
+          <mprescripts/>
+          <mn> 0 </mn>
+          <none/>
+        </mmultiscripts>
+        <mo> &#x2061;<!--FUNCTION APPLICATION--> </mo>
+        <mrow>
+          <mo> ( </mo>
+          <mrow>
+            <mo> ; </mo>
+            <mi> a </mi>
+            <mo> ; </mo>
+            <mi> z </mi>
+          </mrow>
+          <mo> ) </mo>
+        </mrow>
+      </mrow>
+    </math>
+- id: mathml-partial-013
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1939
+  input: |
+    <math>
+      <mmultiscripts>
+        <mi> R </mi>
+        <mi> i </mi>
+        <none/>
+        <none/>
+        <mi> j </mi>
+        <mi> k </mi>
+        <none/>
+        <mi> l </mi>
+        <none/>
+      </mmultiscripts>
+    </math>
+- id: mathml-partial-014
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:1981
+  input: |
+    <math>
+      <mstyle dir="rtl">
+        <mmultiscripts>
+          <mo>&#x0644;<!--ARABIC LETTER LAM--></mo>
+          <mn>12</mn>
+          <none/>
+          <mprescripts/>
+          <none/>
+          <mn>5</mn>
+        </mmultiscripts>
+      </mstyle>
+    </math>
+- id: mathml-partial-015
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:2101
+  input: |
+    <math>
+      <mtable>
+        <mlabeledtr id='e-is-m-c-square'>
+          <mtd>
+            <mtext> (2.1) </mtext>
+          </mtd>
+          <mtd>
+           <mrow>
+             <mi>E</mi>
+             <mo>=</mo>
+             <mrow>
+              <mi>m</mi>
+              <mo>&#x2062;<!--INVISIBLE TIMES--></mo>
+              <msup>
+               <mi>c</mi>
+               <mn>2</mn>
+              </msup>
+             </mrow>
+           </mrow>
+          </mtd>
+        </mlabeledtr>
+      </mtable>
+    </math>
+- id: mathml-partial-016
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:2507
+  input: |
+    <math>
+      <mstack>
+        <msgroup>
+          <mn>123</mn>
+          <msrow><mo>&#xD7;<!--MULTIPLICATION SIGN--></mo><mn>321</mn></msrow>
+        </msgroup>
+        <msline/>
+        <msgroup shift="1">
+          <mn>123</mn>
+          <mn>246</mn>
+          <mn>369</mn>
+        </msgroup>
+        <msline/>
+      </mstack>
+    </math>
+- id: mathml-partial-017
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:2566
+  input: |
+    <math>
+      <mstack>
+        <mscarries><mn>1</mn><mn>1</mn><none/></mscarries>
+        <mscarries><mn>1</mn><mn>1</mn><none/></mscarries>
+        <mn>1,234</mn>
+        <msrow><mo>&#xD7;<!--MULTIPLICATION SIGN--></mo><mn>4,321</mn></msrow>
+        <msline/>
+
+        <mscarries position='2'>
+          <mn>1</mn>
+          <none/>
+          <mn>1</mn>
+          <mn>1</mn>
+          <mn>1</mn>
+          <none/>
+          <mn>1</mn>
+        </mscarries>
+        <msgroup shift="1">
+          <mn>1,234</mn>
+          <mn>24,68</mn>
+          <mn>370,2</mn>
+          <msrow position="1"> <mn>4,936</mn> </msrow>
+        </msgroup>
+        <msline/>
+
+        <mn>5,332,114</mn>
+      </mstack>
+    </math>
+- id: mathml-partial-018
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:2651
+  input: |
+    <math>
+      <mlongdiv longdivstyle="lefttop">
+        <mn> 3 </mn>
+        <mn> 435.3</mn>
+
+        <mn> 1306</mn>
+
+        <msgroup position="2" shift="-1">
+          <msgroup>
+            <mn> 12</mn>
+            <msline length="2"/>
+          </msgroup>
+          <msgroup>
+            <mn> 10</mn>
+            <mn> 9</mn>
+            <msline length="2"/>
+          </msgroup>
+          <msgroup>
+            <mn> 16</mn>
+            <mn> 15</mn>
+            <msline length="2"/>
+            <mn> 1.0</mn>           <!-- aligns on '.', not the right edge ('0') -->
+          </msgroup>
+          <msgroup position='-1'>   <!-- extra shift to move to the right of the "." -->
+             <mn> 9</mn>
+            <msline length="3"/>
+            <mn> 1</mn>
+          </msgroup>
+        </msgroup>
+      </mlongdiv>
+    </math>
+- id: mathml-partial-019
+  source: spec/plurimath/mathml/v3/section_3_spec.rb:2723
+  input: |
+    <math>
+      <mstyle decimalpoint="&#x066B;"><!--ARABIC DECIMAL SEPARATOR-->
+        <mlongdiv longdivstyle="stackedleftlinetop">
+          <mn> &#x0663;<!--ARABIC-INDIC DIGIT THREE--> </mn>
+          <mn> &#x0664;<!--ARABIC-INDIC DIGIT FOUR-->&#x0663;<!--ARABIC-INDIC DIGIT THREE-->&#x0665;<!--ARABIC-INDIC DIGIT FIVE-->&#x066B;<!--ARABIC DECIMAL SEPARATOR-->&#x0663;<!--ARABIC-INDIC DIGIT THREE--></mn>
+
+          <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0663;<!--ARABIC-INDIC DIGIT THREE-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO-->&#x0666;<!--ARABIC-INDIC DIGIT SIX--></mn>
+          <msgroup position="2" shift="-1">
+            <msgroup>
+              <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0662;<!--ARABIC-INDIC DIGIT TWO--></mn>
+              <msline length="2"/>
+            </msgroup>
+            <msgroup>
+              <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO--></mn>
+              <mn> &#x0669;<!--ARABIC-INDIC DIGIT NINE--></mn>
+              <msline length="2"/>
+            </msgroup>
+            <msgroup>
+              <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0666;<!--ARABIC-INDIC DIGIT SIX--></mn>
+              <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0665;<!--ARABIC-INDIC DIGIT FIVE--></mn>
+              <msline length="2"/>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x066B;<!--ARABIC DECIMAL SEPARATOR-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO--></mn>
+           </msgroup>
+           <msgroup position='-1'>
+               <mn> &#x0669;<!--ARABIC-INDIC DIGIT NINE--></mn>
+              <msline length="3"/>
+              <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE--></mn>
+            </msgroup>
+          </msgroup>
+        </mlongdiv>
+      </mstyle>
+    </math>
+- id: mathml-partial-020
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:175
+  input: |
+    <math>
+      <mrow>
+        <mo>{</mo>
+        <ms>A</ms>
+        <mo>,</mo>
+        <ms>B</ms>
+        <mo>,</mo>
+        <ms>&#xa0;<!--NO-BREAK SPACE-->&#xa0;<!--NO-BREAK SPACE--></ms>
+        <mo>}</mo>
+      </mrow>
+    </math>
+- id: mathml-partial-021
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:1607
+  input: |
+    <math>
+      <mrow>
+        <munderover>
+          <mo>&#x22C0;<!--N-ARY LOGICAL AND--></mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>0</mn>
+          </mrow>
+          <mi>n</mi>
+        </munderover>
+        <mrow>
+          <mo>(</mo>
+          <msub>
+            <mi>a</mi>
+            <mi>i</mi>
+          </msub>
+          <mo>&gt;</mo>
+          <mn>0</mn>
+          <mo>)</mo>
+        </mrow>
+      </mrow>
+    </math>
+- id: mathml-partial-022
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:3994
+  input: |
+    <math>
+      <mrow>
+        <munder>
+          <mo>&#x22c3;<!--N-ARY UNION--></mo>
+          <mi>L</mi>
+        </munder>
+        <mi>S</mi>
+      </mrow>
+    </math>
+- id: mathml-partial-023
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:4048
+  input: |
+    <math>
+      <mrow>
+        <munder>
+          <mo>&#x22c2;<!--N-ARY INTERSECTION--></mo>
+          <mi>L</mi>
+        </munder>
+        <mi>S</mi>
+      </mrow>
+    </math>
+- id: mathml-partial-024
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:4553
+  input: |
+    <math>
+      <mrow>
+        <munder>
+          <mi>lim</mi>
+          <mrow>
+            <mi>x</mi>
+            <mo>&#x2192;<!--RIGHTWARDS ARROW--></mo>
+            <mn>0</mn>
+          </mrow>
+        </munder>
+        <mrow>
+          <mi>sin</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </mrow>
+    </math>
+- id: mathml-partial-025
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:4602
+  input: |
+    <math>
+      <mrow>
+        <munder>
+          <mi>lim</mi>
+          <mrow>
+            <mi>x</mi>
+            <mo>&#x2192;<!--RIGHTWARDS ARROW--></mo>
+            <msup>
+              <mi>a</mi>
+              <mo>+</mo>
+            </msup>
+          </mrow>
+        </munder>
+        <mrow>
+          <mi>sin</mi>
+          <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+          <mi>x</mi>
+        </mrow>
+      </mrow>
+    </math>
+- id: mathml-partial-026
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:4650
+  input: |
+    <math>
+      <mrow>
+        <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+        </msup>
+        <mo>&#x2192;<!--RIGHTWARDS ARROW--></mo>
+        <msup>
+          <msup>
+            <mi>a</mi>
+            <mn>2</mn>
+          </msup>
+          <mo>+</mo>
+        </msup>
+      </mrow>
+    </math>
+- id: mathml-partial-027
+  source: spec/plurimath/mathml/v3/section_4_spec.rb:4718
+  input: |
+    <math>
+      <mfenced>
+        <mtable>
+          <mtr>
+            <mtd>
+              <mi>x</mi>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mi>y</mi>
+            </mtd>
+          </mtr>
+        </mtable>
+      </mfenced>
+      <mo>&#x2192;<!--RIGHTWARDS ARROW--></mo>
+      <mfenced>
+        <mtable>
+          <mtr>
+            <mtd>
+              <mi>f</mi>
+              <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+              </mfenced>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mi>g</mi>
+              <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+              <mfenced>
+                <mi>x</mi>
+                <mi>y</mi>
+              </mfenced>
+            </mtd>
+          </mtr>
+        </mtable>
+      </mfenced>
+    </math>

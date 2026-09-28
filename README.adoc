@@ -14,24 +14,27 @@ can be checked against identical answers.
 
 Early. AsciiMath input was the first notation extracted; LaTeX input is the
 second, and is now eighteen groups wide; UnicodeMath input is the third, and
-is one four-group slice old. A tick means cases exist here today, not that
+is one four-group slice old. MathML and OMML input are the fourth and fifth,
+taken whole from the gem's own spec suite. A tick means cases exist here today, not that
 Plurimath supports it — Plurimath supports every row.
 
 [cols="1,2,2",options="header"]
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 158 cases, 26 groups | ✅ checked for all 303
-| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 303
-| MathML      | ❌ no cases yet         | ✅ checked for all 303
-| OMML        | ❌ no cases yet         | ✅ checked for all 64, the calls groups only
-| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 303, one a refusal
-| HTML        | ❌ no cases yet         | ✅ checked for all 64, the calls groups only
+| AsciiMath   | ✅ 158 cases, 26 groups | ✅ checked for all 780, one a refusal
+| LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 780, one a refusal
+| MathML      | ✅ 287 cases, 12 groups | ✅ checked for all 780, two refusals
+| OMML        | ✅ 190 cases, 14 groups | ✅ checked for all 541, two refusals
+| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 780, 22 refusals
+| HTML        | ❌ no cases yet         | ✅ checked for all 541, 41 refusals
 |===
 
-Every case carries an expectation for every output format above that is
-ticked. An expectation is usually a rendering; one of them is a refusal, and
-the section on outcome payloads below says why that is recorded rather than
+Every case carries an expectation for every output format its group lists:
+AsciiMath, LaTeX, MathML and UnicodeMath for the text inputs, all six for the
+MathML and OMML inputs and the calls groups. An expectation is usually a
+rendering; the ones the output column counts as refusals are not, and the
+section on outcome payloads below says why they are recorded rather than
 omitted.
 
 Groups, and the cases in each. A group is named by its path under `corpus/`,
@@ -61,9 +64,38 @@ because group names repeat across input formats — `asciimath/numbers` and
 `unicode/numbers` 5, `unicode/symbols` 4, `unicode/operators` 6,
 `unicode/fences` 5.
 
-LaTeX, UnicodeMath and HTML now have rejection payloads as well, at
-`corpus/latex/rejections.yaml` (fourteen refusals),
-`corpus/unicode/rejections.yaml` (52) and `corpus/html/rejections.yaml` (38).
+`mathml/tokens` 88, `mathml/layout` 11, `mathml/text` 11, `mathml/fences` 31,
+`mathml/enclose` 1, `mathml/roots` 4, `mathml/fractions` 13,
+`mathml/scripts` 50, `mathml/over-under` 34, `mathml/tables` 7,
+`mathml/elementary-math` 10, `mathml/partial-render` 27.
+
+`omml/runs` 24, `omml/boxes` 2, `omml/delimiters` 16, `omml/accents` 4,
+`omml/scripts` 18, `omml/roots` 4, `omml/fractions` 7, `omml/functions` 16,
+`omml/group-characters` 2, `omml/limits` 31, `omml/nary` 11,
+`omml/equation-arrays` 7, `omml/matrices` 17, `omml/partial-render` 31.
+
+The MathML and OMML inputs are every distinct string the examples under the
+gem's `spec/plurimath/mathml` and `spec/plurimath/omml` hand to the parser,
+kept in `scripts/seeds/` with the spec file and line each came from. A case
+sits in the first group, in the order above, whose construct it contains, so a
+fraction inside a table is a `tables` case. These two formats render to all
+six targets, OMML and HTML included, where the text formats render to four.
+Neither has a preprocessing pass or a grammar of its own: `preprocessed` is
+the input unchanged, because that is exactly what the gem hands its XML
+reader, and `parse_tree` is null, because the reader builds another gem's
+object graph rather than a tree a port could reproduce. For the same reason
+their rejections carry no `index`.
+
+LaTeX, UnicodeMath, HTML, MathML and OMML now have rejection payloads as
+well, at `corpus/latex/rejections.yaml` (fourteen refusals),
+`corpus/unicode/rejections.yaml` (52), `corpus/html/rejections.yaml` (38),
+`corpus/mathml/rejections.yaml` (12) and `corpus/omml/rejections.yaml` (9).
+MathML refuses only text its XML reader cannot read: well-formed XML is
+accepted however wrong it is as MathML. OMML refuses malformed XML too, and
+also two well-formed kinds: an `m:` prefix bound to no namespace, and a
+MathML document. Both also refuse the empty string, which a rejection
+cannot hold because `input` must be non-empty; each payload's `description`
+says so.
 HTML has no case payload at all; its rejections are the only HTML payload.
 They are absent from the inventory above on purpose: that inventory counts
 payloads carrying expectations, and a rejection carries none.
@@ -398,7 +430,9 @@ is present; how it represents anything else is its own business.
 
 `corpus/`:: the test cases, grouped by feature
 `corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
-version, generator checksum, and a `sha256` and byte count per payload
+version, generator checksum, a checksum per seed file the generator reads
+(`generator.inputs`), and a `sha256` and byte count per payload
+`scripts/seeds/`:: the MathML and OMML inputs, taken from the gem's specs
 `schema/`:: JSON Schema describing the file formats, validated in CI
 `scripts/generate-corpus.rb`:: writes the corpus from the Ruby gem
 `scripts/validate.rb`:: checks the corpus against the schemas, and checks what

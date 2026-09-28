@@ -624,6 +624,9 @@ module Testsuite
     # time a kind is added.
     CROSS_FIELD_CHECKS = {
       "provenance/2" => :provenance_cross_checks,
+      # `provenance/3` adds `generator.inputs` and nothing else, and that
+      # field's digests are checked with the payloads' in `check_integrity`.
+      "provenance/3" => :provenance_cross_checks,
       "rejections/1" => :rejection_cross_checks,
       "cases/1" => :case_cross_checks,
       # `cases/2` differs from `cases/1` only in the shape of an expectation —
@@ -1140,6 +1143,7 @@ module Testsuite
       end
 
       unrecorded = check_payloads(document, errors)
+      check_generator_inputs(document, errors)
       failure(shown, errors) unless errors.empty?
       unrecorded.each do |file|
         failure(display(file),
@@ -1174,6 +1178,29 @@ module Testsuite
       end
 
       on_disk.reject { |file| recorded.key?(relative_to_corpus(file)) }
+    end
+
+    # `generator.inputs` paths are relative to the generator's repository
+    # root. That is the repository this validator lives in, NOT the corpus
+    # root's parent: the generator's `--out` can write a corpus anywhere, and
+    # its seeds stay where the generator is. A recorded input that is missing
+    # is an error, not a skip: the entry claims a file no one can now check.
+    GENERATOR_ROOT = File.expand_path("..", __dir__)
+
+    def check_generator_inputs(document, errors)
+      root = GENERATOR_ROOT
+      Array(document.dig("generator", "inputs")).each_with_index do |entry, index|
+        pointer = "/generator/inputs/#{index}"
+        name = entry["path"]
+        file = File.join(root, name)
+        unless File.file?(file)
+          next errors << Error.new("#{pointer}/path",
+                                   "records #{name}, which is not a file " \
+                                   "in #{display(root)}")
+        end
+
+        check_digest(entry, pointer, file, name, errors)
+      end
     end
 
     def check_digest(entry, pointer, file, name, errors)

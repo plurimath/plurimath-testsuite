@@ -30,6 +30,15 @@ RSpec.describe Testsuite::Runner, "digests and coverage" do
       .reporting("records asciimath/ghost.yaml, which is not a payload in")
   end
 
+  # `generator.inputs` paths resolve against the repository scripts/validate.rb
+  # lives in, whatever the corpus root: this fixture names
+  # spec/fixtures/README.md.
+  it "rejects a generator input whose digest and size do not match" do
+    expect(validation_of(fixture("integrity-generator-input-mismatch")))
+      .to fail_validation.with_violations(2)
+      .reporting("/generator/inputs/0/sha256", "but that file hashes to")
+  end
+
   it "rejects a payload recorded twice" do
     expect(validation_of(fixture("integrity-duplicate-entry")))
       .to fail_validation.with_violations(1)
