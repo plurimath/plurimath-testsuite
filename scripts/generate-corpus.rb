@@ -1703,8 +1703,9 @@ module CorpusGenerator
   # hundred, many of them whole Word equations, so they live in
   # scripts/seeds/<format>.yaml instead of in this file, each with the spec
   # file and line it came from. That file is part of the generator's input:
-  # `provenance.generator.repository.commit` names the commit that holds it,
-  # and a dirty seed makes the generator checkout dirty like any other path.
+  # `provenance.generator.inputs` records its sha256 and size the way
+  # `generator.sha256` records this file's, and a dirty seed makes the
+  # generator checkout dirty like any other path.
   #
   # A case sits in the first group, in the seed's order, whose construct it
   # contains, so a fraction inside a table is a `tables` case. Inputs the gem
@@ -1782,6 +1783,16 @@ module CorpusGenerator
     ["omml-mathml-input", "<math xmlns='#{MATHML_NS}'><mi>a</mi></math>"],
   ].freeze
 
+  # The empty string is refused by both XML formats, and `rejections/1`
+  # cannot hold it: `input` is `minLength: 1`. The payload says so rather than
+  # leaving the refusal to be inferred from its absence.
+  XML_REJECTIONS_DESCRIPTION =
+    "#{REJECTIONS_DESCRIPTION}. The gem also refuses the empty string, which " \
+    "cannot be recorded here because `input` must be non-empty; a port " \
+    "should refuse it too. Every refusal is malformed XML: well-formed XML " \
+    "is accepted however wrong it is as markup, and none carries an " \
+    "`index`, since no grammar ran."
+
   # Every target `Math::Formula` renders to. The three text formats record
   # four because that is what their first slices measured; these two record
   # all six from the start, OMML and HTML included.
@@ -1804,7 +1815,7 @@ module CorpusGenerator
     parse_tree: ->(_text) {},
     groups: MATHML_SEED_GROUPS,
     rejection_candidates: MATHML_REJECTION_CANDIDATES,
-    rejection_description: REJECTIONS_DESCRIPTION,
+    rejection_description: XML_REJECTIONS_DESCRIPTION,
     partial_candidates: MATHML_SEED_PARTIAL,
     number_formatter_groups: [].freeze,
   )
@@ -1818,7 +1829,7 @@ module CorpusGenerator
     parse_tree: ->(_text) {},
     groups: OMML_SEED_GROUPS,
     rejection_candidates: OMML_REJECTION_CANDIDATES,
-    rejection_description: REJECTIONS_DESCRIPTION,
+    rejection_description: XML_REJECTIONS_DESCRIPTION,
     partial_candidates: OMML_SEED_PARTIAL,
     number_formatter_groups: [].freeze,
   )
@@ -2270,6 +2281,21 @@ module CorpusGenerator
     dirty
   end
 
+  # The seed files the generator reads, digested the way the generator itself
+  # is, so an edited case list is caught by its checksum and not only by the
+  # repository commit. Sorted by path so the entry does not depend on
+  # directory order.
+  def generator_inputs
+    Dir.glob(File.join(SEED_DIR, "*.yaml")).sort.map do |path|
+      bytes = File.binread(path)
+      {
+        "path" => relative(path, REPO_ROOT),
+        "sha256" => sha256(bytes),
+        "bytes" => bytes.bytesize,
+      }
+    end
+  end
+
   def build_provenance(gem_dir, dirty, allow_dirty)
     gem_spec = Gem.loaded_specs.fetch("plurimath")
     dependencies = dependency_provenance(gem_dir, gem_spec)
@@ -2301,6 +2327,7 @@ module CorpusGenerator
         "path" => GENERATOR_PATH,
         "sha256" => sha256(File.binread(File.join(REPO_ROOT, GENERATOR_PATH))),
         "repository" => checkout_provenance(REPO_ROOT, dirty["generator"]),
+        "inputs" => generator_inputs,
       },
       "oracle" => {
         "gem" => "plurimath",

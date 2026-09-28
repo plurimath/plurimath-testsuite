@@ -53,6 +53,32 @@
         },
         "repository": {
           "$ref": "#/$defs/checkout"
+        },
+        "inputs": {
+          "description": "Data files the generator reads besides itself, such as the MathML and OMML case lists under scripts/seeds/, each with its digest, so an edited input is detectable the same way an edited generator is. Paths are relative to the generator's repository root. Optional: a corpus whose generator reads no such file has none, and provenance documents written before the field existed stay valid. scripts/validate.rb checks every digest against the file.",
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256",
+              "bytes"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "$ref": "#/$defs/relative_path"
+              },
+              "sha256": {
+                "$ref": "#/$defs/sha256"
+              },
+              "bytes": {
+                "type": "integer",
+                "minimum": 0
+              }
+            }
+          }
         }
       }
     },

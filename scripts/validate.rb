@@ -1140,6 +1140,7 @@ module Testsuite
       end
 
       unrecorded = check_payloads(document, errors)
+      check_generator_inputs(document, errors)
       failure(shown, errors) unless errors.empty?
       unrecorded.each do |file|
         failure(display(file),
@@ -1174,6 +1175,26 @@ module Testsuite
       end
 
       on_disk.reject { |file| recorded.key?(relative_to_corpus(file)) }
+    end
+
+    # `generator.inputs` paths are relative to the generator's repository
+    # root, which is the corpus root's parent, as for README.adoc. A recorded
+    # input that is missing is an error, not a skip: the entry claims a file
+    # the reader can no longer check.
+    def check_generator_inputs(document, errors)
+      root = File.dirname(File.expand_path(@corpus_root))
+      Array(document.dig("generator", "inputs")).each_with_index do |entry, index|
+        pointer = "/generator/inputs/#{index}"
+        name = entry["path"]
+        file = File.join(root, name)
+        unless File.file?(file)
+          next errors << Error.new("#{pointer}/path",
+                                   "records #{name}, which is not a file " \
+                                   "in #{display(root)}")
+        end
+
+        check_digest(entry, pointer, file, name, errors)
+      end
     end
 
     def check_digest(entry, pointer, file, name, errors)

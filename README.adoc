@@ -92,7 +92,9 @@ well, at `corpus/latex/rejections.yaml` (fourteen refusals),
 `corpus/mathml/rejections.yaml` (12) and `corpus/omml/rejections.yaml` (9).
 The XML formats refuse only text their XML reader cannot read: well-formed
 XML is accepted however wrong it is as MathML or OMML, so the refusals are
-all malformed markup.
+all malformed markup. Both also refuse the empty string, which a rejection
+cannot hold because `input` must be non-empty; each payload's `description`
+says so.
 HTML has no case payload at all; its rejections are the only HTML payload.
 They are absent from the inventory above on purpose: that inventory counts
 payloads carrying expectations, and a rejection carries none.
@@ -427,7 +429,9 @@ is present; how it represents anything else is its own business.
 
 `corpus/`:: the test cases, grouped by feature
 `corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
-version, generator checksum, and a `sha256` and byte count per payload
+version, generator checksum, a checksum per seed file the generator reads
+(`generator.inputs`), and a `sha256` and byte count per payload
+`scripts/seeds/`:: the MathML and OMML inputs, taken from the gem's specs
 `schema/`:: JSON Schema describing the file formats, validated in CI
 `scripts/generate-corpus.rb`:: writes the corpus from the Ruby gem
 `scripts/validate.rb`:: checks the corpus against the schemas, and checks what
