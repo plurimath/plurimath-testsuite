@@ -11,6 +11,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: mixed-implicit-product
   input: 2pi r
@@ -28,6 +30,21 @@ cases:
         </mstyle>
       </math>
     unicodemath: 2 π r
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>2</m:t>
+          </m:r>
+          <m:r>
+            <m:t>&#x3c0;</m:t>
+          </m:r>
+          <m:r>
+            <m:t>r</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: 2 &#x3C0; r
   parse_tree:
     expr:
       expr:
@@ -73,6 +90,21 @@ cases:
         </mstyle>
       </math>
     unicodemath: α β γ
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>&#x3b1;</m:t>
+          </m:r>
+          <m:r>
+            <m:t>&#x3b2;</m:t>
+          </m:r>
+          <m:r>
+            <m:t>&#x3b3;</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "&#x3b1; &#x3b2; &#x3b3;"
   parse_tree:
     expr:
       expr:
@@ -123,6 +155,50 @@ cases:
         </mstyle>
       </math>
     unicodemath: f (x) = x^(2)
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>f</m:t>
+          </m:r>
+          <m:d>
+            <m:dPr>
+              <m:begChr m:val="("/>
+              <m:sepChr m:val=""/>
+              <m:endChr m:val=")"/>
+            </m:dPr>
+            <m:e>
+              <m:r>
+                <m:t>x</m:t>
+              </m:r>
+            </m:e>
+          </m:d>
+          <m:r>
+            <m:t>=</m:t>
+          </m:r>
+          <m:sSup>
+            <m:sSupPr>
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:sSupPr>
+            <m:e>
+              <m:r>
+                <m:t>x</m:t>
+              </m:r>
+            </m:e>
+            <m:sup>
+              <m:r>
+                <m:t>2</m:t>
+              </m:r>
+            </m:sup>
+          </m:sSup>
+        </m:oMath>
+      </m:oMathPara>
+    html: f <i>(</i>x<i>)</i> = <i>x</i><sup>2</sup>
   parse_tree:
     expr:
       expr:
@@ -224,6 +300,105 @@ cases:
         </mstyle>
       </math>
     unicodemath: "(x + y)^(2) = x^(2) + 2 x y + y^(2)"
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:sSup>
+            <m:sSupPr>
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:sSupPr>
+            <m:e>
+              <m:d>
+                <m:dPr>
+                  <m:begChr m:val="("/>
+                  <m:sepChr m:val=""/>
+                  <m:endChr m:val=")"/>
+                </m:dPr>
+                <m:e>
+                  <m:r>
+                    <m:t>x</m:t>
+                  </m:r>
+                  <m:r>
+                    <m:t>+</m:t>
+                  </m:r>
+                  <m:r>
+                    <m:t>y</m:t>
+                  </m:r>
+                </m:e>
+              </m:d>
+            </m:e>
+            <m:sup>
+              <m:r>
+                <m:t>2</m:t>
+              </m:r>
+            </m:sup>
+          </m:sSup>
+          <m:r>
+            <m:t>=</m:t>
+          </m:r>
+          <m:sSup>
+            <m:sSupPr>
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:sSupPr>
+            <m:e>
+              <m:r>
+                <m:t>x</m:t>
+              </m:r>
+            </m:e>
+            <m:sup>
+              <m:r>
+                <m:t>2</m:t>
+              </m:r>
+            </m:sup>
+          </m:sSup>
+          <m:r>
+            <m:t>+</m:t>
+          </m:r>
+          <m:r>
+            <m:t>2</m:t>
+          </m:r>
+          <m:r>
+            <m:t>x</m:t>
+          </m:r>
+          <m:r>
+            <m:t>y</m:t>
+          </m:r>
+          <m:r>
+            <m:t>+</m:t>
+          </m:r>
+          <m:sSup>
+            <m:sSupPr>
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:sSupPr>
+            <m:e>
+              <m:r>
+                <m:t>y</m:t>
+              </m:r>
+            </m:e>
+            <m:sup>
+              <m:r>
+                <m:t>2</m:t>
+              </m:r>
+            </m:sup>
+          </m:sSup>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i><i>(</i>x&#x2b;y<i>)</i></i><sup>2</sup> = <i>x</i><sup>2</sup> &#x2b; 2 x y &#x2b; <i>y</i><sup>2</sup>"
   parse_tree:
     expr:
       expr:
@@ -410,6 +585,125 @@ cases:
         </mstyle>
       </math>
     unicodemath: "∑_(i = 1)^(n)▒〖i^(3)〗 = ((n (n + 1))/(2))^(2)"
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:nary>
+            <m:naryPr>
+              <m:chr m:val="∑"/>
+              <m:limLoc m:val="undOvr"/>
+              <m:subHide m:val="0"/>
+              <m:supHide m:val="0"/>
+            </m:naryPr>
+            <m:sub>
+              <m:r>
+                <m:t>i</m:t>
+              </m:r>
+              <m:r>
+                <m:t>=</m:t>
+              </m:r>
+              <m:r>
+                <m:t>1</m:t>
+              </m:r>
+            </m:sub>
+            <m:sup>
+              <m:r>
+                <m:t>n</m:t>
+              </m:r>
+            </m:sup>
+            <m:e>
+              <m:sSup>
+                <m:sSupPr>
+                  <m:ctrlPr>
+                    <w:rPr>
+                      <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                      <w:i/>
+                    </w:rPr>
+                  </m:ctrlPr>
+                </m:sSupPr>
+                <m:e>
+                  <m:r>
+                    <m:t>i</m:t>
+                  </m:r>
+                </m:e>
+                <m:sup>
+                  <m:r>
+                    <m:t>3</m:t>
+                  </m:r>
+                </m:sup>
+              </m:sSup>
+            </m:e>
+          </m:nary>
+          <m:r>
+            <m:t>=</m:t>
+          </m:r>
+          <m:sSup>
+            <m:sSupPr>
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:sSupPr>
+            <m:e>
+              <m:d>
+                <m:dPr>
+                  <m:begChr m:val="("/>
+                  <m:sepChr m:val=""/>
+                  <m:endChr m:val=")"/>
+                </m:dPr>
+                <m:e>
+                  <m:f>
+                    <m:fPr>
+                      <m:ctrlPr>
+                        <w:rPr>
+                          <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                          <w:i/>
+                        </w:rPr>
+                      </m:ctrlPr>
+                    </m:fPr>
+                    <m:num>
+                      <m:r>
+                        <m:t>n</m:t>
+                      </m:r>
+                      <m:d>
+                        <m:dPr>
+                          <m:begChr m:val="("/>
+                          <m:sepChr m:val=""/>
+                          <m:endChr m:val=")"/>
+                        </m:dPr>
+                        <m:e>
+                          <m:r>
+                            <m:t>n</m:t>
+                          </m:r>
+                          <m:r>
+                            <m:t>+</m:t>
+                          </m:r>
+                          <m:r>
+                            <m:t>1</m:t>
+                          </m:r>
+                        </m:e>
+                      </m:d>
+                    </m:num>
+                    <m:den>
+                      <m:r>
+                        <m:t>2</m:t>
+                      </m:r>
+                    </m:den>
+                  </m:f>
+                </m:e>
+              </m:d>
+            </m:e>
+            <m:sup>
+              <m:r>
+                <m:t>2</m:t>
+              </m:r>
+            </m:sup>
+          </m:sSup>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i>&sum;</i><sub>i = 1</sub><sup>n</sup> = <i><i>(</i><i>n <i>(</i>n&#x2b;1<i>)</i></i><i>2</i><i>)</i></i><sup>2</sup>"
   parse_tree:
     expr:
       expr:

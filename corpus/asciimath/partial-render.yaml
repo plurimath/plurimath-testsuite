@@ -11,6 +11,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: partial-sqrt-unclosed
   input: sqrt(
@@ -31,6 +33,31 @@ cases:
     unicodemath:
       error:
         category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:rad>
+              <m:radPr>
+                <m:degHide m:val="on"/>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:radPr>
+              <m:deg/>
+              <m:e>
+                <m:r>
+                  <m:t>&#8203;</m:t>
+                </m:r>
+              </m:e>
+            </m:rad>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>sqrt</i>"
   parse_tree:
     expr:
       sequence:
@@ -50,3 +77,217 @@ cases:
       - class: Math::Function::Sqrt
         fields:
           parameter_one:
+- id: left-right-round
+  input: left( x right)
+  input_format: asciimath
+  preprocessed: left( x right)
+  expected:
+    asciimath:
+      output: left( x right)
+    latex:
+      output: "\\left ( x \\right )"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mo>(</mo>
+            <mi>x</mi>
+            <mo>)</mo>
+          </mstyle>
+        </math>
+    unicodemath:
+      output: "( x )"
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:r>
+              <m:t>(</m:t>
+            </m:r>
+            <m:r>
+              <m:t>x</m:t>
+            </m:r>
+            <m:r>
+              <m:t>)</m:t>
+            </m:r>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      error:
+        category: parse_error
+  parse_tree:
+    left_right:
+      left: "("
+      left_right_value:
+        sequence:
+          symbol: x
+      right: ")"
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: left( x right)
+      left_right_wrapper: false
+      value:
+      - class: Math::Function::Left
+        fields:
+          parameter_one: "("
+      - class: Math::Symbols::Symbol
+        fields:
+          value: x
+      - class: Math::Function::Right
+        fields:
+          parameter_one: ")"
+- id: left-right-square
+  input: left[ x right]
+  input_format: asciimath
+  preprocessed: left[ x right]
+  expected:
+    asciimath:
+      output: left[ x right]
+    latex:
+      output: "\\left [ x \\right ]"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mo>[</mo>
+            <mi>x</mi>
+            <mo>]</mo>
+          </mstyle>
+        </math>
+    unicodemath:
+      output: "[ x ]"
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:r>
+              <m:t>[</m:t>
+            </m:r>
+            <m:r>
+              <m:t>x</m:t>
+            </m:r>
+            <m:r>
+              <m:t>]</m:t>
+            </m:r>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      error:
+        category: parse_error
+  parse_tree:
+    left_right:
+      left: "["
+      left_right_value:
+        sequence:
+          symbol: x
+      right: "]"
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: left[ x right]
+      left_right_wrapper: false
+      value:
+      - class: Math::Function::Left
+        fields:
+          parameter_one: "["
+      - class: Math::Symbols::Symbol
+        fields:
+          value: x
+      - class: Math::Function::Right
+        fields:
+          parameter_one: "]"
+- id: left-right-around-frac
+  input: left( a/b right)
+  input_format: asciimath
+  preprocessed: left( a/b right)
+  expected:
+    asciimath:
+      output: left( frac(a)(b) right)
+    latex:
+      output: "\\left ( \\frac{a}{b} \\right )"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mo>(</mo>
+            <mfrac>
+              <mi>a</mi>
+              <mi>b</mi>
+            </mfrac>
+            <mo>)</mo>
+          </mstyle>
+        </math>
+    unicodemath:
+      output: "( (a)/(b) )"
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:r>
+              <m:t>(</m:t>
+            </m:r>
+            <m:f>
+              <m:fPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:fPr>
+              <m:num>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:num>
+              <m:den>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:den>
+            </m:f>
+            <m:r>
+              <m:t>)</m:t>
+            </m:r>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      error:
+        category: parse_error
+  parse_tree:
+    left_right:
+      left: "("
+      left_right_value:
+        frac:
+          denominator:
+            sequence:
+              symbol: b
+          numerator:
+            symbol: a
+      right: ")"
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: left( a/b right)
+      left_right_wrapper: false
+      value:
+      - class: Math::Function::Left
+        fields:
+          parameter_one: "("
+      - class: Math::Function::Frac
+        fields:
+          parameter_one:
+            class: Math::Symbols::Symbol
+            fields:
+              value: a
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: b
+      - class: Math::Function::Right
+        fields:
+          parameter_one: ")"

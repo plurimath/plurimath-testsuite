@@ -11,6 +11,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: latex-mod-infix
   input: a \mod b
@@ -30,6 +32,24 @@ cases:
         </mstyle>
       </math>
     unicodemath: amodb
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>a</m:t>
+          </m:r>
+          <m:r>
+            <m:rPr>
+              <m:sty m:val="p"/>
+            </m:rPr>
+            <m:t>mod</m:t>
+          </m:r>
+          <m:r>
+            <m:t>b</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i>a</i><i>mod</i><i>b</i>"
   parse_tree:
     under_over:
       binary: mod
@@ -72,6 +92,24 @@ cases:
         </mstyle>
       </math>
     unicodemath: amodb
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>a</m:t>
+          </m:r>
+          <m:r>
+            <m:rPr>
+              <m:sty m:val="p"/>
+            </m:rPr>
+            <m:t>mod</m:t>
+          </m:r>
+          <m:r>
+            <m:t>b</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i>a</i><i>mod</i><i>b</i>"
   parse_tree:
     under_over:
       binary: bmod
@@ -114,6 +152,24 @@ cases:
         </mstyle>
       </math>
     unicodemath: amodb
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>a</m:t>
+          </m:r>
+          <m:r>
+            <m:rPr>
+              <m:sty m:val="p"/>
+            </m:rPr>
+            <m:t>mod</m:t>
+          </m:r>
+          <m:r>
+            <m:t>b</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i>a</i><i>mod</i><i>b</i>"
   parse_tree:
     under_over:
       binary: pmod
@@ -157,6 +213,24 @@ cases:
         </mstyle>
       </math>
     unicodemath: xmod2
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:r>
+            <m:t>x</m:t>
+          </m:r>
+          <m:r>
+            <m:rPr>
+              <m:sty m:val="p"/>
+            </m:rPr>
+            <m:t>mod</m:t>
+          </m:r>
+          <m:r>
+            <m:t>2</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i>x</i><i>mod</i><i>2</i>"
   parse_tree:
     under_over:
       binary: mod
@@ -208,6 +282,39 @@ cases:
         </mstyle>
       </math>
     unicodemath: "(a + b)modn"
+    omml: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:d>
+            <m:dPr>
+              <m:begChr m:val="("/>
+              <m:sepChr m:val=""/>
+              <m:endChr m:val=")"/>
+            </m:dPr>
+            <m:e>
+              <m:r>
+                <m:t>a</m:t>
+              </m:r>
+              <m:r>
+                <m:t>+</m:t>
+              </m:r>
+              <m:r>
+                <m:t>b</m:t>
+              </m:r>
+            </m:e>
+          </m:d>
+          <m:r>
+            <m:rPr>
+              <m:sty m:val="p"/>
+            </m:rPr>
+            <m:t>mod</m:t>
+          </m:r>
+          <m:r>
+            <m:t>n</m:t>
+          </m:r>
+        </m:oMath>
+      </m:oMathPara>
+    html: "<i><i>(</i>a&#x2b;b<i>)</i></i><i>mod</i><i>n</i>"
   parse_tree:
     under_over:
       binary: mod
