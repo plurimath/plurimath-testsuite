@@ -781,17 +781,17 @@ module CorpusGenerator
       options: options }
   end
 
-  # The targets whose `to_<target>` takes `formatter:` (Math::Formula in the
-  # oracle gem). The first slice's group keeps the four the format declares;
-  # the groups below carry all six, so a port has oracle data for the OMML and
-  # HTML formatter paths as well.
-  NUMBER_FORMATTER_ALL_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
+  # Every target `Math::Formula` renders to, and so every target whose
+  # `to_<target>` takes `formatter:`. Every case and call group in every input
+  # format declares all six, so a port has oracle data for the OMML and HTML
+  # renderers whichever notation it parsed.
+  ALL_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
 
   ASCIIMATH_NUMBER_FORMATTER_GROUPS = [
     NumberFormatterGroup.new(
       name: NUMBER_FORMATTER_GROUP,
       description: NUMBER_FORMATTER_DESCRIPTION,
-      targets: %w[asciimath latex mathml unicodemath].freeze,
+      targets: ALL_TARGETS,
       calls: ASCIIMATH_NUMBER_FORMATTER_CALLS,
     ),
     NumberFormatterGroup.new(
@@ -799,7 +799,7 @@ module CorpusGenerator
       description: "The `precision:` argument and the `digit_count` option: " \
                    "fraction digits cut off or zero-padded, and a total-digit " \
                    "budget that can carry into a new leading digit.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-precision-truncates-fraction", "14236.39239",
          nf_args(precision: 2)],
@@ -828,7 +828,7 @@ module CorpusGenerator
       description: "The `significant` option: rounding to a count of " \
                    "significant digits, on integers, on values below one, " \
                    "and where rounding carries.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-significant-rounds-integer", "112",
          nf_args(options: { significant: 2 })],
@@ -851,7 +851,7 @@ module CorpusGenerator
                    "with the e, times and exponent_sign symbols, zero, " \
                    "small values, and precision, significant and digit_count " \
                    "interacting with a notation.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-notation-e-custom-symbol-precision", "14000",
          nf_args(precision: 1,
@@ -903,7 +903,7 @@ module CorpusGenerator
                    "render a subscript base and omml renders the default " \
                    "prefix as text; with one given, every target renders " \
                    "the literal text.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-base-2-grouped", "1910",
          nf_args(options: { base: 2, group_digits: 8, group: " " })],
@@ -955,7 +955,7 @@ module CorpusGenerator
                    "and integer padding by `padding_digits`, `padding` and " \
                    "`padding_group_digits`. A leading `-` in AsciiMath input " \
                    "is a separate operator node, not part of the number.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-sign-plus-basic", "14236.39239",
          nf_args(options: { number_sign: :plus })],
@@ -982,7 +982,7 @@ module CorpusGenerator
                    "resolves them: including where a locale changes nothing " \
                    "because Standard fills `decimal` and `group` with its " \
                    "own defaults.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-locale-de-standard-defaults", "1234567.891",
          nf_args(locale: "de")],
@@ -1015,7 +1015,7 @@ module CorpusGenerator
   ASCIIMATH = Format.new(
     name: "asciimath",
     label: "AsciiMath",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Asciimath::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::Asciimath::Parse.new.parse(text) },
     groups: ASCIIMATH_GROUPS,
@@ -1380,7 +1380,7 @@ module CorpusGenerator
   LATEX = Format.new(
     name: "latex",
     label: "LaTeX",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Latex::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::Latex::Parse.new.parse(text) },
     groups: LATEX_GROUPS,
@@ -1584,7 +1584,7 @@ module CorpusGenerator
   UNICODEMATH = Format.new(
     name: "unicode",
     label: "UnicodeMath",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::UnicodeMath::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::UnicodeMath::Parse.new.parse(text) },
     groups: UNICODEMATH_GROUPS,
@@ -1800,10 +1800,6 @@ module CorpusGenerator
     "bound to a namespace, and a well-formed MathML document " \
     "(`omml-mathml-input`).#{XML_EMPTY_NOTE}"
 
-  # Every target `Math::Formula` renders to. The three text formats record
-  # four because that is what their first slices measured; these two record
-  # all six from the start, OMML and HTML included.
-  XML_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
 
   # Neither XML format has a preprocessing pass or a grammar of its own.
   # `Mathml::Parser#initialize` and `Omml::Parser#initialize` store the text
@@ -1817,7 +1813,7 @@ module CorpusGenerator
   MATHML = Format.new(
     name: "mathml",
     label: "MathML",
-    targets: XML_TARGETS,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Mathml::Parser.new(input).text },
     parse_tree: ->(_text) {},
     groups: MATHML_SEED_GROUPS,
@@ -1831,7 +1827,7 @@ module CorpusGenerator
   OMML = Format.new(
     name: "omml",
     label: "OMML",
-    targets: XML_TARGETS,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Omml::Parser.new(input).text },
     parse_tree: ->(_text) {},
     groups: OMML_SEED_GROUPS,
