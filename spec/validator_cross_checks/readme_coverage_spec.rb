@@ -20,6 +20,7 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   # `check_readme` reads the repository's own README, so these drive the
   # underlying method with substituted text instead of writing to the file.
   let(:runner) { runner_for(File.expand_path("../../corpus", __dir__)) }
+  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
 
   def runner_for(corpus_root)
     described_class.new(
@@ -39,8 +40,6 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
       )
     end
   end
-
-  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
 
   def errors_for(text)
     runner.send(:readme_count_errors, text)
@@ -96,22 +95,31 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   # itself is driven here against a copy of the corpus in which one payload
   # declares only four targets: OMML and HTML must then count that payload's
   # cases out, and every other target must still count them in.
+  # Narrows one payload to the four text-format targets of earlier slices and
+  # returns how many cases it holds.
+  def narrow_to_four_targets(path)
+    document = YAML.safe_load_file(path)
+    narrowed = %w[asciimath latex mathml unicodemath]
+    document["targets"] = narrowed
+    document["cases"].each do |entry|
+      entry["expected"] = entry["expected"].slice(*narrowed)
+    end
+    File.write(path, YAML.dump(document))
+    document["cases"].length
+  end
+
   it "counts each target over only the payloads that declare it" do
+    full = runner.send(:positive_target_case_counts)
     Dir.mktmpdir do |dir|
       FileUtils.cp_r(File.expand_path("../../corpus", __dir__), dir)
       root = File.join(dir, "corpus")
-      path = File.join(root, "asciimath", "frac.yaml")
-      document = YAML.safe_load_file(path)
-      narrowed = %w[asciimath latex mathml unicodemath]
-      document["targets"] = narrowed
-      document["cases"].each { |c| c["expected"] = c["expected"].slice(*narrowed) }
-      File.write(path, YAML.dump(document))
-      fixture = runner_for(root)
-      full = runner.send(:positive_target_case_counts)
-      counts = fixture.send(:positive_target_case_counts)
-      dropped = document["cases"].length
+      frac = File.join(root, "asciimath", "frac.yaml")
+      dropped = narrow_to_four_targets(frac)
       expect(dropped).to be > 0
-      expect(counts).to eq(full.merge("omml" => full["omml"] - dropped, "html" => full["html"] - dropped))
+      expect(runner_for(root).send(:positive_target_case_counts)).to eq(
+        full.merge("omml" => full["omml"] - dropped,
+                   "html" => full["html"] - dropped),
+      )
     end
   end
 
@@ -127,9 +135,11 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     whole = counts.values.max
     partial = counts["omml"]
     expect(partial).to be < whole
-    wrong = readme_for(counts).sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{whole}")
-    expect(errors_for(wrong))
-      .to include(a_string_matching(/row OMML says "checked for all #{whole}", corpus has #{partial} for omml/))
+    wrong = readme_for(counts)
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{whole}")
+    message = %(row OMML says "checked for all #{whole}", ) +
+      "corpus has #{partial} for omml"
+    expect(errors_for(wrong)).to include(a_string_including(message))
   end
 
   # The claims are read per labelled row. Compared as a bag of numbers, two

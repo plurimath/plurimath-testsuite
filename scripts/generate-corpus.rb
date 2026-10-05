@@ -1813,7 +1813,6 @@ module CorpusGenerator
     "bound to a namespace, and a well-formed MathML document " \
     "(`omml-mathml-input`).#{XML_EMPTY_NOTE}"
 
-
   # Neither XML format has a preprocessing pass or a grammar of its own.
   # `Mathml::Parser#initialize` and `Omml::Parser#initialize` store the text
   # untouched and `#parse` hands `#text` straight to the `mml` or `omml` gem,
