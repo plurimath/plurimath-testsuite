@@ -719,7 +719,7 @@ module CorpusGenerator
     "Inputs the gem accepts but renders to only some targets"
 
   # Measured, not assumed. `sqrt(` parses (`Math::Formula`), renders to
-  # asciimath, latex and mathml, and raises `Math::ParseError` from
+  # asciimath, latex, mathml, omml and html, and raises `Math::ParseError` from
   # `to_unicodemath`. `build_partial_cases` fails the run if a candidate here
   # renders to EVERY target — that one belongs in a `cases/1` group, and a
   # list that quietly kept it would be claiming a refusal that stopped
@@ -1323,8 +1323,8 @@ module CorpusGenerator
   #   The gem parses all three into a `Math::Formula`; what fails is RENDERING.
   #   `\left( x` and the bad array spec raise from every target, `\sqrt[`
   #   raises from asciimath, latex and unicodemath and renders to mathml. That
-  #   is the `cases/2` shape, not this one — they are candidates for LaTeX's
-  #   `partial_candidates`, which is still empty, and not rejections.
+  #   is the `cases/2` shape, not this one — they are candidates for
+  #   `LATEX_PARTIAL_CANDIDATES`, not yet recorded there, and not rejections.
   #
   #   The empty input `""` IS refused, but `rejections/1` gives `input` a
   #   `minLength` of 1 on purpose: "an implementation has to be given something
