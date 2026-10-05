@@ -72,27 +72,51 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
       .to include(a_string_matching(/"checked for all 4242", corpus has \d+/))
   end
 
+  # The three checks below need targets whose counts differ, and the corpus
+  # no longer has any: every payload declares all six targets, so every row
+  # claims the same number. They therefore pin unequal counts through the
+  # memoised `@positive_target_case_counts` and rewrite the OMML and HTML rows
+  # to match, which gives a README the validator accepts and that a swap or an
+  # overclaim can then break.
+  def distinct_counts
+    counts = runner.send(:positive_target_case_counts).dup
+    counts.merge("omml" => counts["omml"] - 1, "html" => counts["html"] - 2)
+  end
+
+  def readme_for(counts)
+    runner.instance_variable_set(:@positive_target_case_counts, counts)
+    readme
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
+      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+  end
+
+  it "accepts a README whose rows match pinned unequal counts" do
+    expect(errors_for(readme_for(distinct_counts))).to be_empty
+  end
+
   # A target only some payloads declare is checked against its own count, not
-  # the corpus-wide one: claiming every case for OMML, when only the `calls/1`
-  # groups carry it, is exactly the overclaim this row's wording guards.
+  # the corpus-wide one: claiming every case for OMML, when fewer carry it, is
+  # exactly the overclaim this row's wording guards.
   it "rejects a README that claims the whole corpus for a target only some payloads declare" do
-    counts = runner.send(:positive_target_case_counts)
-    partial = counts.values.min
-    expect(partial).to be < counts.values.max
-    wrong = readme.gsub(/checked for all #{partial}\b/, "checked for all #{counts.values.max}")
+    counts = distinct_counts
+    whole = counts.values.max
+    partial = counts["omml"]
+    expect(partial).to be < whole
+    wrong = readme_for(counts).sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{whole}")
     expect(errors_for(wrong))
-      .to include(a_string_matching(/row OMML says "checked for all #{counts.values.max}", corpus has #{partial} for omml/))
+      .to include(a_string_matching(/row OMML says "checked for all #{whole}", corpus has #{partial} for omml/))
   end
 
   # The claims are read per labelled row. Compared as a bag of numbers, two
   # rows trading claims left the bag unchanged and the README passed while
   # stating the wrong count for both targets.
   it "rejects a README whose rows swap their claims" do
-    counts = runner.send(:positive_target_case_counts)
-    swapped = readme
+    counts = distinct_counts
+    base = readme_for(counts)
+    swapped = base
       .sub(/(\| AsciiMath[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
       .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['asciimath']}")
-    expect(swapped).not_to eq(readme)
+    expect(swapped).not_to eq(base)
     expect(errors_for(swapped)).to include(
       a_string_matching(/row AsciiMath says "checked for all #{counts['omml']}", corpus has #{counts['asciimath']} for asciimath/),
       a_string_matching(/row OMML says "checked for all #{counts['asciimath']}", corpus has #{counts['omml']} for omml/),
@@ -100,13 +124,15 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   end
 
   it "rejects one wrong row even when the multiset of claims is unchanged" do
-    counts = runner.send(:positive_target_case_counts)
+    counts = distinct_counts
+    base = readme_for(counts)
     # LaTeX and HTML trade claims and every other row is left alone.
-    wrong = readme
+    wrong = base
       .sub(/(\| LaTeX[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
       .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['latex']}")
+    expect(wrong).not_to eq(base)
     expect(wrong.scan(/checked for all (\d+)/).flatten.sort)
-      .to eq(readme.scan(/checked for all (\d+)/).flatten.sort)
+      .to eq(base.scan(/checked for all (\d+)/).flatten.sort)
     expect(errors_for(wrong)).to include(
       a_string_matching(/row LaTeX says .+corpus has #{counts['latex']} for latex/),
     )
