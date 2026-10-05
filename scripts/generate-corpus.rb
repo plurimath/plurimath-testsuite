@@ -55,8 +55,8 @@ module CorpusGenerator
   # A `calls/1` payload's group name, description and the targets it declares.
   # `targets` is per group rather than per format: `calls/1` states its target
   # list once per payload, and the gem's `Formula#to_<target>(formatter:)`
-  # accepts a formatter on all six render methods, so a group can carry more
-  # targets than the format's default four.
+  # accepts a formatter on all six render methods. Every group declares all
+  # six today, the same list as the formats themselves.
   NUMBER_FORMATTER_GROUP = "number-formatting"
   NumberFormatterGroup = Data.define(:name, :description, :targets, :calls)
   NUMBER_FORMATTER_DESCRIPTION =
@@ -250,11 +250,6 @@ module CorpusGenerator
     ["colour", "Colour, whose first argument is a colour name rather than math", [
       ["colour-named", "color(red)(x)"],
       ["colour-in-sum", "color(blue)(x) + y"],
-    ]],
-    ["left-right", "Explicit left/right fences, which carry their own paren nodes", [
-      ["left-right-round", "left( x right)"],
-      ["left-right-square", "left[ x right]"],
-      ["left-right-around-frac", "left( a/b right)"],
     ]],
     ["mod", "The mod operator, a binary function with no parens of its own", [
       ["mod-simple", "a mod b"],
@@ -729,8 +724,33 @@ module CorpusGenerator
   # renders to EVERY target — that one belongs in a `cases/1` group, and a
   # list that quietly kept it would be claiming a refusal that stopped
   # happening.
+  #
+  # The three `left-right-*` inputs were a `cases/1` group until the text
+  # formats gained the omml and html targets. Each renders to the other five
+  # and raises `Math::ParseError` from `to_html`: `Formula#to_html` calls
+  # `to_html` on every node with one argument, and the gem's
+  # `Math::Function::Right#to_html` takes none, so the `ArgumentError` it
+  # raises is re-raised as a parse error. That is an oracle defect, recorded
+  # here as the gem's behaviour rather than corrected.
   ASCIIMATH_PARTIAL_CANDIDATES = [
     ["partial-sqrt-unclosed", "sqrt("],
+    ["left-right-round", "left( x right)"],
+    ["left-right-square", "left[ x right]"],
+    ["left-right-around-frac", "left( a/b right)"],
+  ].freeze
+
+  # The LaTeX `\left ... \right` inputs, a `cases/1` group until the text
+  # formats gained the omml and html targets. They render to the other five
+  # and refuse `to_html` for the reason given above
+  # `ASCIIMATH_PARTIAL_CANDIDATES`: the gem's `Right#to_html` takes no
+  # argument and `Formula#to_html` passes one.
+  LATEX_PARTIAL_CANDIDATES = [
+    ["latex-left-right-round", "\\left( a \\right)"],
+    ["latex-left-right-square", "\\left[ x \\right]"],
+    ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
+    ["latex-left-right-bar", "\\left| x \\right|"],
+    ["latex-left-right-round-sum", "\\left( a + b \\right)"],
+    ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
   ].freeze
 
   # --- number-formatter calls (calls/1) ------------------------------------
@@ -1214,14 +1234,6 @@ module CorpusGenerator
       # `\textcolor{blue}{y}` is deliberately absent: the gem rejects it, while
       # the `\color` spelling above is accepted.
     ]],
-    ["left-right", "\\left and \\right fences, which size their delimiters", [
-      ["latex-left-right-round", "\\left( a \\right)"],
-      ["latex-left-right-square", "\\left[ x \\right]"],
-      ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
-      ["latex-left-right-bar", "\\left| x \\right|"],
-      ["latex-left-right-round-sum", "\\left( a + b \\right)"],
-      ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
-    ]],
     ["mod", "Modulo, in its \\mod, \\bmod and \\pmod spellings", [
       ["latex-mod-infix", "a \\mod b"],
       ["latex-mod-bmod", "a \\bmod b"],
@@ -1386,7 +1398,7 @@ module CorpusGenerator
     groups: LATEX_GROUPS,
     rejection_candidates: LATEX_REJECTION_CANDIDATES,
     rejection_description: LATEX_REJECTIONS_DESCRIPTION,
-    partial_candidates: [].freeze,
+    partial_candidates: LATEX_PARTIAL_CANDIDATES,
     number_formatter_groups: [].freeze,
   )
 
@@ -1440,7 +1452,7 @@ module CorpusGenerator
   # for a kind whose candidate list is empty, so the outcome payload's absence
   # claims only that none is recorded yet. One partial candidate is already
   # measured and waiting for that slice: `⎣2.5⎦` parses and then fails to
-  # render to every one of the four targets.
+  # render to any of the four targets it was measured against.
   UNICODEMATH_GROUPS = [
     ["numbers", "Number literals: integer, decimal, comma-decimal, signed " \
                 "and exponentiated", [
