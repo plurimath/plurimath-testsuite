@@ -56,7 +56,7 @@ module CorpusGenerator
   # `targets` is per group rather than per format: `calls/1` states its target
   # list once per payload, and the gem's `Formula#to_<target>(formatter:)`
   # accepts a formatter on all six render methods. Every group declares all
-  # six today, the same list as the formats themselves.
+  # six today, the same list as every format that carries cases.
   NUMBER_FORMATTER_GROUP = "number-formatting"
   NumberFormatterGroup = Data.define(:name, :description, :targets, :calls)
   NUMBER_FORMATTER_DESCRIPTION =
@@ -1047,9 +1047,10 @@ module CorpusGenerator
 
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
   # fourteen below them, then the rejection list above and the fourteen
-  # placeholder cases an earlier slice had wrongly excluded. A partially
-  # renderable payload is still outstanding, and `write_format` writes no
-  # payload for a kind whose candidate list is still empty.
+  # placeholder cases an earlier slice had wrongly excluded. Its partially
+  # renderable payload holds the `left-right` inputs, which left their own
+  # group when the format gained the omml and html targets (see
+  # `LATEX_PARTIAL_CANDIDATES`).
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
   # decoration: this repository enforces id uniqueness WITHIN a group, while at
@@ -2085,8 +2086,9 @@ module CorpusGenerator
 
   # The `cases/2` schema name. Same case shape as `case_schema`, except that
   # every target carries an OUTCOME — a rendering or a refusal — instead of a
-  # string. Used only by the groups that need it: the `cases/1` groups are not
-  # converted, not rewritten, and not deprecated.
+  # string. Used only by the groups that need it: `cases/1` is not deprecated,
+  # and a case moves here only when a target starts refusing it, as the
+  # `left-right` inputs did when the text formats gained omml and html.
   def outcome_case_schema(format)
     "plurimath-corpus/#{format.name}/2"
   end

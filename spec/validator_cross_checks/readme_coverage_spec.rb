@@ -19,9 +19,11 @@ require_relative "../spec_helper"
 RSpec.describe Testsuite::Runner, "README coverage claims" do
   # `check_readme` reads the repository's own README, so these drive the
   # underlying method with substituted text instead of writing to the file.
-  let(:runner) do
+  let(:runner) { runner_for(File.expand_path("../../corpus", __dir__)) }
+
+  def runner_for(corpus_root)
     described_class.new(
-      corpus_root: File.expand_path("../../corpus", __dir__),
+      corpus_root: corpus_root,
       schema_dir: File.expand_path("../../schema", __dir__),
       integrity: false,
       allow_empty: false,
@@ -88,6 +90,29 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     readme
       .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
       .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+  end
+
+  # The pinned counts above stand in for the collector, so the collector
+  # itself is driven here against a copy of the corpus in which one payload
+  # declares only four targets: OMML and HTML must then count that payload's
+  # cases out, and every other target must still count them in.
+  it "counts each target over only the payloads that declare it" do
+    Dir.mktmpdir do |dir|
+      FileUtils.cp_r(File.expand_path("../../corpus", __dir__), dir)
+      root = File.join(dir, "corpus")
+      path = File.join(root, "asciimath", "frac.yaml")
+      document = YAML.safe_load_file(path)
+      narrowed = %w[asciimath latex mathml unicodemath]
+      document["targets"] = narrowed
+      document["cases"].each { |c| c["expected"] = c["expected"].slice(*narrowed) }
+      File.write(path, YAML.dump(document))
+      fixture = runner_for(root)
+      full = runner.send(:positive_target_case_counts)
+      counts = fixture.send(:positive_target_case_counts)
+      dropped = document["cases"].length
+      expect(dropped).to be > 0
+      expect(counts).to eq(full.merge("omml" => full["omml"] - dropped, "html" => full["html"] - dropped))
+    end
   end
 
   it "accepts a README whose rows match pinned unequal counts" do

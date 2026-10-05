@@ -137,7 +137,7 @@ the gem's gap and not of the construct.
 
 The two `symbols` groups reach the same gap from opposite sides: LaTeX's
 `\emptyset` and UnicodeMath's `∅` both render to asciimath as
-`"P{emptyset}"` and to the other three targets properly. UnicodeMath's second
+`"P{emptyset}"` and to the other five targets properly. UnicodeMath's second
 one is `a∓b`, placed deliberately beside `a±b`, which asciimath does name.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
@@ -179,6 +179,8 @@ Plurimath produced for it:
         </mstyle>
       </math>
     unicodemath: "(a)/(b)"
+    omml: ...
+    html: "<i>a</i><i>b</i>"
   parse_tree:
     expr:
       frac:
@@ -344,9 +346,14 @@ The schemas use `oneOf` with `additionalProperties: false` in both branches, so
 an outcome carrying both keys is refused and so is an empty one. Two states,
 exhaustive and exclusive, with no third for an implementation to slip through.
 
-This is additive. Nothing in `cases/1` was converted, and `cases/1` is not
-deprecated: a group whose every case renders to every target stays there and
-stays byte-for-byte what it was. A payload names its own schema, and
+`cases/1` is not deprecated: a group whose every case renders to every
+target stays there. A case moves to `cases/2` only when a target it is
+checked against starts refusing it, and that has happened once: when the
+text formats gained the OMML and HTML targets, the nine `left-right` inputs
+(three AsciiMath, six LaTeX) left their `cases/1` groups for the two
+formats' `partial-render` payloads, with every earlier expectation unchanged.
+A consumer that reads only `cases/1` no longer sees those nine. A payload
+names its own schema, and
 `scripts/validate.rb` dispatches on that name, so both kinds sit in the corpus
 side by side. A consumer that understands only `cases/1` keeps working
 untouched — it reads the groups it already read, and skips the ones declaring
@@ -376,6 +383,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: number-formatter-de-style-grouping
   input: '123456.789'
@@ -398,6 +407,9 @@ cases:
       output: 123.456,789
     mathml: ...
     unicodemath:
+      output: 123.456,789
+    omml: ...
+    html:
       output: 123.456,789
   parse_tree: ...
   model: ...
