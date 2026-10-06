@@ -3,7 +3,8 @@
 require_relative "../spec_helper"
 require_relative "../support/generator"
 
-RSpec.describe CorpusGenerator, ".preprocessed_text" do
+# Helpers for the .preprocessed_text specs, kept out of the describe block.
+module PreprocessedTextSpecHelpers
   # A Format carrying only the two fields this method reads. Built here rather
   # than taken from FORMATS so the nil case can exist at all: every shipped
   # format declares a preprocessing pass.
@@ -15,6 +16,10 @@ RSpec.describe CorpusGenerator, ".preprocessed_text" do
       partial_candidates: [], number_formatter_groups: []
     )
   end
+end
+
+RSpec.describe CorpusGenerator, ".preprocessed_text" do
+  include PreprocessedTextSpecHelpers
 
   it "records what the format's own preprocessing pass returns" do
     format = format_with(->(input) { input.tr("{", "L") })
