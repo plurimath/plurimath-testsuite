@@ -112,4 +112,19 @@ RSpec.describe CorpusGenerator, "retired payloads" do
       end
     end
   end
+
+  it "does not follow a symlinked directory inside the output root" do
+    Dir.mktmpdir do |out|
+      FileUtils.mkdir_p(File.join(out, "notes"))
+      File.write(File.join(out, "notes", "left-right.yaml"), "unrecorded")
+      File.symlink(File.join(out, "notes"), File.join(out, "latex"))
+      write_entries(out, [entry("latex/left-right.yaml")])
+
+      recorded = described_class.recorded_payload_paths(out)
+      described_class.discard_retired_payloads(out, recorded, [])
+
+      expect(File.read(File.join(out, "notes", "left-right.yaml")))
+        .to eq("unrecorded")
+    end
+  end
 end

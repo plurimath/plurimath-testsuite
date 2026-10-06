@@ -2107,9 +2107,10 @@ module CorpusGenerator
   # rewrote the provenance; `payloads` is this run's [path, bytes] list.
   #
   # The path check in `recorded_payload_path` is textual, so a symlinked
-  # directory could still lead outside `out_root`. Each file is therefore
-  # removed only if it is a regular file, not a symlink, whose resolved
-  # directory is inside the resolved `out_root`.
+  # directory could still lead somewhere else: outside `out_root`, or to
+  # another file inside it that the generator never recorded. Each file is
+  # therefore removed only if it is a regular file, not a symlink, and no
+  # directory between `out_root` and it is a symlink either.
   def discard_retired_payloads(out_root, recorded, payloads)
     written = payloads.map { |path, _bytes| File.expand_path(path) }
     (recorded - written).each do |path|
@@ -2120,9 +2121,10 @@ module CorpusGenerator
   def retired_payload_removable?(out_root, path)
     return false unless File.lstat(path).file?
 
-    root = File.realpath(out_root)
-    directory = File.realpath(File.dirname(path))
-    directory == root || directory.start_with?("#{root}/")
+    directory = File.dirname(path)
+    lexical_root = File.expand_path(out_root)
+    inner = directory == lexical_root ? "." : relative(directory, lexical_root)
+    File.realpath(directory) == File.expand_path(inner, File.realpath(out_root))
   rescue SystemCallError
     false
   end
