@@ -2055,6 +2055,49 @@ module CorpusGenerator
     File.delete(path) if File.file?(path)
   end
 
+  # The payload paths the previous run recorded in `out_root`'s
+  # `provenance.yaml`, as absolute paths. That list is the generator's own
+  # record of the files it wrote, so it is what decides which files a later
+  # run may remove: a file the generator never recorded — a hand-maintained
+  # file, or anything else that shares the directory — is never on it. An
+  # absent or unreadable document records nothing, and so removes nothing.
+  # Only plain relative `.yaml` paths that stay inside `out_root` count;
+  # anything else in the list is ignored rather than trusted.
+  def recorded_payload_paths(out_root)
+    path = File.join(out_root, PROVENANCE_PATH)
+    return [] unless File.file?(path)
+
+    document = begin
+      Psych.safe_load(File.read(path), aliases: false)
+    rescue Psych::Exception
+      nil
+    end
+    entries = document.is_a?(Hash) ? document["payloads"] : nil
+    return [] unless entries.is_a?(Array)
+
+    root = File.expand_path(out_root)
+    entries.filter_map do |entry|
+      recorded = entry.is_a?(Hash) ? entry["path"] : nil
+      next unless recorded.is_a?(String) && recorded.end_with?(".yaml")
+      next if recorded.start_with?("/") || recorded.split("/").include?("..")
+
+      absolute = File.expand_path(recorded, root)
+      next unless absolute.start_with?("#{root}/")
+
+      absolute unless absolute == File.join(root, PROVENANCE_PATH)
+    end
+  end
+
+  # Removes every payload the previous run recorded that this run did not
+  # write: a group that no longer exists would otherwise stay on disk, outside
+  # the new `provenance.yaml`, and fail validation as an unrecorded payload.
+  # `recorded` comes from `recorded_payload_paths`, read before this run
+  # rewrote the provenance; `payloads` is this run's [path, bytes] list.
+  def discard_retired_payloads(recorded, payloads)
+    written = payloads.map { |path, _bytes| File.expand_path(path) }
+    (recorded - written).each { |path| discard_payload(path) }
+  end
+
   # `payloads` is a list of [absolute path, written bytes]. Sorted by the
   # recorded path so the document does not depend on the order the payloads
   # happened to be written in.
@@ -2376,6 +2419,7 @@ module CorpusGenerator
     provenance = build_provenance(gem_dir, dirty, options[:allow_dirty])
 
     out_root = options[:out]
+    recorded = recorded_payload_paths(out_root)
     payloads = []
     # One provenance document covers the whole corpus, so the formats are
     # written before it, and their tallies added up for the summary line.
@@ -2387,6 +2431,7 @@ module CorpusGenerator
       format_counts.each { |key, value| counts[key] += value }
     end
 
+    discard_retired_payloads(recorded, payloads)
     provenance_path = write_provenance(out_root, provenance, payloads)
 
     payloads.map(&:first).sort.each do |payload_path|
