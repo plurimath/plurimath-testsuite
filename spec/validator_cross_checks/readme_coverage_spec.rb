@@ -16,12 +16,11 @@
 
 require_relative "../spec_helper"
 
-RSpec.describe Testsuite::Runner, "README coverage claims" do
-  # `check_readme` reads the repository's own README, so these drive the
-  # underlying method with substituted text instead of writing to the file.
-  let(:runner) do
+# Helpers for the README coverage specs, kept out of the describe block.
+module ReadmeCoverageSpecHelpers
+  def runner_for(corpus_root)
     described_class.new(
-      corpus_root: File.expand_path("../../corpus", __dir__),
+      corpus_root: corpus_root,
       schema_dir: File.expand_path("../../schema", __dir__),
       integrity: false,
       allow_empty: false,
@@ -38,11 +37,49 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     end
   end
 
-  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
-
   def errors_for(text)
     runner.send(:readme_count_errors, text)
   end
+
+  # The three checks in the describe below need targets whose counts differ,
+  # and the corpus no longer has any: every payload declares all six targets,
+  # so every row claims the same number. They therefore pin unequal counts
+  # through the memoised `@positive_target_case_counts` and rewrite the OMML
+  # and HTML rows to match, which gives a README the validator accepts and
+  # that a swap or an overclaim can then break.
+  def distinct_counts
+    counts = runner.send(:positive_target_case_counts).dup
+    counts.merge("omml" => counts["omml"] - 1, "html" => counts["html"] - 2)
+  end
+
+  def readme_for(counts)
+    runner.instance_variable_set(:@positive_target_case_counts, counts)
+    readme
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
+      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+  end
+
+  # Narrows one payload to the four text-format targets of earlier slices and
+  # returns how many cases it holds.
+  def narrow_to_four_targets(path)
+    document = YAML.safe_load_file(path)
+    narrowed = %w[asciimath latex mathml unicodemath]
+    document["targets"] = narrowed
+    document["cases"].each do |entry|
+      entry["expected"] = entry["expected"].slice(*narrowed)
+    end
+    File.write(path, YAML.dump(document))
+    document["cases"].length
+  end
+end
+
+RSpec.describe Testsuite::Runner, "README coverage claims" do
+  include ReadmeCoverageSpecHelpers
+
+  # `check_readme` reads the repository's own README, so these drive the
+  # underlying method with substituted text instead of writing to the file.
+  let(:runner) { runner_for(File.expand_path("../../corpus", __dir__)) }
+  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
 
   it "accepts the README as it stands" do
     expect(errors_for(readme)).to be_empty
@@ -72,27 +109,54 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
       .to include(a_string_matching(/"checked for all 4242", corpus has \d+/))
   end
 
+  # The pinned counts above stand in for the collector, so the collector
+  # itself is driven here against a copy of the corpus in which one payload
+  # declares only four targets: OMML and HTML must then count that payload's
+  # cases out, and every other target must still count them in.
+  it "counts each target over only the payloads that declare it" do
+    full = runner.send(:positive_target_case_counts)
+    Dir.mktmpdir do |dir|
+      FileUtils.cp_r(File.expand_path("../../corpus", __dir__), dir)
+      root = File.join(dir, "corpus")
+      frac = File.join(root, "asciimath", "frac.yaml")
+      dropped = narrow_to_four_targets(frac)
+      expect(dropped).to be > 0
+      expect(runner_for(root).send(:positive_target_case_counts)).to eq(
+        full.merge("omml" => full["omml"] - dropped,
+                   "html" => full["html"] - dropped),
+      )
+    end
+  end
+
+  it "accepts a README whose rows match pinned unequal counts" do
+    expect(errors_for(readme_for(distinct_counts))).to be_empty
+  end
+
   # A target only some payloads declare is checked against its own count, not
-  # the corpus-wide one: claiming every case for OMML, when only the `calls/1`
-  # groups carry it, is exactly the overclaim this row's wording guards.
+  # the corpus-wide one: claiming every case for OMML, when fewer carry it, is
+  # exactly the overclaim this row's wording guards.
   it "rejects a README that claims the whole corpus for a target only some payloads declare" do
-    counts = runner.send(:positive_target_case_counts)
-    partial = counts.values.min
-    expect(partial).to be < counts.values.max
-    wrong = readme.gsub(/checked for all #{partial}\b/, "checked for all #{counts.values.max}")
-    expect(errors_for(wrong))
-      .to include(a_string_matching(/row OMML says "checked for all #{counts.values.max}", corpus has #{partial} for omml/))
+    counts = distinct_counts
+    whole = counts.values.max
+    partial = counts["omml"]
+    expect(partial).to be < whole
+    wrong = readme_for(counts)
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{whole}")
+    message = %(row OMML says "checked for all #{whole}", ) +
+      "corpus has #{partial} for omml"
+    expect(errors_for(wrong)).to include(a_string_including(message))
   end
 
   # The claims are read per labelled row. Compared as a bag of numbers, two
   # rows trading claims left the bag unchanged and the README passed while
   # stating the wrong count for both targets.
   it "rejects a README whose rows swap their claims" do
-    counts = runner.send(:positive_target_case_counts)
-    swapped = readme
+    counts = distinct_counts
+    base = readme_for(counts)
+    swapped = base
       .sub(/(\| AsciiMath[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
       .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['asciimath']}")
-    expect(swapped).not_to eq(readme)
+    expect(swapped).not_to eq(base)
     expect(errors_for(swapped)).to include(
       a_string_matching(/row AsciiMath says "checked for all #{counts['omml']}", corpus has #{counts['asciimath']} for asciimath/),
       a_string_matching(/row OMML says "checked for all #{counts['asciimath']}", corpus has #{counts['omml']} for omml/),
@@ -100,13 +164,15 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   end
 
   it "rejects one wrong row even when the multiset of claims is unchanged" do
-    counts = runner.send(:positive_target_case_counts)
+    counts = distinct_counts
+    base = readme_for(counts)
     # LaTeX and HTML trade claims and every other row is left alone.
-    wrong = readme
+    wrong = base
       .sub(/(\| LaTeX[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
       .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['latex']}")
+    expect(wrong).not_to eq(base)
     expect(wrong.scan(/checked for all (\d+)/).flatten.sort)
-      .to eq(readme.scan(/checked for all (\d+)/).flatten.sort)
+      .to eq(base.scan(/checked for all (\d+)/).flatten.sort)
     expect(errors_for(wrong)).to include(
       a_string_matching(/row LaTeX says .+corpus has #{counts['latex']} for latex/),
     )

@@ -22,17 +22,18 @@ Plurimath supports it — Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 158 cases, 26 groups | ✅ checked for all 780, one a refusal
+| AsciiMath   | ✅ 158 cases, 25 groups | ✅ checked for all 780, one a refusal
 | LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 780, one a refusal
 | MathML      | ✅ 287 cases, 12 groups | ✅ checked for all 780, two refusals
-| OMML        | ✅ 190 cases, 14 groups | ✅ checked for all 541, two refusals
+| OMML        | ✅ 190 cases, 14 groups | ✅ checked for all 780, two refusals
 | UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 780, 22 refusals
-| HTML        | ❌ no cases yet         | ✅ checked for all 541, 41 refusals
+| HTML        | ❌ no cases yet         | ✅ checked for all 780, 50 refusals
 |===
 
-Every case carries an expectation for every output format its group lists:
-AsciiMath, LaTeX, MathML and UnicodeMath for the text inputs, all six for the
-MathML and OMML inputs and the calls groups. An expectation is usually a
+Every case carries an expectation for every output format its group lists,
+and every rendering group lists all six. The rejection groups
+(`rejections.yaml` under each input format) list no output formats: their
+cases are inputs the gem refuses. An expectation is usually a
 rendering; the ones the output column counts as refusals are not, and the
 section on outcome payloads below says why they are recorded rather than
 omitted.
@@ -46,8 +47,8 @@ because group names repeat across input formats — `asciimath/numbers` and
 `asciimath/roots` 4, `asciimath/unary-functions` 7, `asciimath/quoted-text` 3,
 `asciimath/nary` 6, `asciimath/matrices` 2, `asciimath/mixed` 5,
 `asciimath/permissive` 6, `asciimath/fonts` 7, `asciimath/colour` 2,
-`asciimath/left-right` 3, `asciimath/mod` 3, `asciimath/whitespace` 5,
-`asciimath/partial-render` 1, `asciimath/number-formatting` 2,
+`asciimath/mod` 3, `asciimath/whitespace` 5,
+`asciimath/partial-render` 4, `asciimath/number-formatting` 2,
 `asciimath/number-formatting-precision` 8,
 `asciimath/number-formatting-significant` 6,
 `asciimath/number-formatting-notation` 15,
@@ -58,8 +59,14 @@ because group names repeat across input formats — `asciimath/numbers` and
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,
 `latex/quoted-text` 4, `latex/nary` 14, `latex/matrices` 6, `latex/fonts` 10,
-`latex/colour` 3, `latex/left-right` 6, `latex/mod` 5, `latex/whitespace` 6,
-`latex/accents` 13, `latex/over-under` 11.
+`latex/colour` 3, `latex/mod` 5, `latex/whitespace` 6,
+`latex/accents` 13, `latex/over-under` 11, `latex/partial-render` 6.
+
+The `left-right` inputs of both formats are in `partial-render` rather than
+in a group of their own. Each renders to five targets and refuses HTML: the
+gem's `Math::Function::Right#to_html` takes no argument, `Formula#to_html`
+passes it one, and the `ArgumentError` is re-raised as `Math::ParseError`.
+That is a defect in the gem, recorded here as what it does.
 
 `unicode/numbers` 5, `unicode/symbols` 4, `unicode/operators` 6,
 `unicode/fences` 5.
@@ -78,8 +85,8 @@ The MathML and OMML inputs are every distinct string the examples under the
 gem's `spec/plurimath/mathml` and `spec/plurimath/omml` hand to the parser,
 kept in `scripts/seeds/` with the spec file and line each came from. A case
 sits in the first group, in the order above, whose construct it contains, so a
-fraction inside a table is a `tables` case. These two formats render to all
-six targets, OMML and HTML included, where the text formats render to four.
+fraction inside a table is a `tables` case. Like the text formats, these two
+render to all six targets, OMML and HTML included.
 Neither has a preprocessing pass or a grammar of its own: `preprocessed` is
 the input unchanged, because that is exactly what the gem hands its XML
 reader, and `parse_tree` is null, because the reader builds another gem's
@@ -100,11 +107,12 @@ HTML has no case payload at all; its rejections are the only HTML payload.
 They are absent from the inventory above on purpose: that inventory counts
 payloads carrying expectations, and a rejection carries none.
 
-What LaTeX still has no payload for is the outcome kind. Three inputs were
-measured as candidates for one — `\left( x`, `\sqrt[` and
+LaTeX's outcome payload holds only the `\left ... \right` inputs above. Three
+more inputs were measured as candidates for it — `\left( x`, `\sqrt[` and
 `\begin{array}{zz} a \end{array}` all parse and then fail to render, the
-first and third to every target — but none is recorded yet, so a port may
-still refuse them outright and pass everything here.
+first and third to every target it was measured against — but none is
+recorded yet, so a port may still refuse them outright and pass everything
+here.
 
 UnicodeMath is the corpus name for the notation, and it is `unicode` rather
 than `unicodemath` because that is what the gem parses: `Math::VALID_TYPES`
@@ -115,8 +123,8 @@ two spellings are not a typo.
 
 UnicodeMath has no outcome payload yet, so a port may still refuse inputs
 this corpus never puts to it. One outcome candidate is
-measured and waiting: `⎣2.5⎦` parses and then fails to render to every one of
-the four targets.
+measured and waiting: `⎣2.5⎦` parses and then fails to render to any of the
+six targets.
 
 Seven groups — the LaTeX `symbols`, `nary`, `whitespace`, `accents` and
 `over-under`, and the UnicodeMath `symbols` and `operators` — hold cases whose
@@ -131,7 +139,7 @@ the gem's gap and not of the construct.
 
 The two `symbols` groups reach the same gap from opposite sides: LaTeX's
 `\emptyset` and UnicodeMath's `∅` both render to asciimath as
-`"P{emptyset}"` and to the other three targets properly. UnicodeMath's second
+`"P{emptyset}"` and to the other five targets properly. UnicodeMath's second
 one is `a∓b`, placed deliberately beside `a±b`, which asciimath does name.
 
 `scripts/validate.rb` checks these numbers against the corpus, so they cannot
@@ -173,6 +181,8 @@ Plurimath produced for it:
         </mstyle>
       </math>
     unicodemath: "(a)/(b)"
+    omml: ...
+    html: "<i>a</i><i>b</i>"
   parse_tree:
     expr:
       frac:
@@ -265,8 +275,8 @@ left.
 === Outcome payloads
 
 The third kind. Some inputs Plurimath **accepts** render to only some of the
-targets. `sqrt(` is one: it parses, it renders to AsciiMath, LaTeX and MathML,
-and `to_unicodemath` raises.
+targets. `sqrt(` is one: it parses, it renders to AsciiMath, LaTeX, MathML,
+OMML and HTML, and `to_unicodemath` raises.
 
 The case shape above cannot hold that. A group declares one `targets` list and
 every case must carry an expectation for every target in it, so an input like
@@ -287,6 +297,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: partial-sqrt-unclosed
   input: sqrt(
@@ -307,6 +319,10 @@ cases:
     unicodemath:
       error:
         category: parse_error
+    omml:
+      output: ...
+    html:
+      output: "<i>sqrt</i>"
   parse_tree: ...
   model: ...
 ----
@@ -332,9 +348,14 @@ The schemas use `oneOf` with `additionalProperties: false` in both branches, so
 an outcome carrying both keys is refused and so is an empty one. Two states,
 exhaustive and exclusive, with no third for an implementation to slip through.
 
-This is additive. Nothing in `cases/1` was converted, and `cases/1` is not
-deprecated: a group whose every case renders to every target stays there and
-stays byte-for-byte what it was. A payload names its own schema, and
+`cases/1` is not deprecated: a group whose every case renders to every
+target stays there. A case moves to `cases/2` only when a target it is
+checked against starts refusing it, and that has happened once: when the
+text formats gained the OMML and HTML targets, the nine `left-right` inputs
+(three AsciiMath, six LaTeX) left their `cases/1` groups for the two
+formats' `partial-render` payloads, with every earlier expectation unchanged.
+A consumer that reads only `cases/1` no longer sees those nine. A payload
+names its own schema, and
 `scripts/validate.rb` dispatches on that name, so both kinds sit in the corpus
 side by side. A consumer that understands only `cases/1` keeps working
 untouched — it reads the groups it already read, and skips the ones declaring
@@ -364,6 +385,8 @@ targets:
 - latex
 - mathml
 - unicodemath
+- omml
+- html
 cases:
 - id: number-formatter-de-style-grouping
   input: '123456.789'
@@ -386,6 +409,9 @@ cases:
       output: 123.456,789
     mathml: ...
     unicodemath:
+      output: 123.456,789
+    omml: ...
+    html:
       output: 123.456,789
   parse_tree: ...
   model: ...

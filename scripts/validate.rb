@@ -1307,11 +1307,10 @@ module Testsuite
     end
 
     # The "checked for all N" claims count, per output target, the positive
-    # cases in the payloads that declare that target. For the four targets
-    # every payload declares that is every positive case in the corpus; a
-    # target only some payloads declare (`calls/1` groups carry `omml` and
-    # `html` where the other kinds do not) is checked against its own, smaller
-    # count. Each claim is read off a coverage row whose first cell names the
+    # cases in the payloads that declare that target. Every payload declares
+    # all six today, so every claim is the same number, but a target only some
+    # payloads declare would be checked against its own, smaller count. Each
+    # claim is read off a coverage row whose first cell names the
     # notation, and that row's label is its target key lowercased (`OMML` is
     # `omml`), so a claim is compared to the count of ITS OWN row's target —
     # swapping two rows' numbers is an error even though the set of numbers is

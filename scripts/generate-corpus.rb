@@ -55,8 +55,8 @@ module CorpusGenerator
   # A `calls/1` payload's group name, description and the targets it declares.
   # `targets` is per group rather than per format: `calls/1` states its target
   # list once per payload, and the gem's `Formula#to_<target>(formatter:)`
-  # accepts a formatter on all six render methods, so a group can carry more
-  # targets than the format's default four.
+  # accepts a formatter on all six render methods. Every group declares all
+  # six today, the same list as every format that carries cases.
   NUMBER_FORMATTER_GROUP = "number-formatting"
   NumberFormatterGroup = Data.define(:name, :description, :targets, :calls)
   NUMBER_FORMATTER_DESCRIPTION =
@@ -250,11 +250,6 @@ module CorpusGenerator
     ["colour", "Colour, whose first argument is a colour name rather than math", [
       ["colour-named", "color(red)(x)"],
       ["colour-in-sum", "color(blue)(x) + y"],
-    ]],
-    ["left-right", "Explicit left/right fences, which carry their own paren nodes", [
-      ["left-right-round", "left( x right)"],
-      ["left-right-square", "left[ x right]"],
-      ["left-right-around-frac", "left( a/b right)"],
     ]],
     ["mod", "The mod operator, a binary function with no parens of its own", [
       ["mod-simple", "a mod b"],
@@ -724,13 +719,38 @@ module CorpusGenerator
     "Inputs the gem accepts but renders to only some targets"
 
   # Measured, not assumed. `sqrt(` parses (`Math::Formula`), renders to
-  # asciimath, latex and mathml, and raises `Math::ParseError` from
+  # asciimath, latex, mathml, omml and html, and raises `Math::ParseError` from
   # `to_unicodemath`. `build_partial_cases` fails the run if a candidate here
   # renders to EVERY target — that one belongs in a `cases/1` group, and a
   # list that quietly kept it would be claiming a refusal that stopped
   # happening.
+  #
+  # The three `left-right-*` inputs were a `cases/1` group until the text
+  # formats gained the omml and html targets. Each renders to the other five
+  # and raises `Math::ParseError` from `to_html`: `Formula#to_html` calls
+  # `to_html` on every node with one argument, and the gem's
+  # `Math::Function::Right#to_html` takes none, so the `ArgumentError` it
+  # raises is re-raised as a parse error. That is an oracle defect, recorded
+  # here as the gem's behaviour rather than corrected.
   ASCIIMATH_PARTIAL_CANDIDATES = [
     ["partial-sqrt-unclosed", "sqrt("],
+    ["left-right-round", "left( x right)"],
+    ["left-right-square", "left[ x right]"],
+    ["left-right-around-frac", "left( a/b right)"],
+  ].freeze
+
+  # The LaTeX `\left ... \right` inputs, a `cases/1` group until the text
+  # formats gained the omml and html targets. They render to the other five
+  # and refuse `to_html` for the reason given in the comment on
+  # `ASCIIMATH_PARTIAL_CANDIDATES`: the gem's `Right#to_html` takes no
+  # argument and `Formula#to_html` passes one.
+  LATEX_PARTIAL_CANDIDATES = [
+    ["latex-left-right-round", "\\left( a \\right)"],
+    ["latex-left-right-square", "\\left[ x \\right]"],
+    ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
+    ["latex-left-right-bar", "\\left| x \\right|"],
+    ["latex-left-right-round-sum", "\\left( a + b \\right)"],
+    ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
   ].freeze
 
   # --- number-formatter calls (calls/1) ------------------------------------
@@ -781,17 +801,17 @@ module CorpusGenerator
       options: options }
   end
 
-  # The targets whose `to_<target>` takes `formatter:` (Math::Formula in the
-  # oracle gem). The first slice's group keeps the four the format declares;
-  # the groups below carry all six, so a port has oracle data for the OMML and
-  # HTML formatter paths as well.
-  NUMBER_FORMATTER_ALL_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
+  # Every target `Math::Formula` renders to, and so every target whose
+  # `to_<target>` takes `formatter:`. Every case and call group in every input
+  # format declares all six, so a port has oracle data for the OMML and HTML
+  # renderers whichever notation it parsed.
+  ALL_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
 
   ASCIIMATH_NUMBER_FORMATTER_GROUPS = [
     NumberFormatterGroup.new(
       name: NUMBER_FORMATTER_GROUP,
       description: NUMBER_FORMATTER_DESCRIPTION,
-      targets: %w[asciimath latex mathml unicodemath].freeze,
+      targets: ALL_TARGETS,
       calls: ASCIIMATH_NUMBER_FORMATTER_CALLS,
     ),
     NumberFormatterGroup.new(
@@ -799,7 +819,7 @@ module CorpusGenerator
       description: "The `precision:` argument and the `digit_count` option: " \
                    "fraction digits cut off or zero-padded, and a total-digit " \
                    "budget that can carry into a new leading digit.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-precision-truncates-fraction", "14236.39239",
          nf_args(precision: 2)],
@@ -828,7 +848,7 @@ module CorpusGenerator
       description: "The `significant` option: rounding to a count of " \
                    "significant digits, on integers, on values below one, " \
                    "and where rounding carries.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-significant-rounds-integer", "112",
          nf_args(options: { significant: 2 })],
@@ -851,7 +871,7 @@ module CorpusGenerator
                    "with the e, times and exponent_sign symbols, zero, " \
                    "small values, and precision, significant and digit_count " \
                    "interacting with a notation.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-notation-e-custom-symbol-precision", "14000",
          nf_args(precision: 1,
@@ -903,7 +923,7 @@ module CorpusGenerator
                    "render a subscript base and omml renders the default " \
                    "prefix as text; with one given, every target renders " \
                    "the literal text.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-base-2-grouped", "1910",
          nf_args(options: { base: 2, group_digits: 8, group: " " })],
@@ -955,7 +975,7 @@ module CorpusGenerator
                    "and integer padding by `padding_digits`, `padding` and " \
                    "`padding_group_digits`. A leading `-` in AsciiMath input " \
                    "is a separate operator node, not part of the number.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-sign-plus-basic", "14236.39239",
          nf_args(options: { number_sign: :plus })],
@@ -982,7 +1002,7 @@ module CorpusGenerator
                    "resolves them: including where a locale changes nothing " \
                    "because Standard fills `decimal` and `group` with its " \
                    "own defaults.",
-      targets: NUMBER_FORMATTER_ALL_TARGETS,
+      targets: ALL_TARGETS,
       calls: [
         ["number-formatter-locale-de-standard-defaults", "1234567.891",
          nf_args(locale: "de")],
@@ -1015,7 +1035,7 @@ module CorpusGenerator
   ASCIIMATH = Format.new(
     name: "asciimath",
     label: "AsciiMath",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Asciimath::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::Asciimath::Parse.new.parse(text) },
     groups: ASCIIMATH_GROUPS,
@@ -1027,9 +1047,10 @@ module CorpusGenerator
 
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
   # fourteen below them, then the rejection list above and the fourteen
-  # placeholder cases an earlier slice had wrongly excluded. A partially
-  # renderable payload is still outstanding, and `write_format` writes no
-  # payload for a kind whose candidate list is still empty.
+  # placeholder cases an earlier slice had wrongly excluded. Its partially
+  # renderable payload holds the `left-right` inputs, which left their own
+  # group when the format gained the omml and html targets (see
+  # `LATEX_PARTIAL_CANDIDATES`).
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
   # decoration: this repository enforces id uniqueness WITHIN a group, while at
@@ -1214,14 +1235,6 @@ module CorpusGenerator
       # `\textcolor{blue}{y}` is deliberately absent: the gem rejects it, while
       # the `\color` spelling above is accepted.
     ]],
-    ["left-right", "\\left and \\right fences, which size their delimiters", [
-      ["latex-left-right-round", "\\left( a \\right)"],
-      ["latex-left-right-square", "\\left[ x \\right]"],
-      ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
-      ["latex-left-right-bar", "\\left| x \\right|"],
-      ["latex-left-right-round-sum", "\\left( a + b \\right)"],
-      ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
-    ]],
     ["mod", "Modulo, in its \\mod, \\bmod and \\pmod spellings", [
       ["latex-mod-infix", "a \\mod b"],
       ["latex-mod-bmod", "a \\bmod b"],
@@ -1310,9 +1323,9 @@ module CorpusGenerator
   #   `\left( x`, `\sqrt[` and `\begin{array}{zz} a \end{array}` are ACCEPTED.
   #   The gem parses all three into a `Math::Formula`; what fails is RENDERING.
   #   `\left( x` and the bad array spec raise from every target, `\sqrt[`
-  #   raises from asciimath, latex and unicodemath and renders to mathml. That
-  #   is the `cases/2` shape, not this one — they are candidates for LaTeX's
-  #   `partial_candidates`, which is still empty, and not rejections.
+  #   raises from every target but mathml, which renders it. That
+  #   is the `cases/2` shape, not this one — they are candidates for
+  #   `LATEX_PARTIAL_CANDIDATES`, not yet recorded there, and not rejections.
   #
   #   The empty input `""` IS refused, but `rejections/1` gives `input` a
   #   `minLength` of 1 on purpose: "an implementation has to be given something
@@ -1380,13 +1393,13 @@ module CorpusGenerator
   LATEX = Format.new(
     name: "latex",
     label: "LaTeX",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Latex::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::Latex::Parse.new.parse(text) },
     groups: LATEX_GROUPS,
     rejection_candidates: LATEX_REJECTION_CANDIDATES,
     rejection_description: LATEX_REJECTIONS_DESCRIPTION,
-    partial_candidates: [].freeze,
+    partial_candidates: LATEX_PARTIAL_CANDIDATES,
     number_formatter_groups: [].freeze,
   )
 
@@ -1440,7 +1453,7 @@ module CorpusGenerator
   # for a kind whose candidate list is empty, so the outcome payload's absence
   # claims only that none is recorded yet. One partial candidate is already
   # measured and waiting for that slice: `⎣2.5⎦` parses and then fails to
-  # render to every one of the four targets.
+  # render to any of the six targets.
   UNICODEMATH_GROUPS = [
     ["numbers", "Number literals: integer, decimal, comma-decimal, signed " \
                 "and exponentiated", [
@@ -1584,7 +1597,7 @@ module CorpusGenerator
   UNICODEMATH = Format.new(
     name: "unicode",
     label: "UnicodeMath",
-    targets: %w[asciimath latex mathml unicodemath].freeze,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::UnicodeMath::Parser.new(input).text },
     parse_tree: ->(text) { Plurimath::UnicodeMath::Parse.new.parse(text) },
     groups: UNICODEMATH_GROUPS,
@@ -1800,11 +1813,6 @@ module CorpusGenerator
     "bound to a namespace, and a well-formed MathML document " \
     "(`omml-mathml-input`).#{XML_EMPTY_NOTE}"
 
-  # Every target `Math::Formula` renders to. The three text formats record
-  # four because that is what their first slices measured; these two record
-  # all six from the start, OMML and HTML included.
-  XML_TARGETS = %w[asciimath latex mathml unicodemath omml html].freeze
-
   # Neither XML format has a preprocessing pass or a grammar of its own.
   # `Mathml::Parser#initialize` and `Omml::Parser#initialize` store the text
   # untouched and `#parse` hands `#text` straight to the `mml` or `omml` gem,
@@ -1817,7 +1825,7 @@ module CorpusGenerator
   MATHML = Format.new(
     name: "mathml",
     label: "MathML",
-    targets: XML_TARGETS,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Mathml::Parser.new(input).text },
     parse_tree: ->(_text) {},
     groups: MATHML_SEED_GROUPS,
@@ -1831,7 +1839,7 @@ module CorpusGenerator
   OMML = Format.new(
     name: "omml",
     label: "OMML",
-    targets: XML_TARGETS,
+    targets: ALL_TARGETS,
     preprocess: ->(input) { Plurimath::Omml::Parser.new(input).text },
     parse_tree: ->(_text) {},
     groups: OMML_SEED_GROUPS,
@@ -2077,8 +2085,9 @@ module CorpusGenerator
 
   # The `cases/2` schema name. Same case shape as `case_schema`, except that
   # every target carries an OUTCOME — a rendering or a refusal — instead of a
-  # string. Used only by the groups that need it: the `cases/1` groups are not
-  # converted, not rewritten, and not deprecated.
+  # string. Used only by the groups that need it: `cases/1` is not deprecated,
+  # and a case moves here only when a target starts refusing it, as the
+  # `left-right` inputs did when the text formats gained omml and html.
   def outcome_case_schema(format)
     "plurimath-corpus/#{format.name}/2"
   end
