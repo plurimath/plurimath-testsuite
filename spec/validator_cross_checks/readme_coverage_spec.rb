@@ -16,12 +16,8 @@
 
 require_relative "../spec_helper"
 
-RSpec.describe Testsuite::Runner, "README coverage claims" do
-  # `check_readme` reads the repository's own README, so these drive the
-  # underlying method with substituted text instead of writing to the file.
-  let(:runner) { runner_for(File.expand_path("../../corpus", __dir__)) }
-  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
-
+# Helpers for the README coverage specs, kept out of the describe block.
+module ReadmeCoverageSpecHelpers
   def runner_for(corpus_root)
     described_class.new(
       corpus_root: corpus_root,
@@ -44,6 +40,46 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
   def errors_for(text)
     runner.send(:readme_count_errors, text)
   end
+
+  # The three checks in the describe below need targets whose counts differ,
+  # and the corpus no longer has any: every payload declares all six targets,
+  # so every row claims the same number. They therefore pin unequal counts
+  # through the memoised `@positive_target_case_counts` and rewrite the OMML
+  # and HTML rows to match, which gives a README the validator accepts and
+  # that a swap or an overclaim can then break.
+  def distinct_counts
+    counts = runner.send(:positive_target_case_counts).dup
+    counts.merge("omml" => counts["omml"] - 1, "html" => counts["html"] - 2)
+  end
+
+  def readme_for(counts)
+    runner.instance_variable_set(:@positive_target_case_counts, counts)
+    readme
+      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
+      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
+  end
+
+  # Narrows one payload to the four text-format targets of earlier slices and
+  # returns how many cases it holds.
+  def narrow_to_four_targets(path)
+    document = YAML.safe_load_file(path)
+    narrowed = %w[asciimath latex mathml unicodemath]
+    document["targets"] = narrowed
+    document["cases"].each do |entry|
+      entry["expected"] = entry["expected"].slice(*narrowed)
+    end
+    File.write(path, YAML.dump(document))
+    document["cases"].length
+  end
+end
+
+RSpec.describe Testsuite::Runner, "README coverage claims" do
+  include ReadmeCoverageSpecHelpers
+
+  # `check_readme` reads the repository's own README, so these drive the
+  # underlying method with substituted text instead of writing to the file.
+  let(:runner) { runner_for(File.expand_path("../../corpus", __dir__)) }
+  let(:readme) { File.read(File.expand_path("../../README.adoc", __dir__)) }
 
   it "accepts the README as it stands" do
     expect(errors_for(readme)).to be_empty
@@ -71,37 +107,6 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     wrong = readme.gsub(/checked for all \d+/, "checked for all 4242")
     expect(errors_for(wrong))
       .to include(a_string_matching(/"checked for all 4242", corpus has \d+/))
-  end
-
-  # The three checks below need targets whose counts differ, and the corpus
-  # no longer has any: every payload declares all six targets, so every row
-  # claims the same number. They therefore pin unequal counts through the
-  # memoised `@positive_target_case_counts` and rewrite the OMML and HTML rows
-  # to match, which gives a README the validator accepts and that a swap or an
-  # overclaim can then break.
-  def distinct_counts
-    counts = runner.send(:positive_target_case_counts).dup
-    counts.merge("omml" => counts["omml"] - 1, "html" => counts["html"] - 2)
-  end
-
-  def readme_for(counts)
-    runner.instance_variable_set(:@positive_target_case_counts, counts)
-    readme
-      .sub(/(\| OMML[^\n]*checked for all )\d+/, "\\1#{counts['omml']}")
-      .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
-  end
-
-  # Narrows one payload to the four text-format targets of earlier slices and
-  # returns how many cases it holds.
-  def narrow_to_four_targets(path)
-    document = YAML.safe_load_file(path)
-    narrowed = %w[asciimath latex mathml unicodemath]
-    document["targets"] = narrowed
-    document["cases"].each do |entry|
-      entry["expected"] = entry["expected"].slice(*narrowed)
-    end
-    File.write(path, YAML.dump(document))
-    document["cases"].length
   end
 
   # The pinned counts above stand in for the collector, so the collector
