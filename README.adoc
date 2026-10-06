@@ -31,7 +31,9 @@ Plurimath supports it — Plurimath supports every row.
 |===
 
 Every case carries an expectation for every output format its group lists,
-and every group lists all six. An expectation is usually a
+and every rendering group lists all six. The rejection groups
+(`rejections.yaml` under each input format) list no output formats: their
+cases are inputs the gem refuses. An expectation is usually a
 rendering; the ones the output column counts as refusals are not, and the
 section on outcome payloads below says why they are recorded rather than
 omitted.
@@ -122,7 +124,7 @@ two spellings are not a typo.
 UnicodeMath has no outcome payload yet, so a port may still refuse inputs
 this corpus never puts to it. One outcome candidate is
 measured and waiting: `⎣2.5⎦` parses and then fails to render to any of the
-four targets it was measured against.
+six targets.
 
 Seven groups — the LaTeX `symbols`, `nary`, `whitespace`, `accents` and
 `over-under`, and the UnicodeMath `symbols` and `operators` — hold cases whose

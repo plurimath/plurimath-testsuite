@@ -741,7 +741,7 @@ module CorpusGenerator
 
   # The LaTeX `\left ... \right` inputs, a `cases/1` group until the text
   # formats gained the omml and html targets. They render to the other five
-  # and refuse `to_html` for the reason given above
+  # and refuse `to_html` for the reason given in the comment on
   # `ASCIIMATH_PARTIAL_CANDIDATES`: the gem's `Right#to_html` takes no
   # argument and `Formula#to_html` passes one.
   LATEX_PARTIAL_CANDIDATES = [
@@ -1323,7 +1323,7 @@ module CorpusGenerator
   #   `\left( x`, `\sqrt[` and `\begin{array}{zz} a \end{array}` are ACCEPTED.
   #   The gem parses all three into a `Math::Formula`; what fails is RENDERING.
   #   `\left( x` and the bad array spec raise from every target, `\sqrt[`
-  #   raises from asciimath, latex and unicodemath and renders to mathml. That
+  #   raises from every target but mathml, which renders it. That
   #   is the `cases/2` shape, not this one — they are candidates for
   #   `LATEX_PARTIAL_CANDIDATES`, not yet recorded there, and not rejections.
   #
@@ -1453,7 +1453,7 @@ module CorpusGenerator
   # for a kind whose candidate list is empty, so the outcome payload's absence
   # claims only that none is recorded yet. One partial candidate is already
   # measured and waiting for that slice: `⎣2.5⎦` parses and then fails to
-  # render to any of the four targets it was measured against.
+  # render to any of the six targets.
   UNICODEMATH_GROUPS = [
     ["numbers", "Number literals: integer, decimal, comma-decimal, signed " \
                 "and exponentiated", [

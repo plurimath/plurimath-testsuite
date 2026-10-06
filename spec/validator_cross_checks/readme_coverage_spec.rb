@@ -91,10 +91,6 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
       .sub(/(\| HTML[^\n]*checked for all )\d+/, "\\1#{counts['html']}")
   end
 
-  # The pinned counts above stand in for the collector, so the collector
-  # itself is driven here against a copy of the corpus in which one payload
-  # declares only four targets: OMML and HTML must then count that payload's
-  # cases out, and every other target must still count them in.
   # Narrows one payload to the four text-format targets of earlier slices and
   # returns how many cases it holds.
   def narrow_to_four_targets(path)
@@ -108,6 +104,10 @@ RSpec.describe Testsuite::Runner, "README coverage claims" do
     document["cases"].length
   end
 
+  # The pinned counts above stand in for the collector, so the collector
+  # itself is driven here against a copy of the corpus in which one payload
+  # declares only four targets: OMML and HTML must then count that payload's
+  # cases out, and every other target must still count them in.
   it "counts each target over only the payloads that declare it" do
     full = runner.send(:positive_target_case_counts)
     Dir.mktmpdir do |dir|
