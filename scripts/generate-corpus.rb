@@ -47,6 +47,13 @@ module CorpusGenerator
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/3"
+  # The provenance versions whose `payloads` list this generator understands,
+  # and so may trust to decide which files a run removes. `/2` and `/3` record
+  # payloads the same way; `/3` only adds `generator.inputs`.
+  RECORDED_PROVENANCE_SCHEMAS = [
+    "plurimath-corpus/provenance/2",
+    PROVENANCE_SCHEMA,
+  ].freeze
   # `calls/1` also names a KIND, the same way `rejections/1` does (see above):
   # its cases carry a `call` naming what was invoked beyond a plain
   # parse-then-render, and `call.method` is what varies within one payload
@@ -2061,9 +2068,9 @@ module CorpusGenerator
   # run may remove: a file the generator never recorded — a hand-maintained
   # file, or anything else that shares the directory — is never on it.
   #
-  # A document that cannot be read or parsed, that is not a provenance
-  # document, or whose `payloads` list is not one, records nothing and so
-  # removes nothing. An entry counts only if it has the `path`, `sha256` and
+  # A document that cannot be read or parsed, whose schema is not one of
+  # `RECORDED_PROVENANCE_SCHEMAS`, or whose `payloads` list is not one,
+  # records nothing and so removes nothing. An entry counts only if it has the `path`, `sha256` and
   # `bytes` every recorded payload carries, and its path is a plain relative
   # `.yaml` path inside `out_root`; any other entry is skipped.
   def recorded_payload_paths(out_root)
@@ -2076,8 +2083,7 @@ module CorpusGenerator
     document = Psych.safe_load(File.read(path), aliases: false)
     return [] unless document.is_a?(Hash)
 
-    family = PROVENANCE_SCHEMA.sub(%r{/\d+\z}, "/")
-    return [] unless document["schema"].to_s.start_with?(family)
+    return [] unless RECORDED_PROVENANCE_SCHEMAS.include?(document["schema"])
 
     entries = document["payloads"]
     entries.is_a?(Array) ? entries : []

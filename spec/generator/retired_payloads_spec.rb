@@ -84,6 +84,26 @@ RSpec.describe CorpusGenerator, "retired payloads" do
     end
   end
 
+  it "records nothing from a provenance version it does not know" do
+    Dir.mktmpdir do |out|
+      %w[plurimath-corpus/provenance/not-a-version
+         plurimath-corpus/provenance/4
+         plurimath-corpus/provenance/1].each do |schema|
+        write_entries(out, [entry("latex/ok.yaml")], schema: schema)
+        expect(described_class.recorded_payload_paths(out)).to eq([])
+      end
+    end
+  end
+
+  it "records the payloads of a provenance/2 document" do
+    Dir.mktmpdir do |out|
+      write_entries(out, [entry("latex/ok.yaml")],
+                    schema: "plurimath-corpus/provenance/2")
+      expect(described_class.recorded_payload_paths(out))
+        .to eq([File.join(File.expand_path(out), "latex/ok.yaml")])
+    end
+  end
+
   it "ignores recorded paths that leave the output root or are not payloads" do
     Dir.mktmpdir do |out|
       paths = ["../outside.yaml", "/abs/x.yaml", "latex/../../x.yaml",
