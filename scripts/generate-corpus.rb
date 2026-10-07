@@ -47,6 +47,13 @@ module CorpusGenerator
   REJECTIONS_DESCRIPTION =
     "Inputs the gem refuses, so a port can be checked on what it rejects"
   PROVENANCE_SCHEMA = "plurimath-corpus/provenance/3"
+  # The provenance versions whose `payloads` list this generator understands,
+  # and so may trust to decide which files a run removes. `/2` and `/3` record
+  # payloads the same way; `/3` only adds `generator.inputs`.
+  RECORDED_PROVENANCE_SCHEMAS = [
+    "plurimath-corpus/provenance/2",
+    PROVENANCE_SCHEMA,
+  ].freeze
   # `calls/1` also names a KIND, the same way `rejections/1` does (see above):
   # its cases carry a `call` naming what was invoked beyond a plain
   # parse-then-render, and `call.method` is what varies within one payload
@@ -2055,6 +2062,80 @@ module CorpusGenerator
     File.delete(path) if File.file?(path)
   end
 
+  # The payload paths the previous run recorded in `out_root`'s
+  # `provenance.yaml`, as absolute paths. That list is the generator's own
+  # record of the files it wrote, so it is what decides which files a later
+  # run may remove: a file the generator never recorded — a hand-maintained
+  # file, or anything else that shares the directory — is never on it.
+  #
+  # A document that cannot be read or parsed, whose schema is not one of
+  # `RECORDED_PROVENANCE_SCHEMAS`, or whose `payloads` list is not one,
+  # records nothing and so removes nothing. An entry counts only if it has
+  # the `path`, `sha256` and `bytes` every recorded payload carries, and its
+  # path is a plain relative `.yaml` path inside `out_root`; any other entry
+  # is skipped.
+  def recorded_payload_paths(out_root)
+    entries = recorded_payload_entries(File.join(out_root, PROVENANCE_PATH))
+    root = File.expand_path(out_root)
+    entries.filter_map { |entry| recorded_payload_path(root, entry) }
+  end
+
+  def recorded_payload_entries(path)
+    document = Psych.safe_load(File.read(path), aliases: false)
+    return [] unless document.is_a?(Hash)
+
+    return [] unless RECORDED_PROVENANCE_SCHEMAS.include?(document["schema"])
+
+    entries = document["payloads"]
+    entries.is_a?(Array) ? entries : []
+  rescue Psych::Exception, SystemCallError
+    []
+  end
+
+  def recorded_payload_path(root, entry)
+    return unless entry.is_a?(Hash)
+    return unless entry["sha256"].is_a?(String) && entry["bytes"].is_a?(Integer)
+
+    recorded = entry["path"]
+    return unless recorded.is_a?(String) && recorded.end_with?(".yaml")
+    return if recorded.include?("\0") || recorded.start_with?("/")
+    return if recorded.split("/").include?("..")
+
+    absolute = File.expand_path(recorded, root)
+    return unless absolute.start_with?("#{root}/")
+
+    absolute unless absolute == File.join(root, PROVENANCE_PATH)
+  end
+
+  # Removes every payload the previous run recorded that this run did not
+  # write: a group that no longer exists would otherwise stay on disk, outside
+  # the new `provenance.yaml`, and fail validation as an unrecorded payload.
+  # `recorded` comes from `recorded_payload_paths`, read before this run
+  # rewrote the provenance; `payloads` is this run's [path, bytes] list.
+  #
+  # The path check in `recorded_payload_path` is textual, so a symlinked
+  # directory could still lead somewhere else: outside `out_root`, or to
+  # another file inside it that the generator never recorded. Each file is
+  # therefore removed only if it is a regular file, not a symlink, and no
+  # directory between `out_root` and it is a symlink either.
+  def discard_retired_payloads(out_root, recorded, payloads)
+    written = payloads.map { |path, _bytes| File.expand_path(path) }
+    (recorded - written).each do |path|
+      File.delete(path) if retired_payload_removable?(out_root, path)
+    end
+  end
+
+  def retired_payload_removable?(out_root, path)
+    return false unless File.lstat(path).file?
+
+    directory = File.dirname(path)
+    lexical_root = File.expand_path(out_root)
+    inner = directory == lexical_root ? "." : relative(directory, lexical_root)
+    File.realpath(directory) == File.expand_path(inner, File.realpath(out_root))
+  rescue SystemCallError
+    false
+  end
+
   # `payloads` is a list of [absolute path, written bytes]. Sorted by the
   # recorded path so the document does not depend on the order the payloads
   # happened to be written in.
@@ -2376,6 +2457,7 @@ module CorpusGenerator
     provenance = build_provenance(gem_dir, dirty, options[:allow_dirty])
 
     out_root = options[:out]
+    recorded = recorded_payload_paths(out_root)
     payloads = []
     # One provenance document covers the whole corpus, so the formats are
     # written before it, and their tallies added up for the summary line.
@@ -2387,6 +2469,7 @@ module CorpusGenerator
       format_counts.each { |key, value| counts[key] += value }
     end
 
+    discard_retired_payloads(out_root, recorded, payloads)
     provenance_path = write_provenance(out_root, provenance, payloads)
 
     payloads.map(&:first).sort.each do |payload_path|
