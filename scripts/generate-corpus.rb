@@ -2070,9 +2070,10 @@ module CorpusGenerator
   #
   # A document that cannot be read or parsed, whose schema is not one of
   # `RECORDED_PROVENANCE_SCHEMAS`, or whose `payloads` list is not one,
-  # records nothing and so removes nothing. An entry counts only if it has the `path`, `sha256` and
-  # `bytes` every recorded payload carries, and its path is a plain relative
-  # `.yaml` path inside `out_root`; any other entry is skipped.
+  # records nothing and so removes nothing. An entry counts only if it has
+  # the `path`, `sha256` and `bytes` every recorded payload carries, and its
+  # path is a plain relative `.yaml` path inside `out_root`; any other entry
+  # is skipped.
   def recorded_payload_paths(out_root)
     entries = recorded_payload_entries(File.join(out_root, PROVENANCE_PATH))
     root = File.expand_path(out_root)
