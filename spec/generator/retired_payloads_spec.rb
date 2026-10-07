@@ -71,7 +71,9 @@ RSpec.describe CorpusGenerator, "retired payloads" do
       expect(described_class.recorded_payload_paths(out)).to eq([])
       write_entries(out, [entry("latex/ok.yaml")])
       File.chmod(0o000, File.join(out, "provenance.yaml"))
-      next if File.readable?(File.join(out, "provenance.yaml")) # root
+      if File.readable?(File.join(out, "provenance.yaml"))
+        skip "running as root, which can read any file"
+      end
 
       expect(described_class.recorded_payload_paths(out)).to eq([])
     end
