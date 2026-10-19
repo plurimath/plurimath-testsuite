@@ -59,6 +59,15 @@ module CorpusGenerator
   # parse-then-render, and `call.method` is what varies within one payload
   # rather than the input's own notation.
   CALLS_SCHEMA = "plurimath-corpus/calls/1"
+  UNITSML_CALLS_SCHEMA = "plurimath-corpus/calls/2"
+  UNITSML_XML_GROUP = "unitsml-xml"
+  UNITSML_XML_CALLS = [
+    ["unitsml-xml-microfarad", '"unitsml(uF)"'],
+    ["unitsml-xml-microhenry", '"unitsml(uH)"'],
+  ].freeze
+  UNITSML_XML_DESCRIPTION =
+    "UnitsML XML export preserves the Unicode micro sign in prefixed units, " \
+    "with Formula#to_mathml(unitsml: {xml: true})."
   # A `calls/1` payload's group name, description and the targets it declares.
   # `targets` is per group rather than per format: `calls/1` states its target
   # list once per payload, and the gem's `Formula#to_<target>(formatter:)`
@@ -1748,8 +1757,8 @@ module CorpusGenerator
 
   # Candidate malformed MathML, swept rather than assumed. Every entry is
   # expected to be REFUSED, and `build_rejections` fails the run if the gem
-  # accepts one. The gem refuses only what its XML reader cannot read; once
-  # the text is well-formed XML it accepts it, however wrong it is as MathML.
+  # accepts one. Besides malformed XML, recognized but unsupported Content
+  # MathML elements are refused; unknown elements may still be dropped.
   #
   # Probed and NOT here, each ACCEPTED: a missing or foreign default
   # namespace, a `m:`-prefixed MathML namespace, a root other than `math`
@@ -1763,6 +1772,8 @@ module CorpusGenerator
   # REFUSED, and not recordable: the empty string, which `input` forbids by
   # `minLength`.
   MATHML_REJECTION_CANDIDATES = [
+    ["mathml-unsupported-pi", "<math xmlns='#{MATHML_NS}'><pi/></math>"],
+    ["mathml-unsupported-apply", "<math xmlns='#{MATHML_NS}'><apply/></math>"],
     ["mathml-whitespace-only", " "],
     ["mathml-bare-text", "abc"],
     ["mathml-lone-angle", "<"],
@@ -1811,9 +1822,9 @@ module CorpusGenerator
     "because `input` must be non-empty; a port should refuse it too. No " \
     "refusal carries an `index`, since no grammar ran."
   MATHML_REJECTIONS_DESCRIPTION =
-    "#{REJECTIONS_DESCRIPTION}. Every refusal here is text the XML reader " \
-    "cannot read: well-formed XML is accepted however wrong it is as " \
-    "MathML.#{XML_EMPTY_NOTE}"
+    "#{REJECTIONS_DESCRIPTION}. Refusals include malformed XML and " \
+    "recognized but unsupported Content MathML elements (pi and apply). " \
+    "Unknown elements can still be dropped.#{XML_EMPTY_NOTE}"
   OMML_REJECTIONS_DESCRIPTION =
     "#{REJECTIONS_DESCRIPTION}. Most refusals here are malformed XML, but " \
     "not all: OMML also refuses well-formed XML whose `m:` prefix is not " \
@@ -1952,6 +1963,24 @@ module CorpusGenerator
       },
       "expected" => expected,
       "parse_tree" => serialize_tree(tree, id),
+      "model" => serialize_node(formula, id),
+    }
+  end
+
+  # The measured UnitsML call is deliberately limited to MathML XML export.
+  def build_unitsml_xml_case(format, id, input)
+    formula = Plurimath::Math.parse(input, format.name.to_sym)
+    preprocessed = preprocessed_text(format, input)
+    {
+      "id" => id,
+      "input" => input,
+      "input_format" => format.name,
+      "preprocessed" => preprocessed,
+      "call" => { "method" => "unitsml", "args" => { "xml" => true } },
+      "expected" => {
+        "mathml" => { "output" => formula.to_mathml(unitsml: { xml: true }) },
+      },
+      "parse_tree" => serialize_tree(format.parse_tree.call(preprocessed), id),
       "model" => serialize_node(formula, id),
     }
   end
@@ -2291,6 +2320,27 @@ module CorpusGenerator
       number_formatter_total += number_formatter_cases.length
     end
 
+    if format.name == "asciimath"
+      unitsml_payload = {
+        "schema" => UNITSML_CALLS_SCHEMA,
+        "group" => UNITSML_XML_GROUP,
+        "description" => UNITSML_XML_DESCRIPTION,
+        "input_format" => format.name,
+        "targets" => ["mathml"],
+        "cases" => UNITSML_XML_CALLS.map do |id, input|
+          build_unitsml_xml_case(format, id, input)
+        end,
+      }
+      unitsml_path = File.join(out_root, format.name, "#{UNITSML_XML_GROUP}.yaml")
+      unitsml_bytes = write_payload(
+        unitsml_path,
+        payload_header("#{format.label} conformance cases: #{UNITSML_XML_GROUP}."),
+        unitsml_payload,
+      )
+      payloads << [unitsml_path, unitsml_bytes]
+      counts[:unitsml] = unitsml_payload.fetch("cases").length
+    end
+
     counts[:partial] = partial_cases.length
     counts[:rejections] = rejections.length
     counts[:number_formatter] = number_formatter_total
@@ -2479,7 +2529,8 @@ module CorpusGenerator
     puts "#{counts[:cases]} cases in #{counts[:groups]} groups, " \
          "#{counts[:partial]} partially renderable (cases/2), " \
          "#{counts[:rejections]} rejections, " \
-         "#{counts[:number_formatter]} number_formatter calls (calls/1)"
+         "#{counts[:number_formatter]} number_formatter calls (calls/1), " \
+         "#{counts[:unitsml]} unitsml calls (calls/2)"
     puts "committable: #{provenance['committable']}"
     provenance["warnings"].each { |warning| puts "  ! #{warning}" }
     0
