@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: fcc101066be23da979fbd9df433a4324097f0910a42ae6c22641d3e30e00d34b
+  sha256: f2ff26da538f90070d44077af2f60f475eb69bc3ff64424a1096e7a0b8e1af66
   repository:
-    commit: 19dae31f3a9816e4028c770ad5ad3abb19fdfb1a
+    commit: 9d5ede94c2fe4f8c0b3c08d3f018b900934052a7
     clean: true
     dirty_paths: []
   inputs:
@@ -34,7 +34,7 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: 03bdd3de3d9bcd911e87a7d37605f2e8ee5d003a511881779a82490425f18121
+  sha256: a07b033c4e199d7324e2e0c6c15063df08f840f3234d3c874ede809d6750bed4
   resolved_gems: 77
   platforms:
   - aarch64-linux-gnu
@@ -49,9 +49,9 @@ lockfile:
 direct_runtime:
   bigdecimal: 4.1.2
   htmlentities: 4.4.2
-  lutaml-model: 0.8.19
+  lutaml-model: 0.8.30
   mml: 2.4.1
-  omml: 0.2.5
+  omml: 0.2.6
   ostruct: 0.6.3
   ox: 2.14.28
   parslet: 2.0.0
@@ -133,6 +133,9 @@ payloads:
 - path: asciimath/unary-functions.yaml
   sha256: 4bd3d4441d72624be02b26e7b66065e612516b948741e250e0fc999f9fe42029
   bytes: 22370
+- path: asciimath/unitsml-xml.yaml
+  sha256: 1fd6d3a51d7502e828459b3fffea72f6fb39c692b35d0767920a63c51cdef188
+  bytes: 4889
 - path: asciimath/whitespace.yaml
   sha256: 01ae9c99daea7ba0b2d9385b76b1ccf4ec6145ee1211aaf4b5df29e55f4074db
   bytes: 14036
@@ -218,8 +221,8 @@ payloads:
   sha256: e360561831fab0f799f5a9a161ffc658ea4f91a88d0d460acd503295e70b4951
   bytes: 169609
 - path: mathml/rejections.yaml
-  sha256: 7848070cc5a03f14f3950d789df2ecd4c1036b375e58bac7d661ceafba90ade4
-  bytes: 2964
+  sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+  bytes: 3476
 - path: mathml/roots.yaml
   sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
   bytes: 12364

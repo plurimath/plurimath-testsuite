@@ -4,9 +4,21 @@
 ---
 schema: plurimath-corpus/rejections/1
 group: rejections
-description: 'Inputs the gem refuses, so a port can be checked on what it rejects. Every refusal here is text the XML reader cannot read: well-formed XML is accepted however wrong it is as MathML. The gem also refuses the empty string, which cannot be recorded here because `input` must be non-empty; a port should refuse it too. No refusal carries an `index`, since no grammar ran.'
+description: Inputs the gem refuses, so a port can be checked on what it rejects. Refusals include malformed XML and recognized but unsupported Content MathML elements (pi and apply). Unknown elements can still be dropped. The gem also refuses the empty string, which cannot be recorded here because `input` must be non-empty; a port should refuse it too. No refusal carries an `index`, since no grammar ran.
 input_format: mathml
 cases:
+- id: mathml-unsupported-pi
+  input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><pi/></math>"
+  input_format: mathml
+  preprocessed: "<math xmlns='http://www.w3.org/1998/Math/MathML'><pi/></math>"
+  error:
+    category: parse_error
+- id: mathml-unsupported-apply
+  input: "<math xmlns='http://www.w3.org/1998/Math/MathML'><apply/></math>"
+  input_format: mathml
+  preprocessed: "<math xmlns='http://www.w3.org/1998/Math/MathML'><apply/></math>"
+  error:
+    category: parse_error
 - id: mathml-whitespace-only
   input: " "
   input_format: mathml
