@@ -22,16 +22,17 @@ Plurimath supports it — Plurimath supports every row.
 |===
 | Notation | As input | As output
 
-| AsciiMath   | ✅ 158 cases, 25 groups | ✅ checked for all 780, one a refusal
+| AsciiMath   | ✅ 160 cases, 26 groups | ✅ checked for all 780, one a refusal
 | LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 780, one a refusal
-| MathML      | ✅ 287 cases, 12 groups | ✅ checked for all 780, two refusals
+| MathML      | ✅ 287 cases, 12 groups | ✅ checked for all 782, two refusals
 | OMML        | ✅ 190 cases, 14 groups | ✅ checked for all 780, two refusals
 | UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 780, 22 refusals
 | HTML        | ❌ no cases yet         | ✅ checked for all 780, 50 refusals
 |===
 
 Every case carries an expectation for every output format its group lists,
-and every rendering group lists all six. The rejection groups
+and ordinary rendering groups list all six. The UnitsML XML call group
+checks MathML alone. The rejection groups
 (`rejections.yaml` under each input format) list no output formats: their
 cases are inputs the gem refuses. An expectation is usually a
 rendering; the ones the output column counts as refusals are not, and the
@@ -54,7 +55,8 @@ because group names repeat across input formats — `asciimath/numbers` and
 `asciimath/number-formatting-notation` 15,
 `asciimath/number-formatting-base` 19,
 `asciimath/number-formatting-sign-padding` 8,
-`asciimath/number-formatting-locale-symbols` 8.
+`asciimath/number-formatting-locale-symbols` 8,
+`asciimath/unitsml-xml` 2.
 
 `latex/numbers` 5, `latex/symbols` 4, `latex/operators` 5, `latex/fences` 5,
 `latex/frac` 6, `latex/powers` 7, `latex/roots` 6, `latex/unary-functions` 9,
@@ -96,9 +98,10 @@ their rejections carry no `index`.
 LaTeX, UnicodeMath, HTML, MathML and OMML now have rejection payloads as
 well, at `corpus/latex/rejections.yaml` (fourteen refusals),
 `corpus/unicode/rejections.yaml` (52), `corpus/html/rejections.yaml` (38),
-`corpus/mathml/rejections.yaml` (12) and `corpus/omml/rejections.yaml` (9).
-MathML refuses only text its XML reader cannot read: well-formed XML is
-accepted however wrong it is as MathML. OMML refuses malformed XML too, and
+`corpus/mathml/rejections.yaml` (14) and `corpus/omml/rejections.yaml` (9).
+MathML refuses malformed XML and recognized but unsupported Content MathML
+elements, including `pi` and `apply`. Unknown elements may still be dropped.
+OMML refuses malformed XML too, and
 also two well-formed kinds: an `m:` prefix bound to no namespace, and a
 MathML document. Both also refuse the empty string, which a rejection
 cannot hold because `input` must be non-empty; each payload's `description`
@@ -434,6 +437,13 @@ call was still explicit about every argument `Formatter::Standard.new` takes.
 a rendering or a refusal, never both. `parse_tree` and `model` describe the
 input as parsed, unaffected by `call`: the call only changes how the parsed
 model renders, not what it parses to.
+
+`plurimath-corpus/calls/2` adds the measured `unitsml` call kind while retaining
+`number_formatter`. Its `call.args` is `{xml: true}`, mapping to
+`Formula#to_mathml(unitsml: {xml: true})`; `asciimath/unitsml-xml` checks
+microfarad and microhenry XML output, including Unicode micro signs. That group
+has only the `mathml` target, so MathML has two more checked outputs than the
+other targets. `calls/1` remains unchanged.
 
 === What `model:` means
 

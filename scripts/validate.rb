@@ -643,6 +643,7 @@ module Testsuite
       # needs `rejection_format_errors`, not `input_format_errors`, for the
       # one check that reads the schema segment. See `call_cross_checks`.
       "calls/1" => :call_cross_checks,
+      "calls/2" => :call_cross_checks,
     }.freeze
 
     def initialize(corpus_root:, schema_dir:, integrity:, allow_empty:)
