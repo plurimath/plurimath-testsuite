@@ -4440,16 +4440,16 @@ cases:
     </m:oMathPara>
   expected:
     asciimath:
-      output: overset(bar)("c")
+      output: overset("c")(bar)
     latex:
-      output: "\\overset{ \\left ( \\overline \\right ) }{\\text{c}}"
+      output: "\\overset{\\text{c}}{ \\left ( \\overline \\right ) }"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mstyle displaystyle="true">
             <mover>
-              <mtext>c</mtext>
               <mo>&#xaf;</mo>
+              <mtext>c</mtext>
             </mover>
           </mstyle>
         </math>
@@ -4483,7 +4483,7 @@ cases:
           </m:oMath>
         </m:oMathPara>
     html:
-      output: "<i><i>¯</i></i><i>c</i>"
+      output: "<i>c</i><i><i>¯</i></i>"
   parse_tree:
   model:
     class: Math::Formula
@@ -4519,579 +4519,15 @@ cases:
       - class: Math::Function::Overset
         fields:
           parameter_one:
-            class: Math::Function::Bar
-            fields:
-              attributes: {}
-              parameter_one:
-          parameter_two:
             class: Math::Function::Text
             fields:
               lang: omml
               parameter_one: c
-- id: omml-partial-024
-  input: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>d</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃖</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  input_format: omml
-  preprocessed: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>d</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃖</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  expected:
-    asciimath:
-      output: overset("d")("P{LVec}")
-    latex:
-      output: "\\overset{\\text{d}}{\\overleftarrow}"
-    mathml:
-      output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x20d6;</mi>
-              <mtext>d</mtext>
-            </mover>
-          </mstyle>
-        </math>
-    unicodemath:
-      error:
-        category: parse_error
-    omml:
-      output: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>d</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>&#x20d6;</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-    html:
-      output: "<i>d</i><i>&#x20d6;</i>"
-  parse_tree:
-  model:
-    class: Math::Formula
-    fields:
-      displaystyle: true
-      input_string: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>d</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>⃖</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-      left_right_wrapper: true
-      value:
-      - class: Math::Function::Overset
-        fields:
-          parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: d
           parameter_two:
-            class: Math::Symbols::Lvec
+            class: Math::Function::Bar
             fields:
-              value:
-- id: omml-partial-025
-  input: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃗</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  input_format: omml
-  preprocessed: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃗</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  expected:
-    asciimath:
-      output: overset("e")("P{Vec}")
-    latex:
-      output: "\\overset{\\text{e}}{\\Vec}"
-    mathml:
-      output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x20d7;</mi>
-              <mtext>e</mtext>
-            </mover>
-          </mstyle>
-        </math>
-    unicodemath:
-      error:
-        category: parse_error
-    omml:
-      output: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>&#x20d7;</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-    html:
-      output: "<i>e</i><i>&#x20d7;</i>"
-  parse_tree:
-  model:
-    class: Math::Formula
-    fields:
-      displaystyle: true
-      input_string: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>⃗</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-      left_right_wrapper: true
-      value:
-      - class: Math::Function::Overset
-        fields:
-          parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: e
-          parameter_two:
-            class: Math::Symbols::Vec
-            fields:
-              value:
-- id: omml-partial-026
-  input: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃐</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  input_format: omml
-  preprocessed: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃐</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  expected:
-    asciimath:
-      output: overset("e")(&#x20d0;)
-    latex:
-      output: "\\overset{\\text{e}}{&#x20d0;}"
-    mathml:
-      output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x20d0;</mi>
-              <mtext>e</mtext>
-            </mover>
-          </mstyle>
-        </math>
-    unicodemath:
-      error:
-        category: parse_error
-    omml:
-      output: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>&#x20d0;</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-    html:
-      output: "<i>e</i><i>&#x20d0;</i>"
-  parse_tree:
-  model:
-    class: Math::Formula
-    fields:
-      displaystyle: true
-      input_string: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>⃐</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-      left_right_wrapper: true
-      value:
-      - class: Math::Function::Overset
-        fields:
-          parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: e
-          parameter_two:
-            class: Math::Symbols::Symbol
-            fields:
-              value: "&#x20d0;"
-- id: omml-partial-027
-  input: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃑</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  input_format: omml
-  preprocessed: |
-    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-      <m:oMath>
-        <m:limUpp>
-          <m:limUppPr>
-            <m:ctrlPr>
-              <w:rPr>
-                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                <w:i/>
-              </w:rPr>
-            </m:ctrlPr>
-          </m:limUppPr>
-          <m:e>
-            <m:r>
-              <m:t>e</m:t>
-            </m:r>
-          </m:e>
-          <m:lim>
-            <m:r>
-              <m:t>⃑</m:t>
-            </m:r>
-          </m:lim>
-        </m:limUpp>
-      </m:oMath>
-    </m:oMathPara>
-  expected:
-    asciimath:
-      output: overset("e")("P{rightharpoonaccent}")
-    latex:
-      output: "\\overset{\\text{e}}{\\rightharpoonaccent}"
-    mathml:
-      output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x20d1;</mi>
-              <mtext>e</mtext>
-            </mover>
-          </mstyle>
-        </math>
-    unicodemath:
-      error:
-        category: parse_error
-    omml:
-      output: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>&#x20d1;</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-    html:
-      output: "<i>e</i><i>&#x20d1;</i>"
-  parse_tree:
-  model:
-    class: Math::Formula
-    fields:
-      displaystyle: true
-      input_string: |
-        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
-          <m:oMath>
-            <m:limUpp>
-              <m:limUppPr>
-                <m:ctrlPr>
-                  <w:rPr>
-                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
-                    <w:i/>
-                  </w:rPr>
-                </m:ctrlPr>
-              </m:limUppPr>
-              <m:e>
-                <m:r>
-                  <m:t>e</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>⃑</m:t>
-                </m:r>
-              </m:lim>
-            </m:limUpp>
-          </m:oMath>
-        </m:oMathPara>
-      left_right_wrapper: true
-      value:
-      - class: Math::Function::Overset
-        fields:
-          parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: e
-          parameter_two:
-            class: Math::Symbols::Rightharpoonaccent
-            fields:
-              value:
+              attributes: {}
+              parameter_one:
 - id: omml-partial-028
   input: |
     <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
@@ -5152,18 +4588,18 @@ cases:
     </m:oMathPara>
   expected:
     asciimath:
-      output: underset("over")(rm(bar))
+      output: underset(rm(bar))("over")
     latex:
-      output: "\\underset{\\text{over}}{ \\left ( \\mathrm{\\overline} \\right ) }"
+      output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{over}}"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mstyle displaystyle="true">
             <munder>
+              <mtext>over</mtext>
               <mstyle mathvariant="normal">
                 <mo>&#xaf;</mo>
               </mstyle>
-              <mtext>over</mtext>
             </munder>
           </mstyle>
         </math>
@@ -5200,7 +4636,7 @@ cases:
           </m:oMath>
         </m:oMathPara>
     html:
-      output: "<i>over</i><i><i>¯</i></i>"
+      output: "<i><i>¯</i></i><i>over</i>"
   parse_tree:
   model:
     class: Math::Formula
@@ -5240,11 +4676,6 @@ cases:
         fields:
           options: {}
           parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: over
-          parameter_two:
             class: Math::Function::FontStyle::Normal
             fields:
               parameter_one:
@@ -5253,6 +4684,11 @@ cases:
                   attributes: {}
                   parameter_one:
               parameter_two: mathrm
+          parameter_two:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: over
 - id: omml-partial-029
   input: |
     <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
@@ -5313,18 +4749,18 @@ cases:
     </m:oMathPara>
   expected:
     asciimath:
-      output: underset("A")(rm(bar))
+      output: underset(rm(bar))("A")
     latex:
-      output: "\\underset{\\text{A}}{ \\left ( \\mathrm{\\overline} \\right ) }"
+      output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{A}}"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mstyle displaystyle="true">
             <munder>
+              <mtext>A</mtext>
               <mstyle mathvariant="normal">
                 <mo>&#xaf;</mo>
               </mstyle>
-              <mtext>A</mtext>
             </munder>
           </mstyle>
         </math>
@@ -5361,7 +4797,7 @@ cases:
           </m:oMath>
         </m:oMathPara>
     html:
-      output: "<i>A</i><i><i>¯</i></i>"
+      output: "<i><i>¯</i></i><i>A</i>"
   parse_tree:
   model:
     class: Math::Formula
@@ -5401,11 +4837,6 @@ cases:
         fields:
           options: {}
           parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: A
-          parameter_two:
             class: Math::Function::FontStyle::Normal
             fields:
               parameter_one:
@@ -5414,6 +4845,11 @@ cases:
                   attributes: {}
                   parameter_one:
               parameter_two: mathrm
+          parameter_two:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: A
 - id: omml-partial-030
   input: |
     <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
@@ -5474,18 +4910,18 @@ cases:
     </m:oMathPara>
   expected:
     asciimath:
-      output: underset("ABC")(rm(bar))
+      output: underset(rm(bar))("ABC")
     latex:
-      output: "\\underset{\\text{ABC}}{ \\left ( \\mathrm{\\overline} \\right ) }"
+      output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{ABC}}"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mstyle displaystyle="true">
             <munder>
+              <mtext>ABC</mtext>
               <mstyle mathvariant="normal">
                 <mo>&#xaf;</mo>
               </mstyle>
-              <mtext>ABC</mtext>
             </munder>
           </mstyle>
         </math>
@@ -5522,7 +4958,7 @@ cases:
           </m:oMath>
         </m:oMathPara>
     html:
-      output: "<i>ABC</i><i><i>¯</i></i>"
+      output: "<i><i>¯</i></i><i>ABC</i>"
   parse_tree:
   model:
     class: Math::Formula
@@ -5562,11 +4998,6 @@ cases:
         fields:
           options: {}
           parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: ABC
-          parameter_two:
             class: Math::Function::FontStyle::Normal
             fields:
               parameter_one:
@@ -5575,6 +5006,11 @@ cases:
                   attributes: {}
                   parameter_one:
               parameter_two: mathrm
+          parameter_two:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: ABC
 - id: omml-partial-031
   input: |
     <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
@@ -5635,18 +5071,18 @@ cases:
     </m:oMathPara>
   expected:
     asciimath:
-      output: underset("x⊕y")(rm(bar))
+      output: underset(rm(bar))("x⊕y")
     latex:
-      output: "\\underset{\\text{x⊕y}}{ \\left ( \\mathrm{\\overline} \\right ) }"
+      output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{x⊕y}}"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
           <mstyle displaystyle="true">
             <munder>
+              <mtext>x⊕y</mtext>
               <mstyle mathvariant="normal">
                 <mo>&#xaf;</mo>
               </mstyle>
-              <mtext>x⊕y</mtext>
             </munder>
           </mstyle>
         </math>
@@ -5683,7 +5119,7 @@ cases:
           </m:oMath>
         </m:oMathPara>
     html:
-      output: "<i>x⊕y</i><i><i>¯</i></i>"
+      output: "<i><i>¯</i></i><i>x⊕y</i>"
   parse_tree:
   model:
     class: Math::Formula
@@ -5723,11 +5159,6 @@ cases:
         fields:
           options: {}
           parameter_one:
-            class: Math::Function::Text
-            fields:
-              lang: omml
-              parameter_one: x⊕y
-          parameter_two:
             class: Math::Function::FontStyle::Normal
             fields:
               parameter_one:
@@ -5736,3 +5167,1277 @@ cases:
                   attributes: {}
                   parameter_one:
               parameter_two: mathrm
+          parameter_two:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: x⊕y
+- id: omml-limits-001
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̇</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̇</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("a")(.)
+    latex:
+      output: "\\overset{\\text{a}}{\\period}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x307;</mi>
+              <mtext>a</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x307;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>a</i><i>&#x307;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̇</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: a
+          parameter_two:
+            class: Math::Symbols::Dot
+            fields:
+              value:
+- id: omml-limits-002
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̈</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̈</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("a")(ddot)
+    latex:
+      output: "\\overset{\\text{a}}{\\ddot}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x308;</mi>
+              <mtext>a</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x308;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>a</i><i>&#x308;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̈</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: a
+          parameter_two:
+            class: Math::Symbols::Ddot
+            fields:
+              value:
+- id: omml-limits-003
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>&#x308;</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>&#x308;</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("a")(ddot)
+    latex:
+      output: "\\overset{\\text{a}}{\\ddot}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x308;</mi>
+              <mtext>a</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x308;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>a</i><i>&#x308;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x308;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: a
+          parameter_two:
+            class: Math::Symbols::Ddot
+            fields:
+              value:
+- id: omml-limits-004
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̌</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̌</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("b")("P{check}")
+    latex:
+      output: "\\overset{\\text{b}}{\\check}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x30c;</mi>
+              <mtext>b</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x30c;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>b</i><i>&#x30c;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̌</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: b
+          parameter_two:
+            class: Math::Symbols::Check
+            fields:
+              value:
+- id: omml-limits-005
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>́</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>́</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("b")("P{acute}")
+    latex:
+      output: "\\overset{\\text{b}}{\\acute}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x301;</mi>
+              <mtext>b</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x301;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>b</i><i>&#x301;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>́</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: b
+          parameter_two:
+            class: Math::Symbols::Acute
+            fields:
+              value:
+- id: omml-limits-006
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̀</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̀</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("b")("P{grave}")
+    latex:
+      output: "\\overset{\\text{b}}{\\grave}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x300;</mi>
+              <mtext>b</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x300;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>b</i><i>&#x300;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̀</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: b
+          parameter_two:
+            class: Math::Symbols::Grave
+            fields:
+              value:
+- id: omml-limits-007
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̆</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̆</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>b</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("b")("P{breve}")
+    latex:
+      output: "\\overset{\\text{b}}{\\breve}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x306;</mi>
+              <mtext>b</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x306;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>b</i><i>&#x306;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̆</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>b</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: b
+          parameter_two:
+            class: Math::Symbols::Breve
+            fields:
+              value:
+- id: omml-limits-008
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̃</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>c</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̃</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>c</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("c")(&#x303;)
+    latex:
+      output: "\\overset{\\text{c}}{&#x303;}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x303;</mi>
+              <mtext>c</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x303;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>c</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>c</i><i>&#x303;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̃</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>c</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: c
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: "&#x303;"
+- id: omml-limits-009
+  input: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̿</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>c</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  input_format: omml
+  preprocessed: |
+    <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+      <m:oMath>
+        <m:limUpp>
+          <m:limUppPr>
+            <m:ctrlPr>
+              <w:rPr>
+                <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                <w:i/>
+              </w:rPr>
+            </m:ctrlPr>
+          </m:limUppPr>
+          <m:e>
+            <m:r>
+              <m:t>̿</m:t>
+            </m:r>
+          </m:e>
+          <m:lim>
+            <m:r>
+              <m:t>c</m:t>
+            </m:r>
+          </m:lim>
+        </m:limUpp>
+      </m:oMath>
+    </m:oMathPara>
+  expected:
+    asciimath:
+      output: overset("c")(&#x33f;)
+    latex:
+      output: "\\overset{\\text{c}}{&#x33f;}"
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mover>
+              <mi>&#x33f;</mi>
+              <mtext>c</mtext>
+            </mover>
+          </mstyle>
+        </math>
+    unicodemath:
+      error:
+        category: parse_error
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>&#x33f;</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>c</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+    html:
+      output: "<i>c</i><i>&#x33f;</i>"
+  parse_tree:
+  model:
+    class: Math::Formula
+    fields:
+      displaystyle: true
+      input_string: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:limUpp>
+              <m:limUppPr>
+                <m:ctrlPr>
+                  <w:rPr>
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:limUppPr>
+              <m:e>
+                <m:r>
+                  <m:t>̿</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
+                  <m:t>c</m:t>
+                </m:r>
+              </m:lim>
+            </m:limUpp>
+          </m:oMath>
+        </m:oMathPara>
+      left_right_wrapper: true
+      value:
+      - class: Math::Function::Overset
+        fields:
+          parameter_one:
+            class: Math::Function::Text
+            fields:
+              lang: omml
+              parameter_one: c
+          parameter_two:
+            class: Math::Symbols::Symbol
+            fields:
+              value: "&#x33f;"

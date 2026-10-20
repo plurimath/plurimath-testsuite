@@ -10,7 +10,7 @@ generator:
   path: scripts/generate-corpus.rb
   sha256: f2ff26da538f90070d44077af2f60f475eb69bc3ff64424a1096e7a0b8e1af66
   repository:
-    commit: 3b7c44df85e1a5c5956d39662816538b767e8eb6
+    commit: edef13b0ed245239601c860b6c56d7f192aa115f
     clean: true
     dirty_paths: []
   inputs:
@@ -18,13 +18,13 @@ generator:
     sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
     bytes: 118636
   - path: scripts/seeds/omml.yaml
-    sha256: 680fced46133ff0cba2d045be260995a6f3767cd1d21b3483e8d3b145ec62035
-    bytes: 379179
+    sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    bytes: 378909
 oracle:
   gem: plurimath
-  version: 0.11.10
+  version: 0.11.11
   kind: git-checkout
-  commit: 788d635aa667636336ac2d731fb02a90c70c1cb5
+  commit: 50ad0fa74ab44a0c9e0816961c6d55b869c30b57
   clean: true
   dirty_paths: []
 ruby:
@@ -34,7 +34,7 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: 28354b6d23f5347ff704843e5195fc245aaad43fce07335859e27f05b9e26b80
+  sha256: 6e16cb957dd9cbd5a9d880b5eb670318f2530e3f5288e69ae9718dca9af75091
   resolved_gems: 79
   platforms:
   - aarch64-linux
@@ -177,7 +177,7 @@ payloads:
   sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
   bytes: 12289
 - path: latex/over-under.yaml
-  sha256: 0b151994dace3f8433db64372dd393912188641ddc0c478089c7ee1bbab622cf
+  sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
   bytes: 35399
 - path: latex/partial-render.yaml
   sha256: 2158296e70c2f3a56885c70b90daccf02ce273abca5cd9a15e3e40d8ca63b94d
@@ -219,10 +219,10 @@ payloads:
   sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
   bytes: 32195
 - path: mathml/over-under.yaml
-  sha256: bd883af6f2201ace34ad913fcf702303c06adf3e76e96e5861b818d23981c478
+  sha256: 1f02a7acfdafcc33d4d4f091614db0d9dc0fb910360718668359ca5306475b8f
   bytes: 189075
 - path: mathml/partial-render.yaml
-  sha256: 47bf2ee11d3679bf7c4c37307d73a0ee87fe62107972cbcb6d48aa39f009dad4
+  sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
   bytes: 169603
 - path: mathml/rejections.yaml
   sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
@@ -261,11 +261,11 @@ payloads:
   sha256: '039637381e90f3ca97f3a13df3c471d5a788d5074c194a9a2f01f99bae4eb890'
   bytes: 140387
 - path: omml/group-characters.yaml
-  sha256: ab5bba56ff1a2556a9e20fc99c54f42c582bc8c00b6c3fb4ed289708e8d12cd2
+  sha256: 912b2cef0726dd5096223c48c7b1373f039f1a0fa3aacd7272da6c36cadc90e2
   bytes: 16512
 - path: omml/limits.yaml
-  sha256: 5cc95c71112d8de5d76b6b083295112b761a35af7f11ffddb6fab78201918e13
-  bytes: 269889
+  sha256: 39e891ab597e5d23e2925c19c2e5d005f29d6240a2c844719aecd05272b9317a
+  bytes: 229417
 - path: omml/matrices.yaml
   sha256: aa3b1bb13a1dbb428d74db05e13745f8471f9f6aef8cd94da2ea9842336d27da
   bytes: 270293
@@ -273,8 +273,8 @@ payloads:
   sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
   bytes: 96830
 - path: omml/partial-render.yaml
-  sha256: 8acad6b06e675ea3d3d96aac220f93a35bf75d43e55d7e005eb6f6629d12675b
-  bytes: 294124
+  sha256: 1720fec4131c0dba1785b440fced3b0d1904800ae56f9132c9037377f1e14361
+  bytes: 335451
 - path: omml/rejections.yaml
   sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
   bytes: 2954
