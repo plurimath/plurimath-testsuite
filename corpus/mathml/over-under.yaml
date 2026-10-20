@@ -2388,7 +2388,7 @@ cases:
             </mstyle>
             <mn>90</mn>
           </msub>
-          <mi rspace="0em">/</mi>
+          <mo rspace="0em">/</mo>
           <mstyle mathvariant="normal">
             <mi>K</mi>
           </mstyle>
@@ -2426,14 +2426,14 @@ cases:
                       <mo rspace="thickmathspace"/>
                       <mrow>
                         <mi>ln</mi>
-                        <mi rspace="-0.35em"/>
+                        <mo rspace="-0.35em"/>
                       </mrow>
                     </mrow>
                     <mrow>
                       <mo>(</mo>
                       <mrow>
                         <mi>p</mi>
-                        <mi rspace="0em">/</mi>
+                        <mo rspace="0em">/</mo>
                         <mstyle mathvariant="normal">
                           <mi>Pa</mi>
                         </mstyle>
@@ -2447,7 +2447,7 @@ cases:
                   </mrow>
                   <mo>)</mo>
                 </mrow>
-                <mi rspace="0em">/</mi>
+                <mo rspace="0em">/</mo>
                 <mstyle mathvariant="italic">
                   <mi>C</mi>
                 </mstyle>

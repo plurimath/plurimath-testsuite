@@ -10,7 +10,7 @@ generator:
   path: scripts/generate-corpus.rb
   sha256: f2ff26da538f90070d44077af2f60f475eb69bc3ff64424a1096e7a0b8e1af66
   repository:
-    commit: edef13b0ed245239601c860b6c56d7f192aa115f
+    commit: d10837f93c0c92e5b93692f43b0b9106d92419a7
     clean: true
     dirty_paths: []
   inputs:
@@ -24,7 +24,7 @@ oracle:
   gem: plurimath
   version: 0.11.11
   kind: git-checkout
-  commit: 50ad0fa74ab44a0c9e0816961c6d55b869c30b57
+  commit: b5ff4017c7a1acae0f3da626ef7bdbf60455585d
   clean: true
   dirty_paths: []
 ruby:
@@ -219,7 +219,7 @@ payloads:
   sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
   bytes: 32195
 - path: mathml/over-under.yaml
-  sha256: 1f02a7acfdafcc33d4d4f091614db0d9dc0fb910360718668359ca5306475b8f
+  sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
   bytes: 189075
 - path: mathml/partial-render.yaml
   sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
@@ -231,7 +231,7 @@ payloads:
   sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
   bytes: 12364
 - path: mathml/scripts.yaml
-  sha256: 1d4ba577631dfaaa469befef7aacde4c116340154be5f2e211602440014df99f
+  sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
   bytes: 332878
 - path: mathml/tables.yaml
   sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
