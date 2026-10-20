@@ -26,7 +26,7 @@ Plurimath supports it — Plurimath supports every row.
 | LaTeX       | ✅ 125 cases, 18 groups | ✅ checked for all 780, one a refusal
 | MathML      | ✅ 287 cases, 12 groups | ✅ checked for all 782, two refusals
 | OMML        | ✅ 190 cases, 14 groups | ✅ checked for all 780, two refusals
-| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 780, 22 refusals
+| UnicodeMath | ✅ 20 cases, 4 groups   | ✅ checked for all 780, 27 refusals
 | HTML        | ❌ no cases yet         | ✅ checked for all 780, 50 refusals
 |===
 
@@ -80,8 +80,8 @@ That is a defect in the gem, recorded here as what it does.
 
 `omml/runs` 24, `omml/boxes` 2, `omml/delimiters` 16, `omml/accents` 4,
 `omml/scripts` 18, `omml/roots` 4, `omml/fractions` 7, `omml/functions` 16,
-`omml/group-characters` 2, `omml/limits` 31, `omml/nary` 11,
-`omml/equation-arrays` 7, `omml/matrices` 17, `omml/partial-render` 31.
+`omml/group-characters` 2, `omml/limits` 26, `omml/nary` 11,
+`omml/equation-arrays` 7, `omml/matrices` 17, `omml/partial-render` 36.
 
 The MathML and OMML inputs are every distinct string the examples under the
 gem's `spec/plurimath/mathml` and `spec/plurimath/omml` hand to the parser,
