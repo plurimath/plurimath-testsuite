@@ -1193,7 +1193,7 @@ cases:
             </mstyle>
             <mi>t</mi>
           </msub>
-          <mi rspace="-0.35em"/>
+          <mo rspace="-0.35em"/>
           <mrow>
             <mo>(</mo>
             <msub>

@@ -3445,7 +3445,7 @@ cases:
           <mstyle displaystyle="true">
             <mrow>
               <munderover>
-                <mi>&#x22c0;</mi>
+                <mo>&#x22c0;</mo>
                 <mrow>
                   <mi>i</mi>
                   <mo>=</mo>
@@ -3954,6 +3954,11 @@ cases:
               </m:limLowPr>
               <m:e>
                 <m:r>
+                  <m:t>lim</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
                   <m:t>x</m:t>
                 </m:r>
                 <m:r>
@@ -3961,11 +3966,6 @@ cases:
                 </m:r>
                 <m:r>
                   <m:t>0</m:t>
-                </m:r>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>lim</m:t>
                 </m:r>
               </m:lim>
             </m:limLow>
@@ -4167,6 +4167,11 @@ cases:
               </m:limLowPr>
               <m:e>
                 <m:r>
+                  <m:t>lim</m:t>
+                </m:r>
+              </m:e>
+              <m:lim>
+                <m:r>
                   <m:t>x</m:t>
                 </m:r>
                 <m:r>
@@ -4192,11 +4197,6 @@ cases:
                     </m:r>
                   </m:sup>
                 </m:sSup>
-              </m:e>
-              <m:lim>
-                <m:r>
-                  <m:t>lim</m:t>
-                </m:r>
               </m:lim>
             </m:limLow>
             <m:func>
@@ -4596,7 +4596,7 @@ cases:
     asciimath:
       output: ([[x], [y]]) vec ([[f "P{funcapply}" (x y)], [g "P{funcapply}" (x y)]])
     latex:
-      output: "( \\left .\\begin{matrix}{a}x \\\\ y\\end{matrix}\\right . ) \\vec{} ( \\left .\\begin{matrix}{a}f \\text{P[funcapply]} ( x y ) \\\\ g \\text{P[funcapply]} ( x y )\\end{matrix}\\right . )"
+      output: "( \\left .\\begin{matrix}x \\\\ y\\end{matrix}\\right . ) \\vec{} ( \\left .\\begin{matrix}f \\text{P[funcapply]} ( x y ) \\\\ g \\text{P[funcapply]} ( x y )\\end{matrix}\\right . )"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">

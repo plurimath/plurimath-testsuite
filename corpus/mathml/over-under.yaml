@@ -823,12 +823,12 @@ cases:
             </m:limUppPr>
             <m:e>
               <m:r>
-                <m:t>&#x3b8;</m:t>
+                <m:t>&#x2211;</m:t>
               </m:r>
             </m:e>
             <m:lim>
               <m:r>
-                <m:t>&#x2211;</m:t>
+                <m:t>&#x3b8;</m:t>
               </m:r>
             </m:lim>
           </m:limUpp>
@@ -908,12 +908,12 @@ cases:
             </m:limUppPr>
             <m:e>
               <m:r>
-                <m:t>3</m:t>
+                <m:t>&#x2211;</m:t>
               </m:r>
             </m:e>
             <m:lim>
               <m:r>
-                <m:t>&#x2211;</m:t>
+                <m:t>3</m:t>
               </m:r>
             </m:lim>
           </m:limUpp>
@@ -992,12 +992,12 @@ cases:
             </m:limUppPr>
             <m:e>
               <m:r>
-                <m:t>&#x398;</m:t>
+                <m:t>&#x2211;</m:t>
               </m:r>
             </m:e>
             <m:lim>
               <m:r>
-                <m:t>&#x2211;</m:t>
+                <m:t>&#x398;</m:t>
               </m:r>
             </m:lim>
           </m:limUpp>
@@ -1235,12 +1235,12 @@ cases:
             </m:limUppPr>
             <m:e>
               <m:r>
-                <m:t>1234</m:t>
+                <m:t>i</m:t>
               </m:r>
             </m:e>
             <m:lim>
               <m:r>
-                <m:t>i</m:t>
+                <m:t>1234</m:t>
               </m:r>
             </m:lim>
           </m:limUpp>
@@ -2388,7 +2388,7 @@ cases:
             </mstyle>
             <mn>90</mn>
           </msub>
-          <mi rspace="0em">/</mi>
+          <mo rspace="0em">/</mo>
           <mstyle mathvariant="normal">
             <mi>K</mi>
           </mstyle>
@@ -2426,14 +2426,14 @@ cases:
                       <mo rspace="thickmathspace"/>
                       <mrow>
                         <mi>ln</mi>
-                        <mi rspace="-0.35em"/>
+                        <mo rspace="-0.35em"/>
                       </mrow>
                     </mrow>
                     <mrow>
                       <mo>(</mo>
                       <mrow>
                         <mi>p</mi>
-                        <mi rspace="0em">/</mi>
+                        <mo rspace="0em">/</mo>
                         <mstyle mathvariant="normal">
                           <mi>Pa</mi>
                         </mstyle>
@@ -2447,7 +2447,7 @@ cases:
                   </mrow>
                   <mo>)</mo>
                 </mrow>
-                <mi rspace="0em">/</mi>
+                <mo rspace="0em">/</mo>
                 <mstyle mathvariant="italic">
                   <mi>C</mi>
                 </mstyle>
@@ -4109,11 +4109,6 @@ cases:
               </m:ctrlPr>
             </m:limUppPr>
             <m:e>
-              <m:r>
-                <m:t>&#x221e;</m:t>
-              </m:r>
-            </m:e>
-            <m:lim>
               <m:nary>
                 <m:naryPr>
                   <m:chr m:val="∫"/>
@@ -4137,6 +4132,11 @@ cases:
                   </m:r>
                 </m:e>
               </m:nary>
+            </m:e>
+            <m:lim>
+              <m:r>
+                <m:t>&#x221e;</m:t>
+              </m:r>
             </m:lim>
           </m:limUpp>
           <m:r>
@@ -4313,6 +4313,11 @@ cases:
             </m:limLowPr>
             <m:e>
               <m:r>
+                <m:t>&#xa;      Op&#xa;      </m:t>
+              </m:r>
+            </m:e>
+            <m:lim>
+              <m:r>
                 <m:t> X </m:t>
               </m:r>
               <m:r>
@@ -4320,11 +4325,6 @@ cases:
               </m:r>
               <m:r>
                 <m:t> D </m:t>
-              </m:r>
-            </m:e>
-            <m:lim>
-              <m:r>
-                <m:t>&#xa;      Op&#xa;      </m:t>
               </m:r>
             </m:lim>
           </m:limLow>

@@ -1185,7 +1185,7 @@ cases:
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
           <msub>
-            <mi>&#x2210;</mi>
+            <mo>&#x2210;</mo>
             <mi>i</mi>
           </msub>
           <msub>
@@ -1335,7 +1335,7 @@ cases:
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
           <msub>
-            <mi>&#x2a01;</mi>
+            <mo>&#x2a01;</mo>
             <mi>i</mi>
           </msub>
           <msub>

@@ -1,0 +1,43 @@
+name: Refresh corpus artifact
+
+on:
+  pull_request:
+    paths:
+      - .github/workflows/refresh-corpus.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      BUNDLE_PATH: ${{ github.workspace }}/corpus-gems
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          path: fixtures
+      - uses: actions/checkout@v4
+        with:
+          repository: plurimath/plurimath
+          ref: b5ff4017c7a1acae0f3da626ef7bdbf60455585d
+          path: oracle
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "4.0.1"
+      - name: Install reference dependencies outside both checkouts
+        working-directory: oracle
+        run: bundle install
+      - name: Record outputs from the pinned Ruby reference
+        working-directory: oracle
+        run: bundle exec ruby ../fixtures/scripts/generate-corpus.rb --gem "$GITHUB_WORKSPACE/oracle"
+      - name: Validate generated data and provenance
+        run: ruby fixtures/scripts/validate.rb
+      - uses: actions/upload-artifact@v4
+        with:
+          name: refreshed-corpus
+          path: fixtures/corpus
+          if-no-files-found: error

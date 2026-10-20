@@ -46,7 +46,7 @@ cases:
     </math>
   expected:
     asciimath: a_([[1]])^("4 terms")
-    latex: a_{\left .\begin{matrix}{a}1\end{matrix}\right .}^{\text{4 terms}}
+    latex: a_{\left .\begin{matrix}1\end{matrix}\right .}^{\text{4 terms}}
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -200,7 +200,7 @@ cases:
     </math>
   expected:
     asciimath: a_({[[1 1, |]]})^("4 terms")
-    latex: a_{\{ \left .\begin{matrix}{a|}1 1\end{matrix}\right . \}}^{\text{4 terms}}
+    latex: a_{\{ \left .\begin{matrix}1 1\end{matrix}\right . \}}^{\text{4 terms}}
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -414,7 +414,7 @@ cases:
     </math>
   expected:
     asciimath: a_({[[1 1]]})^("4 terms")
-    latex: a_{\{ \left .\begin{matrix}{a}1 1\end{matrix}\right . \}}^{\text{4 terms}}
+    latex: a_{\{ \left .\begin{matrix}1 1\end{matrix}\right . \}}^{\text{4 terms}}
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1027,7 +1027,7 @@ cases:
     </math>
   expected:
     asciimath: "[[ 8.44   &#x2062;   x  +  55   &#x2062;   y  =  0 ], [ 3.1   &#x2062;   x  -  0.7   &#x2062;   y  = -  1.1 ]]"
-    latex: "\\left .\\begin{matrix}{a} 8.44   &#x2062;   x  +  55   &#x2062;   y  =  0  \\\\  3.1   &#x2062;   x  -  0.7   &#x2062;   y  = -  1.1 \\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix} 8.44   &#x2062;   x  +  55   &#x2062;   y  =  0  \\\\  3.1   &#x2062;   x  -  0.7   &#x2062;   y  = -  1.1 \\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1486,7 +1486,7 @@ cases:
     </math>
   expected:
     asciimath: '{ [[- x, "&#xa0; if &#xa0;", x lt 0], [0, "&#xa0; if &#xa0;", x = 0], [x, "&#xa0; if &#xa0;", x gt 0]]'
-    latex: "\\{ \\left .\\begin{matrix}{aaa}- x & \\text{&#xa0; if &#xa0;} & x < 0 \\\\ 0 & \\text{&#xa0; if &#xa0;} & x = 0 \\\\ x & \\text{&#xa0; if &#xa0;} & x > 0\\end{matrix}\\right ."
+    latex: "\\{ \\left .\\begin{matrix}- x & \\text{&#xa0; if &#xa0;} & x < 0 \\\\ 0 & \\text{&#xa0; if &#xa0;} & x = 0 \\\\ x & \\text{&#xa0; if &#xa0;} & x > 0\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1951,7 +1951,7 @@ cases:
     </math>
   expected:
     asciimath: div "P{funcapply}" ( [[x mapsto x + y], [y mapsto x + z], [z mapsto z + y]] )
-    latex: div \text{P[funcapply]} ( \left .\begin{matrix}{a}x \mapsto x + y \\ y \mapsto x + z \\ z \mapsto z + y\end{matrix}\right . )
+    latex: div \text{P[funcapply]} ( \left .\begin{matrix}x \mapsto x + y \\ y \mapsto x + z \\ z \mapsto z + y\end{matrix}\right . )
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
