@@ -3445,7 +3445,7 @@ cases:
           <mstyle displaystyle="true">
             <mrow>
               <munderover>
-                <mi>&#x22c0;</mi>
+                <mo>&#x22c0;</mo>
                 <mrow>
                   <mi>i</mi>
                   <mo>=</mo>
@@ -4596,7 +4596,7 @@ cases:
     asciimath:
       output: ([[x], [y]]) vec ([[f "P{funcapply}" (x y)], [g "P{funcapply}" (x y)]])
     latex:
-      output: "( \\left .\\begin{matrix}{a}x \\\\ y\\end{matrix}\\right . ) \\vec{} ( \\left .\\begin{matrix}{a}f \\text{P[funcapply]} ( x y ) \\\\ g \\text{P[funcapply]} ( x y )\\end{matrix}\\right . )"
+      output: "( \\left .\\begin{matrix}x \\\\ y\\end{matrix}\\right . ) \\vec{} ( \\left .\\begin{matrix}f \\text{P[funcapply]} ( x y ) \\\\ g \\text{P[funcapply]} ( x y )\\end{matrix}\\right . )"
     mathml:
       output: |
         <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">

@@ -128,7 +128,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: sum_([["0≤ i ≤ m"], ["0<j<n "]]) "P" ("i,j")
-    latex: "\\sum_{\\left .\\begin{matrix}{a}\\text{0≤ i ≤ m} \\\\ \\text{0<j<n }\\end{matrix}\\right .} \\text{P} ( \\text{i,j} )"
+    latex: "\\sum_{\\left .\\begin{matrix}\\text{0≤ i ≤ m} \\\\ \\text{0<j<n }\\end{matrix}\\right .} \\text{P} ( \\text{i,j} )"
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1154,7 +1154,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["a"], ["b"]]'
-    latex: "\\left .\\begin{matrix}{a}\\text{a} \\\\ \\text{b}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{a} \\\\ \\text{b}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1323,7 +1323,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["a"], ["b"], ["c"]]'
-    latex: "\\left .\\begin{matrix}{a}\\text{a} \\\\ \\text{b} \\\\ \\text{c}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{a} \\\\ \\text{b} \\\\ \\text{c}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">

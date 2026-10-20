@@ -88,7 +88,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["a", "b"]]'
-    latex: "\\left .\\begin{matrix}{aa}\\text{a} & \\text{b}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{a} & \\text{b}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -292,7 +292,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["a", "b", "c"]]'
-    latex: "\\left .\\begin{matrix}{aaa}\\text{a} & \\text{b} & \\text{c}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{a} & \\text{b} & \\text{c}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -531,7 +531,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["b", "c"], ["d", "e"]]'
-    latex: "\\left .\\begin{matrix}{aa}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -820,7 +820,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["b", "c", "d"], ["e", "f", "g"]]'
-    latex: "\\left .\\begin{matrix}{aaa}\\text{b} & \\text{c} & \\text{d} \\\\ \\text{e} & \\text{f} & \\text{g}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} & \\text{d} \\\\ \\text{e} & \\text{f} & \\text{g}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1155,7 +1155,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["b", "c"], ["d", "e"], ["f", "g"]]'
-    latex: "\\left .\\begin{matrix}{aa}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e} \\\\ \\text{f} & \\text{g}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e} \\\\ \\text{f} & \\text{g}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1529,7 +1529,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]"
-    latex: "\\left .\\begin{matrix}{aaa}1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -1930,7 +1930,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, 0], [0, 1]]"
-    latex: "\\left .\\begin{matrix}{aa}1 & 0 \\\\ 0 & 1\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 & 0 \\\\ 0 & 1\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -2191,7 +2191,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, ], [, 1]]"
-    latex: "\\left .\\begin{matrix}{aa}1 &  \\\\  & 1\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 &  \\\\  & 1\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -2490,7 +2490,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, 0, 0], [0, 1, 0], [0, 0, 1]]"
-    latex: "\\left .\\begin{matrix}{aaa}1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -2897,7 +2897,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, , ], [, 1, ], [, , 1]]"
-    latex: "\\left .\\begin{matrix}{aaa}1 &  &  \\\\  & 1 &  \\\\  &  & 1\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 &  &  \\\\  & 1 &  \\\\  &  & 1\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -3202,7 +3202,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: "[[1, 1], [0, 0]]"
-    latex: "\\left .\\begin{matrix}{aa}1 & 1 \\\\ 0 & 0\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}1 & 1 \\\\ 0 & 0\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">
@@ -4514,7 +4514,7 @@ cases:
     </m:oMathPara>
   expected:
     asciimath: '[["a", cdots, "b"], [vdots, ddots, vdots], ["c", cdots, "d"]]'
-    latex: "\\left .\\begin{matrix}{aaa}\\text{a} & \\cdots & \\text{b} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\text{c} & \\cdots & \\text{d}\\end{matrix}\\right ."
+    latex: "\\left .\\begin{matrix}\\text{a} & \\cdots & \\text{b} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\text{c} & \\cdots & \\text{d}\\end{matrix}\\right ."
     mathml: |
       <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
         <mstyle displaystyle="true">

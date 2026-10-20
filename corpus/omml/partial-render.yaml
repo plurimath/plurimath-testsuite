@@ -3078,7 +3078,7 @@ cases:
           <mstyle displaystyle="true">
             <mrow>
               <munderover>
-                <mi>&#x2210;</mi>
+                <mo>&#x2210;</mo>
                 <mn>3</mn>
                 <mn>1</mn>
               </munderover>
@@ -3847,7 +3847,7 @@ cases:
           <mstyle displaystyle="true">
             <mrow>
               <munderover>
-                <mi>&#x22c0;</mi>
+                <mo>&#x22c0;</mo>
                 <mn>1</mn>
                 <mn>2</mn>
               </munderover>

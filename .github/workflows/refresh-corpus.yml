@@ -5,11 +5,6 @@ on:
     paths:
       - .github/workflows/refresh-corpus.yml
   workflow_dispatch:
-    inputs:
-      oracle_ref:
-        description: Ruby gem commit used as the reference
-        required: true
-        default: 788d635aa667636336ac2d731fb02a90c70c1cb5
 
 permissions:
   contents: read
@@ -28,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: plurimath/plurimath
-          ref: ${{ inputs.oracle_ref || '788d635aa667636336ac2d731fb02a90c70c1cb5' }}
+          ref: 788d635aa667636336ac2d731fb02a90c70c1cb5
           path: oracle
       - uses: ruby/setup-ruby@v1
         with:

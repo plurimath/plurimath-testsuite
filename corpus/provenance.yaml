@@ -10,7 +10,7 @@ generator:
   path: scripts/generate-corpus.rb
   sha256: f2ff26da538f90070d44077af2f60f475eb69bc3ff64424a1096e7a0b8e1af66
   repository:
-    commit: 9d5ede94c2fe4f8c0b3c08d3f018b900934052a7
+    commit: 3b7c44df85e1a5c5956d39662816538b767e8eb6
     clean: true
     dirty_paths: []
   inputs:
@@ -22,9 +22,9 @@ generator:
     bytes: 379179
 oracle:
   gem: plurimath
-  version: 0.11.6
+  version: 0.11.10
   kind: git-checkout
-  commit: 00c52783877b38f6b8e6e109f1803f96bb34fc62
+  commit: 788d635aa667636336ac2d731fb02a90c70c1cb5
   clean: true
   dirty_paths: []
 ruby:
@@ -34,29 +34,33 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: a07b033c4e199d7324e2e0c6c15063df08f840f3234d3c874ede809d6750bed4
-  resolved_gems: 77
+  sha256: 28354b6d23f5347ff704843e5195fc245aaad43fce07335859e27f05b9e26b80
+  resolved_gems: 79
   platforms:
+  - aarch64-linux
   - aarch64-linux-gnu
   - aarch64-linux-musl
+  - arm-linux
+  - arm-linux-eabihf
   - arm-linux-gnu
   - arm-linux-musl
+  - arm-linux-musleabihf
   - arm64-darwin
   - x86_64-darwin
   - x86_64-linux-gnu
   - x86_64-linux-musl
   bundler: 4.0.3
 direct_runtime:
-  bigdecimal: 4.1.2
+  bigdecimal: 4.1.3
   htmlentities: 4.4.2
-  lutaml-model: 0.8.30
-  mml: 2.4.1
+  lutaml-model: 0.8.119
+  mml: 2.4.3
   omml: 0.2.6
   ostruct: 0.6.3
-  ox: 2.14.28
+  ox: 2.14.29
   parslet: 2.0.0
   thor: 1.5.0
-  unitsml: 0.6.8
+  unitsml: 0.6.9
 payloads:
 - path: asciimath/colour.yaml
   sha256: c821d26abb818420e780643164f2f1d79df7fe07ee0f8c0825e65562ce07e1c6
@@ -164,7 +168,7 @@ payloads:
   sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
   bytes: 14745
 - path: latex/nary.yaml
-  sha256: 5a0d7e9417305ed62d572d1eed5aa139ba6afe5bcc1480e64c71be9c9e089b81
+  sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
   bytes: 53176
 - path: latex/numbers.yaml
   sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
@@ -218,8 +222,8 @@ payloads:
   sha256: bd883af6f2201ace34ad913fcf702303c06adf3e76e96e5861b818d23981c478
   bytes: 189075
 - path: mathml/partial-render.yaml
-  sha256: e360561831fab0f799f5a9a161ffc658ea4f91a88d0d460acd503295e70b4951
-  bytes: 169609
+  sha256: 47bf2ee11d3679bf7c4c37307d73a0ee87fe62107972cbcb6d48aa39f009dad4
+  bytes: 169603
 - path: mathml/rejections.yaml
   sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
   bytes: 3476
@@ -230,8 +234,8 @@ payloads:
   sha256: 1d4ba577631dfaaa469befef7aacde4c116340154be5f2e211602440014df99f
   bytes: 332878
 - path: mathml/tables.yaml
-  sha256: f2ecdc64d31489da0353354aaea3e7ec883076b8ec4ab5e792f748f3129f91dc
-  bytes: 76086
+  sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+  bytes: 76065
 - path: mathml/text.yaml
   sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
   bytes: 29368
@@ -248,8 +252,8 @@ payloads:
   sha256: 3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05
   bytes: 121100
 - path: omml/equation-arrays.yaml
-  sha256: e144c51f398891b655270613adcc0b3424599cf99b64f6546a35ed091e0d8abb
-  bytes: 117038
+  sha256: 87148248bbeb057ac6a0d834165f6186a1dca7e688e2df1dedab8c05406b2eb8
+  bytes: 117029
 - path: omml/fractions.yaml
   sha256: c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699
   bytes: 58775
@@ -263,13 +267,13 @@ payloads:
   sha256: 5cc95c71112d8de5d76b6b083295112b761a35af7f11ffddb6fab78201918e13
   bytes: 269889
 - path: omml/matrices.yaml
-  sha256: 22bdc33dd8fb9f41d820b53198efc670544c2d16952a507a2bb8069384e4b894
-  bytes: 270347
+  sha256: aa3b1bb13a1dbb428d74db05e13745f8471f9f6aef8cd94da2ea9842336d27da
+  bytes: 270293
 - path: omml/nary.yaml
   sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
   bytes: 96830
 - path: omml/partial-render.yaml
-  sha256: 8f37462ef54262c2de179bc76f3d63edc212b02e730b7d1219408c669843fd40
+  sha256: 8acad6b06e675ea3d3d96aac220f93a35bf75d43e55d7e005eb6f6629d12675b
   bytes: 294124
 - path: omml/rejections.yaml
   sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
