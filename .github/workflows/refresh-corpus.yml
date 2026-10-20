@@ -23,7 +23,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: plurimath/plurimath
-          ref: 50ad0fa74ab44a0c9e0816961c6d55b869c30b57
+          ref: b5ff4017c7a1acae0f3da626ef7bdbf60455585d
           path: oracle
       - uses: ruby/setup-ruby@v1
         with:
