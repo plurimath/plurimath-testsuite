@@ -40,3 +40,12 @@ jobs:
       # repo uses.
       - run: bundle install
       - run: bundle exec rspec
+
+  validate-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+      - run: ruby scripts/validate.rb
