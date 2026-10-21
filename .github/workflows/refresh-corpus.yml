@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - .github/workflows/refresh-corpus.yml
+      - .github/oracle/Gemfile.lock
   workflow_dispatch:
 
 permissions:
@@ -15,6 +16,7 @@ jobs:
     timeout-minutes: 20
     env:
       BUNDLE_PATH: ${{ github.workspace }}/corpus-gems
+      BUNDLE_FROZEN: "true"
     steps:
       - uses: actions/checkout@v4
         with:
@@ -23,11 +25,14 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: plurimath/plurimath
-          ref: b5ff4017c7a1acae0f3da626ef7bdbf60455585d
+          ref: ae20be111a26fdd988c58be0bfb2b7f6fe6e352f
           path: oracle
+      - name: Preserve the frozen reference dependency resolution
+        run: cp fixtures/.github/oracle/Gemfile.lock oracle/Gemfile.lock
       - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "4.0.1"
+          bundler: "4.0.3"
       - name: Install reference dependencies outside both checkouts
         working-directory: oracle
         run: bundle install
