@@ -1,0 +1,5175 @@
+---
+"schema": "plurimath-fixtures/grammar-expectations/1"
+"source":
+  "repository": "https://github.com/plurimath/plurimath"
+  "revision": "a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa"
+  "files":
+  - "path": "spec/plurimath/latex/parse_spec.rb"
+    "sha256": "b82c6ae89af32bc3af733376744a15c32720b1a872b60fdbe68817dc883b5c96"
+  - "path": "spec/plurimath/html/parse_spec.rb"
+    "sha256": "e489bb7e7eb0af5ae08b430f8960efc10a6ab645e7fd220a7a5088a270b5b942"
+  - "path": "spec/plurimath/unicode_math/parse_spec.rb"
+    "sha256": "11daaf32456b526c0e7bfd591a7995c043cc19c8a05cbf1a9e06152d0e9ee538"
+"cases":
+- "format": "latex"
+  "locale": "ar"
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "1&#x66b;2"
+  "id": "grammar-latex-001"
+  "label": "when locale decimal marker is encoded before parsing"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 20
+  "observations":
+  - "path":
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1&#x66b;2"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "{3}\\cos{\\beta}\n"
+  "id": "grammar-latex-002"
+  "label": "contains command with single argument"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 32
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "unary_functions"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "cos"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "beta"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "{a+{b}}\n"
+  "id": "grammar-latex-003"
+  "label": "contains only nested values"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 49
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\left(\\beta\\slash{t}\\right)\n"
+  "id": "grammar-latex-004"
+  "label": "contains command with multiple arguments"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 65
+  "observations":
+  - "path":
+    - "symbol": "left_right"
+    "comparison": "read"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "left_paren"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "beta"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "slash"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "right_paren"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\sqrt {\\sqrt {\\left( t{3}\\right) v}}\n"
+  "id": "grammar-latex-005"
+  "label": "contains sqrt commands"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 84
+  "observations":
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "binary"
+    "comparison": "read"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "sqrt"
+    "comparison": "eq"
+    "expected": "sqrt"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "binary"
+    - "symbol": "sqrt"
+    "comparison": "eq"
+    "expected": "sqrt"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "v"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\overline{v}\n"
+  "id": "grammar-latex-006"
+  "label": "contains overline commands"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 101
+  "observations":
+  - "path":
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "overline"
+  - "path":
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "v"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "1_{}\n"
+  "id": "grammar-latex-007"
+  "label": "contains empty subscript"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 114
+  "observations":
+  - "path":
+    - "symbol": "base"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    "comparison": "nil"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\sum_{n=1}^{\\infty}\n"
+  "id": "grammar-latex-008"
+  "label": "contains sum with sub and sup script"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 127
+  "observations":
+  - "path":
+    - "symbol": "ternary_class"
+    "comparison": "read"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "ternary_functions"
+    "comparison": "eq"
+    "expected": "sum"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "supscript"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "infty"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\prod^{\\infty}_{n=1}\n"
+  "id": "grammar-latex-009"
+  "label": "contains prod with sup and sub script"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 146
+  "observations":
+  - "path":
+    - "symbol": "ternary_class"
+    "comparison": "read"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "ternary_functions"
+    "comparison": "eq"
+    "expected": "prod"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "supscript"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "infty"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "ternary_class"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "{a}\\bmod{b}\n"
+  "id": "grammar-latex-010"
+  "label": "contains bmod with two arguments"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 164
+  "observations":
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "bmod"
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "{a}\\pmod{b}\n"
+  "id": "grammar-latex-011"
+  "label": "contains pmod with two arguments"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 178
+  "observations":
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "pmod"
+  - "path":
+    - "symbol": "under_over"
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "3x-5y+4z=0\n"
+  "id": "grammar-latex-012"
+  "label": "contains simple math equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 192
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "-"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "3x*2\n"
+  "id": "grammar-latex-013"
+  "label": "contains simple multiplication math equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 206
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "*"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "{1 \\over 2}\n"
+  "id": "grammar-latex-014"
+  "label": "contains simple use of over"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 222
+  "observations":
+  - "path":
+    - "symbol": "over"
+    - "symbol": "dividend"
+    - "operation": "first"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "over"
+    - "symbol": "divisor"
+    - "operation": "first"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{array}{l}{3x-5y+4z=0}\\end{array}\n"
+  "id": "grammar-latex-015"
+  "label": "contains array environment and math equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 235
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "array"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "args"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "l"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "array"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{matrix}a_{1} & b_{2} \\\\ \\end{matrix}\n"
+  "id": "grammar-latex-016"
+  "label": "contains matix environment and subscript math equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 252
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "matrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "\\\\"
+    "comparison": "eq"
+    "expected": "\\\\"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\binom{2}{3}\n"
+  "id": "grammar-latex-017"
+  "label": "contains binom command"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 272
+  "observations":
+  - "path":
+    - "symbol": "binary"
+    "comparison": "read"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "binom"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "binary"
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\matrix{a & b}\n"
+  "id": "grammar-latex-018"
+  "label": "contains inline matrix"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 288
+  "observations":
+  - "path":
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_data"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "matrix"
+  - "path":
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{matrix} a & b \\end{matrix}\n"
+  "id": "grammar-latex-019"
+  "label": "contains matrix with simple two letters"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 305
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "matrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "matrix"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{Bmatrix}-a & b \\\\ c & d \\end{Bmatrix}\n"
+  "id": "grammar-latex-020"
+  "label": "contains matrix with negative value"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 324
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "Bmatrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "Bmatrix"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{pmatrix}a & b \\end{pmatrix}\n"
+  "id": "grammar-latex-021"
+  "label": "contains pmatrix with simple letters"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 345
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "pmatrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "pmatrix"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{array}{c|r}\n  1 & 2 \\hline \\\\ 3 & 4\n\\end{array}\n"
+  "id": "grammar-latex-022"
+  "label": "contains array environment without args list separator"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 363
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "array"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "args"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "args"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "|"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "args"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "hline"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "array"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{bmatrix}\n  a_{1,2} & \\vdots & \\cdots & \\ddots \\\\\n\\end{bmatrix}\n"
+  "id": "grammar-latex-023"
+  "label": "contains bmatrix environment without args list separator"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 385
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "bmatrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": ","
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "vdots"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "bmatrix"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{Vmatrix}\n  \\sqrt{(-25)^{2}} = \\pm 25\n\\end{Vmatrix}\n"
+  "id": "grammar-latex-024"
+  "label": "contains vmatrix with sqrt complete equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 411
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "power"
+    - "symbol": "intermediate_exp"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "Vmatrix"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "sqrt"
+    "comparison": "eq"
+    "expected": "sqrt"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "power"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "power"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "25"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "power"
+    - "symbol": "intermediate_exp"
+    - "symbol": "right_paren"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "binary"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "power"
+    - "symbol": "supscript"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "Vmatrix"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\log_2{x}\n"
+  "id": "grammar-latex-025"
+  "label": "contains log with subscript"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 434
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "log"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\lim_{x\\to +\\infty} f(x)\n"
+  "id": "grammar-latex-026"
+  "label": "contains lim with subscript and f"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 451
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "lim"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "to"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "power_base"
+    - "symbol": "subscript"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "infty"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "intermediate_exp"
+    - "symbol": "left_paren"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "intermediate_exp"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "intermediate_exp"
+    - "symbol": "right_paren"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\left( \\begin{array}{c}\n    V_x  \\\\\n    V_y  \\end{array} \\right)\n"
+  "id": "grammar-latex-027"
+  "label": "contains array environment with simple equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 476
+  "observations":
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "left_paren"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "array"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "args"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "V"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "V"
+  - "path":
+    - "symbol": "left_right"
+    - "symbol": "expression"
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "y"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\mbox{a+b}\n"
+  "id": "grammar-latex-028"
+  "label": "contains mbox"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 498
+  "observations":
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "mbox"
+  - "path":
+    - "symbol": "first_value"
+    "comparison": "eq"
+    "expected": "a+b"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\vec{F} = F_x \\hat{e}_x + F_y \\hat{e}_y + F_z\n\\hat{e}_z = \\int \\vec{f} \\ ,dA,\n"
+  "id": "grammar-latex-029"
+  "label": "contains complex base equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 512
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "vec"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "F"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "F"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\vec{M} = M_x \\hat{e}_x + M_y \\hat{e}_y + M_z\n\\hat{e}_z = \\int (\\vec{r} - \\vec{r}_0) \\times \\vec{f} \\,dA.\n"
+  "id": "grammar-latex-030"
+  "label": "contains second complex base equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 532
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "unary_functions"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "vec"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "M"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "M"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "hat"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "L = \\vec{F} \\cdot \\hat{L}  \\qquad\nD = \\vec{F} \\cdot \\hat{D}\n"
+  "id": "grammar-latex-031"
+  "label": "contains third complex base equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 555
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "L"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "vec"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "F"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "cdot"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\vec{M} = M_\\xi \\hat{e}_{\\xi} + M_\\eta \\hat{e}_{\\eta} + M_\\zeta\n\\hat{e}_{\\zeta} = \\int (\\vec{r} - \\vec{r}_0) \\times \\vec{f} \\,dA.\n"
+  "id": "grammar-latex-032"
+  "label": "contains fourth complex base equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 575
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "vec"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "unary_functions"
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "M"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "M"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "xi"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "\\begin{split}\n  C_L &= {L \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 S} \\\\ \\\\\n  C_D &= {D \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 S} \\\\ \\\\\n  \\vec{C}_M &= {\\beta \\vec{M} \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 c_\\textrm{ref} S_\\textrm{ref}},\n\\end{split}\n"
+  "id": "grammar-latex-033"
+  "label": "contains fifth complex split environment"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 598
+  "observations":
+  - "path":
+    - "symbol": "environment"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    "comparison": "read"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "split"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "C"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "L"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "table_data"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "&"
+  - "path":
+    - "symbol": "environment"
+    - "symbol": "ending"
+    - "symbol": "environment"
+    "comparison": "eq"
+    "expected": "split"
+- "format": "latex"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "squeeze"
+    "value": " "
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": " "
+    "value": ""
+  - "kind": "replace"
+    "pattern":
+      "kind": "literal"
+      "value": "\n"
+    "value": ""
+  "input": "c_l = {L' \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 c_\\textrm{ref}} \\qquad\nc_d = {D' \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 c_\\textrm{ref}} \\qquad\n\\vec{c}_m = {\\vec{M}' \\over {1\\over2} \\rho_\\textrm{ref} q_\\textrm{ref}^2 c_\\textrm{ref}^2},\n"
+  "id": "grammar-latex-034"
+  "label": "contains sixth complex equation"
+  "source":
+    "path": "spec/plurimath/latex/parse_spec.rb"
+    "line": 619
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "divisor"
+    - 0
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "base"
+    - "symbol": "subscript"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "l"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "="
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "dividend"
+    - 0
+    - "symbol": "sequence"
+    - "symbol": "symbols"
+    "comparison": "eq"
+    "expected": "L"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "dividend"
+    - 0
+    - "symbol": "expression"
+    - "symbol": "operant"
+    "comparison": "eq"
+    "expected": "'"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "divisor"
+    - 0
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "dividend"
+    - 0
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "divisor"
+    - 0
+    - "symbol": "sequence"
+    - "symbol": "over"
+    - "symbol": "divisor"
+    - 0
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>&sum;</i>"
+  "id": "grammar-html-035"
+  "label": "contains sum symbol in li tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 12
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sub>d</sub><sup>prod</sup>"
+  "id": "grammar-html-036"
+  "label": "contains sum symbol in li tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 20
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<div>&sum;<sub>&prod;</sub></div>"
+  "id": "grammar-html-037"
+  "label": "contains sub tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 33
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sub_value"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&prod;"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<div>&sum;<sup>&prod;</sup></div>"
+  "id": "grammar-html-038"
+  "label": "contains sup tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 44
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sup_value"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&prod;"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<div>&sum;<sub>&prod;</sub><sup>prod</sup></div>"
+  "id": "grammar-html-039"
+  "label": "contains sub and sup tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 55
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sub_value"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&prod;"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<div>\n  some\n  <sup><span>(</span><span>S</span><span>)</span></sup>\n  <sub>g</sub>\n</div>\n"
+  "id": "grammar-html-040"
+  "label": "contains complex sub and sup tag"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 78
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sup_value"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sub_sup"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sup_value"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sup_value"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "S"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sup_value"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "g"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "abs(3)"
+  "id": "grammar-html-041"
+  "label": "contains HTML math example #1"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 97
+  "observations":
+  - "path":
+    - "symbol": "unary_function"
+    - "symbol": "first_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "unary_function"
+    - "symbol": "unary"
+    "comparison": "eq"
+    "expected": "abs"
+  - "path":
+    - "symbol": "unary_function"
+    - "symbol": "first_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "unary_function"
+    - "symbol": "first_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "unary_function"
+    - "symbol": "first_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "abc[0]"
+  "id": "grammar-html-042"
+  "label": "contains HTML math example #2"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 110
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "["
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "0"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": "]"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "abc{0}"
+  "id": "grammar-html-043"
+  "label": "contains HTML math example #3"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 125
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "{"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "0"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": "}"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "abc(weatever text [and things])"
+  "id": "grammar-html-044"
+  "label": "contains HTML math example #4"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 140
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "c"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "["
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": "]"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "ϑ(t)"
+  "id": "grammar-html-045"
+  "label": "contains HTML math example #5"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 162
+  "observations":
+  - "path":
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "ϑ"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sup>2</sup>"
+  "id": "grammar-html-046"
+  "label": "contains HTML math example #6"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 175
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub>2</sub>"
+  "id": "grammar-html-047"
+  "label": "contains HTML math example #7"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 184
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sup><i>n</i></sup>"
+  "id": "grammar-html-048"
+  "label": "contains HTML math example #8"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 193
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub><i>n</i></sub>"
+  "id": "grammar-html-049"
+  "label": "contains HTML math example #9"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 202
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sup>3</sup>"
+  "id": "grammar-html-050"
+  "label": "contains HTML math example #10"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 211
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sup>3+4</sup>"
+  "id": "grammar-html-051"
+  "label": "contains HTML math example #11"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 220
+  "observations":
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "4"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>3+4</sub>"
+  "id": "grammar-html-052"
+  "label": "contains HTML math example #12"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 235
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "4"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub><i>b</i>+2</sub>"
+  "id": "grammar-html-053"
+  "label": "contains HTML math example #13"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 249
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sup>-2</sup>"
+  "id": "grammar-html-054"
+  "label": "contains HTML math example #14"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 263
+  "observations":
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub>-2</sub>"
+  "id": "grammar-html-055"
+  "label": "contains HTML math example #15"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 275
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sup>-<i>n</i></sup>"
+  "id": "grammar-html-056"
+  "label": "contains HTML math example #16"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 287
+  "observations":
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub>-<i>n</i></sub>"
+  "id": "grammar-html-057"
+  "label": "contains HTML math example #17"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 299
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub><i>n</i></sub><sup>2</sup>"
+  "id": "grammar-html-058"
+  "label": "contains HTML math example #18"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 311
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>a</i><sub><i>n+1</i></sub><sup><i>b</i>+<i>c</i></sup>"
+  "id": "grammar-html-059"
+  "label": "contains HTML math example #19"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 326
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "+"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "c"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>f</i>(<i>x</i>)"
+  "id": "grammar-html-060"
+  "label": "contains HTML math example #20"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 343
+  "observations":
+  - "path":
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>f</i>(<i>g</i>(<i>x</i>))"
+  "id": "grammar-html-061"
+  "label": "contains HTML math example #21"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 356
+  "observations":
+  - "path":
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "g"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "f&sum;(<i>n</i>)(<i>2</i>)"
+  "id": "grammar-html-062"
+  "label": "contains HTML math example #22"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 373
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "sequence"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "fib(<i>n</i>)"
+  "id": "grammar-html-063"
+  "label": "contains HTML math example #23"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 392
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "i"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "b"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>f</i><sub>max</sub>"
+  "id": "grammar-html-064"
+  "label": "contains HTML math example #24"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 408
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "x"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>&omega;</i>"
+  "id": "grammar-html-065"
+  "label": "contains HTML math example #25"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 421
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "&omega;"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>&Omega;</i>"
+  "id": "grammar-html-066"
+  "label": "contains HTML math example #26"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 429
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "&Omega;"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "αβγ"
+  "id": "grammar-html-067"
+  "label": "contains HTML math example #27"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 437
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "α"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "β"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "γ"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "абг"
+  "id": "grammar-html-068"
+  "label": "contains HTML math example #28"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 449
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "а"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "б"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "г"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>f</i><sup>-1</sup>(<i>x</i>)"
+  "id": "grammar-html-069"
+  "label": "contains HTML math example #29"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 461
+  "observations":
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "f"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "symbol"
+    "comparison": "eq"
+    "expected": "-"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "x"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<sub>sth</sub>"
+  "id": "grammar-html-070"
+  "label": "contains HTML math example #30"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 477
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "h"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "root(<i>sth</i>)"
+  "id": "grammar-html-071"
+  "label": "contains HTML math example #31"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 489
+  "observations":
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    "comparison": "read"
+  - "path":
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "h"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "parse_parenthesis"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<table><tr><td>Something</td></tr></table>"
+  "id": "grammar-html-072"
+  "label": "contains HTML math example #32"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 508
+  "observations":
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "S"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "h"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "i"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "n"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "g"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<table>\n  <tr>\n    <td>4</td>\n  </tr>\n  <tr>\n    <td>3</td>\n  </tr>\n  <tr>\n    <td>2</td>\n  </tr>\n  <tr>\n    <td>1</td>\n  </tr>\n</table>\n"
+  "id": "grammar-html-073"
+  "label": "contains HTML math example #33"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 544
+  "observations":
+  - "path":
+    - "symbol": "table_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "4"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "expression"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<table>\n  <tr>\n    <td>so</td>\n  </tr>\n  <tr>\n    <td>es</td>\n  </tr>\n  <tr>\n    <td>&sum;</td>\n  </tr>\n  <tr>\n    <td>&prod;</td>\n  </tr>\n</table>\n"
+  "id": "grammar-html-074"
+  "label": "contains HTML math example #34"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 575
+  "observations":
+  - "path":
+    - "symbol": "table_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "table_value"
+    - "symbol": "tr_value"
+    - "symbol": "td_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sub>drop</sub><sup>prod</sup>"
+  "id": "grammar-html-075"
+  "label": "contains HTML math example #35"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 587
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sub>drop</sub><sup>p</sup>"
+  "id": "grammar-html-076"
+  "label": "contains HTML math example #36"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 605
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sup>p</sup>"
+  "id": "grammar-html-077"
+  "label": "contains HTML math example #37"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 621
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sup>prod</sup>"
+  "id": "grammar-html-078"
+  "label": "contains HTML math example #38"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 630
+  "observations":
+  - "path":
+    - "symbol": "sup_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sub>prod</sub>"
+  "id": "grammar-html-079"
+  "label": "contains HTML math example #39"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 645
+  "observations":
+  - "path":
+    - "symbol": "sub_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "p"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "d"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>3</sub>"
+  "id": "grammar-html-080"
+  "label": "contains HTML math example #40"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 659
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "&sum;<sub>3</sub><sup>5</sup>"
+  "id": "grammar-html-081"
+  "label": "contains HTML math example #41"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 668
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "&sum;"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "5"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>3</sub><sup>5</sup>"
+  "id": "grammar-html-082"
+  "label": "contains HTML math example #42"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 678
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>so</sub><sup>we</sup>"
+  "id": "grammar-html-083"
+  "label": "contains HTML math example #43"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 687
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>s</sub><sup>we</sup>"
+  "id": "grammar-html-084"
+  "label": "contains HTML math example #44"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 699
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<sub>so</sub><sup>w</sup>"
+  "id": "grammar-html-085"
+  "label": "contains HTML math example #45"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 710
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "s<sub>so</sub><sup>w</sup>"
+  "id": "grammar-html-086"
+  "label": "contains HTML math example #46"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 721
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "s<sub>so</sub><sup>we</sup>"
+  "id": "grammar-html-087"
+  "label": "contains HTML math example #47"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 732
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "o"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "s<sub>s</sub><sup>we</sup>"
+  "id": "grammar-html-088"
+  "label": "contains HTML math example #48"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 744
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "w"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>lim</i>(3)(e)"
+  "id": "grammar-html-089"
+  "label": "contains HTML math example #49"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 755
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "second_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "lim"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>lim</i>(3e)(em)"
+  "id": "grammar-html-090"
+  "label": "contains HTML math example #50"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 772
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "second_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "lim"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>lim</i>(3am)(rest)"
+  "id": "grammar-html-091"
+  "label": "contains HTML math example #51"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 791
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "second_value"
+    "comparison": "read"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "lim"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "lparen"
+    "comparison": "eq"
+    "expected": "("
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "r"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "s"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "t"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "rparen"
+    "comparison": "eq"
+    "expected": ")"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>log</i><sub>3</sub><sup>e</sup>"
+  "id": "grammar-html-092"
+  "label": "contains HTML math example #52"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 813
+  "observations":
+  - "path":
+    - "symbol": "sub_sup"
+    - "symbol": "sequence"
+    - "symbol": "sum_prod"
+    "comparison": "eq"
+    "expected": "log"
+  - "path":
+    - "symbol": "sub_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "3"
+  - "path":
+    - "symbol": "sup_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2<i>mod</i>e"
+  "id": "grammar-html-093"
+  "label": "contains HTML math example #53"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 823
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "mod"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>2</i><i>mod</i><i>e</i>"
+  "id": "grammar-html-094"
+  "label": "contains HTML math example #54"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 833
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "mod"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<i>2a</i><i>mod</i><i>em</i>"
+  "id": "grammar-html-095"
+  "label": "contains HTML math example #55"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 843
+  "observations":
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "first_value"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "mod"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "sequence"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "second_value"
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "2a<i>mod</i>em"
+  "id": "grammar-html-096"
+  "label": "contains HTML math example #55"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 855
+  "observations":
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    "comparison": "read"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "first_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "a"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "binary"
+    "comparison": "eq"
+    "expected": "mod"
+  - "path":
+    - "symbol": "sequence"
+    - "symbol": "expression"
+    - "symbol": "second_value"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "e"
+  - "path":
+    - "symbol": "expression"
+    - "symbol": "text"
+    "comparison": "eq"
+    "expected": "m"
+- "format": "html"
+  "locale": null
+  "rule": "expression"
+  "transforms":
+  - "kind": "replace"
+    "pattern":
+      "kind": "whitespace"
+    "value": ""
+  "input": "<sup>sth"
+  "id": "grammar-html-097"
+  "label": "should fail when a tag is not closed"
+  "source":
+    "path": "spec/plurimath/html/parse_spec.rb"
+    "line": 869
+  "observations":
+  - "comparison": "parse_failure"
+- "format": "unicode"
+  "locale": "ar"
+  "rule": "number"
+  "transforms": []
+  "input": "1&#x66b;2"
+  "id": "grammar-unicode-098"
+  "label": "when locale decimal marker is encoded before parsing"
+  "source":
+    "path": "spec/plurimath/unicode_math/parse_spec.rb"
+    "line": 17
+  "observations":
+  - "path":
+    - "symbol": "decimal_number"
+    "comparison": "read"
+  - "path":
+    - "symbol": "decimal_number"
+    - "symbol": "whole"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "1"
+  - "path":
+    - "symbol": "decimal_number"
+    - "symbol": "decimal"
+    "comparison": "eq"
+    "expected": "&#x66b;"
+  - "path":
+    - "symbol": "decimal_number"
+    - "symbol": "fractional"
+    - "symbol": "number"
+    "comparison": "eq"
+    "expected": "2"

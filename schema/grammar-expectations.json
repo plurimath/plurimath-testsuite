@@ -1,0 +1,348 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/grammar-expectations/1",
+  "title": "Authored grammar tree projections and refusals",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "plurimath-fixtures/grammar-expectations/1"
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "repository": {
+          "const": "https://github.com/plurimath/plurimath"
+        },
+        "revision": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            },
+            "required": [
+              "path",
+              "sha256"
+            ]
+          }
+        }
+      },
+      "required": [
+        "repository",
+        "revision",
+        "files"
+      ]
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "required": [
+    "schema",
+    "source",
+    "cases"
+  ],
+  "$defs": {
+    "symbol": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "symbol": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "symbol"
+      ]
+    },
+    "path_step": {
+      "oneOf": [
+        {
+          "type": "integer",
+          "minimum": 0
+        },
+        {
+          "$ref": "#/$defs/symbol"
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "operation": {
+              "const": "first"
+            }
+          },
+          "required": [
+            "operation"
+          ]
+        },
+        {
+          "type": "string"
+        }
+      ]
+    },
+    "pattern": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "whitespace"
+            }
+          },
+          "required": [
+            "kind"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "literal"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ]
+        }
+      ]
+    },
+    "transform": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "squeeze"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "kind": {
+              "const": "replace"
+            },
+            "pattern": {
+              "$ref": "#/$defs/pattern"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "kind",
+            "pattern",
+            "value"
+          ]
+        }
+      ]
+    },
+    "observation": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "comparison": {
+              "const": "parse_failure"
+            }
+          },
+          "required": [
+            "comparison"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/$defs/path_step"
+              }
+            },
+            "comparison": {
+              "enum": [
+                "nil",
+                "read"
+              ]
+            }
+          },
+          "required": [
+            "path",
+            "comparison"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "path": {
+              "type": "array",
+              "minItems": 0,
+              "items": {
+                "$ref": "#/$defs/path_step"
+              }
+            },
+            "comparison": {
+              "const": "eq"
+            },
+            "expected": {
+              "oneOf": [
+                {
+                  "type": [
+                    "string",
+                    "integer",
+                    "null"
+                  ]
+                },
+                {
+                  "$ref": "#/$defs/symbol"
+                }
+              ]
+            }
+          },
+          "required": [
+            "path",
+            "comparison",
+            "expected"
+          ]
+        }
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "path": {
+          "type": "string",
+          "pattern": "^spec/plurimath/(latex|html|unicode_math)/parse_spec\\.rb$"
+        },
+        "line": {
+          "type": "integer",
+          "minimum": 1
+        }
+      },
+      "required": [
+        "path",
+        "line"
+      ]
+    },
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^grammar-(latex|html|unicode)-[0-9]+$"
+        },
+        "format": {
+          "enum": [
+            "latex",
+            "html",
+            "unicode"
+          ]
+        },
+        "input": {
+          "type": "string"
+        },
+        "locale": {
+          "enum": [
+            null,
+            "en",
+            "fr",
+            "ar"
+          ]
+        },
+        "rule": {
+          "enum": [
+            "expression",
+            "number"
+          ]
+        },
+        "transforms": {
+          "type": "array",
+          "minItems": 0,
+          "items": {
+            "$ref": "#/$defs/transform"
+          }
+        },
+        "label": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/source"
+        },
+        "observations": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "$ref": "#/$defs/observation"
+          },
+          "contains": {
+            "type": "object",
+            "required": [
+              "comparison"
+            ],
+            "properties": {
+              "comparison": {
+                "enum": [
+                  "eq",
+                  "nil",
+                  "parse_failure"
+                ]
+              }
+            }
+          }
+        }
+      },
+      "required": [
+        "id",
+        "format",
+        "input",
+        "locale",
+        "rule",
+        "transforms",
+        "label",
+        "source",
+        "observations"
+      ]
+    }
+  }
+}

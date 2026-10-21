@@ -1,0 +1,51 @@
+---
+"schema": "plurimath-fixtures/cli-conversions/1"
+"source":
+  "revision": "a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa"
+  "files":
+  - "path": "spec/plurimath/cli_spec.rb"
+    "sha256": "c41fddef1945b2330b550b90324688b3f70e3fabdf3eaabc20c27095f06eefc4"
+  - "path": "spec/plurimath/fixtures/executables/power_base.tex"
+    "sha256": "5b01708b735d261d4bd2172668107c48645f0b266ebce7fc9107f742dc1ffd95"
+"cases":
+- "id": "cli-convert-1"
+  "arguments":
+  - "convert"
+  - "-i"
+  - "sum"
+  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2211;</mo>\n  </mstyle>\n</math>\n"
+  "source":
+    "path": "spec/plurimath/cli_spec.rb"
+    "line": 16
+    "sha256": "e9a6f5acabe94ba7f89f1866a9960692bc64160088b22ca9ed57995b14137d18"
+- "id": "cli-convert-2"
+  "arguments":
+  - "convert"
+  - "-i"
+  - "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2211;</mo>\n  </mstyle>\n</math>\n"
+  - "-f"
+  - "mathml"
+  - "-t"
+  - "latex"
+  "stdout": "\\sum\n"
+  "source":
+    "path": "spec/plurimath/cli_spec.rb"
+    "line": 34
+    "sha256": "78f4fbc7b4cdad866aa94a89ef562fbbdd0801a4ea189f902f9b089e8b9be924"
+- "id": "cli-convert-3"
+  "arguments":
+  - "convert"
+  - "-p"
+  - "spec/plurimath/fixtures/executables/power_base.tex"
+  - "-f"
+  - "latex"
+  - "-t"
+  - "mathml"
+  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mfrac>\n        <mi>s</mi>\n        <mi>c</mi>\n      </mfrac>\n      <mi>d</mi>\n    </msub>\n  </mstyle>\n</math>\n"
+  "source":
+    "path": "spec/plurimath/cli_spec.rb"
+    "line": 53
+    "sha256": "404319908d060dc3153c64329677b61efaf3673af26ad7d0803b76ed7f74e22b"
+  "input_file":
+    "path": "spec/plurimath/fixtures/executables/power_base.tex"
+    "content": "\\frac{s}{c}_{d}\n"

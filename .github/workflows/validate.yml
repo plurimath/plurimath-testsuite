@@ -24,7 +24,7 @@ jobs:
 
       # No gems: scripts/validate.rb implements the JSON Schema subset the
       # corpus schemas use, and rejects any schema keyword it cannot check.
-      # The Gemfile below exists for the spec suite only — this step runs
+      # The Gemfile contains development tools only — this step runs
       # before `bundle install` on purpose, and must keep passing with no
       # bundle installed.
       #
@@ -33,11 +33,11 @@ jobs:
       # corpus/, add --allow-empty until the data arrives — and remove it in
       # the commit that adds corpus/.
       - run: ruby scripts/validate.rb
+      - run: ruby scripts/validate-fixtures.rb
 
       # The spec suite guards the validator itself (and the generator's
-      # gem-free helpers). It is the one thing here that takes a dependency:
-      # RSpec, from the dev-only Gemfile — the same harness every sibling
-      # repo uses.
+      # gem-free helpers). Development dependencies also include Prism for
+      # the one-time static migration exporters.
       - run: bundle install
       - run: bundle exec rspec
 
@@ -49,3 +49,4 @@ jobs:
         with:
           ruby-version: "3.4"
       - run: ruby scripts/validate.rb
+      - run: ruby scripts/validate-fixtures.rb

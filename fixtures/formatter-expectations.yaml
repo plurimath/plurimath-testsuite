@@ -1,0 +1,6581 @@
+---
+"schema": "plurimath-fixtures/formatter-expectations/1"
+"provenance":
+  "repository": "https://github.com/plurimath/plurimath"
+  "ruby_commit": "a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa"
+"cases":
+- "id": "base-notation-128"
+  "component": "BaseNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "BaseNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "base"
+          "value":
+            "kind": "literal"
+            "value": 16
+        - "key":
+            "kind": "symbol"
+            "value": "prefix"
+          "value":
+            "kind": "literal"
+            "value": "0x"
+        - "key":
+            "kind": "symbol"
+            "value": "postfix"
+          "value":
+            "kind": "literal"
+            "value": "h"
+    "method": "wrap"
+    "args":
+    - "kind": "literal"
+      "value": "ff"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0xffh"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/base_notation_spec.rb"
+    "sha256": "6b39bc2505818874479dab53bb949324034fe5616bdb9f8ac0f0933bb7b1d463"
+    "line": 128
+    "contexts":
+    - "#wrap"
+- "id": "base-notation-134"
+  "component": "BaseNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "BaseNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "base"
+          "value":
+            "kind": "literal"
+            "value": 16
+    "method": "wrap"
+    "args":
+    - "kind": "literal"
+      "value": "ff"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "ff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/base_notation_spec.rb"
+    "sha256": "6b39bc2505818874479dab53bb949324034fe5616bdb9f8ac0f0933bb7b1d463"
+    "line": 134
+    "contexts":
+    - "#wrap"
+- "id": "formatted-notation-033"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+        - "key":
+            "kind": "symbol"
+            "value": "exponent_separator"
+          "value":
+            "kind": "literal"
+            "value": "e"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40e4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 33
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-044"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+        - "key":
+            "kind": "symbol"
+            "value": "exponent_separator"
+          "value":
+            "kind": "literal"
+            "value": "E"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40E4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 44
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-055"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "scientific"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+        - "key":
+            "kind": "symbol"
+            "value": "times_symbol"
+          "value":
+            "kind": "literal"
+            "value": "×"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40 × 10^4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 55
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-069"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "14,00"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": ","
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "engineering"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 3
+        - "key":
+            "kind": "symbol"
+            "value": "times_symbol"
+          "value":
+            "kind": "literal"
+            "value": "x"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "14,00 x 10^3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 69
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-080"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "scientific"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": -3
+        - "key":
+            "kind": "symbol"
+            "value": "times_symbol"
+          "value":
+            "kind": "literal"
+            "value": "×"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40 × 10^-3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 80
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-091"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "scientific"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 0
+        - "key":
+            "kind": "symbol"
+            "value": "times_symbol"
+          "value":
+            "kind": "literal"
+            "value": "×"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40 × 10^0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 91
+    "contexts":
+    - "#to_s"
+- "id": "formatted-notation-115"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 0
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 115
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-notation-125"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 125
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-notation-135"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": -3
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 135
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-notation-146"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+        - "key":
+            "kind": "symbol"
+            "value": "exponent_sign"
+          "value":
+            "kind": "symbol"
+            "value": "plus"
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "+4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 146
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-notation-157"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": -3
+        - "key":
+            "kind": "symbol"
+            "value": "exponent_sign"
+          "value":
+            "kind": "symbol"
+            "value": "plus"
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 157
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-notation-168"
+  "component": "FormattedNotation"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNotation"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "coefficient"
+          "value":
+            "kind": "component"
+            "name": "FormattedNumber"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "sign"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "integer_part"
+                "value":
+                  "kind": "literal"
+                  "value": "1.40"
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_part"
+                "value":
+                  "kind": "literal"
+                  "value": ""
+              - "key":
+                  "kind": "symbol"
+                  "value": "decimal_separator"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+              - "key":
+                  "kind": "symbol"
+                  "value": "base_notation"
+                "value":
+                  "kind": "component"
+                  "name": "BaseNotation"
+                  "args": []
+                  "kwargs":
+                    "kind": "map"
+                    "entries":
+                    - "key":
+                        "kind": "symbol"
+                        "value": "base"
+                      "value":
+                        "kind": "literal"
+                        "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "notation_style"
+          "value":
+            "kind": "symbol"
+            "value": "e"
+        - "key":
+            "kind": "symbol"
+            "value": "exponent"
+          "value":
+            "kind": "literal"
+            "value": 4
+        - "key":
+            "kind": "symbol"
+            "value": "exponent_sign"
+          "value":
+            "kind": "literal"
+            "value": null
+    "method": "formatted_exponent"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_notation_spec.rb"
+    "sha256": "dc84c69b373cf7b3bab6c4bc590352a128ba0340cac32761178c0e2d1cc33cde"
+    "line": 168
+    "contexts":
+    - "#formatted_exponent"
+- "id": "formatted-number-016"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "1,000"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1,000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 16
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-025"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "1"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": "234"
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.234"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 25
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-034"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-42"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 34
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-044"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "number_sign"
+          "value":
+            "kind": "symbol"
+            "value": "plus"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "+42"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 44
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-053"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "ff"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0xff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 53
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-062"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "ff"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-0xff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 62
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-074"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "a.d'f"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "literal"
+                  "value": true
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0xA.D'F"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 74
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-086"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "BE,EF"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "16#"
+              - "key":
+                  "kind": "symbol"
+                  "value": "postfix"
+                "value":
+                  "kind": "literal"
+                  "value": "_16"
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-16#BE,EF_16"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 86
+    "contexts":
+    - "#to_s"
+- "id": "formatted-number-157"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "sign_text"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 157
+    "contexts":
+    - "#sign_text"
+- "id": "formatted-number-167"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "number_sign"
+          "value":
+            "kind": "symbol"
+            "value": "plus"
+    "method": "sign_text"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "+"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 167
+    "contexts":
+    - "#sign_text"
+- "id": "formatted-number-176"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "sign_text"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "nil"
+  "expected": null
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 176
+    "contexts":
+    - "#sign_text"
+- "id": "formatted-number-186"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "42"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "number_sign"
+          "value":
+            "kind": "symbol"
+            "value": "plus"
+    "method": "sign_text"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 186
+    "contexts":
+    - "#sign_text"
+- "id": "formatted-number-200"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "BE,EF"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+              - "key":
+                  "kind": "symbol"
+                  "value": "postfix"
+                "value":
+                  "kind": "literal"
+                  "value": "_h"
+    "method": "digits_string"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "BE,EF"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 200
+    "contexts":
+    - "#digits_string"
+- "id": "formatted-number-209"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "1"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": "5"
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+    "method": "digits_string"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 209
+    "contexts":
+    - "#digits_string"
+- "id": "formatted-number-221"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "be"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": "ef"
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "literal"
+                  "value": true
+    "method": "digits_string"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "BE.EF"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 221
+    "contexts":
+    - "#digits_string"
+- "id": "formatted-number-233"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": 1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "ff"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0x"
+    "method": "digits_string"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "ff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 233
+    "contexts":
+    - "structured access for downstream rendering"
+- "id": "formatted-number-245"
+  "component": "FormattedNumber"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "FormattedNumber"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "integer_part"
+          "value":
+            "kind": "literal"
+            "value": "1010"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_part"
+          "value":
+            "kind": "literal"
+            "value": ""
+        - "key":
+            "kind": "symbol"
+            "value": "decimal_separator"
+          "value":
+            "kind": "literal"
+            "value": "."
+        - "key":
+            "kind": "symbol"
+            "value": "base_notation"
+          "value":
+            "kind": "component"
+            "name": "BaseNotation"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "prefix"
+                "value":
+                  "kind": "literal"
+                  "value": "0b"
+    "method": "digits_string"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1010"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/formatted_number_spec.rb"
+    "sha256": "65deafbde4dc8531334d509530b6963531d999a72ff9eda41b6cb224f5373dfa"
+    "line": 245
+    "contexts":
+    - "structured access for downstream rendering"
+- "id": "fraction-123"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "500"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 123
+    "contexts":
+    - "#format"
+    - "with shorter number than precision"
+- "id": "fraction-128"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format"
+    "args":
+    - "kind": "literal"
+      "value": "1"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "100"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 128
+    "contexts":
+    - "#format"
+    - "with shorter number than precision"
+- "id": "fraction-137"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format"
+    "args":
+    - "kind": "literal"
+      "value": "123"
+    - "kind": "literal"
+      "value": 2
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 137
+    "contexts":
+    - "#format"
+    - "with longer number than precision"
+- "id": "fraction-146"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format"
+    "args":
+    - "kind": "literal"
+      "value": "123"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 146
+    "contexts":
+    - "#format"
+    - "with equal length"
+- "id": "fraction-155"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 0
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    - "kind": "literal"
+      "value": 0
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 155
+    "contexts":
+    - "#format"
+    - "with zero precision"
+- "id": "fraction-166"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group"
+                "value":
+                  "kind": "literal"
+                  "value": "-"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12-34-56"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 166
+    "contexts":
+    - "#format_groups"
+    - "with default group size"
+- "id": "fraction-172"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group"
+                "value":
+                  "kind": "literal"
+                  "value": "_"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12_34_56"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 172
+    "contexts":
+    - "#format_groups"
+    - "with default group size"
+- "id": "fraction-181"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 0
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123456"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 181
+    "contexts":
+    - "#format_groups"
+    - "with zero group digits"
+- "id": "fraction-190"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "12"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 190
+    "contexts":
+    - "#format_groups"
+    - "with string shorter than group size"
+- "id": "fraction-202"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 1
+              - "key":
+                  "kind": "symbol"
+                  "value": "fraction_group"
+                "value":
+                  "kind": "literal"
+                  "value": "f"
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "symbol"
+                  "value": "numbers_only"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "af0"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "AfFf0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 202
+    "contexts":
+    - "#format_groups"
+    - "with numbers-only hex capitalization"
+- "id": "fraction-213"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 4
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "text_kind"
+  "expected": "text"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 213
+    "contexts":
+    - "#change_base"
+    - "with binary base"
+- "id": "fraction-214"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 4
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "alphabet"
+  "expected":
+  - "0"
+  - "1"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 214
+    "contexts":
+    - "#change_base"
+    - "with binary base"
+- "id": "fraction-223"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "text_kind"
+  "expected": "text"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 223
+    "contexts":
+    - "#change_base"
+    - "with hexadecimal base"
+- "id": "fraction-224"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "max_length"
+  "expected": 3
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 224
+    "contexts":
+    - "#change_base"
+    - "with hexadecimal base"
+- "id": "fraction-233"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "text_kind"
+  "expected": "text"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 233
+    "contexts":
+    - "#change_base"
+    - "with octal base"
+- "id": "fraction-234"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "alphabet"
+  "expected":
+  - "0"
+  - "1"
+  - "2"
+  - "3"
+  - "4"
+  - "5"
+  - "6"
+  - "7"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 234
+    "contexts":
+    - "#change_base"
+    - "with octal base"
+- "id": "fraction-243"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "literal"
+                  "value": true
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "15"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "text_kind"
+  "expected": "text"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 243
+    "contexts":
+    - "#change_base"
+    - "with uppercase hex"
+- "id": "fraction-252"
+  "component": "Fraction"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Fraction"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "precision"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "change_base"
+    "args":
+    - "kind": "literal"
+      "value": "0"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "text_kind"
+  "expected": "text"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/fraction_spec.rb"
+    "sha256": "cee4cea00552b0596f511fd39228c617072b4009da2b26214ae44c2875264d5a"
+    "line": 252
+    "contexts":
+    - "#change_base"
+    - "with zero"
+- "id": "integer-070"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "1000"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1,000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 70
+    "contexts":
+    - "#apply"
+    - "with decimal base"
+- "id": "integer-075"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "1000000"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1,000,000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 75
+    "contexts":
+    - "#apply"
+    - "with decimal base"
+- "id": "integer-080"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "0"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 80
+    "contexts":
+    - "#apply"
+    - "with decimal base"
+- "id": "integer-085"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 85
+    "contexts":
+    - "#apply"
+    - "with decimal base"
+- "id": "integer-090"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "99"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "99"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 90
+    "contexts":
+    - "#apply"
+    - "with decimal base"
+- "id": "integer-099"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "255"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "ff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 99
+    "contexts":
+    - "#apply"
+    - "with hexadecimal base"
+- "id": "integer-104"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "4095"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 104
+    "contexts":
+    - "#apply"
+    - "with hexadecimal base"
+- "id": "integer-109"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "16777215"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fff,fff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 109
+    "contexts":
+    - "#apply"
+    - "with hexadecimal base"
+- "id": "integer-118"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "255"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "ff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 118
+    "contexts":
+    - "#apply"
+    - "with hexadecimal base (default lowercase)"
+- "id": "integer-123"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "4095"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 123
+    "contexts":
+    - "#apply"
+    - "with hexadecimal base (default lowercase)"
+- "id": "integer-132"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "8"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1,000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 132
+    "contexts":
+    - "#apply"
+    - "with binary base"
+- "id": "integer-137"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "255"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "11,111,111"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 137
+    "contexts":
+    - "#apply"
+    - "with binary base"
+- "id": "integer-146"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "64"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "100"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 146
+    "contexts":
+    - "#apply"
+    - "with octal base"
+- "id": "integer-151"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "4096"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "10,000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 151
+    "contexts":
+    - "#apply"
+    - "with octal base"
+- "id": "integer-160"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12,34,56"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 160
+    "contexts":
+    - "#apply"
+    - "with custom grouping"
+- "id": "integer-169"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "group"
+                "value":
+                  "kind": "literal"
+                  "value": "."
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "1000000"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.000.000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 169
+    "contexts":
+    - "#apply"
+    - "with custom separator"
+- "id": "integer-178"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "group"
+                "value":
+                  "kind": "literal"
+                  "value": "_"
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "literal"
+                  "value": true
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "4095"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 178
+    "contexts":
+    - "#apply"
+    - "with different base and separator"
+- "id": "integer-189"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "group"
+                "value":
+                  "kind": "literal"
+                  "value": "e"
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "symbol"
+                  "value": "numbers_only"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": "48879"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "BEeEF"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 189
+    "contexts":
+    - "#apply"
+    - "with numbers-only hex capitalization"
+- "id": "integer-200"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123,456"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 200
+    "contexts":
+    - "#format_groups"
+    - "with default grouping"
+- "id": "integer-205"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456789"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123,456,789"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 205
+    "contexts":
+    - "#format_groups"
+    - "with default grouping"
+- "id": "integer-210"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "99"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "99"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 210
+    "contexts":
+    - "#format_groups"
+    - "with default grouping"
+- "id": "integer-215"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 215
+    "contexts":
+    - "#format_groups"
+    - "with default grouping"
+- "id": "integer-224"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+              - "key":
+                  "kind": "symbol"
+                  "value": "group"
+                "value":
+                  "kind": "literal"
+                  "value": "-"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12-34-56"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 224
+    "contexts":
+    - "#format_groups"
+    - "with custom grouping"
+- "id": "integer-233"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 233
+    "contexts":
+    - "#format_groups"
+    - "with single character"
+- "id": "integer-242"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": ""
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": ""
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 242
+    "contexts":
+    - "#format_groups"
+    - "with empty string"
+- "id": "integer-252"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+              - "key":
+                  "kind": "symbol"
+                  "value": "group"
+                "value":
+                  "kind": "literal"
+                  "value": " "
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 6
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "32"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "000 032"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 252
+    "contexts":
+    - "#format_groups"
+    - "with explicit padding digits"
+- "id": "integer-262"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 6
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding"
+                "value":
+                  "kind": "literal"
+                  "value": " "
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "32"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "    32"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 262
+    "contexts":
+    - "#format_groups"
+    - "with custom padding"
+- "id": "integer-272"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 4
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "32123"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "00032123"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 272
+    "contexts":
+    - "#format_groups"
+    - "with padding group digits"
+- "id": "integer-278"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 4
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "1234"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1234"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 278
+    "contexts":
+    - "#format_groups"
+    - "with padding group digits"
+- "id": "integer-288"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "12345"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12345"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 288
+    "contexts":
+    - "#format_groups"
+    - "with fixed-width padding that is not needed"
+- "id": "integer-298"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 4
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "0"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 298
+    "contexts":
+    - "#format_groups"
+    - "with zero and padding group digits"
+- "id": "integer-316"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+              - "key":
+                  "kind": "symbol"
+                  "value": "hex_capital"
+                "value":
+                  "kind": "symbol"
+                  "value": "numbers_only"
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding"
+                "value":
+                  "kind": "literal"
+                  "value": "f"
+              - "key":
+                  "kind": "symbol"
+                  "value": "padding_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 5
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "format_groups"
+    "args":
+    - "kind": "literal"
+      "value": "beef"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fBEEF"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 316
+    "contexts":
+    - "#format_groups"
+    - "with numbers-only hex capitalization and custom padding"
+- "id": "integer-327"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "123456"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "456"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 327
+    "contexts":
+    - "#chop_group"
+    - "with default group size"
+- "id": "integer-332"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "12345678"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "678"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 332
+    "contexts":
+    - "#chop_group"
+    - "with default group size"
+- "id": "integer-337"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "group_digits"
+                "value":
+                  "kind": "literal"
+                  "value": 3
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "12"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 337
+    "contexts":
+    - "#chop_group"
+    - "with default group size"
+- "id": "integer-346"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "123456789"
+    - "kind": "literal"
+      "value": 2
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "89"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 346
+    "contexts":
+    - "#chop_group"
+    - "with custom group size"
+- "id": "integer-351"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "12345"
+    - "kind": "literal"
+      "value": 1
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 351
+    "contexts":
+    - "#chop_group"
+    - "with custom group size"
+- "id": "integer-360"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": ""
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": ""
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 360
+    "contexts":
+    - "#chop_group"
+    - "with edge cases"
+- "id": "integer-365"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "chop_group"
+    "args":
+    - "kind": "literal"
+      "value": "5"
+    - "kind": "literal"
+      "value": 3
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 365
+    "contexts":
+    - "#chop_group"
+    - "with edge cases"
+- "id": "integer-376"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 10
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "12345"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12345"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 376
+    "contexts":
+    - "#number_to_base"
+    - "with default base 10"
+- "id": "integer-385"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "255"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "ff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 385
+    "contexts":
+    - "#number_to_base"
+    - "with hexadecimal base"
+- "id": "integer-390"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "4095"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "fff"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 390
+    "contexts":
+    - "#number_to_base"
+    - "with hexadecimal base"
+- "id": "integer-395"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 16
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "0"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 395
+    "contexts":
+    - "#number_to_base"
+    - "with hexadecimal base"
+- "id": "integer-404"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "8"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 404
+    "contexts":
+    - "#number_to_base"
+    - "with binary base"
+- "id": "integer-409"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 2
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "255"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "11111111"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 409
+    "contexts":
+    - "#number_to_base"
+    - "with binary base"
+- "id": "integer-418"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "64"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "100"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 418
+    "contexts":
+    - "#number_to_base"
+    - "with octal base"
+- "id": "integer-423"
+  "component": "Integer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "Integer"
+      "args":
+      - "kind": "component"
+        "name": "FormatOptions"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries":
+          - "key":
+              "kind": "symbol"
+              "value": "symbols"
+            "value":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "base"
+                "value":
+                  "kind": "literal"
+                  "value": 8
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "number_to_base"
+    "args":
+    - "kind": "literal"
+      "value": "512"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1000"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/integer_spec.rb"
+    "sha256": "b127fbb2c20659bb82a46760800dadb4ca3bac0505f51ef75fa29c25fc75c8db"
+    "line": 423
+    "contexts":
+    - "#number_to_base"
+    - "with octal base"
+- "id": "notation-renderer-035"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "@"
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 1
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "E"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "literal"
+                    "value": "x"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "14000"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "e"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1@4E4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 35
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-056"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "fraction_group"
+                  "value":
+                    "kind": "literal"
+                    "value": " "
+                - "key":
+                    "kind": "symbol"
+                    "value": "fraction_group_digits"
+                  "value":
+                    "kind": "literal"
+                    "value": 3
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 4
+                - "key":
+                    "kind": "symbol"
+                    "value": "exponent_sign"
+                  "value":
+                    "kind": "symbol"
+                    "value": "plus"
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "e"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "literal"
+                    "value": "×"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "14000"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "scientific"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.400 0 × 10^+4"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 56
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-074"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": ","
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 2
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "e"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "symbol"
+                    "value": "x"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "14000"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "engineering"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "14,00 x 10^3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 74
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-090"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 0
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "e"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "symbol"
+                    "value": "x"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "-14000"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "engineering"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-14.000 x 10^3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 90
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-093"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 0
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "e"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "symbol"
+                    "value": "x"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "1.23e4"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "engineering"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "12.3 x 10^3"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 93
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-106"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "NotationRenderer"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "precision"
+                  "value":
+                    "kind": "literal"
+                    "value": 2
+                - "key":
+                    "kind": "symbol"
+                    "value": "e"
+                  "value":
+                    "kind": "symbol"
+                    "value": "e"
+                - "key":
+                    "kind": "symbol"
+                    "value": "times"
+                  "value":
+                    "kind": "literal"
+                    "value": "×"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "render"
+      "args":
+      - "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "0.00"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      - "kind": "symbol"
+        "value": "scientific"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0.00 × 10^0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 106
+    "contexts":
+    - "#render"
+- "id": "notation-renderer-120"
+  "component": "NotationRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "operation"
+        "receiver":
+          "kind": "component"
+          "name": "NotationRenderer"
+          "args":
+          - "kind": "component"
+            "name": "FormatOptions"
+            "args": []
+            "kwargs":
+              "kind": "map"
+              "entries":
+              - "key":
+                  "kind": "symbol"
+                  "value": "symbols"
+                "value":
+                  "kind": "map"
+                  "entries":
+                  - "key":
+                      "kind": "symbol"
+                      "value": "precision"
+                    "value":
+                      "kind": "literal"
+                      "value": 2
+                  - "key":
+                      "kind": "symbol"
+                      "value": "e"
+                    "value":
+                      "kind": "symbol"
+                      "value": "e"
+                  - "key":
+                      "kind": "symbol"
+                      "value": "times"
+                    "value":
+                      "kind": "literal"
+                      "value": "x"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        "method": "render"
+        "args":
+        - "kind": "component"
+          "name": "Source"
+          "args":
+          - "kind": "literal"
+            "value": "14000"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        - "kind": "symbol"
+          "value": "scientific"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "coefficient"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "1.40"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/notation_renderer_spec.rb"
+    "sha256": "ce9394c429509e21e4bfb539b5023116ee4a288a840f1754b136127e26b303a8"
+    "line": 120
+    "contexts":
+    - "#render"
+- "id": "sign-renderer-010"
+  "component": "SignRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "SignRenderer"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": 10
+    - "kind": "literal"
+      "value": "10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/sign_renderer_spec.rb"
+    "sha256": "3ca085a45b7b3164f58a51b9c48df7f60e532ee97007ca4fa4fae13b055f51a3"
+    "line": 10
+    "contexts":
+    - "#apply"
+- "id": "sign-renderer-016"
+  "component": "SignRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "SignRenderer"
+      "args":
+      - "kind": "symbol"
+        "value": "plus"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": 10
+    - "kind": "literal"
+      "value": "10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "+10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/sign_renderer_spec.rb"
+    "sha256": "3ca085a45b7b3164f58a51b9c48df7f60e532ee97007ca4fa4fae13b055f51a3"
+    "line": 16
+    "contexts":
+    - "#apply"
+- "id": "sign-renderer-022"
+  "component": "SignRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "SignRenderer"
+      "args":
+      - "kind": "symbol"
+        "value": "plus"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "literal"
+      "value": -10
+    - "kind": "literal"
+      "value": "0b10,10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-0b10,10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/sign_renderer_spec.rb"
+    "sha256": "3ca085a45b7b3164f58a51b9c48df7f60e532ee97007ca4fa4fae13b055f51a3"
+    "line": 22
+    "contexts":
+    - "#apply"
+- "id": "sign-renderer-034"
+  "component": "SignRenderer"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "component"
+      "name": "SignRenderer"
+      "args":
+      - "kind": "symbol"
+        "value": "plus"
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "apply"
+    "args":
+    - "kind": "component"
+      "name": "Parts"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries":
+        - "key":
+            "kind": "symbol"
+            "value": "sign"
+          "value":
+            "kind": "literal"
+            "value": -1
+        - "key":
+            "kind": "symbol"
+            "value": "base"
+          "value":
+            "kind": "literal"
+            "value": 10
+        - "key":
+            "kind": "symbol"
+            "value": "integer_digits"
+          "value":
+            "kind": "literal"
+            "value": "10"
+        - "key":
+            "kind": "symbol"
+            "value": "fraction_digits"
+          "value":
+            "kind": "literal"
+            "value": ""
+    - "kind": "literal"
+      "value": "10"
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/sign_renderer_spec.rb"
+    "sha256": "3ca085a45b7b3164f58a51b9c48df7f60e532ee97007ca4fa4fae13b055f51a3"
+    "line": 34
+    "contexts":
+    - "#apply"
+- "id": "significant-065"
+  "component": "Significant"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Significant"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "group"
+                  "value":
+                    "kind": "literal"
+                    "value": ""
+                - "key":
+                    "kind": "symbol"
+                    "value": "group_digits"
+                  "value":
+                    "kind": "literal"
+                    "value": 10
+                - "key":
+                    "kind": "symbol"
+                    "value": "significant"
+                  "value":
+                    "kind": "literal"
+                    "value": 2
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "apply_parts"
+      "args":
+      - "kind": "operation"
+        "receiver":
+          "kind": "component"
+          "name": "Source"
+          "args":
+          - "kind": "literal"
+            "value": "0.0999"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        "method": "to_parts"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "0.10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/significant_spec.rb"
+    "sha256": "271b566739b8e4c097786e254018d433a0b2922c50c81f00955591e6c857bfb9"
+    "line": 65
+    "contexts":
+    - "#apply_parts"
+    - "with boundary rounding"
+- "id": "significant-071"
+  "component": "Significant"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Significant"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "group"
+                  "value":
+                    "kind": "literal"
+                    "value": ""
+                - "key":
+                    "kind": "symbol"
+                    "value": "group_digits"
+                  "value":
+                    "kind": "literal"
+                    "value": 10
+                - "key":
+                    "kind": "symbol"
+                    "value": "significant"
+                  "value":
+                    "kind": "literal"
+                    "value": 2
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "apply_parts"
+      "args":
+      - "kind": "operation"
+        "receiver":
+          "kind": "component"
+          "name": "Source"
+          "args":
+          - "kind": "literal"
+            "value": "9.99"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        "method": "to_parts"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/significant_spec.rb"
+    "sha256": "271b566739b8e4c097786e254018d433a0b2922c50c81f00955591e6c857bfb9"
+    "line": 71
+    "contexts":
+    - "#apply_parts"
+    - "with boundary rounding"
+- "id": "significant-077"
+  "component": "Significant"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Significant"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "group"
+                  "value":
+                    "kind": "literal"
+                    "value": ""
+                - "key":
+                    "kind": "symbol"
+                    "value": "group_digits"
+                  "value":
+                    "kind": "literal"
+                    "value": 10
+                - "key":
+                    "kind": "symbol"
+                    "value": "significant"
+                  "value":
+                    "kind": "literal"
+                    "value": 2
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "apply_parts"
+      "args":
+      - "kind": "operation"
+        "receiver":
+          "kind": "component"
+          "name": "Source"
+          "args":
+          - "kind": "literal"
+            "value": "1.99"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        "method": "to_parts"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "2"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/significant_spec.rb"
+    "sha256": "271b566739b8e4c097786e254018d433a0b2922c50c81f00955591e6c857bfb9"
+    "line": 77
+    "contexts":
+    - "#apply_parts"
+    - "with boundary rounding"
+- "id": "significant-089"
+  "component": "Significant"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Significant"
+        "args":
+        - "kind": "component"
+          "name": "FormatOptions"
+          "args": []
+          "kwargs":
+            "kind": "map"
+            "entries":
+            - "key":
+                "kind": "symbol"
+                "value": "symbols"
+              "value":
+                "kind": "map"
+                "entries":
+                - "key":
+                    "kind": "symbol"
+                    "value": "decimal"
+                  "value":
+                    "kind": "literal"
+                    "value": "."
+                - "key":
+                    "kind": "symbol"
+                    "value": "group"
+                  "value":
+                    "kind": "literal"
+                    "value": ""
+                - "key":
+                    "kind": "symbol"
+                    "value": "group_digits"
+                  "value":
+                    "kind": "literal"
+                    "value": 10
+                - "key":
+                    "kind": "symbol"
+                    "value": "significant"
+                  "value":
+                    "kind": "literal"
+                    "value": 4
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "apply_parts"
+      "args":
+      - "kind": "operation"
+        "receiver":
+          "kind": "component"
+          "name": "Source"
+          "args":
+          - "kind": "literal"
+            "value": "123.456"
+          "kwargs":
+            "kind": "map"
+            "entries": []
+        "method": "to_parts"
+        "args": []
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123.5"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/significant_spec.rb"
+    "sha256": "271b566739b8e4c097786e254018d433a0b2922c50c81f00955591e6c857bfb9"
+    "line": 89
+    "contexts":
+    - "#apply_parts"
+    - "when the significant count is already met"
+- "id": "source-021"
+  "component": "Source"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "1.230e2"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "to_parts"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "123.0"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/source_spec.rb"
+    "sha256": "679f624ff40e251a379362c149ebfc5821a65e715650cdd072a2ce7d86eecc64"
+    "line": 21
+    "contexts":
+    - "#to_parts"
+- "id": "source-030"
+  "component": "Source"
+  "input":
+    "kind": "operation"
+    "receiver":
+      "kind": "operation"
+      "receiver":
+        "kind": "component"
+        "name": "Source"
+        "args":
+        - "kind": "literal"
+          "value": "-.0010e+2"
+        "kwargs":
+          "kind": "map"
+          "entries": []
+      "method": "to_parts"
+      "args": []
+      "kwargs":
+        "kind": "map"
+        "entries": []
+    "method": "to_s"
+    "args": []
+    "kwargs":
+      "kind": "map"
+      "entries": []
+  "comparison": "eq"
+  "expected": "-0.10"
+  "source":
+    "path": "spec/plurimath/formatter/numbers/source_spec.rb"
+    "sha256": "679f624ff40e251a379362c149ebfc5821a65e715650cdd072a2ce7d86eecc64"
+    "line": 30
+    "contexts":
+    - "#to_parts"
