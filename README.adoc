@@ -477,6 +477,14 @@ arguments remain distinct. Memo references preserve aliases within an example;
 consumers must create fresh mutable graphs for independent examples. A `spread`
 is allowed only in argument and array lists. Unknown operations are errors.
 
+Renderer `memo` metadata preserves source-cached public inputs and results when
+the same example executes repeatedly. IDs are opaque labels, not executable code.
+Program metadata also lists intermediate dependency slots evaluated inside that
+cached boundary. Direct calls and example-body local assignments still execute
+on each invocation. Cache state belongs to one example and must not cross into
+another example. Internal XML projections may be recomputed from the cached
+public result.
+
 Renderer cases retain their original comparison, including exact strings, XML
 equivalence, containment and successful rendering without an asserted output.
 Ordered sequences preserve round trips and checks that share a model. Grammar

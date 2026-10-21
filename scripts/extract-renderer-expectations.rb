@@ -185,7 +185,16 @@ module RendererExpectations
               recipe = @extractor.decoder.emit_ast(node, bindings: @bindings)
               return @variables[name] = emit("build", "recipe" => recipe)
             rescue Unsupported, ModelRecipes::Unsupported
-              return @variables[name] = expression(@bindings.fetch(name))
+              first_step = @steps.length
+              slot = expression(@bindings.fetch(name))
+              if @bindings.fetch("__source_lets__", {})[name]
+                step = @steps.find { |entry| entry["save"] == slot }
+                prior = step.fetch("memo", { "ids" => [], "dependencies" => [] })
+                dependencies = @steps[first_step..].filter_map { |entry| entry["save"] unless entry["save"] == slot }
+                step["memo"] = { "ids" => (prior.fetch("ids") + ["let:#{name}"]).uniq,
+                                 "dependencies" => (prior.fetch("dependencies") + dependencies).uniq }
+              end
+              return @variables[name] = slot
             end
           ensure
             @resolving.pop
@@ -406,6 +415,28 @@ module RendererExpectations
       value && !value.is_a?(Hash) ? resolve(value, bindings.reject { |key, _| key == name }) : node
     end
 
+    def resolve_memo_boundary(node, bindings)
+      ids = []
+      seen = []
+      loop do
+        name = if node.is_a?(Prism::LocalVariableReadNode)
+                 node.name.to_s
+               elsif node.is_a?(Prism::CallNode) && node.receiver.nil? && arguments(node).empty? && !node.block
+                 node.name.to_s
+               end
+        expression = name && bindings[name]
+        break unless expression && !expression.is_a?(Hash)
+        raise Unsupported, "cyclic source binding" if seen.include?(name)
+
+        seen << name
+        if node.is_a?(Prism::CallNode) && bindings.fetch("__source_lets__", {})[name]
+          ids << "let:#{name}"
+        end
+        node = expression
+      end
+      [node, ids.uniq]
+    end
+
     def value(node, bindings)
       node = resolve(node, bindings)
       if node.is_a?(Prism::InterpolatedStringNode)
@@ -456,7 +487,7 @@ module RendererExpectations
 
     # Finite render-call contract, intentionally separate from the migration CLI.
     def render_expression(node, bindings)
-      node = resolve(node, bindings)
+      node, memo_ids = resolve_memo_boundary(node, bindings)
       normalizations = []
       loop do
         if node.is_a?(Prism::CallNode) && node.name == :gsub
@@ -468,10 +499,12 @@ module RendererExpectations
           else
             raise Unsupported, "unsupported render normalization"
           end
-          node = resolve(node.receiver, bindings)
+          node, nested_memo = resolve_memo_boundary(node.receiver, bindings)
+          memo_ids.concat(nested_memo)
         elsif node.is_a?(Prism::CallNode) && node.name == :strip && arguments(node).empty?
           normalizations.unshift("strip")
-          node = resolve(node.receiver, bindings)
+          node, nested_memo = resolve_memo_boundary(node.receiver, bindings)
+          memo_ids.concat(nested_memo)
         else
           break
         end
@@ -484,17 +517,19 @@ module RendererExpectations
           raise Unsupported, "unsupported XML dump options" unless dump_args.length == 2 && dump_args.last.location.slice.gsub(/\s/, "") == "indent:2"
         end
         dump = "xml_engine_indent_2"
-        node = resolve(dump_args.first, bindings)
+        node, nested_memo = resolve_memo_boundary(dump_args.first, bindings)
+        memo_ids.concat(nested_memo)
       elsif node.is_a?(Prism::CallNode) && node.name == :dump_ox_nodes && node.receiver.nil? && arguments(node).length == 1
         dump = "dump_ox_nodes"
-        node = resolve(arguments(node).first, bindings)
+        node, nested_memo = resolve_memo_boundary(arguments(node).first, bindings)
+        memo_ids.concat(nested_memo)
       end
       unless node.is_a?(Prism::CallNode) && METHODS.include?(node.name.to_s) && !node.block
         raise Unsupported, "not a supported render call: #{node.location.slice}"
       end
       args = arguments(node).dup
       kwargs = args.last.is_a?(Prism::KeywordHashNode) ? @decoder.emit_ast(args.pop, bindings: bindings) : { "kind" => "map", "entries" => [] }
-      receiver = resolve(node.receiver, bindings)
+      receiver, input_memo = resolve_memo_boundary(node.receiver, bindings)
       input = if receiver.is_a?(Prism::CallNode) && receiver.name == :parse && receiver.receiver&.location&.slice == "Plurimath::Math"
                 parse_args = arguments(receiver)
                 raise Unsupported, "parse requires text and language" unless parse_args.length == 2
@@ -506,6 +541,8 @@ module RendererExpectations
               end
       operation = { "method" => node.name.to_s, "args" => args.map { |arg| @decoder.emit_ast(arg, bindings: bindings) },
                     "kwargs" => kwargs, "normalizations" => normalizations }
+      input["memo"] = input_memo unless input_memo.empty?
+      operation["memo"] = memo_ids.uniq unless memo_ids.empty?
       operation["dump"] = dump if dump
       [input, operation]
     end
@@ -611,6 +648,7 @@ module RendererExpectations
 
     def walk(group, inherited, labels)
       bindings = inherited.dup
+      bindings["__source_lets__"] = inherited.fetch("__source_lets__", {}).dup
       label_node = arguments(group).first
       if label_node.is_a?(Prism::ConstantReadNode) || label_node.is_a?(Prism::ConstantPathNode)
         bindings["described_class"] = { "kind" => "class", "name" => ModelRecipes.constant_name(label_node).delete_prefix("Plurimath::") }
@@ -626,6 +664,7 @@ module RendererExpectations
         next unless name.is_a?(Prism::SymbolNode) && expression.length == 1
 
         bindings[name.unescaped] = expression.first
+        bindings.fetch("__source_lets__")[name.unescaped] = true
       end
       return if special_group(group, label, bindings)
 
@@ -837,10 +876,12 @@ module RendererExpectations
     end
 
     def collect_bindings(group, inherited)
-      statements(group).each_with_object(inherited.dup) do |node, local|
+      scope = inherited.merge("__source_lets__" => inherited.fetch("__source_lets__", {}).dup)
+      statements(group).each_with_object(scope) do |node, local|
         next unless node.is_a?(Prism::CallNode) && node.name == :let && statements(node).length == 1
 
         local[arguments(node).first.unescaped] = statements(node).first
+        local.fetch("__source_lets__")[arguments(node).first.unescaped] = true
       end
     end
 
@@ -900,6 +941,7 @@ module RendererExpectations
         pipeline = Pipeline.new
         input = pipeline.build(@decoder.emit_ast(bindings.fetch("exp"), bindings: bindings))
         model = pipeline.decode(input, "omml", boundary: "math_parse", format_argument: enum("omml"))
+        pipeline.steps.last["memo"] = { "ids" => ["let:formula"], "dependencies" => [input] }
         output = pipeline.render(model, "to_display", args: [enum(format)])
         labels = pipeline.observe(output, "display_tail_labels")
         expected = value(arguments(arguments(assertion).first).first, { "script" => literal(script), "base" => literal(base) })
@@ -947,6 +989,8 @@ module RendererExpectations
         pipeline = Pipeline.new
         model = pipeline.decode(pipeline.build(literal(input)), "mathml")
         output = pipeline.render(model, "to_mathml")
+        dependencies = pipeline.steps.filter_map { |step| step["save"] unless step["save"] == output }
+        pipeline.steps.last["memo"] = { "ids" => ["let:token"], "dependencies" => dependencies }
         property = pipeline.observe(output, "spaced_token_property", { "field" => %w[name rspace text].fetch(index) })
         pipeline.check(property, expected, assertion.location.start_line)
         program_row("renderer-spaced-operator-#{index + 1}", assertion.location.start_line, arguments(example).first.unescaped, pipeline)
@@ -983,6 +1027,7 @@ module RendererExpectations
           end
           input = pipeline.build(literal(value(local.fetch("string"), local)))
           model = pipeline.decode(input, "mathml")
+          pipeline.steps.last["memo"] = { "ids" => ["let:formula"], "dependencies" => [input] }
           output = pipeline.render(model, "to_asciimath")
           expected = value(local.fetch("asciimath"), local)
           pipeline.check(output, expected, original_assertions.first)
@@ -1082,7 +1127,7 @@ module RendererExpectations
 
     def operand_rows(group, lines, bindings)
       model = @decoder.emit_ast(bindings.fetch("formula"), bindings: bindings)
-      input = { "kind" => "model", "recipe" => model }
+      input = { "kind" => "model", "recipe" => model, "memo" => ["let:formula"] }
       assertions = descendants(group).select { |node| node.is_a?(Prism::CallNode) && node.name == :expect }
       output_assertions = assertions.first(2)
       kind = File.basename(@relative, "_spec.rb")
@@ -1133,7 +1178,7 @@ module RendererExpectations
               expected = index.zero? ? nil : value(arguments(arguments(comparison).first).first, bindings)
               id = "function-cancel-#{context_index + 1}-#{index + 1}"
               row_for(id, comparison.receiver.location.start_line, input,
-                              operation.merge("dump" => "dump_ox_nodes", "observation" => observation_names[index]),
+                              operation.merge("dump" => "dump_ox_nodes", "observation" => observation_names[index], "memo" => ["let:document"]),
                               index.zero? ? "not_be_nil" : "eq", expected, "cancellation #{context_label}: #{observation_names[index]}")
             end
             id = "function-cancel-#{context_index + 1}"
@@ -1155,7 +1200,7 @@ module RendererExpectations
                 expected = value(arguments(arguments(comparison).first).first, bindings)
                 observation = index.zero? ? "cancellation_nested_box_count" : "cancellation_strike_count"
                 row_for(id, comparison.receiver.location.start_line, input,
-                                operation.merge("dump" => "dump_ox_nodes", "observation" => observation), "eq", expected, observation)
+                                operation.merge("dump" => "dump_ox_nodes", "observation" => observation, "memo" => ["let:document"]), "eq", expected, observation)
               end
               id = "function-cancel-nested"
               rows << correlated(observations, id, "nested cancellation structure and strike counts")
@@ -1196,8 +1241,8 @@ module RendererExpectations
         rows << { "id" => "formula-unicodemath-#{index + 1}",
           "source" => { "path" => @relative, "line" => line, "assertion_line" => line, "constant" => name },
           "description" => "converts formula to Unicodemath string ##{index + 1}",
-          "input" => { "kind" => "model", "recipe" => @decoder.emit_ast(expression) },
-          "operation" => { "method" => "to_unicodemath", "args" => [], "kwargs" => empty_kwargs, "normalizations" => [] },
+          "input" => { "kind" => "model", "recipe" => @decoder.emit_ast(expression), "memo" => ["let:formula"] },
+          "operation" => { "method" => "to_unicodemath", "args" => [], "kwargs" => empty_kwargs, "normalizations" => [], "memo" => ["let:string"] },
           "comparison" => "eq", "expected" => expected }
       end
     end
@@ -1226,16 +1271,16 @@ module RendererExpectations
         { "id" => "formula-intent-unicode-#{index + 1}",
           "source" => { "path" => @relative, "line" => line, "assertion_line" => line, "upstream_index" => index + 1 },
           "description" => "processing unicode example(#{index + 1})",
-          "input" => { "kind" => "parse", "text" => text, "format" => "unicode" },
+          "input" => { "kind" => "parse", "text" => text, "format" => "unicode", "memo" => ["let:formula"] },
           "operation" => { "method" => "to_mathml", "args" => [],
                            "kwargs" => { "kind" => "map", "entries" => [{ "key" => { "kind" => "symbol", "value" => "intent" }, "value" => { "kind" => "literal", "value" => true } }] },
-                           "normalizations" => [], "observation" => "normalized_intents" },
+                           "normalizations" => [], "observation" => "normalized_intents", "memo" => ["let:mathml"] },
           "comparison" => "eql", "expected" => expected }
       end
     end
 
     def spacer_rows(lines, bindings)
-      input, operation = render_expression(bindings.fetch("mathml"), bindings)
+      input, operation = render_expression(Prism.parse("mathml").value.statements.body.first, bindings)
       rows = [
         ["identifiers", "unitsml_presentation_spaced_identifiers", "be_empty", [], lines.fetch(0)],
         ["count", "unitsml_presentation_spacer_count", "eq", 3, lines.fetch(1)],
