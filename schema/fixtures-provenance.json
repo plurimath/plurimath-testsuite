@@ -1,0 +1,31 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/fixtures-provenance/1",
+  "title": "Where the authored fixtures were extracted from",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "source_repository", "source_commit", "extractor_repository", "extractor_commit", "files"],
+  "properties": {
+    "schema": { "const": "plurimath-fixtures/provenance/1" },
+    "source_repository": { "type": "string", "pattern": "^https://" },
+    "source_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "extractor_repository": { "type": "string", "pattern": "^https://" },
+    "extractor_commit": { "type": "string", "pattern": "^[0-9a-f]{40}$" },
+    "files": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["path", "schema", "extractor", "cases", "fixture_sha256"],
+        "properties": {
+          "path": { "type": "string", "pattern": "^fixtures/[a-z0-9-]+\\.yaml$" },
+          "schema": { "type": "string", "pattern": "^plurimath-fixtures/[a-z0-9-]+/1$" },
+          "extractor": { "type": "string", "pattern": "^scripts/extract-[a-z0-9-]+\\.rb$" },
+          "cases": { "type": "integer", "minimum": 1 },
+          "fixture_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" }
+        }
+      }
+    }
+  }
+}

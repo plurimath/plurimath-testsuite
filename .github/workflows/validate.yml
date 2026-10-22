@@ -13,6 +13,86 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # The authored expectations under fixtures/ are data only. They are checked
+  # by check-jsonschema (pinned in .github/validator/requirements.txt) against
+  # schema/<name>.json, and by loading them with two standard YAML loaders
+  # that must agree. See README "Portable YAML".
+  fixtures:
+    runs-on: ubuntu-latest
+    env:
+      FIXTURES: >-
+        cli-conversions facade-expectations formatter-expectations
+        grammar-expectations parser-expectations renderer-expectations
+        symbol-renderings unicode-expectations xml-parser-expectations
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+      - run: python -m pip install --no-deps -r .github/validator/requirements.txt
+      - name: Fixture inventory matches the expected list
+        run: |
+          expected="$(printf '%s.yaml\n' $FIXTURES | sort)"
+          actual="$(ls -A fixtures | sort)"
+          if [ "$expected" != "$actual" ]; then
+            diff <(echo "$expected") <(echo "$actual")
+            exit 1
+          fi
+      # Conformance across two standard YAML loaders, not a custom parser:
+      # Ruby's Psych (safe_load, no aliases) and Python's ruamel.yaml (YAML
+      # 1.2, safe) must each load every file to plain JSON values with string
+      # keys, and serialize to identical sorted JSON. A load error, alias,
+      # date, NaN/Inf, non-string key, duplicate key, extra document, or any
+      # value the two read differently (1e-3, 1:20, 017, yes) fails.
+      - name: Two YAML loaders read the same values
+        run: |
+          rc=0
+          out="${RUNNER_TEMP:-/tmp}/yaml-loaders"
+          mkdir -p "$out"
+          for f in $(printf 'fixtures/%s.yaml\n' $FIXTURES) provenance/fixtures.yaml; do
+            base="$out/$(echo "$f" | tr / _)"
+            ruby -ryaml -rjson -e '
+              c = lambda do |o|
+                case o
+                when Hash
+                  o.each_key { |k| k.is_a?(String) or abort "#{ARGV[0]}: non-string key #{k.inspect}" }
+                  o.keys.sort.to_h { |k| [k, c.(o[k])] }
+                when Array then o.map(&c)
+                else o
+                end
+              end
+              puts JSON.generate(c.(YAML.safe_load(File.read(ARGV[0], encoding: "UTF-8"), aliases: false)), allow_nan: false, max_nesting: false)
+            ' "$f" > "$base.psych.json" || { echo "::error file=$f::Psych failed on $f"; rc=1; continue; }
+            python -c '
+          import json, sys
+          from ruamel.yaml import YAML
+          def c(o):
+              if isinstance(o, dict):
+                  for k in o:
+                      if not isinstance(k, str): sys.exit(f"{sys.argv[1]}: non-string key {k!r}")
+                  return {k: c(v) for k, v in o.items()}
+              if isinstance(o, list): return [c(v) for v in o]
+              if o is None or isinstance(o, (str, bool, int, float)): return o
+              sys.exit(f"{sys.argv[1]}: {type(o).__name__} value")
+          with open(sys.argv[1], encoding="utf-8") as fh: doc = YAML(typ="safe").load(fh)
+          sys.stdout.buffer.write(json.dumps(c(doc), allow_nan=False, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n")
+            ' "$f" > "$base.ruamel.json" || { echo "::error file=$f::ruamel.yaml failed on $f"; rc=1; continue; }
+            cmp "$base.psych.json" "$base.ruamel.json" || { echo "::error file=$f::Psych and ruamel.yaml load $f differently"; rc=1; }
+          done
+          exit $rc
+      - name: Validate each fixture against its schema
+        run: |
+          rc=0
+          check-jsonschema --check-metaschema schema/*.json || rc=1
+          for name in $FIXTURES; do
+            check-jsonschema --schemafile "schema/$name.json" "fixtures/$name.yaml" || rc=1
+          done
+          check-jsonschema --schemafile schema/fixtures-provenance.json provenance/fixtures.yaml || rc=1
+          exit $rc
+
   validate:
     runs-on: ubuntu-latest
     steps:
@@ -33,11 +113,9 @@ jobs:
       # corpus/, add --allow-empty until the data arrives — and remove it in
       # the commit that adds corpus/.
       - run: ruby scripts/validate.rb
-      - run: ruby scripts/validate-fixtures.rb
 
       # The spec suite guards the validator itself (and the generator's
-      # gem-free helpers). Development dependencies also include Prism for
-      # the one-time static migration exporters.
+      # gem-free helpers).
       - run: bundle install
       - run: bundle exec rspec
 
@@ -49,4 +127,3 @@ jobs:
         with:
           ruby-version: "3.4"
       - run: ruby scripts/validate.rb
-      - run: ruby scripts/validate-fixtures.rb

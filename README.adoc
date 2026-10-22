@@ -505,24 +505,69 @@ The fixture families are:
 * `formatter-expectations.yaml`: number-component output strings, kinds and properties.
 * `cli-conversions.yaml`: CLI conversion arguments, file inputs and expected stdout.
 
-Validate authored fixtures without installing gems:
+Each `fixtures/<name>.yaml` is described by `schema/<name>.json`, a JSON Schema
+(draft 2020-12), and any conforming validator that reads YAML can check it. CI
+uses https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] at
+the versions pinned in `.github/validator/requirements.txt`; its YAML loader
+also rejects duplicate keys. The `fixtures` job in
+`.github/workflows/validate.yml` also checks that `fixtures/` holds exactly the
+expected files (hidden files included), and runs a conformance check across two
+standard YAML loaders (see below). To run the schema
+checks locally, use Python 3.12 (as CI) in a virtual environment:
 
 [source,sh]
 ----
-ruby scripts/validate-fixtures.rb
+python3.12 -m venv .venv && . .venv/bin/activate
+python -m pip install --no-deps -r .github/validator/requirements.txt
+check-jsonschema --check-metaschema schema/*.json
+for fixture in fixtures/*.yaml; do
+  check-jsonschema --schemafile "schema/$(basename "$fixture" .yaml).json" "$fixture"
+done
+check-jsonschema --schemafile schema/fixtures-provenance.json provenance/fixtures.yaml
 ----
 
-The one-time `scripts/extract-*-expectations.rb` migration tools parse the pinned
-Ruby source with Prism, a development dependency. Their source manifests record
-which native spans were replaced. They fail on unsupported syntax instead of
-inferring an expected result. They are not part of ordinary fixture validation
-or test execution.
+`scripts/validate.rb`, which validates `corpus/`, also loads every file in
+`schema/`, so a fixture schema must stay within the JSON Schema keywords that
+validator implements.
+
+=== Portable YAML
+
+Fixtures are read by plain YAML loaders in several languages (YAML 1.1 and 1.2),
+so they keep to a subset that every loader reads as the same values.
+
+CI enforces this with a conformance check across two standard YAML loaders, not
+a custom parser: Ruby's Psych (`YAML.safe_load`, aliases off) and Python's
+ruamel.yaml (YAML 1.2, safe) each load every fixture and
+`provenance/fixtures.yaml`, every mapping key must be a string, and both results
+must serialize to identical JSON with sorted keys and no NaN or Infinity. A
+file fails if either loader rejects it (an alias, a tag Psych does not permit,
+a date, `.nan`/`.inf`, a non-string key, a duplicate key, a second document,
+invalid Unicode such as `"\uD800"`), or if the two read a value differently
+(`1e-3`, `1:20`, `017`, `0o17`, `yes`).
+
+Style rules, not checked by CI:
+
+* write every key and every string as a double-quoted scalar on one line (use
+  `\n` escapes for line breaks); the only unquoted scalars are `null`, `true`,
+  `false` and integer or decimal numbers;
+* case `id` values are unique within a file, and `class` values are unique in
+  `symbol-renderings.yaml`. JSON Schema cannot express "unique by field", so
+  this is checked in review.
+
+The fixtures were extracted once from the Ruby gem's spec suite at plurimath
+commit `a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa`, by static exporters that read
+the spec source without running it. Those exporters are not kept here: they
+are in this repository's history at commit
+`803623b76be985a2836372ae29b0b64aad1dc6f9` (`scripts/extract-*-expectations.rb`
+and `scripts/lib/`). `provenance/fixtures.yaml` records the source and extractor
+commits and, per file, the extractor, case count and digest as extracted. The
+fixture files are now the source of truth and are edited as data.
 
 == Layout
 
 `corpus/`:: the generated conformance cases, grouped by feature
 `fixtures/`:: authored portable parser and renderer expectations
-`scripts/validate-fixtures.rb`:: validates the authored fixture inventory, schemas and IDs
+`provenance/fixtures.yaml`:: where the authored fixtures were extracted from
 `corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
 version, generator checksum, a checksum per seed file the generator reads
 (`generator.inputs`), and a `sha256` and byte count per payload
