@@ -14,11 +14,10 @@ concurrency:
 
 jobs:
   # The authored expectations under fixtures/ are data only, checked by
-  # off-the-shelf tools pinned in .github/validator/requirements.txt:
-  # check-jsonschema validates fixtures/<name>.yaml against schema/<name>.json,
-  # and yamllint (.yamllint.yaml) rejects duplicate keys, undeclared aliases
-  # and YAML 1.1 booleans. README "Portable YAML" lists the rules these
-  # tools cannot see.
+  # check-jsonschema pinned in .github/validator/requirements.txt, which
+  # validates fixtures/<name>.yaml against schema/<name>.json and rejects
+  # duplicate keys while loading. The "plain scalars" step keeps the YAML in
+  # the portable subset described in README "Portable YAML".
   fixtures:
     runs-on: ubuntu-latest
     env:
@@ -40,14 +39,23 @@ jobs:
             diff <(echo "$expected") <(echo "$actual")
             exit 1
           fi
-      - name: No anchors, aliases, tags, non-finite numbers or timestamps
+      # Every string is double-quoted, so once quoted strings and comments are
+      # removed, a line may hold only YAML punctuation and JSON numbers, true,
+      # false and null. Anything else (an anchor, alias, tag, .nan, a date,
+      # 1:20, 017, yes, an unquoted string, a string spanning lines) fails.
+      - name: Plain scalars are JSON literals only
         run: |
-          if grep -nE '^[[:space:]]*(- +)?([^"[:space:]][^:]*|"([^"\\]|\\.)*"): +([&*!]|[-+]?\.(nan|NaN|NAN|inf|Inf|INF)([[:space:]]|$)|[0-9]{4}-[0-9]{2}-[0-9]{2})|^[[:space:]]*- +([&*!]|[-+]?\.(nan|inf)|[0-9]{4}-[0-9]{2}-[0-9]{2})' \
-              fixtures/*.yaml provenance/*.yaml; then
-            echo "::error::non-portable YAML scalar (see README, Portable YAML)"
-            exit 1
-          fi
-      - run: yamllint --strict -c .yamllint.yaml fixtures provenance
+          ok='^([][{},[:space:]-]|:([[:space:]]|$)|(-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][-+]?[0-9]+)?|true|false|null)([][{},[:space:]]|$))*$'
+          # GitHub runs bash with -e and pipefail; this step reads statuses itself.
+          set +e +o pipefail
+          rc=0
+          for name in $FIXTURES; do
+            f="fixtures/$name.yaml"
+            sed -E 's/"([^"\\]|\\.)*"//g; s/#.*$//' "$f" | grep -nvE "$ok" | sed "s|^|$f:|"
+            status=("${PIPESTATUS[@]}")
+            [ "${status[0]}" -eq 0 ] && [ "${status[1]}" -eq 1 ] || rc=1
+          done
+          exit $rc
       - name: Validate each fixture against its schema
         run: |
           rc=0

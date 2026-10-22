@@ -507,25 +507,23 @@ The fixture families are:
 
 Each `fixtures/<name>.yaml` is described by `schema/<name>.json`, a JSON Schema
 (draft 2020-12), and any conforming validator that reads YAML can check it. CI
-uses off-the-shelf tools at the versions pinned in
-`.github/validator/requirements.txt`:
-https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] for the
-schemas and https://github.com/adrienverge/yamllint[yamllint] (`.yamllint.yaml`)
-for duplicate keys, undeclared aliases and YAML 1.1 booleans. The `fixtures` job in
-`.github/workflows/validate.yml` also checks the fixture inventory against an
-explicit list and rejects unquoted anchors, aliases, tags, `.nan`/`.inf` and
-dates. To run the validators locally, use Python 3.12 (as CI) in a virtual
-environment:
+uses https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] at
+the versions pinned in `.github/validator/requirements.txt`; its YAML loader
+also rejects duplicate keys and undefined aliases. The `fixtures` job in
+`.github/workflows/validate.yml` adds two shell steps: the fixture inventory
+must match an explicit list, and every plain (unquoted) scalar in a fixture must
+be a JSON number, `true`, `false` or `null` (see below). To run the schema
+checks locally, use Python 3.12 (as CI) in a virtual environment:
 
 [source,sh]
 ----
 python3.12 -m venv .venv && . .venv/bin/activate
 python -m pip install --no-deps -r .github/validator/requirements.txt
-yamllint --strict -c .yamllint.yaml fixtures provenance
 check-jsonschema --check-metaschema schema/*.json
 for fixture in fixtures/*.yaml; do
   check-jsonschema --schemafile "schema/$(basename "$fixture" .yaml).json" "$fixture"
 done
+check-jsonschema --schemafile schema/fixtures-provenance.json provenance/fixtures.yaml
 ----
 
 `scripts/validate.rb`, which validates `corpus/`, also loads every file in
@@ -534,19 +532,26 @@ validator implements.
 
 === Portable YAML
 
-Fixtures are read by plain YAML loaders in several languages, so they keep to a
-subset that loads the same everywhere:
+Fixtures are read by plain YAML loaders in several languages (YAML 1.1 and 1.2),
+so they keep to a subset that loads the same everywhere:
 
-* no anchors, aliases or tags;
-* no timestamps or dates as unquoted scalars; dates are strings;
-* mapping keys are strings;
-* no `.nan`, `.inf` or other non-finite numbers;
-* booleans are only `true` and `false`;
+* every key and every string is a double-quoted scalar on one line (use `\n`
+  escapes for line breaks);
+* the only unquoted scalars are JSON numbers (`0`, `-2`, `1.5`, `1e-3`), `true`,
+  `false` and `null`;
+* so there are no anchors, aliases or tags; no `.nan`, `.inf` or other
+  non-finite numbers; no unquoted dates or timestamps; no YAML 1.1 forms such as
+  `yes`/`no`, sexagesimal `1:20` or octal `017`/`0o17`;
+* keys are unique within a mapping;
 * case `id` values are unique within a file, and `class` values are unique in
   `symbol-renderings.yaml`.
 
+CI checks the first two rules on `fixtures/` (the "Plain scalars" step, which
+removes double-quoted strings and comments and allows only YAML punctuation and
+those literals on what remains), and check-jsonschema rejects duplicate keys.
 JSON Schema cannot express "unique by field", so the last rule is checked in
-review, not in CI.
+review, not in CI. `provenance/fixtures.yaml` uses bare keys, like
+`corpus/provenance.yaml`, and is checked by its schema only.
 
 The fixtures were extracted once from the Ruby gem's spec suite at plurimath
 commit `a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa`, by static exporters that read
