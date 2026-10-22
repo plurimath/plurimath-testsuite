@@ -47,7 +47,7 @@ module Testsuite
       "type" => :none, "enum" => :none, "const" => :none,
       "required" => :none, "minProperties" => :none, "maxProperties" => :none,
       "additionalProperties" => :schema, "propertyNames" => :schema,
-      "items" => :schema, "prefixItems" => :list,
+      "items" => :schema, "prefixItems" => :list, "contains" => :schema,
       "minItems" => :none, "maxItems" => :none, "uniqueItems" => :none,
       "minLength" => :none, "maxLength" => :none, "pattern" => :none,
       "minimum" => :none, "maximum" => :none, "exclusiveMinimum" => :none,
@@ -381,6 +381,10 @@ module Testsuite
           errors << Error.new(path,
                               "has duplicate item(s): " \
                               "#{duplicates.map(&:inspect).join(', ')}")
+        end
+
+        if schema.key?("contains") && !instance.any? { |value| valid?(schema.fetch("contains"), value) }
+          errors << Error.new(path, "must contain an item matching the contains schema")
         end
 
         (schema["prefixItems"] || []).each_with_index do |sub, index|

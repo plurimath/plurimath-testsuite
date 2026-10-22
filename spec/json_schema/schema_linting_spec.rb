@@ -40,9 +40,9 @@ RSpec.describe Testsuite::JsonSchema::Schema, "schema linting" do
   end
 
   it "rejects any keyword outside the implemented whitelist" do
-    expect { build_schema({ "contains" => { "type" => "string" } }) }
+    expect { build_schema({ "minContains" => 2 }) }
       .to raise_error(Testsuite::Failure) { |error|
-        message = "uses `contains`, which this validator does not implement"
+        message = "uses `minContains`, which this validator does not implement"
         expect(error.message).to include(message)
       }
   end

@@ -1,0 +1,1885 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "source",
+    "cases",
+    "ledger"
+  ],
+  "properties": {
+    "schema": {
+      "const": "plurimath-fixtures/renderer-expectations/1"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "revision",
+        "files"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[a-f0-9]{64}$"
+              }
+            }
+          }
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "source",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "path",
+              "line",
+              "assertion_line"
+            ],
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "assertion_line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "constant": {
+                "type": "string"
+              },
+              "upstream_index": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          },
+          "description": {
+            "type": "string"
+          },
+          "input": {
+            "oneOf": [
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "recipe"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "model"
+                  },
+                  "recipe": {
+                    "$ref": "#/$defs/recipe"
+                  },
+                  "memo": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "kind",
+                  "text",
+                  "format"
+                ],
+                "properties": {
+                  "kind": {
+                    "const": "parse"
+                  },
+                  "text": {
+                    "type": "string"
+                  },
+                  "format": {
+                    "enum": [
+                      "asciimath",
+                      "latex",
+                      "mathml",
+                      "omml",
+                      "unicode",
+                      "html"
+                    ]
+                  },
+                  "memo": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "operation": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "method",
+              "args",
+              "kwargs",
+              "normalizations"
+            ],
+            "properties": {
+              "method": {
+                "enum": [
+                  "to_asciimath",
+                  "to_latex",
+                  "to_html",
+                  "to_mathml",
+                  "to_omml",
+                  "to_unicodemath",
+                  "to_display",
+                  "to_mathml_without_math_tag",
+                  "to_omml_without_math_tag"
+                ]
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/recipe"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              },
+              "normalizations": {
+                "type": "array",
+                "items": {
+                  "enum": [
+                    "remove_whitespace",
+                    "unescape_ampersand",
+                    "strip"
+                  ]
+                }
+              },
+              "observation": {
+                "enum": [
+                  "normalized_intents",
+                  "unitsml_presentation_spaced_identifiers",
+                  "unitsml_presentation_spacer_count",
+                  "unitsml_presentation_spacer_unique_text",
+                  "overset_display_base",
+                  "overset_display_script",
+                  "overset_inline_base",
+                  "overset_inline_script",
+                  "underset_display_base",
+                  "underset_display_script",
+                  "underset_inline_base",
+                  "underset_inline_script",
+                  "cancellation_box",
+                  "cancellation_root_child_count",
+                  "cancellation_child_names",
+                  "cancellation_property_names",
+                  "cancellation_property_values",
+                  "cancellation_content_text",
+                  "cancellation_nested_box_count",
+                  "cancellation_strike_count"
+                ]
+              },
+              "dump": {
+                "enum": [
+                  "xml_engine_indent_2",
+                  "dump_ox_nodes"
+                ]
+              },
+              "roundtrip": {
+                "enum": [
+                  "omml"
+                ]
+              },
+              "memo": {
+                "type": "array",
+                "minItems": 1,
+                "uniqueItems": true,
+                "items": {
+                  "type": "string",
+                  "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                }
+              }
+            }
+          },
+          "comparison": {
+            "enum": [
+              "eq",
+              "eql",
+              "match",
+              "be_xml_equivalent_to",
+              "be_empty",
+              "not_be_nil",
+              "roundtrip_model_eq",
+              "not_eq",
+              "not_eql",
+              "observations"
+            ]
+          },
+          "expected": {
+            "$ref": "#/$defs/portable_value"
+          },
+          "observations": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "observation",
+                "comparison",
+                "expected",
+                "assertion_line"
+              ],
+              "properties": {
+                "observation": {
+                  "enum": [
+                    "normalized_intents",
+                    "unitsml_presentation_spaced_identifiers",
+                    "unitsml_presentation_spacer_count",
+                    "unitsml_presentation_spacer_unique_text",
+                    "overset_display_base",
+                    "overset_display_script",
+                    "overset_inline_base",
+                    "overset_inline_script",
+                    "underset_display_base",
+                    "underset_display_script",
+                    "underset_inline_base",
+                    "underset_inline_script",
+                    "cancellation_box",
+                    "cancellation_root_child_count",
+                    "cancellation_child_names",
+                    "cancellation_property_names",
+                    "cancellation_property_values",
+                    "cancellation_content_text",
+                    "cancellation_nested_box_count",
+                    "cancellation_strike_count"
+                  ]
+                },
+                "comparison": {
+                  "enum": [
+                    "eq",
+                    "eql",
+                    "not_eq",
+                    "not_eql",
+                    "be_empty",
+                    "not_be_nil"
+                  ]
+                },
+                "expected": {
+                  "oneOf": [
+                    {
+                      "type": "string"
+                    },
+                    {
+                      "type": "integer"
+                    },
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "assertion_line": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          },
+          "program": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "steps",
+              "assertion_lines"
+            ],
+            "properties": {
+              "steps": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/program_step"
+                },
+                "minItems": 1
+              },
+              "assertion_lines": {
+                "type": "array",
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "minItems": 1
+              },
+              "no_error": {
+                "const": true
+              },
+              "aggregate_failures": {
+                "const": true
+              }
+            },
+            "anyOf": [
+              {
+                "required": [
+                  "no_error"
+                ],
+                "properties": {
+                  "no_error": {
+                    "const": true
+                  }
+                }
+              },
+              {
+                "properties": {
+                  "steps": {
+                    "contains": {
+                      "type": "object",
+                      "required": [
+                        "kind"
+                      ],
+                      "properties": {
+                        "kind": {
+                          "enum": [
+                            "assert"
+                          ]
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "comparison": {
+                  "const": "observations"
+                }
+              },
+              "required": [
+                "comparison"
+              ]
+            },
+            "then": {
+              "required": [
+                "observations"
+              ],
+              "properties": {
+                "expected": {
+                  "type": "null"
+                }
+              }
+            },
+            "else": {
+              "not": {
+                "required": [
+                  "observations"
+                ]
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "comparison": {
+                  "const": "roundtrip_model_eq"
+                }
+              },
+              "required": [
+                "comparison"
+              ]
+            },
+            "then": {
+              "properties": {
+                "operation": {
+                  "required": [
+                    "roundtrip"
+                  ],
+                  "properties": {
+                    "roundtrip": {
+                      "const": "omml"
+                    }
+                  }
+                },
+                "expected": {
+                  "type": "null"
+                }
+              }
+            }
+          }
+        ],
+        "oneOf": [
+          {
+            "required": [
+              "input",
+              "operation",
+              "comparison",
+              "expected"
+            ],
+            "not": {
+              "required": [
+                "program"
+              ]
+            }
+          },
+          {
+            "required": [
+              "program"
+            ],
+            "not": {
+              "anyOf": [
+                {
+                  "required": [
+                    "input"
+                  ]
+                },
+                {
+                  "required": [
+                    "operation"
+                  ]
+                },
+                {
+                  "required": [
+                    "comparison"
+                  ]
+                },
+                {
+                  "required": [
+                    "expected"
+                  ]
+                },
+                {
+                  "required": [
+                    "observations"
+                  ]
+                }
+              ]
+            }
+          }
+        ]
+      },
+      "minItems": 1
+    },
+    "ledger": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "line",
+          "disposition"
+        ],
+        "properties": {
+          "path": {
+            "type": "string"
+          },
+          "line": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "disposition": {
+            "enum": [
+              "shared",
+              "retained"
+            ]
+          },
+          "case_ids": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "assertion_lines": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "minimum": 1
+            }
+          },
+          "expansion": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          },
+          "labels": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/renderer-expectations/1",
+  "title": "Authored portable renderer expectations",
+  "$defs": {
+    "recipe": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "literal",
+            "symbol",
+            "array",
+            "map",
+            "class",
+            "constructor",
+            "unitsml_formula",
+            "memo",
+            "standard_formatter",
+            "legacy_number_formatter"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "literal"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "literal"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "integer",
+                  "number",
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "symbol"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "symbol"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "array"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "items"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "array"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "map"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "entries"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "map"
+              },
+              "entries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "key",
+                    "value"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "$ref": "#/$defs/recipe"
+                    },
+                    "value": {
+                      "$ref": "#/$defs/recipe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "class"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "class"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "constructor"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "class",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "constructor"
+              },
+              "class": {
+                "type": "string",
+                "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "unitsml_formula"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "unitsml_formula"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "memo"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "id",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "memo"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "standard_formatter"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "standard_formatter"
+              },
+              "args": {
+                "type": "array",
+                "maxItems": 0,
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "legacy_number_formatter"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "legacy_number_formatter"
+              },
+              "args": {
+                "type": "array",
+                "maxItems": 1,
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "map": {
+      "type": "object",
+      "required": [
+        "kind",
+        "entries"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "map"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "$ref": "#/$defs/recipe"
+              },
+              "value": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          }
+        }
+      }
+    },
+    "constructor": {
+      "type": "object",
+      "required": [
+        "kind",
+        "class",
+        "args",
+        "kwargs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "constructor"
+        },
+        "class": {
+          "type": "string",
+          "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/list_item"
+          }
+        },
+        "kwargs": {
+          "$ref": "#/$defs/map"
+        }
+      }
+    },
+    "list_item": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "literal",
+            "symbol",
+            "array",
+            "map",
+            "class",
+            "constructor",
+            "unitsml_formula",
+            "memo",
+            "standard_formatter",
+            "legacy_number_formatter",
+            "spread"
+          ]
+        }
+      },
+      "if": {
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "const": "spread"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "kind",
+          "value"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "spread"
+          },
+          "value": {
+            "$ref": "#/$defs/recipe"
+          }
+        }
+      },
+      "else": {
+        "$ref": "#/$defs/recipe"
+      }
+    },
+    "portable_value": {
+      "oneOf": [
+        {
+          "type": "null"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "string"
+        },
+        {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/portable_value"
+          }
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/portable_value"
+          }
+        }
+      ]
+    },
+    "program_step": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "build",
+            "render",
+            "decode",
+            "transform",
+            "observe",
+            "configure_number_formatter",
+            "assert"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "build"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "save",
+              "recipe"
+            ],
+            "properties": {
+              "kind": {
+                "const": "build"
+              },
+              "save": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "recipe": {
+                "$ref": "#/$defs/recipe"
+              },
+              "memo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ids",
+                  "dependencies"
+                ],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^v[1-9][0-9]*$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "render"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "save",
+              "source",
+              "operation"
+            ],
+            "properties": {
+              "kind": {
+                "const": "render"
+              },
+              "save": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "operation": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "method",
+                  "args",
+                  "kwargs",
+                  "normalizations"
+                ],
+                "properties": {
+                  "method": {
+                    "enum": [
+                      "to_asciimath",
+                      "to_latex",
+                      "to_html",
+                      "to_mathml",
+                      "to_omml",
+                      "to_unicodemath",
+                      "to_display",
+                      "to_mathml_without_math_tag",
+                      "to_omml_without_math_tag"
+                    ]
+                  },
+                  "args": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/$defs/recipe"
+                    }
+                  },
+                  "kwargs": {
+                    "$ref": "#/$defs/map"
+                  },
+                  "normalizations": {
+                    "type": "array",
+                    "items": {
+                      "enum": [
+                        "remove_whitespace",
+                        "unescape_ampersand",
+                        "strip"
+                      ]
+                    }
+                  },
+                  "observation": {
+                    "enum": [
+                      "normalized_intents",
+                      "unitsml_presentation_spaced_identifiers",
+                      "unitsml_presentation_spacer_count",
+                      "unitsml_presentation_spacer_unique_text",
+                      "overset_display_base",
+                      "overset_display_script",
+                      "overset_inline_base",
+                      "overset_inline_script",
+                      "underset_display_base",
+                      "underset_display_script",
+                      "underset_inline_base",
+                      "underset_inline_script",
+                      "cancellation_box",
+                      "cancellation_root_child_count",
+                      "cancellation_child_names",
+                      "cancellation_property_names",
+                      "cancellation_property_values",
+                      "cancellation_content_text",
+                      "cancellation_nested_box_count",
+                      "cancellation_strike_count"
+                    ]
+                  },
+                  "dump": {
+                    "enum": [
+                      "xml_engine_indent_2",
+                      "dump_ox_nodes"
+                    ]
+                  },
+                  "roundtrip": {
+                    "enum": [
+                      "omml"
+                    ]
+                  },
+                  "memo": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  }
+                }
+              },
+              "memo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ids",
+                  "dependencies"
+                ],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^v[1-9][0-9]*$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "decode"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "save",
+              "source",
+              "boundary",
+              "format"
+            ],
+            "properties": {
+              "kind": {
+                "const": "decode"
+              },
+              "save": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "boundary": {
+                "enum": [
+                  "math_parse",
+                  "wrapper",
+                  "html_parser",
+                  "asciimath_parser",
+                  "mathml_utility_helper",
+                  "omml_utility_helper"
+                ]
+              },
+              "format": {
+                "enum": [
+                  "asciimath",
+                  "latex",
+                  "mathml",
+                  "omml",
+                  "unicode",
+                  "html"
+                ]
+              },
+              "format_argument": {
+                "$ref": "#/$defs/recipe"
+              },
+              "memo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ids",
+                  "dependencies"
+                ],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^v[1-9][0-9]*$"
+                    }
+                  }
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "boundary": {
+                      "const": "math_parse"
+                    }
+                  },
+                  "required": [
+                    "boundary"
+                  ]
+                },
+                "then": {
+                  "required": [
+                    "format_argument"
+                  ]
+                },
+                "else": {
+                  "not": {
+                    "required": [
+                      "format_argument"
+                    ]
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "boundary": {
+                      "const": "html_parser"
+                    }
+                  },
+                  "required": [
+                    "boundary"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "format": {
+                      "const": "html"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "boundary": {
+                      "const": "asciimath_parser"
+                    }
+                  },
+                  "required": [
+                    "boundary"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "format": {
+                      "const": "asciimath"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "boundary": {
+                      "const": "mathml_utility_helper"
+                    }
+                  },
+                  "required": [
+                    "boundary"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "format": {
+                      "const": "mathml"
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "boundary": {
+                      "const": "omml_utility_helper"
+                    }
+                  },
+                  "required": [
+                    "boundary"
+                  ]
+                },
+                "then": {
+                  "properties": {
+                    "format": {
+                      "const": "omml"
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "transform"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "save",
+              "source",
+              "normalization"
+            ],
+            "properties": {
+              "kind": {
+                "const": "transform"
+              },
+              "save": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "normalization": {
+                "enum": [
+                  "strip",
+                  "remove_whitespace",
+                  "unescape_ampersand",
+                  "dump_ox_nodes",
+                  "xml_engine_indent_2",
+                  "first_fragment_node"
+                ]
+              },
+              "memo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ids",
+                  "dependencies"
+                ],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^v[1-9][0-9]*$"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "observe"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "save",
+              "source",
+              "observation"
+            ],
+            "properties": {
+              "kind": {
+                "const": "observe"
+              },
+              "save": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "observation": {
+                "enum": [
+                  "normalized_intents",
+                  "unitsml_presentation_spaced_identifiers",
+                  "unitsml_presentation_spacer_count",
+                  "unitsml_presentation_spacer_unique_text",
+                  "overset_display_base",
+                  "overset_display_script",
+                  "overset_inline_base",
+                  "overset_inline_script",
+                  "underset_display_base",
+                  "underset_display_script",
+                  "underset_inline_base",
+                  "underset_inline_script",
+                  "cancellation_box",
+                  "cancellation_root_child_count",
+                  "cancellation_child_names",
+                  "cancellation_property_names",
+                  "cancellation_property_values",
+                  "cancellation_content_text",
+                  "cancellation_nested_box_count",
+                  "cancellation_strike_count",
+                  "first_model_value",
+                  "display_tail_labels",
+                  "mathml_token_pairs",
+                  "spaced_token_property",
+                  "omml_operand_text"
+                ]
+              },
+              "arguments": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [],
+                "properties": {
+                  "scope": {
+                    "enum": [
+                      "all",
+                      "munderover_children"
+                    ]
+                  },
+                  "field": {
+                    "enum": [
+                      "name",
+                      "rspace",
+                      "text",
+                      "accent_base",
+                      "accent_script",
+                      "lower",
+                      "upper",
+                      "base",
+                      "split_hat_bases"
+                    ]
+                  }
+                },
+                "oneOf": [
+                  {
+                    "required": [
+                      "scope"
+                    ],
+                    "not": {
+                      "required": [
+                        "field"
+                      ]
+                    }
+                  },
+                  {
+                    "required": [
+                      "field"
+                    ],
+                    "not": {
+                      "required": [
+                        "scope"
+                      ]
+                    }
+                  }
+                ]
+              },
+              "memo": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "ids",
+                  "dependencies"
+                ],
+                "properties": {
+                  "ids": {
+                    "type": "array",
+                    "minItems": 1,
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^let:[A-Za-z_][A-Za-z0-9_]*$"
+                    }
+                  },
+                  "dependencies": {
+                    "type": "array",
+                    "uniqueItems": true,
+                    "items": {
+                      "type": "string",
+                      "pattern": "^v[1-9][0-9]*$"
+                    }
+                  }
+                }
+              }
+            },
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "observation": {
+                      "const": "mathml_token_pairs"
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "arguments"
+                  ],
+                  "properties": {
+                    "arguments": {
+                      "required": [
+                        "scope"
+                      ]
+                    }
+                  }
+                }
+              },
+              {
+                "if": {
+                  "properties": {
+                    "observation": {
+                      "enum": [
+                        "spaced_token_property",
+                        "omml_operand_text"
+                      ]
+                    }
+                  }
+                },
+                "then": {
+                  "required": [
+                    "arguments"
+                  ],
+                  "properties": {
+                    "arguments": {
+                      "required": [
+                        "field"
+                      ]
+                    }
+                  }
+                }
+              }
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "configure_number_formatter"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "recipe"
+            ],
+            "properties": {
+              "kind": {
+                "const": "configure_number_formatter"
+              },
+              "recipe": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "kind": {
+                "const": "assert"
+              }
+            },
+            "required": [
+              "kind"
+            ]
+          },
+          "then": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "kind",
+              "source",
+              "comparison",
+              "assertion_line"
+            ],
+            "properties": {
+              "kind": {
+                "const": "assert"
+              },
+              "source": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              },
+              "comparison": {
+                "enum": [
+                  "eq",
+                  "eql",
+                  "not_eq",
+                  "not_eql",
+                  "match",
+                  "be_xml_equivalent_to",
+                  "be_empty",
+                  "not_be_nil",
+                  "include",
+                  "not_include",
+                  "start_with",
+                  "not_start_with",
+                  "end_with",
+                  "not_end_with",
+                  "model_class",
+                  "not_model_class",
+                  "text_kind"
+                ]
+              },
+              "assertion_line": {
+                "type": "integer",
+                "minimum": 1
+              },
+              "expected": {
+                "$ref": "#/$defs/portable_value"
+              },
+              "expected_slot": {
+                "type": "string",
+                "pattern": "^v[1-9][0-9]*$"
+              }
+            },
+            "oneOf": [
+              {
+                "required": [
+                  "expected"
+                ],
+                "not": {
+                  "required": [
+                    "expected_slot"
+                  ]
+                }
+              },
+              {
+                "required": [
+                  "expected_slot"
+                ],
+                "not": {
+                  "required": [
+                    "expected"
+                  ]
+                }
+              }
+            ],
+            "allOf": [
+              {
+                "if": {
+                  "properties": {
+                    "comparison": {
+                      "const": "text_kind"
+                    }
+                  }
+                },
+                "then": {
+                  "properties": {
+                    "expected": {
+                      "const": "text"
+                    }
+                  },
+                  "required": [
+                    "expected"
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }
+}

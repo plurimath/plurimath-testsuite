@@ -462,9 +462,67 @@ A field absent from a `model:` block is therefore absent by decision, not by
 accident. An implementation is conformant when it reproduces every field that
 is present; how it represents anything else is its own business.
 
+== Authored parser and renderer expectations
+
+`fixtures/` contains language-independent expectations extracted from the Ruby
+spec suite, alongside the separately generated `corpus/`. These fixtures retain
+the original expected values; extraction never calls a production parser or
+renderer to manufacture a replacement golden result. Source revisions, file
+hashes and assertion locations support auditing each migrated expectation.
+
+The closed JSON schemas describe constructor recipes, typed map keys, ordered
+operations, comparison rules and refusal outcomes. A consumer maps these records
+to its own implementation. Symbols, string keys, positional arguments and keyword
+arguments remain distinct. Memo references preserve aliases within an example;
+consumers must create fresh mutable graphs for independent examples. A `spread`
+is allowed only in argument and array lists. Unknown operations are errors.
+
+Renderer `memo` metadata preserves source-cached public inputs and results when
+the same example executes repeatedly. IDs are opaque labels, not executable code.
+Program metadata also lists intermediate dependency slots evaluated inside that
+cached boundary. Direct calls and example-body local assignments still execute
+on each invocation. Cache state belongs to one example and must not cross into
+another example. Internal XML projections may be recomputed from the cached
+public result.
+
+Renderer cases retain their original comparison, including exact strings, XML
+equivalence, containment and successful rendering without an asserted output.
+Ordered sequences preserve round trips and checks that share a model. Grammar
+cases preserve input normalization and indexed tree observations. UnicodeMath
+external cases retain both authored tree and model expectations, including
+refusal patterns. Ruby-only configuration, API and extension contracts remain in
+the Ruby suite.
+
+The fixture families are:
+
+* `parser-expectations.yaml`: direct parser models and ordered observations.
+* `xml-parser-expectations.yaml`: additional MathML and OMML parser expectations.
+* `grammar-expectations.yaml`: raw grammar trees and projection checks.
+* `unicode-expectations.yaml`: shared external UnicodeMath inputs, trees and models.
+* `renderer-expectations.yaml`: formula/function rendering, symbol variants and round trips.
+* `symbol-renderings.yaml`: standalone symbol output in six formats.
+* `facade-expectations.yaml`: public parsing, formatting, locale and UnitsML behavior.
+* `formatter-expectations.yaml`: number-component output strings, kinds and properties.
+* `cli-conversions.yaml`: CLI conversion arguments, file inputs and expected stdout.
+
+Validate authored fixtures without installing gems:
+
+[source,sh]
+----
+ruby scripts/validate-fixtures.rb
+----
+
+The one-time `scripts/extract-*-expectations.rb` migration tools parse the pinned
+Ruby source with Prism, a development dependency. Their source manifests record
+which native spans were replaced. They fail on unsupported syntax instead of
+inferring an expected result. They are not part of ordinary fixture validation
+or test execution.
+
 == Layout
 
-`corpus/`:: the test cases, grouped by feature
+`corpus/`:: the generated conformance cases, grouped by feature
+`fixtures/`:: authored portable parser and renderer expectations
+`scripts/validate-fixtures.rb`:: validates the authored fixture inventory, schemas and IDs
 `corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
 version, generator checksum, a checksum per seed file the generator reads
 (`generator.inputs`), and a `sha256` and byte count per payload

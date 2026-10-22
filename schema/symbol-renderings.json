@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/symbol-renderings/1",
+  "title": "Authored standalone symbol rendering expectations",
+  "description": "Six independent exact-string assertions on a freshly constructed symbol. OMML uses the standalone fragment with argument true; MathML uses its recorded intent argument, then the engine's node dump and strip. Other targets use their standalone symbol renderer. These are authored native expectations, not regenerated oracle outputs.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema", "provenance", "targets", "cases"],
+  "properties": {
+    "schema": {"const": "plurimath-fixtures/symbol-renderings/1"},
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["repository", "ruby_commit"],
+      "properties": {
+        "repository": {"const": "https://github.com/plurimath/plurimath"},
+        "ruby_commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"}
+      }
+    },
+    "targets": {"const": ["asciimath", "latex", "unicodemath", "omml", "mathml", "html"]},
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/case"}
+    }
+  },
+  "$defs": {
+    "case": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "class", "mathml_intent", "asciimath_explicit_empty_options", "expected", "source"],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9_]+$"},
+        "class": {"type": "string", "pattern": "^Math::Symbols::[A-Z][A-Za-z0-9_]*$"},
+        "mathml_intent": {"type": "boolean"},
+        "asciimath_explicit_empty_options": {"type": "boolean"},
+        "expected": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["asciimath", "latex", "unicodemath", "omml", "mathml", "html"],
+          "properties": {
+            "asciimath": {"type": "string"},
+            "latex": {"type": "string"},
+            "unicodemath": {"type": "string"},
+            "omml": {"type": "string"},
+            "mathml": {"type": "string"},
+            "html": {"type": "string"}
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["path", "sha256"],
+          "properties": {
+            "path": {"type": "string", "pattern": "^spec/plurimath/math/symbols/[a-z0-9_]+_spec\\.rb$"},
+            "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+          }
+        }
+      }
+    }
+  }
+}

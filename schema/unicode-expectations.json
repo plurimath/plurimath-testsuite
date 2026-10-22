@@ -1,0 +1,806 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/unicode-expectations/1",
+  "type": "object",
+  "required": [
+    "schema",
+    "source",
+    "boundaries",
+    "cases",
+    "ledger"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "const": "plurimath-fixtures/unicode-expectations/1"
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "revision",
+        "files",
+        "input"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "revision": {
+          "type": "string"
+        },
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "path",
+              "sha256"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "path": {
+                "type": "string"
+              },
+              "sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              }
+            }
+          },
+          "minItems": 5,
+          "maxItems": 5
+        },
+        "input": {
+          "type": "object",
+          "required": [
+            "repository",
+            "revision",
+            "path",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "repository": {
+              "const": "https://github.com/plurimath/unicodemath-tests"
+            },
+            "revision": {
+              "type": "string"
+            },
+            "path": {
+              "const": "unicodemath_tests.yaml"
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    },
+    "boundaries": {
+      "const": {
+        "raw": {
+          "class": "UnicodeMath::Parse",
+          "input": "unicode_encode_entities",
+          "output": "post_processing"
+        },
+        "model": {
+          "class": "UnicodeMath::Parser",
+          "input": "remove_prefix",
+          "output": "identity"
+        }
+      }
+    },
+    "cases": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "index",
+          "input",
+          "outcome",
+          "expected",
+          "source"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^unicode-external-[0-9]{3}$"
+          },
+          "index": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 675
+          },
+          "input": {
+            "type": [
+              "string",
+              "integer",
+              "number"
+            ]
+          },
+          "outcome": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "kind"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "equal"
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "kind",
+                  "category",
+                  "message_pattern"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "kind": {
+                    "const": "parse_error"
+                  },
+                  "category": {
+                    "const": "parse_error"
+                  },
+                  "message_pattern": {
+                    "type": "object",
+                    "required": [
+                      "source",
+                      "options"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "source": {
+                        "const": "Expected one of \\["
+                      },
+                      "options": {
+                        "const": []
+                      }
+                    }
+                  }
+                }
+              }
+            ]
+          },
+          "expected": {
+            "type": "object",
+            "required": [
+              "raw",
+              "model"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "raw": {
+                "$ref": "#/$defs/recipe"
+              },
+              "model": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          },
+          "source": {
+            "type": "object",
+            "required": [
+              "input_index",
+              "input_sha256",
+              "expected"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "input_index": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 675
+              },
+              "input_sha256": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "expected": {
+                "type": "object",
+                "required": [
+                  "raw",
+                  "model"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "raw": {
+                    "type": "object",
+                    "required": [
+                      "file",
+                      "constant",
+                      "line",
+                      "sha256"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "file": {
+                        "type": "string"
+                      },
+                      "constant": {
+                        "type": "string"
+                      },
+                      "line": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      }
+                    }
+                  },
+                  "model": {
+                    "type": "object",
+                    "required": [
+                      "file",
+                      "constant",
+                      "line",
+                      "sha256"
+                    ],
+                    "additionalProperties": false,
+                    "properties": {
+                      "file": {
+                        "type": "string"
+                      },
+                      "constant": {
+                        "type": "string"
+                      },
+                      "line": {
+                        "type": "integer",
+                        "minimum": 1
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "minItems": 675,
+      "maxItems": 675
+    },
+    "ledger": {
+      "type": "object",
+      "required": [
+        "raw",
+        "model"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "raw": {
+          "type": "object",
+          "required": [
+            "file",
+            "line",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        },
+        "model": {
+          "type": "object",
+          "required": [
+            "file",
+            "line",
+            "sha256"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "file": {
+              "type": "string"
+            },
+            "line": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "sha256": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            }
+          }
+        }
+      }
+    }
+  },
+  "$defs": {
+    "recipe": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "literal",
+            "symbol",
+            "array",
+            "map",
+            "class",
+            "constructor",
+            "unitsml_formula",
+            "memo",
+            "standard_formatter",
+            "legacy_number_formatter"
+          ]
+        }
+      },
+      "allOf": [
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "literal"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "literal"
+              },
+              "value": {
+                "type": [
+                  "string",
+                  "integer",
+                  "number",
+                  "boolean",
+                  "null"
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "symbol"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "symbol"
+              },
+              "value": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "array"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "items"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "array"
+              },
+              "items": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "map"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "entries"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "map"
+              },
+              "entries": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "required": [
+                    "key",
+                    "value"
+                  ],
+                  "additionalProperties": false,
+                  "properties": {
+                    "key": {
+                      "$ref": "#/$defs/recipe"
+                    },
+                    "value": {
+                      "$ref": "#/$defs/recipe"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "class"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "name"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "class"
+              },
+              "name": {
+                "type": "string",
+                "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "constructor"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "class",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "constructor"
+              },
+              "class": {
+                "type": "string",
+                "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+              },
+              "args": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "unitsml_formula"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "text"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "unitsml_formula"
+              },
+              "text": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "memo"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "id",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "memo"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "value": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "standard_formatter"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "standard_formatter"
+              },
+              "args": {
+                "type": "array",
+                "maxItems": 0,
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "required": [
+              "kind"
+            ],
+            "properties": {
+              "kind": {
+                "const": "legacy_number_formatter"
+              }
+            }
+          },
+          "then": {
+            "type": "object",
+            "required": [
+              "kind",
+              "args",
+              "kwargs"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "kind": {
+                "const": "legacy_number_formatter"
+              },
+              "args": {
+                "type": "array",
+                "maxItems": 1,
+                "items": {
+                  "$ref": "#/$defs/list_item"
+                }
+              },
+              "kwargs": {
+                "$ref": "#/$defs/map"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "map": {
+      "type": "object",
+      "required": [
+        "kind",
+        "entries"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "map"
+        },
+        "entries": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "key",
+              "value"
+            ],
+            "additionalProperties": false,
+            "properties": {
+              "key": {
+                "$ref": "#/$defs/recipe"
+              },
+              "value": {
+                "$ref": "#/$defs/recipe"
+              }
+            }
+          }
+        }
+      }
+    },
+    "constructor": {
+      "type": "object",
+      "required": [
+        "kind",
+        "class",
+        "args",
+        "kwargs"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "constructor"
+        },
+        "class": {
+          "type": "string",
+          "pattern": "^Math(::[A-Z][A-Za-z0-9_]*)+$"
+        },
+        "args": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/list_item"
+          }
+        },
+        "kwargs": {
+          "$ref": "#/$defs/map"
+        }
+      }
+    },
+    "list_item": {
+      "type": "object",
+      "required": [
+        "kind"
+      ],
+      "properties": {
+        "kind": {
+          "enum": [
+            "literal",
+            "symbol",
+            "array",
+            "map",
+            "class",
+            "constructor",
+            "unitsml_formula",
+            "memo",
+            "standard_formatter",
+            "legacy_number_formatter",
+            "spread"
+          ]
+        }
+      },
+      "if": {
+        "required": [
+          "kind"
+        ],
+        "properties": {
+          "kind": {
+            "const": "spread"
+          }
+        }
+      },
+      "then": {
+        "type": "object",
+        "required": [
+          "kind",
+          "value"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "kind": {
+            "const": "spread"
+          },
+          "value": {
+            "$ref": "#/$defs/recipe"
+          }
+        }
+      },
+      "else": {
+        "$ref": "#/$defs/recipe"
+      }
+    }
+  }
+}
