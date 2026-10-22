@@ -506,18 +506,47 @@ The fixture families are:
 * `cli-conversions.yaml`: CLI conversion arguments, file inputs and expected stdout.
 
 Each `fixtures/<name>.yaml` is described by `schema/<name>.json`, a JSON Schema
-(draft 2020-12). Any conforming validator that reads YAML can check them; no
-code from this repository is involved. CI uses
-https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] at the
-versions pinned in `.github/validator/requirements.txt`:
+(draft 2020-12), and any conforming validator that reads YAML can check it. CI
+uses off-the-shelf tools at the versions pinned in
+`.github/validator/requirements.txt`:
+https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] for the
+schemas and https://github.com/adrienverge/yamllint[yamllint] (`.yamllint.yaml`)
+for duplicate keys, undeclared aliases and YAML 1.1 booleans. The `fixtures` job in
+`.github/workflows/validate.yml` also checks the fixture inventory against an
+explicit list and rejects unquoted anchors, aliases, tags, `.nan`/`.inf` and
+dates. To run the validators locally, use Python 3.12 (as CI) in a virtual
+environment:
 
 [source,sh]
 ----
+python3.12 -m venv .venv && . .venv/bin/activate
 python -m pip install --no-deps -r .github/validator/requirements.txt
+yamllint --strict -c .yamllint.yaml fixtures provenance
+check-jsonschema --check-metaschema schema/*.json
 for fixture in fixtures/*.yaml; do
   check-jsonschema --schemafile "schema/$(basename "$fixture" .yaml).json" "$fixture"
 done
 ----
+
+`scripts/validate.rb`, which validates `corpus/`, also loads every file in
+`schema/`, so a fixture schema must stay within the JSON Schema keywords that
+validator implements.
+
+=== Portable YAML
+
+Fixtures are read by plain YAML loaders in several languages, so they keep to a
+subset that loads the same everywhere:
+
+* no anchors, aliases or tags;
+* no timestamps or dates as unquoted scalars; dates are strings;
+* mapping keys are strings;
+* no `.nan`, `.inf` or other non-finite numbers;
+* booleans are only `true` and `false`;
+* case `id` values are unique within a file, and `class` values are unique in
+  `symbol-renderings.yaml`.
+
+JSON Schema cannot express "unique by field", so the last rule is checked in
+review, not in CI.
 
 The fixtures were extracted once from the Ruby gem's spec suite at plurimath
 commit `a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa`, by static exporters that read
