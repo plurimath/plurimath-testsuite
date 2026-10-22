@@ -13,6 +13,26 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  # The authored expectations under fixtures/ are checked with an
+  # off-the-shelf JSON Schema validator, so the data needs no code from this
+  # repository. Each fixtures/<name>.yaml is validated against
+  # schema/<name>.json; a fixture without a schema fails the step.
+  fixtures:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --no-deps -r .github/validator/requirements.txt
+      - name: Validate fixtures against their schemas
+        run: |
+          set -eu
+          for fixture in fixtures/*.yaml; do
+            name="$(basename "$fixture" .yaml)"
+            check-jsonschema --schemafile "schema/$name.json" "$fixture"
+          done
+
   validate:
     runs-on: ubuntu-latest
     steps:
@@ -33,11 +53,9 @@ jobs:
       # corpus/, add --allow-empty until the data arrives — and remove it in
       # the commit that adds corpus/.
       - run: ruby scripts/validate.rb
-      - run: ruby scripts/validate-fixtures.rb
 
       # The spec suite guards the validator itself (and the generator's
-      # gem-free helpers). Development dependencies also include Prism for
-      # the one-time static migration exporters.
+      # gem-free helpers).
       - run: bundle install
       - run: bundle exec rspec
 
@@ -49,4 +67,3 @@ jobs:
         with:
           ruby-version: "3.4"
       - run: ruby scripts/validate.rb
-      - run: ruby scripts/validate-fixtures.rb

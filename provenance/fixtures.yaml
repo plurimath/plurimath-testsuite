@@ -1,0 +1,61 @@
+# How the authored expectations under fixtures/ were produced.
+#
+# They were extracted once from the Ruby gem's spec suite by static Ruby
+# exporters that read the spec source without running it. Those exporters are
+# not part of this repository any more: they live in git history at
+# extractor_commit (scripts/extract-*-expectations.rb and scripts/lib/).
+# The fixture files are now the source of truth and are edited as data.
+#
+# fixture_sha256 is the digest of each file as extracted. A later edit to a
+# fixture makes its digest differ; that is expected, and this record then
+# describes the extraction, not the current bytes.
+"source_repository": "https://github.com/plurimath/plurimath"
+"source_commit": "a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa"
+"extractor_repository": "https://github.com/plurimath/plurimath-testsuite"
+"extractor_commit": "803623b76be985a2836372ae29b0b64aad1dc6f9"
+"files":
+- "path": "fixtures/cli-conversions.yaml"
+  "schema": "plurimath-fixtures/cli-conversions/1"
+  "extractor": "scripts/extract-cli-expectations.rb"
+  "cases": 3
+  "fixture_sha256": "22b8941f5c9cfe71323407ea8b979891b530180631fb70e69fd62f6e06158276"
+- "path": "fixtures/facade-expectations.yaml"
+  "schema": "plurimath-fixtures/facade-expectations/1"
+  "extractor": "scripts/extract-facade-expectations.rb"
+  "cases": 318
+  "fixture_sha256": "42f82ea569e8ad9b87f4056422c20c610ac3ddba2bef2e03c78fc725fda86f82"
+- "path": "fixtures/formatter-expectations.yaml"
+  "schema": "plurimath-fixtures/formatter-expectations/1"
+  "extractor": "scripts/extract-formatter-expectations.rb"
+  "cases": 113
+  "fixture_sha256": "468cbb0a9c3bf566fdaf36c1582d2531d784890bfbdfef49c2216775b1147cce"
+- "path": "fixtures/grammar-expectations.yaml"
+  "schema": "plurimath-fixtures/grammar-expectations/1"
+  "extractor": "scripts/extract-grammar-expectations.rb"
+  "cases": 98
+  "fixture_sha256": "c73d631a974be4f4c1866f3bde6dade93b2f65331d62958a5c39977681f03bac"
+- "path": "fixtures/parser-expectations.yaml"
+  "schema": "plurimath-fixtures/parser-expectations/1"
+  "extractor": "scripts/extract-parser-expectations.rb"
+  "cases": 599
+  "fixture_sha256": "22ef60184fc547150c4f525f627b2bec22d9a3c4bb52794f772cf2a2dde78b59"
+- "path": "fixtures/renderer-expectations.yaml"
+  "schema": "plurimath-fixtures/renderer-expectations/1"
+  "extractor": "scripts/extract-renderer-expectations.rb"
+  "cases": 3216
+  "fixture_sha256": "5807fd22008aacac1f85d75489c4a90a9fbaff72e6936f55d5b8ae018e390eb4"
+- "path": "fixtures/symbol-renderings.yaml"
+  "schema": "plurimath-fixtures/symbol-renderings/1"
+  "extractor": "scripts/extract-symbol-renderings.rb"
+  "cases": 1433
+  "fixture_sha256": "adf2943cd6c3e319262b131814996247eef71594ed290bb4620a80362ce400ec"
+- "path": "fixtures/unicode-expectations.yaml"
+  "schema": "plurimath-fixtures/unicode-expectations/1"
+  "extractor": "scripts/extract-unicode-expectations.rb"
+  "cases": 675
+  "fixture_sha256": "c60d185e6f993b9c1626298eca93cb81f3cf0568fade5f6e9ed45bfad8541e7b"
+- "path": "fixtures/xml-parser-expectations.yaml"
+  "schema": "plurimath-fixtures/xml-parser-expectations/1"
+  "extractor": "scripts/extract-xml-expectations.rb"
+  "cases": 237
+  "fixture_sha256": "dc2dde5b87ec0b13b0b80dac23c53a569220152f48c00e597f1aee3d5f8a7913"

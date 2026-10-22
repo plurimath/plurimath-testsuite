@@ -505,24 +505,34 @@ The fixture families are:
 * `formatter-expectations.yaml`: number-component output strings, kinds and properties.
 * `cli-conversions.yaml`: CLI conversion arguments, file inputs and expected stdout.
 
-Validate authored fixtures without installing gems:
+Each `fixtures/<name>.yaml` is described by `schema/<name>.json`, a JSON Schema
+(draft 2020-12). Any conforming validator that reads YAML can check them; no
+code from this repository is involved. CI uses
+https://github.com/python-jsonschema/check-jsonschema[check-jsonschema] at the
+versions pinned in `.github/validator/requirements.txt`:
 
 [source,sh]
 ----
-ruby scripts/validate-fixtures.rb
+python -m pip install --no-deps -r .github/validator/requirements.txt
+for fixture in fixtures/*.yaml; do
+  check-jsonschema --schemafile "schema/$(basename "$fixture" .yaml).json" "$fixture"
+done
 ----
 
-The one-time `scripts/extract-*-expectations.rb` migration tools parse the pinned
-Ruby source with Prism, a development dependency. Their source manifests record
-which native spans were replaced. They fail on unsupported syntax instead of
-inferring an expected result. They are not part of ordinary fixture validation
-or test execution.
+The fixtures were extracted once from the Ruby gem's spec suite at plurimath
+commit `a6bac8dcf76af4347eb93fa2a7289eb278dd3ffa`, by static exporters that read
+the spec source without running it. Those exporters are not kept here: they
+are in this repository's history at commit
+`803623b76be985a2836372ae29b0b64aad1dc6f9` (`scripts/extract-*-expectations.rb`
+and `scripts/lib/`). `provenance/fixtures.yaml` records the source and extractor
+commits and, per file, the extractor, case count and digest as extracted. The
+fixture files are now the source of truth and are edited as data.
 
 == Layout
 
 `corpus/`:: the generated conformance cases, grouped by feature
 `fixtures/`:: authored portable parser and renderer expectations
-`scripts/validate-fixtures.rb`:: validates the authored fixture inventory, schemas and IDs
+`provenance/fixtures.yaml`:: where the authored fixtures were extracted from
 `corpus/provenance.yaml`:: how every payload was produced — gem commit, Ruby
 version, generator checksum, a checksum per seed file the generator reads
 (`generator.inputs`), and a `sha256` and byte count per payload
