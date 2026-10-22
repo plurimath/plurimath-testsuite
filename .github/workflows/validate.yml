@@ -39,19 +39,25 @@ jobs:
             diff <(echo "$expected") <(echo "$actual")
             exit 1
           fi
-      # Every string is double-quoted, so once quoted strings and comments are
-      # removed, a line may hold only YAML punctuation and JSON numbers, true,
-      # false and null. Anything else (an anchor, alias, tag, .nan, a date,
-      # 1:20, 017, yes, an unquoted string, a string spanning lines) fails.
+      # Every string is double-quoted. Each quoted string becomes a placeholder
+      # and comments are removed; what remains may hold only: a `- ` sequence
+      # indicator, a `:` key separator right after a quoted string, flow
+      # brackets, `, ` separators, and the plain scalars null, true, false and
+      # integer or decimal numbers (no exponent). A `---` is allowed on line 1
+      # only. See README "Portable YAML" for what this rejects.
       - name: Plain scalars are JSON literals only
         run: |
-          ok='^([][{},[:space:]-]|:([[:space:]]|$)|(-?(0|[1-9][0-9]*)(\.[0-9]+)?([eE][-+]?[0-9]+)?|true|false|null)([][{},[:space:]]|$))*$'
           # GitHub runs bash with -e and pipefail; this step reads statuses itself.
           set +e +o pipefail
+          q=$'\001' # stands in for a double-quoted string; YAML text cannot contain it
+          f_='([[:space:]]|[]}]|,([[:space:]]|[]}]|$)|$)'
+          lit="(-?(0|[1-9][0-9]*)(\.[0-9]+)?|true|false|null)$f_"
+          ok="^([[:space:]]+|-([[:space:]]|$)|$q(:([[:space:]]|$)|$f_)|$lit|[][{}]|,([[:space:]]|[]}]|$))*\$"
           rc=0
           for name in $FIXTURES; do
             f="fixtures/$name.yaml"
-            sed -E 's/"([^"\\]|\\.)*"//g; s/#.*$//' "$f" | grep -nvE "$ok" | sed "s|^|$f:|"
+            sed -E "1s/^---[[:space:]]*\$//; s/\"([^\"\\\\]|\\\\.)*\"/$q/g; s/(^|[[:space:]])#.*\$//" "$f" |
+              grep -nvE "$ok" | sed "s|^|$f:|"
             status=("${PIPESTATUS[@]}")
             [ "${status[0]}" -eq 0 ] && [ "${status[1]}" -eq 1 ] || rc=1
           done
