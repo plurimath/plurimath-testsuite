@@ -13,11 +13,10 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  # The authored expectations under fixtures/ are data only, checked by
-  # check-jsonschema pinned in .github/validator/requirements.txt, which
-  # validates fixtures/<name>.yaml against schema/<name>.json and rejects
-  # duplicate keys while loading. The "plain scalars" step keeps the YAML in
-  # the portable subset described in README "Portable YAML".
+  # The authored expectations under fixtures/ are data only. They are checked
+  # by check-jsonschema (pinned in .github/validator/requirements.txt) against
+  # schema/<name>.json, and by loading them with two standard YAML loaders
+  # that must agree. See README "Portable YAML".
   fixtures:
     runs-on: ubuntu-latest
     env:
@@ -30,36 +29,58 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
       - run: python -m pip install --no-deps -r .github/validator/requirements.txt
       - name: Fixture inventory matches the expected list
         run: |
           expected="$(printf '%s.yaml\n' $FIXTURES | sort)"
-          actual="$(ls fixtures | sort)"
+          actual="$(ls -A fixtures | sort)"
           if [ "$expected" != "$actual" ]; then
             diff <(echo "$expected") <(echo "$actual")
             exit 1
           fi
-      # Every string is double-quoted. Each quoted string becomes a placeholder
-      # and comments are removed; what remains may hold only: a `- ` sequence
-      # indicator, a `:` key separator right after a quoted string, flow
-      # brackets, `, ` separators, and the plain scalars null, true, false and
-      # integer or decimal numbers (no exponent). A `---` is allowed on line 1
-      # only. See README "Portable YAML" for what this rejects.
-      - name: Plain scalars are JSON literals only
+      # Conformance across two standard YAML loaders, not a custom parser:
+      # Ruby's Psych (safe_load, no aliases) and Python's ruamel.yaml (YAML
+      # 1.2, safe) must each load every file to plain JSON values with string
+      # keys, and serialize to identical sorted JSON. A load error, alias,
+      # date, NaN/Inf, non-string key, duplicate key, extra document, or any
+      # value the two read differently (1e-3, 1:20, 017, yes) fails.
+      - name: Two YAML loaders read the same values
         run: |
-          # GitHub runs bash with -e and pipefail; this step reads statuses itself.
-          set +e +o pipefail
-          q=$'\001' # stands in for a double-quoted string; YAML text cannot contain it
-          f_='([[:space:]]|[]}]|,([[:space:]]|[]}]|$)|$)'
-          lit="(-?(0|[1-9][0-9]*)(\.[0-9]+)?|true|false|null)$f_"
-          ok="^([[:space:]]+|-([[:space:]]|$)|$q(:([[:space:]]|$)|$f_)|$lit|[][{}]|,([[:space:]]|[]}]|$))*\$"
           rc=0
-          for name in $FIXTURES; do
-            f="fixtures/$name.yaml"
-            sed -E "1s/^---[[:space:]]*\$//; s/\"([^\"\\\\]|\\\\.)*\"/$q/g; s/(^|[[:space:]])#.*\$//" "$f" |
-              grep -nvE "$ok" | sed "s|^|$f:|"
-            status=("${PIPESTATUS[@]}")
-            [ "${status[0]}" -eq 0 ] && [ "${status[1]}" -eq 1 ] || rc=1
+          out="${RUNNER_TEMP:-/tmp}/yaml-loaders"
+          mkdir -p "$out"
+          for f in $(printf 'fixtures/%s.yaml\n' $FIXTURES) provenance/fixtures.yaml; do
+            base="$out/$(echo "$f" | tr / _)"
+            ruby -ryaml -rjson -e '
+              c = lambda do |o|
+                case o
+                when Hash
+                  o.each_key { |k| k.is_a?(String) or abort "#{ARGV[0]}: non-string key #{k.inspect}" }
+                  o.keys.sort.to_h { |k| [k, c.(o[k])] }
+                when Array then o.map(&c)
+                else o
+                end
+              end
+              puts JSON.generate(c.(YAML.safe_load(File.read(ARGV[0], encoding: "UTF-8"), aliases: false)), allow_nan: false, max_nesting: false)
+            ' "$f" > "$base.psych.json" || { echo "::error file=$f::Psych failed on $f"; rc=1; continue; }
+            python -c '
+          import json, sys
+          from ruamel.yaml import YAML
+          def c(o):
+              if isinstance(o, dict):
+                  for k in o:
+                      if not isinstance(k, str): sys.exit(f"{sys.argv[1]}: non-string key {k!r}")
+                  return {k: c(v) for k, v in o.items()}
+              if isinstance(o, list): return [c(v) for v in o]
+              if o is None or isinstance(o, (str, bool, int, float)): return o
+              sys.exit(f"{sys.argv[1]}: {type(o).__name__} value")
+          with open(sys.argv[1], encoding="utf-8") as fh: doc = YAML(typ="safe").load(fh)
+          sys.stdout.buffer.write(json.dumps(c(doc), allow_nan=False, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n")
+            ' "$f" > "$base.ruamel.json" || { echo "::error file=$f::ruamel.yaml failed on $f"; rc=1; continue; }
+            cmp "$base.psych.json" "$base.ruamel.json" || { echo "::error file=$f::Psych and ruamel.yaml load $f differently"; rc=1; }
           done
           exit $rc
       - name: Validate each fixture against its schema
