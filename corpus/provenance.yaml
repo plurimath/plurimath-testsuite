@@ -8,9 +8,9 @@ committable: true
 warnings: []
 generator:
   path: scripts/generate-corpus.rb
-  sha256: f2ff26da538f90070d44077af2f60f475eb69bc3ff64424a1096e7a0b8e1af66
+  sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
   repository:
-    commit: b127fd5cef57fd9bfd471f66bc48837cd65f2ed6
+    commit: ed0bb95b86ad6d189524bd89f17247e30b39a1b5
     clean: true
     dirty_paths: []
   inputs:
@@ -24,7 +24,7 @@ oracle:
   gem: plurimath
   version: 0.11.12
   kind: git-checkout
-  commit: 56a0198095f7f1559324a320fde64b04bbf26740
+  commit: 7f179ef4c1f2bc1bf011929d229f0f012ae0e66d
   clean: true
   dirty_paths: []
 ruby:
@@ -34,8 +34,8 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: c1a17188d3674ea2a3f5dbf9c267122be3e0c85475ef517fcd34cebaec2bf591
-  resolved_gems: 79
+  sha256: f79f279747a73f0521360e1627be1feeedd92ce5ec8123ebffd96bf7fcd477fe
+  resolved_gems: 81
   platforms:
   - aarch64-linux
   - aarch64-linux-gnu
@@ -74,6 +74,9 @@ payloads:
 - path: asciimath/frac.yaml
   sha256: 254b15b16125084c30f02e888fb2073ad6bce2bb803f146c8e02e3910c2c5b30
   bytes: 20760
+- path: asciimath/left-right.yaml
+  sha256: b025bf9a049ea73697cfad0fe626763c8bd5f6a15e329f98cb9b8d2c71230c7c
+  bytes: 8568
 - path: asciimath/matrices.yaml
   sha256: 20290949ec7f6de74dbe9c146ba63f091fe8e608988ca3c763153fb248e7703d
   bytes: 10997
@@ -114,8 +117,8 @@ payloads:
   sha256: 639ef03b187cfbd86d648532c91929585407871779d00c4c5bdbe8ba5a41de05
   bytes: 15094
 - path: asciimath/partial-render.yaml
-  sha256: 9831c8801cdcf7b3762e0b1c9a6866500841714e34eeb184e44c6e16916dc598
-  bytes: 11663
+  sha256: c92f82d70f654e5966facc6b79a4be165b591bf08eef1fc1bf6147521d071438
+  bytes: 3081
 - path: asciimath/permissive.yaml
   sha256: 8b5f98576f1460a6c6e9e5c7b227e0c537b0a8f54538b77a81807b5df4c7b574
   bytes: 14912
@@ -161,6 +164,9 @@ payloads:
 - path: latex/frac.yaml
   sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
   bytes: 23143
+- path: latex/left-right.yaml
+  sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+  bytes: 18000
 - path: latex/matrices.yaml
   sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
   bytes: 26180
@@ -179,9 +185,6 @@ payloads:
 - path: latex/over-under.yaml
   sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
   bytes: 35399
-- path: latex/partial-render.yaml
-  sha256: 2158296e70c2f3a56885c70b90daccf02ce273abca5cd9a15e3e40d8ca63b94d
-  bytes: 18829
 - path: latex/powers.yaml
   sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
   bytes: 22608
@@ -240,8 +243,8 @@ payloads:
   sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
   bytes: 29368
 - path: mathml/tokens.yaml
-  sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
-  bytes: 304985
+  sha256: bbe240ef8a87af95156bb97b23aaf75c1cb95e31bd74874a0d0ab5ae6ab6dc1b
+  bytes: 305211
 - path: omml/accents.yaml
   sha256: d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907
   bytes: 25008
