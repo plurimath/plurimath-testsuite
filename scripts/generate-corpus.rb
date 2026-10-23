@@ -267,6 +267,11 @@ module CorpusGenerator
       ["colour-named", "color(red)(x)"],
       ["colour-in-sum", "color(blue)(x) + y"],
     ]],
+    ["left-right", "Explicit left/right fences, which carry their own paren nodes", [
+      ["left-right-round", "left( x right)"],
+      ["left-right-square", "left[ x right]"],
+      ["left-right-around-frac", "left( a/b right)"],
+    ]],
     ["mod", "The mod operator, a binary function with no parens of its own", [
       ["mod-simple", "a mod b"],
       ["mod-numeric", "x mod 2"],
@@ -741,33 +746,19 @@ module CorpusGenerator
   # list that quietly kept it would be claiming a refusal that stopped
   # happening.
   #
-  # The three `left-right-*` inputs were a `cases/1` group until the text
-  # formats gained the omml and html targets. Each renders to the other five
-  # and raises `Math::ParseError` from `to_html`: `Formula#to_html` calls
-  # `to_html` on every node with one argument, and the gem's
-  # `Math::Function::Right#to_html` takes none, so the `ArgumentError` it
-  # raises is re-raised as a parse error. That is an oracle defect, recorded
-  # here as the gem's behaviour rather than corrected.
+  # The three `left-right-*` inputs sat here, and the six LaTeX ones in
+  # `LATEX_PARTIAL_CANDIDATES`, while the gem's `Math::Function::Right#to_html`
+  # took no argument and so refused `to_html`. Once that was fixed (Plurimath
+  # PR #508) they rendered to every target, and moved back to their `cases/1`
+  # `left-right` groups.
   ASCIIMATH_PARTIAL_CANDIDATES = [
     ["partial-sqrt-unclosed", "sqrt("],
-    ["left-right-round", "left( x right)"],
-    ["left-right-square", "left[ x right]"],
-    ["left-right-around-frac", "left( a/b right)"],
   ].freeze
 
-  # The LaTeX `\left ... \right` inputs, a `cases/1` group until the text
-  # formats gained the omml and html targets. They render to the other five
-  # and refuse `to_html` for the reason given in the comment on
-  # `ASCIIMATH_PARTIAL_CANDIDATES`: the gem's `Right#to_html` takes no
-  # argument and `Formula#to_html` passes one.
-  LATEX_PARTIAL_CANDIDATES = [
-    ["latex-left-right-round", "\\left( a \\right)"],
-    ["latex-left-right-square", "\\left[ x \\right]"],
-    ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
-    ["latex-left-right-bar", "\\left| x \\right|"],
-    ["latex-left-right-round-sum", "\\left( a + b \\right)"],
-    ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
-  ].freeze
+  # Empty: the LaTeX `\left ... \right` inputs it held render to every
+  # target since Plurimath PR #508 and are back in LaTeX's `left-right` group
+  # (see `ASCIIMATH_PARTIAL_CANDIDATES`).
+  LATEX_PARTIAL_CANDIDATES = [].freeze
 
   # --- number-formatter calls (calls/1) ------------------------------------
   #
@@ -1064,9 +1055,9 @@ module CorpusGenerator
   # The LaTeX seed corpus, grown a slice at a time: four groups first, then the
   # fourteen below them, then the rejection list above and the fourteen
   # placeholder cases an earlier slice had wrongly excluded. Its partially
-  # renderable payload holds the `left-right` inputs, which left their own
-  # group when the format gained the omml and html targets (see
-  # `LATEX_PARTIAL_CANDIDATES`).
+  # renderable payload held the `left-right` inputs while the gem refused them
+  # to HTML; they are back in their own group, and the payload is empty and
+  # unwritten (see `LATEX_PARTIAL_CANDIDATES`).
   #
   # Ids carry a `latex-` prefix while the AsciiMath ids carry none. That is not
   # decoration: this repository enforces id uniqueness WITHIN a group, while at
@@ -1250,6 +1241,14 @@ module CorpusGenerator
       ["latex-colour-over-frac", "\\color{red} \\frac{1}{2}"],
       # `\textcolor{blue}{y}` is deliberately absent: the gem rejects it, while
       # the `\color` spelling above is accepted.
+    ]],
+    ["left-right", "\\left and \\right fences, which size their delimiters", [
+      ["latex-left-right-round", "\\left( a \\right)"],
+      ["latex-left-right-square", "\\left[ x \\right]"],
+      ["latex-left-right-curly", "\\left\\{ a \\right\\}"],
+      ["latex-left-right-bar", "\\left| x \\right|"],
+      ["latex-left-right-round-sum", "\\left( a + b \\right)"],
+      ["latex-left-right-around-frac", "\\left( \\frac{a}{b} \\right)"],
     ]],
     ["mod", "Modulo, in its \\mod, \\bmod and \\pmod spellings", [
       ["latex-mod-infix", "a \\mod b"],
@@ -2197,7 +2196,8 @@ module CorpusGenerator
   # every target carries an OUTCOME — a rendering or a refusal — instead of a
   # string. Used only by the groups that need it: `cases/1` is not deprecated,
   # and a case moves here only when a target starts refusing it, as the
-  # `left-right` inputs did when the text formats gained omml and html.
+  # `left-right` inputs did when the text formats gained omml and html — and
+  # back out when the refusal stops, as they did after Plurimath PR #508.
   def outcome_case_schema(format)
     "plurimath-corpus/#{format.name}/2"
   end
