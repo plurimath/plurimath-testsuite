@@ -1,0 +1,613 @@
+# LaTeX raw-tree stage cases: raw-nary.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-nary
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of nary.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-nary-sum-bounded.raw
+  input:
+    str: "\\sum_{i=1}^{n} i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sum_{i=1}^{n}i"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: sum
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: i
+                          byte_offset: 6
+                          char_offset: 6
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "="
+                              byte_offset: 7
+                              char_offset: 7
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 8
+                              char_offset: 8
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "n"
+                      byte_offset: 12
+                      char_offset: 12
+          - - sym: third_value
+            - hash:
+              - - sym: symbols
+                - slice: i
+                  byte_offset: 14
+                  char_offset: 14
+- id: latex-nary-sum-of-squares.raw
+  input:
+    str: "\\sum_{i=1}^{n} i^2"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sum_{i=1}^{n}i^2"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: sum
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: i
+                          byte_offset: 6
+                          char_offset: 6
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "="
+                              byte_offset: 7
+                              char_offset: 7
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 8
+                              char_offset: 8
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "n"
+                      byte_offset: 12
+                      char_offset: 12
+          - - sym: third_value
+            - hash:
+              - - sym: power
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 14
+                      char_offset: 14
+                  - - sym: supscript
+                    - hash:
+                      - - sym: number
+                        - slice: '2'
+                          byte_offset: 16
+                          char_offset: 16
+- id: latex-nary-sum-bare.raw
+  input:
+    str: "\\sum x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sumx"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: ternary
+            - slice: sum
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 4
+              char_offset: 4
+- id: latex-nary-int-bounded.raw
+  input:
+    str: "\\int_0^1 x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\int_0^1x"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: int
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: number
+                - slice: '0'
+                  byte_offset: 5
+                  char_offset: 5
+          - - sym: supscript
+            - hash:
+              - - sym: number
+                - slice: '1'
+                  byte_offset: 7
+                  char_offset: 7
+          - - sym: third_value
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-nary-int-definite.raw
+  input:
+    str: "\\int_a^b f(x) dx"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\int_a^bf(x)dx"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: ternary_class
+            - hash:
+              - - sym: ternary_functions
+                - slice: int
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 5
+                      char_offset: 5
+              - - sym: supscript
+                - hash:
+                  - - sym: symbols
+                    - slice: b
+                      byte_offset: 7
+                      char_offset: 7
+              - - sym: third_value
+                - hash:
+                  - - sym: symbols
+                    - slice: f
+                      byte_offset: 8
+                      char_offset: 8
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 9
+                          char_offset: 9
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: x
+                          byte_offset: 10
+                          char_offset: 10
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 11
+                          char_offset: 11
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: d
+                      byte_offset: 12
+                      char_offset: 12
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 13
+                      char_offset: 13
+- id: latex-nary-prod-subscript.raw
+  input:
+    str: "\\prod_{k} k"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\prod_{k}k"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: prod
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: k
+                      byte_offset: 7
+                      char_offset: 7
+          - - sym: third_value
+            - hash:
+              - - sym: symbols
+                - slice: k
+                  byte_offset: 9
+                  char_offset: 9
+- id: latex-nary-prod-bounded.raw
+  input:
+    str: "\\prod_{i=1}^{n} i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\prod_{i=1}^{n}i"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: prod
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: i
+                          byte_offset: 7
+                          char_offset: 7
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "="
+                              byte_offset: 8
+                              char_offset: 8
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 9
+                              char_offset: 9
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "n"
+                      byte_offset: 13
+                      char_offset: 13
+          - - sym: third_value
+            - hash:
+              - - sym: symbols
+                - slice: i
+                  byte_offset: 15
+                  char_offset: 15
+- id: latex-nary-oint-subscript.raw
+  input:
+    str: "\\oint_C f"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\oint_Cf"
+    tree:
+      hash:
+      - - sym: ternary_class
+        - hash:
+          - - sym: ternary_functions
+            - slice: oint
+              byte_offset: 1
+              char_offset: 1
+          - - sym: subscript
+            - hash:
+              - - sym: symbols
+                - slice: C
+                  byte_offset: 6
+                  char_offset: 6
+          - - sym: third_value
+            - hash:
+              - - sym: symbols
+                - slice: f
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-nary-lim-to-infinity.raw
+  input:
+    str: "\\lim_{x \\to \\infty} f(x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lim_{x\\to\\infty}f(x)"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: power_base
+            - hash:
+              - - sym: binary
+                - slice: lim
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: symbols
+                            - slice: x
+                              byte_offset: 6
+                              char_offset: 6
+                      - - sym: expression
+                        - hash:
+                          - - sym: sequence
+                            - hash:
+                              - - sym: symbols
+                                - slice: to
+                                  byte_offset: 8
+                                  char_offset: 8
+                          - - sym: expression
+                            - hash:
+                              - - sym: symbols
+                                - slice: infty
+                                  byte_offset: 11
+                                  char_offset: 11
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: f
+                  byte_offset: 17
+                  char_offset: 17
+          - - sym: expression
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 18
+                          char_offset: 18
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: x
+                          byte_offset: 19
+                          char_offset: 19
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 20
+                          char_offset: 20
+- id: latex-nary-bigcup-subscript.raw
+  input:
+    str: "\\bigcup_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigcup_iA_i"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: bigcup
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 8
+                      char_offset: 8
+      - - sym: expression
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 9
+                  char_offset: 9
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 11
+                      char_offset: 11
+- id: latex-nary-bigcap-subscript.raw
+  input:
+    str: "\\bigcap_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigcap_iA_i"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: bigcap
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 8
+                      char_offset: 8
+      - - sym: expression
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 9
+                  char_offset: 9
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 11
+                      char_offset: 11
+- id: latex-nary-coprod-subscript.raw
+  input:
+    str: "\\coprod_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\coprod_iA_i"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: coprod
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 8
+                      char_offset: 8
+      - - sym: expression
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 9
+                  char_offset: 9
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 11
+                      char_offset: 11
+- id: latex-nary-iint-bare.raw
+  input:
+    str: "\\iint f"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\iintf"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: iint
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: symbols
+            - slice: f
+              byte_offset: 5
+              char_offset: 5
+- id: latex-nary-bigoplus-subscript.raw
+  input:
+    str: "\\bigoplus_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigoplus_iA_i"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: bigoplus
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 10
+                      char_offset: 10
+      - - sym: expression
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 11
+                  char_offset: 11
+              - - sym: subscript
+                - hash:
+                  - - sym: symbols
+                    - slice: i
+                      byte_offset: 13
+                      char_offset: 13

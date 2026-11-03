@@ -1,0 +1,81 @@
+# LaTeX raw-tree stage cases: raw-quoted-text.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-quoted-text
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of quoted-text.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-text-command.raw
+  input:
+    str: "\\text{hello}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\text{hello}"
+    tree:
+      hash:
+      - - sym: text
+        - slice: text
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - slice: hello
+          byte_offset: 6
+          char_offset: 6
+- id: latex-text-spaced.raw
+  input:
+    str: "\\text{hello world}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\text{hello world}"
+    tree:
+      hash:
+      - - sym: text
+        - slice: text
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - slice: hello world
+          byte_offset: 6
+          char_offset: 6
+- id: latex-text-mbox.raw
+  input:
+    str: "\\mbox{hi}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mbox{hi}"
+    tree:
+      hash:
+      - - sym: text
+        - slice: mbox
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - slice: hi
+          byte_offset: 6
+          char_offset: 6
+- id: latex-text-mbox-spaced.raw
+  input:
+    str: "\\mbox{a b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mbox{a b}"
+    tree:
+      hash:
+      - - sym: text
+        - slice: mbox
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - slice: a b
+          byte_offset: 6
+          char_offset: 6

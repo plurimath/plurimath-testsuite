@@ -1,0 +1,269 @@
+# LaTeX raw-tree stage cases: raw-fonts.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-fonts
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of fonts.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-font-blackboard.raw
+  input:
+    str: "\\mathbb{R}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbb{R}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathbb
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: R
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-bold.raw
+  input:
+    str: "\\mathbf{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbf{x}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathbf
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-roman-text.raw
+  input:
+    str: "\\textrm{abc}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\textrm{abc}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: textrm
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 8
+                      char_offset: 8
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: c
+                          byte_offset: 10
+                          char_offset: 10
+- id: latex-font-script.raw
+  input:
+    str: "\\mathcal{L}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathcal{L}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathcal
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: L
+                  byte_offset: 9
+                  char_offset: 9
+- id: latex-font-fraktur.raw
+  input:
+    str: "\\mathfrak{g}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathfrak{g}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathfrak
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: g
+                  byte_offset: 10
+                  char_offset: 10
+- id: latex-font-sans-serif.raw
+  input:
+    str: "\\mathsf{A}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathsf{A}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathsf
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-typewriter.raw
+  input:
+    str: "\\mathtt{z}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathtt{z}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathtt
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: z
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-roman.raw
+  input:
+    str: "\\mathrm{d}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathrm{d}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathrm
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: d
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-italic.raw
+  input:
+    str: "\\mathit{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathit{x}"
+    tree:
+      hash:
+      - - sym: fonts
+        - slice: mathit
+          byte_offset: 1
+          char_offset: 1
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-font-mixed.raw
+  input:
+    str: "\\mathbf{A} + \\mathbf{B}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbf{A}+\\mathbf{B}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: fonts
+            - slice: mathbf
+              byte_offset: 1
+              char_offset: 1
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: A
+                      byte_offset: 8
+                      char_offset: 8
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: operant
+                - slice: "+"
+                  byte_offset: 10
+                  char_offset: 10
+          - - sym: expression
+            - hash:
+              - - sym: fonts
+                - slice: mathbf
+                  byte_offset: 12
+                  char_offset: 12
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: B
+                          byte_offset: 19
+                          char_offset: 19

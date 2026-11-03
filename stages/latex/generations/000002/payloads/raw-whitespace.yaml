@@ -1,0 +1,205 @@
+# LaTeX raw-tree stage cases: raw-whitespace.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-whitespace
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of whitespace.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-whitespace-quad.raw
+  input:
+    str: a \quad b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\quadb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: quad
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 6
+                  char_offset: 6
+- id: latex-whitespace-two-quads.raw
+  input:
+    str: a \quad b \quad c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\quadb\quadc
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: quad
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: b
+                      byte_offset: 6
+                      char_offset: 6
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: quad
+                          byte_offset: 8
+                          char_offset: 8
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: c
+                          byte_offset: 12
+                          char_offset: 12
+- id: latex-comma-from-thin-space.raw
+  input:
+    str: a \, b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\,b
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: ","
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 3
+                  char_offset: 3
+- id: latex-whitespace-medium.raw
+  input:
+    str: 'a \: b'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\:b
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: ":"
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 3
+                  char_offset: 3
+- id: latex-whitespace-thick.raw
+  input:
+    str: a \; b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\;b
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: three_per_em_space
+                - slice: "\\;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 3
+                  char_offset: 3
+- id: latex-whitespace-qquad.raw
+  input:
+    str: a \qquad b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\qquadb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: qquad
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 7
+                  char_offset: 7
