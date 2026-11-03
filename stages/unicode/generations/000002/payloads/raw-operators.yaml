@@ -1,0 +1,220 @@
+# Raw-tree rows for payloads/operators.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-operators
+description: 'Unicodemath::RawParser outcome for each input of payloads/operators.yaml (generation 1): the legacy preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-operator-plus.raw
+  input:
+    str: a+b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+- id: unicode-operator-times.raw
+  input:
+    str: a×b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#xd7;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: binary_symbols
+            - slice: "&#xd7;"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 7
+                          char_offset: 7
+- id: unicode-operator-leq.raw
+  input:
+    str: a≤b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2264;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: relational_symbols
+                - slice: "&#x2264;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-operator-equiv.raw
+  input:
+    str: a≡b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2261;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: relational_symbols
+                - slice: "&#x2261;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-operator-plus-minus.raw
+  input:
+    str: a±b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#xb1;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: combined_symbols
+                - slice: "&#xb1;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 7
+                          char_offset: 7
+- id: unicode-operator-minus-plus.raw
+  input:
+    str: a∓b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2213;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: combined_symbols
+                - slice: "&#x2213;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9

@@ -15,3 +15,13 @@ entries:
   change: initial
   rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
     no oracle rerun.
+- generation: 2
+  path: stages/unicode/generations/000002
+  snapshot_digest: sha256:0a6f19b9a7836e71544d1a027e3f3ea2397dc5e9a1aba8b7834079b1dc91593d
+  payloads: 10
+  rows: 144
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Keeps every generation 1 payload byte for byte and adds Unicodemath::RawParser raw-tree rows (Ruby and native engines agreeing) for each of their inputs, written by scripts/stage_cases.rb at unicodemath 1929f69a708c7275a054a419a75cf9fb6064bae4.

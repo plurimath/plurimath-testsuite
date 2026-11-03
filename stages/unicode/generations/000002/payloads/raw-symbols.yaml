@@ -1,0 +1,72 @@
+# Raw-tree rows for payloads/symbols.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-symbols
+description: 'Unicodemath::RawParser outcome for each input of payloads/symbols.yaml (generation 1): the legacy preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-symbol-greek-alpha.raw
+  input:
+    str: α
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x3b1;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: ordinary_symbols
+            - slice: "&#x3b1;"
+              byte_offset: 0
+              char_offset: 0
+- id: unicode-symbol-greek-pi.raw
+  input:
+    str: π
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x3c0;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: ordinary_symbols
+            - slice: "&#x3c0;"
+              byte_offset: 0
+              char_offset: 0
+- id: unicode-symbol-infinity.raw
+  input:
+    str: "∞"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x221e;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: ordinary_symbols
+            - slice: "&#x221e;"
+              byte_offset: 0
+              char_offset: 0
+- id: unicode-symbol-empty-set.raw
+  input:
+    str: "∅"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x2205;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: ordinary_symbols
+            - slice: "&#x2205;"
+              byte_offset: 0
+              char_offset: 0
