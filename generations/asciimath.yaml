@@ -15,3 +15,15 @@ entries:
   change: initial
   rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
     no oracle rerun.
+- generation: 2
+  path: stages/asciimath/generations/000002
+  snapshot_digest: sha256:3404d4d2e34fca72f6e08d6cc72d974e9a56199980d4d419a3cf2695fcb931f7
+  payloads: 29
+  rows: 183
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Add amath's shared-exponent uncertainty cases (amath#13) as raw-tree rows, generated
+    by amath scripts/generate_stage_cases.rb at 8ec8ba05bc49196aa5825782a052f51a2db99c7a; every
+    generation 1 payload is kept byte for byte.
