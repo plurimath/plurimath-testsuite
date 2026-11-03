@@ -1,0 +1,184 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/stage-parity-report/1",
+  "title": "Tree parity report",
+  "description": "The comparison of a legacy and a candidate capture for one language: input counts by status and every mismatch with its first differing pointer. `pass` is only possible with no timeouts, crashes, missing or duplicate rows and no mismatches. See docs/tree-parity-contract.adoc.",
+  "type": "object",
+  "required": [
+    "schema",
+    "language",
+    "legacy_capture_sha256",
+    "candidate_capture_sha256",
+    "counts",
+    "mismatches",
+    "verdict"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "plurimath-stage/parity-report/1"
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "latex",
+        "unicode",
+        "mathml",
+        "omml",
+        "html"
+      ]
+    },
+    "legacy_capture_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "candidate_capture_sha256": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "counts": {
+      "type": "object",
+      "required": [
+        "expected",
+        "attempted",
+        "succeeded",
+        "refused",
+        "timed_out",
+        "crashed",
+        "missing",
+        "duplicate"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "attempted": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "succeeded": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "refused": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "timed_out": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "crashed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "missing": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "duplicate": {
+          "type": "integer",
+          "minimum": 0
+        }
+      }
+    },
+    "mismatches": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "boundary",
+          "pointer"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "boundary": {
+            "type": "string",
+            "enum": [
+              "status",
+              "preprocessed",
+              "raw",
+              "model",
+              "writers",
+              "refusal"
+            ]
+          },
+          "pointer": {
+            "description": "JSON pointer to the first differing node.",
+            "type": "string"
+          },
+          "legacy": {
+            "$ref": "#/$defs/any"
+          },
+          "candidate": {
+            "$ref": "#/$defs/any"
+          }
+        }
+      }
+    },
+    "verdict": {
+      "type": "string",
+      "enum": [
+        "pass",
+        "fail",
+        "incomplete"
+      ]
+    }
+  },
+  "$defs": {
+    "any": {
+      "description": "Excerpt of the differing value.",
+      "type": [
+        "object",
+        "array",
+        "string",
+        "integer",
+        "boolean",
+        "null"
+      ]
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "verdict": {
+            "const": "pass"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "counts": {
+            "properties": {
+              "timed_out": {
+                "const": 0
+              },
+              "crashed": {
+                "const": 0
+              },
+              "missing": {
+                "const": 0
+              },
+              "duplicate": {
+                "const": 0
+              }
+            }
+          },
+          "mismatches": {
+            "maxItems": 0
+          }
+        }
+      }
+    }
+  ]
+}

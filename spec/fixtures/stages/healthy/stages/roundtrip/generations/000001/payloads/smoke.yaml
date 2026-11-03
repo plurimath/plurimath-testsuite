@@ -1,0 +1,13 @@
+# Smoke rows for the stage validator specs. Stable ids; do not rename.
+---
+schema: plurimath-stage/roundtrip/1
+group: smoke
+description: One uncertainty roundtrip row.
+cases:
+- id: smoke-roundtrip-pm
+  spec: {document: smoke, section: "1"}
+  source: {language: asciimath, input: "1.5 +- 0.2"}
+  options: {decimal: "."}
+  expected:
+    latex: {output: "1.5 \\pm 0.2", lossless: true}
+    unicode: {refusal: {category: unsupported}}

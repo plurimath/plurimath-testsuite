@@ -1,0 +1,41 @@
+# Spec fixture.
+---
+schema: plurimath-stage/provenance/1
+language: roundtrip
+generation: 1
+producers:
+  smoke:
+    kind: stage-gem
+    repository: https://github.com/plurimath/latexmath
+    commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    version: 
+    generator:
+      repository: https://github.com/plurimath/latexmath
+      commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      path: scripts/smoke.rb
+      sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+    inputs: []
+    environment:
+      ruby:
+        engine: ruby
+        version: 3.4.0
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+      dependencies: {}
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: roundtrip
+    configuration: {}
+payloads:
+- path: payloads/smoke.yaml
+  bytes: 431
+  sha256: 4e05934a68db14bc68e399741f8b683591d61103fe4ed898efe39d2a036a2076
+  producer: smoke
+  source:
+    relation: generated
+    file: 
+  rows:
+  - smoke-roundtrip-pm

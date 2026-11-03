@@ -1,0 +1,223 @@
+= Stage corpus contract
+:toc:
+
+This document describes how per-language test data for the Plurimath stage
+gems is stored in this repository, how a consumer pins it, and what
+`scripts/validate-stages.rb` enforces. It is layout revision 1.
+
+The legacy corpus under `corpus/`, the authored expectations under
+`fixtures/` and `provenance/`, and `scripts/validate.rb` are not changed by
+this contract. The plurimath gem and plurimath-ts read those paths today and
+keep reading them. The stage layout lives beside them, under `stages/` and
+`generations/`.
+
+== Layout
+
+[source]
+----
+stages/<language>/generations/<NNNNNN>/provenance.yaml
+stages/<language>/generations/<NNNNNN>/payloads/<group>.yaml
+generations/<language>.yaml
+schema/stage-*.json
+----
+
+`<language>` is one of `asciimath`, `latex`, `unicode`, `mathml`, `omml`,
+`html` and `roundtrip`. The UnicodeMath key is `unicode`, as in `corpus/`.
+`roundtrip` holds cases that start in one language and are rendered into
+others. Any other language key needs a new layout revision.
+
+`<NNNNNN>` is the generation number with six digits: `000001`, `000002`, and
+so on. `<group>` is lowercase letters and digits joined by single hyphens.
+No other file may exist under `stages/` or `generations/`, and symlinks are
+refused anywhere in those trees.
+
+== Generations
+
+A generation is a complete, immutable snapshot of one language's rows. Once
+a generation is merged, its directory is never edited: no file in it changes,
+and no file is added to or removed from it. Corrections and new rows go into
+a new generation.
+
+A new generation is a full copy, not a diff. It may reuse earlier payload
+bytes unchanged, add rows, and add payloads. It must keep every earlier case
+id with the same input and the same expected outcomes; it may add expected
+outcomes for new targets. Revision 1 has no way to change an earlier
+expectation. A normative behaviour change needs a new dialect, schema version
+or language key, decided by the owner, and an old generation's oracle is
+never replaced.
+
+Payloads are self-contained files. They may be copies of tracked upstream
+data (recorded by repository, commit, path and sha256), but never symlinks or
+references to mutable files outside the snapshot.
+
+Every generation needs at least one replayable row. A generation, or a pin,
+that would replay nothing is a failure, not a pass.
+
+== Payload schemas
+
+Each payload declares its schema in its top-level `schema` key, as in
+`corpus/`. Three families are allowed in a generation:
+
+* the legacy corpus schemas (`plurimath-corpus/<language>/1` and `/2`,
+  `plurimath-corpus/rejections/1`, `plurimath-corpus/calls/1` and `/2`), for
+  rows the facade gem produced;
+* `plurimath-stage/<language>/cases/1` (`schema/stage-cases.json`), for rows
+  whose expectation is a raw grammar tree or a typed model in the canonical
+  tagged form of `docs/tree-parity-contract.adoc`, or a refusal;
+* `plurimath-stage/roundtrip/1` (`schema/stage-roundtrip.json`), only under
+  `stages/roundtrip`: a source language and input, caller options such as
+  the decimal marker, a specification section, and for each target either
+  the exact output with a `lossless` flag or a refusal.
+
+A payload under `stages/<language>` must belong to that language: its schema's
+language segment, its `input_format` and every case's `input_format` (where
+present) must name it. Its `group`, where present, matches the file name.
+Every case has a string `id`, and ids are unique within a generation.
+
+== provenance.yaml
+
+`schema/stage-provenance.json`, `plurimath-stage/provenance/1`. It records:
+
+* `language` and `generation`, matching the directory;
+* `producers`: each producer a payload names, keyed by a short local name.
+  A producer has a `kind` (`legacy-oracle` for the plurimath facade,
+  `stage-gem` for a language gem, `tracked-import` for rows copied from
+  another tracked repository), its repository, commit and version, the
+  generator script as a file at an exact commit with its sha256, every data
+  input the generator read, the Ruby, lockfile, dependency, compiler, binding
+  and LML identities, the semantic boundary of its expectations
+  (`facade-outputs`, `raw-tree`, `typed-model` or `roundtrip`), and its
+  configuration;
+* `payloads`: one entry per file under `payloads/`, sorted by path bytes,
+  with its size, sha256, producer, source and the ids of its rows in file
+  order. A `copy` source names the file the bytes were copied from and has the
+  same sha256; a `generated` source was written by the producer's generator.
+
+A generation that keeps legacy rows and adds stage-gem rows lists both
+producers. A stage-gem producer can sit beside the legacy expected rows; it
+never replaces them as the parity oracle.
+
+provenance.yaml cannot carry the snapshot digest, because the digest covers
+provenance.yaml itself. The ledger carries it.
+
+== Ledger
+
+`generations/<language>.yaml`, `schema/stage-ledger.json`,
+`plurimath-stage/ledger/1`. It lists every generation of the language in
+order. Each entry records the generation number, its directory, its snapshot
+digest, its payload and row counts, the producer kinds it contains, the kind
+of change (`initial` for generation 1, `extend` for every later one) and a
+rationale.
+
+The ledger is append-only. Compared with the PR base, the existing entries
+must be unchanged and in the same order; a PR may only append. The ledger is
+outside the snapshot and is not covered by its own digest.
+
+== Snapshot digest
+
+The snapshot digest of a generation is `sha256:` followed by the SHA-256 of
+the UTF-8 text made of one line per file in the generation directory:
+
+[source]
+----
+<sha256 of the file>  <path relative to the generation directory>\n
+----
+
+The lines cover every payload and `provenance.yaml`, ordered by the bytes of
+their paths. Duplicate paths, unsafe paths, missing or unlisted files and an
+empty generation are rejected before the digest is trusted. On a POSIX shell
+the same value is:
+
+[source,sh]
+----
+cd stages/latex/generations/000001
+find . -type f | sed 's,^\./,,' | LC_ALL=C sort | xargs sha256sum | sha256sum
+----
+
+== Consumer pins
+
+A consumer commits a pin, normally at `spec/fixtures/testsuite-pin.yml` in
+the stage gem, in the shape of `schema/stage-pin.json`
+(`plurimath-stage/pin/1`):
+
+[source,yaml]
+----
+schema: plurimath-stage/pin/1
+repository: https://github.com/plurimath/plurimath-testsuite
+commit: <40-hex commit of this repository>
+language: latex
+generation: 1
+snapshot_digest: sha256:<64 hex>
+----
+
+Replay must check that the checkout is at `commit`, select the named ledger
+entry (not the latest one), recompute the digest, verify every file, and then
+run every row of that generation. `ruby scripts/validate-stages.rb <checkout>
+--pin <pin file>` performs every check before the replay itself. The commit
+may move forward without forcing a new generation of another language. A
+deliberate upgrade changes commit, generation and digest together and says
+why.
+
+== Validator
+
+[source,sh]
+----
+ruby scripts/validate-stages.rb [root] [--base REF] [--pin FILE]
+----
+
+It runs with plain `ruby` and no gems, and checks the layout, every ledger and
+provenance against its schema, every payload against the schema it declares,
+sizes, checksums, row ids, the snapshot digests, generation numbering, the
+non-empty replay rule and that each generation keeps the cases of the one
+before it.
+
+With `--base REF` it also requires every file under `stages/` at `REF` to be
+present with identical bytes, no file to have been added to a generation
+directory `REF` already had, and every ledger at `REF` to be an unchanged
+prefix of the current one. CI passes the PR base, or the previous `main`
+commit on a push.
+
+It exits 0 when everything is valid, 1 on a violation and 2 on a usage,
+schema or git error. `spec/stage_validator_spec.rb` proves the failures for
+tampered bytes, edited provenance, unlisted, missing and duplicate files,
+unsafe paths, symlinks, wrong-language payloads, empty replays, gaps in the
+generation numbers, dropped or changed earlier cases, edits to a base
+generation, rewritten ledgers and wrong pins.
+
+== Generation 1
+
+Generation 1 of the six input languages is a byte copy of `corpus/<language>/`
+at plurimath-testsuite `281059b213026a54a193cb020a5816f57cabf3a8`, each file
+checked against `corpus/provenance.yaml` at that commit. No oracle was rerun.
+The producer is the plurimath gem 0.11.12 at
+`ed048ee2d39cb3b2f13c83c6fdf536e77e63f650`, run by `scripts/generate-corpus.rb`
+at `fef72bd82d15e094d3435ff4c9e0f1065fb80804`. The payloads' header comments
+still mention `corpus/provenance.yaml`, because their bytes are kept exactly.
+
+[cols="1,1,1,3"]
+|===
+|Language |Payloads |Rows |Snapshot digest
+
+|asciimath |28 |173 |`sha256:f33825074cc075f906aa96467f80b83ebbbd1729d3696d0f5613157ca0e14fa7`
+|html |1 |38 |`sha256:5c2e1feddfa18067ac4b42401ea7fc8bd8f02f576c7a4a40805127a90d42b9ac`
+|latex |19 |139 |`sha256:9b362ce57706c5ca154bfc295b2037b9e626775d8a82a4557f3702c9ad2c74ba`
+|mathml |13 |301 |`sha256:2f3d9c7532413d5482c9daeccfc878154e118c2656adcb2b983680c77c084055`
+|omml |15 |199 |`sha256:1719bd495f1689defdf59e2108bc9a2c0d0f28fd170f56dd1665b4fbf1260583`
+|unicode |5 |72 |`sha256:ff4c7b0ad7cbb0014e514efd24f9cae4df641cbec4a7d5ba6d3f8301374e3ac4`
+|===
+
+There is no `roundtrip` generation yet.
+
+== Adding a generation
+
+. Copy the latest generation directory of the language to the next number,
+  or write the new one from scratch, keeping every earlier case.
+. Add or regenerate payloads, then write provenance.yaml for the new
+  directory with every producer, source and row id.
+. Append a ledger entry with the recomputed digest and counts, `change:
+  extend` and a rationale.
+. Run `ruby scripts/validate.rb` and `ruby scripts/validate-stages.rb --base
+  <base commit>`; both must exit 0.
+
+Changes to the schemas, this document or the validator are separate work and
+are not part of a data PR.

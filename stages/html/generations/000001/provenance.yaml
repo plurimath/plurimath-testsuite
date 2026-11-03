@@ -1,0 +1,120 @@
+# Generation 1 of the html stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: html
+generation: 1
+notes: Byte copies of corpus/html/ at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8,
+  each checked against corpus/provenance.yaml (plurimath-corpus/provenance/3) at that
+  commit. No oracle was rerun. The payloads' header comments still name corpus/provenance.yaml,
+  because their bytes are kept exactly.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+payloads:
+- path: payloads/rejections.yaml
+  bytes: 6003
+  sha256: '0991ae165fc37398cca28fa4259004af1a547d2782ab8e142aae8c6aaefd3d70'
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/html/rejections.yaml
+      sha256: '0991ae165fc37398cca28fa4259004af1a547d2782ab8e142aae8c6aaefd3d70'
+  rows:
+  - html-unclosed-tag
+  - html-stray-close-tag
+  - html-stray-close-then-text
+  - html-extra-close-tag
+  - html-mismatched-close
+  - html-crossed-tags
+  - html-empty-element
+  - html-empty-tag-name
+  - html-unterminated-tag
+  - html-unclosed-var
+  - html-comment
+  - html-lone-lt
+  - html-lone-gt
+  - html-lt-between-letters
+  - html-gt-between-letters
+  - html-lone-sub
+  - html-unclosed-sub
+  - html-sup-without-close
+  - html-empty-sup
+  - html-unclosed-paren
+  - html-unclosed-paren-space
+  - html-stray-close-paren
+  - html-stray-close-paren-space
+  - html-function-unclosed-paren
+  - html-unclosed-table
+  - html-empty-table
+  - html-empty-row
+  - html-table-without-close
+  - html-entity-then-lone-sub
+  - html-entity-sum-then-lone-sub
+  - html-numeric-entity-then-sup
+  - html-entity-then-close-paren
+  - html-paren-then-entity
+  - html-entity-then-open-tag
+  - html-entity-then-mismatched-close
+  - html-unclosed-tag-around-entity
+  - html-table-without-close-entity
+  - html-nesting-too-deep

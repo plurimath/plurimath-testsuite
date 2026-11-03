@@ -1,0 +1,405 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/stage-roundtrip/1",
+  "title": "Stage roundtrip cases",
+  "description": "stages/roundtrip payloads: one input in one language, rendered into other languages, with the exact outcome per target (output bytes or refusal) and whether reading that output back reproduces the same model. Decimal and locale options are part of the case. See docs/stage-corpus-contract.adoc.",
+  "type": "object",
+  "required": [
+    "schema",
+    "group",
+    "description",
+    "cases"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {
+      "type": "string",
+      "const": "plurimath-stage/roundtrip/1"
+    },
+    "group": {
+      "$ref": "#/$defs/slug"
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1
+    },
+    "cases": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/case"
+      }
+    }
+  },
+  "$defs": {
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+([._-][a-z0-9]+)*$"
+    },
+    "options": {
+      "description": "Caller options, as given (decimal, locale, ...). Values are strings, booleans or null so nothing is reinterpreted.",
+      "type": "object",
+      "additionalProperties": {
+        "type": [
+          "string",
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "spec": {
+      "description": "The specification section a row comes from.",
+      "type": "object",
+      "required": [
+        "document",
+        "section"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "document": {
+          "type": "string",
+          "minLength": 1
+        },
+        "section": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "refusal": {
+      "description": "A real parse refusal: category and position are contractual; message prose is not.",
+      "type": "object",
+      "required": [
+        "category"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "category": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(_[a-z0-9]+)*$"
+        },
+        "byte_offset": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "value": {
+      "description": "Canonical tagged form of one Ruby value: exactly one tag key per node. It keeps hash vs array, symbol vs string keys, key order, nil vs missing (a missing key is simply absent from `hash`), empty string vs empty list, node class, slice text and byte offsets. Numbers keep their source text; nothing is float-normalized and no child order is sorted.",
+      "oneOf": [
+        {
+          "type": "object",
+          "required": [
+            "nil"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "nil": {
+              "const": true
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "bool"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "bool": {
+              "type": "boolean"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "int"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "int": {
+              "type": "string",
+              "pattern": "^-?[0-9]+$"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "float"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "float": {
+              "description": "Float#inspect text, unchanged.",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "decimal"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "decimal": {
+              "description": "BigDecimal#to_s text, unchanged.",
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "str"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "str": {
+              "description": "A valid UTF-8 string.",
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "bytes",
+            "encoding"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "bytes": {
+              "description": "Lowercase hex of a string that is not valid UTF-8.",
+              "type": "string",
+              "pattern": "^([0-9a-f]{2})*$"
+            },
+            "encoding": {
+              "type": "string",
+              "minLength": 1
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "sym"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "sym": {
+              "type": "string"
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "array"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "array": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/value"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "hash"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "hash": {
+              "description": "Key/value pairs in insertion order.",
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/pair"
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "node",
+            "fields"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "node": {
+              "description": "Class or node kind name.",
+              "type": "string",
+              "minLength": 1
+            },
+            "fields": {
+              "description": "Declared field name/value pairs, in declaration order.",
+              "type": "array",
+              "items": {
+                "type": "array",
+                "prefixItems": [
+                  {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  {
+                    "$ref": "#/$defs/value"
+                  }
+                ],
+                "minItems": 2,
+                "maxItems": 2
+              }
+            }
+          }
+        },
+        {
+          "type": "object",
+          "required": [
+            "slice",
+            "byte_offset"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "slice": {
+              "description": "Parslet::Slice text.",
+              "type": "string"
+            },
+            "byte_offset": {
+              "type": "integer",
+              "minimum": 0
+            },
+            "char_offset": {
+              "type": "integer",
+              "minimum": 0
+            }
+          }
+        }
+      ]
+    },
+    "pair": {
+      "type": "array",
+      "prefixItems": [
+        {
+          "$ref": "#/$defs/value"
+        },
+        {
+          "$ref": "#/$defs/value"
+        }
+      ],
+      "minItems": 2,
+      "maxItems": 2
+    },
+    "language": {
+      "type": "string",
+      "enum": [
+        "asciimath",
+        "latex",
+        "unicode",
+        "mathml",
+        "omml",
+        "html"
+      ]
+    },
+    "case": {
+      "type": "object",
+      "required": [
+        "id",
+        "spec",
+        "source",
+        "options",
+        "expected"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "$ref": "#/$defs/id"
+        },
+        "spec": {
+          "$ref": "#/$defs/spec"
+        },
+        "source": {
+          "type": "object",
+          "required": [
+            "language",
+            "input"
+          ],
+          "additionalProperties": false,
+          "properties": {
+            "language": {
+              "$ref": "#/$defs/language"
+            },
+            "input": {
+              "type": "string"
+            }
+          }
+        },
+        "options": {
+          "$ref": "#/$defs/options"
+        },
+        "model": {
+          "description": "The typed model the source parses to, when the case pins it.",
+          "$ref": "#/$defs/value"
+        },
+        "expected": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {
+            "$ref": "#/$defs/language"
+          },
+          "additionalProperties": {
+            "oneOf": [
+              {
+                "type": "object",
+                "required": [
+                  "output",
+                  "lossless"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "output": {
+                    "type": "string"
+                  },
+                  "lossless": {
+                    "description": "True when reading `output` back gives the same model; false records a known loss.",
+                    "type": "boolean"
+                  },
+                  "loss": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                }
+              },
+              {
+                "type": "object",
+                "required": [
+                  "refusal"
+                ],
+                "additionalProperties": false,
+                "properties": {
+                  "refusal": {
+                    "$ref": "#/$defs/refusal"
+                  }
+                }
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

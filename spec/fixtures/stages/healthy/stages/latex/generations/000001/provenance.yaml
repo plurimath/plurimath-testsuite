@@ -1,0 +1,43 @@
+# Spec fixture.
+---
+schema: plurimath-stage/provenance/1
+language: latex
+generation: 1
+producers:
+  smoke:
+    kind: stage-gem
+    repository: https://github.com/plurimath/latexmath
+    commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+    version: 
+    generator:
+      repository: https://github.com/plurimath/latexmath
+      commit: aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+      path: scripts/smoke.rb
+      sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+    inputs: []
+    environment:
+      ruby:
+        engine: ruby
+        version: 3.4.0
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        sha256: '0000000000000000000000000000000000000000000000000000000000000000'
+      dependencies: {}
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: raw-tree
+    configuration: {}
+payloads:
+- path: payloads/smoke.yaml
+  bytes: 942
+  sha256: afbf7bb369799fc211f8631c7a8e65313f1d6ed0094853781921ffe14bed8867
+  producer: smoke
+  source:
+    relation: generated
+    file: 
+  rows:
+  - smoke-latex-frac
+  - smoke-latex-sqrt
+  - smoke-latex-unclosed

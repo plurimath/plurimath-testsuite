@@ -1,0 +1,437 @@
+# Generation 1 of the latex stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: latex
+generation: 1
+notes: Byte copies of corpus/latex/ at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8,
+  each checked against corpus/provenance.yaml (plurimath-corpus/provenance/3) at that
+  commit. No oracle was rerun. The payloads' header comments still name corpus/provenance.yaml,
+  because their bytes are kept exactly.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+payloads:
+- path: payloads/accents.yaml
+  bytes: 34510
+  sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/accents.yaml
+      sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+  rows:
+  - latex-accent-hat
+  - latex-accent-hat-multi
+  - latex-accent-vec
+  - latex-accent-vec-multi
+  - latex-accent-bar
+  - latex-accent-dot
+  - latex-accent-ddot
+  - latex-accent-tilde
+  - latex-accent-acute
+  - latex-accent-grave
+  - latex-accent-check
+  - latex-accent-breve
+  - latex-accent-mathring
+- path: payloads/colour.yaml
+  bytes: 9321
+  sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/colour.yaml
+      sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+  rows:
+  - latex-colour-named
+  - latex-colour-in-sum
+  - latex-colour-over-frac
+- path: payloads/fences.yaml
+  bytes: 14326
+  sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/fences.yaml
+      sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+  rows:
+  - latex-fence-round
+  - latex-fence-square
+  - latex-fence-curly-escaped
+  - latex-fence-angle
+  - latex-fence-ceiling
+- path: payloads/fonts.yaml
+  bytes: 25415
+  sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/fonts.yaml
+      sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+  rows:
+  - latex-font-blackboard
+  - latex-font-bold
+  - latex-font-roman-text
+  - latex-font-script
+  - latex-font-fraktur
+  - latex-font-sans-serif
+  - latex-font-typewriter
+  - latex-font-roman
+  - latex-font-italic
+  - latex-font-mixed
+- path: payloads/frac.yaml
+  bytes: 23143
+  sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/frac.yaml
+      sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+  rows:
+  - latex-frac-simple
+  - latex-frac-nested
+  - latex-frac-sum-numerator
+  - latex-frac-sum-denominator
+  - latex-frac-sum-of-fracs
+  - latex-frac-root-denominator
+- path: payloads/left-right.yaml
+  bytes: 18000
+  sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/left-right.yaml
+      sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+  rows:
+  - latex-left-right-round
+  - latex-left-right-square
+  - latex-left-right-curly
+  - latex-left-right-bar
+  - latex-left-right-round-sum
+  - latex-left-right-around-frac
+- path: payloads/matrices.yaml
+  bytes: 26180
+  sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/matrices.yaml
+      sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+  rows:
+  - latex-matrix-plain
+  - latex-matrix-parens
+  - latex-matrix-brackets
+  - latex-matrix-bars
+  - latex-matrix-braces
+  - latex-matrix-array
+- path: payloads/mod.yaml
+  bytes: 14745
+  sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/mod.yaml
+      sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+  rows:
+  - latex-mod-infix
+  - latex-mod-bmod
+  - latex-mod-pmod
+  - latex-mod-numeric
+  - latex-mod-fenced-left
+- path: payloads/nary.yaml
+  bytes: 53176
+  sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/nary.yaml
+      sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+  rows:
+  - latex-nary-sum-bounded
+  - latex-nary-sum-of-squares
+  - latex-nary-sum-bare
+  - latex-nary-int-bounded
+  - latex-nary-int-definite
+  - latex-nary-prod-subscript
+  - latex-nary-prod-bounded
+  - latex-nary-oint-subscript
+  - latex-nary-lim-to-infinity
+  - latex-nary-bigcup-subscript
+  - latex-nary-bigcap-subscript
+  - latex-nary-coprod-subscript
+  - latex-nary-iint-bare
+  - latex-nary-bigoplus-subscript
+- path: payloads/numbers.yaml
+  bytes: 12174
+  sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/numbers.yaml
+      sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+  rows:
+  - latex-number-integer
+  - latex-number-decimal
+  - latex-number-decimal-comma
+  - latex-number-negative
+  - latex-number-braced-exponent
+- path: payloads/operators.yaml
+  bytes: 12289
+  sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/operators.yaml
+      sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+  rows:
+  - latex-operator-plus
+  - latex-operator-times
+  - latex-operator-leq
+  - latex-operator-equiv
+  - latex-operator-plus-minus
+- path: payloads/over-under.yaml
+  bytes: 35399
+  sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/over-under.yaml
+      sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+  rows:
+  - latex-over-under-overline
+  - latex-over-under-overline-sum
+  - latex-over-under-overline-nested
+  - latex-over-under-underbrace
+  - latex-over-under-underbrace-sum
+  - latex-over-under-underbrace-labelled
+  - latex-over-under-overset
+  - latex-over-under-underset
+  - latex-over-under-stackrel
+  - latex-over-under-underline
+  - latex-over-under-overparen
+- path: payloads/powers.yaml
+  bytes: 22608
+  sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/powers.yaml
+      sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+  rows:
+  - latex-power-square
+  - latex-power-nested
+  - latex-power-braced-exponent
+  - latex-power-exponential
+  - latex-subscript-letter
+  - latex-subscript-braced
+  - latex-subscript-and-power
+- path: payloads/quoted-text.yaml
+  bytes: 8700
+  sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/quoted-text.yaml
+      sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+  rows:
+  - latex-text-command
+  - latex-text-spaced
+  - latex-text-mbox
+  - latex-text-mbox-spaced
+- path: payloads/rejections.yaml
+  bytes: 3125
+  sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/rejections.yaml
+      sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+  rows:
+  - latex-unclosed-brace
+  - latex-stray-close-brace
+  - latex-unknown-command
+  - latex-frac-no-args
+  - latex-frac-one-arg
+  - latex-right-without-left
+  - latex-begin-without-end
+  - latex-end-without-begin
+  - latex-whitespace-only
+  - latex-lone-backslash
+  - latex-unclosed-text
+  - latex-nested-unclosed
+  - latex-command-bad-chars
+  - latex-tilde
+- path: payloads/roots.yaml
+  bytes: 21854
+  sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/roots.yaml
+      sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+  rows:
+  - latex-root-sqrt-number
+  - latex-root-sqrt-sum
+  - latex-root-sqrt-pythagoras
+  - latex-root-sqrt-frac
+  - latex-root-cube
+  - latex-root-nth-symbolic
+- path: payloads/symbols.yaml
+  bytes: 8781
+  sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/symbols.yaml
+      sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+  rows:
+  - latex-symbol-greek-alpha
+  - latex-symbol-infinity
+  - latex-symbol-greek-pi
+  - latex-symbol-empty-set
+- path: payloads/unary-functions.yaml
+  bytes: 26430
+  sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/unary-functions.yaml
+      sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+  rows:
+  - latex-unary-sin-bare
+  - latex-unary-sin-fenced
+  - latex-unary-cos-product
+  - latex-unary-log-bare
+  - latex-unary-ln-bare
+  - latex-unary-lim-bare
+  - latex-unary-det
+  - latex-unary-max
+  - latex-unary-gcd-fenced
+- path: payloads/whitespace.yaml
+  bytes: 15813
+  sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/whitespace.yaml
+      sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+  rows:
+  - latex-whitespace-quad
+  - latex-whitespace-two-quads
+  - latex-comma-from-thin-space
+  - latex-whitespace-medium
+  - latex-whitespace-thick
+  - latex-whitespace-qquad

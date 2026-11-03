@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/stage-ledger/1",
+  "title": "Stage generation ledger",
+  "description": "generations/<language>.yaml: the append-only list of every committed generation of one language's stage corpus. Each entry names the generation directory and its snapshot digest, which covers every payload and the generation's provenance.yaml. Entries are only ever appended; scripts/validate-stages.rb --base rejects an edit or removal of an entry the base commit already had. See docs/stage-corpus-contract.adoc.",
+  "type": "object",
+  "required": ["schema", "language", "layout", "entries"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"type": "string", "const": "plurimath-stage/ledger/1"},
+    "language": {"$ref": "#/$defs/language"},
+    "layout": {
+      "description": "The stage layout revision this ledger follows. Revision 1 is the one docs/stage-corpus-contract.adoc describes.",
+      "type": "integer",
+      "const": 1
+    },
+    "entries": {
+      "type": "array",
+      "minItems": 1,
+      "items": {"$ref": "#/$defs/entry"}
+    }
+  },
+  "$defs": {
+    "language": {
+      "type": "string",
+      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "roundtrip"]
+    },
+    "entry": {
+      "type": "object",
+      "required": ["generation", "path", "snapshot_digest", "payloads", "rows", "producer_kinds", "change", "rationale"],
+      "additionalProperties": false,
+      "properties": {
+        "generation": {
+          "description": "1 for the first entry, then each entry one more than the last.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "path": {
+          "description": "stages/<language>/generations/<generation, six digits>, relative to the repository root.",
+          "type": "string",
+          "pattern": "^stages/[a-z]+/generations/[0-9]{6}$"
+        },
+        "snapshot_digest": {
+          "description": "sha256 over the lines `<sha256>  <path>\\n` of every file in the generation directory (payloads and provenance.yaml), with paths relative to that directory and ordered by their bytes.",
+          "type": "string",
+          "pattern": "^sha256:[0-9a-f]{64}$"
+        },
+        "payloads": {"type": "integer", "minimum": 1},
+        "rows": {
+          "description": "Total replayable rows (cases) across the generation's payloads. Never zero: an empty replay is not a pass.",
+          "type": "integer",
+          "minimum": 1
+        },
+        "producer_kinds": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {"type": "string", "enum": ["legacy-oracle", "stage-gem", "tracked-import"]}
+        },
+        "change": {
+          "description": "`initial` for generation 1. `extend` for every later generation: it keeps every earlier case id with the same input and expected outcomes, and may add cases or payloads. Layout revision 1 has no kind of change that rewrites an earlier expectation; that needs a new language key or schema version decided by the owner.",
+          "type": "string",
+          "enum": ["initial", "extend"]
+        },
+        "rationale": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

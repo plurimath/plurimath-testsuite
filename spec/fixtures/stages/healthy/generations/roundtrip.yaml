@@ -1,0 +1,15 @@
+# Spec fixture.
+---
+schema: plurimath-stage/ledger/1
+language: roundtrip
+layout: 1
+entries:
+- generation: 1
+  path: stages/roundtrip/generations/000001
+  snapshot_digest: sha256:f7f9595638c0a82bfc31648a22b75d0fe02cf0985f120552ab462b8b7de2538c
+  payloads: 1
+  rows: 1
+  producer_kinds:
+  - stage-gem
+  change: initial
+  rationale: Spec fixture.

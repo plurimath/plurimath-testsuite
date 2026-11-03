@@ -119,6 +119,40 @@ jobs:
       - run: bundle install
       - run: bundle exec rspec
 
+  # The immutable stage generations under stages/ and their ledgers under
+  # generations/ (docs/stage-corpus-contract.adoc). --base compares with the
+  # PR base, or with the previous main commit on a push, so a merged
+  # generation or ledger entry can never be edited. The full history is
+  # fetched because the base commit must be readable.
+  stages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+      - name: Validate stage generations against the base commit
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          if [ -z "$BASE_SHA" ] || [ "$BASE_SHA" = "0000000000000000000000000000000000000000" ]; then
+            ruby scripts/validate-stages.rb
+          else
+            ruby scripts/validate-stages.rb --base "$BASE_SHA"
+          fi
+      # A second, independent reading of the stage manifests: the same
+      # schemas through check-jsonschema rather than validate.rb's subset.
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python -m pip install --no-deps -r .github/validator/requirements.txt
+      - name: Stage manifests match their schemas under check-jsonschema
+        run: |
+          check-jsonschema --schemafile schema/stage-ledger.json generations/*.yaml
+          check-jsonschema --schemafile schema/stage-provenance.json stages/*/generations/*/provenance.yaml
+
   validate-windows:
     runs-on: windows-latest
     steps:

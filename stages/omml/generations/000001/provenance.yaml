@@ -1,0 +1,449 @@
+# Generation 1 of the omml stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: omml
+generation: 1
+notes: Byte copies of corpus/omml/ at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8,
+  each checked against corpus/provenance.yaml (plurimath-corpus/provenance/3) at that
+  commit. No oracle was rerun. The payloads' header comments still name corpus/provenance.yaml,
+  because their bytes are kept exactly.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+payloads:
+- path: payloads/accents.yaml
+  bytes: 25008
+  sha256: d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/accents.yaml
+      sha256: d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907
+  rows:
+  - omml-accents-001
+  - omml-accents-002
+  - omml-accents-003
+  - omml-accents-004
+- path: payloads/boxes.yaml
+  bytes: 10555
+  sha256: 2522f8bc43c2341a7c361fe31670baa01b489832a01fdedd85da99d51108a9f9
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/boxes.yaml
+      sha256: 2522f8bc43c2341a7c361fe31670baa01b489832a01fdedd85da99d51108a9f9
+  rows:
+  - omml-boxes-001
+  - omml-boxes-002
+- path: payloads/delimiters.yaml
+  bytes: 121100
+  sha256: 3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/delimiters.yaml
+      sha256: 3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05
+  rows:
+  - omml-delimiters-001
+  - omml-delimiters-002
+  - omml-delimiters-003
+  - omml-delimiters-004
+  - omml-delimiters-005
+  - omml-delimiters-006
+  - omml-delimiters-007
+  - omml-delimiters-008
+  - omml-delimiters-009
+  - omml-delimiters-010
+  - omml-delimiters-011
+  - omml-delimiters-012
+  - omml-delimiters-013
+  - omml-delimiters-014
+  - omml-delimiters-015
+  - omml-delimiters-016
+- path: payloads/equation-arrays.yaml
+  bytes: 117029
+  sha256: 87148248bbeb057ac6a0d834165f6186a1dca7e688e2df1dedab8c05406b2eb8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/equation-arrays.yaml
+      sha256: 87148248bbeb057ac6a0d834165f6186a1dca7e688e2df1dedab8c05406b2eb8
+  rows:
+  - omml-equation-arrays-001
+  - omml-equation-arrays-002
+  - omml-equation-arrays-003
+  - omml-equation-arrays-004
+  - omml-equation-arrays-005
+  - omml-equation-arrays-006
+  - omml-equation-arrays-007
+- path: payloads/fractions.yaml
+  bytes: 58775
+  sha256: c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/fractions.yaml
+      sha256: c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699
+  rows:
+  - omml-fractions-001
+  - omml-fractions-002
+  - omml-fractions-003
+  - omml-fractions-004
+  - omml-fractions-005
+  - omml-fractions-006
+  - omml-fractions-007
+- path: payloads/functions.yaml
+  bytes: 140387
+  sha256: '039637381e90f3ca97f3a13df3c471d5a788d5074c194a9a2f01f99bae4eb890'
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/functions.yaml
+      sha256: '039637381e90f3ca97f3a13df3c471d5a788d5074c194a9a2f01f99bae4eb890'
+  rows:
+  - omml-functions-001
+  - omml-functions-002
+  - omml-functions-003
+  - omml-functions-004
+  - omml-functions-005
+  - omml-functions-006
+  - omml-functions-007
+  - omml-functions-008
+  - omml-functions-009
+  - omml-functions-010
+  - omml-functions-011
+  - omml-functions-012
+  - omml-functions-013
+  - omml-functions-014
+  - omml-functions-015
+  - omml-functions-016
+- path: payloads/group-characters.yaml
+  bytes: 16512
+  sha256: 912b2cef0726dd5096223c48c7b1373f039f1a0fa3aacd7272da6c36cadc90e2
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/group-characters.yaml
+      sha256: 912b2cef0726dd5096223c48c7b1373f039f1a0fa3aacd7272da6c36cadc90e2
+  rows:
+  - omml-group-characters-001
+  - omml-group-characters-002
+- path: payloads/limits.yaml
+  bytes: 229417
+  sha256: 39e891ab597e5d23e2925c19c2e5d005f29d6240a2c844719aecd05272b9317a
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/limits.yaml
+      sha256: 39e891ab597e5d23e2925c19c2e5d005f29d6240a2c844719aecd05272b9317a
+  rows:
+  - omml-limits-010
+  - omml-limits-011
+  - omml-limits-012
+  - omml-limits-013
+  - omml-limits-014
+  - omml-limits-015
+  - omml-limits-016
+  - omml-limits-017
+  - omml-limits-018
+  - omml-limits-019
+  - omml-limits-020
+  - omml-limits-021
+  - omml-limits-022
+  - omml-limits-023
+  - omml-limits-024
+  - omml-limits-025
+  - omml-limits-026
+  - omml-limits-027
+  - omml-limits-028
+  - omml-limits-029
+  - omml-limits-030
+  - omml-limits-031
+  - omml-partial-024
+  - omml-partial-025
+  - omml-partial-026
+  - omml-partial-027
+- path: payloads/matrices.yaml
+  bytes: 270293
+  sha256: aa3b1bb13a1dbb428d74db05e13745f8471f9f6aef8cd94da2ea9842336d27da
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/matrices.yaml
+      sha256: aa3b1bb13a1dbb428d74db05e13745f8471f9f6aef8cd94da2ea9842336d27da
+  rows:
+  - omml-matrices-001
+  - omml-matrices-002
+  - omml-matrices-003
+  - omml-matrices-004
+  - omml-matrices-005
+  - omml-matrices-006
+  - omml-matrices-007
+  - omml-matrices-008
+  - omml-matrices-009
+  - omml-matrices-010
+  - omml-matrices-011
+  - omml-matrices-012
+  - omml-matrices-013
+  - omml-matrices-014
+  - omml-matrices-015
+  - omml-matrices-016
+  - omml-matrices-017
+- path: payloads/nary.yaml
+  bytes: 96830
+  sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/nary.yaml
+      sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
+  rows:
+  - omml-nary-001
+  - omml-nary-002
+  - omml-nary-003
+  - omml-nary-004
+  - omml-nary-005
+  - omml-nary-006
+  - omml-nary-007
+  - omml-nary-008
+  - omml-nary-009
+  - omml-nary-010
+  - omml-nary-011
+- path: payloads/partial-render.yaml
+  bytes: 335451
+  sha256: 1720fec4131c0dba1785b440fced3b0d1904800ae56f9132c9037377f1e14361
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/partial-render.yaml
+      sha256: 1720fec4131c0dba1785b440fced3b0d1904800ae56f9132c9037377f1e14361
+  rows:
+  - omml-partial-001
+  - omml-partial-002
+  - omml-partial-003
+  - omml-partial-004
+  - omml-partial-005
+  - omml-partial-006
+  - omml-partial-007
+  - omml-partial-008
+  - omml-partial-009
+  - omml-partial-010
+  - omml-partial-011
+  - omml-partial-012
+  - omml-partial-013
+  - omml-partial-014
+  - omml-partial-015
+  - omml-partial-016
+  - omml-partial-017
+  - omml-partial-018
+  - omml-partial-019
+  - omml-partial-020
+  - omml-partial-021
+  - omml-partial-022
+  - omml-partial-023
+  - omml-partial-028
+  - omml-partial-029
+  - omml-partial-030
+  - omml-partial-031
+  - omml-limits-001
+  - omml-limits-002
+  - omml-limits-003
+  - omml-limits-004
+  - omml-limits-005
+  - omml-limits-006
+  - omml-limits-007
+  - omml-limits-008
+  - omml-limits-009
+- path: payloads/rejections.yaml
+  bytes: 2954
+  sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/rejections.yaml
+      sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
+  rows:
+  - omml-bare-text
+  - omml-lone-angle
+  - omml-stray-close
+  - omml-unbound-prefix
+  - omml-unclosed-para
+  - omml-crossed-close
+  - omml-bare-lt-in-text
+  - omml-text-after-root
+  - omml-mathml-input
+- path: payloads/roots.yaml
+  bytes: 30600
+  sha256: 500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/roots.yaml
+      sha256: 500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37
+  rows:
+  - omml-roots-001
+  - omml-roots-002
+  - omml-roots-003
+  - omml-roots-004
+- path: payloads/runs.yaml
+  bytes: 139464
+  sha256: b4c26086147c28557de0d931d3b07a0e304f4139b4b7002b87cbaddd45e3d7c8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/runs.yaml
+      sha256: b4c26086147c28557de0d931d3b07a0e304f4139b4b7002b87cbaddd45e3d7c8
+  rows:
+  - omml-runs-001
+  - omml-runs-002
+  - omml-runs-003
+  - omml-runs-004
+  - omml-runs-005
+  - omml-runs-006
+  - omml-runs-007
+  - omml-runs-008
+  - omml-runs-009
+  - omml-runs-010
+  - omml-runs-011
+  - omml-runs-012
+  - omml-runs-013
+  - omml-runs-014
+  - omml-runs-015
+  - omml-runs-016
+  - omml-runs-017
+  - omml-runs-018
+  - omml-runs-019
+  - omml-runs-020
+  - omml-runs-021
+  - omml-runs-022
+  - omml-runs-023
+  - omml-runs-024
+- path: payloads/scripts.yaml
+  bytes: 161595
+  sha256: 75b9b2319d641af627d060c98c10342bb36f2a8e100f1ac9e44bf4d9294770c3
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/omml/scripts.yaml
+      sha256: 75b9b2319d641af627d060c98c10342bb36f2a8e100f1ac9e44bf4d9294770c3
+  rows:
+  - omml-scripts-001
+  - omml-scripts-002
+  - omml-scripts-003
+  - omml-scripts-004
+  - omml-scripts-005
+  - omml-scripts-006
+  - omml-scripts-007
+  - omml-scripts-008
+  - omml-scripts-009
+  - omml-scripts-010
+  - omml-scripts-011
+  - omml-scripts-012
+  - omml-scripts-013
+  - omml-scripts-014
+  - omml-scripts-015
+  - omml-scripts-016
+  - omml-scripts-017
+  - omml-scripts-018

@@ -1,0 +1,527 @@
+# Generation 1 of the mathml stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: mathml
+generation: 1
+notes: Byte copies of corpus/mathml/ at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8,
+  each checked against corpus/provenance.yaml (plurimath-corpus/provenance/3) at that
+  commit. No oracle was rerun. The payloads' header comments still name corpus/provenance.yaml,
+  because their bytes are kept exactly.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+payloads:
+- path: payloads/elementary-math.yaml
+  bytes: 47800
+  sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/elementary-math.yaml
+      sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+  rows:
+  - mathml-elementary-math-001
+  - mathml-elementary-math-002
+  - mathml-elementary-math-003
+  - mathml-elementary-math-004
+  - mathml-elementary-math-005
+  - mathml-elementary-math-006
+  - mathml-elementary-math-007
+  - mathml-elementary-math-008
+  - mathml-elementary-math-009
+  - mathml-elementary-math-010
+- path: payloads/enclose.yaml
+  bytes: 3729
+  sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/enclose.yaml
+      sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+  rows:
+  - mathml-enclose-001
+- path: payloads/fences.yaml
+  bytes: 159855
+  sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/fences.yaml
+      sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+  rows:
+  - mathml-fences-001
+  - mathml-fences-002
+  - mathml-fences-003
+  - mathml-fences-004
+  - mathml-fences-005
+  - mathml-fences-006
+  - mathml-fences-007
+  - mathml-fences-008
+  - mathml-fences-009
+  - mathml-fences-010
+  - mathml-fences-011
+  - mathml-fences-012
+  - mathml-fences-013
+  - mathml-fences-014
+  - mathml-fences-015
+  - mathml-fences-016
+  - mathml-fences-017
+  - mathml-fences-018
+  - mathml-fences-019
+  - mathml-fences-020
+  - mathml-fences-021
+  - mathml-fences-022
+  - mathml-fences-023
+  - mathml-fences-024
+  - mathml-fences-025
+  - mathml-fences-026
+  - mathml-fences-027
+  - mathml-fences-028
+  - mathml-fences-029
+  - mathml-fences-030
+  - mathml-fences-031
+- path: payloads/fractions.yaml
+  bytes: 68670
+  sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/fractions.yaml
+      sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+  rows:
+  - mathml-fractions-001
+  - mathml-fractions-002
+  - mathml-fractions-003
+  - mathml-fractions-004
+  - mathml-fractions-005
+  - mathml-fractions-006
+  - mathml-fractions-007
+  - mathml-fractions-008
+  - mathml-fractions-009
+  - mathml-fractions-010
+  - mathml-fractions-011
+  - mathml-fractions-012
+  - mathml-fractions-013
+- path: payloads/layout.yaml
+  bytes: 32195
+  sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/layout.yaml
+      sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+  rows:
+  - mathml-layout-001
+  - mathml-layout-002
+  - mathml-layout-003
+  - mathml-layout-004
+  - mathml-layout-005
+  - mathml-layout-006
+  - mathml-layout-007
+  - mathml-layout-008
+  - mathml-layout-009
+  - mathml-layout-010
+  - mathml-layout-011
+- path: payloads/over-under.yaml
+  bytes: 189075
+  sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/over-under.yaml
+      sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
+  rows:
+  - mathml-over-under-001
+  - mathml-over-under-002
+  - mathml-over-under-003
+  - mathml-over-under-004
+  - mathml-over-under-005
+  - mathml-over-under-006
+  - mathml-over-under-007
+  - mathml-over-under-008
+  - mathml-over-under-009
+  - mathml-over-under-010
+  - mathml-over-under-011
+  - mathml-over-under-012
+  - mathml-over-under-013
+  - mathml-over-under-014
+  - mathml-over-under-015
+  - mathml-over-under-016
+  - mathml-over-under-017
+  - mathml-over-under-018
+  - mathml-over-under-019
+  - mathml-over-under-020
+  - mathml-over-under-021
+  - mathml-over-under-022
+  - mathml-over-under-023
+  - mathml-over-under-024
+  - mathml-over-under-025
+  - mathml-over-under-026
+  - mathml-over-under-027
+  - mathml-over-under-028
+  - mathml-over-under-029
+  - mathml-over-under-030
+  - mathml-over-under-031
+  - mathml-over-under-032
+  - mathml-over-under-033
+  - mathml-over-under-034
+- path: payloads/partial-render.yaml
+  bytes: 169603
+  sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/partial-render.yaml
+      sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
+  rows:
+  - mathml-partial-001
+  - mathml-partial-002
+  - mathml-partial-003
+  - mathml-partial-004
+  - mathml-partial-005
+  - mathml-partial-006
+  - mathml-partial-007
+  - mathml-partial-008
+  - mathml-partial-009
+  - mathml-partial-010
+  - mathml-partial-011
+  - mathml-partial-012
+  - mathml-partial-013
+  - mathml-partial-014
+  - mathml-partial-015
+  - mathml-partial-016
+  - mathml-partial-017
+  - mathml-partial-018
+  - mathml-partial-019
+  - mathml-partial-020
+  - mathml-partial-021
+  - mathml-partial-022
+  - mathml-partial-023
+  - mathml-partial-024
+  - mathml-partial-025
+  - mathml-partial-026
+  - mathml-partial-027
+- path: payloads/rejections.yaml
+  bytes: 3476
+  sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/rejections.yaml
+      sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+  rows:
+  - mathml-unsupported-pi
+  - mathml-unsupported-apply
+  - mathml-whitespace-only
+  - mathml-bare-text
+  - mathml-lone-angle
+  - mathml-empty-angles
+  - mathml-stray-close
+  - mathml-unclosed-math
+  - mathml-unclosed-token
+  - mathml-unclosed-operator
+  - mathml-mismatched-close
+  - mathml-bare-lt-in-token
+  - mathml-unquoted-attribute
+  - mathml-text-after-root
+- path: payloads/roots.yaml
+  bytes: 12364
+  sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/roots.yaml
+      sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+  rows:
+  - mathml-roots-001
+  - mathml-roots-002
+  - mathml-roots-003
+  - mathml-roots-004
+- path: payloads/scripts.yaml
+  bytes: 332878
+  sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/scripts.yaml
+      sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
+  rows:
+  - mathml-scripts-001
+  - mathml-scripts-002
+  - mathml-scripts-003
+  - mathml-scripts-004
+  - mathml-scripts-005
+  - mathml-scripts-006
+  - mathml-scripts-007
+  - mathml-scripts-008
+  - mathml-scripts-009
+  - mathml-scripts-010
+  - mathml-scripts-011
+  - mathml-scripts-012
+  - mathml-scripts-013
+  - mathml-scripts-014
+  - mathml-scripts-015
+  - mathml-scripts-016
+  - mathml-scripts-017
+  - mathml-scripts-018
+  - mathml-scripts-019
+  - mathml-scripts-020
+  - mathml-scripts-021
+  - mathml-scripts-022
+  - mathml-scripts-023
+  - mathml-scripts-024
+  - mathml-scripts-025
+  - mathml-scripts-026
+  - mathml-scripts-027
+  - mathml-scripts-028
+  - mathml-scripts-029
+  - mathml-scripts-030
+  - mathml-scripts-031
+  - mathml-scripts-032
+  - mathml-scripts-033
+  - mathml-scripts-034
+  - mathml-scripts-035
+  - mathml-scripts-036
+  - mathml-scripts-037
+  - mathml-scripts-038
+  - mathml-scripts-039
+  - mathml-scripts-040
+  - mathml-scripts-041
+  - mathml-scripts-042
+  - mathml-scripts-043
+  - mathml-scripts-044
+  - mathml-scripts-045
+  - mathml-scripts-046
+  - mathml-scripts-047
+  - mathml-scripts-048
+  - mathml-scripts-049
+  - mathml-scripts-050
+- path: payloads/tables.yaml
+  bytes: 76065
+  sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/tables.yaml
+      sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+  rows:
+  - mathml-tables-001
+  - mathml-tables-002
+  - mathml-tables-003
+  - mathml-tables-004
+  - mathml-tables-005
+  - mathml-tables-006
+  - mathml-tables-007
+- path: payloads/text.yaml
+  bytes: 29368
+  sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/text.yaml
+      sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+  rows:
+  - mathml-text-001
+  - mathml-text-002
+  - mathml-text-003
+  - mathml-text-004
+  - mathml-text-005
+  - mathml-text-006
+  - mathml-text-007
+  - mathml-text-008
+  - mathml-text-009
+  - mathml-text-010
+  - mathml-text-011
+- path: payloads/tokens.yaml
+  bytes: 304985
+  sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/tokens.yaml
+      sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
+  rows:
+  - mathml-tokens-001
+  - mathml-tokens-002
+  - mathml-tokens-003
+  - mathml-tokens-004
+  - mathml-tokens-005
+  - mathml-tokens-006
+  - mathml-tokens-007
+  - mathml-tokens-008
+  - mathml-tokens-009
+  - mathml-tokens-010
+  - mathml-tokens-011
+  - mathml-tokens-012
+  - mathml-tokens-013
+  - mathml-tokens-014
+  - mathml-tokens-015
+  - mathml-tokens-016
+  - mathml-tokens-017
+  - mathml-tokens-018
+  - mathml-tokens-019
+  - mathml-tokens-020
+  - mathml-tokens-021
+  - mathml-tokens-022
+  - mathml-tokens-023
+  - mathml-tokens-024
+  - mathml-tokens-025
+  - mathml-tokens-026
+  - mathml-tokens-027
+  - mathml-tokens-028
+  - mathml-tokens-029
+  - mathml-tokens-030
+  - mathml-tokens-031
+  - mathml-tokens-032
+  - mathml-tokens-033
+  - mathml-tokens-034
+  - mathml-tokens-035
+  - mathml-tokens-036
+  - mathml-tokens-037
+  - mathml-tokens-038
+  - mathml-tokens-039
+  - mathml-tokens-040
+  - mathml-tokens-041
+  - mathml-tokens-042
+  - mathml-tokens-043
+  - mathml-tokens-044
+  - mathml-tokens-045
+  - mathml-tokens-046
+  - mathml-tokens-047
+  - mathml-tokens-048
+  - mathml-tokens-049
+  - mathml-tokens-050
+  - mathml-tokens-051
+  - mathml-tokens-052
+  - mathml-tokens-053
+  - mathml-tokens-054
+  - mathml-tokens-055
+  - mathml-tokens-056
+  - mathml-tokens-057
+  - mathml-tokens-058
+  - mathml-tokens-059
+  - mathml-tokens-060
+  - mathml-tokens-061
+  - mathml-tokens-062
+  - mathml-tokens-063
+  - mathml-tokens-064
+  - mathml-tokens-065
+  - mathml-tokens-066
+  - mathml-tokens-067
+  - mathml-tokens-068
+  - mathml-tokens-069
+  - mathml-tokens-070
+  - mathml-tokens-071
+  - mathml-tokens-072
+  - mathml-tokens-073
+  - mathml-tokens-074
+  - mathml-tokens-075
+  - mathml-tokens-076
+  - mathml-tokens-077
+  - mathml-tokens-078
+  - mathml-tokens-079
+  - mathml-tokens-080
+  - mathml-tokens-081
+  - mathml-tokens-082
+  - mathml-tokens-083
+  - mathml-tokens-084
+  - mathml-tokens-085
+  - mathml-tokens-086
+  - mathml-tokens-087
+  - mathml-tokens-088

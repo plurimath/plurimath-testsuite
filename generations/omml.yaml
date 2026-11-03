@@ -1,0 +1,17 @@
+# Append-only ledger of the omml stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: omml
+layout: 1
+entries:
+- generation: 1
+  path: stages/omml/generations/000001
+  snapshot_digest: sha256:1719bd495f1689defdf59e2108bc9a2c0d0f28fd170f56dd1665b4fbf1260583
+  payloads: 15
+  rows: 199
+  producer_kinds:
+  - legacy-oracle
+  change: initial
+  rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
+    no oracle rerun.
