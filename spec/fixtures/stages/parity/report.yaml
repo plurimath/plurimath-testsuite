@@ -1,0 +1,9 @@
+# Spec fixture: a passing parity report.
+---
+schema: plurimath-stage/parity-report/1
+language: latex
+legacy_capture_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+candidate_capture_sha256: "1111111111111111111111111111111111111111111111111111111111111111"
+counts: {expected: 2, attempted: 2, succeeded: 1, refused: 1, timed_out: 0, crashed: 0, missing: 0, duplicate: 0}
+mismatches: []
+verdict: pass

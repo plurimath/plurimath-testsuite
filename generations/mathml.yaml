@@ -1,0 +1,17 @@
+# Append-only ledger of the mathml stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: mathml
+layout: 1
+entries:
+- generation: 1
+  path: stages/mathml/generations/000001
+  snapshot_digest: sha256:2f3d9c7532413d5482c9daeccfc878154e118c2656adcb2b983680c77c084055
+  payloads: 13
+  rows: 301
+  producer_kinds:
+  - legacy-oracle
+  change: initial
+  rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
+    no oracle rerun.

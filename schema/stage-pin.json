@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://plurimath.org/testsuite/schema/stage-pin/1",
+  "title": "Stage corpus pin",
+  "description": "The file a consumer (a stage gem's spec/fixtures/testsuite-pin.yml, or the facade) commits to say exactly which generation of one language it replays. Replay checks the checkout commit, selects the named ledger entry (not the latest), recomputes the snapshot digest, verifies every file, and then runs every row. `ruby scripts/validate-stages.rb --pin FILE` performs the checks before the replay. Commit, generation and digest change together, in one deliberate upgrade.",
+  "type": "object",
+  "required": ["schema", "repository", "commit", "language", "generation", "snapshot_digest"],
+  "additionalProperties": false,
+  "properties": {
+    "schema": {"type": "string", "const": "plurimath-stage/pin/1"},
+    "repository": {"type": "string", "const": "https://github.com/plurimath/plurimath-testsuite"},
+    "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
+    "language": {
+      "type": "string",
+      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "roundtrip"]
+    },
+    "generation": {"type": "integer", "minimum": 1},
+    "snapshot_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+  }
+}

@@ -1,0 +1,33 @@
+# Spec fixture: one legacy capture with each status.
+---
+schema: plurimath-stage/parity-capture/1
+language: latex
+side: legacy
+pins:
+  producer: {repository: "https://github.com/plurimath/plurimath", commit: e7ab4a5186c9be96f62d670574bc2c72f9365ad4, version: null}
+  testsuite: {commit: 281059b213026a54a193cb020a5816f57cabf3a8, language: latex, generation: 1, snapshot_digest: "sha256:9b362ce57706c5ca154bfc295b2037b9e626775d8a82a4557f3702c9ad2c74ba"}
+  inputs_sha256: "0000000000000000000000000000000000000000000000000000000000000000"
+  environment: {ruby: "3.4.0"}
+inventory: {expected: 4}
+rows:
+- id: smoke-latex-frac
+  input: {str: "\\frac{1}{2}"}
+  options: {decimal: "."}
+  status: succeeded
+  preprocessed: {str: "\\frac{1}{2}"}
+  raw: {hash: [[{sym: frac}, {array: []}]]}
+  model: {node: Frac, fields: [[numerator, {nil: true}], [denominator, {str: ""}]]}
+  writers: {mathml: "<math/>"}
+- id: smoke-latex-unclosed
+  input: {bytes: "5c66ff", encoding: UTF-8}
+  options: {decimal: ","}
+  status: refused
+  refusal: {category: parse_error, byte_offset: 2}
+- id: smoke-latex-deep
+  input: {str: "{{{{"}
+  options: {}
+  status: timed-out
+- id: smoke-latex-crash
+  input: {str: "x"}
+  options: {}
+  status: crashed

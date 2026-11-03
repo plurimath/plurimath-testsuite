@@ -1,0 +1,17 @@
+# Append-only ledger of the html stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: html
+layout: 1
+entries:
+- generation: 1
+  path: stages/html/generations/000001
+  snapshot_digest: sha256:5c2e1feddfa18067ac4b42401ea7fc8bd8f02f576c7a4a40805127a90d42b9ac
+  payloads: 1
+  rows: 38
+  producer_kinds:
+  - legacy-oracle
+  change: initial
+  rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
+    no oracle rerun.

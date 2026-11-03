@@ -1,0 +1,17 @@
+# Append-only ledger of the asciimath stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: asciimath
+layout: 1
+entries:
+- generation: 1
+  path: stages/asciimath/generations/000001
+  snapshot_digest: sha256:f33825074cc075f906aa96467f80b83ebbbd1729d3696d0f5613157ca0e14fa7
+  payloads: 28
+  rows: 173
+  producer_kinds:
+  - legacy-oracle
+  change: initial
+  rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
+    no oracle rerun.

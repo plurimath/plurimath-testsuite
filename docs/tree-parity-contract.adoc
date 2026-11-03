@@ -1,0 +1,119 @@
+= Tree parity contract
+:toc:
+
+This document describes how a language stage gem proves that it parses and
+models input the same way as the legacy plurimath gem did, and the files that
+record the proof. The schemas are `schema/stage-parity-capture.json`,
+`schema/stage-parity-report.json` and, for rows committed to a stage
+generation, `schema/stage-cases.json`. Each stage gem runs its own capture and
+comparison; this repository defines the format and the method.
+
+== Pins
+
+Legacy captures use plurimath at
+`e7ab4a5186c9be96f62d670574bc2c72f9365ad4`, with the exact testsuite commit,
+import sources, dependency lock, compiler and configuration recorded in the
+capture's `pins`. These capture inputs are pinned separately from the oracle
+that generated the legacy corpus (plurimath 0.11.12 at `ed048ee`); the two are
+different sources and are not interchangeable evidence.
+
+Legacy and candidate run in separate, isolated dependency environments
+against the same input bytes. A capture names the stage generation it read
+(`pins.testsuite`: commit, language, generation, snapshot digest) and the
+sha256 of its input inventory.
+
+== Boundaries
+
+A row is captured at four boundaries:
+
+. the caller's input and options;
+. the legacy preprocessing (`preprocessed`);
+. the raw grammar tree (`raw`);
+. the facade Formula and writer outcomes (`model`, `writers`).
+
+The stage gem's public preprocessing and raw tree are compared with the first
+three. Its typed model, mapped through the planned Formula translator, is
+compared with the fourth. Writer outputs are compared as exact bytes. An XML
+structural comparison can help to explain a mismatch, but never replaces a
+byte gate.
+
+Inputs cover language output and refusal cases, decimal and locale variants,
+matrices and row breaks, entity-encoded text, invalid UTF-8 and deep nesting.
+They are drawn from this repository's authored and generated data, the
+language specs' own specimens and tracked unicodemath-tests pairs, with
+duplicate rows removed and each row's source recorded.
+
+== Canonical tagged form
+
+Every captured value is written as a tagged node with exactly one tag, so
+that two values compare equal only when the Ruby values are the same in every
+way that matters:
+
+[cols="1,3"]
+|===
+|Node |Meaning
+
+|`{nil: true}` |nil. A missing hash key is simply absent from `hash`.
+|`{bool: true}` |true or false.
+|`{int: "12"}` |Integer, as decimal text.
+|`{float: "1.5"}` |Float, as `Float#inspect` text.
+|`{decimal: "0.15e1"}` |BigDecimal, as `BigDecimal#to_s` text.
+|`{str: "x"}` |A valid UTF-8 string.
+|`{bytes: "5cff", encoding: "UTF-8"}` |A string that is not valid UTF-8, as lowercase hex, with its encoding.
+|`{sym: "frac"}` |A Symbol, so symbol and string keys stay different.
+|`{array: [...]}` |An Array, children in order.
+|`{hash: [[k, v], ...]}` |A Hash, as key/value pairs in insertion order.
+|`{node: "Frac", fields: [["numerator", v], ...]}` |An object: its class or node kind and its declared fields in declaration order.
+|`{slice: "x", byte_offset: 6}` |A Parslet slice: its text and byte offset, with an optional `char_offset`.
+|===
+
+Numbers keep their text and are never converted to floats. Child order is
+never sorted. Empty strings and empty lists stay distinct. A typed model is
+captured through its declared fields and types, never through `inspect`.
+
+== Capture
+
+Each legacy capture runs in a fresh process per decimal marker and locale,
+because the legacy gem caches its grammars per class. Each completed row is
+written atomically, so an interrupted run keeps what it finished.
+
+Every row has a status:
+
+* `succeeded`: the boundaries were captured; `raw` is required;
+* `refused`: the parser refused the input; `refusal` with its category and
+  byte offset is required. A refusal is data and is compared like any other
+  outcome; error message prose is not part of the contract;
+* `timed-out` and `crashed`: the capture of that row is incomplete, and parity
+  fails.
+
+Timeouts are supervised from a parent process with the child's process
+status and a monotonic deadline. Reaching end of file on a pipe and then
+seeing `waitpid2(pid, WNOHANG)` return nil is not a timeout. Before a bulk
+capture, a tiny harness must show that success, refusal, a real timeout and a
+crash are each classified correctly. Earlier output in which every row timed
+out is not reused.
+
+The capture's `inventory.expected` is the number of inputs it was given. The
+comparison fails on any missing or duplicate id.
+
+== Report
+
+A parity report (`plurimath-stage/parity-report/1`) names both capture files
+by sha256, counts the rows (expected, attempted, succeeded, refused,
+timed out, crashed, missing, duplicate), and lists every mismatch with the
+row id, the boundary and a JSON pointer to the first differing node.
+
+The verdict is `pass` only when there are no timeouts, crashes, missing or
+duplicate rows and no mismatches; the schema refuses a `pass` report that
+says otherwise. `incomplete` means the capture did not finish; `fail` means it
+finished and differs.
+
+== Using parity to remove legacy code
+
+For plurimath#531, every input and generation pin is frozen first. Legacy
+transforms may be removed only when the stage model plus the facade
+translator matches the baseline model and writers on those exact bytes. No
+fixture is rewritten, no row is excluded, no expectation is updated and no
+fallback to the old parser is used to get a green run. Any difference stops
+the integration work and goes to the owning stage gem with the input id and
+the first structural or byte mismatch.

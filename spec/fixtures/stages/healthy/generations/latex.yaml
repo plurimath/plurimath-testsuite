@@ -1,0 +1,15 @@
+# Spec fixture.
+---
+schema: plurimath-stage/ledger/1
+language: latex
+layout: 1
+entries:
+- generation: 1
+  path: stages/latex/generations/000001
+  snapshot_digest: sha256:c835417713117878f791c641304d940ad9526e22dcc8b7302c95dba695fac1b7
+  payloads: 1
+  rows: 3
+  producer_kinds:
+  - stage-gem
+  change: initial
+  rationale: Spec fixture.

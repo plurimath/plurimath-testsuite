@@ -1,0 +1,32 @@
+# Smoke rows for the stage validator specs. Stable ids; do not rename.
+---
+schema: plurimath-stage/latex/cases/1
+group: smoke
+description: Three LaTeX rows at the raw-tree boundary, one of them a refusal.
+boundary: raw-tree
+cases:
+- id: smoke-latex-frac
+  input: {str: "\\frac{1}{2}"}
+  options: {decimal: "."}
+  spec: {document: LaTeX2e, section: "fractions"}
+  expected:
+    preprocessed: {str: "\\frac{1}{2}"}
+    tree:
+      hash:
+      - - {sym: frac}
+        - hash:
+          - [{sym: numerator}, {slice: "1", byte_offset: 6}]
+          - [{sym: denominator}, {slice: "2", byte_offset: 9}]
+- id: smoke-latex-sqrt
+  input: {str: "\\sqrt{x}"}
+  options: {decimal: "."}
+  expected:
+    preprocessed: {str: "\\sqrt{x}"}
+    tree:
+      hash:
+      - [{sym: sqrt}, {slice: "x", byte_offset: 6}]
+- id: smoke-latex-unclosed
+  input: {str: "\\frac{1"}
+  options: {decimal: "."}
+  expected:
+    refusal: {category: parse_error, byte_offset: 7}

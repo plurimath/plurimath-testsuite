@@ -1,0 +1,17 @@
+# Append-only ledger of the unicode stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: unicode
+layout: 1
+entries:
+- generation: 1
+  path: stages/unicode/generations/000001
+  snapshot_digest: sha256:ff4c7b0ad7cbb0014e514efd24f9cae4df641cbec4a7d5ba6d3f8301374e3ac4
+  payloads: 5
+  rows: 72
+  producer_kinds:
+  - legacy-oracle
+  change: initial
+  rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
+    no oracle rerun.

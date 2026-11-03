@@ -1,0 +1,202 @@
+# Generation 1 of the unicode stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: unicode
+generation: 1
+notes: Byte copies of corpus/unicode/ at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8,
+  each checked against corpus/provenance.yaml (plurimath-corpus/provenance/3) at that
+  commit. No oracle was rerun. The payloads' header comments still name corpus/provenance.yaml,
+  because their bytes are kept exactly.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+payloads:
+- path: payloads/fences.yaml
+  bytes: 14321
+  sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/unicode/fences.yaml
+      sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+  rows:
+  - unicode-fence-round
+  - unicode-fence-square
+  - unicode-fence-curly
+  - unicode-fence-angle
+  - unicode-fence-ceiling
+- path: payloads/numbers.yaml
+  bytes: 12075
+  sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/unicode/numbers.yaml
+      sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+  rows:
+  - unicode-number-integer
+  - unicode-number-decimal
+  - unicode-number-decimal-comma
+  - unicode-number-negative
+  - unicode-number-exponent
+- path: payloads/operators.yaml
+  bytes: 15493
+  sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/unicode/operators.yaml
+      sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+  rows:
+  - unicode-operator-plus
+  - unicode-operator-times
+  - unicode-operator-leq
+  - unicode-operator-equiv
+  - unicode-operator-plus-minus
+  - unicode-operator-minus-plus
+- path: payloads/rejections.yaml
+  bytes: 7642
+  sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/unicode/rejections.yaml
+      sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+  rows:
+  - unicode-unclosed-paren
+  - unicode-stray-close-paren
+  - unicode-lone-close-paren
+  - unicode-close-paren-mid
+  - unicode-unclosed-paren-after-operator
+  - unicode-close-paren-after-operator
+  - unicode-unclosed-square
+  - unicode-stray-close-square
+  - unicode-unclosed-curly
+  - unicode-stray-close-curly
+  - unicode-unclosed-angle
+  - unicode-stray-close-angle
+  - unicode-unclosed-ceiling
+  - unicode-stray-close-ceiling
+  - unicode-unclosed-vert
+  - unicode-greek-stray-close-paren
+  - unicode-greek-unclosed-paren
+  - unicode-lone-sup
+  - unicode-trailing-sup
+  - unicode-greek-trailing-sup
+  - unicode-lone-sub
+  - unicode-trailing-sub
+  - unicode-infinity-trailing-sub
+  - unicode-doubled-sup
+  - unicode-doubled-sub
+  - unicode-sub-then-sup
+  - unicode-lone-slash
+  - unicode-trailing-slash
+  - unicode-number-trailing-slash
+  - unicode-leading-slash
+  - unicode-greek-trailing-slash
+  - unicode-double-trailing-slash
+  - unicode-lone-ampersand
+  - unicode-ampersand-operator
+  - unicode-greek-ampersand
+  - unicode-unclosed-quote
+  - unicode-greek-unclosed-quote
+  - unicode-matrix-unclosed
+  - unicode-lone-at
+  - unicode-at-operator
+  - unicode-greek-at-operator
+  - unicode-lone-naryand
+  - unicode-lone-right-tack
+  - unicode-trailing-down-tack
+  - unicode-lone-broken-bar
+  - unicode-trailing-broken-bar
+  - unicode-greek-broken-bar
+  - unicode-lone-function-apply
+  - unicode-trailing-function-apply
+  - unicode-greek-function-apply
+  - unicode-lone-parenthesized-letter
+  - unicode-whitespace-only
+- path: payloads/symbols.yaml
+  bytes: 8875
+  sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/unicode/symbols.yaml
+      sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+  rows:
+  - unicode-symbol-greek-alpha
+  - unicode-symbol-greek-pi
+  - unicode-symbol-infinity
+  - unicode-symbol-empty-set
