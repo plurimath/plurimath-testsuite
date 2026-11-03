@@ -1,0 +1,279 @@
+# LaTeX raw-tree stage cases: raw-unary-functions.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-unary-functions
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of unary-functions.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-unary-sin-bare.raw
+  input:
+    str: "\\sin x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sinx"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: sin
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 4
+                  char_offset: 4
+- id: latex-unary-sin-fenced.raw
+  input:
+    str: "\\sin(x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sin(x)"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: sin
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 4
+                          char_offset: 4
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: x
+                          byte_offset: 5
+                          char_offset: 5
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 6
+                          char_offset: 6
+- id: latex-unary-cos-product.raw
+  input:
+    str: "\\cos(2x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\cos(2x)"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: cos
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 4
+                          char_offset: 4
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: number
+                            - slice: '2'
+                              byte_offset: 5
+                              char_offset: 5
+                      - - sym: expression
+                        - hash:
+                          - - sym: symbols
+                            - slice: x
+                              byte_offset: 6
+                              char_offset: 6
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 7
+                          char_offset: 7
+- id: latex-unary-log-bare.raw
+  input:
+    str: "\\log x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\logx"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: binary
+            - slice: log
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 4
+              char_offset: 4
+- id: latex-unary-ln-bare.raw
+  input:
+    str: "\\ln x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lnx"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: ln
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 3
+                  char_offset: 3
+- id: latex-unary-lim-bare.raw
+  input:
+    str: "\\lim x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\limx"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: binary
+            - slice: lim
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 4
+              char_offset: 4
+- id: latex-unary-det.raw
+  input:
+    str: "\\det A"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\detA"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: det
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 4
+                  char_offset: 4
+- id: latex-unary-max.raw
+  input:
+    str: "\\max A"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\maxA"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: max
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: A
+                  byte_offset: 4
+                  char_offset: 4
+- id: latex-unary-gcd-fenced.raw
+  input:
+    str: "\\gcd(a,b)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\gcd(a,b)"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: gcd
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 4
+                          char_offset: 4
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: symbols
+                            - slice: a
+                              byte_offset: 5
+                              char_offset: 5
+                      - - sym: expression
+                        - hash:
+                          - - sym: sequence
+                            - hash:
+                              - - sym: operant
+                                - slice: ","
+                                  byte_offset: 6
+                                  char_offset: 6
+                          - - sym: expression
+                            - hash:
+                              - - sym: symbols
+                                - slice: b
+                                  byte_offset: 7
+                                  char_offset: 7
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 8
+                          char_offset: 8

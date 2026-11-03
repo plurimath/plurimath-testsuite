@@ -15,3 +15,16 @@ entries:
   change: initial
   rationale: Seed from the legacy corpus bytes recorded at plurimath-testsuite 281059b213026a54a193cb020a5816f57cabf3a8;
     no oracle rerun.
+- generation: 2
+  path: stages/latex/generations/000002
+  snapshot_digest: sha256:bad80c8a703e0761e96434779ff3826506be3702025b1bd77eb4c0e74bc58dde
+  payloads: 38
+  rows: 278
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: >-
+    Add latexmath's raw-tree rows for every generation 1 case (139 rows, rejections included), generated
+    by latexmath scripts/stage_cases.rb at 27e300a433742765486e3bead2fac19ee8fd55a0; every generation
+    1 payload is kept byte for byte.

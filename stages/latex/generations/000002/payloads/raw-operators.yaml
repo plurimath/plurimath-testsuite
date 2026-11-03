@@ -1,0 +1,159 @@
+# LaTeX raw-tree stage cases: raw-operators.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-operators
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of operators.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-operator-plus.raw
+  input:
+    str: a + b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: operant
+                - slice: "+"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-operator-times.raw
+  input:
+    str: a \times b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\timesb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: times
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-operator-leq.raw
+  input:
+    str: a \le b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\leb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: le
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 4
+                  char_offset: 4
+- id: latex-operator-equiv.raw
+  input:
+    str: a \equiv b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\equivb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: equiv
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-operator-plus-minus.raw
+  input:
+    str: a \pm b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\pmb
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: pm
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 4
+                  char_offset: 4

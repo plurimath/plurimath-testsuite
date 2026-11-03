@@ -1,0 +1,159 @@
+# LaTeX raw-tree stage cases: raw-fences.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-fences
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of fences.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-fence-round.raw
+  input:
+    str: "(a)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a)"
+    tree:
+      hash:
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: left_paren
+            - hash:
+              - - sym: lparen
+                - slice: "("
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: right_paren
+            - hash:
+              - - sym: rparen
+                - slice: ")"
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-fence-square.raw
+  input:
+    str: "[a]"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "[a]"
+    tree:
+      hash:
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: left_paren
+            - hash:
+              - - sym: lparen
+                - slice: "["
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: right_paren
+            - hash:
+              - - sym: rparen
+                - slice: "]"
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-fence-curly-escaped.raw
+  input:
+    str: "\\{a\\}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\{a\\}"
+    tree:
+      hash:
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: left_paren
+            - hash:
+              - - sym: lparen
+                - slice: "\\{"
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: right_paren
+            - hash:
+              - - sym: rparen
+                - slice: "\\}"
+                  byte_offset: 3
+                  char_offset: 3
+- id: latex-fence-angle.raw
+  input:
+    str: "\\langle a \\rangle"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\langlea\\rangle"
+    tree:
+      hash:
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: left_paren
+            - hash:
+              - - sym: lparen
+                - slice: "\\langle"
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 7
+                  char_offset: 7
+          - - sym: right_paren
+            - hash:
+              - - sym: rparen
+                - slice: "\\rangle"
+                  byte_offset: 8
+                  char_offset: 8
+- id: latex-fence-ceiling.raw
+  input:
+    str: "\\lceil a \\rceil"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lceila\\rceil"
+    tree:
+      hash:
+      - - sym: intermediate_exp
+        - hash:
+          - - sym: left_paren
+            - hash:
+              - - sym: lparen
+                - slice: "\\lceil"
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 6
+                  char_offset: 6
+          - - sym: right_paren
+            - hash:
+              - - sym: rparen
+                - slice: "\\rceil"
+                  byte_offset: 7
+                  char_offset: 7
