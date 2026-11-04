@@ -1,0 +1,364 @@
+# Written by amath scripts/generate_stage_cases.rb. Do not edit.
+---
+schema: plurimath-stage/asciimath/cases/1
+group: uncertainty-shared-exponent
+description: amath raw trees for corpora/uncertainty-shared-exponent.yml (https://github.com/plurimath/amath/issues/13).
+  Amath.parse has no preprocessing, so preprocessed is the input.
+boundary: raw-tree
+cases:
+- id: uncertainty-shared-exponent.standard.positive
+  input:
+    str: ustd((3.85, 0.23)e4)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((3.85, 0.23)e4)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '3.85'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '0.23'
+                      byte_offset: 12
+                      char_offset: 12
+                  - - sym: shared_exponent
+                    - slice: '4'
+                      byte_offset: 18
+                      char_offset: 18
+- id: uncertainty-shared-exponent.standard.negative
+  input:
+    str: ustd((-3.850, 0.230)e+4)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((-3.850, 0.230)e+4)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: "-3.850"
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '0.230'
+                      byte_offset: 14
+                      char_offset: 14
+                  - - sym: shared_exponent
+                    - slice: "+4"
+                      byte_offset: 21
+                      char_offset: 21
+- id: uncertainty-shared-exponent.standard.leading_zeroes
+  input:
+    str: ustd((001.2300, 000.0040)e-2)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((001.2300, 000.0040)e-2)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '001.2300'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '000.0040'
+                      byte_offset: 16
+                      char_offset: 16
+                  - - sym: shared_exponent
+                    - slice: "-2"
+                      byte_offset: 26
+                      char_offset: 26
+- id: uncertainty-shared-exponent.standard.zero_exponent
+  input:
+    str: ustd((1.230, 0.004)e0)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((1.230, 0.004)e0)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '1.230'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '0.004'
+                      byte_offset: 13
+                      char_offset: 13
+                  - - sym: shared_exponent
+                    - slice: '0'
+                      byte_offset: 20
+                      char_offset: 20
+- id: uncertainty-shared-exponent.concise.negative_exponent
+  input:
+    str: ustd(680(41)e-3)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(680(41)e-3)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '680'
+                      byte_offset: 5
+                      char_offset: 5
+                  - - sym: concise_digits
+                    - slice: '41'
+                      byte_offset: 9
+                      char_offset: 9
+                  - - sym: shared_exponent
+                    - slice: "-3"
+                      byte_offset: 13
+                      char_offset: 13
+- id: uncertainty-shared-exponent.concise.zero_exponent
+  input:
+    str: ustd(1.230(4)e0)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(1.230(4)e0)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '1.230'
+                      byte_offset: 5
+                      char_offset: 5
+                  - - sym: concise_digits
+                    - slice: '4'
+                      byte_offset: 11
+                      char_offset: 11
+                  - - sym: shared_exponent
+                    - slice: '0'
+                      byte_offset: 14
+                      char_offset: 14
+- id: uncertainty-shared-exponent.concise.unit
+  input:
+    str: ustd(680(41)e-3, "unitsml(kg)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(680(41)e-3, "unitsml(kg)")
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ustd
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '680'
+                      byte_offset: 5
+                      char_offset: 5
+                  - - sym: concise_digits
+                    - slice: '41'
+                      byte_offset: 9
+                      char_offset: 9
+                  - - sym: shared_exponent
+                    - slice: "-3"
+                      byte_offset: 13
+                      char_offset: 13
+                  - - sym: unit
+                    - slice: kg
+                      byte_offset: 26
+                      char_offset: 26
+- id: uncertainty-shared-exponent.expanded.dimensionless_fields
+  input:
+    str: uexp((3.85, 0.23)e4, 2.00, 0.950, "unitsml(m)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: uexp((3.85, 0.23)e4, 2.00, 0.950, "unitsml(m)")
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: uexp
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '3.85'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '0.23'
+                      byte_offset: 12
+                      char_offset: 12
+                  - - sym: shared_exponent
+                    - slice: '4'
+                      byte_offset: 18
+                      char_offset: 18
+                  - - sym: coverage_factor
+                    - slice: '2.00'
+                      byte_offset: 21
+                      char_offset: 21
+                  - - sym: coverage_probability
+                    - slice: '0.950'
+                      byte_offset: 27
+                      char_offset: 27
+                  - - sym: unit
+                    - slice: m
+                      byte_offset: 43
+                      char_offset: 43
+- id: uncertainty-shared-exponent.expanded.negative_exponent
+  input:
+    str: uexp((100.02147, 0.00079)e-2, 2)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: uexp((100.02147, 0.00079)e-2, 2)
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: uexp
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '100.02147'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: magnitude
+                    - slice: '0.00079'
+                      byte_offset: 17
+                      char_offset: 17
+                  - - sym: shared_exponent
+                    - slice: "-2"
+                      byte_offset: 26
+                      char_offset: 26
+                  - - sym: coverage_factor
+                    - slice: '2'
+                      byte_offset: 30
+                      char_offset: 30
+- id: uncertainty-shared-exponent.interval.shared_exponent
+  input:
+    str: ucov((1.024, 0.983, 1.088)e-3, 0.95, shortest, "unitsml(V)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ucov((1.024, 0.983, 1.088)e-3, 0.95, shortest, "unitsml(V)")
+    tree:
+      hash:
+      - - sym: expr
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: uncertainty
+                - hash:
+                  - - sym: uncertainty_class
+                    - slice: ucov
+                      byte_offset: 0
+                      char_offset: 0
+                  - - sym: value
+                    - slice: '1.024'
+                      byte_offset: 6
+                      char_offset: 6
+                  - - sym: lower
+                    - slice: '0.983'
+                      byte_offset: 13
+                      char_offset: 13
+                  - - sym: upper
+                    - slice: '1.088'
+                      byte_offset: 20
+                      char_offset: 20
+                  - - sym: shared_exponent
+                    - slice: "-3"
+                      byte_offset: 27
+                      char_offset: 27
+                  - - sym: coverage_probability
+                    - slice: '0.95'
+                      byte_offset: 31
+                      char_offset: 31
+                  - - sym: interval_kind
+                    - slice: shortest
+                      byte_offset: 37
+                      char_offset: 37
+                  - - sym: unit
+                    - slice: V
+                      byte_offset: 56
+                      char_offset: 56

@@ -1,0 +1,253 @@
+# LaTeX raw-tree stage cases: raw-roots.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-roots
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of roots.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-root-sqrt-number.raw
+  input:
+    str: "\\sqrt{2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{2}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: sqrt
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '2'
+                      byte_offset: 6
+                      char_offset: 6
+- id: latex-root-sqrt-sum.raw
+  input:
+    str: "\\sqrt{x+1}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{x+1}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: sqrt
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: x
+                          byte_offset: 6
+                          char_offset: 6
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 7
+                              char_offset: 7
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 8
+                              char_offset: 8
+- id: latex-root-sqrt-pythagoras.raw
+  input:
+    str: "\\sqrt{a^2+b^2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{a^2+b^2}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: sqrt
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: power
+                        - hash:
+                          - - sym: symbols
+                            - slice: a
+                              byte_offset: 6
+                              char_offset: 6
+                          - - sym: supscript
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 8
+                                  char_offset: 8
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 9
+                              char_offset: 9
+                      - - sym: expression
+                        - hash:
+                          - - sym: power
+                            - hash:
+                              - - sym: symbols
+                                - slice: b
+                                  byte_offset: 10
+                                  char_offset: 10
+                              - - sym: supscript
+                                - hash:
+                                  - - sym: number
+                                    - slice: '2'
+                                      byte_offset: 12
+                                      char_offset: 12
+- id: latex-root-sqrt-frac.raw
+  input:
+    str: "\\sqrt{\\frac{1}{2}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{\\frac{1}{2}}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: sqrt
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: binary
+                    - hash:
+                      - - sym: binary
+                        - slice: frac
+                          byte_offset: 7
+                          char_offset: 7
+                      - - sym: first_value
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: number
+                                - slice: '1'
+                                  byte_offset: 12
+                                  char_offset: 12
+                      - - sym: second_value
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 15
+                                  char_offset: 15
+- id: latex-root-cube.raw
+  input:
+    str: "\\sqrt[3]{8}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt[3]{8}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: root
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: lparen
+                - slice: "["
+                  byte_offset: 5
+                  char_offset: 5
+              - - sym: expression
+                - array:
+                  - hash:
+                    - - sym: number
+                      - slice: '3'
+                        byte_offset: 6
+                        char_offset: 6
+              - - sym: rparen
+                - slice: "]"
+                  byte_offset: 7
+                  char_offset: 7
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '8'
+                      byte_offset: 9
+                      char_offset: 9
+- id: latex-root-nth-symbolic.raw
+  input:
+    str: "\\sqrt[n]{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt[n]{x}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: root
+            - slice: sqrt
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: lparen
+                - slice: "["
+                  byte_offset: 5
+                  char_offset: 5
+              - - sym: expression
+                - array:
+                  - hash:
+                    - - sym: symbols
+                      - slice: "n"
+                        byte_offset: 6
+                        char_offset: 6
+              - - sym: rparen
+                - slice: "]"
+                  byte_offset: 7
+                  char_offset: 7
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 9
+                      char_offset: 9

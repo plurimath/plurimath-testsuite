@@ -1,0 +1,527 @@
+# Written by amath scripts/generate_stage_cases.rb. Do not edit.
+---
+schema: plurimath-stage/asciimath/cases/1
+group: model-uncertainty-shared-exponent
+description: amath typed models (Amath.parse) for corpora/uncertainty-shared-exponent.yml
+  (https://github.com/plurimath/amath/issues/13). Each object is its model class (model/asciimath.lml.json)
+  with its set fields in declaration order; nil fields are left out. Amath.parse has
+  no preprocessing, so preprocessed is the input.
+boundary: typed-model
+cases:
+- id: uncertainty-shared-exponent.standard.positive.model
+  input:
+    str: ustd((3.85, 0.23)e4)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((3.85, 0.23)e4)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - magnitude
+                                  - str: '0.23'
+                                - - shared_exponent
+                                  - str: '4'
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: '3.85'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.standard.negative.model
+  input:
+    str: ustd((-3.850, 0.230)e+4)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((-3.850, 0.230)e+4)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - magnitude
+                                  - str: '0.230'
+                                - - shared_exponent
+                                  - str: "+4"
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: "-3.850"
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.standard.leading_zeroes.model
+  input:
+    str: ustd((001.2300, 000.0040)e-2)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((001.2300, 000.0040)e-2)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - magnitude
+                                  - str: '000.0040'
+                                - - shared_exponent
+                                  - str: "-2"
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: '001.2300'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.standard.zero_exponent.model
+  input:
+    str: ustd((1.230, 0.004)e0)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd((1.230, 0.004)e0)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - magnitude
+                                  - str: '0.004'
+                                - - shared_exponent
+                                  - str: '0'
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: '1.230'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.concise.negative_exponent.model
+  input:
+    str: ustd(680(41)e-3)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(680(41)e-3)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - concise_digits
+                                  - str: '41'
+                                - - shared_exponent
+                                  - str: "-3"
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: '680'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.concise.zero_exponent.model
+  input:
+    str: ustd(1.230(4)e0)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(1.230(4)e0)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - concise_digits
+                                  - str: '4'
+                                - - shared_exponent
+                                  - str: '0'
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - value
+                                  - str: '1.230'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.concise.unit.model
+  input:
+    str: ustd(680(41)e-3, "unitsml(kg)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ustd(680(41)e-3, "unitsml(kg)")
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - concise_digits
+                                  - str: '41'
+                                - - shared_exponent
+                                  - str: "-3"
+                                - - uncertainty_class
+                                  - str: ustd
+                                - - unit
+                                  - node: Amath::Model::Unit
+                                    fields:
+                                    - - literal
+                                      - str: kg
+                                - - value
+                                  - str: '680'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.expanded.dimensionless_fields.model
+  input:
+    str: uexp((3.85, 0.23)e4, 2.00, 0.950, "unitsml(m)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: uexp((3.85, 0.23)e4, 2.00, 0.950, "unitsml(m)")
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - coverage_factor
+                                  - str: '2.00'
+                                - - coverage_probability
+                                  - str: '0.950'
+                                - - magnitude
+                                  - str: '0.23'
+                                - - shared_exponent
+                                  - str: '4'
+                                - - uncertainty_class
+                                  - str: uexp
+                                - - unit
+                                  - node: Amath::Model::Unit
+                                    fields:
+                                    - - literal
+                                      - str: m
+                                - - value
+                                  - str: '3.85'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.expanded.negative_exponent.model
+  input:
+    str: uexp((100.02147, 0.00079)e-2, 2)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: uexp((100.02147, 0.00079)e-2, 2)
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - coverage_factor
+                                  - str: '2'
+                                - - magnitude
+                                  - str: '0.00079'
+                                - - shared_exponent
+                                  - str: "-2"
+                                - - uncertainty_class
+                                  - str: uexp
+                                - - value
+                                  - str: '100.02147'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."
+- id: uncertainty-shared-exponent.interval.shared_exponent.model
+  input:
+    str: ucov((1.024, 0.983, 1.088)e-3, 0.95, shortest, "unitsml(V)")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ucov((1.024, 0.983, 1.088)e-3, 0.95, shortest, "unitsml(V)")
+    tree:
+      node: Amath::Model::Document
+      fields:
+      - - expression
+        - node: Amath::Model::Expression
+          fields:
+          - - expr
+            - node: Amath::Model::Expr
+              fields:
+              - - amath_chain
+                - array:
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_step
+                      - node: Amath::Model::AmathStep
+                        fields:
+                        - - empty
+                          - str: ''
+                        - - sequence
+                          - node: Amath::Model::Sequence
+                            fields:
+                            - - uncertainty
+                              - node: Amath::Model::Uncertainty
+                                fields:
+                                - - coverage_probability
+                                  - str: '0.95'
+                                - - interval_kind
+                                  - str: shortest
+                                - - lower
+                                  - str: '0.983'
+                                - - shared_exponent
+                                  - str: "-3"
+                                - - uncertainty_class
+                                  - str: ucov
+                                - - unit
+                                  - node: Amath::Model::Unit
+                                    fields:
+                                    - - literal
+                                      - str: V
+                                - - upper
+                                  - str: '1.088'
+                                - - value
+                                  - str: '1.024'
+                  - node: Amath::Model::AmathChainItem
+                    fields:
+                    - - amath_end
+                      - node: Amath::Model::AmathEnd
+                        fields:
+                        - - empty
+                          - str: ''
+      - - decimal
+        - str: "."

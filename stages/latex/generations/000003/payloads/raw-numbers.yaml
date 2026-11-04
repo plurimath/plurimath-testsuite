@@ -1,0 +1,115 @@
+# LaTeX raw-tree stage cases: raw-numbers.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-numbers
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of numbers.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-number-integer.raw
+  input:
+    str: '1'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '1'
+    tree:
+      hash:
+      - - sym: number
+        - slice: '1'
+          byte_offset: 0
+          char_offset: 0
+- id: latex-number-decimal.raw
+  input:
+    str: '3.14'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '3.14'
+    tree:
+      hash:
+      - - sym: number
+        - slice: '3.14'
+          byte_offset: 0
+          char_offset: 0
+- id: latex-number-decimal-comma.raw
+  input:
+    str: 1{,}5
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: 1{,}5
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: number
+            - slice: '1'
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: operant
+                    - slice: ","
+                      byte_offset: 2
+                      char_offset: 2
+          - - sym: expression
+            - hash:
+              - - sym: number
+                - slice: '5'
+                  byte_offset: 4
+                  char_offset: 4
+- id: latex-number-negative.raw
+  input:
+    str: "-42"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "-42"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: operant
+            - slice: "-"
+              byte_offset: 0
+              char_offset: 0
+      - - sym: expression
+        - hash:
+          - - sym: number
+            - slice: '42'
+              byte_offset: 1
+              char_offset: 1
+- id: latex-number-braced-exponent.raw
+  input:
+    str: 2^{10}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: 2^{10}
+    tree:
+      hash:
+      - - sym: power
+        - hash:
+          - - sym: number
+            - slice: '2'
+              byte_offset: 0
+              char_offset: 0
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '10'
+                      byte_offset: 3
+                      char_offset: 3

@@ -1,0 +1,300 @@
+# LaTeX typed-model stage cases: model-roots.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-roots
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of roots.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-root-sqrt-number.model
+  input:
+    str: "\\sqrt{2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{2}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - intermediate_exp
+                - node: Latexmath::Model::IntermediateExp
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '2'
+              - - sqrt
+                - str: sqrt
+      - - decimal
+        - str: "."
+- id: latex-root-sqrt-sum.model
+  input:
+    str: "\\sqrt{x+1}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{x+1}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - intermediate_exp
+                - node: Latexmath::Model::IntermediateExp
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '1'
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: x
+              - - sqrt
+                - str: sqrt
+      - - decimal
+        - str: "."
+- id: latex-root-sqrt-pythagoras.model
+  input:
+    str: "\\sqrt{a^2+b^2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{a^2+b^2}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - intermediate_exp
+                - node: Latexmath::Model::IntermediateExp
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - power
+                                - node: Latexmath::Model::Power
+                                  fields:
+                                  - - supscript
+                                    - node: Latexmath::Model::Supscript
+                                      fields:
+                                      - - number
+                                        - str: '2'
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: b
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - power
+                            - node: Latexmath::Model::Power
+                              fields:
+                              - - supscript
+                                - node: Latexmath::Model::Supscript
+                                  fields:
+                                  - - number
+                                    - str: '2'
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: a
+              - - sqrt
+                - str: sqrt
+      - - decimal
+        - str: "."
+- id: latex-root-sqrt-frac.model
+  input:
+    str: "\\sqrt{\\frac{1}{2}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt{\\frac{1}{2}}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - intermediate_exp
+                - node: Latexmath::Model::IntermediateExp
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - binary
+                        - node: Latexmath::Model::Binary
+                          fields:
+                          - - binary
+                            - node: Latexmath::Model::Binary
+                              fields:
+                              - - literal
+                                - str: frac
+                          - - first_value
+                            - node: Latexmath::Model::FirstValue
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - number
+                                    - str: '1'
+                          - - second_value
+                            - node: Latexmath::Model::SecondValue
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - number
+                                    - str: '2'
+              - - sqrt
+                - str: sqrt
+      - - decimal
+        - str: "."
+- id: latex-root-cube.model
+  input:
+    str: "\\sqrt[3]{8}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt[3]{8}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - items
+                        - array:
+                          - node: Latexmath::Model::ItemsItem
+                            fields:
+                            - - number
+                              - str: '3'
+                  - - lparen
+                    - str: "["
+                  - - rparen
+                    - str: "]"
+              - - root
+                - str: sqrt
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '8'
+      - - decimal
+        - str: "."
+- id: latex-root-nth-symbolic.model
+  input:
+    str: "\\sqrt[n]{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sqrt[n]{x}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - items
+                        - array:
+                          - node: Latexmath::Model::ItemsItem
+                            fields:
+                            - - symbols
+                              - node: Latexmath::Model::MathSymbol
+                                fields:
+                                - - spelling
+                                  - str: "n"
+                  - - lparen
+                    - str: "["
+                  - - rparen
+                    - str: "]"
+              - - root
+                - str: sqrt
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+      - - decimal
+        - str: "."

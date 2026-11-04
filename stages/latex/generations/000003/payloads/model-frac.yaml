@@ -1,0 +1,370 @@
+# LaTeX typed-model stage cases: model-frac.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-frac
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of frac.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-frac-simple.model
+  input:
+    str: "\\frac{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{2}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: frac
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '1'
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '2'
+      - - decimal
+        - str: "."
+- id: latex-frac-nested.model
+  input:
+    str: "\\frac{\\frac{1}{2}}{3}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{\\frac{1}{2}}{3}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: frac
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - binary
+                        - node: Latexmath::Model::Binary
+                          fields:
+                          - - binary
+                            - node: Latexmath::Model::Binary
+                              fields:
+                              - - literal
+                                - str: frac
+                          - - first_value
+                            - node: Latexmath::Model::FirstValue
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - number
+                                    - str: '1'
+                          - - second_value
+                            - node: Latexmath::Model::SecondValue
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - number
+                                    - str: '2'
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '3'
+      - - decimal
+        - str: "."
+- id: latex-frac-sum-numerator.model
+  input:
+    str: "\\frac{a+b}{c}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{a+b}{c}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: frac
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: b
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: c
+      - - decimal
+        - str: "."
+- id: latex-frac-sum-denominator.model
+  input:
+    str: "\\frac{x}{y+z}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{x}{y+z}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: frac
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: z
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: "y"
+      - - decimal
+        - str: "."
+- id: latex-frac-sum-of-fracs.model
+  input:
+    str: "\\frac{1}{2} + \\frac{3}{4}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{2}+\\frac{3}{4}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - binary
+                    - node: Latexmath::Model::Binary
+                      fields:
+                      - - binary
+                        - node: Latexmath::Model::Binary
+                          fields:
+                          - - literal
+                            - str: frac
+                      - - first_value
+                        - node: Latexmath::Model::FirstValue
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '3'
+                      - - second_value
+                        - node: Latexmath::Model::SecondValue
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '4'
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - operant
+                    - str: "+"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - binary
+                    - node: Latexmath::Model::Binary
+                      fields:
+                      - - literal
+                        - str: frac
+                  - - first_value
+                    - node: Latexmath::Model::FirstValue
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - number
+                            - str: '1'
+                  - - second_value
+                    - node: Latexmath::Model::SecondValue
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - number
+                            - str: '2'
+      - - decimal
+        - str: "."
+- id: latex-frac-root-denominator.model
+  input:
+    str: "\\frac{1}{\\sqrt{2}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{\\sqrt{2}}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: frac
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - number
+                        - str: '1'
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - binary
+                        - node: Latexmath::Model::Binary
+                          fields:
+                          - - intermediate_exp
+                            - node: Latexmath::Model::IntermediateExp
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - number
+                                    - str: '2'
+                          - - sqrt
+                            - str: sqrt
+      - - decimal
+        - str: "."
