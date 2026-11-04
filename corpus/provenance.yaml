@@ -126,8 +126,8 @@ payloads:
   sha256: 2d6e159df8e3ef1d13256d1ef48f705400648d4dd6c4cef09737cab077f1d037
   bytes: 26726
 - path: asciimath/quoted-text.yaml
-  sha256: '0608f3ed65338cdf19e3d48c7be707ab733f5ab51c9b8c5eaa822f03e9b992e7'
-  bytes: 6940
+  sha256: '38c5b9d7ae43906e6ef6d94f8e4f274a635f88d5af8af36cc22d3ba5665db807'
+  bytes: 6944
 - path: asciimath/rejections.yaml
   sha256: a27245e780228e44b752b3310431cd8e9371b43f8c9a2c67fc1da7bcdca409ac
   bytes: 2171
