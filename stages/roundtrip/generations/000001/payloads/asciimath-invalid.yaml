@@ -1,0 +1,60 @@
+# Written by plurimath scripts/roundtrip_cases.rb. Do not edit.
+---
+schema: plurimath-stage/roundtrip/1
+group: asciimath-invalid
+description: Calls that match the call grammar but are not a valid result. Each target
+  is written by Formula#to_<target> and read back with Plurimath::Math.parse (with
+  the case's options for AsciiMath and UnicodeMath); lossless means the formula read
+  back is == to the one the input parsed to. model, where present, is the single Uncertainty
+  node the input parses to.
+cases:
+- id: asciimath-invalid.zero-k
+  spec:
+    document: plurimath docs/uncertainty.adoc
+    section: Errors
+  source:
+    language: asciimath
+    input: uexp(1.0, 0.3, 0, 0.95)
+  options: {}
+  expected:
+    asciimath:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    unicode:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    mathml:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    omml:
+      refusal:
+        category: parse_error
+        byte_offset: 
+- id: asciimath-invalid.reversed-interval
+  spec:
+    document: plurimath docs/uncertainty.adoc
+    section: Errors
+  source:
+    language: asciimath
+    input: ucov(1.0, 2.0, 1.5, 0.95)
+  options: {}
+  expected:
+    asciimath:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    unicode:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    mathml:
+      refusal:
+        category: parse_error
+        byte_offset: 
+    omml:
+      refusal:
+        category: parse_error
+        byte_offset: 

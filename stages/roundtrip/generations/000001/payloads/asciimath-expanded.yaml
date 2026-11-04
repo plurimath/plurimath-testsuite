@@ -1,0 +1,461 @@
+# Written by plurimath scripts/roundtrip_cases.rb. Do not edit.
+---
+schema: plurimath-stage/roundtrip/1
+group: asciimath-expanded
+description: Expanded uncertainty calls (uexp) with and without a coverage probability,
+  read from AsciiMath. Each target is written by Formula#to_<target> and read back
+  with Plurimath::Math.parse (with the case's options for AsciiMath and UnicodeMath);
+  lossless means the formula read back is == to the one the input parsed to. model,
+  where present, is the single Uncertainty node the input parses to.
+cases:
+- id: asciimath-expanded.k
+  spec:
+    document: plurimath docs/uncertainty.adoc
+    section: Round-trip matrix
+  source:
+    language: asciimath
+    input: uexp(10.0, 0.3, 2)
+  options: {}
+  model:
+    node: Plurimath::Math::Function::Uncertainty
+    fields:
+    - - value
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '10.0'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - category
+      - sym: expanded
+    - - magnitude
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '0.3'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_factor
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '2'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_probability
+      - nil: true
+    - - lower
+      - nil: true
+    - - upper
+      - nil: true
+    - - interval_kind
+      - nil: true
+    - - notation
+      - nil: true
+    - - unit
+      - nil: true
+  expected:
+    asciimath:
+      output: uexp(10.0, 0.3, 2)
+      lossless: true
+    unicode:
+      output: ⓘ("expanded-uncertainty(10.0,0.3,2)"(10.0±0.3), k=2)
+      lossless: true
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mrow intent="expanded-uncertainty(10.0,0.3,2)">
+              <mrow>
+                <mo>(</mo>
+                <mn>10.0</mn>
+                <mo>&#xb1;</mo>
+                <mn>0.3</mn>
+                <mo>)</mo>
+              </mrow>
+              <mo>,</mo>
+              <mi>k</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+            </mrow>
+          </mstyle>
+        </math>
+      lossless: true
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:box>
+              <m:e>
+                <m:phant>
+                  <m:phantPr>
+                    <m:show m:val="off"/>
+                    <m:zeroWid m:val="on"/>
+                    <m:zeroAsc m:val="on"/>
+                    <m:zeroDesc m:val="on"/>
+                  </m:phantPr>
+                  <m:e>
+                    <m:r>
+                      <m:rPr>
+                        <m:sty m:val="p"/>
+                      </m:rPr>
+                      <m:t>expanded-uncertainty(10.0,0.3,2)</m:t>
+                    </m:r>
+                  </m:e>
+                </m:phant>
+                <m:d>
+                  <m:dPr>
+                    <m:begChr m:val="("/>
+                    <m:sepChr m:val=""/>
+                    <m:endChr m:val=")"/>
+                  </m:dPr>
+                  <m:e>
+                    <m:r>
+                      <m:t>10.0</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>&#xb1;</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>0.3</m:t>
+                    </m:r>
+                  </m:e>
+                </m:d>
+                <m:r>
+                  <m:t>,</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>k</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>=</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>2</m:t>
+                </m:r>
+              </m:e>
+            </m:box>
+          </m:oMath>
+        </m:oMathPara>
+      lossless: true
+- id: asciimath-expanded.k-p
+  spec:
+    document: plurimath docs/uncertainty.adoc
+    section: Round-trip matrix
+  source:
+    language: asciimath
+    input: uexp(10.0, 0.3, 2, 0.95)
+  options: {}
+  model:
+    node: Plurimath::Math::Function::Uncertainty
+    fields:
+    - - value
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '10.0'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - category
+      - sym: expanded
+    - - magnitude
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '0.3'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_factor
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '2'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_probability
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '0.95'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - lower
+      - nil: true
+    - - upper
+      - nil: true
+    - - interval_kind
+      - nil: true
+    - - notation
+      - nil: true
+    - - unit
+      - nil: true
+  expected:
+    asciimath:
+      output: uexp(10.0, 0.3, 2, 0.95)
+      lossless: true
+    unicode:
+      output: ⓘ("expanded-uncertainty(10.0,0.3,2,0.95)"(10.0±0.3), k=2, p=0.95)
+      lossless: true
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mrow intent="expanded-uncertainty(10.0,0.3,2,0.95)">
+              <mrow>
+                <mo>(</mo>
+                <mn>10.0</mn>
+                <mo>&#xb1;</mo>
+                <mn>0.3</mn>
+                <mo>)</mo>
+              </mrow>
+              <mo>,</mo>
+              <mi>k</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+              <mo>,</mo>
+              <mi>p</mi>
+              <mo>=</mo>
+              <mn>0.95</mn>
+            </mrow>
+          </mstyle>
+        </math>
+      lossless: true
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:box>
+              <m:e>
+                <m:phant>
+                  <m:phantPr>
+                    <m:show m:val="off"/>
+                    <m:zeroWid m:val="on"/>
+                    <m:zeroAsc m:val="on"/>
+                    <m:zeroDesc m:val="on"/>
+                  </m:phantPr>
+                  <m:e>
+                    <m:r>
+                      <m:rPr>
+                        <m:sty m:val="p"/>
+                      </m:rPr>
+                      <m:t>expanded-uncertainty(10.0,0.3,2,0.95)</m:t>
+                    </m:r>
+                  </m:e>
+                </m:phant>
+                <m:d>
+                  <m:dPr>
+                    <m:begChr m:val="("/>
+                    <m:sepChr m:val=""/>
+                    <m:endChr m:val=")"/>
+                  </m:dPr>
+                  <m:e>
+                    <m:r>
+                      <m:t>10.0</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>&#xb1;</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>0.3</m:t>
+                    </m:r>
+                  </m:e>
+                </m:d>
+                <m:r>
+                  <m:t>,</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>k</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>=</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>2</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>,</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>p</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>=</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>0.95</m:t>
+                </m:r>
+              </m:e>
+            </m:box>
+          </m:oMath>
+        </m:oMathPara>
+      lossless: true
+- id: asciimath-expanded.negative
+  spec:
+    document: plurimath docs/uncertainty.adoc
+    section: Round-trip matrix
+  source:
+    language: asciimath
+    input: uexp(-10.0, 0.3, 2)
+  options: {}
+  model:
+    node: Plurimath::Math::Function::Uncertainty
+    fields:
+    - - value
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: "-10.0"
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - category
+      - sym: expanded
+    - - magnitude
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '0.3'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_factor
+      - node: Plurimath::Math::Number
+        fields:
+        - - value
+          - str: '2'
+        - - mini_sub_sized
+          - bool: false
+        - - mini_sup_sized
+          - bool: false
+        - - base
+          - nil: true
+    - - coverage_probability
+      - nil: true
+    - - lower
+      - nil: true
+    - - upper
+      - nil: true
+    - - interval_kind
+      - nil: true
+    - - notation
+      - nil: true
+    - - unit
+      - nil: true
+  expected:
+    asciimath:
+      output: uexp(-10.0, 0.3, 2)
+      lossless: true
+    unicode:
+      output: ⓘ("expanded-uncertainty(-10.0,0.3,2)"(-10.0±0.3), k=2)
+      lossless: true
+    mathml:
+      output: |
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mrow intent="expanded-uncertainty(-10.0,0.3,2)">
+              <mrow>
+                <mo>(</mo>
+                <mn>-10.0</mn>
+                <mo>&#xb1;</mo>
+                <mn>0.3</mn>
+                <mo>)</mo>
+              </mrow>
+              <mo>,</mo>
+              <mi>k</mi>
+              <mo>=</mo>
+              <mn>2</mn>
+            </mrow>
+          </mstyle>
+        </math>
+      lossless: true
+    omml:
+      output: |
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:box>
+              <m:e>
+                <m:phant>
+                  <m:phantPr>
+                    <m:show m:val="off"/>
+                    <m:zeroWid m:val="on"/>
+                    <m:zeroAsc m:val="on"/>
+                    <m:zeroDesc m:val="on"/>
+                  </m:phantPr>
+                  <m:e>
+                    <m:r>
+                      <m:rPr>
+                        <m:sty m:val="p"/>
+                      </m:rPr>
+                      <m:t>expanded-uncertainty(-10.0,0.3,2)</m:t>
+                    </m:r>
+                  </m:e>
+                </m:phant>
+                <m:d>
+                  <m:dPr>
+                    <m:begChr m:val="("/>
+                    <m:sepChr m:val=""/>
+                    <m:endChr m:val=")"/>
+                  </m:dPr>
+                  <m:e>
+                    <m:r>
+                      <m:t>-10.0</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>&#xb1;</m:t>
+                    </m:r>
+                    <m:r>
+                      <m:t>0.3</m:t>
+                    </m:r>
+                  </m:e>
+                </m:d>
+                <m:r>
+                  <m:t>,</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>k</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>=</m:t>
+                </m:r>
+                <m:r>
+                  <m:t>2</m:t>
+                </m:r>
+              </m:e>
+            </m:box>
+          </m:oMath>
+        </m:oMathPara>
+      lossless: true
