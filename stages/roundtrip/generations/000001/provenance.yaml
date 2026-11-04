@@ -1,0 +1,265 @@
+# Generation 1 of the roundtrip stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: roundtrip
+generation: 1
+notes: Cross-language uncertainty round trips (plurimath#540, plurimath#493). Each
+  row starts from one AsciiMath, UnicodeMath or MathML input, and records for AsciiMath,
+  UnicodeMath, MathML and OMML the exact output plurimath writes and whether reading
+  it back gives the same formula, with the loss when it does not, or a refusal when
+  the input does not parse. Written by plurimath scripts/roundtrip_cases.rb at the
+  recorded commit on the Ox and Oga XML engines with identical results. The expectations
+  follow the round-trip matrix of docs/uncertainty.adoc at that commit.
+producers:
+  plurimath:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: 2967dcc47a9f37d5b9a2dd13d94a2ad35d4cc256
+    version: 0.11.17
+    generator:
+      repository: https://github.com/plurimath/plurimath
+      commit: 2967dcc47a9f37d5b9a2dd13d94a2ad35d4cc256
+      path: scripts/roundtrip_cases.rb
+      sha256: bd857f6164e9a475add2644b2086f80ecb7294a97e748f9e178921f57af45aa1
+    inputs: []
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine, Plurimath::XmlEngine::Oga
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.3
+        resolved:
+          amath: 0.1.0
+          ansi: 1.6.0
+          asciiunits: 0.1.6
+          ast: 2.4.3
+          base64: 0.3.0
+          bcp47_spec: 0.2.1
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          canon: 0.3.123
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ebnf: 2.6.0
+          erb: 6.0.7
+          ffi: 1.17.4
+          fuzzy_match: 2.1.0
+          htmlentities: 4.4.2
+          io-console: 0.9.5
+          irb: 1.18.0
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          lasem: 0.1.0
+          leptris: 1.9.406.1
+          link_header: 0.0.8
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          logger: 1.7.0
+          lutaml-model: 0.8.164
+          matrix: 0.4.3
+          memo_wise: 1.13.0
+          mml: 2.4.7
+          moxml: 0.6.2
+          nokogiri: 1.19.7
+          oga: '3.5'
+          omml: 0.2.11
+          opal: 1.8.3
+          opal-rspec: 1.1.0.alpha3
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.3.0
+          parsanol: 1.3.133
+          parser: 3.3.13.0
+          parslet: 2.0.0
+          plurimath: 0.11.17
+          pp: 0.6.4
+          prettyprint: 0.2.1
+          prism: 1.9.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          rbs: 4.2.0
+          rdf: 3.3.1
+          rdf-turtle: 3.3.0
+          rdoc: 8.1.0
+          regexp_parser: 2.13.1
+          reline: 0.7.0
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-ll: 2.2.0
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          scanf: 1.0.0
+          simplecov: 1.3.2
+          strscan: 3.1.8
+          sxp: 2.0.0
+          table_tennis: 0.0.7
+          thor: 1.5.0
+          tsort: 0.2.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          unitsdb: 2.2.13
+          unitsml: 0.6.12
+          yeptris: 0.6.60.1
+      dependencies:
+        amath: 0.1.0
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.164
+        mml: 2.4.7
+        omml: 0.2.11
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parsanol: 1.3.133
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.12
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: roundtrip
+    configuration:
+      entry_point: Plurimath::Math.parse, Formula#to_<target>
+      targets:
+      - asciimath
+      - unicode
+      - mathml
+      - omml
+      xml_engines:
+      - ox
+      - oga
+payloads:
+- path: payloads/asciimath-coverage-interval.yaml
+  bytes: 22358
+  sha256: a1d29e6afd8447d9648a25f5ad584f1058bfe74978b159ace5c4a18eb7aac991
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-coverage-interval.unspecified
+  - asciimath-coverage-interval.shortest
+  - asciimath-coverage-interval.symmetric
+  - asciimath-coverage-interval.negative
+- path: payloads/asciimath-expanded.yaml
+  bytes: 15833
+  sha256: d007100af861f1f5b2cefbe02ef145b2a4f4a69908415172994d322fb3373922
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-expanded.k
+  - asciimath-expanded.k-p
+  - asciimath-expanded.negative
+- path: payloads/asciimath-invalid.yaml
+  bytes: 1561
+  sha256: 7a0446b1a461a2c2dd9da67b2d369b058433f1073d8b73f7899e7ffbf4aaec90
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-invalid.zero-k
+  - asciimath-invalid.reversed-interval
+- path: payloads/asciimath-locale.yaml
+  bytes: 5803
+  sha256: a34be314f060126f5b72007a87c33381aab9e504db31349bf2966dca3e57d13c
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-locale.fr-dot
+  - asciimath-locale.fr-comma
+  - asciimath-locale.fr-comma-pair
+- path: payloads/asciimath-shared-exponent.yaml
+  bytes: 19956
+  sha256: 7d4083a24f1deeb35fc56e9fc4c3a2b248a94bb8284d81f56a2264972f853a9b
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-shared-exponent.standard
+  - asciimath-shared-exponent.concise
+  - asciimath-shared-exponent.expanded
+  - asciimath-shared-exponent.interval
+- path: payloads/asciimath-standard.yaml
+  bytes: 25330
+  sha256: 33a5008c4f19c1ada403b12c574c5ca4be61dfa8161e385e7431593118da7260
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-standard.absolute
+  - asciimath-standard.concise
+  - asciimath-standard.concise-long
+  - asciimath-standard.negative
+  - asciimath-standard.negative-concise
+  - asciimath-standard.zero-magnitude
+- path: payloads/asciimath-units.yaml
+  bytes: 40286
+  sha256: f49eae791451b790660dbcde428d3c3ac9a90a96833b29b2150add6deb4f85d5
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-units.expanded-g
+  - asciimath-units.standard-kg
+  - asciimath-units.standard-m-per-s
+  - asciimath-units.standard-kg-m2
+  - asciimath-units.standard-um
+  - asciimath-units.concise-g
+  - asciimath-units.interval-m
+- path: payloads/mathml-markers.yaml
+  bytes: 24307
+  sha256: f5376ad39e151d90b920c0f8a02b5bfa178a60393c6bdf48d3880989c16c116e
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - mathml-markers.standard
+  - mathml-markers.concise
+  - mathml-markers.expanded
+  - mathml-markers.unit-kg
+  - mathml-markers.unit-kg-m2
+- path: payloads/unicode-markers.yaml
+  bytes: 56819
+  sha256: 642ba08e3758dbf4a6fad3393351723874dc2e0b305078252bf5c4126b5a8de6
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-markers.standard
+  - unicode-markers.concise
+  - unicode-markers.expanded-p
+  - unicode-markers.expanded-spaced
+  - unicode-markers.interval-shortest
+  - unicode-markers.negative
+  - unicode-markers.unit-g
+  - unicode-markers.unit-kg
+  - unicode-markers.unit-kg-quoted
+  - unicode-markers.unit-m-per-s
+  - unicode-markers.unit-um
+  - unicode-markers.unit-kg-m2
