@@ -1,0 +1,820 @@
+# Generation 3 of the asciimath stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: asciimath
+generation: 3
+notes: 'Generation 2''s 29 payloads, byte for byte (their provenance entries and producers
+  unchanged), plus amath''s typed-model rows for amath corpora/uncertainty-shared-exponent.yml
+  (ids <id>.model). Written by amath scripts/generate_stage_cases.rb --boundary typed-model
+  at the recorded commit from the bound data Amath.parse builds its Document from,
+  typed by the declared model classes of model/asciimath.lml.json, with identical
+  results on the native and Ruby engines and equal to a walk of the built model. Each
+  object is {node: <model class>, fields: [...]} with its set fields in declaration
+  order; nil fields are left out.'
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+  amath:
+    kind: stage-gem
+    repository: https://github.com/plurimath/amath
+    commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+    version: 0.1.0
+    generator:
+      repository: https://github.com/plurimath/amath
+      commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+      path: scripts/generate_stage_cases.rb
+      sha256: 0e867f95d184e9e6eb05aeae140f420355012867b112582cddb2bd30c65ee2ee
+    inputs:
+    - repository: https://github.com/plurimath/amath
+      commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+      path: corpora/uncertainty-shared-exponent.yml
+      sha256: a5df7dddc4f2b2d3cf0d322a4e4818704742b4524d229100066f49aa4de53d50
+    - repository: https://github.com/plurimath/amath
+      commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+      path: artifacts/asciimath.json
+      sha256: a77da2627986838a9f002796333065e58367bfddee5e90becc4b67bb4d0f4aa4
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.3
+        resolved:
+          amath: 0.1.0
+          ast: 2.4.3
+          bundler: 4.0.3
+          diff-lcs: 1.6.2
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          lint_roller: 1.1.0
+          parallel: 2.3.0
+          parsanol: 1.3.131
+          parser: 3.3.13.0
+          prism: 1.9.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 13.4.2
+          regexp_parser: 2.13.1
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-progressbar: 1.13.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+      dependencies:
+        parsanol: 1.3.131
+      compiler:
+        name: parsanol
+        version: 1.3.131
+        source_hash: sha256:a305f3c0d7783e334b0fb8d5e323d4a9fc330348f340176ee1a8792a26384556
+        artifact_checksum: sha256:6638174039925962b221cbedeec24bb616130670003d177b3a92911309c397c5
+        artifact:
+          repository: https://github.com/plurimath/amath
+          commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+          path: artifacts/asciimath.json
+          sha256: a77da2627986838a9f002796333065e58367bfddee5e90becc4b67bb4d0f4aa4
+      binding:
+        ruby_checksum: sha256:ba06da59a578ce3793799c791f358dc343651a38b863c5d48b738db004ecfcc8
+        artifact:
+          repository: https://github.com/plurimath/amath
+          commit: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+          path: artifacts/asciimath.bindings.ruby.json
+          sha256: '08c5567edb5c626b9d48103c92d60e4b6db6ca622ce151af3ff3d339e2fd6854'
+      lml: 
+    semantic_boundary: raw-tree
+    configuration:
+      decimal: "."
+      engines:
+      - native
+      - ruby
+      entry_point: Amath.parse
+  amath-model:
+    kind: stage-gem
+    repository: https://github.com/plurimath/amath
+    commit: 94d458a04f19192d9611bae152b403e9be8405a3
+    version: 0.1.0
+    generator:
+      repository: https://github.com/plurimath/amath
+      commit: 94d458a04f19192d9611bae152b403e9be8405a3
+      path: scripts/generate_stage_cases.rb
+      sha256: c4253d1fe164f4eb2496c0a16204b44e49a659f9e9044b0e6d6ee497bba5e7e2
+    inputs:
+    - repository: https://github.com/plurimath/amath
+      commit: 94d458a04f19192d9611bae152b403e9be8405a3
+      path: corpora/uncertainty-shared-exponent.yml
+      sha256: a5df7dddc4f2b2d3cf0d322a4e4818704742b4524d229100066f49aa4de53d50
+    - repository: https://github.com/plurimath/amath
+      commit: 94d458a04f19192d9611bae152b403e9be8405a3
+      path: artifacts/asciimath.json
+      sha256: f37ea3d542e933a457cd97d44f3fb829adebdc9e79f29444fa416f81a267aa35
+    - repository: https://github.com/plurimath/amath
+      commit: 94d458a04f19192d9611bae152b403e9be8405a3
+      path: model/asciimath.lml.json
+      sha256: 3bff7f0879e3db1229f8f73935a9e31e3ea23f8f1de49344745bbab87eb5a377
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.3
+        resolved:
+          amath: 0.1.0
+          ast: 2.4.3
+          base64: 0.3.0
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          canon: 0.3.123
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ffi: 1.17.4
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          leptris: 1.9.404.0
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          lutaml-model: 0.8.162
+          memo_wise: 1.13.0
+          moxml: 0.6.2
+          ostruct: 0.6.3
+          paint: 2.3.0
+          parallel: 2.3.0
+          parsanol: 1.3.131
+          parser: 3.3.13.0
+          prism: 1.9.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 13.4.2
+          regexp_parser: 2.13.1
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          strscan: 3.1.8
+          table_tennis: 1.0.0
+          thor: 1.5.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          yeptris: 0.6.59.1
+      dependencies:
+        parsanol: 1.3.131
+        lutaml-model: 0.8.162
+      compiler:
+        name: parsanol
+        version: 1.3.131
+        source_hash: sha256:8fc391577745dec67f31913a54de1060c6856f5514ed3c11300724a462ae8cfb
+        artifact_checksum: sha256:0067804385b88a39218e0092dbee1d02a26f7d140c645cb27d637c7f0d985fc2
+        artifact:
+          repository: https://github.com/plurimath/amath
+          commit: 94d458a04f19192d9611bae152b403e9be8405a3
+          path: artifacts/asciimath.json
+          sha256: f37ea3d542e933a457cd97d44f3fb829adebdc9e79f29444fa416f81a267aa35
+      binding:
+        ruby_checksum: sha256:8b2057f9dde92d141b81d0c44152df61cacabb13ad4eafa8b266999d87deea8a
+        artifact:
+          repository: https://github.com/plurimath/amath
+          commit: 94d458a04f19192d9611bae152b403e9be8405a3
+          path: artifacts/asciimath.bindings.ruby.json
+          sha256: 79cda5caa352a1a9a7ea16155be8db95c3bd1ec735a788c4afe6fab26d971ab7
+      lml:
+        format: amath-lml/1
+        checksum: sha256:3bff7f0879e3db1229f8f73935a9e31e3ea23f8f1de49344745bbab87eb5a377
+        models: 43
+        export:
+          repository: https://github.com/plurimath/amath
+          commit: 94d458a04f19192d9611bae152b403e9be8405a3
+          path: model/asciimath.lml.json
+          sha256: 3bff7f0879e3db1229f8f73935a9e31e3ea23f8f1de49344745bbab87eb5a377
+    semantic_boundary: typed-model
+    configuration:
+      decimal: "."
+      engines:
+      - native
+      - ruby
+      entry_point: Amath.parse
+payloads:
+- path: payloads/colour.yaml
+  bytes: 7271
+  sha256: c821d26abb818420e780643164f2f1d79df7fe07ee0f8c0825e65562ce07e1c6
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/colour.yaml
+      sha256: c821d26abb818420e780643164f2f1d79df7fe07ee0f8c0825e65562ce07e1c6
+  rows:
+  - colour-named
+  - colour-in-sum
+- path: payloads/fences.yaml
+  bytes: 20200
+  sha256: bd573a711b45675ca49306a10bd63d7e3f4ac129785781a9ba07ac47e5b88766
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/fences.yaml
+      sha256: bd573a711b45675ca49306a10bd63d7e3f4ac129785781a9ba07ac47e5b88766
+  rows:
+  - fence-round-single
+  - fence-round-expression
+  - fence-square-pair
+  - fence-curly-single
+  - fence-round-triple
+  - fence-over-number
+- path: payloads/fonts.yaml
+  bytes: 18721
+  sha256: 165709e0c55d1a08212802d65105f867ae77c8413d0acb0efea61ae1c8491dbf
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/fonts.yaml
+      sha256: 165709e0c55d1a08212802d65105f867ae77c8413d0acb0efea61ae1c8491dbf
+  rows:
+  - font-bold
+  - font-blackboard
+  - font-script
+  - font-typewriter
+  - font-fraktur
+  - font-sans-serif
+  - font-mixed
+- path: payloads/frac.yaml
+  bytes: 20760
+  sha256: 254b15b16125084c30f02e888fb2073ad6bce2bb803f146c8e02e3910c2c5b30
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/frac.yaml
+      sha256: 254b15b16125084c30f02e888fb2073ad6bce2bb803f146c8e02e3910c2c5b30
+  rows:
+  - frac-simple
+  - frac-numeric
+  - frac-fenced-numerator
+  - frac-fenced-denominator
+  - frac-sum-of-fracs
+  - frac-explicit
+- path: payloads/left-right.yaml
+  bytes: 8568
+  sha256: b025bf9a049ea73697cfad0fe626763c8bd5f6a15e329f98cb9b8d2c71230c7c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/left-right.yaml
+      sha256: b025bf9a049ea73697cfad0fe626763c8bd5f6a15e329f98cb9b8d2c71230c7c
+  rows:
+  - left-right-round
+  - left-right-square
+  - left-right-around-frac
+- path: payloads/matrices.yaml
+  bytes: 10997
+  sha256: 20290949ec7f6de74dbe9c146ba63f091fe8e608988ca3c763153fb248e7703d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/matrices.yaml
+      sha256: 20290949ec7f6de74dbe9c146ba63f091fe8e608988ca3c763153fb248e7703d
+  rows:
+  - matrix-column
+  - matrix-two-by-two
+- path: payloads/mixed.yaml
+  bytes: 30016
+  sha256: a70fa7e4f49c340c35cfbb8c4c306bf7f09575e99d70c0a36222082e55fe5d5b
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/mixed.yaml
+      sha256: a70fa7e4f49c340c35cfbb8c4c306bf7f09575e99d70c0a36222082e55fe5d5b
+  rows:
+  - mixed-implicit-product
+  - mixed-greek-sequence
+  - mixed-function-definition
+  - mixed-binomial-square
+  - mixed-sum-of-cubes
+- path: payloads/mod.yaml
+  bytes: 9709
+  sha256: d7a2800241aa6df75d202c2551852b55dce00e2f0ebeb37a5755c3ff3d122e2c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/mod.yaml
+      sha256: d7a2800241aa6df75d202c2551852b55dce00e2f0ebeb37a5755c3ff3d122e2c
+  rows:
+  - mod-simple
+  - mod-numeric
+  - mod-in-expression
+- path: payloads/model-uncertainty-shared-exponent.yaml
+  bytes: 19139
+  sha256: d5cbc522645e81e98f6e368b1aa8ccf49d5fbe0966b65b9234758eea728b24c4
+  producer: amath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - uncertainty-shared-exponent.standard.positive.model
+  - uncertainty-shared-exponent.standard.negative.model
+  - uncertainty-shared-exponent.standard.leading_zeroes.model
+  - uncertainty-shared-exponent.standard.zero_exponent.model
+  - uncertainty-shared-exponent.concise.negative_exponent.model
+  - uncertainty-shared-exponent.concise.zero_exponent.model
+  - uncertainty-shared-exponent.concise.unit.model
+  - uncertainty-shared-exponent.expanded.dimensionless_fields.model
+  - uncertainty-shared-exponent.expanded.negative_exponent.model
+  - uncertainty-shared-exponent.interval.shared_exponent.model
+- path: payloads/nary.yaml
+  bytes: 23884
+  sha256: 742f1718e06858652fdc878f224bd95a249500b75b9f6a6f6e6fa36f934f073e
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/nary.yaml
+      sha256: 742f1718e06858652fdc878f224bd95a249500b75b9f6a6f6e6fa36f934f073e
+  rows:
+  - nary-log-base
+  - nary-lim
+  - nary-sum-bounded
+  - nary-int-bounded
+  - nary-prod-bounded
+  - nary-sum-bare
+- path: payloads/number-formatting-base.yaml
+  bytes: 47528
+  sha256: 5a7a23c6c7d3cac68cb2b876a1c056663487a956b7248dcbf685593a4466dc25
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-base.yaml
+      sha256: 5a7a23c6c7d3cac68cb2b876a1c056663487a956b7248dcbf685593a4466dc25
+  rows:
+  - number-formatter-base-2-grouped
+  - number-formatter-base-2-fraction
+  - number-formatter-base-2-precision
+  - number-formatter-base-8
+  - number-formatter-base-16-default-prefix
+  - number-formatter-base-16-zero
+  - number-formatter-base-16-hex-capital
+  - number-formatter-base-16-hex-capital-numbers-only
+  - number-formatter-base-16-negative
+  - number-formatter-base-16-significant-fraction
+  - number-formatter-base-16-digit-count
+  - number-formatter-base-16-padding-digits
+  - number-formatter-base-prefix-override
+  - number-formatter-base-prefix-empty
+  - number-formatter-base-prefix-space-negative
+  - number-formatter-base-postfix-alone
+  - number-formatter-base-postfix-hex-capital
+  - number-formatter-base-prefix-and-postfix
+  - number-formatter-base-10-ignores-prefix-and-postfix
+- path: payloads/number-formatting-locale-symbols.yaml
+  bytes: 20129
+  sha256: 19b1c300e32e3bf65ab149e2c383a99d1f8f3c29367d6630b17c5354b4f35009
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-locale-symbols.yaml
+      sha256: 19b1c300e32e3bf65ab149e2c383a99d1f8f3c29367d6630b17c5354b4f35009
+  rows:
+  - number-formatter-locale-de-standard-defaults
+  - number-formatter-locale-fr-standard-defaults
+  - number-formatter-locale-unsupported-falls-back
+  - number-formatter-locale-de-explicit-separators
+  - number-formatter-string-format-alone
+  - number-formatter-string-format-with-options
+  - number-formatter-group-digits-and-decimal
+  - number-formatter-group-empty-disables-grouping
+- path: payloads/number-formatting-notation.yaml
+  bytes: 39014
+  sha256: 64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-notation.yaml
+      sha256: 64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290
+  rows:
+  - number-formatter-notation-e-custom-symbol-precision
+  - number-formatter-notation-scientific-exponent-plus
+  - number-formatter-notation-scientific-custom-times
+  - number-formatter-notation-engineering-precision
+  - number-formatter-notation-engineering-default
+  - number-formatter-notation-e-zero
+  - number-formatter-notation-scientific-zero
+  - number-formatter-notation-engineering-zero
+  - number-formatter-notation-e-digit-count-small
+  - number-formatter-notation-e-significant-large
+  - number-formatter-notation-e-significant-small
+  - number-formatter-notation-scientific-significant-small
+  - number-formatter-notation-engineering-significant
+  - number-formatter-notation-scientific-precision-groups
+  - number-formatter-notation-scientific-digit-count
+- path: payloads/number-formatting-precision.yaml
+  bytes: 20023
+  sha256: 1717f95bdd1fc626be1ff7a74217773bde5b2e48edc51c0af6c65185ff832a4d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-precision.yaml
+      sha256: 1717f95bdd1fc626be1ff7a74217773bde5b2e48edc51c0af6c65185ff832a4d
+  rows:
+  - number-formatter-precision-truncates-fraction
+  - number-formatter-precision-pads-zeros
+  - number-formatter-precision-zero
+  - number-formatter-precision-with-separators
+  - number-formatter-precision-wide-fraction-groups
+  - number-formatter-digit-count-pads-trailing-zeros
+  - number-formatter-digit-count-carries-into-new-digit
+  - number-formatter-digit-count-with-fraction-groups
+- path: payloads/number-formatting-sign-padding.yaml
+  bytes: 20735
+  sha256: 257aaede41bd9a3fa0b8b55f777486c07d7fbc982a1ac75297948e928cd857d7
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-sign-padding.yaml
+      sha256: 257aaede41bd9a3fa0b8b55f777486c07d7fbc982a1ac75297948e928cd857d7
+  rows:
+  - number-formatter-sign-plus-basic
+  - number-formatter-sign-plus-with-minus-operator
+  - number-formatter-sign-plus-e
+  - number-formatter-sign-plus-scientific
+  - number-formatter-sign-plus-engineering
+  - number-formatter-padding-digits-grouped
+  - number-formatter-padding-custom-character
+  - number-formatter-padding-group-digits
+- path: payloads/number-formatting-significant.yaml
+  bytes: 14902
+  sha256: 93d891ab63ed18bdafa663263fa0e925ea731e4667c3c8f8ac6c864c74c33d21
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting-significant.yaml
+      sha256: 93d891ab63ed18bdafa663263fa0e925ea731e4667c3c8f8ac6c864c74c33d21
+  rows:
+  - number-formatter-significant-rounds-integer
+  - number-formatter-significant-carry
+  - number-formatter-significant-below-one
+  - number-formatter-significant-groups-rounded-integer
+  - number-formatter-significant-fraction-groups
+  - number-formatter-significant-pads-small-value
+- path: payloads/number-formatting.yaml
+  bytes: 5483
+  sha256: 6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/number-formatting.yaml
+      sha256: 6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690
+  rows:
+  - number-formatter-de-style-grouping
+  - number-formatter-fraction-side-grouping
+- path: payloads/numbers.yaml
+  bytes: 10681
+  sha256: f6303f9334dc95e8de425cdf086b29f246336fd0840106e6ee3b2c4051481413
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/numbers.yaml
+      sha256: f6303f9334dc95e8de425cdf086b29f246336fd0840106e6ee3b2c4051481413
+  rows:
+  - number-integer
+  - number-decimal
+  - number-zero
+  - number-multi-digit
+  - number-decimal-long
+- path: payloads/operators.yaml
+  bytes: 15094
+  sha256: 639ef03b187cfbd86d648532c91929585407871779d00c4c5bdbe8ba5a41de05
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/operators.yaml
+      sha256: 639ef03b187cfbd86d648532c91929585407871779d00c4c5bdbe8ba5a41de05
+  rows:
+  - operator-plus
+  - operator-implicit-product
+  - operator-asterisk
+  - operator-minus
+  - operator-equals
+  - operator-plus-chain
+- path: payloads/partial-render.yaml
+  bytes: 3081
+  sha256: c92f82d70f654e5966facc6b79a4be165b591bf08eef1fc1bf6147521d071438
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/partial-render.yaml
+      sha256: c92f82d70f654e5966facc6b79a4be165b591bf08eef1fc1bf6147521d071438
+  rows:
+  - partial-sqrt-unclosed
+- path: payloads/permissive.yaml
+  bytes: 14912
+  sha256: 8b5f98576f1460a6c6e9e5c7b227e0c537b0a8f54538b77a81807b5df4c7b574
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/permissive.yaml
+      sha256: 8b5f98576f1460a6c6e9e5c7b227e0c537b0a8f54538b77a81807b5df4c7b574
+  rows:
+  - permissive-trailing-caret
+  - permissive-unclosed-paren
+  - permissive-unopened-paren
+  - permissive-closing-run
+  - permissive-bare-dollar
+  - permissive-frac-then-operator
+- path: payloads/powers.yaml
+  bytes: 26726
+  sha256: 2d6e159df8e3ef1d13256d1ef48f705400648d4dd6c4cef09737cab077f1d037
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/powers.yaml
+      sha256: 2d6e159df8e3ef1d13256d1ef48f705400648d4dd6c4cef09737cab077f1d037
+  rows:
+  - power-square
+  - power-fenced-exponent
+  - subscript-digit
+  - subscript-fenced
+  - power-and-subscript
+  - power-exponential
+  - power-of-two
+  - power-over-number
+- path: payloads/quoted-text.yaml
+  bytes: 6940
+  sha256: '0608f3ed65338cdf19e3d48c7be707ab733f5ab51c9b8c5eaa822f03e9b992e7'
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/quoted-text.yaml
+      sha256: '0608f3ed65338cdf19e3d48c7be707ab733f5ab51c9b8c5eaa822f03e9b992e7'
+  rows:
+  - text-function
+  - text-quoted
+  - text-unitsml-valid
+- path: payloads/rejections.yaml
+  bytes: 2171
+  sha256: a27245e780228e44b752b3310431cd8e9371b43f8c9a2c67fc1da7bcdca409ac
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/rejections.yaml
+      sha256: a27245e780228e44b752b3310431cd8e9371b43f8c9a2c67fc1da7bcdca409ac
+  rows:
+  - frac-trailing
+  - frac-leading
+  - frac-bare
+  - frac-trailing-space
+  - backtick-bare
+  - right-without-left
+  - right-unclosed
+  - left-right-curly
+  - left-right-vert
+  - frac-trailing-after-brace
+  - frac-trailing-after-braces
+  - frac-trailing-after-parens
+  - frac-trailing-after-both
+- path: payloads/roots.yaml
+  bytes: 16433
+  sha256: 46d1740c82ab63a9e5bb884609e08be157d3eec29afb965de84baeeb652f5994
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/roots.yaml
+      sha256: 46d1740c82ab63a9e5bb884609e08be157d3eec29afb965de84baeeb652f5994
+  rows:
+  - root-sqrt-number
+  - root-sqrt-expression
+  - root-sqrt-pythagoras
+  - root-cube
+- path: payloads/symbols.yaml
+  bytes: 14875
+  sha256: 6fa6f1a61e920ec37f4d6ef217c9e5cd801e111d16ae77422db86b3ba241f322
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/symbols.yaml
+      sha256: 6fa6f1a61e920ec37f4d6ef217c9e5cd801e111d16ae77422db86b3ba241f322
+  rows:
+  - symbol-latin-x
+  - symbol-greek-alpha
+  - symbol-greek-pi
+  - symbol-greek-sigma
+  - symbol-infinity
+  - symbol-adjacent-letters
+  - symbol-spaced-letters
+- path: payloads/unary-functions.yaml
+  bytes: 22370
+  sha256: 4bd3d4441d72624be02b26e7b66065e612516b948741e250e0fc999f9fe42029
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/unary-functions.yaml
+      sha256: 4bd3d4441d72624be02b26e7b66065e612516b948741e250e0fc999f9fe42029
+  rows:
+  - unary-sin-fenced
+  - unary-sin-bare
+  - unary-cos-product
+  - unary-abs
+  - unary-hat
+  - unary-bar
+  - unary-vec
+- path: payloads/uncertainty-shared-exponent.yaml
+  bytes: 11404
+  sha256: a743446d09779e7d47fe3eee415d7be5bc403574c6634b70daa54ace5e2fa1ed
+  producer: amath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - uncertainty-shared-exponent.standard.positive
+  - uncertainty-shared-exponent.standard.negative
+  - uncertainty-shared-exponent.standard.leading_zeroes
+  - uncertainty-shared-exponent.standard.zero_exponent
+  - uncertainty-shared-exponent.concise.negative_exponent
+  - uncertainty-shared-exponent.concise.zero_exponent
+  - uncertainty-shared-exponent.concise.unit
+  - uncertainty-shared-exponent.expanded.dimensionless_fields
+  - uncertainty-shared-exponent.expanded.negative_exponent
+  - uncertainty-shared-exponent.interval.shared_exponent
+- path: payloads/unitsml-xml.yaml
+  bytes: 4889
+  sha256: 1fd6d3a51d7502e828459b3fffea72f6fb39c692b35d0767920a63c51cdef188
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/unitsml-xml.yaml
+      sha256: 1fd6d3a51d7502e828459b3fffea72f6fb39c692b35d0767920a63c51cdef188
+  rows:
+  - unitsml-xml-microfarad
+  - unitsml-xml-microhenry
+- path: payloads/whitespace.yaml
+  bytes: 14036
+  sha256: 01ae9c99daea7ba0b2d9385b76b1ccf4ec6145ee1211aaf4b5df29e55f4074db
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/asciimath/whitespace.yaml
+      sha256: 01ae9c99daea7ba0b2d9385b76b1ccf4ec6145ee1211aaf4b5df29e55f4074db
+  rows:
+  - whitespace-around-operator
+  - whitespace-between-letters
+  - whitespace-in-subscript
+  - whitespace-surrounding
+  - whitespace-inside-fence

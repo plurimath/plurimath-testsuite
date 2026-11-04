@@ -1,0 +1,93 @@
+# LaTeX typed-model stage cases: model-symbols.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-symbols
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of symbols.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-symbol-greek-alpha.model
+  input:
+    str: "\\alpha"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\alpha"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: alpha
+      - - decimal
+        - str: "."
+- id: latex-symbol-infinity.model
+  input:
+    str: "\\infty"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\infty"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: infty
+      - - decimal
+        - str: "."
+- id: latex-symbol-greek-pi.model
+  input:
+    str: "\\pi"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\pi"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: pi
+      - - decimal
+        - str: "."
+- id: latex-symbol-empty-set.model
+  input:
+    str: "\\emptyset"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\emptyset"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: emptyset
+      - - decimal
+        - str: "."

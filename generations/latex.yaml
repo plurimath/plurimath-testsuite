@@ -28,3 +28,14 @@ entries:
     Add latexmath's raw-tree rows for every generation 1 case (139 rows, rejections included), generated
     by latexmath scripts/stage_cases.rb at 27e300a433742765486e3bead2fac19ee8fd55a0; every generation
     1 payload is kept byte for byte.
+- generation: 3
+  path: stages/latex/generations/000003
+  snapshot_digest: sha256:782cb6ee7c75ec1e38ed343301c2220ad14c283b96e5cf9eac2a4ff39b1aeceb
+  payloads: 57
+  rows: 417
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Adds typed-model expectations beside the raw-tree rows, for model-level
+    parity (plurimath#531) and multi-target replay (plurimath#539).

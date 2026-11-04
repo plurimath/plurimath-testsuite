@@ -1,0 +1,287 @@
+# LaTeX raw-tree stage cases: raw-matrices.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-matrices
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of matrices.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-matrix-plain.raw
+  input:
+    str: "\\begin{matrix} a & b \\end{matrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{matrix}a&b\\end{matrix}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: matrix
+              byte_offset: 7
+              char_offset: 7
+          - - sym: table_data
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 14
+                      char_offset: 14
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: operant
+                        - slice: "&"
+                          byte_offset: 15
+                          char_offset: 15
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 16
+                          char_offset: 16
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: matrix
+                  byte_offset: 22
+                  char_offset: 22
+- id: latex-matrix-parens.raw
+  input:
+    str: "\\begin{pmatrix} a \\\\ b \\end{pmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{pmatrix}a\\\\b\\end{pmatrix}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: pmatrix
+              byte_offset: 7
+              char_offset: 7
+          - - sym: table_data
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 15
+                      char_offset: 15
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - str: "\\\\"
+                        - slice: "\\\\"
+                          byte_offset: 16
+                          char_offset: 16
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 18
+                          char_offset: 18
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: pmatrix
+                  byte_offset: 24
+                  char_offset: 24
+- id: latex-matrix-brackets.raw
+  input:
+    str: "\\begin{bmatrix} a \\end{bmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{bmatrix}a\\end{bmatrix}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: bmatrix
+              byte_offset: 7
+              char_offset: 7
+          - - sym: table_data
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 15
+                  char_offset: 15
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: bmatrix
+                  byte_offset: 21
+                  char_offset: 21
+- id: latex-matrix-bars.raw
+  input:
+    str: "\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: vmatrix
+              byte_offset: 7
+              char_offset: 7
+          - - sym: table_data
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 15
+                      char_offset: 15
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: operant
+                        - slice: "&"
+                          byte_offset: 16
+                          char_offset: 16
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: symbols
+                            - slice: b
+                              byte_offset: 17
+                              char_offset: 17
+                      - - sym: expression
+                        - hash:
+                          - - sym: sequence
+                            - hash:
+                              - - str: "\\\\"
+                                - slice: "\\\\"
+                                  byte_offset: 18
+                                  char_offset: 18
+                          - - sym: expression
+                            - hash:
+                              - - sym: sequence
+                                - hash:
+                                  - - sym: symbols
+                                    - slice: c
+                                      byte_offset: 20
+                                      char_offset: 20
+                              - - sym: expression
+                                - hash:
+                                  - - sym: sequence
+                                    - hash:
+                                      - - sym: operant
+                                        - slice: "&"
+                                          byte_offset: 21
+                                          char_offset: 21
+                                  - - sym: expression
+                                    - hash:
+                                      - - sym: symbols
+                                        - slice: d
+                                          byte_offset: 22
+                                          char_offset: 22
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: vmatrix
+                  byte_offset: 28
+                  char_offset: 28
+- id: latex-matrix-braces.raw
+  input:
+    str: "\\begin{Bmatrix} a \\end{Bmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{Bmatrix}a\\end{Bmatrix}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: Bmatrix
+              byte_offset: 7
+              char_offset: 7
+          - - sym: table_data
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 15
+                  char_offset: 15
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: Bmatrix
+                  byte_offset: 21
+                  char_offset: 21
+- id: latex-matrix-array.raw
+  input:
+    str: "\\begin{array}{cc} a & b \\end{array}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{array}{cc}a&b\\end{array}"
+    tree:
+      hash:
+      - - sym: environment
+        - hash:
+          - - sym: environment
+            - slice: array
+              byte_offset: 7
+              char_offset: 7
+          - - sym: args
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: c
+                      byte_offset: 14
+                      char_offset: 14
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: c
+                      byte_offset: 15
+                      char_offset: 15
+          - - sym: table_data
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 17
+                      char_offset: 17
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: operant
+                        - slice: "&"
+                          byte_offset: 18
+                          char_offset: 18
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 19
+                          char_offset: 19
+          - - sym: ending
+            - hash:
+              - - sym: environment
+                - slice: array
+                  byte_offset: 25
+                  char_offset: 25

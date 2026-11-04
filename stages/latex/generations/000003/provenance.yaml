@@ -1,0 +1,1443 @@
+# Generation 3 of the latex stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: latex
+generation: 3
+notes: Typed-model rows from latexmath Latexmath.parse at 222d54a (LML export sha256:312b1de9…),
+  generated in CI run 41809417988.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+  latexmath-raw:
+    kind: stage-gem
+    repository: https://github.com/plurimath/latexmath
+    commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+    version: 0.1.5
+    generator:
+      repository: https://github.com/plurimath/latexmath
+      commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+      path: scripts/stage_cases.rb
+      sha256: e2d1da592012c6407b8059858a92fa53ef73f532d617d8be79a66248ae836b84
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/accents.yaml
+      sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/colour.yaml
+      sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/fences.yaml
+      sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/fonts.yaml
+      sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/frac.yaml
+      sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/left-right.yaml
+      sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/matrices.yaml
+      sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/mod.yaml
+      sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/nary.yaml
+      sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/numbers.yaml
+      sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/operators.yaml
+      sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/over-under.yaml
+      sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/powers.yaml
+      sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/quoted-text.yaml
+      sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/rejections.yaml
+      sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/roots.yaml
+      sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/symbols.yaml
+      sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/unary-functions.yaml
+      sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/whitespace.yaml
+      sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        sha256: 6a37064035f1dec83eb9d86f2b1ff5ee60a26cceae8b0f6c7259509c3d1a0cea
+        bundler: 4.0.3
+        resolved:
+          ast: 2.4.3
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          byebug: 13.0.0
+          coderay: 1.1.3
+          diff-lcs: 1.6.2
+          equivalent-xml: 0.6.0
+          execjs: 2.10.2
+          htmlentities: 4.4.2
+          io-console: 0.9.5
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          latexmath: 0.1.5
+          lint_roller: 1.1.0
+          method_source: 1.1.0
+          nokogiri: 1.19.7
+          opal: 1.1.1
+          ox: 2.14.29
+          parallel: 2.3.0
+          parsanol: 1.3.131
+          parser: 3.3.13.0
+          prism: 1.9.0
+          pry: 0.16.1
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          regexp_parser: 2.13.1
+          reline: 0.7.0
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          ruby-progressbar: 1.13.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+      dependencies:
+        htmlentities: 4.4.2
+        ox: 2.14.29
+        parsanol: 1.3.131
+      compiler:
+        name: parsanol
+        version: 1.3.131
+        edition: '2'
+        artifact_checksum: sha256:510505f9be65962e41eb896ffb63841649f66015bcd5c8a83d19c09c33d42b2f
+        source_hash: sha256:950ff95cb34b5ecee30f1d5ee577a240419b25de273e502240335419f07d2d42
+        unicode_tables: onigmo (Ruby 4.0.1)
+        artifact:
+          repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.json
+          sha256: 0a18546a9a78010b65d785a14c879606f941ffcc8bbb96ad4ab5df319eb7c341
+        checksums:
+          repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.checksums.txt
+          sha256: 7588e6f577e5628d6a98f2380490167de83c18702c8cbb9439bf8813178b7dab
+      binding:
+        binding_version: 1
+        artifacts:
+        - repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.bindings.ruby.json
+          sha256: 599fa265f2843080fa6f8cd612ad6649aad12d4b8bfc3cbb7c286301fbb92767
+          target: ruby
+          checksum: sha256:cd30801049b9d1284af99f4db1d43899b6372fac119a2bb9faafea680dd8ee76
+        - repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.bindings.rs.json
+          sha256: 2417ccc708b704dbf985ed0e8d91077283c244290ad97f78e32148311c8bdf06
+          target: rs
+          checksum: sha256:191f989f686ff1b826fa8836d06354b68b28f7a79e72222129352ce05ab84874
+        - repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.bindings.ts.json
+          sha256: f6582a9a9016b883b8206a6f6256dfa1862d4b544770be950158c68f9b125d44
+          target: ts
+          checksum: sha256:0965848b004810c5e1e90c7fe8a84fe0bf2806c6f8047643fa3eaf5aa28e894e
+        - repository: https://github.com/plurimath/latexmath
+          commit: 27e300a433742765486e3bead2fac19ee8fd55a0
+          path: artifacts/latex.bindings.python.json
+          sha256: 00df4279b16a3d9816e90e9141af1b5ea1b9ff5789951e547fd9a85282187243
+          target: python
+          checksum: sha256:9dc610c8151fa603595f25d19e9794a6a025edbac2c03ea680fcfdf3144beace
+      lml: 
+    semantic_boundary: raw-tree
+    configuration:
+      parser: Latexmath::RawParser.parse
+      decimal: "."
+      engines:
+      - ruby
+      - native
+      engine_agreement: required
+      source_generation:
+        language: latex
+        generation: 1
+        snapshot_digest: sha256:9b362ce57706c5ca154bfc295b2037b9e626775d8a82a4557f3702c9ad2c74ba
+  latexmath-model:
+    kind: stage-gem
+    repository: https://github.com/plurimath/latexmath
+    commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+    version: 0.1.5
+    generator:
+      repository: https://github.com/plurimath/latexmath
+      commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+      path: scripts/stage_cases.rb
+      sha256: 05cfe4948e7a4ed0cea8ca306913d7c3a51142b309d2fca67c07ec3cbaa76032
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/accents.yaml
+      sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/colour.yaml
+      sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/fences.yaml
+      sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/fonts.yaml
+      sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/frac.yaml
+      sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/left-right.yaml
+      sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/matrices.yaml
+      sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/mod.yaml
+      sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/nary.yaml
+      sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/numbers.yaml
+      sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/operators.yaml
+      sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/over-under.yaml
+      sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/powers.yaml
+      sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/quoted-text.yaml
+      sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/rejections.yaml
+      sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/roots.yaml
+      sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/symbols.yaml
+      sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/unary-functions.yaml
+      sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 6f8bc12602e6016290179f0939b6afd518ef44df
+      path: stages/latex/generations/000001/payloads/whitespace.yaml
+      sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        sha256: 43f00b8f2c973ee72ac1d5741f9dfaaf529a986cfec0b3107f9059e8992189fc
+        bundler: 4.0.3
+        resolved:
+          ast: 2.4.3
+          base64: 0.3.0
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          byebug: 13.0.0
+          canon: 0.3.123
+          coderay: 1.1.3
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          equivalent-xml: 0.6.0
+          execjs: 2.10.2
+          ffi: 1.17.4
+          htmlentities: 4.4.2
+          io-console: 0.9.5
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          latexmath: 0.1.5
+          leptris: 1.9.406.1
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          lutaml-model: 0.8.164
+          memo_wise: 1.13.0
+          method_source: 1.1.0
+          moxml: 0.6.2
+          nokogiri: 1.19.7
+          opal: 1.1.1
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.3.0
+          parsanol: 1.3.132
+          parser: 3.3.13.0
+          prism: 1.9.0
+          pry: 0.16.1
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          regexp_parser: 2.13.1
+          reline: 0.7.0
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          strscan: 3.1.8
+          table_tennis: 1.0.0
+          thor: 1.5.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          yeptris: 0.6.60.1
+      dependencies:
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.164
+        ox: 2.14.29
+        parsanol: 1.3.132
+      compiler:
+        name: parsanol
+        version: 1.3.132
+        edition: '2'
+        artifact_checksum: sha256:5639a6ca46058450f500d340649c95510b2a880ce0e4ce1a8d50e95eabad465f
+        source_hash: sha256:f0694ce57b0f3e99e536b3749eb6b9c56570e4311b1d7aca0047c9e25a668cbf
+        unicode_tables: onigmo (Ruby 4.0.1)
+        artifact:
+          repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.json
+          sha256: f1f2e5d8328be8686b2c85907d23327a5081de0fa765c1b04b5de2a20d96f84b
+        checksums:
+          repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.checksums.txt
+          sha256: 73b4bcdd9fcc33b584947c417d5e9c1e8b0503903827187a843cadfb9030e561
+      binding:
+        binding_version: 1
+        artifacts:
+        - repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.bindings.ruby.json
+          sha256: 6aec2810d9d52ea12bd1f65a8bc06c3074a866257f6a0fdd10948a8927f3720b
+          target: ruby
+          checksum: sha256:35d47a16342a91651ca9be16bb0436f02c8b4528afd0a3757b415366f29a6b3f
+        - repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.bindings.rs.json
+          sha256: 55c9e24177b459a313b8990bba111b7769875a02cc9476909f1383da66e3bcc5
+          target: rs
+          checksum: sha256:7140c6478d723a74e8363ed1fb64619072cb94e1fee27ae999d4095d0094bacc
+        - repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.bindings.ts.json
+          sha256: 94184309e07268d41cafae75b700ebad7f61d16ef83f3aac4b0f775961916441
+          target: ts
+          checksum: sha256:ecff4bfe9a7c8eed7b9df7ca833ecec5ff6425b837278de96a88374b4d654b78
+        - repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: artifacts/latex.bindings.python.json
+          sha256: cbdff4ef98335a187bd4a1d3dda2d34af61cfb5d3d0b6c411385ccb3987f0ef8
+          target: python
+          checksum: sha256:74c9d54e22cb43fb1667bab1a6f1c3fecf177cf998756902355bd946f4142380
+      lml:
+        format: latexmath-lml/1
+        root: Latexmath::Model::Document
+        checksum: sha256:312b1de981c4aa6435fba996c4fc34d34f401e36742a6cdc1c4e9f1cf1f20d60
+        models: 33
+        export:
+          repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: model/latex.lml.json
+          sha256: 312b1de981c4aa6435fba996c4fc34d34f401e36742a6cdc1c4e9f1cf1f20d60
+        checksums:
+          repository: https://github.com/plurimath/latexmath
+          commit: 222d54a86ba057efa611e740c48aebb2dd6b2baf
+          path: model/latex.lml.checksums.txt
+          sha256: 4e75ed5543ff40fe0ecc83b5fbebdd662821067a43fb97f2b5ea27367d9e1d7e
+    semantic_boundary: typed-model
+    configuration:
+      parser: Latexmath.parse
+      decimal: "."
+      engines:
+      - ruby
+      - native
+      engine_agreement: required
+      source_generation:
+        language: latex
+        generation: 1
+        snapshot_digest: sha256:9b362ce57706c5ca154bfc295b2037b9e626775d8a82a4557f3702c9ad2c74ba
+payloads:
+- path: payloads/accents.yaml
+  bytes: 34510
+  sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/accents.yaml
+      sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
+  rows:
+  - latex-accent-hat
+  - latex-accent-hat-multi
+  - latex-accent-vec
+  - latex-accent-vec-multi
+  - latex-accent-bar
+  - latex-accent-dot
+  - latex-accent-ddot
+  - latex-accent-tilde
+  - latex-accent-acute
+  - latex-accent-grave
+  - latex-accent-check
+  - latex-accent-breve
+  - latex-accent-mathring
+- path: payloads/colour.yaml
+  bytes: 9321
+  sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/colour.yaml
+      sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
+  rows:
+  - latex-colour-named
+  - latex-colour-in-sum
+  - latex-colour-over-frac
+- path: payloads/fences.yaml
+  bytes: 14326
+  sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/fences.yaml
+      sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
+  rows:
+  - latex-fence-round
+  - latex-fence-square
+  - latex-fence-curly-escaped
+  - latex-fence-angle
+  - latex-fence-ceiling
+- path: payloads/fonts.yaml
+  bytes: 25415
+  sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/fonts.yaml
+      sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
+  rows:
+  - latex-font-blackboard
+  - latex-font-bold
+  - latex-font-roman-text
+  - latex-font-script
+  - latex-font-fraktur
+  - latex-font-sans-serif
+  - latex-font-typewriter
+  - latex-font-roman
+  - latex-font-italic
+  - latex-font-mixed
+- path: payloads/frac.yaml
+  bytes: 23143
+  sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/frac.yaml
+      sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
+  rows:
+  - latex-frac-simple
+  - latex-frac-nested
+  - latex-frac-sum-numerator
+  - latex-frac-sum-denominator
+  - latex-frac-sum-of-fracs
+  - latex-frac-root-denominator
+- path: payloads/left-right.yaml
+  bytes: 18000
+  sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/left-right.yaml
+      sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
+  rows:
+  - latex-left-right-round
+  - latex-left-right-square
+  - latex-left-right-curly
+  - latex-left-right-bar
+  - latex-left-right-round-sum
+  - latex-left-right-around-frac
+- path: payloads/matrices.yaml
+  bytes: 26180
+  sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/matrices.yaml
+      sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
+  rows:
+  - latex-matrix-plain
+  - latex-matrix-parens
+  - latex-matrix-brackets
+  - latex-matrix-bars
+  - latex-matrix-braces
+  - latex-matrix-array
+- path: payloads/mod.yaml
+  bytes: 14745
+  sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/mod.yaml
+      sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
+  rows:
+  - latex-mod-infix
+  - latex-mod-bmod
+  - latex-mod-pmod
+  - latex-mod-numeric
+  - latex-mod-fenced-left
+- path: payloads/model-accents.yaml
+  bytes: 13815
+  sha256: 38e61880fbe2d5e3e465a79ccac98e1ae20ad5e7d9487e1c9c571d19f2ab9815
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-accent-hat.model
+  - latex-accent-hat-multi.model
+  - latex-accent-vec.model
+  - latex-accent-vec-multi.model
+  - latex-accent-bar.model
+  - latex-accent-dot.model
+  - latex-accent-ddot.model
+  - latex-accent-tilde.model
+  - latex-accent-acute.model
+  - latex-accent-grave.model
+  - latex-accent-check.model
+  - latex-accent-breve.model
+  - latex-accent-mathring.model
+- path: payloads/model-colour.yaml
+  bytes: 5157
+  sha256: ffe955d01e7d6ed2b1eba312afe16011894c0977d74c50c30231eb3754f29fd3
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-colour-named.model
+  - latex-colour-in-sum.model
+  - latex-colour-over-frac.model
+- path: payloads/model-fences.yaml
+  bytes: 5930
+  sha256: 62270a07838a00ecafedc55a036896f16ba5dcffd61d1b7001d46dad43247d7d
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-fence-round.model
+  - latex-fence-square.model
+  - latex-fence-curly-escaped.model
+  - latex-fence-angle.model
+  - latex-fence-ceiling.model
+- path: payloads/model-fonts.yaml
+  bytes: 10403
+  sha256: eb90f057f36f8e7abcc7a7bac206992b2c9649fe2f2afa5359cc2a61355b2acf
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-font-blackboard.model
+  - latex-font-bold.model
+  - latex-font-roman-text.model
+  - latex-font-script.model
+  - latex-font-fraktur.model
+  - latex-font-sans-serif.model
+  - latex-font-typewriter.model
+  - latex-font-roman.model
+  - latex-font-italic.model
+  - latex-font-mixed.model
+- path: payloads/model-frac.yaml
+  bytes: 13274
+  sha256: a97c1454293405598d89adeb68d9a076acdff541a5519634344e81ff1aa37e19
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-frac-simple.model
+  - latex-frac-nested.model
+  - latex-frac-sum-numerator.model
+  - latex-frac-sum-denominator.model
+  - latex-frac-sum-of-fracs.model
+  - latex-frac-root-denominator.model
+- path: payloads/model-left-right.yaml
+  bytes: 9737
+  sha256: bdb6a075cdf9299c656e7ea4231ef61a29d8139f35f931d40d993352d9a61571
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-left-right-round.model
+  - latex-left-right-square.model
+  - latex-left-right-curly.model
+  - latex-left-right-bar.model
+  - latex-left-right-round-sum.model
+  - latex-left-right-around-frac.model
+- path: payloads/model-matrices.yaml
+  bytes: 14135
+  sha256: 83e921ab3db7c4d839cc8ad0a9b6ef0e2532af6b9bbb652a329cd09788ad62b4
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-matrix-plain.model
+  - latex-matrix-parens.model
+  - latex-matrix-brackets.model
+  - latex-matrix-bars.model
+  - latex-matrix-braces.model
+  - latex-matrix-array.model
+- path: payloads/model-mod.yaml
+  bytes: 8111
+  sha256: 103c57d8e0b816da25bda116a6f753b2345716e39db7e5dcb13b3a6524faeb82
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-mod-infix.model
+  - latex-mod-bmod.model
+  - latex-mod-pmod.model
+  - latex-mod-numeric.model
+  - latex-mod-fenced-left.model
+- path: payloads/model-nary.yaml
+  bytes: 27326
+  sha256: 8ec7852a5929eba586fa6092a438d66bb480f657f55289a10b6ad872de74c1f6
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-nary-sum-bounded.model
+  - latex-nary-sum-of-squares.model
+  - latex-nary-sum-bare.model
+  - latex-nary-int-bounded.model
+  - latex-nary-int-definite.model
+  - latex-nary-prod-subscript.model
+  - latex-nary-prod-bounded.model
+  - latex-nary-oint-subscript.model
+  - latex-nary-lim-to-infinity.model
+  - latex-nary-bigcup-subscript.model
+  - latex-nary-bigcap-subscript.model
+  - latex-nary-coprod-subscript.model
+  - latex-nary-iint-bare.model
+  - latex-nary-bigoplus-subscript.model
+- path: payloads/model-numbers.yaml
+  bytes: 3697
+  sha256: 0b8f20ed996ea6828e2c3cbe3d54cff5628fa3d12764fbad5f15dfe926159d07
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-number-integer.model
+  - latex-number-decimal.model
+  - latex-number-decimal-comma.model
+  - latex-number-negative.model
+  - latex-number-braced-exponent.model
+- path: payloads/model-operators.yaml
+  bytes: 6750
+  sha256: 888e9fdb8e181362a7d9870ac32d01024f6bbc7ac3f69fe8a7865d9911277f55
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-operator-plus.model
+  - latex-operator-times.model
+  - latex-operator-leq.model
+  - latex-operator-equiv.model
+  - latex-operator-plus-minus.model
+- path: payloads/model-over-under.yaml
+  bytes: 17592
+  sha256: 2bea5530adbd23b731494491f2252f259d1e69c709d614c0528ebbf99dd0427c
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-over-under-overline.model
+  - latex-over-under-overline-sum.model
+  - latex-over-under-overline-nested.model
+  - latex-over-under-underbrace.model
+  - latex-over-under-underbrace-sum.model
+  - latex-over-under-underbrace-labelled.model
+  - latex-over-under-overset.model
+  - latex-over-under-underset.model
+  - latex-over-under-stackrel.model
+  - latex-over-under-underline.model
+  - latex-over-under-overparen.model
+- path: payloads/model-powers.yaml
+  bytes: 9066
+  sha256: ffb7d23028b896ecf23509d4e5fff0f6a2d1c4ff6ac0ba83ab05babb3d304c59
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-power-square.model
+  - latex-power-nested.model
+  - latex-power-braced-exponent.model
+  - latex-power-exponential.model
+  - latex-subscript-letter.model
+  - latex-subscript-braced.model
+  - latex-subscript-and-power.model
+- path: payloads/model-quoted-text.yaml
+  bytes: 2723
+  sha256: 9a3539bfedd1772b10d8f53b3b41eac9173846110693cb0eb066134fd4e45f20
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-text-command.model
+  - latex-text-spaced.model
+  - latex-text-mbox.model
+  - latex-text-mbox-spaced.model
+- path: payloads/model-rejections.yaml
+  bytes: 2983
+  sha256: fe991ca7dd412f002f22eead2b650c049f7b81936034a39174aaf1507e2f029a
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-unclosed-brace.model
+  - latex-stray-close-brace.model
+  - latex-unknown-command.model
+  - latex-frac-no-args.model
+  - latex-frac-one-arg.model
+  - latex-right-without-left.model
+  - latex-begin-without-end.model
+  - latex-end-without-begin.model
+  - latex-whitespace-only.model
+  - latex-lone-backslash.model
+  - latex-unclosed-text.model
+  - latex-nested-unclosed.model
+  - latex-command-bad-chars.model
+  - latex-tilde.model
+- path: payloads/model-roots.yaml
+  bytes: 10536
+  sha256: 53614a387348aa1286921947abf8488cd82fda639e66f55c8dc0c0238675fb11
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-root-sqrt-number.model
+  - latex-root-sqrt-sum.model
+  - latex-root-sqrt-pythagoras.model
+  - latex-root-sqrt-frac.model
+  - latex-root-cube.model
+  - latex-root-nth-symbolic.model
+- path: payloads/model-symbols.yaml
+  bytes: 2484
+  sha256: a178d47777e0598f920f7239e4185131d33f653650009919993ca7fa801d1e54
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-symbol-greek-alpha.model
+  - latex-symbol-infinity.model
+  - latex-symbol-greek-pi.model
+  - latex-symbol-empty-set.model
+- path: payloads/model-unary-functions.yaml
+  bytes: 11211
+  sha256: ae7f392b0d0b4ac5a1222df0a24f902f447e80ab845266e30421fbbba0c91306
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-unary-sin-bare.model
+  - latex-unary-sin-fenced.model
+  - latex-unary-cos-product.model
+  - latex-unary-log-bare.model
+  - latex-unary-ln-bare.model
+  - latex-unary-lim-bare.model
+  - latex-unary-det.model
+  - latex-unary-max.model
+  - latex-unary-gcd-fenced.model
+- path: payloads/model-whitespace.yaml
+  bytes: 9026
+  sha256: e6edd36ff4a0953bf86fa147b6e65a52e41c526dcada927cc94a16b3cc291bc2
+  producer: latexmath-model
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-whitespace-quad.model
+  - latex-whitespace-two-quads.model
+  - latex-comma-from-thin-space.model
+  - latex-whitespace-medium.model
+  - latex-whitespace-thick.model
+  - latex-whitespace-qquad.model
+- path: payloads/nary.yaml
+  bytes: 53176
+  sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/nary.yaml
+      sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
+  rows:
+  - latex-nary-sum-bounded
+  - latex-nary-sum-of-squares
+  - latex-nary-sum-bare
+  - latex-nary-int-bounded
+  - latex-nary-int-definite
+  - latex-nary-prod-subscript
+  - latex-nary-prod-bounded
+  - latex-nary-oint-subscript
+  - latex-nary-lim-to-infinity
+  - latex-nary-bigcup-subscript
+  - latex-nary-bigcap-subscript
+  - latex-nary-coprod-subscript
+  - latex-nary-iint-bare
+  - latex-nary-bigoplus-subscript
+- path: payloads/numbers.yaml
+  bytes: 12174
+  sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/numbers.yaml
+      sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
+  rows:
+  - latex-number-integer
+  - latex-number-decimal
+  - latex-number-decimal-comma
+  - latex-number-negative
+  - latex-number-braced-exponent
+- path: payloads/operators.yaml
+  bytes: 12289
+  sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/operators.yaml
+      sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
+  rows:
+  - latex-operator-plus
+  - latex-operator-times
+  - latex-operator-leq
+  - latex-operator-equiv
+  - latex-operator-plus-minus
+- path: payloads/over-under.yaml
+  bytes: 35399
+  sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/over-under.yaml
+      sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
+  rows:
+  - latex-over-under-overline
+  - latex-over-under-overline-sum
+  - latex-over-under-overline-nested
+  - latex-over-under-underbrace
+  - latex-over-under-underbrace-sum
+  - latex-over-under-underbrace-labelled
+  - latex-over-under-overset
+  - latex-over-under-underset
+  - latex-over-under-stackrel
+  - latex-over-under-underline
+  - latex-over-under-overparen
+- path: payloads/powers.yaml
+  bytes: 22608
+  sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/powers.yaml
+      sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
+  rows:
+  - latex-power-square
+  - latex-power-nested
+  - latex-power-braced-exponent
+  - latex-power-exponential
+  - latex-subscript-letter
+  - latex-subscript-braced
+  - latex-subscript-and-power
+- path: payloads/quoted-text.yaml
+  bytes: 8700
+  sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/quoted-text.yaml
+      sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
+  rows:
+  - latex-text-command
+  - latex-text-spaced
+  - latex-text-mbox
+  - latex-text-mbox-spaced
+- path: payloads/raw-accents.yaml
+  bytes: 8250
+  sha256: ccd5eb8ac834588dce15f933f07c2c6f4a7dbe761fa5453c6d1186bdc00cb2f3
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-accent-hat.raw
+  - latex-accent-hat-multi.raw
+  - latex-accent-vec.raw
+  - latex-accent-vec-multi.raw
+  - latex-accent-bar.raw
+  - latex-accent-dot.raw
+  - latex-accent-ddot.raw
+  - latex-accent-tilde.raw
+  - latex-accent-acute.raw
+  - latex-accent-grave.raw
+  - latex-accent-check.raw
+  - latex-accent-breve.raw
+  - latex-accent-mathring.raw
+- path: payloads/raw-colour.yaml
+  bytes: 3342
+  sha256: 4c554eebd8bca7dbc5a3da49bb6ebc68466bed4a5ab47aff19b9fe4deb64f6e6
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-colour-named.raw
+  - latex-colour-in-sum.raw
+  - latex-colour-over-frac.raw
+- path: payloads/raw-fences.yaml
+  bytes: 4156
+  sha256: ea534949d03583f2c220866d485f6219cd91cd3ac582ea9dd603e49c849c001d
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-fence-round.raw
+  - latex-fence-square.raw
+  - latex-fence-curly-escaped.raw
+  - latex-fence-angle.raw
+  - latex-fence-ceiling.raw
+- path: payloads/raw-fonts.yaml
+  bytes: 6659
+  sha256: c26f47ce2f466031a199844ac17f3860b1245a93c14ec7d11991e912d7a4bcb4
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-font-blackboard.raw
+  - latex-font-bold.raw
+  - latex-font-roman-text.raw
+  - latex-font-script.raw
+  - latex-font-fraktur.raw
+  - latex-font-sans-serif.raw
+  - latex-font-typewriter.raw
+  - latex-font-roman.raw
+  - latex-font-italic.raw
+  - latex-font-mixed.raw
+- path: payloads/raw-frac.yaml
+  bytes: 9154
+  sha256: 8f88c29fec2500d51fe4d434d772bae0b9115a4cc56e18f3e48e45cfdaa023e6
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-frac-simple.raw
+  - latex-frac-nested.raw
+  - latex-frac-sum-numerator.raw
+  - latex-frac-sum-denominator.raw
+  - latex-frac-sum-of-fracs.raw
+  - latex-frac-root-denominator.raw
+- path: payloads/raw-left-right.yaml
+  bytes: 6899
+  sha256: aa85d72686663eb1b63642a0b5754f3b6e23a1de92ca9416ce5dc9a3bd03fff8
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-left-right-round.raw
+  - latex-left-right-square.raw
+  - latex-left-right-curly.raw
+  - latex-left-right-bar.raw
+  - latex-left-right-round-sum.raw
+  - latex-left-right-around-frac.raw
+- path: payloads/raw-matrices.yaml
+  bytes: 9149
+  sha256: 89735b432ffbfec9c257efd61449fc951276ae6f779aa843599573883285d3aa
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-matrix-plain.raw
+  - latex-matrix-parens.raw
+  - latex-matrix-brackets.raw
+  - latex-matrix-bars.raw
+  - latex-matrix-braces.raw
+  - latex-matrix-array.raw
+- path: payloads/raw-mod.yaml
+  bytes: 5114
+  sha256: b975b9ce448413206c9719655ed7c6ce59d5314f03d293bc305e1d41537ad2bb
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-mod-infix.raw
+  - latex-mod-bmod.raw
+  - latex-mod-pmod.raw
+  - latex-mod-numeric.raw
+  - latex-mod-fenced-left.raw
+- path: payloads/raw-nary.yaml
+  bytes: 17637
+  sha256: 4b18ff012741fb799aa81e1b761d9c75224dcfa4488e009002075cef85d1e53a
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-nary-sum-bounded.raw
+  - latex-nary-sum-of-squares.raw
+  - latex-nary-sum-bare.raw
+  - latex-nary-int-bounded.raw
+  - latex-nary-int-definite.raw
+  - latex-nary-prod-subscript.raw
+  - latex-nary-prod-bounded.raw
+  - latex-nary-oint-subscript.raw
+  - latex-nary-lim-to-infinity.raw
+  - latex-nary-bigcup-subscript.raw
+  - latex-nary-bigcap-subscript.raw
+  - latex-nary-coprod-subscript.raw
+  - latex-nary-iint-bare.raw
+  - latex-nary-bigoplus-subscript.raw
+- path: payloads/raw-numbers.yaml
+  bytes: 2719
+  sha256: 0f1ffdf8f24df26e16cb16a04f0afa2d77caeb0f7a2b5cf72f38a420c88119ea
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-number-integer.raw
+  - latex-number-decimal.raw
+  - latex-number-decimal-comma.raw
+  - latex-number-negative.raw
+  - latex-number-braced-exponent.raw
+- path: payloads/raw-operators.yaml
+  bytes: 3922
+  sha256: 1801897a92cee82ca64e93d67a1e60b2f06d59457aa13772a9f79d9e8138e645
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-operator-plus.raw
+  - latex-operator-times.raw
+  - latex-operator-leq.raw
+  - latex-operator-equiv.raw
+  - latex-operator-plus-minus.raw
+- path: payloads/raw-over-under.yaml
+  bytes: 10917
+  sha256: 103fd1735d829b390ceca39a6d5811ef7f1ea9121409d20a982b707414f2c1d0
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-over-under-overline.raw
+  - latex-over-under-overline-sum.raw
+  - latex-over-under-overline-nested.raw
+  - latex-over-under-underbrace.raw
+  - latex-over-under-underbrace-sum.raw
+  - latex-over-under-underbrace-labelled.raw
+  - latex-over-under-overset.raw
+  - latex-over-under-underset.raw
+  - latex-over-under-stackrel.raw
+  - latex-over-under-underline.raw
+  - latex-over-under-overparen.raw
+- path: payloads/raw-powers.yaml
+  bytes: 5752
+  sha256: bda35bb75dbbab18c6a6cf2a2aedaddccf897042ad3d3a4931a06f3f56c97d6f
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-power-square.raw
+  - latex-power-nested.raw
+  - latex-power-braced-exponent.raw
+  - latex-power-exponential.raw
+  - latex-subscript-letter.raw
+  - latex-subscript-braced.raw
+  - latex-subscript-and-power.raw
+- path: payloads/raw-quoted-text.yaml
+  bytes: 1907
+  sha256: 7bf319d32c13f6bd8bbc34412412e6e10341d637c5b8a674ce14e687a6b36fe2
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-text-command.raw
+  - latex-text-spaced.raw
+  - latex-text-mbox.raw
+  - latex-text-mbox-spaced.raw
+- path: payloads/raw-rejections.yaml
+  bytes: 2741
+  sha256: 61bedcd8d0d66d29403e2f27bcfd12177114390d5d77f7151a1d7857aa746828
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-unclosed-brace.raw
+  - latex-stray-close-brace.raw
+  - latex-unknown-command.raw
+  - latex-frac-no-args.raw
+  - latex-frac-one-arg.raw
+  - latex-right-without-left.raw
+  - latex-begin-without-end.raw
+  - latex-end-without-begin.raw
+  - latex-whitespace-only.raw
+  - latex-lone-backslash.raw
+  - latex-unclosed-text.raw
+  - latex-nested-unclosed.raw
+  - latex-command-bad-chars.raw
+  - latex-tilde.raw
+- path: payloads/raw-roots.yaml
+  bytes: 7742
+  sha256: 064ae420d3f80cc184feb2b4f48a0f25223ef94ab5dbe7146bd8dd959b71dd0a
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-root-sqrt-number.raw
+  - latex-root-sqrt-sum.raw
+  - latex-root-sqrt-pythagoras.raw
+  - latex-root-sqrt-frac.raw
+  - latex-root-cube.raw
+  - latex-root-nth-symbolic.raw
+- path: payloads/raw-symbols.yaml
+  bytes: 1476
+  sha256: 570a70e44363618440b08827ea5fea2ba3dffa3da57d97ca3dc68a2c80b52051
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-symbol-greek-alpha.raw
+  - latex-symbol-infinity.raw
+  - latex-symbol-greek-pi.raw
+  - latex-symbol-empty-set.raw
+- path: payloads/raw-unary-functions.yaml
+  bytes: 7679
+  sha256: c7a823f4fb7a30322972bb3f2408d96be5c31ed2b0ae4f187071ada270fb4810
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-unary-sin-bare.raw
+  - latex-unary-sin-fenced.raw
+  - latex-unary-cos-product.raw
+  - latex-unary-log-bare.raw
+  - latex-unary-ln-bare.raw
+  - latex-unary-lim-bare.raw
+  - latex-unary-det.raw
+  - latex-unary-max.raw
+  - latex-unary-gcd-fenced.raw
+- path: payloads/raw-whitespace.yaml
+  bytes: 5244
+  sha256: 9cd513a99d4f55ec7b9a61861aca05b949b1a2334c3518c0cb55e82f0ba004a4
+  producer: latexmath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - latex-whitespace-quad.raw
+  - latex-whitespace-two-quads.raw
+  - latex-comma-from-thin-space.raw
+  - latex-whitespace-medium.raw
+  - latex-whitespace-thick.raw
+  - latex-whitespace-qquad.raw
+- path: payloads/rejections.yaml
+  bytes: 3125
+  sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/rejections.yaml
+      sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
+  rows:
+  - latex-unclosed-brace
+  - latex-stray-close-brace
+  - latex-unknown-command
+  - latex-frac-no-args
+  - latex-frac-one-arg
+  - latex-right-without-left
+  - latex-begin-without-end
+  - latex-end-without-begin
+  - latex-whitespace-only
+  - latex-lone-backslash
+  - latex-unclosed-text
+  - latex-nested-unclosed
+  - latex-command-bad-chars
+  - latex-tilde
+- path: payloads/roots.yaml
+  bytes: 21854
+  sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/roots.yaml
+      sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
+  rows:
+  - latex-root-sqrt-number
+  - latex-root-sqrt-sum
+  - latex-root-sqrt-pythagoras
+  - latex-root-sqrt-frac
+  - latex-root-cube
+  - latex-root-nth-symbolic
+- path: payloads/symbols.yaml
+  bytes: 8781
+  sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/symbols.yaml
+      sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
+  rows:
+  - latex-symbol-greek-alpha
+  - latex-symbol-infinity
+  - latex-symbol-greek-pi
+  - latex-symbol-empty-set
+- path: payloads/unary-functions.yaml
+  bytes: 26430
+  sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/unary-functions.yaml
+      sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
+  rows:
+  - latex-unary-sin-bare
+  - latex-unary-sin-fenced
+  - latex-unary-cos-product
+  - latex-unary-log-bare
+  - latex-unary-ln-bare
+  - latex-unary-lim-bare
+  - latex-unary-det
+  - latex-unary-max
+  - latex-unary-gcd-fenced
+- path: payloads/whitespace.yaml
+  bytes: 15813
+  sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/latex/whitespace.yaml
+      sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
+  rows:
+  - latex-whitespace-quad
+  - latex-whitespace-two-quads
+  - latex-comma-from-thin-space
+  - latex-whitespace-medium
+  - latex-whitespace-thick
+  - latex-whitespace-qquad

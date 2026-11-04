@@ -1,0 +1,135 @@
+# LaTeX raw-tree stage cases: raw-rejections.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-rejections
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of rejections.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-unclosed-brace.raw
+  input:
+    str: "\\frac{1"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: latex-stray-close-brace.raw
+  input:
+    str: x}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-unknown-command.raw
+  input:
+    str: "\\nosuchcommandhere"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-frac-no-args.raw
+  input:
+    str: "\\frac"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 5
+- id: latex-frac-one-arg.raw
+  input:
+    str: "\\frac{1}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: latex-right-without-left.raw
+  input:
+    str: x \right)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: latex-begin-without-end.raw
+  input:
+    str: "\\begin{matrix} a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 16
+- id: latex-end-without-begin.raw
+  input:
+    str: a \end{matrix}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: latex-whitespace-only.raw
+  input:
+    str: "   "
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: latex-lone-backslash.raw
+  input:
+    str: "\\"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-unclosed-text.raw
+  input:
+    str: "\\text{abc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: latex-nested-unclosed.raw
+  input:
+    str: "\\frac{\\frac{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 17
+- id: latex-command-bad-chars.raw
+  input:
+    str: "\\fr@c{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-tilde.raw
+  input:
+    str: a~b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1

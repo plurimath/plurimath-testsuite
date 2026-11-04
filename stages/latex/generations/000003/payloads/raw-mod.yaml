@@ -1,0 +1,183 @@
+# LaTeX raw-tree stage cases: raw-mod.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-mod
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of mod.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-mod-infix.raw
+  input:
+    str: a \mod b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\modb
+    tree:
+      hash:
+      - - sym: under_over
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: binary
+            - slice: mod
+              byte_offset: 2
+              char_offset: 2
+          - - sym: second_value
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 5
+                  char_offset: 5
+- id: latex-mod-bmod.raw
+  input:
+    str: a \bmod b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\bmodb
+    tree:
+      hash:
+      - - sym: under_over
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: binary
+            - slice: bmod
+              byte_offset: 2
+              char_offset: 2
+          - - sym: second_value
+            - hash:
+              - - sym: symbols
+                - slice: b
+                  byte_offset: 6
+                  char_offset: 6
+- id: latex-mod-pmod.raw
+  input:
+    str: a \pmod{b}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\pmod{b}
+    tree:
+      hash:
+      - - sym: under_over
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: binary
+            - slice: pmod
+              byte_offset: 2
+              char_offset: 2
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: b
+                      byte_offset: 7
+                      char_offset: 7
+- id: latex-mod-numeric.raw
+  input:
+    str: x \mod 2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x\mod2
+    tree:
+      hash:
+      - - sym: under_over
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: binary
+            - slice: mod
+              byte_offset: 2
+              char_offset: 2
+          - - sym: second_value
+            - hash:
+              - - sym: number
+                - slice: '2'
+                  byte_offset: 5
+                  char_offset: 5
+- id: latex-mod-fenced-left.raw
+  input:
+    str: "(a+b) \\mod n"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a+b)\\modn"
+    tree:
+      hash:
+      - - sym: under_over
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: intermediate_exp
+                - hash:
+                  - - sym: left_paren
+                    - hash:
+                      - - sym: lparen
+                        - slice: "("
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: symbols
+                            - slice: a
+                              byte_offset: 1
+                              char_offset: 1
+                      - - sym: expression
+                        - hash:
+                          - - sym: sequence
+                            - hash:
+                              - - sym: operant
+                                - slice: "+"
+                                  byte_offset: 2
+                                  char_offset: 2
+                          - - sym: expression
+                            - hash:
+                              - - sym: symbols
+                                - slice: b
+                                  byte_offset: 3
+                                  char_offset: 3
+                  - - sym: right_paren
+                    - hash:
+                      - - sym: rparen
+                        - slice: ")"
+                          byte_offset: 4
+                          char_offset: 4
+          - - sym: binary
+            - slice: mod
+              byte_offset: 6
+              char_offset: 6
+          - - sym: second_value
+            - hash:
+              - - sym: symbols
+                - slice: "n"
+                  byte_offset: 9
+                  char_offset: 9
