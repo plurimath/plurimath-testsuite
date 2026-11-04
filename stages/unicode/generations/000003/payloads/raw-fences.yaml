@@ -1,0 +1,158 @@
+# Raw-tree rows for payloads/fences.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-fences
+description: 'Unicodemath::RawParser outcome for each input of payloads/fences.yaml (generation 1): the legacy preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-fence-round.raw
+  input:
+    str: "(a)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a)"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: open_paren
+                - slice: "("
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 1
+                          char_offset: 1
+              - - sym: close_paren
+                - slice: ")"
+                  byte_offset: 2
+                  char_offset: 2
+- id: unicode-fence-square.raw
+  input:
+    str: "[a]"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "[a]"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: open_paren
+                - slice: "["
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 1
+                          char_offset: 1
+              - - sym: close_paren
+                - slice: "]"
+                  byte_offset: 2
+                  char_offset: 2
+- id: unicode-fence-curly.raw
+  input:
+    str: "{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "{a}"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: open_paren
+                - slice: "{"
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 1
+                          char_offset: 1
+              - - sym: close_paren
+                - slice: "}"
+                  byte_offset: 2
+                  char_offset: 2
+- id: unicode-fence-angle.raw
+  input:
+    str: "⟨a⟩"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x27e8;a&#x27e9;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: open_paren
+                - slice: "&#x27e8;"
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 8
+                          char_offset: 8
+              - - sym: close_paren
+                - slice: "&#x27e9;"
+                  byte_offset: 9
+                  char_offset: 9
+- id: unicode-fence-ceiling.raw
+  input:
+    str: "⌈a⌉"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x2308;a&#x2309;"
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: intermediate_exp
+            - hash:
+              - - sym: open_paren
+                - slice: "&#x2308;"
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 8
+                          char_offset: 8
+              - - sym: close_paren
+                - slice: "&#x2309;"
+                  byte_offset: 9
+                  char_offset: 9

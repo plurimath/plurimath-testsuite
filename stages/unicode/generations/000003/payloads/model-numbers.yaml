@@ -1,0 +1,180 @@
+# Typed-model rows for payloads/numbers.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: model-numbers
+description: 'Typed model (Unicodemath::Model::Document) from Unicodemath.parse for each input of payloads/numbers.yaml (generation 2): the legacy preprocessing and the model, each object its model class (model/unicodemath.lml.json) with its set fields in declaration order (nil fields left out), or a refusal with its byte offset into the caller''s input. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: typed-model
+cases:
+- id: unicode-number-integer.model
+  input:
+    str: '1'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '1'
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - digit
+                - node: Unicodemath::Model::Digit
+                  fields:
+                  - - number
+                    - str: '1'
+      - - decimal
+        - str: "."
+- id: unicode-number-decimal.model
+  input:
+    str: '3.14'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '3.14'
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - decimal_number
+                - node: Unicodemath::Model::DecimalNumber
+                  fields:
+                  - - decimal
+                    - str: "."
+                  - - fractional
+                    - node: Unicodemath::Model::Fractional
+                      fields:
+                      - - number
+                        - str: '14'
+                  - - whole
+                    - node: Unicodemath::Model::Whole
+                      fields:
+                      - - number
+                        - str: '3'
+      - - decimal
+        - str: "."
+- id: unicode-number-decimal-comma.model
+  input:
+    str: '1,5'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '1,5'
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - decimal_number
+                - node: Unicodemath::Model::DecimalNumber
+                  fields:
+                  - - decimal
+                    - str: ","
+                  - - fractional
+                    - node: Unicodemath::Model::Fractional
+                      fields:
+                      - - number
+                        - str: '5'
+                  - - whole
+                    - node: Unicodemath::Model::Whole
+                      fields:
+                      - - number
+                        - str: '1'
+      - - decimal
+        - str: "."
+- id: unicode-number-negative.model
+  input:
+    str: "-42"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "-42"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - expr
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - factor
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - digit
+                    - node: Unicodemath::Model::Digit
+                      fields:
+                      - - number
+                        - str: '42'
+          - - operator
+            - node: Unicodemath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: "-"
+              - - value
+                - str: "−"
+              - - kind
+                - str: symbol
+      - - decimal
+        - str: "."
+- id: unicode-number-exponent.model
+  input:
+    str: 2^10
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: 2^10
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - sup_exp
+            - node: Unicodemath::Model::SupExp
+              fields:
+              - - base
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - digit
+                    - node: Unicodemath::Model::Digit
+                      fields:
+                      - - number
+                        - str: '2'
+              - - sup
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - sup_script
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - operand
+                        - node: Unicodemath::Model::Operand
+                          fields:
+                          - - factor
+                            - node: Unicodemath::Model::Expression
+                              fields:
+                              - - digit
+                                - node: Unicodemath::Model::Digit
+                                  fields:
+                                  - - number
+                                    - str: '10'
+      - - decimal
+        - str: "."

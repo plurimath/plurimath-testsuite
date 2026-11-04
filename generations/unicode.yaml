@@ -25,3 +25,13 @@ entries:
   - stage-gem
   change: extend
   rationale: Keeps every generation 1 payload byte for byte and adds Unicodemath::RawParser raw-tree rows (Ruby and native engines agreeing) for each of their inputs, written by scripts/stage_cases.rb at unicodemath 1929f69a708c7275a054a419a75cf9fb6064bae4.
+- generation: 3
+  path: stages/unicode/generations/000003
+  snapshot_digest: sha256:af442da2b04c15cbba9a89f013fab652823a2faec3e847df0e302494853d2cb6
+  payloads: 15
+  rows: 216
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Keeps every generation 2 payload byte for byte and adds typed-model rows (Unicodemath.parse, Ruby and native engines agreeing) for each legacy input, written by scripts/stage_cases.rb at unicodemath c319cf6675fd8a88830f61178d63bc36352728ab.

@@ -1,0 +1,476 @@
+# Typed-model rows for payloads/rejections.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: model-rejections
+description: 'Typed model (Unicodemath::Model::Document) from Unicodemath.parse for each input of payloads/rejections.yaml (generation 2): the legacy preprocessing and the model, each object its model class (model/unicodemath.lml.json) with its set fields in declaration order (nil fields left out), or a refusal with its byte offset into the caller''s input. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: typed-model
+cases:
+- id: unicode-unclosed-paren.model
+  input:
+    str: "(a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-paren.model
+  input:
+    str: a)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-lone-close-paren.model
+  input:
+    str: ")"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-close-paren-mid.model
+  input:
+    str: a)b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-paren-after-operator.model
+  input:
+    str: a+(b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-close-paren-after-operator.model
+  input:
+    str: a+)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-square.model
+  input:
+    str: "[a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-square.model
+  input:
+    str: a]
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-curly.model
+  input:
+    str: "{a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-curly.model
+  input:
+    str: a}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-angle.model
+  input:
+    str: "⟨a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-stray-close-angle.model
+  input:
+    str: a⟩
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-ceiling.model
+  input:
+    str: "⌈a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-stray-close-ceiling.model
+  input:
+    str: a⌉
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-vert.model
+  input:
+    str: "|a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-stray-close-paren.model
+  input:
+    str: α)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-unclosed-paren.model
+  input:
+    str: "(α"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-lone-sup.model
+  input:
+    str: "^"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-sup.model
+  input:
+    str: a^
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-trailing-sup.model
+  input:
+    str: α^
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-lone-sub.model
+  input:
+    str: _
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-sub.model
+  input:
+    str: a_
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-infinity-trailing-sub.model
+  input:
+    str: "∞_"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-doubled-sup.model
+  input:
+    str: a^^b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-doubled-sub.model
+  input:
+    str: a__b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-sub-then-sup.model
+  input:
+    str: a_^b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-lone-slash.model
+  input:
+    str: "/"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-slash.model
+  input:
+    str: a/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-number-trailing-slash.model
+  input:
+    str: 1/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-leading-slash.model
+  input:
+    str: "/2"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-greek-trailing-slash.model
+  input:
+    str: α/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-double-trailing-slash.model
+  input:
+    str: a/b/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-lone-ampersand.model
+  input:
+    str: "&"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-ampersand-operator.model
+  input:
+    str: a&b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-ampersand.model
+  input:
+    str: α&b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-unclosed-quote.model
+  input:
+    str: "\"abc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-greek-unclosed-quote.model
+  input:
+    str: "\"αbc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 5
+- id: unicode-matrix-unclosed.model
+  input:
+    str: "■(a&b"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: unicode-lone-at.model
+  input:
+    str: "@"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-at-operator.model
+  input:
+    str: a@b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-greek-at-operator.model
+  input:
+    str: α@b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-lone-naryand.model
+  input:
+    str: "▒"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-lone-right-tack.model
+  input:
+    str: "┤"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-trailing-down-tack.model
+  input:
+    str: a┬
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-lone-broken-bar.model
+  input:
+    str: "¦"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-trailing-broken-bar.model
+  input:
+    str: a¦
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-greek-broken-bar.model
+  input:
+    str: α¦
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-lone-function-apply.model
+  input:
+    str: "⁡"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-trailing-function-apply.model
+  input:
+    str: a⁡
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-greek-function-apply.model
+  input:
+    str: α⁡
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 5
+- id: unicode-lone-parenthesized-letter.model
+  input:
+    str: "⒜"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: unicode-whitespace-only.model
+  input:
+    str: " "
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
