@@ -1,0 +1,283 @@
+# Typed-model rows for payloads/fences.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: model-fences
+description: 'Typed model (Unicodemath::Model::Document) from Unicodemath.parse for each input of payloads/fences.yaml (generation 2): the legacy preprocessing and the model, each object its model class (model/unicodemath.lml.json) with its set fields in declaration order (nil fields left out), or a refusal with its byte offset into the caller''s input. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: typed-model
+cases:
+- id: unicode-fence-round.model
+  input:
+    str: "(a)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a)"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - intermediate_exp
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - close_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: ")"
+                      - - value
+                        - str: ")"
+                      - - kind
+                        - str: paren
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: unlisted
+                  - - open_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "("
+                      - - value
+                        - str: "("
+                      - - kind
+                        - str: paren
+      - - decimal
+        - str: "."
+- id: unicode-fence-square.model
+  input:
+    str: "[a]"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "[a]"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - intermediate_exp
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - close_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "]"
+                      - - value
+                        - str: "]"
+                      - - kind
+                        - str: paren
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: unlisted
+                  - - open_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "["
+                      - - value
+                        - str: "["
+                      - - kind
+                        - str: paren
+      - - decimal
+        - str: "."
+- id: unicode-fence-curly.model
+  input:
+    str: "{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "{a}"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - intermediate_exp
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - close_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "}"
+                      - - value
+                        - str: "}"
+                      - - kind
+                        - str: paren
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: unlisted
+                  - - open_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "{"
+                      - - value
+                        - str: "{"
+                      - - kind
+                        - str: paren
+      - - decimal
+        - str: "."
+- id: unicode-fence-angle.model
+  input:
+    str: "⟨a⟩"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x27e8;a&#x27e9;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - intermediate_exp
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - close_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "&#x27e9;"
+                      - - value
+                        - str: "⟩"
+                      - - kind
+                        - str: paren
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: unlisted
+                  - - open_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "&#x27e8;"
+                      - - value
+                        - str: "⟨"
+                      - - kind
+                        - str: paren
+      - - decimal
+        - str: "."
+- id: unicode-fence-ceiling.model
+  input:
+    str: "⌈a⌉"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x2308;a&#x2309;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - intermediate_exp
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - close_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "&#x2309;"
+                      - - value
+                        - str: "⌉"
+                      - - kind
+                        - str: paren
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: unlisted
+                  - - open_paren
+                    - node: Unicodemath::Model::Paren
+                      fields:
+                      - - spelling
+                        - str: "&#x2308;"
+                      - - value
+                        - str: "⌈"
+                      - - kind
+                        - str: paren
+      - - decimal
+        - str: "."
