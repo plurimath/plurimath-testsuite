@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://plurimath.org/testsuite/schema/stage-cases/1",
   "title": "Stage cases",
-  "description": "A stage-gem payload: rows whose expectations are the raw grammar tree or the typed model of one language, in canonical tagged form, or a refusal. Used by stage-gem producers beside, never instead of, the legacy facade payloads of earlier generations. See docs/tree-parity-contract.adoc.",
+  "description": "A stage-gem payload: rows whose expectations are the raw grammar tree or the typed model of one language, in canonical tagged form, or the typed model a gem parses an input into together with the bytes it serializes that model back to, or a refusal. Used by stage-gem producers beside, never instead of, the legacy facade payloads of earlier generations. See docs/tree-parity-contract.adoc.",
   "type": "object",
   "required": [
     "schema",
@@ -29,7 +29,8 @@
       "type": "string",
       "enum": [
         "raw-tree",
-        "typed-model"
+        "typed-model",
+        "model-roundtrip"
       ]
     },
     "cases": {
@@ -97,6 +98,11 @@
             "null"
           ],
           "minimum": 0
+        },
+        "error_class": {
+          "description": "The Ruby exception class the gem raised, for a model-roundtrip refusal.",
+          "type": "string",
+          "pattern": "^[A-Z][A-Za-z0-9_]*(::[A-Z][A-Za-z0-9_]*)*$"
         }
       }
     },
@@ -349,6 +355,23 @@
                   "$ref": "#/$defs/value"
                 },
                 "tree": {
+                  "$ref": "#/$defs/value"
+                }
+              }
+            },
+            {
+              "description": "model-roundtrip: the typed model the gem parsed the input into, and the exact string it serialized that model to.",
+              "type": "object",
+              "required": [
+                "model",
+                "output"
+              ],
+              "additionalProperties": false,
+              "properties": {
+                "model": {
+                  "$ref": "#/$defs/value"
+                },
+                "output": {
                   "$ref": "#/$defs/value"
                 }
               }
