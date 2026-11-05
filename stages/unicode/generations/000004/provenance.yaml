@@ -1,0 +1,704 @@
+# Generation 4 of the unicode stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+# Written by scripts/stage_cases.rb (plurimath/umath) and assembled by hand.
+---
+schema: plurimath-stage/provenance/1
+language: unicode
+generation: 4
+notes: Generation 3 (stages/unicode/generations/000003 at plurimath-testsuite 75eb73edf2e656f15744d9fe876860609e4933ef, sha256:af442da2b04c15cbba9a89f013fab652823a2faec3e847df0e302494853d2cb6) copied byte for byte except the five raw-<group> payloads, which are rewritten by scripts/stage_cases.rb at umath 0302568ef9446b1b099d15a56445ed7624816462 after the gem was renamed from unicodemath to umath. Their rows are unchanged; only the header comment and the description name umath and Umath::RawParser. The unicodemath-raw producer is replaced by umath-raw.
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: facade-outputs
+    configuration: {}
+  unicodemath-model:
+    kind: stage-gem
+    repository: https://github.com/plurimath/unicodemath
+    commit: c319cf6675fd8a88830f61178d63bc36352728ab
+    version: 0.1.0
+    generator:
+      repository: https://github.com/plurimath/unicodemath
+      commit: c319cf6675fd8a88830f61178d63bc36352728ab
+      path: scripts/stage_cases.rb
+      sha256: 33091581d2adb8beaf3c26a50217265aa0b700e0444095149a9a4e7898a95e24
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/provenance.yaml
+      sha256: '09754ef193b4330a5d807f740d865d837d7b0befdf25545be7467772da018dfb'
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/payloads/fences.yaml
+      sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/payloads/numbers.yaml
+      sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/payloads/operators.yaml
+      sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/payloads/rejections.yaml
+      sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 5e328516995cbf2917b6968eae627d377fbfa373
+      path: stages/unicode/generations/000002/payloads/symbols.yaml
+      sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        sha256: 24ab798430f79abfadbe6f1df1cb807da887aac3f34a673bda53e48aba52e3cf
+        bundler: 4.0.3
+        resolved:
+          base64: 0.3.0
+          bigdecimal: 4.1.3
+          canon: 0.3.123
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ffi: 1.17.4
+          json: 3.1.0
+          leptris: 1.9.406.1
+          liquid: 5.14.0
+          lutaml-model: 0.8.164
+          memo_wise: 1.13.0
+          moxml: 0.6.2
+          ostruct: 0.6.3
+          paint: 2.3.0
+          parsanol: 1.3.133
+          rainbow: 3.1.1
+          rake: 13.4.2
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubyzip: 3.7.0
+          strscan: 3.1.8
+          table_tennis: 1.0.0
+          thor: 1.5.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          unicodemath: 0.1.0
+          yeptris: 0.6.60.1
+      dependencies:
+        lutaml-model: 0.8.164
+        parsanol: 1.3.133
+      compiler:
+        name: parsanol
+        version: 1.3.131
+        edition: '2'
+        artifact_checksum: sha256:5af336c0d33c8d27633d861834e1115f4b09212ff954e1a947a788cc6a8be3ee
+        source_hash: sha256:d9f7e226918fd63bda8c0d799c69b3db5a74e7de95feefd6270509e0613a0bcd
+        grammar:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: grammars/unicodemath.parg
+          sha256: d9f7e226918fd63bda8c0d799c69b3db5a74e7de95feefd6270509e0613a0bcd
+        artifact:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: artifacts/unicodemath.json
+          sha256: 41faae82dd5f88d80046e1aab2ad68c4f6b859e44dac3cd38f4cfb3e75e3c02b
+      binding:
+        ruby_checksum: sha256:8591a9f42f0992cd9dd65ee0840793b931a8452d4a881d0a9bedd893e6fafcc0
+        artifact:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: artifacts/unicodemath.bindings.ruby.json
+          sha256: dfb37a0ab8a7f9e27d1ec327b6f7f57fcdb62622cc9ce09c7ed590cb0640b4e2
+      lml:
+        format: unicodemath-lml/1
+        root: Unicodemath::Model::Document
+        checksum: sha256:e441417cdef4d4b4411bdc5cfc0e1dda9280d433c3bd7b46c19781928700d3a7
+        models: 75
+        export:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: model/unicodemath.lml.json
+          sha256: e441417cdef4d4b4411bdc5cfc0e1dda9280d433c3bd7b46c19781928700d3a7
+        checksums:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: model/unicodemath.lml.checksums.txt
+          sha256: 62c02e620e557118aef8af1a820589e83d71147c35c84a6af97f635b4776aee0
+    semantic_boundary: typed-model
+    configuration:
+      decimal: "."
+      engines:
+      - native
+      - ruby
+      entry_point: Unicodemath.parse
+      source_generation:
+        repository: https://github.com/plurimath/plurimath-testsuite
+        commit: 5e328516995cbf2917b6968eae627d377fbfa373
+        language: unicode
+        generation: 2
+        snapshot_digest: sha256:0a6f19b9a7836e71544d1a027e3f3ea2397dc5e9a1aba8b7834079b1dc91593d
+      engine_agreement: required
+      native_divergences:
+        list:
+          repository: https://github.com/plurimath/unicodemath
+          commit: c319cf6675fd8a88830f61178d63bc36352728ab
+          path: spec/parser/fixtures/oracle/native-divergences.yml
+          sha256: 52a437033a205bb075a9e6292d7fd7fda17774a064e0bf4bfc58d3ada0f1e461
+        rule: 'as spec/parser/oracle_parity_spec.rb: a listed id is a known Parsanol native-engine divergence; its Ruby outcome is written and the native outcome must still differ'
+        excluded: []
+  umath-raw:
+    kind: stage-gem
+    repository: https://github.com/plurimath/umath
+    commit: '0302568ef9446b1b099d15a56445ed7624816462'
+    version: 0.1.0
+    generator:
+      repository: https://github.com/plurimath/umath
+      commit: '0302568ef9446b1b099d15a56445ed7624816462'
+      path: scripts/stage_cases.rb
+      sha256: 833c2cbeb7cb7b8bd468b85184cdb260f441b66cd2aa62df03104ba10bb40900
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/provenance.yaml
+      sha256: 84ca236e154aa57d4dff1c2381683427c81b311e9a518e15078945ad43fd9e1b
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/payloads/fences.yaml
+      sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/payloads/numbers.yaml
+      sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/payloads/operators.yaml
+      sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/payloads/rejections.yaml
+      sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+      path: stages/unicode/generations/000001/payloads/symbols.yaml
+      sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: 
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        sha256: 0160c9161fdc94f1ebcc1b83af284d98d987dcd037303673df8b79142beb533a
+        bundler: 4.0.3
+        resolved:
+          base64: 0.3.0
+          bigdecimal: 4.1.3
+          canon: 0.3.123
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ffi: 1.17.4
+          json: 3.1.0
+          leptris: 1.9.410.0
+          liquid: 5.14.0
+          lutaml-model: 0.8.169
+          memo_wise: 1.13.0
+          moxml: 0.6.3
+          ostruct: 0.6.3
+          paint: 2.3.0
+          parsanol: 1.3.134
+          rainbow: 3.1.1
+          rake: 13.4.2
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubyzip: 3.7.0
+          strscan: 3.1.8
+          table_tennis: 1.0.0
+          thor: 1.5.0
+          umath: 0.1.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          yeptris: 0.6.60.1
+      dependencies:
+        parsanol: 1.3.134
+      compiler:
+        name: parsanol
+        version: 1.3.134
+        edition: '2'
+        artifact_checksum: sha256:a58c0bb7778b56b503d6b0aaf1a8d3a1c171de7e509dcaa0e655b59088657c2f
+        source_hash: sha256:8fbf980d93a4e7a47638c795ae86c519626956b6a68a65d1e36b610587602fcc
+        grammar:
+          repository: https://github.com/plurimath/umath
+          commit: '0302568ef9446b1b099d15a56445ed7624816462'
+          path: grammars/umath.parg
+          sha256: 8fbf980d93a4e7a47638c795ae86c519626956b6a68a65d1e36b610587602fcc
+        artifact:
+          repository: https://github.com/plurimath/umath
+          commit: '0302568ef9446b1b099d15a56445ed7624816462'
+          path: artifacts/umath.json
+          sha256: 703824533584b29e17ee807a30868c9f6923e26d0ee40c9a0a7b6c7de793220f
+      binding:
+        ruby_checksum: sha256:3410be351c44092001c7154e2083f03c5bed917d5ceca5b9ced07cc3c542c7f9
+        artifact:
+          repository: https://github.com/plurimath/umath
+          commit: '0302568ef9446b1b099d15a56445ed7624816462'
+          path: artifacts/umath.bindings.ruby.json
+          sha256: a67723f9e0ad9444df1f4a6b70bd0180c3d4a68b2cc1f17d6f1bfb5706bcdeb7
+      lml: 
+    semantic_boundary: raw-tree
+    configuration:
+      decimal: "."
+      engines:
+      - native
+      - ruby
+      entry_point: Umath::RawParser.parse
+      source_generation:
+        repository: https://github.com/plurimath/plurimath-testsuite
+        commit: b4520d8041efe8546aa10d6ce4b59d56b8d9ffac
+        language: unicode
+        generation: 1
+        snapshot_digest: sha256:ff4c7b0ad7cbb0014e514efd24f9cae4df641cbec4a7d5ba6d3f8301374e3ac4
+payloads:
+- path: payloads/fences.yaml
+  bytes: 14321
+  sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/fences.yaml
+      sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
+  rows:
+  - unicode-fence-round
+  - unicode-fence-square
+  - unicode-fence-curly
+  - unicode-fence-angle
+  - unicode-fence-ceiling
+- path: payloads/model-fences.yaml
+  bytes: 9807
+  sha256: 78132391072a3de3f93efc1868d5799b44777308395480f59068c1a6121b7edb
+  producer: unicodemath-model
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/model-fences.yaml
+      sha256: 78132391072a3de3f93efc1868d5799b44777308395480f59068c1a6121b7edb
+  rows:
+  - unicode-fence-round.model
+  - unicode-fence-square.model
+  - unicode-fence-curly.model
+  - unicode-fence-angle.model
+  - unicode-fence-ceiling.model
+- path: payloads/model-numbers.yaml
+  bytes: 5564
+  sha256: 8f6192843e3f1e4853a08ac2bf6b3818bf79d4f83a842897092c39f109bd0bd6
+  producer: unicodemath-model
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/model-numbers.yaml
+      sha256: 8f6192843e3f1e4853a08ac2bf6b3818bf79d4f83a842897092c39f109bd0bd6
+  rows:
+  - unicode-number-integer.model
+  - unicode-number-decimal.model
+  - unicode-number-decimal-comma.model
+  - unicode-number-negative.model
+  - unicode-number-exponent.model
+- path: payloads/model-operators.yaml
+  bytes: 13150
+  sha256: 7c300741744fdd7166b17fa45fa7d443972df3bc67701f5246211ea9621fd11b
+  producer: unicodemath-model
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/model-operators.yaml
+      sha256: 7c300741744fdd7166b17fa45fa7d443972df3bc67701f5246211ea9621fd11b
+  rows:
+  - unicode-operator-plus.model
+  - unicode-operator-times.model
+  - unicode-operator-leq.model
+  - unicode-operator-equiv.model
+  - unicode-operator-plus-minus.model
+  - unicode-operator-minus-plus.model
+- path: payloads/model-rejections.yaml
+  bytes: 9102
+  sha256: 3c10d935614065b2ac7de7d1f23ce1fd1e39936a755f2470af3651f9ce01bfa2
+  producer: unicodemath-model
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/model-rejections.yaml
+      sha256: 3c10d935614065b2ac7de7d1f23ce1fd1e39936a755f2470af3651f9ce01bfa2
+  rows:
+  - unicode-unclosed-paren.model
+  - unicode-stray-close-paren.model
+  - unicode-lone-close-paren.model
+  - unicode-close-paren-mid.model
+  - unicode-unclosed-paren-after-operator.model
+  - unicode-close-paren-after-operator.model
+  - unicode-unclosed-square.model
+  - unicode-stray-close-square.model
+  - unicode-unclosed-curly.model
+  - unicode-stray-close-curly.model
+  - unicode-unclosed-angle.model
+  - unicode-stray-close-angle.model
+  - unicode-unclosed-ceiling.model
+  - unicode-stray-close-ceiling.model
+  - unicode-unclosed-vert.model
+  - unicode-greek-stray-close-paren.model
+  - unicode-greek-unclosed-paren.model
+  - unicode-lone-sup.model
+  - unicode-trailing-sup.model
+  - unicode-greek-trailing-sup.model
+  - unicode-lone-sub.model
+  - unicode-trailing-sub.model
+  - unicode-infinity-trailing-sub.model
+  - unicode-doubled-sup.model
+  - unicode-doubled-sub.model
+  - unicode-sub-then-sup.model
+  - unicode-lone-slash.model
+  - unicode-trailing-slash.model
+  - unicode-number-trailing-slash.model
+  - unicode-leading-slash.model
+  - unicode-greek-trailing-slash.model
+  - unicode-double-trailing-slash.model
+  - unicode-lone-ampersand.model
+  - unicode-ampersand-operator.model
+  - unicode-greek-ampersand.model
+  - unicode-unclosed-quote.model
+  - unicode-greek-unclosed-quote.model
+  - unicode-matrix-unclosed.model
+  - unicode-lone-at.model
+  - unicode-at-operator.model
+  - unicode-greek-at-operator.model
+  - unicode-lone-naryand.model
+  - unicode-lone-right-tack.model
+  - unicode-trailing-down-tack.model
+  - unicode-lone-broken-bar.model
+  - unicode-trailing-broken-bar.model
+  - unicode-greek-broken-bar.model
+  - unicode-lone-function-apply.model
+  - unicode-trailing-function-apply.model
+  - unicode-greek-function-apply.model
+  - unicode-lone-parenthesized-letter.model
+  - unicode-whitespace-only.model
+- path: payloads/model-symbols.yaml
+  bytes: 3569
+  sha256: a766d62b24a93f1f7ff9e4a800978bfa0d8872ba2acfc48fa51a465a44d14a2e
+  producer: unicodemath-model
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/model-symbols.yaml
+      sha256: a766d62b24a93f1f7ff9e4a800978bfa0d8872ba2acfc48fa51a465a44d14a2e
+  rows:
+  - unicode-symbol-greek-alpha.model
+  - unicode-symbol-greek-pi.model
+  - unicode-symbol-infinity.model
+  - unicode-symbol-empty-set.model
+- path: payloads/numbers.yaml
+  bytes: 12075
+  sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/numbers.yaml
+      sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
+  rows:
+  - unicode-number-integer
+  - unicode-number-decimal
+  - unicode-number-decimal-comma
+  - unicode-number-negative
+  - unicode-number-exponent
+- path: payloads/operators.yaml
+  bytes: 15493
+  sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/operators.yaml
+      sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
+  rows:
+  - unicode-operator-plus
+  - unicode-operator-times
+  - unicode-operator-leq
+  - unicode-operator-equiv
+  - unicode-operator-plus-minus
+  - unicode-operator-minus-plus
+- path: payloads/raw-fences.yaml
+  bytes: 4461
+  sha256: bbd957bca74cb024c65306ffa3ab3814fd66e74556aff2863d80b8a167cbf7e6
+  producer: umath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-fence-round.raw
+  - unicode-fence-square.raw
+  - unicode-fence-curly.raw
+  - unicode-fence-angle.raw
+  - unicode-fence-ceiling.raw
+- path: payloads/raw-numbers.yaml
+  bytes: 3857
+  sha256: 5ec2ab14150bce3f54b2a290f516b77ffca21cc0d2a4b76f02d2a988bb250f67
+  producer: umath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-number-integer.raw
+  - unicode-number-decimal.raw
+  - unicode-number-decimal-comma.raw
+  - unicode-number-negative.raw
+  - unicode-number-exponent.raw
+- path: payloads/raw-operators.yaml
+  bytes: 5861
+  sha256: 878d21c51bca45b14b5f05972f0001221acbbdde96429bfb86d09750c43979af
+  producer: umath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-operator-plus.raw
+  - unicode-operator-times.raw
+  - unicode-operator-leq.raw
+  - unicode-operator-equiv.raw
+  - unicode-operator-plus-minus.raw
+  - unicode-operator-minus-plus.raw
+- path: payloads/raw-rejections.yaml
+  bytes: 8839
+  sha256: e5f7d306132ad2d7aa9a4aa68f5751d02c90289bd3e0b8cb6c8c50c5e1229a26
+  producer: umath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-unclosed-paren.raw
+  - unicode-stray-close-paren.raw
+  - unicode-lone-close-paren.raw
+  - unicode-close-paren-mid.raw
+  - unicode-unclosed-paren-after-operator.raw
+  - unicode-close-paren-after-operator.raw
+  - unicode-unclosed-square.raw
+  - unicode-stray-close-square.raw
+  - unicode-unclosed-curly.raw
+  - unicode-stray-close-curly.raw
+  - unicode-unclosed-angle.raw
+  - unicode-stray-close-angle.raw
+  - unicode-unclosed-ceiling.raw
+  - unicode-stray-close-ceiling.raw
+  - unicode-unclosed-vert.raw
+  - unicode-greek-stray-close-paren.raw
+  - unicode-greek-unclosed-paren.raw
+  - unicode-lone-sup.raw
+  - unicode-trailing-sup.raw
+  - unicode-greek-trailing-sup.raw
+  - unicode-lone-sub.raw
+  - unicode-trailing-sub.raw
+  - unicode-infinity-trailing-sub.raw
+  - unicode-doubled-sup.raw
+  - unicode-doubled-sub.raw
+  - unicode-sub-then-sup.raw
+  - unicode-lone-slash.raw
+  - unicode-trailing-slash.raw
+  - unicode-number-trailing-slash.raw
+  - unicode-leading-slash.raw
+  - unicode-greek-trailing-slash.raw
+  - unicode-double-trailing-slash.raw
+  - unicode-lone-ampersand.raw
+  - unicode-ampersand-operator.raw
+  - unicode-greek-ampersand.raw
+  - unicode-unclosed-quote.raw
+  - unicode-greek-unclosed-quote.raw
+  - unicode-matrix-unclosed.raw
+  - unicode-lone-at.raw
+  - unicode-at-operator.raw
+  - unicode-greek-at-operator.raw
+  - unicode-lone-naryand.raw
+  - unicode-lone-right-tack.raw
+  - unicode-trailing-down-tack.raw
+  - unicode-lone-broken-bar.raw
+  - unicode-trailing-broken-bar.raw
+  - unicode-greek-broken-bar.raw
+  - unicode-lone-function-apply.raw
+  - unicode-trailing-function-apply.raw
+  - unicode-greek-function-apply.raw
+  - unicode-lone-parenthesized-letter.raw
+  - unicode-whitespace-only.raw
+- path: payloads/raw-symbols.yaml
+  bytes: 1792
+  sha256: 5cba1e063d7e85a696ce6ded3597ae961dccd34c0482b8d49cf21d6bbbd3fe78
+  producer: umath-raw
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-symbol-greek-alpha.raw
+  - unicode-symbol-greek-pi.raw
+  - unicode-symbol-infinity.raw
+  - unicode-symbol-empty-set.raw
+- path: payloads/rejections.yaml
+  bytes: 7642
+  sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/rejections.yaml
+      sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
+  rows:
+  - unicode-unclosed-paren
+  - unicode-stray-close-paren
+  - unicode-lone-close-paren
+  - unicode-close-paren-mid
+  - unicode-unclosed-paren-after-operator
+  - unicode-close-paren-after-operator
+  - unicode-unclosed-square
+  - unicode-stray-close-square
+  - unicode-unclosed-curly
+  - unicode-stray-close-curly
+  - unicode-unclosed-angle
+  - unicode-stray-close-angle
+  - unicode-unclosed-ceiling
+  - unicode-stray-close-ceiling
+  - unicode-unclosed-vert
+  - unicode-greek-stray-close-paren
+  - unicode-greek-unclosed-paren
+  - unicode-lone-sup
+  - unicode-trailing-sup
+  - unicode-greek-trailing-sup
+  - unicode-lone-sub
+  - unicode-trailing-sub
+  - unicode-infinity-trailing-sub
+  - unicode-doubled-sup
+  - unicode-doubled-sub
+  - unicode-sub-then-sup
+  - unicode-lone-slash
+  - unicode-trailing-slash
+  - unicode-number-trailing-slash
+  - unicode-leading-slash
+  - unicode-greek-trailing-slash
+  - unicode-double-trailing-slash
+  - unicode-lone-ampersand
+  - unicode-ampersand-operator
+  - unicode-greek-ampersand
+  - unicode-unclosed-quote
+  - unicode-greek-unclosed-quote
+  - unicode-matrix-unclosed
+  - unicode-lone-at
+  - unicode-at-operator
+  - unicode-greek-at-operator
+  - unicode-lone-naryand
+  - unicode-lone-right-tack
+  - unicode-trailing-down-tack
+  - unicode-lone-broken-bar
+  - unicode-trailing-broken-bar
+  - unicode-greek-broken-bar
+  - unicode-lone-function-apply
+  - unicode-trailing-function-apply
+  - unicode-greek-function-apply
+  - unicode-lone-parenthesized-letter
+  - unicode-whitespace-only
+- path: payloads/symbols.yaml
+  bytes: 8875
+  sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 75eb73edf2e656f15744d9fe876860609e4933ef
+      path: stages/unicode/generations/000003/payloads/symbols.yaml
+      sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
+  rows:
+  - unicode-symbol-greek-alpha
+  - unicode-symbol-greek-pi
+  - unicode-symbol-infinity
+  - unicode-symbol-empty-set

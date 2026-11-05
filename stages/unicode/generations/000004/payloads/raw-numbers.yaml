@@ -1,0 +1,144 @@
+# Raw-tree rows for payloads/numbers.yaml. Written by scripts/stage_cases.rb
+# (plurimath/umath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-numbers
+description: 'Umath::RawParser outcome for each input of payloads/numbers.yaml (generation 1): the legacy preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-number-integer.raw
+  input:
+    str: '1'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '1'
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: digit
+            - hash:
+              - - sym: number
+                - slice: '1'
+                  byte_offset: 0
+                  char_offset: 0
+- id: unicode-number-decimal.raw
+  input:
+    str: '3.14'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '3.14'
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: decimal_number
+            - hash:
+              - - sym: whole
+                - hash:
+                  - - sym: number
+                    - slice: '3'
+                      byte_offset: 0
+                      char_offset: 0
+              - - sym: decimal
+                - slice: "."
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: fractional
+                - hash:
+                  - - sym: number
+                    - slice: '14'
+                      byte_offset: 2
+                      char_offset: 2
+- id: unicode-number-decimal-comma.raw
+  input:
+    str: '1,5'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: '1,5'
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: decimal_number
+            - hash:
+              - - sym: whole
+                - hash:
+                  - - sym: number
+                    - slice: '1'
+                      byte_offset: 0
+                      char_offset: 0
+              - - sym: decimal
+                - slice: ","
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: fractional
+                - hash:
+                  - - sym: number
+                    - slice: '5'
+                      byte_offset: 2
+                      char_offset: 2
+- id: unicode-number-negative.raw
+  input:
+    str: "-42"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "-42"
+    tree:
+      hash:
+      - - sym: operator
+        - slice: "-"
+          byte_offset: 0
+          char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: digit
+                - hash:
+                  - - sym: number
+                    - slice: '42'
+                      byte_offset: 1
+                      char_offset: 1
+- id: unicode-number-exponent.raw
+  input:
+    str: 2^10
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: 2^10
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: digit
+                - hash:
+                  - - sym: number
+                    - slice: '2'
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '10'
+                                  byte_offset: 2
+                                  char_offset: 2
