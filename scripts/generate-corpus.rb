@@ -34,6 +34,16 @@ require "yaml"
 
 module CorpusGenerator
   REPO_ROOT = File.expand_path("..", __dir__)
+
+  # The oracle's grammars run on Parslet up to plurimath 0.11.12 and on
+  # Parsanol from then on. Both expose the same Slice and ParseFailed API, so
+  # the generator names both and runs against either pin.
+  SLICE_CLASSES = %w[Parsanol::Slice Parslet::Slice]
+    .select { |name| Object.const_defined?(name) }
+    .map { |name| Object.const_get(name) }.freeze
+  PARSE_FAILED = %w[Parsanol::ParseFailed Parslet::ParseFailed]
+    .select { |name| Object.const_defined?(name) }
+    .map { |name| Object.const_get(name) }.freeze
   GENERATOR_PATH = "scripts/generate-corpus.rb"
 
   # The `cases/1` and `cases/2` schema names take their middle segment from
@@ -531,7 +541,7 @@ module CorpusGenerator
   def serialize_value(value, path)
     case value
     when nil, true, false, ::String, ::Integer, ::Float then value
-    when ::Symbol, ::Parslet::Slice then value.to_s
+    when ::Symbol, *SLICE_CLASSES then value.to_s
     when ::Array
       value.each_with_index.map { |v, i| serialize_value(v, "#{path}[#{i}]") }
     when ::Hash then serialize_hash(value, path)
@@ -573,7 +583,7 @@ module CorpusGenerator
   def serialize_tree(node, path)
     case node
     when nil, true, false, ::String, ::Integer, ::Float then node
-    when ::Symbol, ::Parslet::Slice then node.to_s
+    when ::Symbol, *SLICE_CLASSES then node.to_s
     when ::Array
       node.each_with_index.map { |n, i| serialize_tree(n, "#{path}[#{i}]") }
     when ::Hash then serialize_tree_hash(node, path)
@@ -641,7 +651,12 @@ module CorpusGenerator
   # implementation would then "match" without checking anything.
   def failure_position(cause)
     children = cause.children || []
-    return cause.pos.charpos if children.empty?
+    if children.empty?
+      # Parslet's position is a Source::Position; Parsanol's is the
+      # character offset itself.
+      pos = cause.pos
+      return pos.respond_to?(:charpos) ? pos.charpos : pos
+    end
 
     children.map { |child| failure_position(child) }.max
   end
@@ -696,7 +711,7 @@ module CorpusGenerator
     error = { "category" => category }
     begin
       format.parse_tree.call(preprocessed)
-    rescue Parslet::ParseFailed => e
+    rescue *PARSE_FAILED => e
       error["index"] = failure_position(e.parse_failure_cause)
     rescue StandardError
       # The failure did not come from the grammar, so no offset exists.

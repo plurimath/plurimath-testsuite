@@ -25,7 +25,7 @@ jobs:
       - uses: actions/checkout@v4
         with:
           repository: plurimath/plurimath
-          ref: ae20be111a26fdd988c58be0bfb2b7f6fe6e352f
+          ref: 2967dcc47a9f37d5b9a2dd13d94a2ad35d4cc256
           path: oracle
       - name: Preserve the frozen reference dependency resolution
         run: cp fixtures/.github/oracle/Gemfile.lock oracle/Gemfile.lock
