@@ -1,14 +1,24 @@
+GIT
+  remote: https://github.com/plurimath/lasem-ruby.git
+  revision: b6f2c47368980fb95e9c1c3f9ffb0d0f4f1861f0
+  branch: main
+  submodules: true
+  specs:
+    lasem (0.1.0)
+
 PATH
   remote: .
   specs:
-    plurimath (0.11.12)
+    plurimath (0.11.17)
+      amath (~> 0.1)
       bigdecimal
       htmlentities
-      lutaml-model (~> 0.8.65)
+      lutaml-model (~> 0.8.155)
       mml (~> 2.4.2)
       omml (~> 0.2.5)
       ostruct
       ox
+      parsanol (~> 1.3, >= 1.3.116)
       parslet
       thor
       unitsml (~> 0.6.4)
@@ -16,6 +26,8 @@ PATH
 GEM
   remote: https://rubygems.org/
   specs:
+    amath (0.1.0)
+      parsanol (~> 1.3, >= 1.3.107)
     ansi (1.6.0)
     ast (2.4.3)
     base64 (0.3.0)
@@ -60,28 +72,44 @@ GEM
       reline (>= 0.4.2)
     json (2.21.2)
     language_server-protocol (3.17.0.6)
+    leptris (1.9.410.0-aarch64-linux)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-aarch64-linux-musl)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-arm-linux)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-arm-linux-musl)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-arm64-darwin)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-x86_64-darwin)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-x86_64-linux)
+      ffi (~> 1.15)
+    leptris (1.9.410.0-x86_64-linux-musl)
+      ffi (~> 1.15)
     link_header (0.0.8)
     lint_roller (1.1.0)
     liquid (5.13.0)
       bigdecimal
       strscan (>= 3.1.1)
     logger (1.7.0)
-    lutaml-model (0.8.65)
-      base64
+    lutaml-model (0.8.155)
+      base64 (>= 0.1.1)
       bigdecimal
       canon
       concurrent-ruby
       liquid (>= 4.0, < 6.0)
-      moxml (~> 0.5.84)
+      moxml (>= 0.5.139, < 0.7)
       ostruct
-      rubyzip (~> 3.4)
-      thor
+      rubyzip (~> 3.7)
+      thor (~> 1.4)
     matrix (0.4.3)
     memo_wise (1.13.0)
     mml (2.4.2)
       lutaml-model (~> 0.8.65)
       moxml
-    moxml (0.5.84)
+    moxml (0.5.178)
     nokogiri (1.19.4-aarch64-linux-gnu)
       racc (~> 1.4)
     nokogiri (1.19.4-aarch64-linux-musl)
@@ -118,6 +146,14 @@ GEM
       bigdecimal (>= 3.0)
     paint (2.3.0)
     parallel (2.1.0)
+    parsanol (1.3.134-aarch64-linux)
+    parsanol (1.3.134-aarch64-linux-musl)
+    parsanol (1.3.134-arm-linux)
+    parsanol (1.3.134-arm-linux-musl)
+    parsanol (1.3.134-arm64-darwin)
+    parsanol (1.3.134-x86_64-darwin)
+    parsanol (1.3.134-x86_64-linux)
+    parsanol (1.3.134-x86_64-linux-musl)
     parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
@@ -189,7 +225,7 @@ GEM
       ansi
       ast
     ruby-progressbar (1.13.0)
-    rubyzip (3.4.0)
+    rubyzip (3.7.0)
     scanf (1.0.0)
     simplecov (1.0.3)
     strscan (3.1.8)
@@ -240,10 +276,13 @@ PLATFORMS
 DEPENDENCIES
   canon
   irb
+  lasem!
+  leptris
   nokogiri
   oga
   opal-rspec (~> 1.1.0a)
   ox
+  parsanol
   plurimath!
   rake (~> 12.0)
   rspec (~> 3.0)
@@ -253,6 +292,7 @@ DEPENDENCIES
   simplecov
 
 CHECKSUMS
+  amath (0.1.0) sha256=5e156409f3ef8a513b9da78cef77b1c1b3a11e402ca60c4767f87e090c9f238a
   ansi (1.6.0) sha256=ac9ea0c0ea8d32fb4e271348e609963ac78882f34b73836c2a02b3622e666658
   ast (2.4.3) sha256=954615157c1d6a382bc27d690d973195e79db7f55e9765ac7c481c60bdb4d383
   base64 (0.3.0) sha256=27337aeabad6ffae05c265c450490628ef3ebd4b67be58257393227588f5a97b
@@ -278,15 +318,24 @@ CHECKSUMS
   irb (1.18.0) sha256=de9454a0703a54704b9811a5ef31a60c86949fbf4013fcf244fabc7c775248e3
   json (2.21.2) sha256=1f1d3b7cf2b3ba1a69beca0bb6db13d5438b80bff3cd54cdaaa620b9b07c1c6a
   language_server-protocol (3.17.0.6) sha256=5ef2c0c138f8267e1bc631d3328347d354f96724b0af22f2c79516120443b7f0
+  lasem (0.1.0)
+  leptris (1.9.410.0-aarch64-linux) sha256=42cdd53b7f6e75d8e1beaad7659fd022c804693abd1948fbf519d69c4c490f80
+  leptris (1.9.410.0-aarch64-linux-musl) sha256=54479e4685c32f607f5dc1e9bd3d65173c7ce9ccde6dabb18fa4715a49642484
+  leptris (1.9.410.0-arm-linux) sha256=8f075922d87ff8e6c29bfa089b90bc9aefc2c4755652ba12789d010fd75f2e7a
+  leptris (1.9.410.0-arm-linux-musl) sha256=61b9b111f79727d2cf70ad01453c1221fcbe4e731bf4b2c6f1db93a50e6033fd
+  leptris (1.9.410.0-arm64-darwin) sha256=a789782ece2bd7695e198770935d22d82c86630f6d592abb307fdbf423403209
+  leptris (1.9.410.0-x86_64-darwin) sha256=ce6d678161fb109cebf778728d6c76e4395c605075421d2bf387bcdd9deeb211
+  leptris (1.9.410.0-x86_64-linux) sha256=64cda852395ec81cd3006afd5a5c8b968c52aec0764b3535dc3be3b85f59bb73
+  leptris (1.9.410.0-x86_64-linux-musl) sha256=8bc8d7c8693460d36b3a41804305c45c7a2247b596fa8a9d74144c5db9d3dfcf
   link_header (0.0.8) sha256=15c65ce43b29f739b30d05e5f25c22c23797e89cf6f905dbb595fb4c70cb55f9
   lint_roller (1.1.0) sha256=2c0c845b632a7d172cb849cc90c1bce937a28c5c8ccccb50dfd46a485003cc87
   liquid (5.13.0) sha256=09d594fd96b98e19a8fd5c32aadcc6950df429b69f48c2f774c0db0ce272bf19
   logger (1.7.0) sha256=196edec7cc44b66cfb40f9755ce11b392f21f7967696af15d274dde7edff0203
-  lutaml-model (0.8.65) sha256=db2b2c7cd284ec665b8bd6beb57e471b5c954e5a36acf134c4da893771d897fc
+  lutaml-model (0.8.155) sha256=3d90f2fb4fdf41a42d4a05b62b3f6644b433070b82291a9371deaa8e68a1e02d
   matrix (0.4.3) sha256=a0d5ab7ddcc1973ff690ab361b67f359acbb16958d1dc072b8b956a286564c5b
   memo_wise (1.13.0) sha256=30220c38c4cef410849bc73553c58664dc2c91c6379e4a1df22aea02358b716b
   mml (2.4.2) sha256=d72cd23ca19e134c6cb8d0e3d052124ec77a2fa8cf95d227cbd37281e0d81dfd
-  moxml (0.5.84) sha256=e7f4b877419177497851f179ba66e19c57fe2b37d853f0ca911532a60a0d407d
+  moxml (0.5.178) sha256=7939938652fc6a435291a2fc62a6d3c059d096d5ed4df486ad18f5640561ae4f
   nokogiri (1.19.4-aarch64-linux-gnu) sha256=1269fb644a6de405057a53dd5c762b1209b43ca7424f839454d3dbc677c31a8f
   nokogiri (1.19.4-aarch64-linux-musl) sha256=35c65b9ce72b3bb03207bdbe7067915019dc18c1b9b59139684bd6690fdd01af
   nokogiri (1.19.4-arm-linux-gnu) sha256=a301313e38bb065d68239e79734bcd6f56fb6efaacebde29e9abf2a4735340ca
@@ -303,9 +352,17 @@ CHECKSUMS
   ox (2.14.28) sha256=0b0bf5a1076a747a65d6ae99c6ffb1a9b03d021d08ae26d4e387f5040486b32d
   paint (2.3.0) sha256=327d623e4038619d5bd99ae5db07973859cd78400c7f0329eea283cef8e83be5
   parallel (2.1.0) sha256=b35258865c2e31134c5ecb708beaaf6772adf9d5efae28e93e99260877b09356
+  parsanol (1.3.134-aarch64-linux) sha256=df2952b208bf1449047d91b59c57f835923258359506bb017220b460760e1446
+  parsanol (1.3.134-aarch64-linux-musl) sha256=878df50cd2bdac0e09baa17ffe0a9a9b91e437215c0774301bf49b26ecec760a
+  parsanol (1.3.134-arm-linux) sha256=b5e943a4b25de86ffce8f46b00e5aa1bb950f1ea45f71aa9e7585f1f102e16ef
+  parsanol (1.3.134-arm-linux-musl) sha256=752b2058453f9f8ffa0ad6f10b859964c8acb3bf152706b52451e0e406be7dad
+  parsanol (1.3.134-arm64-darwin) sha256=8ca694a3d35ac29f9e7dde5170c21246ca6957f444a79b4245a10cd1c9edf80c
+  parsanol (1.3.134-x86_64-darwin) sha256=d1ab98d41d7e271b3b7e247ce248f6a0467b8253edcaf740992b6b8d74557cd3
+  parsanol (1.3.134-x86_64-linux) sha256=d8586fbd415bd9a13905019843a7b47abb1ea8e49fb948d8d10077feb54f4301
+  parsanol (1.3.134-x86_64-linux-musl) sha256=3fc93c71804d2fe9b463e235f5b049219b7cb572f4a04bc71a750994748024f1
   parser (3.3.12.0) sha256=21a6d7f755d5a24dfbdc6e6b772e4e879a52e7631a88bc5a3a134606052c9828
   parslet (2.0.0) sha256=d45130695d39b43d7e6a91f4d2ec66b388a8d822bae38de9b4de9a5fbde1f606
-  plurimath (0.11.12)
+  plurimath (0.11.17)
   pp (0.6.4) sha256=dfcb0fce700c41456265922884f9fe195d7fbb0674a3578e6c0f69588e82b570
   prettyprint (0.2.0) sha256=2bc9e15581a94742064a3cc8b0fb9d45aae3d03a1baa6ef80922627a0766f193
   prism (1.9.0) sha256=7b530c6a9f92c24300014919c9dcbc055bf4cdf51ec30aed099b06cd6674ef85
@@ -330,7 +387,7 @@ CHECKSUMS
   rubocop-rspec (3.10.2) sha256=0b3e2ecc592cd10ecbf0095bb58d1e357905276e069643523cc19eb7495f65e2
   ruby-ll (2.2.0) sha256=f8811ae1dfc77d6d95033a615aacb6ab8e93fb9f421fefe75107b077dc9ab588
   ruby-progressbar (1.13.0) sha256=80fc9c47a9b640d6834e0dc7b3c94c9df37f08cb072b7761e4a71e22cff29b33
-  rubyzip (3.4.0) sha256=6de39bc9eba302b635a476d16c9e16b0872ad24517c2f98f2b3a7ea23caff57b
+  rubyzip (3.7.0) sha256=65c19294da75297a939006f3516deacc33185fbd721ff1954f7a231db6d3e121
   scanf (1.0.0) sha256=533db7f7e5acafea1a145d6c5329cef667a58fbcb7d64379a808ff1199ee1b00
   simplecov (1.0.3) sha256=38ef0514f16ae7562f0d0f4df02610071115103d301b6de7dacbcc000082e39b
   strscan (3.1.8) sha256=aae2db611a225559f21ffbb71765c9a4e60fd262534a9ea84f4f11c7f32f679e
