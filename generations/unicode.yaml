@@ -35,3 +35,13 @@ entries:
   - stage-gem
   change: extend
   rationale: Keeps every generation 2 payload byte for byte and adds typed-model rows (Unicodemath.parse, Ruby and native engines agreeing) for each legacy input, written by scripts/stage_cases.rb at unicodemath c319cf6675fd8a88830f61178d63bc36352728ab.
+- generation: 4
+  path: stages/unicode/generations/000004
+  snapshot_digest: sha256:cc02870fb6ee5a46c64271733b716f00469d0af46847851ad3db9249ad2571ed
+  payloads: 15
+  rows: 216
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Keeps every generation 3 row; rewrites the five raw-tree payloads with scripts/stage_cases.rb at umath 0302568ef9446b1b099d15a56445ed7624816462 so their header comment and description name umath after the rename. No row changes.

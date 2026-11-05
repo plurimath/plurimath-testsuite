@@ -1,0 +1,476 @@
+# Raw-tree rows for payloads/rejections.yaml. Written by scripts/stage_cases.rb
+# (plurimath/umath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-rejections
+description: 'Umath::RawParser outcome for each input of payloads/rejections.yaml (generation 1): the legacy preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-unclosed-paren.raw
+  input:
+    str: "(a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-paren.raw
+  input:
+    str: a)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-lone-close-paren.raw
+  input:
+    str: ")"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-close-paren-mid.raw
+  input:
+    str: a)b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-paren-after-operator.raw
+  input:
+    str: a+(b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-close-paren-after-operator.raw
+  input:
+    str: a+)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-square.raw
+  input:
+    str: "[a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-square.raw
+  input:
+    str: a]
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-curly.raw
+  input:
+    str: "{a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-stray-close-curly.raw
+  input:
+    str: a}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-unclosed-angle.raw
+  input:
+    str: "⟨a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: unicode-stray-close-angle.raw
+  input:
+    str: a⟩
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-ceiling.raw
+  input:
+    str: "⌈a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: unicode-stray-close-ceiling.raw
+  input:
+    str: a⌉
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-unclosed-vert.raw
+  input:
+    str: "|a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-stray-close-paren.raw
+  input:
+    str: α)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: unicode-greek-unclosed-paren.raw
+  input:
+    str: "(α"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-lone-sup.raw
+  input:
+    str: "^"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-sup.raw
+  input:
+    str: a^
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-trailing-sup.raw
+  input:
+    str: α^
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-lone-sub.raw
+  input:
+    str: _
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-sub.raw
+  input:
+    str: a_
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-infinity-trailing-sub.raw
+  input:
+    str: "∞_"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: unicode-doubled-sup.raw
+  input:
+    str: a^^b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-doubled-sub.raw
+  input:
+    str: a__b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-sub-then-sup.raw
+  input:
+    str: a_^b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-lone-slash.raw
+  input:
+    str: "/"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-slash.raw
+  input:
+    str: a/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-number-trailing-slash.raw
+  input:
+    str: 1/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-leading-slash.raw
+  input:
+    str: "/2"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-greek-trailing-slash.raw
+  input:
+    str: α/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-double-trailing-slash.raw
+  input:
+    str: a/b/
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-lone-ampersand.raw
+  input:
+    str: "&"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-ampersand-operator.raw
+  input:
+    str: a&b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 2
+- id: unicode-greek-ampersand.raw
+  input:
+    str: α&b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-unclosed-quote.raw
+  input:
+    str: "\"abc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 4
+- id: unicode-greek-unclosed-quote.raw
+  input:
+    str: "\"αbc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 10
+- id: unicode-matrix-unclosed.raw
+  input:
+    str: "■(a&b"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 12
+- id: unicode-lone-at.raw
+  input:
+    str: "@"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0
+- id: unicode-at-operator.raw
+  input:
+    str: a@b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-greek-at-operator.raw
+  input:
+    str: α@b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: unicode-lone-naryand.raw
+  input:
+    str: "▒"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-lone-right-tack.raw
+  input:
+    str: "┤"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-down-tack.raw
+  input:
+    str: a┬
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: unicode-lone-broken-bar.raw
+  input:
+    str: "¦"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: unicode-trailing-broken-bar.raw
+  input:
+    str: a¦
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: unicode-greek-broken-bar.raw
+  input:
+    str: α¦
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 13
+- id: unicode-lone-function-apply.raw
+  input:
+    str: "⁡"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-trailing-function-apply.raw
+  input:
+    str: a⁡
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: unicode-greek-function-apply.raw
+  input:
+    str: α⁡
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 15
+- id: unicode-lone-parenthesized-letter.raw
+  input:
+    str: "⒜"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: unicode-whitespace-only.raw
+  input:
+    str: " "
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 0

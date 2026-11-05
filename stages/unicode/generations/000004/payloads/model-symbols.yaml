@@ -1,0 +1,120 @@
+# Typed-model rows for payloads/symbols.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: model-symbols
+description: 'Typed model (Unicodemath::Model::Document) from Unicodemath.parse for each input of payloads/symbols.yaml (generation 2): the legacy preprocessing and the model, each object its model class (model/unicodemath.lml.json) with its set fields in declaration order (nil fields left out), or a refusal with its byte offset into the caller''s input. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: typed-model
+cases:
+- id: unicode-symbol-greek-alpha.model
+  input:
+    str: α
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x3b1;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - ordinary_symbols
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "&#x3b1;"
+                  - - value
+                    - str: α
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: unicode-symbol-greek-pi.model
+  input:
+    str: π
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x3c0;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - ordinary_symbols
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "&#x3c0;"
+                  - - value
+                    - str: π
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: unicode-symbol-infinity.model
+  input:
+    str: "∞"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x221e;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - ordinary_symbols
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "&#x221e;"
+                  - - value
+                    - str: "∞"
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: unicode-symbol-empty-set.model
+  input:
+    str: "∅"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "&#x2205;"
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - ordinary_symbols
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "&#x2205;"
+                  - - value
+                    - str: "∅"
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
