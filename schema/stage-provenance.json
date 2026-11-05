@@ -103,9 +103,9 @@
           }
         },
         "semantic_boundary": {
-          "description": "What the rows' expectations are: facade outputs (preprocessed text, writer renderings, refusals), the raw grammar tree, the typed model, or cross-language roundtrip outcomes.",
+          "description": "What the rows' expectations are: facade outputs (preprocessed text, writer renderings, refusals), the raw grammar tree, the typed model, the typed model with its own serialization, or cross-language roundtrip outcomes.",
           "type": "string",
-          "enum": ["facade-outputs", "raw-tree", "typed-model", "roundtrip"]
+          "enum": ["facade-outputs", "raw-tree", "typed-model", "model-roundtrip", "roundtrip"]
         },
         "configuration": {"type": "object"}
       }

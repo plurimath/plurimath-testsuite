@@ -63,7 +63,12 @@ Each payload declares its schema in its top-level `schema` key, as in
   rows the facade gem produced;
 * `plurimath-stage/<language>/cases/1` (`schema/stage-cases.json`), for rows
   whose expectation is a raw grammar tree or a typed model in the canonical
-  tagged form of `docs/tree-parity-contract.adoc`, or a refusal;
+  tagged form of `docs/tree-parity-contract.adoc`, or a refusal. With the
+  `model-roundtrip` boundary a row's expectation is the typed model the gem
+  parses the input into (`model`) and the exact string the gem serializes
+  that model to (`output`), or a refusal naming the exception class the gem
+  raised (`error_class`), so an XML model gem can be replayed on its own
+  parse and serialization rather than on the facade's renderings;
 * `plurimath-stage/roundtrip/1` (`schema/stage-roundtrip.json`), only under
   `stages/roundtrip`: a source language and input, caller options such as
   the decimal marker, a specification section, and for each target either
@@ -86,7 +91,8 @@ Every case has a string `id`, and ids are unique within a generation.
   generator script as a file at an exact commit with its sha256, every data
   input the generator read, the Ruby, lockfile, dependency, compiler, binding
   and LML identities, the semantic boundary of its expectations
-  (`facade-outputs`, `raw-tree`, `typed-model` or `roundtrip`), and its
+  (`facade-outputs`, `raw-tree`, `typed-model`, `model-roundtrip` or
+  `roundtrip`), and its
   configuration;
 * `payloads`: one entry per file under `payloads/`, sorted by path bytes,
   with its size, sha256, producer, source and the ids of its rows in file
