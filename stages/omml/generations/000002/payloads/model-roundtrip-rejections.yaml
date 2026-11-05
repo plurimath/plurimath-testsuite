@@ -1,0 +1,176 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/omml/cases/1
+group: model-roundtrip-rejections
+description: Omml.parse model and to_xml output for every case of payloads/rejections.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: omml-bare-text.model-roundtrip
+  input:
+    str: abc
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::InvalidXmlError
+- id: omml-lone-angle.model-roundtrip
+  input:
+    str: "<"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::InvalidXmlError
+- id: omml-stray-close.model-roundtrip
+  input:
+    str: "</m:oMath>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::InvalidXmlError
+- id: omml-unbound-prefix.model-roundtrip
+  input:
+    str: "<m:oMath><m:r><m:t>a</m:t></m:r></m:oMath>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::UnsupportedRootElementError
+- id: omml-unclosed-para.model-roundtrip
+  input:
+    str: <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:oMath><m:r><m:t>a</m:t></m:r></m:oMath>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - r
+              - array:
+                - node: Omml::Models::CTR
+                  fields:
+                  - - t
+                    - array:
+                      - node: Omml::Models::CTText
+                        fields:
+                        - - content
+                          - str: a
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: a
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: t
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: r
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+          <m:oMath>
+            <m:r>
+              <m:t>a</m:t>
+            </m:r>
+          </m:oMath>
+        </m:oMathPara>
+- id: omml-crossed-close.model-roundtrip
+  input:
+    str: <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:r><m:t>a</m:r></m:t></m:oMath>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMath
+      fields:
+      - - r
+        - array:
+          - node: Omml::Models::CTR
+            fields:
+            - - t
+              - array:
+                - node: Omml::Models::CTText
+                  fields:
+                  - - content
+                    - str: a
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: a
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: t
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: r
+    output:
+      str: |-
+        <m:oMath xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+          <m:r>
+            <m:t>a</m:t>
+          </m:r>
+        </m:oMath>
+- id: omml-bare-lt-in-text.model-roundtrip
+  input:
+    str: <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:oMath><m:r><m:t>a<b</m:t></m:r></m:oMath></m:oMathPara>
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::InvalidXmlError
+- id: omml-text-after-root.model-roundtrip
+  input:
+    str: <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math"><m:oMath><m:r><m:t>a</m:t></m:r></m:oMath></m:oMathPara>x
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::InvalidXmlError
+- id: omml-mathml-input.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a</mi></math>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Omml::Errors::UnsupportedRootElementError
