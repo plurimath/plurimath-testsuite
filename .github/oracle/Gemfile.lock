@@ -10,7 +10,7 @@ PATH
   remote: .
   specs:
     plurimath (0.11.17)
-      amath (~> 0.1)
+      amath (~> 0.1.0)
       bigdecimal
       htmlentities
       lutaml-model (~> 0.8.155)
