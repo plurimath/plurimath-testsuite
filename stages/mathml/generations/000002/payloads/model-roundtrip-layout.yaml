@@ -1,0 +1,1219 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-layout
+description: Mml.parse model and to_xml output for every case of payloads/layout.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: mathml-layout-001.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle displaystyle='true'>
+          <mi>sin</mi>
+          <mn>1</mn>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: sin
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: sin
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: '1'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: '1'
+            - - displaystyle
+              - str: 'true'
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle displaystyle="true">
+            <mi>sin</mi>
+            <mn>1</mn>
+          </mstyle>
+        </math>
+- id: mathml-layout-002.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="fraktur">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: f
+            - - mathvariant
+              - str: fraktur
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="fraktur">
+            <mi>f</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-003.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="sans-serif">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: f
+            - - mathvariant
+              - str: sans-serif
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="sans-serif">
+            <mi>f</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-004.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="monospace">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: f
+            - - mathvariant
+              - str: monospace
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="monospace">
+            <mi>f</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-005.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="script">
+          <mi>f</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: f
+            - - mathvariant
+              - str: script
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="script">
+            <mi>f</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-006.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="double-struck">
+          <mi>s</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: s
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: s
+            - - mathvariant
+              - str: double-struck
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="double-struck">
+            <mi>s</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-007.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathvariant="bold">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: d
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: d
+            - - mathvariant
+              - str: bold
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathvariant="bold">
+            <mi>d</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-008.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathcolor="red" mathvariant="fraktur">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: d
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: d
+            - - mathcolor
+              - str: red
+            - - mathvariant
+              - str: fraktur
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathcolor="red" mathvariant="fraktur">
+            <mi>d</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-009.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mstyle mathcolor="red" mathvariant="asci">
+          <mi>d</mi>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: d
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: d
+            - - mathcolor
+              - str: red
+            - - mathvariant
+              - str: asci
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathcolor="red" mathvariant="asci">
+            <mi>d</mi>
+          </mstyle>
+        </math>
+- id: mathml-layout-010.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mspace height="3ex" depth="2ex"/>
+
+        <mrow>
+          <mi>a</mi>
+          <mo id="firstop">+</mo>
+          <mi>b</mi>
+          <mspace linebreak="newline" indentalign="id" indenttarget="firstop"/>
+          <mo>+</mo>
+          <mi>c</mi>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mspace_value
+        - array:
+          - node: Mml::V3::Mspace
+            fields:
+            - - height
+              - str: 3ex
+            - - depth
+              - str: 2ex
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mspace_value
+              - array:
+                - node: Mml::V3::Mspace
+                  fields:
+                  - - linebreak
+                    - str: newline
+                  - - indentalign
+                    - str: id
+                  - - indenttarget
+                    - str: firstop
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: a
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: a
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: b
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: b
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: c
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: c
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "+"
+                  - - id
+                    - str: firstop
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "+"
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "+"
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "+"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mspace
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mspace
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mspace height="3ex" depth="2ex"/>
+          <mrow>
+            <mi>a</mi>
+            <mo id="firstop">+</mo>
+            <mi>b</mi>
+            <mspace linebreak="newline" indentalign="id" indenttarget="firstop"/>
+            <mo>+</mo>
+            <mi>c</mi>
+          </mrow>
+        </math>
+- id: mathml-layout-011.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mi>x</mi>
+          <mpadded lspace="0.2em" voffset="0.3ex">
+            <mi>y</mi>
+          </mpadded>
+          <mi>z</mi>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mpadded_value
+              - array:
+                - node: Mml::V3::Mpadded
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: "y"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "y"
+                  - - voffset
+                    - str: 0.3ex
+                  - - lspace
+                    - str: 0.2em
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: x
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: x
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: z
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: z
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mpadded
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mi>x</mi>
+            <mpadded lspace="0.2em" voffset="0.3ex">
+              <mi>y</mi>
+            </mpadded>
+            <mi>z</mi>
+          </mrow>
+        </math>

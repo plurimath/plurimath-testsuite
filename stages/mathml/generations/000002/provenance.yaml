@@ -1,0 +1,1087 @@
+# Generation 2 of the mathml stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/provenance/1
+language: mathml
+generation: 2
+notes: 'Generation 1''s 13 payloads, byte for byte (their provenance entries and producer
+  unchanged), plus mml''s model-roundtrip rows: every generation 1 input (301 rows,
+  ids <id>.model-roundtrip, rejections included) parsed by Mml.parse and serialized
+  by to_xml at mml v2.4.7 (d826d80f6b1477569c8320ccd945268a6ce1062f). Each row is
+  the input, the typed model in canonical tagged form ({node: <model class>, fields:
+  [...]}, declared attributes not at their default in declaration order, plus @element_order
+  where the model tracks child order) and the output string, or a refusal with the
+  raising stage and the exception class. Written by scripts/generate-xml-stage-cases.rb
+  at 3b601b7b396803c819c65ac7f8493d2685f6e5b1; two runs gave identical bytes.'
+producers:
+  legacy-oracle:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: ed048ee2d39cb3b2f13c83c6fdf536e77e63f650
+    version: 0.11.12
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/generate-corpus.rb
+      sha256: 13f2d4292967aa6af018f3701ca0eb6930e3e7892dbc0d7a340b29fde0391756
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/mathml.yaml
+      sha256: d2d68fb1f0b560d1529a6e7f70701e766d5bedefcb65ecc18b2cb82b3ed804b7
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: fef72bd82d15e094d3435ff4c9e0f1065fb80804
+      path: scripts/seeds/omml.yaml
+      sha256: fb0647fa360f1cf69d76c097da249a1d255730f8b3a976b906f2ca47880f00d5
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        sha256: 7efc064f84e8bb7d079dabac664c349d77a5403b99610cebac2463a916fd4e04
+        resolved_gems: 81
+        platforms:
+        - aarch64-linux
+        - aarch64-linux-gnu
+        - aarch64-linux-musl
+        - arm-linux
+        - arm-linux-eabihf
+        - arm-linux-gnu
+        - arm-linux-musl
+        - arm-linux-musleabihf
+        - arm64-darwin
+        - x86_64-darwin
+        - x86_64-linux-gnu
+        - x86_64-linux-musl
+        bundler: 4.0.3
+      dependencies:
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        lutaml-model: 0.8.126
+        mml: 2.4.3
+        omml: 0.2.6
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parslet: 2.0.0
+        thor: 1.5.0
+        unitsml: 0.6.9
+      compiler:
+      binding:
+      lml:
+    semantic_boundary: facade-outputs
+    configuration: {}
+  mml:
+    kind: stage-gem
+    repository: https://github.com/plurimath/mml
+    commit: d826d80f6b1477569c8320ccd945268a6ce1062f
+    version: 2.4.7
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 3b601b7b396803c819c65ac7f8493d2685f6e5b1
+      path: scripts/generate-xml-stage-cases.rb
+      sha256: c291f11a45460b0c3c3b1af725999e4f436cbd71be408460545b37a29fbe2c8c
+    inputs:
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/elementary-math.yaml
+      sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/enclose.yaml
+      sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/fences.yaml
+      sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/fractions.yaml
+      sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/layout.yaml
+      sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/over-under.yaml
+      sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/partial-render.yaml
+      sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/rejections.yaml
+      sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/roots.yaml
+      sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/scripts.yaml
+      sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/tables.yaml
+      sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/text.yaml
+      sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+    - repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 884394cbcf3f0d7536d44f65e9d05b203ca76fa7
+      path: stages/mathml/generations/000001/payloads/tokens.yaml
+      sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
+    environment:
+      ruby:
+        engine: ruby
+        version: 3.4.8
+      xml_engine: Lutaml::Xml::Adapter::LeptrisAdapter
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        sha256: 95de02510f23db7aebce3b51798db91da16e845f38554c10beba254b710ed30c
+        bundler: 4.0.7
+        platforms:
+        - x64-mingw-ucrt
+        git_sources:
+          lutaml-model:
+            repository: https://github.com/lutaml/lutaml-model.git
+            branch: main
+            revision: 7c749bf3e4adb0525142a7ba66359f5451f3cd0a
+        resolved:
+          ast: 2.4.3
+          base64: 0.3.0
+          bigdecimal: 4.1.3
+          canon: 0.3.123
+          coderay: 1.1.3
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ffi: 1.17.4
+          io-console: 0.9.5
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          leptris: 1.9.407.0
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          lutaml-model: 0.8.169
+          memo_wise: 1.13.0
+          method_source: 1.1.0
+          mml: 2.4.7
+          moxml: 0.6.3
+          nokogiri: 1.19.7
+          opal: 1.8.3
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.3.0
+          parser: 3.3.13.0
+          prism: 1.9.0
+          pry: 0.16.1
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          regexp_parser: 2.13.1
+          reline: 0.7.0
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.92.2
+          rubocop-ast: 1.50.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          strscan: 3.1.8
+          table_tennis: 1.0.0
+          thor: 1.5.0
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          yeptris: 0.6.60.1
+      dependencies:
+        lutaml-model: 0.8.169
+        moxml: 0.6.3
+      compiler:
+      binding:
+      lml:
+    semantic_boundary: model-roundtrip
+    configuration:
+      entry_point: Mml.parse
+      options:
+        version: 3
+        namespace_exist: true
+      serializer: to_xml
+      release_tag: v2.4.7
+      installed_with: bundle config set --local path vendor/bundle; bundle install
+payloads:
+- path: payloads/elementary-math.yaml
+  bytes: 47800
+  sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/elementary-math.yaml
+      sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
+  rows:
+  - mathml-elementary-math-001
+  - mathml-elementary-math-002
+  - mathml-elementary-math-003
+  - mathml-elementary-math-004
+  - mathml-elementary-math-005
+  - mathml-elementary-math-006
+  - mathml-elementary-math-007
+  - mathml-elementary-math-008
+  - mathml-elementary-math-009
+  - mathml-elementary-math-010
+- path: payloads/enclose.yaml
+  bytes: 3729
+  sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/enclose.yaml
+      sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
+  rows:
+  - mathml-enclose-001
+- path: payloads/fences.yaml
+  bytes: 159855
+  sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/fences.yaml
+      sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
+  rows:
+  - mathml-fences-001
+  - mathml-fences-002
+  - mathml-fences-003
+  - mathml-fences-004
+  - mathml-fences-005
+  - mathml-fences-006
+  - mathml-fences-007
+  - mathml-fences-008
+  - mathml-fences-009
+  - mathml-fences-010
+  - mathml-fences-011
+  - mathml-fences-012
+  - mathml-fences-013
+  - mathml-fences-014
+  - mathml-fences-015
+  - mathml-fences-016
+  - mathml-fences-017
+  - mathml-fences-018
+  - mathml-fences-019
+  - mathml-fences-020
+  - mathml-fences-021
+  - mathml-fences-022
+  - mathml-fences-023
+  - mathml-fences-024
+  - mathml-fences-025
+  - mathml-fences-026
+  - mathml-fences-027
+  - mathml-fences-028
+  - mathml-fences-029
+  - mathml-fences-030
+  - mathml-fences-031
+- path: payloads/fractions.yaml
+  bytes: 68670
+  sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/fractions.yaml
+      sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
+  rows:
+  - mathml-fractions-001
+  - mathml-fractions-002
+  - mathml-fractions-003
+  - mathml-fractions-004
+  - mathml-fractions-005
+  - mathml-fractions-006
+  - mathml-fractions-007
+  - mathml-fractions-008
+  - mathml-fractions-009
+  - mathml-fractions-010
+  - mathml-fractions-011
+  - mathml-fractions-012
+  - mathml-fractions-013
+- path: payloads/layout.yaml
+  bytes: 32195
+  sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/layout.yaml
+      sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
+  rows:
+  - mathml-layout-001
+  - mathml-layout-002
+  - mathml-layout-003
+  - mathml-layout-004
+  - mathml-layout-005
+  - mathml-layout-006
+  - mathml-layout-007
+  - mathml-layout-008
+  - mathml-layout-009
+  - mathml-layout-010
+  - mathml-layout-011
+- path: payloads/model-roundtrip-elementary-math.yaml
+  bytes: 70036
+  sha256: a2a2933001a02ec15f8368bc2242db02bb8144acddc168584e1119d66f401f80
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-elementary-math-001.model-roundtrip
+  - mathml-elementary-math-002.model-roundtrip
+  - mathml-elementary-math-003.model-roundtrip
+  - mathml-elementary-math-004.model-roundtrip
+  - mathml-elementary-math-005.model-roundtrip
+  - mathml-elementary-math-006.model-roundtrip
+  - mathml-elementary-math-007.model-roundtrip
+  - mathml-elementary-math-008.model-roundtrip
+  - mathml-elementary-math-009.model-roundtrip
+  - mathml-elementary-math-010.model-roundtrip
+- path: payloads/model-roundtrip-enclose.yaml
+  bytes: 4703
+  sha256: cac0c2c3f9aeb82e2aa0225481f5c17f0047895c2b176d878e072d10e3d8709f
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-enclose-001.model-roundtrip
+- path: payloads/model-roundtrip-fences.yaml
+  bytes: 296818
+  sha256: 40feb39082af5ed9864560a8dd3ed5c427febeb3928dab4cd86fe61149443e20
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-fences-001.model-roundtrip
+  - mathml-fences-002.model-roundtrip
+  - mathml-fences-003.model-roundtrip
+  - mathml-fences-004.model-roundtrip
+  - mathml-fences-005.model-roundtrip
+  - mathml-fences-006.model-roundtrip
+  - mathml-fences-007.model-roundtrip
+  - mathml-fences-008.model-roundtrip
+  - mathml-fences-009.model-roundtrip
+  - mathml-fences-010.model-roundtrip
+  - mathml-fences-011.model-roundtrip
+  - mathml-fences-012.model-roundtrip
+  - mathml-fences-013.model-roundtrip
+  - mathml-fences-014.model-roundtrip
+  - mathml-fences-015.model-roundtrip
+  - mathml-fences-016.model-roundtrip
+  - mathml-fences-017.model-roundtrip
+  - mathml-fences-018.model-roundtrip
+  - mathml-fences-019.model-roundtrip
+  - mathml-fences-020.model-roundtrip
+  - mathml-fences-021.model-roundtrip
+  - mathml-fences-022.model-roundtrip
+  - mathml-fences-023.model-roundtrip
+  - mathml-fences-024.model-roundtrip
+  - mathml-fences-025.model-roundtrip
+  - mathml-fences-026.model-roundtrip
+  - mathml-fences-027.model-roundtrip
+  - mathml-fences-028.model-roundtrip
+  - mathml-fences-029.model-roundtrip
+  - mathml-fences-030.model-roundtrip
+  - mathml-fences-031.model-roundtrip
+- path: payloads/model-roundtrip-fractions.yaml
+  bytes: 128617
+  sha256: 49ed145d3649adae507c0f51ab391c318a86e6f2956f6f548fcdc8b97da3d6c9
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-fractions-001.model-roundtrip
+  - mathml-fractions-002.model-roundtrip
+  - mathml-fractions-003.model-roundtrip
+  - mathml-fractions-004.model-roundtrip
+  - mathml-fractions-005.model-roundtrip
+  - mathml-fractions-006.model-roundtrip
+  - mathml-fractions-007.model-roundtrip
+  - mathml-fractions-008.model-roundtrip
+  - mathml-fractions-009.model-roundtrip
+  - mathml-fractions-010.model-roundtrip
+  - mathml-fractions-011.model-roundtrip
+  - mathml-fractions-012.model-roundtrip
+  - mathml-fractions-013.model-roundtrip
+- path: payloads/model-roundtrip-layout.yaml
+  bytes: 35013
+  sha256: 7ed72954a0d34fb9f54f869bc8dda69abd619dbfba234f680f0bb2022e3f38f8
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-layout-001.model-roundtrip
+  - mathml-layout-002.model-roundtrip
+  - mathml-layout-003.model-roundtrip
+  - mathml-layout-004.model-roundtrip
+  - mathml-layout-005.model-roundtrip
+  - mathml-layout-006.model-roundtrip
+  - mathml-layout-007.model-roundtrip
+  - mathml-layout-008.model-roundtrip
+  - mathml-layout-009.model-roundtrip
+  - mathml-layout-010.model-roundtrip
+  - mathml-layout-011.model-roundtrip
+- path: payloads/model-roundtrip-over-under.yaml
+  bytes: 389795
+  sha256: 0bfede3b4641b914aaab2ff3adf9a9ca8b26f5e3f0748f731b05006942687c69
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-over-under-001.model-roundtrip
+  - mathml-over-under-002.model-roundtrip
+  - mathml-over-under-003.model-roundtrip
+  - mathml-over-under-004.model-roundtrip
+  - mathml-over-under-005.model-roundtrip
+  - mathml-over-under-006.model-roundtrip
+  - mathml-over-under-007.model-roundtrip
+  - mathml-over-under-008.model-roundtrip
+  - mathml-over-under-009.model-roundtrip
+  - mathml-over-under-010.model-roundtrip
+  - mathml-over-under-011.model-roundtrip
+  - mathml-over-under-012.model-roundtrip
+  - mathml-over-under-013.model-roundtrip
+  - mathml-over-under-014.model-roundtrip
+  - mathml-over-under-015.model-roundtrip
+  - mathml-over-under-016.model-roundtrip
+  - mathml-over-under-017.model-roundtrip
+  - mathml-over-under-018.model-roundtrip
+  - mathml-over-under-019.model-roundtrip
+  - mathml-over-under-020.model-roundtrip
+  - mathml-over-under-021.model-roundtrip
+  - mathml-over-under-022.model-roundtrip
+  - mathml-over-under-023.model-roundtrip
+  - mathml-over-under-024.model-roundtrip
+  - mathml-over-under-025.model-roundtrip
+  - mathml-over-under-026.model-roundtrip
+  - mathml-over-under-027.model-roundtrip
+  - mathml-over-under-028.model-roundtrip
+  - mathml-over-under-029.model-roundtrip
+  - mathml-over-under-030.model-roundtrip
+  - mathml-over-under-031.model-roundtrip
+  - mathml-over-under-032.model-roundtrip
+  - mathml-over-under-033.model-roundtrip
+  - mathml-over-under-034.model-roundtrip
+- path: payloads/model-roundtrip-partial-render.yaml
+  bytes: 355720
+  sha256: 97def871fe75dbd66b930d5ae448c368cec001b5816691edf9ca6ba60f34d9ff
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-partial-001.model-roundtrip
+  - mathml-partial-002.model-roundtrip
+  - mathml-partial-003.model-roundtrip
+  - mathml-partial-004.model-roundtrip
+  - mathml-partial-005.model-roundtrip
+  - mathml-partial-006.model-roundtrip
+  - mathml-partial-007.model-roundtrip
+  - mathml-partial-008.model-roundtrip
+  - mathml-partial-009.model-roundtrip
+  - mathml-partial-010.model-roundtrip
+  - mathml-partial-011.model-roundtrip
+  - mathml-partial-012.model-roundtrip
+  - mathml-partial-013.model-roundtrip
+  - mathml-partial-014.model-roundtrip
+  - mathml-partial-015.model-roundtrip
+  - mathml-partial-016.model-roundtrip
+  - mathml-partial-017.model-roundtrip
+  - mathml-partial-018.model-roundtrip
+  - mathml-partial-019.model-roundtrip
+  - mathml-partial-020.model-roundtrip
+  - mathml-partial-021.model-roundtrip
+  - mathml-partial-022.model-roundtrip
+  - mathml-partial-023.model-roundtrip
+  - mathml-partial-024.model-roundtrip
+  - mathml-partial-025.model-roundtrip
+  - mathml-partial-026.model-roundtrip
+  - mathml-partial-027.model-roundtrip
+- path: payloads/model-roundtrip-rejections.yaml
+  bytes: 6465
+  sha256: fe416473e7407f4ff9f1a6b4693e65f1eb21d8fbfb32f62eceace4bb94e32cc2
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-unsupported-pi.model-roundtrip
+  - mathml-unsupported-apply.model-roundtrip
+  - mathml-whitespace-only.model-roundtrip
+  - mathml-bare-text.model-roundtrip
+  - mathml-lone-angle.model-roundtrip
+  - mathml-empty-angles.model-roundtrip
+  - mathml-stray-close.model-roundtrip
+  - mathml-unclosed-math.model-roundtrip
+  - mathml-unclosed-token.model-roundtrip
+  - mathml-unclosed-operator.model-roundtrip
+  - mathml-mismatched-close.model-roundtrip
+  - mathml-bare-lt-in-token.model-roundtrip
+  - mathml-unquoted-attribute.model-roundtrip
+  - mathml-text-after-root.model-roundtrip
+- path: payloads/model-roundtrip-roots.yaml
+  bytes: 12011
+  sha256: 436b3fc2813917c584581199468ae908127d8741051c2ef578108711e970b71d
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-roots-001.model-roundtrip
+  - mathml-roots-002.model-roundtrip
+  - mathml-roots-003.model-roundtrip
+  - mathml-roots-004.model-roundtrip
+- path: payloads/model-roundtrip-scripts.yaml
+  bytes: 731946
+  sha256: 9144b1096063c51fc12802780d028238d02f83938305329df1548b255d37a6ae
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-scripts-001.model-roundtrip
+  - mathml-scripts-002.model-roundtrip
+  - mathml-scripts-003.model-roundtrip
+  - mathml-scripts-004.model-roundtrip
+  - mathml-scripts-005.model-roundtrip
+  - mathml-scripts-006.model-roundtrip
+  - mathml-scripts-007.model-roundtrip
+  - mathml-scripts-008.model-roundtrip
+  - mathml-scripts-009.model-roundtrip
+  - mathml-scripts-010.model-roundtrip
+  - mathml-scripts-011.model-roundtrip
+  - mathml-scripts-012.model-roundtrip
+  - mathml-scripts-013.model-roundtrip
+  - mathml-scripts-014.model-roundtrip
+  - mathml-scripts-015.model-roundtrip
+  - mathml-scripts-016.model-roundtrip
+  - mathml-scripts-017.model-roundtrip
+  - mathml-scripts-018.model-roundtrip
+  - mathml-scripts-019.model-roundtrip
+  - mathml-scripts-020.model-roundtrip
+  - mathml-scripts-021.model-roundtrip
+  - mathml-scripts-022.model-roundtrip
+  - mathml-scripts-023.model-roundtrip
+  - mathml-scripts-024.model-roundtrip
+  - mathml-scripts-025.model-roundtrip
+  - mathml-scripts-026.model-roundtrip
+  - mathml-scripts-027.model-roundtrip
+  - mathml-scripts-028.model-roundtrip
+  - mathml-scripts-029.model-roundtrip
+  - mathml-scripts-030.model-roundtrip
+  - mathml-scripts-031.model-roundtrip
+  - mathml-scripts-032.model-roundtrip
+  - mathml-scripts-033.model-roundtrip
+  - mathml-scripts-034.model-roundtrip
+  - mathml-scripts-035.model-roundtrip
+  - mathml-scripts-036.model-roundtrip
+  - mathml-scripts-037.model-roundtrip
+  - mathml-scripts-038.model-roundtrip
+  - mathml-scripts-039.model-roundtrip
+  - mathml-scripts-040.model-roundtrip
+  - mathml-scripts-041.model-roundtrip
+  - mathml-scripts-042.model-roundtrip
+  - mathml-scripts-043.model-roundtrip
+  - mathml-scripts-044.model-roundtrip
+  - mathml-scripts-045.model-roundtrip
+  - mathml-scripts-046.model-roundtrip
+  - mathml-scripts-047.model-roundtrip
+  - mathml-scripts-048.model-roundtrip
+  - mathml-scripts-049.model-roundtrip
+  - mathml-scripts-050.model-roundtrip
+- path: payloads/model-roundtrip-tables.yaml
+  bytes: 221297
+  sha256: ba25c6aa58783100d8d250972dfc2a5fb6d99917a420e43a18b9a1705f88e9e7
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-tables-001.model-roundtrip
+  - mathml-tables-002.model-roundtrip
+  - mathml-tables-003.model-roundtrip
+  - mathml-tables-004.model-roundtrip
+  - mathml-tables-005.model-roundtrip
+  - mathml-tables-006.model-roundtrip
+  - mathml-tables-007.model-roundtrip
+- path: payloads/model-roundtrip-text.yaml
+  bytes: 19102
+  sha256: b2b13a33285e2381764d63100e4a786eb7b7f10fa680b7a7d34facceb08f4f58
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-text-001.model-roundtrip
+  - mathml-text-002.model-roundtrip
+  - mathml-text-003.model-roundtrip
+  - mathml-text-004.model-roundtrip
+  - mathml-text-005.model-roundtrip
+  - mathml-text-006.model-roundtrip
+  - mathml-text-007.model-roundtrip
+  - mathml-text-008.model-roundtrip
+  - mathml-text-009.model-roundtrip
+  - mathml-text-010.model-roundtrip
+  - mathml-text-011.model-roundtrip
+- path: payloads/model-roundtrip-tokens.yaml
+  bytes: 486605
+  sha256: 6a2a6fee16103c73a90ed31fed41b7bdf0838b7d669db1c657d54cd22d828a00
+  producer: mml
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-tokens-001.model-roundtrip
+  - mathml-tokens-002.model-roundtrip
+  - mathml-tokens-003.model-roundtrip
+  - mathml-tokens-004.model-roundtrip
+  - mathml-tokens-005.model-roundtrip
+  - mathml-tokens-006.model-roundtrip
+  - mathml-tokens-007.model-roundtrip
+  - mathml-tokens-008.model-roundtrip
+  - mathml-tokens-009.model-roundtrip
+  - mathml-tokens-010.model-roundtrip
+  - mathml-tokens-011.model-roundtrip
+  - mathml-tokens-012.model-roundtrip
+  - mathml-tokens-013.model-roundtrip
+  - mathml-tokens-014.model-roundtrip
+  - mathml-tokens-015.model-roundtrip
+  - mathml-tokens-016.model-roundtrip
+  - mathml-tokens-017.model-roundtrip
+  - mathml-tokens-018.model-roundtrip
+  - mathml-tokens-019.model-roundtrip
+  - mathml-tokens-020.model-roundtrip
+  - mathml-tokens-021.model-roundtrip
+  - mathml-tokens-022.model-roundtrip
+  - mathml-tokens-023.model-roundtrip
+  - mathml-tokens-024.model-roundtrip
+  - mathml-tokens-025.model-roundtrip
+  - mathml-tokens-026.model-roundtrip
+  - mathml-tokens-027.model-roundtrip
+  - mathml-tokens-028.model-roundtrip
+  - mathml-tokens-029.model-roundtrip
+  - mathml-tokens-030.model-roundtrip
+  - mathml-tokens-031.model-roundtrip
+  - mathml-tokens-032.model-roundtrip
+  - mathml-tokens-033.model-roundtrip
+  - mathml-tokens-034.model-roundtrip
+  - mathml-tokens-035.model-roundtrip
+  - mathml-tokens-036.model-roundtrip
+  - mathml-tokens-037.model-roundtrip
+  - mathml-tokens-038.model-roundtrip
+  - mathml-tokens-039.model-roundtrip
+  - mathml-tokens-040.model-roundtrip
+  - mathml-tokens-041.model-roundtrip
+  - mathml-tokens-042.model-roundtrip
+  - mathml-tokens-043.model-roundtrip
+  - mathml-tokens-044.model-roundtrip
+  - mathml-tokens-045.model-roundtrip
+  - mathml-tokens-046.model-roundtrip
+  - mathml-tokens-047.model-roundtrip
+  - mathml-tokens-048.model-roundtrip
+  - mathml-tokens-049.model-roundtrip
+  - mathml-tokens-050.model-roundtrip
+  - mathml-tokens-051.model-roundtrip
+  - mathml-tokens-052.model-roundtrip
+  - mathml-tokens-053.model-roundtrip
+  - mathml-tokens-054.model-roundtrip
+  - mathml-tokens-055.model-roundtrip
+  - mathml-tokens-056.model-roundtrip
+  - mathml-tokens-057.model-roundtrip
+  - mathml-tokens-058.model-roundtrip
+  - mathml-tokens-059.model-roundtrip
+  - mathml-tokens-060.model-roundtrip
+  - mathml-tokens-061.model-roundtrip
+  - mathml-tokens-062.model-roundtrip
+  - mathml-tokens-063.model-roundtrip
+  - mathml-tokens-064.model-roundtrip
+  - mathml-tokens-065.model-roundtrip
+  - mathml-tokens-066.model-roundtrip
+  - mathml-tokens-067.model-roundtrip
+  - mathml-tokens-068.model-roundtrip
+  - mathml-tokens-069.model-roundtrip
+  - mathml-tokens-070.model-roundtrip
+  - mathml-tokens-071.model-roundtrip
+  - mathml-tokens-072.model-roundtrip
+  - mathml-tokens-073.model-roundtrip
+  - mathml-tokens-074.model-roundtrip
+  - mathml-tokens-075.model-roundtrip
+  - mathml-tokens-076.model-roundtrip
+  - mathml-tokens-077.model-roundtrip
+  - mathml-tokens-078.model-roundtrip
+  - mathml-tokens-079.model-roundtrip
+  - mathml-tokens-080.model-roundtrip
+  - mathml-tokens-081.model-roundtrip
+  - mathml-tokens-082.model-roundtrip
+  - mathml-tokens-083.model-roundtrip
+  - mathml-tokens-084.model-roundtrip
+  - mathml-tokens-085.model-roundtrip
+  - mathml-tokens-086.model-roundtrip
+  - mathml-tokens-087.model-roundtrip
+  - mathml-tokens-088.model-roundtrip
+- path: payloads/over-under.yaml
+  bytes: 189075
+  sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/over-under.yaml
+      sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
+  rows:
+  - mathml-over-under-001
+  - mathml-over-under-002
+  - mathml-over-under-003
+  - mathml-over-under-004
+  - mathml-over-under-005
+  - mathml-over-under-006
+  - mathml-over-under-007
+  - mathml-over-under-008
+  - mathml-over-under-009
+  - mathml-over-under-010
+  - mathml-over-under-011
+  - mathml-over-under-012
+  - mathml-over-under-013
+  - mathml-over-under-014
+  - mathml-over-under-015
+  - mathml-over-under-016
+  - mathml-over-under-017
+  - mathml-over-under-018
+  - mathml-over-under-019
+  - mathml-over-under-020
+  - mathml-over-under-021
+  - mathml-over-under-022
+  - mathml-over-under-023
+  - mathml-over-under-024
+  - mathml-over-under-025
+  - mathml-over-under-026
+  - mathml-over-under-027
+  - mathml-over-under-028
+  - mathml-over-under-029
+  - mathml-over-under-030
+  - mathml-over-under-031
+  - mathml-over-under-032
+  - mathml-over-under-033
+  - mathml-over-under-034
+- path: payloads/partial-render.yaml
+  bytes: 169603
+  sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/partial-render.yaml
+      sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
+  rows:
+  - mathml-partial-001
+  - mathml-partial-002
+  - mathml-partial-003
+  - mathml-partial-004
+  - mathml-partial-005
+  - mathml-partial-006
+  - mathml-partial-007
+  - mathml-partial-008
+  - mathml-partial-009
+  - mathml-partial-010
+  - mathml-partial-011
+  - mathml-partial-012
+  - mathml-partial-013
+  - mathml-partial-014
+  - mathml-partial-015
+  - mathml-partial-016
+  - mathml-partial-017
+  - mathml-partial-018
+  - mathml-partial-019
+  - mathml-partial-020
+  - mathml-partial-021
+  - mathml-partial-022
+  - mathml-partial-023
+  - mathml-partial-024
+  - mathml-partial-025
+  - mathml-partial-026
+  - mathml-partial-027
+- path: payloads/rejections.yaml
+  bytes: 3476
+  sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/rejections.yaml
+      sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
+  rows:
+  - mathml-unsupported-pi
+  - mathml-unsupported-apply
+  - mathml-whitespace-only
+  - mathml-bare-text
+  - mathml-lone-angle
+  - mathml-empty-angles
+  - mathml-stray-close
+  - mathml-unclosed-math
+  - mathml-unclosed-token
+  - mathml-unclosed-operator
+  - mathml-mismatched-close
+  - mathml-bare-lt-in-token
+  - mathml-unquoted-attribute
+  - mathml-text-after-root
+- path: payloads/roots.yaml
+  bytes: 12364
+  sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/roots.yaml
+      sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
+  rows:
+  - mathml-roots-001
+  - mathml-roots-002
+  - mathml-roots-003
+  - mathml-roots-004
+- path: payloads/scripts.yaml
+  bytes: 332878
+  sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/scripts.yaml
+      sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
+  rows:
+  - mathml-scripts-001
+  - mathml-scripts-002
+  - mathml-scripts-003
+  - mathml-scripts-004
+  - mathml-scripts-005
+  - mathml-scripts-006
+  - mathml-scripts-007
+  - mathml-scripts-008
+  - mathml-scripts-009
+  - mathml-scripts-010
+  - mathml-scripts-011
+  - mathml-scripts-012
+  - mathml-scripts-013
+  - mathml-scripts-014
+  - mathml-scripts-015
+  - mathml-scripts-016
+  - mathml-scripts-017
+  - mathml-scripts-018
+  - mathml-scripts-019
+  - mathml-scripts-020
+  - mathml-scripts-021
+  - mathml-scripts-022
+  - mathml-scripts-023
+  - mathml-scripts-024
+  - mathml-scripts-025
+  - mathml-scripts-026
+  - mathml-scripts-027
+  - mathml-scripts-028
+  - mathml-scripts-029
+  - mathml-scripts-030
+  - mathml-scripts-031
+  - mathml-scripts-032
+  - mathml-scripts-033
+  - mathml-scripts-034
+  - mathml-scripts-035
+  - mathml-scripts-036
+  - mathml-scripts-037
+  - mathml-scripts-038
+  - mathml-scripts-039
+  - mathml-scripts-040
+  - mathml-scripts-041
+  - mathml-scripts-042
+  - mathml-scripts-043
+  - mathml-scripts-044
+  - mathml-scripts-045
+  - mathml-scripts-046
+  - mathml-scripts-047
+  - mathml-scripts-048
+  - mathml-scripts-049
+  - mathml-scripts-050
+- path: payloads/tables.yaml
+  bytes: 76065
+  sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/tables.yaml
+      sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
+  rows:
+  - mathml-tables-001
+  - mathml-tables-002
+  - mathml-tables-003
+  - mathml-tables-004
+  - mathml-tables-005
+  - mathml-tables-006
+  - mathml-tables-007
+- path: payloads/text.yaml
+  bytes: 29368
+  sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/text.yaml
+      sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
+  rows:
+  - mathml-text-001
+  - mathml-text-002
+  - mathml-text-003
+  - mathml-text-004
+  - mathml-text-005
+  - mathml-text-006
+  - mathml-text-007
+  - mathml-text-008
+  - mathml-text-009
+  - mathml-text-010
+  - mathml-text-011
+- path: payloads/tokens.yaml
+  bytes: 304985
+  sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
+  producer: legacy-oracle
+  source:
+    relation: copy
+    file:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: 281059b213026a54a193cb020a5816f57cabf3a8
+      path: corpus/mathml/tokens.yaml
+      sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
+  rows:
+  - mathml-tokens-001
+  - mathml-tokens-002
+  - mathml-tokens-003
+  - mathml-tokens-004
+  - mathml-tokens-005
+  - mathml-tokens-006
+  - mathml-tokens-007
+  - mathml-tokens-008
+  - mathml-tokens-009
+  - mathml-tokens-010
+  - mathml-tokens-011
+  - mathml-tokens-012
+  - mathml-tokens-013
+  - mathml-tokens-014
+  - mathml-tokens-015
+  - mathml-tokens-016
+  - mathml-tokens-017
+  - mathml-tokens-018
+  - mathml-tokens-019
+  - mathml-tokens-020
+  - mathml-tokens-021
+  - mathml-tokens-022
+  - mathml-tokens-023
+  - mathml-tokens-024
+  - mathml-tokens-025
+  - mathml-tokens-026
+  - mathml-tokens-027
+  - mathml-tokens-028
+  - mathml-tokens-029
+  - mathml-tokens-030
+  - mathml-tokens-031
+  - mathml-tokens-032
+  - mathml-tokens-033
+  - mathml-tokens-034
+  - mathml-tokens-035
+  - mathml-tokens-036
+  - mathml-tokens-037
+  - mathml-tokens-038
+  - mathml-tokens-039
+  - mathml-tokens-040
+  - mathml-tokens-041
+  - mathml-tokens-042
+  - mathml-tokens-043
+  - mathml-tokens-044
+  - mathml-tokens-045
+  - mathml-tokens-046
+  - mathml-tokens-047
+  - mathml-tokens-048
+  - mathml-tokens-049
+  - mathml-tokens-050
+  - mathml-tokens-051
+  - mathml-tokens-052
+  - mathml-tokens-053
+  - mathml-tokens-054
+  - mathml-tokens-055
+  - mathml-tokens-056
+  - mathml-tokens-057
+  - mathml-tokens-058
+  - mathml-tokens-059
+  - mathml-tokens-060
+  - mathml-tokens-061
+  - mathml-tokens-062
+  - mathml-tokens-063
+  - mathml-tokens-064
+  - mathml-tokens-065
+  - mathml-tokens-066
+  - mathml-tokens-067
+  - mathml-tokens-068
+  - mathml-tokens-069
+  - mathml-tokens-070
+  - mathml-tokens-071
+  - mathml-tokens-072
+  - mathml-tokens-073
+  - mathml-tokens-074
+  - mathml-tokens-075
+  - mathml-tokens-076
+  - mathml-tokens-077
+  - mathml-tokens-078
+  - mathml-tokens-079
+  - mathml-tokens-080
+  - mathml-tokens-081
+  - mathml-tokens-082
+  - mathml-tokens-083
+  - mathml-tokens-084
+  - mathml-tokens-085
+  - mathml-tokens-086
+  - mathml-tokens-087
+  - mathml-tokens-088

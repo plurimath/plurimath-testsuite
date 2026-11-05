@@ -1,0 +1,438 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/omml/cases/1
+group: model-roundtrip-boxes
+description: Omml.parse model and to_xml output for every case of payloads/boxes.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: omml-boxes-001.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:borderBox>
+            <m:borderBoxPr>
+              <m:hideTop m:val="on"/>
+              <m:hideBot m:val="on"/>
+              <m:hideLeft m:val="on"/>
+              <m:hideRight m:val="on"/>
+            </m:borderBoxPr>
+            <m:e>
+              <m:r>
+                <m:t>ax+b</m:t>
+              </m:r>
+            </m:e>
+          </m:borderBox>
+        </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - border_box
+              - array:
+                - node: Omml::Models::CTBorderBox
+                  fields:
+                  - - border_box_pr
+                    - array:
+                      - node: Omml::Models::CTBorderBoxPr
+                        fields:
+                        - - hide_top
+                          - array:
+                            - node: Omml::Models::CTOnOff
+                              fields:
+                              - - val
+                                - str: 'on'
+                        - - hide_bot
+                          - array:
+                            - node: Omml::Models::CTOnOff
+                              fields:
+                              - - val
+                                - str: 'on'
+                        - - hide_left
+                          - array:
+                            - node: Omml::Models::CTOnOff
+                              fields:
+                              - - val
+                                - str: 'on'
+                        - - hide_right
+                          - array:
+                            - node: Omml::Models::CTOnOff
+                              fields:
+                              - - val
+                                - str: 'on'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: hideTop
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: hideBot
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: hideLeft
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: hideRight
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: ax+b
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: ax+b
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n          "
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n        "
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n        "
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: borderBoxPr
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: borderBox
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:borderBox>
+              <m:borderBoxPr>
+                <m:hideTop m:val="on"/>
+                <m:hideBot m:val="on"/>
+                <m:hideLeft m:val="on"/>
+                <m:hideRight m:val="on"/>
+              </m:borderBoxPr>
+              <m:e>
+                <m:r>
+                  <m:t>ax+b</m:t>
+                </m:r>
+              </m:e>
+            </m:borderBox>
+          </m:oMath>
+        </m:oMathPara>
+- id: omml-boxes-002.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+        <m:oMath>
+          <m:box>
+            <m:e>
+              <m:r><m:t>x</m:t></m:r>
+            </m:e>
+          </m:box>
+        </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - box
+              - array:
+                - node: Omml::Models::CTBox
+                  fields:
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: x
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: x
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n        "
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: box
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+          <m:oMath>
+            <m:box>
+              <m:e>
+                <m:r>
+                  <m:t>x</m:t>
+                </m:r>
+              </m:e>
+            </m:box>
+          </m:oMath>
+        </m:oMathPara>

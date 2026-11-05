@@ -1,0 +1,917 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/omml/cases/1
+group: model-roundtrip-accents
+description: Omml.parse model and to_xml output for every case of payloads/accents.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: omml-accents-001.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:acc>
+            <m:accPr>
+              <m:chr m:val="̂"/>
+            </m:accPr>
+            <m:e>
+              <m:r>
+                <m:t>a</m:t>
+              </m:r>
+            </m:e>
+          </m:acc>
+        </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - acc
+              - array:
+                - node: Omml::Models::CTAcc
+                  fields:
+                  - - acc_pr
+                    - array:
+                      - node: Omml::Models::CTAccPr
+                        fields:
+                        - - chr
+                          - array:
+                            - node: Omml::Models::CTChar
+                              fields:
+                              - - val
+                                - str: ̂
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: chr
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: a
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: a
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n          "
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n        "
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n        "
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: accPr
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: acc
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:acc>
+              <m:accPr>
+                <m:chr m:val="̂"/>
+              </m:accPr>
+              <m:e>
+                <m:r>
+                  <m:t>a</m:t>
+                </m:r>
+              </m:e>
+            </m:acc>
+          </m:oMath>
+        </m:oMathPara>
+- id: omml-accents-002.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:acc>
+            <m:accPr>
+              <m:chr m:val="⏞"/>
+            </m:accPr>
+            <m:e>
+              <m:r>
+                <m:t>c</m:t>
+              </m:r>
+            </m:e>
+          </m:acc>
+        </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - acc
+              - array:
+                - node: Omml::Models::CTAcc
+                  fields:
+                  - - acc_pr
+                    - array:
+                      - node: Omml::Models::CTAccPr
+                        fields:
+                        - - chr
+                          - array:
+                            - node: Omml::Models::CTChar
+                              fields:
+                              - - val
+                                - str: "⏞"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: chr
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: c
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: c
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n          "
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n        "
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n        "
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: accPr
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: acc
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:acc>
+              <m:accPr>
+                <m:chr m:val="⏞"/>
+              </m:accPr>
+              <m:e>
+                <m:r>
+                  <m:t>c</m:t>
+                </m:r>
+              </m:e>
+            </m:acc>
+          </m:oMath>
+        </m:oMathPara>
+- id: omml-accents-003.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+        <m:oMath>
+          <m:bar>
+            <m:barPr>
+              <m:pos m:val="top" />
+              <m:ctrlPr>
+                <w:rPr>
+                  <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                  <w:i/>
+                </w:rPr>
+              </m:ctrlPr>
+            </m:barPr>
+            <m:e>
+              <m:r>
+                <m:t>under</m:t>
+              </m:r>
+            </m:e>
+          </m:bar>
+        </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - bar
+              - array:
+                - node: Omml::Models::CTBar
+                  fields:
+                  - - bar_pr
+                    - array:
+                      - node: Omml::Models::CTBarPr
+                        fields:
+                        - - pos
+                          - array:
+                            - node: Omml::Models::CTTopBot
+                              fields:
+                              - - val
+                                - str: top
+                        - - ctrl_pr
+                          - array:
+                            - node: Omml::Models::CTCtrlPr
+                              fields:
+                              - - r_pr
+                                - array:
+                                  - node: Omml::Models::CTRPr
+                                    fields:
+                                    - - r_fonts
+                                      - array:
+                                        - node: Omml::Models::CTFonts
+                                          fields:
+                                          - - ascii
+                                            - str: Cambria Math
+                                          - - h_ansi
+                                            - str: Cambria Math
+                                    - - i
+                                      - array:
+                                        - node: Omml::Models::CTWordprocessingOnOff
+                                          fields: []
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n            "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: rFonts
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n            "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: i
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n          "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: rPr
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: pos
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: ctrlPr
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: under
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: under
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n          "
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                                - hash:
+                                  - - str: type
+                                    - str: Text
+                                  - - str: name
+                                    - str: text
+                                  - - str: text
+                                    - str: "\n        "
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n        "
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                          - hash:
+                            - - str: type
+                              - str: Text
+                            - - str: name
+                              - str: text
+                            - - str: text
+                              - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: barPr
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: bar
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mo="http://schemas.microsoft.com/office/mac/office/2008/main" xmlns:mv="urn:schemas-microsoft-com:mac:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w10="urn:schemas-microsoft-com:office:word" xmlns:w14="http://schemas.microsoft.com/office/word/2010/wordml" xmlns:w15="http://schemas.microsoft.com/office/word/2012/wordml" xmlns:wne="http://schemas.microsoft.com/office/word/2006/wordml" xmlns:wp="http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing" xmlns:wp14="http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing" xmlns:wpc="http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas" xmlns:wpg="http://schemas.microsoft.com/office/word/2010/wordprocessingGroup" xmlns:wpi="http://schemas.microsoft.com/office/word/2010/wordprocessingInk" xmlns:wps="http://schemas.microsoft.com/office/word/2010/wordprocessingShape">
+          <m:oMath>
+            <m:bar>
+              <m:barPr>
+                <m:pos m:val="top"/>
+                <m:ctrlPr>
+                  <w:rPr xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+                    <w:rFonts w:ascii="Cambria Math" w:hAnsi="Cambria Math"/>
+                    <w:i/>
+                  </w:rPr>
+                </m:ctrlPr>
+              </m:barPr>
+              <m:e>
+                <m:r>
+                  <m:t>under</m:t>
+                </m:r>
+              </m:e>
+            </m:bar>
+          </m:oMath>
+        </m:oMathPara>
+- id: omml-accents-004.model-roundtrip
+  input:
+    str: |
+      <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+        <m:oMath><m:acc>
+        <m:accPr><m:chr m:val="¯"/></m:accPr>
+        <m:e><m:r><m:t>x</m:t></m:r></m:e>
+      </m:acc>
+      </m:oMath>
+      </m:oMathPara>
+  options: {}
+  expected:
+    model:
+      node: Omml::Models::OMathPara
+      fields:
+      - - o_math
+        - array:
+          - node: Omml::Models::CTOMath
+            fields:
+            - - acc
+              - array:
+                - node: Omml::Models::CTAcc
+                  fields:
+                  - - acc_pr
+                    - array:
+                      - node: Omml::Models::CTAccPr
+                        fields:
+                        - - chr
+                          - array:
+                            - node: Omml::Models::CTChar
+                              fields:
+                              - - val
+                                - str: "¯"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: chr
+                  - - e
+                    - node: Omml::Models::CTOMathArg
+                      fields:
+                      - - r
+                        - array:
+                          - node: Omml::Models::CTR
+                            fields:
+                            - - t
+                              - array:
+                                - node: Omml::Models::CTText
+                                  fields:
+                                  - - content
+                                    - str: x
+                                  - - "@element_order"
+                                    - array:
+                                      - hash:
+                                        - - str: type
+                                          - str: Text
+                                        - - str: name
+                                          - str: text
+                                        - - str: text
+                                          - str: x
+                            - - "@element_order"
+                              - array:
+                                - hash:
+                                  - - str: type
+                                    - str: Element
+                                  - - str: name
+                                    - str: t
+                      - - "@element_order"
+                        - array:
+                          - hash:
+                            - - str: type
+                              - str: Element
+                            - - str: name
+                              - str: r
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n  "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: accPr
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n  "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: e
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: acc
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n"
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: oMath
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <m:oMathPara xmlns:m="http://schemas.openxmlformats.org/officeDocument/2006/math">
+          <m:oMath>
+            <m:acc>
+              <m:accPr>
+                <m:chr m:val="¯"/>
+              </m:accPr>
+              <m:e>
+                <m:r>
+                  <m:t>x</m:t>
+                </m:r>
+              </m:e>
+            </m:acc>
+          </m:oMath>
+        </m:oMathPara>
