@@ -1,0 +1,24 @@
+{
+  "name": "plurimath-testsuite-wasm-replay",
+  "version": "0.0.0",
+  "private": true,
+  "description": "Replays the raw-tree rows of the testsuite stage generations on the parsanol wasm engine",
+  "type": "module",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "replay": "npm run build && node dist/src/replay-stage.js",
+    "test": "npm run build && node --test dist/test/*.test.js"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "license": "BSD-2-Clause",
+  "dependencies": {
+    "parsanol": "0.10.39",
+    "yaml": "2.9.1"
+  },
+  "devDependencies": {
+    "@types/node": "26.6.3",
+    "typescript": "7.0.2"
+  }
+}

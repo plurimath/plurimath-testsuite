@@ -1,0 +1,15 @@
+[package]
+name = "plurimath-testsuite-rust-replay"
+version = "0.0.0"
+edition = "2021"
+publish = false
+description = "Replays the raw-tree rows of the testsuite stage generations on the parsanol Rust engine"
+license = "BSD-2-Clause"
+
+[[bin]]
+name = "stage-replay"
+path = "src/main.rs"
+
+[dependencies]
+parsanol = "=0.20.7"
+serde_json = "=1.0.154"
