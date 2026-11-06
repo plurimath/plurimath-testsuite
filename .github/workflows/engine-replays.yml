@@ -1,0 +1,112 @@
+name: engine-replays
+
+# Replays the raw-tree rows of each language's stage generation on the
+# parsanol wasm and Rust engines and fails on any row that differs from the
+# Ruby-produced expectation. See engines/README.md.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  replay:
+    name: replay (${{ matrix.engine }}, ${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        engine: [wasm, rust]
+        language: [latex, asciimath, unicode]
+        # Each stage gem is pinned to the commit its generation's
+        # provenance names for the stage-gem producer.
+        include:
+          - language: latex
+            gem: plurimath/latexmath
+            ref: 27e300a433742765486e3bead2fac19ee8fd55a0
+            artifact: latex.json
+            generation: stages/latex/generations/000003
+          - language: asciimath
+            gem: plurimath/amath
+            ref: 8ec8ba05bc49196aa5825782a052f51a2db99c7a
+            artifact: asciimath.json
+            generation: stages/asciimath/generations/000003
+          - language: unicode
+            gem: plurimath/umath
+            ref: 0302568ef9446b1b099d15a56445ed7624816462
+            artifact: umath.json
+            generation: stages/unicode/generations/000004
+    env:
+      ARTIFACT: ${{ github.workspace }}/stage-gem/artifacts/${{ matrix.artifact }}
+      PAYLOADS: ${{ github.workspace }}/${{ matrix.generation }}/payloads
+    steps:
+      - uses: actions/checkout@v4
+      # grammars/ holds umath's wrapper table (umath.wrappers.json).
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.gem }}
+          ref: ${{ matrix.ref }}
+          path: stage-gem
+          sparse-checkout: |
+            artifacts
+            grammars
+
+      - if: matrix.engine == 'wasm'
+        uses: actions/setup-node@v4
+        with:
+          node-version: "24"
+      - if: matrix.engine == 'wasm'
+        name: Install
+        working-directory: engines/wasm
+        run: npm ci
+      - if: matrix.engine == 'wasm'
+        name: Replay ${{ matrix.generation }}
+        working-directory: engines/wasm
+        run: npm run replay -- "$ARTIFACT" "$PAYLOADS" --language ${{ matrix.language }}
+      - if: matrix.engine == 'wasm'
+        name: Replay tests
+        working-directory: engines/wasm
+        run: node --test dist/test/*.test.js
+        env:
+          PARG_ARTIFACT_DIR: ${{ github.workspace }}/stage-gem/artifacts
+          STAGE_ARTIFACT: ${{ matrix.artifact }}
+          STAGE_LANGUAGE: ${{ matrix.language }}
+          STAGE_PAYLOADS: ${{ env.PAYLOADS }}
+
+      - if: matrix.engine == 'rust'
+        uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.95.0"
+      - if: matrix.engine == 'rust'
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
+      # The Rust replay reads JSON, so the YAML payloads are converted first.
+      - if: matrix.engine == 'rust'
+        name: Convert payloads to JSON
+        run: |
+          mkdir -p "$RUNNER_TEMP/payloads"
+          for f in "$PAYLOADS"/*.yaml; do
+            ruby -ryaml -rjson -e 'puts JSON.generate(YAML.load_file(ARGV[0]))' "$f" \
+              > "$RUNNER_TEMP/payloads/$(basename "$f" .yaml).json"
+          done
+      - if: matrix.engine == 'rust'
+        name: Replay ${{ matrix.generation }}
+        working-directory: engines/rust
+        run: cargo run --locked -- "$ARTIFACT" "$RUNNER_TEMP/payloads" --language ${{ matrix.language }}
+      - if: matrix.engine == 'rust'
+        name: Replay tests
+        working-directory: engines/rust
+        run: cargo test --locked
+        env:
+          PARG_ARTIFACT: ${{ env.ARTIFACT }}
+          STAGE_LANGUAGE: ${{ matrix.language }}
+          STAGE_PAYLOADS: ${{ runner.temp }}/payloads
