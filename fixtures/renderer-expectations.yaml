@@ -89224,7 +89224,7 @@
     "memo":
     - "let:string"
   "comparison": "eq"
-  "expected": "\"hex\" = Ⓢ(0@1@2@3@4@5@6@7@8@9@A@B@C@D@E@F) \" with \" |(\"hex\")| = 16"
+  "expected": "\"hex\" = {■(0@1@2@3@4@5@6@7@8@9@A@B@C@D@E@F)┤ \" with \" |(\"hex\")| = 16"
 - "id": "formula-unicodemath-6"
   "source":
     "path": "spec/plurimath/math/formula/unicodemath_spec.rb"
@@ -159214,7 +159214,7 @@
     "memo":
     - "let:string"
   "comparison": "eq"
-  "expected": "Ⓢ(a@b) §"
+  "expected": "{■(a@b)┤ §"
 - "id": "formula-unicodemath-382"
   "source":
     "path": "spec/plurimath/math/formula/unicodemath_spec.rb"
