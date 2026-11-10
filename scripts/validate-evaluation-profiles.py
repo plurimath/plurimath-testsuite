@@ -57,7 +57,7 @@ def validate(directory):
 
 
 if __name__ == "__main__":
-    default = Path(__file__).resolve().parents[1] / "generations" / "evaluation" / "numeric-v1"
+    default = Path(__file__).resolve().parents[1] / "evaluation" / "numeric-v1"
     try:
         profiles, rows = validate(Path(sys.argv[1]) if len(sys.argv) > 1 else default)
     except (OSError, KeyError, TypeError, ValueError) as error:

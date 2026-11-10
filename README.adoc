@@ -527,7 +527,7 @@ validator implements.
 
 === Serialized numeric request profiles
 
-`generations/evaluation/numeric-v1/` contains five immutable JSON profiles for
+`evaluation/numeric-v1/` contains five immutable JSON profiles for
 the closed numeric request API. Its manifest pins the Ruby producer, seals the
 profile bytes, and records which Rust bindings replayed those bytes. Each row
 contains a request and the exact canonical response, including typed errors.
