@@ -3,24 +3,26 @@
 This page records which consumer replays which pinned generation of each
 stage language, at which boundary, on which runtimes and operating systems,
 and the evidence for each entry. The state was read from GitHub on
-2026-11-05. Only merged work with a passing replay counts as done. Open pull
+2026-11-10. Only merged work with a passing replay counts as done. Open pull
 requests, failing runs and local-only branches are listed as pending.
 
 The boundaries are the raw tree, the typed model, the model roundtrip and the
 facade, as defined in the stage corpus contract. Runtimes are Ruby, Rust and
 WASM/TS. Operating systems are ubuntu, windows and macos.
 
-The html stage has no consumer replaying it yet. The roundtrip stage is
-replayed by plurimath, but that pull request is still open. Rust replay of
-latex generation 3 (139 of 139 rows) is open in parsanol-rs. A WASM/TS replay
-exists only as a local, unpushed parsanol-ts branch, so it is pending and has
-no evidence yet.
+The html stage has no consumer replaying it yet. Every other stage is
+replayed by at least one merged consumer with a passing run.
 
-Two Ruby entries need care. The umath platform pull request was merged while
-its replay jobs were failing, and the corpus workflow on umath main also
-failed at that merge, so unicode is not done on windows or macos. The latex
-generation 3 pin in latexmath is open and its full replay is failing, so latex
-counts as done for generation 2 only.
+The Rust and WASM/TS replays of the raw-tree rows were first added to
+parsanol-rs (#410 and #412) and proposed for parsanol-ts (#55). They now live
+in this repository, in `engines/` and the `engine-replays` workflow
+(plurimath-testsuite#45). parsanol-rs#414 removed the copy there, and
+parsanol-ts#55 was closed without merging.
+
+The umath platform pull request (umath#16) was merged while its replay jobs
+were failing on all three operating systems. Unicode is done on windows and
+macos from generation 4, pinned by umath#19, whose merge passed the replay on
+all three.
 
 [cols="1,1,1,1,1,1,2,2",options="header"]
 |===
@@ -34,6 +36,10 @@ counts as done for generation 2 only.
 |amath#30, merge f1a963fc23, run 42070877257
 |done
 
+|asciimath |plurimath-testsuite |3 |raw tree |Rust, WASM/TS |ubuntu
+|plurimath-testsuite#45, merge 0d50db714d, run 42252734238
+|done
+
 |latex |latexmath |2 |raw tree |Ruby |ubuntu
 |latexmath#55, merge 72dc8ed5d3, run 41810497690
 |done
@@ -42,17 +48,17 @@ counts as done for generation 2 only.
 |latexmath#60, merge 64d27d3157, run 42070888425
 |done
 
-|latex |latexmath |3 |raw tree, typed model |Ruby |ubuntu
-|latexmath#61, open, head run 42072916009 failing
-|pending
+|latex |latexmath |3 |raw tree, typed model |Ruby |ubuntu, windows, macos
+|latexmath#61, merge 0727d5f8de, run 42111417743
+|done
 
-|latex |parsanol-rs |3 |raw tree |Rust |ubuntu
-|parsanol-rs#410, open, Stage Replay passing in run 42080306305
-|pending
+|latex |plurimath-testsuite |3 |raw tree |Rust |ubuntu
+|plurimath-testsuite#45, merge 0d50db714d, run 42252734238
+|done
 
-|latex |parsanol-ts |3 |raw tree |WASM/TS |none
-|local branch, not pushed
-|pending
+|latex |plurimath-testsuite |3 |raw tree |WASM/TS |ubuntu
+|plurimath-testsuite#45, merge 0d50db714d, run 42252734238
+|done
 
 |unicode |umath |2 |raw tree |Ruby |ubuntu
 |umath#6, merge 09de4bacf7, run 41816831893
@@ -60,29 +66,37 @@ counts as done for generation 2 only.
 
 |unicode |umath |2 |raw tree |Ruby |ubuntu, windows, macos
 |umath#16, merge c331a22382, PR run 42070900537 failing, main corpus run 42077986222 failing
-|pending
+|superseded by generation 4
+
+|unicode |umath |4 |raw tree |Ruby |ubuntu, windows, macos
+|umath#19, merge e28af88637, run 42132262573
+|done
+
+|unicode |plurimath-testsuite |4 |raw tree |Rust, WASM/TS |ubuntu
+|plurimath-testsuite#45, merge 0d50db714d, run 42252734238
+|done
 
 |mathml |mml |2 |model roundtrip, facade |Ruby |ubuntu
 |mml#50, merge e310769034, run 42060475088
 |done
 
 |mathml |mml |2 |model roundtrip, facade |Ruby |ubuntu, windows, macos
-|mml#51, open, run 42077635030 (ubuntu and windows replay passing)
-|pending
+|mml#51, merge a881978107, run 42100793955
+|done
 
 |omml |omml |2 |model roundtrip, facade |Ruby |ubuntu
 |omml#23, merge 1c57ef6b89, run 42067825913
 |done
 
 |omml |omml |2 |model roundtrip, facade |Ruby |ubuntu, windows, macos
-|omml#24, open, run 42077662071 (macos replay passing)
-|pending
+|omml#24, merge cfa2d5097f, run 42138436819
+|done
 
 |html |none |none |none |none |none
 |no consumer
 |pending
 
 |roundtrip |plurimath |1 |model roundtrip |Ruby |ubuntu
-|plurimath#557, open, roundtrip-cases run 42082512255 pending
-|pending
+|plurimath#557, merge 5f2444fe3d, roundtrip-cases run 42096400895
+|done
 |===
