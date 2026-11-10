@@ -1,0 +1,1794 @@
+{
+  "schema": "R30-supplemental-probes/1",
+  "accepted_corpus": false,
+  "cases": [
+    {
+      "id": "sqrt-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"2\",\"type\":\"number\"},\"name\":\"sqrt\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sqrt-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"bits\":\"3ff6a09e667f3bcd\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3ff6a09e667f3bcd\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sqrt-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"sin\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"0.5\",\"type\":\"number\"},\"name\":\"sin\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}],\"operation\":\"sin\",\"result\":{\"bits\":\"3fdeaee8744b05f0\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fdeaee8744b05f0\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.479425538604e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.479425538604e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"cos\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"0.5\",\"type\":\"number\"},\"name\":\"cos\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}],\"operation\":\"cos\",\"result\":{\"bits\":\"3fec1528065b7d50\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fec1528065b7d50\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"cos\",\"result\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.87758256189e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.87758256189e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"exp\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"0.5\",\"type\":\"number\"},\"name\":\"exp\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}],\"operation\":\"exp\",\"result\":{\"bits\":\"3ffa61298e1e069c\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3ffa61298e1e069c\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.16487212707e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.16487212707e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"2\",\"type\":\"number\"},\"name\":\"ln\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":{\"bits\":\"3fe62e42fefa39ef\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fe62e42fefa39ef\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.69314718056e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.69314718056e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "abs-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "abs",
+          "argument": {
+            "type": "number",
+            "text": "-2.10"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"10\",\"kind\":\"rational\",\"numerator\":\"21\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "abs-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "abs",
+          "argument": {
+            "type": "number",
+            "text": "-2.10"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"-2.10\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"c000cccccccccccd\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"4000cccccccccccd\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "abs-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "abs",
+          "argument": {
+            "type": "number",
+            "text": "-2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"10\",\"kind\":\"rational\",\"numerator\":\"21\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sqrt-guard-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 1
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.1e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.1e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-guard-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 1
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.5e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.5e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-guard-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 1
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"cos\",\"result\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.9e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.9e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-guard-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 1
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.2e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.2e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-guard-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 1
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.7e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":1,\"value\":\"0.7e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sqrt-guard-32",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 32
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.14142135623730950488016887242097e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.14142135623730950488016887242097e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-guard-32",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 32
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.47942553860420300027328793521557e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.47942553860420300027328793521557e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-guard-32",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 32
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"cos\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.87758256189037271611628158260383e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.87758256189037271611628158260383e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-guard-32",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 32
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.16487212707001281468486507878142e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.16487212707001281468486507878142e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-guard-32",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 32
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.69314718055994530941723212145818e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.69314718055994530941723212145818e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sqrt-guard-64",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 64
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.1414213562373095048801688724209698078569671875376948073176679738e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.1414213562373095048801688724209698078569671875376948073176679738e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "sin-guard-64",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 64
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.4794255386042030002732879352155713880818033679406006751886166131e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.4794255386042030002732879352155713880818033679406006751886166131e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "cos-guard-64",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 64
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"cos\",\"result\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.8775825618903727161162815826038296519916451971097440529976108683e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.8775825618903727161162815826038296519916451971097440529976108683e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "exp-guard-64",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "guard_digits": 64
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.1648721270700128146848650787814163571653776100710148011575079312e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.1648721270700128146848650787814163571653776100710148011575079312e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "ln-guard-64",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "2"
+          }
+        },
+        "guard_digits": 64
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"log\",\"result\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.6931471805599453094172321214581765680755001343602552541206800095e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":64,\"value\":\"0.6931471805599453094172321214581765680755001343602552541206800095e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-right-+",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "number",
+            "text": "2.10"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.351421356237e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-left-+",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.351421356237e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-both-+",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "+",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "3"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"3\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.314626436994e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-right--",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "number",
+            "text": "2.10"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"0.68578643763e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-left--",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":11,\"value\":\"-0.68578643763e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-both--",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "3"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"3\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":10,\"value\":\"-0.3178372452e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-right-*",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "number",
+            "text": "2.10"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":13,\"value\":\"0.2969848480977e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-left-*",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":13,\"value\":\"0.2969848480977e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-both-*",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "3"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"3\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":23,\"value\":\"0.24494897427794050631409e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-right-/",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "2.10"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.14849242404949996024835534331279e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-left-/",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":10,\"value\":\"0.6734350297e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-both-/",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "3"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"3\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.81649658092540985656693636571646e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-right-^",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "2.10"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"denominator\":\"10\",\"kind\":\"rational\",\"numerator\":\"21\"},{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"power\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.28555311143322656312982986443959e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.28555311143322656312982986443959e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-left-^",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "2.10"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"},{\"denominator\":\"10\",\"kind\":\"rational\",\"numerator\":\"21\"}],\"operation\":\"power\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.20705298476732390336700950121756e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.20705298476732390336700950121756e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-both-^",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "3"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"3\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"},{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.173205080757e1\"}],\"operation\":\"power\",\"result\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.18226346549600424410819779117398e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":32,\"value\":\"0.18226346549600424410819779117398e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-sqrt",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"sqrt\",\"result\":{\"bits\":\"3ff306fe0a31a031\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3ff306fe0a31a031\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-sin",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"sin\",\"result\":{\"bits\":\"3fef9bc75444748f\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fef9bc75444748f\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-cos",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"cos\",\"result\":{\"bits\":\"3fc3f5f686861ef7\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fc3f5f686861ef7\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-exp",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"exp\",\"result\":{\"bits\":\"401073f7e8444f79\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"401073f7e8444f79\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-ln",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_12\",\"operands\":[{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}],\"operation\":\"log\",\"result\":{\"bits\":\"3fd62e42fef99fef\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fd62e42fef99fef\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-chain-abs",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "abs",
+          "argument": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "number",
+              "text": "2"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"}],\"operation\":\"sqrt\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"0.141421356237e1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal--0.0-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "-0.0"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal--0.0-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "-0.0"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"-0.0\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"8000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"8000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-+0.0-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "+0.0"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-+0.0-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "+0.0"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"+0.0\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-1e3-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1e3"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"1000\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-1e3-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1e3"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"1e3\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"408f400000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"408f400000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-1e-3-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1e-3"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1000\",\"kind\":\"rational\",\"numerator\":\"1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-1e-3-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1e-3"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"1e-3\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3f50624dd2f1a9fc\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3f50624dd2f1a9fc\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-.5-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": ".5"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-.5-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": ".5"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\".5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-2.-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "2."
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"2\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-2.-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "2."
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"2.\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"4000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"4000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-9007199254740993-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "9007199254740993"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"9007199254740993\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-9007199254740993-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "9007199254740993"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"9007199254740993\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal--9007199254740993-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "-9007199254740993"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"-9007199254740993\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal--9007199254740993-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "-9007199254740993"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"-9007199254740993\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-123456789012345678901234567890-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "123456789012345678901234567890"
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"123456789012345678901234567890\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "literal-123456789012345678901234567890-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "123456789012345678901234567890"
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"kind\":\"integer\",\"value\":\"123456789012345678901234567890\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--0.0-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-0.0"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--0.0-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-0.0"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"-0.0\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"8000000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"bits\":\"8000000000000000\",\"kind\":\"float\"}],\"operation\":\"sqrt\",\"result\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--0.0-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-0.0"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--1-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"-1\"}],\"operation\":\"sqrt\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"-1\",\"type\":\"number\"},\"name\":\"sqrt\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--1-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"MathDomainError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sqrt--1-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sqrt",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln-0-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "0"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"0\"}],\"operation\":\"log\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"0\",\"type\":\"number\"},\"name\":\"ln\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln-0-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "0"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln-0-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "0"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln--1-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"-1\"}],\"operation\":\"log\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"-1\",\"type\":\"number\"},\"name\":\"ln\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln--1-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"MathDomainError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-ln--1-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "ln",
+          "argument": {
+            "type": "number",
+            "text": "-1"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"MathDomainError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sin-1000000-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "1000000"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000000\"}],\"operation\":\"sin\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"1000000\",\"type\":\"number\"},\"name\":\"sin\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sin-1000000-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "1000000"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000000\"}],\"operation\":\"sin\",\"result\":{\"bits\":\"bfd6664b2568d867\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"bfd6664b2568d867\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-sin-1000000-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "number",
+            "text": "1000000"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000000\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"-0.349993502171e0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":12,\"value\":\"-0.349993502171e0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-exp-1000-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "1000"
+          }
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000\"}],\"operation\":\"exp\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"argument\":{\"text\":\"1000\",\"type\":\"number\"},\"name\":\"exp\",\"type\":\"call\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-exp-1000-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "1000"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "domain-exp-1000-guarded",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "1000"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":435,\"value\":\"0.197007111402e435\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":435,\"value\":\"0.197007111402e435\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "negative-guarded-zero",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "unary",
+          "operator": "-",
+          "operand": {
+            "type": "call",
+            "name": "sin",
+            "argument": {
+              "type": "number",
+              "text": "0"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"0\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"-0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding-1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": "1"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"1\",\"kind\":\"rational\",\"numerator\":\"1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding-+1",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": "+1"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidBindingError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding-.5",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": ".5"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidBindingError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding-1.",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": "1."
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidBindingError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding-1e3",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": "1e3"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidBindingError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "binding--1.25",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "variable",
+          "name": "x"
+        },
+        "bindings": {
+          "x": "-1.25"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"4\",\"kind\":\"rational\",\"numerator\":\"-5\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-4-0.5-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "4"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"4\"},{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"power\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"left\":{\"text\":\"4\",\"type\":\"number\"},\"operator\":\"^\",\"right\":{\"text\":\"0.5\",\"type\":\"number\"},\"type\":\"binary\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-4-0.5-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "4"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"kind\":\"integer\",\"value\":\"4\"},{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}],\"operation\":\"power\",\"result\":{\"bits\":\"4000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"4000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power--8-0.3333333333333333-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "-8"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.3333333333333333"
+          }
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"MathDomainError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power--8-0.3333333333333333-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "-8"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.3333333333333333"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"MathDomainError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-2--2-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "2"
+          },
+          "right": {
+            "type": "number",
+            "text": "-2"
+          }
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"4\",\"kind\":\"rational\",\"numerator\":\"1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-2--2-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "2"
+          },
+          "right": {
+            "type": "number",
+            "text": "-2"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[],\"deferred\":false,\"value\":{\"denominator\":\"4\",\"kind\":\"rational\",\"numerator\":\"1\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-2-0.5-strict",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "2"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "strict"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"deferred\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"},{\"denominator\":\"2\",\"kind\":\"rational\",\"numerator\":\"1\"}],\"operation\":\"power\",\"result\":null}],\"deferred\":true,\"unevaluated_ast\":{\"left\":{\"text\":\"2\",\"type\":\"number\"},\"operator\":\"^\",\"right\":{\"text\":\"0.5\",\"type\":\"number\"},\"type\":\"binary\"},\"value\":null},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "power-2-0.5-approximate",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "^",
+          "left": {
+            "type": "number",
+            "text": "2"
+          },
+          "right": {
+            "type": "number",
+            "text": "0.5"
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"literal\",\"text\":\"0.5\"}],\"operation\":\"number literal\",\"result\":{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"kind\":\"integer\",\"value\":\"2\"},{\"bits\":\"3fe0000000000000\",\"kind\":\"float\"}],\"operation\":\"power\",\"result\":{\"bits\":\"3ff6a09e667f3bcd\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"3ff6a09e667f3bcd\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    }
+  ],
+  "oracle": {
+    "adapter_sha256": "8daad834488794d23583ff3b5dfb06064cd21d31cb0734839dbf73bd97f0e8cb",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]"
+  }
+}
