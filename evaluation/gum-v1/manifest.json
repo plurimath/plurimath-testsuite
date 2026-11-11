@@ -30,6 +30,25 @@
         "source_revision": "86ece1b9004b1ae09e25b5f962987b6e1067e87c",
         "scope": "Exact frozen replies for this file; request processing performs no filesystem/environment calls through Ruby binding"
       }
+    },
+    "coverage-validation-wires.json": {
+      "cases": 49,
+      "sha256": "9d1335826628737976c927715c27225003ba501061a3397e9069c7b9519cbc7b",
+      "producer": {
+        "implementation": "plurimath-numeric",
+        "revision": "8f9273968a9e17dc604eb1ae66a84b9c4fa30f1c",
+        "source_crate_sha256": "0b5547ada284ef8e70a69de125b385d1688c9c803a48491b0ca7d8cb753b5164",
+        "library_sha256": "790731b4a1dd21ca1a5e9b165e1e848ad91579dea359c2dcb412dd2686575803"
+      },
+      "qualification": {
+        "runtimes": [
+          "native Rust",
+          "Ruby native binding",
+          "fresh Linux Python wheel",
+          "Windows native ABI"
+        ],
+        "scope": "48 source metadata diagnostics and one actual170000-sample MCM reproduction; inherited compatibility quirks, no provenance or physical adequacy certification"
+      }
     }
   },
   "qualification": {
