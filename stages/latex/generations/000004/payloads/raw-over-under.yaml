@@ -1,0 +1,381 @@
+# LaTeX raw-tree stage cases: raw-over-under.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-over-under
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of over-under.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-over-under-overline.raw
+  input:
+    str: "\\overline{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{ab}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: overline
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 10
+                          char_offset: 10
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 11
+                          char_offset: 11
+- id: latex-over-under-overline-sum.raw
+  input:
+    str: "\\overline{a+b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{a+b}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: overline
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 10
+                          char_offset: 10
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 11
+                              char_offset: 11
+                      - - sym: expression
+                        - hash:
+                          - - sym: symbols
+                            - slice: b
+                              byte_offset: 12
+                              char_offset: 12
+- id: latex-over-under-overline-nested.raw
+  input:
+    str: "\\overline{\\overline{a}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{\\overline{a}}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: overline
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: unary_functions
+                    - hash:
+                      - - sym: unary
+                        - slice: overline
+                          byte_offset: 11
+                          char_offset: 11
+                      - - sym: first_value
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: symbols
+                                - slice: a
+                                  byte_offset: 20
+                                  char_offset: 20
+- id: latex-over-under-underbrace.raw
+  input:
+    str: "\\underbrace{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{ab}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: underbrace
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 12
+                          char_offset: 12
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 13
+                          char_offset: 13
+- id: latex-over-under-underbrace-sum.raw
+  input:
+    str: "\\underbrace{a+b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{a+b}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: underbrace
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 12
+                          char_offset: 12
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 13
+                              char_offset: 13
+                      - - sym: expression
+                        - hash:
+                          - - sym: symbols
+                            - slice: b
+                              byte_offset: 14
+                              char_offset: 14
+- id: latex-over-under-underbrace-labelled.raw
+  input:
+    str: "\\underbrace{x}_{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{x}_{y}"
+    tree:
+      hash:
+      - - sym: base
+        - hash:
+          - - sym: unary_functions
+            - hash:
+              - - sym: unary
+                - slice: underbrace
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: first_value
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: x
+                          byte_offset: 12
+                          char_offset: 12
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "y"
+                      byte_offset: 16
+                      char_offset: 16
+- id: latex-over-under-overset.raw
+  input:
+    str: "\\overset{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overset{x}{y}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: overset
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 9
+                      char_offset: 9
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "y"
+                      byte_offset: 12
+                      char_offset: 12
+- id: latex-over-under-underset.raw
+  input:
+    str: "\\underset{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underset{x}{y}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: underset
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 10
+                      char_offset: 10
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "y"
+                      byte_offset: 13
+                      char_offset: 13
+- id: latex-over-under-stackrel.raw
+  input:
+    str: "\\stackrel{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\stackrel{x}{y}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: stackrel
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 10
+                      char_offset: 10
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "y"
+                      byte_offset: 13
+                      char_offset: 13
+- id: latex-over-under-underline.raw
+  input:
+    str: "\\underline{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underline{ab}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: underline
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 11
+                      char_offset: 11
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: b
+                      byte_offset: 12
+                      char_offset: 12
+- id: latex-over-under-overparen.raw
+  input:
+    str: "\\overparen{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overparen{ab}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: overparen
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 11
+                      char_offset: 11
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: b
+                      byte_offset: 12
+                      char_offset: 12

@@ -1,0 +1,114 @@
+# LaTeX typed-model stage cases: model-colour-r2 (supersession of model-colour expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-colour-r2
+description: 'Revision 2 of 2 model-colour typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-colour-named.model-r2
+  input:
+    str: "\\color{red} x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\color{red}x"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - literal
+                - str: color
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - symbol
+                - node: Latexmath::Model::SymbolNode
+                  fields:
+                  - - text_list
+                    - str: red
+          - - second_value
+            - node: Latexmath::Model::SecondValue
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: x
+                  - - value
+                    - str: x
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-colour-in-sum.model-r2
+  input:
+    str: "\\color{blue} y + z"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\color{blue}y+z"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - literal
+                - str: color
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - symbol
+                - node: Latexmath::Model::SymbolNode
+                  fields:
+                  - - text_list
+                    - str: blue
+          - - second_value
+            - node: Latexmath::Model::SecondValue
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: z
+                          - - value
+                            - str: z
+                          - - kind
+                            - str: symbol
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - operant
+                        - str: "+"
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "y"
+                      - - value
+                        - str: "y"
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."

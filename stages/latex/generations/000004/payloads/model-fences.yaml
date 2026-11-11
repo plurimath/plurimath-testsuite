@@ -1,0 +1,194 @@
+# LaTeX typed-model stage cases: model-fences.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-fences
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of fences.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-fence-round.model
+  input:
+    str: "(a)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - lparen
+                    - str: "("
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - rparen
+                    - str: ")"
+      - - decimal
+        - str: "."
+- id: latex-fence-square.model
+  input:
+    str: "[a]"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "[a]"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - lparen
+                    - str: "["
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - rparen
+                    - str: "]"
+      - - decimal
+        - str: "."
+- id: latex-fence-curly-escaped.model
+  input:
+    str: "\\{a\\}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\{a\\}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - lparen
+                    - str: "\\{"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - rparen
+                    - str: "\\}"
+      - - decimal
+        - str: "."
+- id: latex-fence-angle.model
+  input:
+    str: "\\langle a \\rangle"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\langlea\\rangle"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - lparen
+                    - str: "\\langle"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - rparen
+                    - str: "\\rangle"
+      - - decimal
+        - str: "."
+- id: latex-fence-ceiling.model
+  input:
+    str: "\\lceil a \\rceil"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lceila\\rceil"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - lparen
+                    - str: "\\lceil"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - rparen
+                    - str: "\\rceil"
+      - - decimal
+        - str: "."

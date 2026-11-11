@@ -1,0 +1,438 @@
+# LaTeX typed-model stage cases: model-matrices-r2 (supersession of model-matrices expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-matrices-r2
+description: 'Revision 2 of 6 model-matrices typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-matrix-plain.model-r2
+  input:
+    str: "\\begin{matrix} a & b \\end{matrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{matrix}a&b\\end{matrix}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: matrix
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: matrix
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - operant
+                            - str: "&"
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-matrix-parens.model-r2
+  input:
+    str: "\\begin{pmatrix} a \\\\ b \\end{pmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{pmatrix}a\\\\b\\end{pmatrix}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: pmatrix
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: pmatrix
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - row_break
+                            - str: "\\\\"
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-matrix-brackets.model-r2
+  input:
+    str: "\\begin{bmatrix} a \\end{bmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{bmatrix}a\\end{bmatrix}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: bmatrix
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: bmatrix
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-matrix-bars.model-r2
+  input:
+    str: "\\begin{vmatrix} a & b \\\\ c & d \\end{vmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{vmatrix}a&b\\\\c&d\\end{vmatrix}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: vmatrix
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: vmatrix
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - expression
+                                    - node: Latexmath::Model::Expression
+                                      fields:
+                                      - - expression
+                                        - node: Latexmath::Model::Expression
+                                          fields:
+                                          - - symbols
+                                            - node: Latexmath::Model::MathSymbol
+                                              fields:
+                                              - - spelling
+                                                - str: d
+                                              - - value
+                                                - str: d
+                                              - - kind
+                                                - str: symbol
+                                      - - sequence
+                                        - node: Latexmath::Model::Sequence
+                                          fields:
+                                          - - operant
+                                            - str: "&"
+                                  - - sequence
+                                    - node: Latexmath::Model::Sequence
+                                      fields:
+                                      - - symbols
+                                        - node: Latexmath::Model::MathSymbol
+                                          fields:
+                                          - - spelling
+                                            - str: c
+                                          - - value
+                                            - str: c
+                                          - - kind
+                                            - str: symbol
+                              - - sequence
+                                - node: Latexmath::Model::Sequence
+                                  fields:
+                                  - - row_break
+                                    - str: "\\\\"
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: b
+                                  - - value
+                                    - str: b
+                                  - - kind
+                                    - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - operant
+                            - str: "&"
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-matrix-braces.model-r2
+  input:
+    str: "\\begin{Bmatrix} a \\end{Bmatrix}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{Bmatrix}a\\end{Bmatrix}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: Bmatrix
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: Bmatrix
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-matrix-array.model-r2
+  input:
+    str: "\\begin{array}{cc} a & b \\end{array}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\begin{array}{cc}a&b\\end{array}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - environment
+            - node: Latexmath::Model::Environment
+              fields:
+              - - args
+                - node: Latexmath::Model::Args
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: c
+                          - - value
+                            - str: c
+                          - - kind
+                            - str: symbol
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: c
+                          - - value
+                            - str: c
+                          - - kind
+                            - str: symbol
+              - - ending
+                - node: Latexmath::Model::Ending
+                  fields:
+                  - - environment
+                    - node: Latexmath::Model::Environment
+                      fields:
+                      - - literal
+                        - str: array
+              - - environment
+                - node: Latexmath::Model::Environment
+                  fields:
+                  - - literal
+                    - str: array
+              - - table_data
+                - node: Latexmath::Model::TableData
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - operant
+                            - str: "&"
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."

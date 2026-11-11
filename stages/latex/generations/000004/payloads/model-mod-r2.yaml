@@ -1,0 +1,284 @@
+# LaTeX typed-model stage cases: model-mod-r2 (supersession of model-mod expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-mod-r2
+description: 'Revision 2 of 5 model-mod typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-mod-infix.model-r2
+  input:
+    str: a \mod b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\modb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - under_over
+            - node: Latexmath::Model::UnderOver
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: mod
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-mod-bmod.model-r2
+  input:
+    str: a \bmod b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\bmodb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - under_over
+            - node: Latexmath::Model::UnderOver
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: bmod
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-mod-pmod.model-r2
+  input:
+    str: a \pmod{b}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\pmod{b}
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - under_over
+            - node: Latexmath::Model::UnderOver
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: pmod
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: b
+                          - - value
+                            - str: b
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-mod-numeric.model-r2
+  input:
+    str: x \mod 2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x\mod2
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - under_over
+            - node: Latexmath::Model::UnderOver
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: mod
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+                      - - value
+                        - str: x
+                      - - kind
+                        - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - number
+                    - str: '2'
+      - - decimal
+        - str: "."
+- id: latex-mod-fenced-left.model-r2
+  input:
+    str: "(a+b) \\mod n"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "(a+b)\\modn"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - under_over
+            - node: Latexmath::Model::UnderOver
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: mod
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: b
+                                      - - value
+                                        - str: b
+                                      - - kind
+                                        - str: symbol
+                              - - sequence
+                                - node: Latexmath::Model::Sequence
+                                  fields:
+                                  - - operant
+                                    - str: "+"
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: a
+                                  - - value
+                                    - str: a
+                                  - - kind
+                                    - str: symbol
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "n"
+                      - - value
+                        - str: "n"
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."

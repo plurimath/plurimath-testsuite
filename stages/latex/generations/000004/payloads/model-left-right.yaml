@@ -1,0 +1,299 @@
+# LaTeX typed-model stage cases: model-left-right.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-left-right
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of left-right.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-left-right-round.model
+  input:
+    str: "\\left( a \\right)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left(a\\right)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "("
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: ")"
+      - - decimal
+        - str: "."
+- id: latex-left-right-square.model
+  input:
+    str: "\\left[ x \\right]"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left[x\\right]"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "["
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: "]"
+      - - decimal
+        - str: "."
+- id: latex-left-right-curly.model
+  input:
+    str: "\\left\\{ a \\right\\}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left\\{a\\right\\}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "\\{"
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: "\\}"
+      - - decimal
+        - str: "."
+- id: latex-left-right-bar.model
+  input:
+    str: "\\left| x \\right|"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left|x\\right|"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "|"
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: "|"
+      - - decimal
+        - str: "."
+- id: latex-left-right-round-sum.model
+  input:
+    str: "\\left( a + b \\right)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left(a+b\\right)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - operant
+                            - str: "+"
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "("
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: ")"
+      - - decimal
+        - str: "."
+- id: latex-left-right-around-frac.model
+  input:
+    str: "\\left( \\frac{a}{b} \\right)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\left(\\frac{a}{b}\\right)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - left_right
+            - node: Latexmath::Model::LeftRight
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - binary
+                    - node: Latexmath::Model::Binary
+                      fields:
+                      - - binary
+                        - node: Latexmath::Model::Binary
+                          fields:
+                          - - literal
+                            - str: frac
+                      - - first_value
+                        - node: Latexmath::Model::FirstValue
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: a
+                      - - second_value
+                        - node: Latexmath::Model::SecondValue
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: b
+              - - left
+                - str: "\\left"
+              - - left_paren
+                - node: Latexmath::Model::LeftParen
+                  fields:
+                  - - literal
+                    - str: "("
+              - - right
+                - str: "\\right"
+              - - right_paren
+                - node: Latexmath::Model::RightParen
+                  fields:
+                  - - literal
+                    - str: ")"
+      - - decimal
+        - str: "."

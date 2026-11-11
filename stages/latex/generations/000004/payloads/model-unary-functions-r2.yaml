@@ -1,0 +1,391 @@
+# LaTeX typed-model stage cases: model-unary-functions-r2 (supersession of model-unary-functions expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-unary-functions-r2
+description: 'Revision 2 of 9 model-unary-functions typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-unary-sin-bare.model-r2
+  input:
+    str: "\\sin x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sinx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+                      - - value
+                        - str: x
+                      - - kind
+                        - str: symbol
+              - - unary
+                - str: sin
+      - - decimal
+        - str: "."
+- id: latex-unary-sin-fenced.model-r2
+  input:
+    str: "\\sin(x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sin(x)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: x
+                              - - value
+                                - str: x
+                              - - kind
+                                - str: symbol
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+              - - unary
+                - str: sin
+      - - decimal
+        - str: "."
+- id: latex-unary-cos-product.model-r2
+  input:
+    str: "\\cos(2x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\cos(2x)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: x
+                                  - - value
+                                    - str: x
+                                  - - kind
+                                    - str: symbol
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - number
+                                - str: '2'
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+              - - unary
+                - str: cos
+      - - decimal
+        - str: "."
+- id: latex-unary-log-bare.model-r2
+  input:
+    str: "\\log x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\logx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: x
+                  - - value
+                    - str: x
+                  - - kind
+                    - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: log
+      - - decimal
+        - str: "."
+- id: latex-unary-ln-bare.model-r2
+  input:
+    str: "\\ln x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lnx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+                      - - value
+                        - str: x
+                      - - kind
+                        - str: symbol
+              - - unary
+                - str: ln
+      - - decimal
+        - str: "."
+- id: latex-unary-lim-bare.model-r2
+  input:
+    str: "\\lim x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\limx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: x
+                  - - value
+                    - str: x
+                  - - kind
+                    - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: lim
+      - - decimal
+        - str: "."
+- id: latex-unary-det.model-r2
+  input:
+    str: "\\det A"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\detA"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+                      - - value
+                        - str: A
+                      - - kind
+                        - str: symbol
+              - - unary
+                - str: det
+      - - decimal
+        - str: "."
+- id: latex-unary-max.model-r2
+  input:
+    str: "\\max A"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\maxA"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+                      - - value
+                        - str: A
+                      - - kind
+                        - str: symbol
+              - - unary
+                - str: max
+      - - decimal
+        - str: "."
+- id: latex-unary-gcd-fenced.model-r2
+  input:
+    str: "\\gcd(a,b)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\gcd(a,b)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: b
+                                      - - value
+                                        - str: b
+                                      - - kind
+                                        - str: symbol
+                              - - sequence
+                                - node: Latexmath::Model::Sequence
+                                  fields:
+                                  - - operant
+                                    - str: ","
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: a
+                                  - - value
+                                    - str: a
+                                  - - kind
+                                    - str: symbol
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+              - - unary
+                - str: gcd
+      - - decimal
+        - str: "."

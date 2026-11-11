@@ -1,0 +1,608 @@
+# LaTeX typed-model stage cases: model-over-under-r2 (supersession of model-over-under expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-over-under-r2
+description: 'Revision 2 of 11 model-over-under typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-over-under-overline.model-r2
+  input:
+    str: "\\overline{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{ab}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: overline
+      - - decimal
+        - str: "."
+- id: latex-over-under-overline-sum.model-r2
+  input:
+    str: "\\overline{a+b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{a+b}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: b
+                                  - - value
+                                    - str: b
+                                  - - kind
+                                    - str: symbol
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: overline
+      - - decimal
+        - str: "."
+- id: latex-over-under-overline-nested.model-r2
+  input:
+    str: "\\overline{\\overline{a}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overline{\\overline{a}}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - unary_functions
+                        - node: Latexmath::Model::UnaryFunctions
+                          fields:
+                          - - first_value
+                            - node: Latexmath::Model::FirstValue
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: a
+                                      - - value
+                                        - str: a
+                                      - - kind
+                                        - str: symbol
+                          - - unary
+                            - str: overline
+              - - unary
+                - str: overline
+      - - decimal
+        - str: "."
+- id: latex-over-under-underbrace.model-r2
+  input:
+    str: "\\underbrace{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{ab}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: underbrace
+      - - decimal
+        - str: "."
+- id: latex-over-under-underbrace-sum.model-r2
+  input:
+    str: "\\underbrace{a+b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{a+b}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: b
+                                  - - value
+                                    - str: b
+                                  - - kind
+                                    - str: symbol
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "+"
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: underbrace
+      - - decimal
+        - str: "."
+- id: latex-over-under-underbrace-labelled.model-r2
+  input:
+    str: "\\underbrace{x}_{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underbrace{x}_{y}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - base
+            - node: Latexmath::Model::Base
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "y"
+                          - - value
+                            - str: "y"
+                          - - kind
+                            - str: symbol
+              - - unary_functions
+                - node: Latexmath::Model::UnaryFunctions
+                  fields:
+                  - - first_value
+                    - node: Latexmath::Model::FirstValue
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: x
+                              - - value
+                                - str: x
+                              - - kind
+                                - str: symbol
+                  - - unary
+                    - str: underbrace
+      - - decimal
+        - str: "."
+- id: latex-over-under-overset.model-r2
+  input:
+    str: "\\overset{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overset{x}{y}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: overset
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                          - - value
+                            - str: x
+                          - - kind
+                            - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "y"
+                          - - value
+                            - str: "y"
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-over-under-underset.model-r2
+  input:
+    str: "\\underset{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underset{x}{y}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: underset
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                          - - value
+                            - str: x
+                          - - kind
+                            - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "y"
+                          - - value
+                            - str: "y"
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-over-under-stackrel.model-r2
+  input:
+    str: "\\stackrel{x}{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\stackrel{x}{y}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - binary
+            - node: Latexmath::Model::Binary
+              fields:
+              - - binary
+                - node: Latexmath::Model::Binary
+                  fields:
+                  - - literal
+                    - str: stackrel
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                          - - value
+                            - str: x
+                          - - kind
+                            - str: symbol
+              - - second_value
+                - node: Latexmath::Model::SecondValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "y"
+                          - - value
+                            - str: "y"
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-over-under-underline.model-r2
+  input:
+    str: "\\underline{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\underline{ab}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: b
+                          - - value
+                            - str: b
+                          - - kind
+                            - str: symbol
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: underline
+                  - - value
+                    - str: ̲
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-over-under-overparen.model-r2
+  input:
+    str: "\\overparen{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\overparen{ab}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: b
+                          - - value
+                            - str: b
+                          - - kind
+                            - str: symbol
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: overparen
+                  - - value
+                    - str: "⏜"
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
