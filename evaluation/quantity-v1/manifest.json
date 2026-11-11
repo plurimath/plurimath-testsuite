@@ -12,6 +12,26 @@
     "request-quantity-v1.json": {
       "cases": 30,
       "sha256": "c22156c82a881a8bbe1edb561882d10548da5acd5936987f473d8aeb64b525bb"
+    },
+    "quantity-register-v1.json": {
+      "cases": 32,
+      "sha256": "d51a6a05a1cd218b373a5fcde89c76ed86a5df5f92109047e76796ac089d9cc3",
+      "producer": {
+        "implementation": "plurimath-numeric",
+        "revision": "86ece1b9004b1ae09e25b5f962987b6e1067e87c",
+        "source_crate_sha256": "24a3659313ebb80ec8d6aaa3b6f40fc6ad1f1353a480000e1b83a849e14c45b4",
+        "library_sha256": "b2aac863f12a72de1f658971378c8ca8149643167bab2dcab4f96b794cd949be"
+      },
+      "source_wire_sha256": "73af1d567d8c0d082bf7ac8f1d1d160f3c3a22a7d419dcac37ac7d36458814b4",
+      "qualification": {
+        "runtimes": [
+          "native Rust",
+          "Ruby native binding",
+          "Windows native ABI"
+        ],
+        "source_revision": "86ece1b9004b1ae09e25b5f962987b6e1067e87c",
+        "scope": "Exact frozen replies for this file; request processing performs no filesystem/environment calls through Ruby binding"
+      }
     }
   },
   "qualification": {
