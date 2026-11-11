@@ -1,0 +1,27 @@
+{
+  "schema": "plurimath.evaluation-corpus/1",
+  "profile": "plurimath.evaluate.gum/1",
+  "producer": {
+    "implementation": "plurimath-numeric",
+    "revision": "8c8f9705308d6d2d513aa12a8fa4815f9aedd5b7",
+    "source_crate_sha256": "2db3c2bb82ed43863b0b820fdff93a1fff297dcaa9fe24af0490169b7f72c93e",
+    "library_sha256": "85a9408d3783ee28b753463b57e2dfeea33304129f3724bc8d04aecd7c7d096c",
+    "reference_repository": "https://github.com/plurimath/plurimath",
+    "reference_revision": "773f9c301b40b67cce1df37ca1bef281a4f99a60",
+    "source_fixture_sha256": "7464fb1fe2302ee957f8684a11042440a78803eafbe9d4b3de7003fa8c2c28a0"
+  },
+  "profiles": {
+    "gum-wires.json": {
+      "cases": 73,
+      "sha256": "7464fb1fe2302ee957f8684a11042440a78803eafbe9d4b3de7003fa8c2c28a0"
+    }
+  },
+  "qualification": {
+    "runtimes": [
+      "native Rust",
+      "installed Python wheel"
+    ],
+    "python_revision": "dd434f719e679354bc38e563923fdb3fbcecf4b2",
+    "published_monte_carlo_profiles": 13
+  }
+}

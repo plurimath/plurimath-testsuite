@@ -92,7 +92,7 @@ jobs:
           done
           check-jsonschema --schemafile schema/fixtures-provenance.json provenance/fixtures.yaml || rc=1
           exit $rc
-      - name: Validate sealed numeric request profiles
+      - name: Validate sealed evaluation request profiles
         run: python -I scripts/validate-evaluation-profiles.py
 
   validate:

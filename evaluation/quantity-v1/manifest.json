@@ -1,0 +1,27 @@
+{
+  "schema": "plurimath.evaluation-corpus/1",
+  "profile": "plurimath.evaluate.quantity/1",
+  "producer": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "revision": "773f9c301b40b67cce1df37ca1bef281a4f99a60",
+    "adapter": "lib/plurimath/evaluation_request/quantity.rb",
+    "unitsml_revision": "d64c95a478427b482f9bde2c4cbb626b111cb059",
+    "source_fixture_sha256": "c22156c82a881a8bbe1edb561882d10548da5acd5936987f473d8aeb64b525bb"
+  },
+  "profiles": {
+    "request-quantity-v1.json": {
+      "cases": 30,
+      "sha256": "c22156c82a881a8bbe1edb561882d10548da5acd5936987f473d8aeb64b525bb"
+    }
+  },
+  "qualification": {
+    "runtimes": [
+      "Ruby",
+      "native Rust",
+      "Node WASM",
+      "Chrome WASM"
+    ],
+    "native_source_revision": "03b0f4861ec374d704ec79de418e362f8f218386",
+    "typescript_revision": "eba0e7553dc9f5b87c026530f1695a4ea39b55ce"
+  }
+}

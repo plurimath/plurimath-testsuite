@@ -1,4 +1,4 @@
-"""Check the sealed numeric request profiles without interpreting the math."""
+"""Check sealed evaluation request profiles without interpreting their math."""
 
 import hashlib
 import json
@@ -57,9 +57,14 @@ def validate(directory):
 
 
 if __name__ == "__main__":
-    default = Path(__file__).resolve().parents[1] / "evaluation" / "numeric-v1"
+    evaluation = Path(__file__).resolve().parents[1] / "evaluation"
+    directories = [Path(sys.argv[1])] if len(sys.argv) > 1 else [
+        manifest.parent for manifest in sorted(evaluation.glob("*/manifest.json"))
+    ]
     try:
-        profiles, rows = validate(Path(sys.argv[1]) if len(sys.argv) > 1 else default)
+        require(bool(directories), "no evaluation profiles found")
+        results = [validate(directory) for directory in directories]
     except (OSError, KeyError, TypeError, ValueError) as error:
         sys.exit(f"Evaluation corpus: {error}")
-    print(f"Validated {profiles} numeric profiles, {rows} cases")
+    print(f"Validated {sum(profiles for profiles, _ in results)} evaluation profiles, "
+          f"{sum(rows for _, rows in results)} cases")
