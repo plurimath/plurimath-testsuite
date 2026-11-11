@@ -1,0 +1,64 @@
+{
+  "producer": {
+    "adapter": "lib/plurimath/evaluation_request.rb",
+    "repository": "https://github.com/plurimath/plurimath",
+    "revision": "9c90094a9077c686e0e03d7838eef8531bea8c3c",
+    "sha256": "8daad834488794d23583ff3b5dfb06064cd21d31cb0734839dbf73bd97f0e8cb"
+  },
+  "profile": "plurimath.evaluate.numeric/1",
+  "profiles": {
+    "numeric-bignum-v1.json": {
+      "cases": 9,
+      "sha256": "d410af65f4f58d859c709754c09be51bef3d8aedf7e3404ac659bce22f24bd1f"
+    },
+    "numeric-nonfinite-v1.json": {
+      "cases": 13,
+      "sha256": "fefb21a7c6803582593403573bfe7f886d5b5e9b6daa3ddd18e216b020ddbe1d"
+    },
+    "numeric-supplemental-v1.json": {
+      "cases": 105,
+      "sha256": "f888c50611573e0992f37088126e8b89bfcd0688c109ff727fa34275bf19394d"
+    },
+    "numeric-v1.json": {
+      "cases": 29,
+      "sha256": "0abf939a3c37fcf71e7a2c6a9e8b1ce554cf8378374fc18443355d4bf2352818"
+    },
+    "numeric-validation-v1.json": {
+      "cases": 3,
+      "sha256": "c7be94172ac72328680e5dd96af957c0283ea6d1d04d49529dbc9b6bb580f5ed"
+    },
+    "numeric-annex-v1.json": {
+      "cases": 45,
+      "sha256": "d261c77c5f1bf3e845c289fbc62a423cc4127b21437f458e11f426ff0ce3082a",
+      "producer": {
+        "implementation": "plurimath-numeric",
+        "revision": "86ece1b9004b1ae09e25b5f962987b6e1067e87c",
+        "source_crate_sha256": "24a3659313ebb80ec8d6aaa3b6f40fc6ad1f1353a480000e1b83a849e14c45b4",
+        "library_sha256": "b2aac863f12a72de1f658971378c8ca8149643167bab2dcab4f96b794cd949be"
+      },
+      "source_wire_sha256": "d261c77c5f1bf3e845c289fbc62a423cc4127b21437f458e11f426ff0ce3082a",
+      "qualification": {
+        "runtimes": [
+          "native Rust",
+          "Ruby native binding",
+          "Windows native ABI"
+        ],
+        "source_revision": "86ece1b9004b1ae09e25b5f962987b6e1067e87c",
+        "scope": "Exact frozen replies for this file; request processing performs no filesystem/environment calls through Ruby binding"
+      }
+    }
+  },
+  "qualification": {
+    "native_platform": "Linux x86_64",
+    "runtimes": [
+      "Rust",
+      "compiled Linux C client",
+      "Python via Linux native ABI",
+      "Node WASM",
+      "Chrome WASM"
+    ],
+    "rust_candidate_revision": "7f986456c462970a399badc92eaa357fe0b6ab87",
+    "scope": "Closed numeric request profile. Quantity, uncertainty, and GUM require separate profiles."
+  },
+  "schema": "plurimath.evaluation-corpus/1"
+}

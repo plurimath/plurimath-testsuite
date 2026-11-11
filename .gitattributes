@@ -1,3 +1,4 @@
 # Preserve the bytes recorded in corpus provenance on every checkout.
 *.yaml text eol=lf
 *.rb text eol=lf
+evaluation/**/*.json text eol=lf

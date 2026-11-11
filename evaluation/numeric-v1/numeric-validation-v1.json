@@ -1,0 +1,313 @@
+{
+  "schema": "R30-validation-probes/1",
+  "accepted_corpus": false,
+  "cases": [
+    {
+      "id": "bad-AST-before-backend-binding",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1",
+          "extra": true
+        },
+        "bindings": {
+          "unused": "+1"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "deep-AST-before-backend-binding",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "unary",
+          "operator": "+",
+          "operand": {
+            "type": "unary",
+            "operator": "+",
+            "operand": {
+              "type": "unary",
+              "operator": "+",
+              "operand": {
+                "type": "unary",
+                "operator": "+",
+                "operand": {
+                  "type": "unary",
+                  "operator": "+",
+                  "operand": {
+                    "type": "unary",
+                    "operator": "+",
+                    "operand": {
+                      "type": "unary",
+                      "operator": "+",
+                      "operand": {
+                        "type": "unary",
+                        "operator": "+",
+                        "operand": {
+                          "type": "unary",
+                          "operator": "+",
+                          "operand": {
+                            "type": "unary",
+                            "operator": "+",
+                            "operand": {
+                              "type": "unary",
+                              "operator": "+",
+                              "operand": {
+                                "type": "unary",
+                                "operator": "+",
+                                "operand": {
+                                  "type": "unary",
+                                  "operator": "+",
+                                  "operand": {
+                                    "type": "unary",
+                                    "operator": "+",
+                                    "operand": {
+                                      "type": "unary",
+                                      "operator": "+",
+                                      "operand": {
+                                        "type": "unary",
+                                        "operator": "+",
+                                        "operand": {
+                                          "type": "unary",
+                                          "operator": "+",
+                                          "operand": {
+                                            "type": "unary",
+                                            "operator": "+",
+                                            "operand": {
+                                              "type": "unary",
+                                              "operator": "+",
+                                              "operand": {
+                                                "type": "unary",
+                                                "operator": "+",
+                                                "operand": {
+                                                  "type": "unary",
+                                                  "operator": "+",
+                                                  "operand": {
+                                                    "type": "unary",
+                                                    "operator": "+",
+                                                    "operand": {
+                                                      "type": "unary",
+                                                      "operator": "+",
+                                                      "operand": {
+                                                        "type": "unary",
+                                                        "operator": "+",
+                                                        "operand": {
+                                                          "type": "unary",
+                                                          "operator": "+",
+                                                          "operand": {
+                                                            "type": "unary",
+                                                            "operator": "+",
+                                                            "operand": {
+                                                              "type": "unary",
+                                                              "operator": "+",
+                                                              "operand": {
+                                                                "type": "unary",
+                                                                "operator": "+",
+                                                                "operand": {
+                                                                  "type": "unary",
+                                                                  "operator": "+",
+                                                                  "operand": {
+                                                                    "type": "unary",
+                                                                    "operator": "+",
+                                                                    "operand": {
+                                                                      "type": "unary",
+                                                                      "operator": "+",
+                                                                      "operand": {
+                                                                        "type": "unary",
+                                                                        "operator": "+",
+                                                                        "operand": {
+                                                                          "type": "unary",
+                                                                          "operator": "+",
+                                                                          "operand": {
+                                                                            "type": "unary",
+                                                                            "operator": "+",
+                                                                            "operand": {
+                                                                              "type": "unary",
+                                                                              "operator": "+",
+                                                                              "operand": {
+                                                                                "type": "unary",
+                                                                                "operator": "+",
+                                                                                "operand": {
+                                                                                  "type": "unary",
+                                                                                  "operator": "+",
+                                                                                  "operand": {
+                                                                                    "type": "unary",
+                                                                                    "operator": "+",
+                                                                                    "operand": {
+                                                                                      "type": "unary",
+                                                                                      "operator": "+",
+                                                                                      "operand": {
+                                                                                        "type": "unary",
+                                                                                        "operator": "+",
+                                                                                        "operand": {
+                                                                                          "type": "unary",
+                                                                                          "operator": "+",
+                                                                                          "operand": {
+                                                                                            "type": "unary",
+                                                                                            "operator": "+",
+                                                                                            "operand": {
+                                                                                              "type": "unary",
+                                                                                              "operator": "+",
+                                                                                              "operand": {
+                                                                                                "type": "unary",
+                                                                                                "operator": "+",
+                                                                                                "operand": {
+                                                                                                  "type": "unary",
+                                                                                                  "operator": "+",
+                                                                                                  "operand": {
+                                                                                                    "type": "unary",
+                                                                                                    "operator": "+",
+                                                                                                    "operand": {
+                                                                                                      "type": "unary",
+                                                                                                      "operator": "+",
+                                                                                                      "operand": {
+                                                                                                        "type": "unary",
+                                                                                                        "operator": "+",
+                                                                                                        "operand": {
+                                                                                                          "type": "unary",
+                                                                                                          "operator": "+",
+                                                                                                          "operand": {
+                                                                                                            "type": "unary",
+                                                                                                            "operator": "+",
+                                                                                                            "operand": {
+                                                                                                              "type": "unary",
+                                                                                                              "operator": "+",
+                                                                                                              "operand": {
+                                                                                                                "type": "unary",
+                                                                                                                "operator": "+",
+                                                                                                                "operand": {
+                                                                                                                  "type": "unary",
+                                                                                                                  "operator": "+",
+                                                                                                                  "operand": {
+                                                                                                                    "type": "unary",
+                                                                                                                    "operator": "+",
+                                                                                                                    "operand": {
+                                                                                                                      "type": "unary",
+                                                                                                                      "operator": "+",
+                                                                                                                      "operand": {
+                                                                                                                        "type": "unary",
+                                                                                                                        "operator": "+",
+                                                                                                                        "operand": {
+                                                                                                                          "type": "unary",
+                                                                                                                          "operator": "+",
+                                                                                                                          "operand": {
+                                                                                                                            "type": "unary",
+                                                                                                                            "operator": "+",
+                                                                                                                            "operand": {
+                                                                                                                              "type": "unary",
+                                                                                                                              "operator": "+",
+                                                                                                                              "operand": {
+                                                                                                                                "type": "unary",
+                                                                                                                                "operator": "+",
+                                                                                                                                "operand": {
+                                                                                                                                  "type": "unary",
+                                                                                                                                  "operator": "+",
+                                                                                                                                  "operand": {
+                                                                                                                                    "type": "unary",
+                                                                                                                                    "operator": "+",
+                                                                                                                                    "operand": {
+                                                                                                                                      "type": "unary",
+                                                                                                                                      "operator": "+",
+                                                                                                                                      "operand": {
+                                                                                                                                        "type": "unary",
+                                                                                                                                        "operator": "+",
+                                                                                                                                        "operand": {
+                                                                                                                                          "type": "unary",
+                                                                                                                                          "operator": "+",
+                                                                                                                                          "operand": {
+                                                                                                                                            "type": "number",
+                                                                                                                                            "text": "1"
+                                                                                                                                          }
+                                                                                                                                        }
+                                                                                                                                      }
+                                                                                                                                    }
+                                                                                                                                  }
+                                                                                                                                }
+                                                                                                                              }
+                                                                                                                            }
+                                                                                                                          }
+                                                                                                                        }
+                                                                                                                      }
+                                                                                                                    }
+                                                                                                                  }
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "bindings": {
+          "unused": "+1"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidRequest\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "backend-binding-after-valid-AST",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "number",
+          "text": "1"
+        },
+        "bindings": {
+          "unused": "+1"
+        }
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"InvalidBindingError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    }
+  ],
+  "oracle": {
+    "adapter_sha256": "8daad834488794d23583ff3b5dfb06064cd21d31cb0734839dbf73bd97f0e8cb",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]"
+  }
+}

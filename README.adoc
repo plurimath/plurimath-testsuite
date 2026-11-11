@@ -525,6 +525,17 @@ check-jsonschema --schemafile schema/fixtures-provenance.json provenance/fixture
 `schema/`, so a fixture schema must stay within the JSON Schema keywords that
 validator implements.
 
+=== Serialized numeric request profiles
+
+`evaluation/numeric-v1/` contains five immutable JSON profiles for
+the closed numeric request API. Its manifest pins the Ruby producer, seals the
+profile bytes, and records which Rust bindings replayed those bytes. Each row
+contains a request and the exact canonical response, including typed errors.
+The quantity and GUM profiles have separate scope.
+
+Run `python3 -I scripts/validate-evaluation-profiles.py` to check profile
+inventory, checksums, case IDs, and response envelopes.
+
 === Portable YAML
 
 Fixtures are read by plain YAML loaders in several languages (YAML 1.1 and 1.2),

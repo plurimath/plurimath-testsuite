@@ -1,0 +1,330 @@
+{
+  "schema": "R30-nonfinite-probes/1",
+  "accepted_corpus": false,
+  "cases": [
+    {
+      "id": "decimal-positive-infinity-recovery",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "1"
+          },
+          "right": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"100000000000000000000\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"Infinity\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-negative-infinity-recovery",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "1"
+          },
+          "right": {
+            "type": "call",
+            "name": "ln",
+            "argument": {
+              "type": "number",
+              "text": "0"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"0\"}],\"operation\":\"log\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"-Infinity\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"-0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-infinity-product-zero",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "*",
+          "left": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          },
+          "right": {
+            "type": "number",
+            "text": "0"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-infinity-difference",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-negative-exp-underflow",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "exp",
+          "argument": {
+            "type": "number",
+            "text": "-100000000000000000000"
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"-100000000000000000000\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-zero-negative-power-recovery",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "1"
+          },
+          "right": {
+            "type": "binary",
+            "operator": "^",
+            "left": {
+              "type": "call",
+              "name": "sin",
+              "argument": {
+                "type": "number",
+                "text": "0"
+              }
+            },
+            "right": {
+              "type": "number",
+              "text": "-1"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"0\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_0\",\"operands\":[{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"},{\"kind\":\"integer\",\"value\":\"-1\"}],\"operation\":\"power\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"Infinity\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-infinity-quotient",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "100000000000000000000"
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-sqrt-infinity-recovery",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "1"
+          },
+          "right": {
+            "type": "call",
+            "name": "sqrt",
+            "argument": {
+              "type": "call",
+              "name": "exp",
+              "argument": {
+                "type": "number",
+                "text": "100000000000000000000"
+              }
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"100000000000000000000\"}],\"operation\":\"exp\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"Infinity\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_0\",\"operands\":[{\"kind\":\"decimal\",\"precision\":0,\"value\":\"Infinity\"}],\"operation\":\"sqrt\",\"result\":{\"bits\":\"7ff0000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "decimal-negative-zero-abs",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "abs",
+          "argument": {
+            "type": "unary",
+            "operator": "-",
+            "operand": {
+              "type": "call",
+              "name": "sin",
+              "argument": {
+                "type": "number",
+                "text": "0"
+              }
+            }
+          }
+        },
+        "guard_digits": 12
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"guarded\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"0\"}],\"operation\":\"sin\",\"result\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}}],\"deferred\":false,\"value\":{\"kind\":\"decimal\",\"precision\":0,\"value\":\"0.0\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "float-infinity-recovery",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "/",
+          "left": {
+            "type": "number",
+            "text": "1"
+          },
+          "right": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "1000"
+            }
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":true,\"result\":{\"boundaries\":[{\"action\":\"approximated\",\"operand_accuracy\":\"exact\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1000\"}],\"operation\":\"exp\",\"result\":{\"bits\":\"7ff0000000000000\",\"kind\":\"float\"}},{\"action\":\"approximated\",\"operand_accuracy\":\"limited_float\",\"operands\":[{\"kind\":\"integer\",\"value\":\"1\"},{\"bits\":\"7ff0000000000000\",\"kind\":\"float\"}],\"operation\":\"divide\",\"result\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}}],\"deferred\":false,\"value\":{\"bits\":\"0000000000000000\",\"kind\":\"float\"}},\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "float-sin-infinity-domain",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "sin",
+          "argument": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "1000"
+            }
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "float-cos-infinity-domain",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "call",
+          "name": "cos",
+          "argument": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "1000"
+            }
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    },
+    {
+      "id": "float-infinity-difference",
+      "request": {
+        "schema": "plurimath.evaluate.numeric/1",
+        "ast": {
+          "type": "binary",
+          "operator": "-",
+          "left": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "1000"
+            }
+          },
+          "right": {
+            "type": "call",
+            "name": "exp",
+            "argument": {
+              "type": "number",
+              "text": "1000"
+            }
+          }
+        },
+        "mode": "approximate"
+      },
+      "expected_wire": "{\"engine\":\"plurimath.numeric/1\",\"error\":{\"code\":\"NonFiniteResultError\"},\"grammar\":\"plurimath.numeric-ast/1\",\"ok\":false,\"schema\":\"plurimath.evaluate.numeric/1\"}"
+    }
+  ],
+  "oracle": {
+    "adapter_sha256": "8daad834488794d23583ff3b5dfb06064cd21d31cb0734839dbf73bd97f0e8cb",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]"
+  }
+}
