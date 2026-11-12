@@ -39,3 +39,16 @@ entries:
   change: extend
   rationale: Adds typed-model expectations beside the raw-tree rows, for model-level
     parity (plurimath#531) and multi-target replay (plurimath#539).
+- generation: 4
+  path: stages/latex/generations/000004
+  snapshot_digest: sha256:a657a0c61602ffdc9c02f3533f8671f92e38c42ee679d50ded38efd0e69ae0ce
+  payloads: 73
+  rows: 525
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: >-
+    CANDIDATE supersession: adds 108 revision-2 typed-model rows (<id>-r2) from latexmath scripts/stage_cases.rb
+    at 372e377261c82e801ce755ebca7abfae1336ec39 (PR #68 head; merged as fc18798849f8307a96db3f54026d636634b1bf52 with an identical tree and byte-identical producer output), where MathSymbol gains derived value and kind;
+    each supersedes the expected tree of <id>. Every generation 3 payload is kept byte for byte.

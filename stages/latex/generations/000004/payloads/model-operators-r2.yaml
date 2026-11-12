@@ -1,0 +1,277 @@
+# LaTeX typed-model stage cases: model-operators-r2 (supersession of model-operators expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-operators-r2
+description: 'Revision 2 of 5 model-operators typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-operator-plus.model-r2
+  input:
+    str: a + b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - operant
+                    - str: "+"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+                  - - value
+                    - str: a
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-operator-times.model-r2
+  input:
+    str: a \times b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\timesb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: times
+                      - - value
+                        - str: "×"
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+                  - - value
+                    - str: a
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-operator-leq.model-r2
+  input:
+    str: a \le b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\leb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: le
+                      - - value
+                        - str: "≤"
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+                  - - value
+                    - str: a
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-operator-equiv.model-r2
+  input:
+    str: a \equiv b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\equivb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: equiv
+                      - - value
+                        - str: "≡"
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+                  - - value
+                    - str: a
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-operator-plus-minus.model-r2
+  input:
+    str: a \pm b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\pmb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+                      - - value
+                        - str: b
+                      - - kind
+                        - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: pm
+                      - - value
+                        - str: "±"
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+                  - - value
+                    - str: a
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."

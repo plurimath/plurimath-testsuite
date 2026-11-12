@@ -1,0 +1,121 @@
+# LaTeX raw-tree stage cases: raw-colour.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-colour
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of colour.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-colour-named.raw
+  input:
+    str: "\\color{red} x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\color{red}x"
+    tree:
+      hash:
+      - - sym: binary
+        - slice: color
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - hash:
+          - - sym: symbol
+            - slice: red
+              byte_offset: 7
+              char_offset: 7
+      - - sym: second_value
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 11
+              char_offset: 11
+- id: latex-colour-in-sum.raw
+  input:
+    str: "\\color{blue} y + z"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\color{blue}y+z"
+    tree:
+      hash:
+      - - sym: binary
+        - slice: color
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - hash:
+          - - sym: symbol
+            - slice: blue
+              byte_offset: 7
+              char_offset: 7
+      - - sym: second_value
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: symbols
+                - slice: "y"
+                  byte_offset: 12
+                  char_offset: 12
+          - - sym: expression
+            - hash:
+              - - sym: sequence
+                - hash:
+                  - - sym: operant
+                    - slice: "+"
+                      byte_offset: 13
+                      char_offset: 13
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: z
+                      byte_offset: 14
+                      char_offset: 14
+- id: latex-colour-over-frac.raw
+  input:
+    str: "\\color{red} \\frac{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\color{red}\\frac{1}{2}"
+    tree:
+      hash:
+      - - sym: binary
+        - slice: color
+          byte_offset: 1
+          char_offset: 1
+      - - sym: first_value
+        - hash:
+          - - sym: symbol
+            - slice: red
+              byte_offset: 7
+              char_offset: 7
+      - - sym: second_value
+        - hash:
+          - - sym: binary
+            - hash:
+              - - sym: binary
+                - slice: frac
+                  byte_offset: 12
+                  char_offset: 12
+              - - sym: first_value
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: number
+                        - slice: '1'
+                          byte_offset: 17
+                          char_offset: 17
+              - - sym: second_value
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: number
+                        - slice: '2'
+                          byte_offset: 20
+                          char_offset: 20

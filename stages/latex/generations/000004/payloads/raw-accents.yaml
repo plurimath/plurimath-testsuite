@@ -1,0 +1,337 @@
+# LaTeX raw-tree stage cases: raw-accents.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-accents
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of accents.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-accent-hat.raw
+  input:
+    str: "\\hat{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\hat{a}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: hat
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: a
+                      byte_offset: 5
+                      char_offset: 5
+- id: latex-accent-hat-multi.raw
+  input:
+    str: "\\hat{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\hat{ab}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: hat
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 5
+                          char_offset: 5
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: b
+                          byte_offset: 6
+                          char_offset: 6
+- id: latex-accent-vec.raw
+  input:
+    str: "\\vec{v}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\vec{v}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: vec
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: v
+                      byte_offset: 5
+                      char_offset: 5
+- id: latex-accent-vec-multi.raw
+  input:
+    str: "\\vec{AB}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\vec{AB}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: vec
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: A
+                          byte_offset: 5
+                          char_offset: 5
+                  - - sym: expression
+                    - hash:
+                      - - sym: symbols
+                        - slice: B
+                          byte_offset: 6
+                          char_offset: 6
+- id: latex-accent-bar.raw
+  input:
+    str: "\\bar{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bar{x}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: bar
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 5
+                      char_offset: 5
+- id: latex-accent-dot.raw
+  input:
+    str: "\\dot{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\dot{x}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: dot
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 5
+                      char_offset: 5
+- id: latex-accent-ddot.raw
+  input:
+    str: "\\ddot{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\ddot{y}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: ddot
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "y"
+                      byte_offset: 6
+                      char_offset: 6
+- id: latex-accent-tilde.raw
+  input:
+    str: "\\tilde{n}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\tilde{n}"
+    tree:
+      hash:
+      - - sym: unary_functions
+        - hash:
+          - - sym: unary
+            - slice: tilde
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: "n"
+                      byte_offset: 7
+                      char_offset: 7
+- id: latex-accent-acute.raw
+  input:
+    str: "\\acute{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\acute{a}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: acute
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-accent-grave.raw
+  input:
+    str: "\\grave{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\grave{a}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: grave
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-accent-check.raw
+  input:
+    str: "\\check{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\check{a}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: check
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-accent-breve.raw
+  input:
+    str: "\\breve{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\breve{a}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: breve
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 7
+                  char_offset: 7
+- id: latex-accent-mathring.raw
+  input:
+    str: "\\mathring{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathring{a}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: symbols
+            - slice: mathring
+              byte_offset: 1
+              char_offset: 1
+      - - sym: expression
+        - hash:
+          - - sym: expression
+            - hash:
+              - - sym: symbols
+                - slice: a
+                  byte_offset: 10
+                  char_offset: 10

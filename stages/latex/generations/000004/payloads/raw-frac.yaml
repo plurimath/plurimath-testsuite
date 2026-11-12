@@ -1,0 +1,295 @@
+# LaTeX raw-tree stage cases: raw-frac.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-frac
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of frac.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-frac-simple.raw
+  input:
+    str: "\\frac{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{2}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: frac
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '1'
+                      byte_offset: 6
+                      char_offset: 6
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '2'
+                      byte_offset: 9
+                      char_offset: 9
+- id: latex-frac-nested.raw
+  input:
+    str: "\\frac{\\frac{1}{2}}{3}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{\\frac{1}{2}}{3}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: frac
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: binary
+                    - hash:
+                      - - sym: binary
+                        - slice: frac
+                          byte_offset: 7
+                          char_offset: 7
+                      - - sym: first_value
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: number
+                                - slice: '1'
+                                  byte_offset: 12
+                                  char_offset: 12
+                      - - sym: second_value
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 15
+                                  char_offset: 15
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '3'
+                      byte_offset: 19
+                      char_offset: 19
+- id: latex-frac-sum-numerator.raw
+  input:
+    str: "\\frac{a+b}{c}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{a+b}{c}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: frac
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: a
+                          byte_offset: 6
+                          char_offset: 6
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 7
+                              char_offset: 7
+                      - - sym: expression
+                        - hash:
+                          - - sym: symbols
+                            - slice: b
+                              byte_offset: 8
+                              char_offset: 8
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: c
+                      byte_offset: 11
+                      char_offset: 11
+- id: latex-frac-sum-denominator.raw
+  input:
+    str: "\\frac{x}{y+z}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{x}{y+z}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: frac
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: symbols
+                    - slice: x
+                      byte_offset: 6
+                      char_offset: 6
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: "y"
+                          byte_offset: 9
+                          char_offset: 9
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 10
+                              char_offset: 10
+                      - - sym: expression
+                        - hash:
+                          - - sym: symbols
+                            - slice: z
+                              byte_offset: 11
+                              char_offset: 11
+- id: latex-frac-sum-of-fracs.raw
+  input:
+    str: "\\frac{1}{2} + \\frac{3}{4}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{2}+\\frac{3}{4}"
+    tree:
+      hash:
+      - - sym: sequence
+        - hash:
+          - - sym: binary
+            - hash:
+              - - sym: binary
+                - slice: frac
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: first_value
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: number
+                        - slice: '1'
+                          byte_offset: 6
+                          char_offset: 6
+              - - sym: second_value
+                - hash:
+                  - - sym: expression
+                    - hash:
+                      - - sym: number
+                        - slice: '2'
+                          byte_offset: 9
+                          char_offset: 9
+      - - sym: expression
+        - hash:
+          - - sym: sequence
+            - hash:
+              - - sym: operant
+                - slice: "+"
+                  byte_offset: 11
+                  char_offset: 11
+          - - sym: expression
+            - hash:
+              - - sym: binary
+                - hash:
+                  - - sym: binary
+                    - slice: frac
+                      byte_offset: 13
+                      char_offset: 13
+                  - - sym: first_value
+                    - hash:
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '3'
+                              byte_offset: 18
+                              char_offset: 18
+                  - - sym: second_value
+                    - hash:
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '4'
+                              byte_offset: 21
+                              char_offset: 21
+- id: latex-frac-root-denominator.raw
+  input:
+    str: "\\frac{1}{\\sqrt{2}}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\frac{1}{\\sqrt{2}}"
+    tree:
+      hash:
+      - - sym: binary
+        - hash:
+          - - sym: binary
+            - slice: frac
+              byte_offset: 1
+              char_offset: 1
+          - - sym: first_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: number
+                    - slice: '1'
+                      byte_offset: 6
+                      char_offset: 6
+          - - sym: second_value
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: binary
+                    - hash:
+                      - - sym: sqrt
+                        - slice: sqrt
+                          byte_offset: 10
+                          char_offset: 10
+                      - - sym: intermediate_exp
+                        - hash:
+                          - - sym: expression
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 15
+                                  char_offset: 15

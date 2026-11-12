@@ -1,0 +1,542 @@
+# LaTeX typed-model stage cases: model-accents-r2 (supersession of model-accents expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-accents-r2
+description: 'Revision 2 of 13 model-accents typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-accent-hat.model-r2
+  input:
+    str: "\\hat{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\hat{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: hat
+      - - decimal
+        - str: "."
+- id: latex-accent-hat-multi.model-r2
+  input:
+    str: "\\hat{ab}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\hat{ab}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: a
+                              - - value
+                                - str: a
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: hat
+      - - decimal
+        - str: "."
+- id: latex-accent-vec.model-r2
+  input:
+    str: "\\vec{v}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\vec{v}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: v
+                          - - value
+                            - str: v
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: vec
+      - - decimal
+        - str: "."
+- id: latex-accent-vec-multi.model-r2
+  input:
+    str: "\\vec{AB}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\vec{AB}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: B
+                              - - value
+                                - str: B
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: A
+                              - - value
+                                - str: A
+                              - - kind
+                                - str: symbol
+              - - unary
+                - str: vec
+      - - decimal
+        - str: "."
+- id: latex-accent-bar.model-r2
+  input:
+    str: "\\bar{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bar{x}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                          - - value
+                            - str: x
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: bar
+      - - decimal
+        - str: "."
+- id: latex-accent-dot.model-r2
+  input:
+    str: "\\dot{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\dot{x}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                          - - value
+                            - str: x
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: dot
+      - - decimal
+        - str: "."
+- id: latex-accent-ddot.model-r2
+  input:
+    str: "\\ddot{y}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\ddot{y}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "y"
+                          - - value
+                            - str: "y"
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: ddot
+      - - decimal
+        - str: "."
+- id: latex-accent-tilde.model-r2
+  input:
+    str: "\\tilde{n}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\tilde{n}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - unary_functions
+            - node: Latexmath::Model::UnaryFunctions
+              fields:
+              - - first_value
+                - node: Latexmath::Model::FirstValue
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "n"
+                          - - value
+                            - str: "n"
+                          - - kind
+                            - str: symbol
+              - - unary
+                - str: tilde
+      - - decimal
+        - str: "."
+- id: latex-accent-acute.model-r2
+  input:
+    str: "\\acute{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\acute{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: acute
+                  - - value
+                    - str: ́
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-accent-grave.model-r2
+  input:
+    str: "\\grave{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\grave{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: grave
+                  - - value
+                    - str: ̀
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-accent-check.model-r2
+  input:
+    str: "\\check{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\check{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: check
+                  - - value
+                    - str: ̌
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-accent-breve.model-r2
+  input:
+    str: "\\breve{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\breve{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: breve
+                  - - value
+                    - str: ̆
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-accent-mathring.model-r2
+  input:
+    str: "\\mathring{a}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathring{a}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: symbol
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: mathring
+                  - - value
+                    - str: ̊
+                  - - kind
+                    - str: symbol
+      - - decimal
+        - str: "."

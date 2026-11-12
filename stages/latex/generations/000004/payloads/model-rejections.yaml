@@ -1,0 +1,139 @@
+# LaTeX typed-model stage cases: model-rejections.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-rejections
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of rejections.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-unclosed-brace.model
+  input:
+    str: "\\frac{1"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 7
+- id: latex-stray-close-brace.model
+  input:
+    str: x}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-unknown-command.model
+  input:
+    str: "\\nosuchcommandhere"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-frac-no-args.model
+  input:
+    str: "\\frac"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 5
+- id: latex-frac-one-arg.model
+  input:
+    str: "\\frac{1}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 8
+- id: latex-right-without-left.model
+  input:
+    str: x \right)
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: latex-begin-without-end.model
+  input:
+    str: "\\begin{matrix} a"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 16
+- id: latex-end-without-begin.model
+  input:
+    str: a \end{matrix}
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 3
+- id: latex-whitespace-only.model
+  input:
+    str: "   "
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ''
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - decimal
+        - str: "."
+- id: latex-lone-backslash.model
+  input:
+    str: "\\"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-unclosed-text.model
+  input:
+    str: "\\text{abc"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 9
+- id: latex-nested-unclosed.model
+  input:
+    str: "\\frac{\\frac{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 17
+- id: latex-command-bad-chars.model
+  input:
+    str: "\\fr@c{1}{2}"
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1
+- id: latex-tilde.model
+  input:
+    str: a~b
+  options:
+    decimal: "."
+  expected:
+    refusal:
+      category: parse_error
+      byte_offset: 1

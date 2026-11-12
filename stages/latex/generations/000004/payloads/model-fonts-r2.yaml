@@ -1,0 +1,400 @@
+# LaTeX typed-model stage cases: model-fonts-r2 (supersession of model-fonts expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-fonts-r2
+description: 'Revision 2 of 10 model-fonts typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-font-blackboard.model-r2
+  input:
+    str: "\\mathbb{R}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbb{R}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathbb
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: R
+                      - - value
+                        - str: R
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-bold.model-r2
+  input:
+    str: "\\mathbf{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbf{x}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathbf
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+                      - - value
+                        - str: x
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-roman-text.model-r2
+  input:
+    str: "\\textrm{abc}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\textrm{abc}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: textrm
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: c
+                              - - value
+                                - str: c
+                              - - kind
+                                - str: symbol
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: symbol
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                          - - value
+                            - str: a
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-script.model-r2
+  input:
+    str: "\\mathcal{L}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathcal{L}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathcal
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: L
+                      - - value
+                        - str: L
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-fraktur.model-r2
+  input:
+    str: "\\mathfrak{g}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathfrak{g}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathfrak
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: g
+                      - - value
+                        - str: g
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-sans-serif.model-r2
+  input:
+    str: "\\mathsf{A}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathsf{A}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathsf
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+                      - - value
+                        - str: A
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-typewriter.model-r2
+  input:
+    str: "\\mathtt{z}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathtt{z}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathtt
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: z
+                      - - value
+                        - str: z
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-roman.model-r2
+  input:
+    str: "\\mathrm{d}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathrm{d}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathrm
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: d
+                      - - value
+                        - str: d
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-italic.model-r2
+  input:
+    str: "\\mathit{x}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathit{x}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - fonts
+            - str: mathit
+          - - intermediate_exp
+            - node: Latexmath::Model::IntermediateExp
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+                      - - value
+                        - str: x
+                      - - kind
+                        - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-font-mixed.model-r2
+  input:
+    str: "\\mathbf{A} + \\mathbf{B}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mathbf{A}+\\mathbf{B}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - fonts
+                    - str: mathbf
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: B
+                              - - value
+                                - str: B
+                              - - kind
+                                - str: symbol
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - operant
+                    - str: "+"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - fonts
+                - str: mathbf
+              - - intermediate_exp
+                - node: Latexmath::Model::IntermediateExp
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: A
+                          - - value
+                            - str: A
+                          - - kind
+                            - str: symbol
+      - - decimal
+        - str: "."

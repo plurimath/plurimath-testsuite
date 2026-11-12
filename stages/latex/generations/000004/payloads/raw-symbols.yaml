@@ -1,0 +1,65 @@
+# LaTeX raw-tree stage cases: raw-symbols.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-symbols
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of symbols.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-symbol-greek-alpha.raw
+  input:
+    str: "\\alpha"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\alpha"
+    tree:
+      hash:
+      - - sym: symbols
+        - slice: alpha
+          byte_offset: 1
+          char_offset: 1
+- id: latex-symbol-infinity.raw
+  input:
+    str: "\\infty"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\infty"
+    tree:
+      hash:
+      - - sym: symbols
+        - slice: infty
+          byte_offset: 1
+          char_offset: 1
+- id: latex-symbol-greek-pi.raw
+  input:
+    str: "\\pi"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\pi"
+    tree:
+      hash:
+      - - sym: symbols
+        - slice: pi
+          byte_offset: 1
+          char_offset: 1
+- id: latex-symbol-empty-set.raw
+  input:
+    str: "\\emptyset"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\emptyset"
+    tree:
+      hash:
+      - - sym: symbols
+        - slice: emptyset
+          byte_offset: 1
+          char_offset: 1

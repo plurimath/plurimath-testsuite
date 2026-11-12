@@ -1,0 +1,101 @@
+# LaTeX typed-model stage cases: model-quoted-text.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-quoted-text
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of quoted-text.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-text-command.model
+  input:
+    str: "\\text{hello}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\text{hello}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - text_list
+                - str: hello
+          - - text
+            - str: text
+      - - decimal
+        - str: "."
+- id: latex-text-spaced.model
+  input:
+    str: "\\text{hello world}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\text{hello world}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - text_list
+                - str: hello world
+          - - text
+            - str: text
+      - - decimal
+        - str: "."
+- id: latex-text-mbox.model
+  input:
+    str: "\\mbox{hi}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mbox{hi}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - text_list
+                - str: hi
+          - - text
+            - str: mbox
+      - - decimal
+        - str: "."
+- id: latex-text-mbox-spaced.model
+  input:
+    str: "\\mbox{a b}"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\mbox{a b}"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - first_value
+            - node: Latexmath::Model::FirstValue
+              fields:
+              - - text_list
+                - str: a b
+          - - text
+            - str: mbox
+      - - decimal
+        - str: "."

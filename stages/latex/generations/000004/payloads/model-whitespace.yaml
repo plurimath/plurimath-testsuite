@@ -1,0 +1,286 @@
+# LaTeX typed-model stage cases: model-whitespace.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-whitespace
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of whitespace.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-whitespace-quad.model
+  input:
+    str: a \quad b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\quadb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: quad
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."
+- id: latex-whitespace-two-quads.model
+  input:
+    str: a \quad b \quad c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\quadb\quadc
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: c
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: quad
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: quad
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."
+- id: latex-comma-from-thin-space.model
+  input:
+    str: a \, b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\,b
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: ","
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."
+- id: latex-whitespace-medium.model
+  input:
+    str: 'a \: b'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\:b
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: ":"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."
+- id: latex-whitespace-thick.model
+  input:
+    str: a \; b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\;b
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - three_per_em_space
+                    - str: "\\;"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."
+- id: latex-whitespace-qquad.model
+  input:
+    str: a \qquad b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\qquadb
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: b
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: qquad
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: a
+      - - decimal
+        - str: "."

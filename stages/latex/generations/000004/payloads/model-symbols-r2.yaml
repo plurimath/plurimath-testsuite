@@ -1,0 +1,109 @@
+# LaTeX typed-model stage cases: model-symbols-r2 (supersession of model-symbols expected trees).
+# Rows taken from latexmath scripts/stage_cases.rb at 372e377 (candidate); only the ids differ
+# from the generator's rows. Provenance lives in ../provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-symbols-r2
+description: 'Revision 2 of 4 model-symbols typed-model expectations that latexmath changed on purpose at 372e377 (PR #68 draft head: MathSymbol gains derived value and kind beside spelling). Each <id>-r2 row supersedes the expected tree of <id>; the original rows are kept unchanged as the generation 3 oracle. Same input, options, preprocessed text and refusals as the original rows.'
+boundary: typed-model
+cases:
+- id: latex-symbol-greek-alpha.model-r2
+  input:
+    str: "\\alpha"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\alpha"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: alpha
+              - - value
+                - str: α
+              - - kind
+                - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-symbol-infinity.model-r2
+  input:
+    str: "\\infty"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\infty"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: infty
+              - - value
+                - str: "∞"
+              - - kind
+                - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-symbol-greek-pi.model-r2
+  input:
+    str: "\\pi"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\pi"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: pi
+              - - value
+                - str: π
+              - - kind
+                - str: symbol
+      - - decimal
+        - str: "."
+- id: latex-symbol-empty-set.model-r2
+  input:
+    str: "\\emptyset"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\emptyset"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - symbols
+            - node: Latexmath::Model::MathSymbol
+              fields:
+              - - spelling
+                - str: emptyset
+              - - value
+                - str: "∅"
+              - - kind
+                - str: symbol
+      - - decimal
+        - str: "."

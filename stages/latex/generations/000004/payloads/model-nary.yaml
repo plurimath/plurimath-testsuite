@@ -1,0 +1,800 @@
+# LaTeX typed-model stage cases: model-nary.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: model-nary
+description: Typed models (Latexmath::Model::Document) from Latexmath.parse for the rows of nary.yaml, the same on the Ruby and native engines. Each object is its model class (model/latex.lml.json) with its set fields in declaration order; nil fields are left out. A refusal's byte_offset is in the caller's input.
+boundary: typed-model
+cases:
+- id: latex-nary-sum-bounded.model
+  input:
+    str: "\\sum_{i=1}^{n} i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sum_{i=1}^{n}i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '1'
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "="
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: i
+              - - supscript
+                - node: Latexmath::Model::Supscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "n"
+              - - ternary_functions
+                - str: sum
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: i
+      - - decimal
+        - str: "."
+- id: latex-nary-sum-of-squares.model
+  input:
+    str: "\\sum_{i=1}^{n} i^2"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sum_{i=1}^{n}i^2"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '1'
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "="
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: i
+              - - supscript
+                - node: Latexmath::Model::Supscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "n"
+              - - ternary_functions
+                - str: sum
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - power
+                    - node: Latexmath::Model::Power
+                      fields:
+                      - - supscript
+                        - node: Latexmath::Model::Supscript
+                          fields:
+                          - - number
+                            - str: '2'
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+      - - decimal
+        - str: "."
+- id: latex-nary-sum-bare.model
+  input:
+    str: "\\sum x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\sumx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: x
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - ternary
+                - str: sum
+      - - decimal
+        - str: "."
+- id: latex-nary-int-bounded.model
+  input:
+    str: "\\int_0^1 x"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\int_0^1x"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - number
+                    - str: '0'
+              - - supscript
+                - node: Latexmath::Model::Supscript
+                  fields:
+                  - - number
+                    - str: '1'
+              - - ternary_functions
+                - str: int
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: x
+      - - decimal
+        - str: "."
+- id: latex-nary-int-definite.model
+  input:
+    str: "\\int_a^b f(x) dx"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\int_a^bf(x)dx"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: x
+                  - - sequence
+                    - node: Latexmath::Model::Sequence
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: d
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: x
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - ternary_class
+                - node: Latexmath::Model::TernaryClass
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: a
+                  - - supscript
+                    - node: Latexmath::Model::Supscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: b
+                  - - ternary_functions
+                    - str: int
+                  - - third_value
+                    - node: Latexmath::Model::ThirdValue
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: f
+      - - decimal
+        - str: "."
+- id: latex-nary-prod-subscript.model
+  input:
+    str: "\\prod_{k} k"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\prod_{k}k"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: k
+              - - ternary_functions
+                - str: prod
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: k
+      - - decimal
+        - str: "."
+- id: latex-nary-prod-bounded.model
+  input:
+    str: "\\prod_{i=1}^{n} i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\prod_{i=1}^{n}i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - number
+                                - str: '1'
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - operant
+                                - str: "="
+                      - - sequence
+                        - node: Latexmath::Model::Sequence
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: i
+              - - supscript
+                - node: Latexmath::Model::Supscript
+                  fields:
+                  - - expression
+                    - node: Latexmath::Model::Expression
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: "n"
+              - - ternary_functions
+                - str: prod
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: i
+      - - decimal
+        - str: "."
+- id: latex-nary-oint-subscript.model
+  input:
+    str: "\\oint_C f"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\oint_Cf"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - ternary_class
+            - node: Latexmath::Model::TernaryClass
+              fields:
+              - - subscript
+                - node: Latexmath::Model::Subscript
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: C
+              - - ternary_functions
+                - str: oint
+              - - third_value
+                - node: Latexmath::Model::ThirdValue
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: f
+      - - decimal
+        - str: "."
+- id: latex-nary-lim-to-infinity.model
+  input:
+    str: "\\lim_{x \\to \\infty} f(x)"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\lim_{x\\to\\infty}f(x)"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - expression
+                - node: Latexmath::Model::Expression
+                  fields:
+                  - - intermediate_exp
+                    - node: Latexmath::Model::IntermediateExp
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - symbols
+                            - node: Latexmath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: x
+                      - - left_paren
+                        - node: Latexmath::Model::LeftParen
+                          fields:
+                          - - lparen
+                            - str: "("
+                      - - right_paren
+                        - node: Latexmath::Model::RightParen
+                          fields:
+                          - - rparen
+                            - str: ")"
+              - - sequence
+                - node: Latexmath::Model::Sequence
+                  fields:
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: f
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - power_base
+                - node: Latexmath::Model::PowerBase
+                  fields:
+                  - - binary
+                    - node: Latexmath::Model::Binary
+                      fields:
+                      - - literal
+                        - str: lim
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - expression
+                        - node: Latexmath::Model::Expression
+                          fields:
+                          - - expression
+                            - node: Latexmath::Model::Expression
+                              fields:
+                              - - expression
+                                - node: Latexmath::Model::Expression
+                                  fields:
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: infty
+                              - - sequence
+                                - node: Latexmath::Model::Sequence
+                                  fields:
+                                  - - symbols
+                                    - node: Latexmath::Model::MathSymbol
+                                      fields:
+                                      - - spelling
+                                        - str: to
+                          - - sequence
+                            - node: Latexmath::Model::Sequence
+                              fields:
+                              - - symbols
+                                - node: Latexmath::Model::MathSymbol
+                                  fields:
+                                  - - spelling
+                                    - str: x
+      - - decimal
+        - str: "."
+- id: latex-nary-bigcup-subscript.model
+  input:
+    str: "\\bigcup_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigcup_iA_i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: bigcup
+      - - decimal
+        - str: "."
+- id: latex-nary-bigcap-subscript.model
+  input:
+    str: "\\bigcap_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigcap_iA_i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: bigcap
+      - - decimal
+        - str: "."
+- id: latex-nary-coprod-subscript.model
+  input:
+    str: "\\coprod_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\coprod_iA_i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: coprod
+      - - decimal
+        - str: "."
+- id: latex-nary-iint-bare.model
+  input:
+    str: "\\iint f"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\iintf"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: f
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - symbols
+                - node: Latexmath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: iint
+      - - decimal
+        - str: "."
+- id: latex-nary-bigoplus-subscript.model
+  input:
+    str: "\\bigoplus_i A_i"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: "\\bigoplus_iA_i"
+    tree:
+      node: Latexmath::Model::Document
+      fields:
+      - - expression
+        - node: Latexmath::Model::LatexTree
+          fields:
+          - - expression
+            - node: Latexmath::Model::Expression
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: A
+          - - sequence
+            - node: Latexmath::Model::Sequence
+              fields:
+              - - base
+                - node: Latexmath::Model::Base
+                  fields:
+                  - - subscript
+                    - node: Latexmath::Model::Subscript
+                      fields:
+                      - - symbols
+                        - node: Latexmath::Model::MathSymbol
+                          fields:
+                          - - spelling
+                            - str: i
+                  - - symbols
+                    - node: Latexmath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: bigoplus
+      - - decimal
+        - str: "."

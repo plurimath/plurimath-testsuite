@@ -1,0 +1,215 @@
+# LaTeX raw-tree stage cases: raw-powers.
+# Written by scripts/stage_cases.rb in plurimath/latexmath. Do not edit.
+# Provenance lives in this generation's provenance.yaml.
+---
+schema: plurimath-stage/latex/cases/1
+group: raw-powers
+description: Raw grammar trees from Latexmath::RawParser.parse for the rows of powers.yaml, the same on the Ruby and native engines. A refusal's byte_offset is in the caller's input.
+boundary: raw-tree
+cases:
+- id: latex-power-square.raw
+  input:
+    str: x^2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x^2
+    tree:
+      hash:
+      - - sym: power
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 0
+              char_offset: 0
+          - - sym: supscript
+            - hash:
+              - - sym: number
+                - slice: '2'
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-power-nested.raw
+  input:
+    str: x^{y^z}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x^{y^z}
+    tree:
+      hash:
+      - - sym: power
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 0
+              char_offset: 0
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: power
+                    - hash:
+                      - - sym: symbols
+                        - slice: "y"
+                          byte_offset: 3
+                          char_offset: 3
+                      - - sym: supscript
+                        - hash:
+                          - - sym: symbols
+                            - slice: z
+                              byte_offset: 5
+                              char_offset: 5
+- id: latex-power-braced-exponent.raw
+  input:
+    str: x^{n+1}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x^{n+1}
+    tree:
+      hash:
+      - - sym: power
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 0
+              char_offset: 0
+          - - sym: supscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: "n"
+                          byte_offset: 3
+                          char_offset: 3
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 4
+                              char_offset: 4
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 5
+                              char_offset: 5
+- id: latex-power-exponential.raw
+  input:
+    str: e^x
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: e^x
+    tree:
+      hash:
+      - - sym: power
+        - hash:
+          - - sym: symbols
+            - slice: e
+              byte_offset: 0
+              char_offset: 0
+          - - sym: supscript
+            - hash:
+              - - sym: symbols
+                - slice: x
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-subscript-letter.raw
+  input:
+    str: x_i
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x_i
+    tree:
+      hash:
+      - - sym: base
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 0
+              char_offset: 0
+          - - sym: subscript
+            - hash:
+              - - sym: symbols
+                - slice: i
+                  byte_offset: 2
+                  char_offset: 2
+- id: latex-subscript-braced.raw
+  input:
+    str: a_{n+1}
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_{n+1}
+    tree:
+      hash:
+      - - sym: base
+        - hash:
+          - - sym: symbols
+            - slice: a
+              byte_offset: 0
+              char_offset: 0
+          - - sym: subscript
+            - hash:
+              - - sym: expression
+                - hash:
+                  - - sym: sequence
+                    - hash:
+                      - - sym: symbols
+                        - slice: "n"
+                          byte_offset: 3
+                          char_offset: 3
+                  - - sym: expression
+                    - hash:
+                      - - sym: sequence
+                        - hash:
+                          - - sym: operant
+                            - slice: "+"
+                              byte_offset: 4
+                              char_offset: 4
+                      - - sym: expression
+                        - hash:
+                          - - sym: number
+                            - slice: '1'
+                              byte_offset: 5
+                              char_offset: 5
+- id: latex-subscript-and-power.raw
+  input:
+    str: x_i^2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: x_i^2
+    tree:
+      hash:
+      - - sym: power_base
+        - hash:
+          - - sym: symbols
+            - slice: x
+              byte_offset: 0
+              char_offset: 0
+          - - sym: subscript
+            - hash:
+              - - sym: symbols
+                - slice: i
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: supscript
+            - hash:
+              - - sym: number
+                - slice: '2'
+                  byte_offset: 4
+                  char_offset: 4
