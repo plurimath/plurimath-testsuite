@@ -1,0 +1,33 @@
+= Consumer builds
+
+Each directory under `rust/` is a separate client project for one published
+Rust crate. It depends only on the exact public commit of that crate's merged
+default branch, through a `git` + `rev` dependency, with no path dependencies
+or `[patch]` sections. Its `Cargo.lock` is committed.
+
+The `consumer-builds` workflow builds each project with `cargo build --locked`,
+then runs it as a short API smoke. Each job uploads the `Cargo.toml`,
+`Cargo.lock`, `cargo metadata` output, a list of resolved sources and the
+build and smoke exit codes as the `consumer-<crate>` artifact.
+
+The projects are kept separate so that one crate's dependency versions never
+constrain another's.
+
+|===
+| Project | Crate | Commit
+
+| `rust/amath-rs` | `plurimath-amath` | `plurimath/amath-rs` 772834e
+| `rust/latexmath-rs` | `latexmath` | `plurimath/latexmath-rs` 90a12b8
+| `rust/umath-rs` | `plurimath-umath` | `plurimath/umath-rs` 8052da4
+| `rust/unitsdb-rs` | `unitsdb-rs` | `unitsml/unitsdb-rs` 32fea4b
+| `rust/unitsml-rs` | `unitsml-rs` | `unitsml/unitsml-rs` bc8615c
+| `rust/asciiunits-rs` | `asciiunits` | `unitsml/asciiunits-rs` 96801a5
+|===
+
+`unitsml-rs` at bc8615c itself depends on `unitsdb-rs` at c631488, so that
+project resolves both commits. The UnitsDB data these crates bundle is the data
+of those commits.
+
+To move a project to a new commit, change the `rev` in its `Cargo.toml` and the
+matching `rev` in the workflow matrix, then run `cargo generate-lockfile` in the
+project directory.

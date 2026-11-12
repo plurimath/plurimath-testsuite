@@ -1,0 +1,7 @@
+[package]
+name = "consumer-umath-rs"
+version = "0.0.0"
+edition = "2021"
+publish = false
+[dependencies]
+plurimath-umath = { git = "https://github.com/plurimath/umath-rs", rev = "8052da4c38fde26bc61a4a084fcdfc868c0a984c" }
