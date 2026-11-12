@@ -1,0 +1,115 @@
+name: consumer-builds
+
+# Builds a separate client project for each published Rust crate, pinned to
+# the exact public commit of its merged default branch, and runs a short API
+# smoke. Each job uploads its Cargo.lock, resolved sources and exit codes.
+# See consumers/README.adoc.
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "consumers/**"
+      - ".github/workflows/consumer-builds.yml"
+  pull_request:
+    paths:
+      - "consumers/**"
+      - ".github/workflows/consumer-builds.yml"
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  build:
+    name: build (${{ matrix.consumer }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - consumer: amath-rs
+            repo: https://github.com/plurimath/amath-rs
+            rev: 772834ed0aa8c8159483d7aebeb3e4850ea75218
+          - consumer: latexmath-rs
+            repo: https://github.com/plurimath/latexmath-rs
+            rev: 90a12b8d9b3746019c56b5dd7f567be524d7ab42
+          - consumer: umath-rs
+            repo: https://github.com/plurimath/umath-rs
+            rev: 8052da4c38fde26bc61a4a084fcdfc868c0a984c
+          - consumer: unitsdb-rs
+            repo: https://github.com/unitsml/unitsdb-rs
+            rev: 32fea4b9035f090c2f80593aa8c4c8fdd1346ace
+          - consumer: unitsml-rs
+            repo: https://github.com/unitsml/unitsml-rs
+            rev: bc8615c70cfe1f3d2bc43116ddd77ccf6b65d232
+          - consumer: asciiunits-rs
+            repo: https://github.com/unitsml/asciiunits-rs
+            rev: 96801a55ea5730271c669e325e04394ce5877189
+    defaults:
+      run:
+        working-directory: consumers/rust/${{ matrix.consumer }}
+    env:
+      RECEIPT: ${{ github.workspace }}/receipt
+      CONSUMER: ${{ matrix.consumer }}
+      PIN: git+${{ matrix.repo }}?rev=${{ matrix.rev }}#${{ matrix.rev }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.95.0"
+      - name: Check pins
+        run: |
+          mkdir -p "$RECEIPT"
+          # The crate must come from its exact public commit; no path or
+          # patched sources anywhere in the graph.
+          grep -qF "source = \"$PIN\"" Cargo.lock
+          if grep -qE '^\[patch|path *=' Cargo.toml; then exit 1; fi
+          cargo metadata --locked --format-version 1 > "$RECEIPT/metadata.json"
+          jq -r '.packages[] | "\(.name) \(.version) \(.source // "local")"' \
+            "$RECEIPT/metadata.json" | sort > "$RECEIPT/sources.txt"
+          if grep -v "^consumer-$CONSUMER " "$RECEIPT/sources.txt" | grep -q ' local$'; then exit 1; fi
+          cat "$RECEIPT/sources.txt"
+      - name: Build
+        run: |
+          set +e
+          cargo build --locked 2>&1 | tee "$RECEIPT/build.log"
+          echo "${PIPESTATUS[0]}" > "$RECEIPT/build.exit"
+      - name: API smoke
+        run: |
+          set +e
+          if [ "$(cat "$RECEIPT/build.exit")" = 0 ]; then
+            cargo run --locked --quiet > "$RECEIPT/smoke.out" 2> "$RECEIPT/smoke.err"
+            echo $? > "$RECEIPT/smoke.exit"
+          else
+            echo skipped > "$RECEIPT/smoke.exit"
+          fi
+          cat "$RECEIPT/smoke.out" "$RECEIPT/smoke.err" 2>/dev/null
+      - name: Receipt
+        if: always()
+        run: |
+          cp Cargo.toml Cargo.lock "$RECEIPT/"
+          {
+            echo "consumer: $CONSUMER"
+            echo "pin: $PIN"
+            echo "testsuite_sha: $GITHUB_SHA"
+            echo "rustc: $(rustc -V)"
+            echo "cargo: $(cargo -V)"
+            echo "cargo_lock_sha256: $(sha256sum Cargo.lock | cut -d' ' -f1)"
+            echo "build_exit: $(cat "$RECEIPT/build.exit" 2>/dev/null || echo missing)"
+            echo "smoke_exit: $(cat "$RECEIPT/smoke.exit" 2>/dev/null || echo missing)"
+          } > "$RECEIPT/receipt.txt"
+          cat "$RECEIPT/receipt.txt"
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: consumer-${{ matrix.consumer }}
+          path: receipt/
+      - name: Result
+        run: |
+          test "$(cat "$RECEIPT/build.exit")" = 0
+          test "$(cat "$RECEIPT/smoke.exit")" = 0

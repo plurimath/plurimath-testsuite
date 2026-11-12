@@ -583,6 +583,8 @@ version, generator checksum, a checksum per seed file the generator reads
 `scripts/validate.rb`:: checks the corpus against the schemas, and checks what
 a schema cannot — that every payload is recorded, and that each one still
 hashes to what `provenance.yaml` says
+`consumers/`:: client projects that build each published Rust crate from its
+exact public commit; see `consumers/README.adoc`
 
 == Copyright and license
 
