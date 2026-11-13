@@ -1,0 +1,4178 @@
+# Raw-tree rows for fixtures/unicode-expectations.yaml cases 226-300. Written by
+# scripts/generate-unicode-external.rb. Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: raw-external-226-300
+description: 'Umath::RawParser outcome for unicode-external-226 to unicode-external-300 of fixtures/unicode-expectations.yaml, each input without its upstream display flag: the preprocessing and the raw grammar tree, or a refusal with its byte offset into the preprocessed text. Not the fixture''s UnicodeMath::Parse tree. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: raw-tree
+cases:
+- id: unicode-external-226.raw
+  input:
+    str: a"0"b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a"0"b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: text
+            - slice: '0'
+              byte_offset: 2
+              char_offset: 2
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 4
+                          char_offset: 4
+- id: unicode-external-227.raw
+  input:
+    str: a" "b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a" "b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: text
+            - slice: " "
+              byte_offset: 2
+              char_offset: 2
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 4
+                          char_offset: 4
+- id: unicode-external-228.raw
+  input:
+    str: a\'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a\&#x27;
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: slashed_value
+            - slice: "&#x27;"
+              byte_offset: 2
+              char_offset: 2
+- id: unicode-external-229.raw
+  input:
+    str: a''
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x27;&#x27;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x27;&#x27;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-230.raw
+  input:
+    str: a'^c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x27;^c
+    tree:
+      hash:
+      - - sym: accents_subsup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: accents
+                - hash:
+                  - - sym: first_value
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: a
+                              byte_offset: 0
+                              char_offset: 0
+                  - - sym: prime_accent_symbols
+                    - slice: "&#x27;"
+                      byte_offset: 1
+                      char_offset: 1
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 8
+                                  char_offset: 8
+- id: unicode-external-231.raw
+  input:
+    str: a'⁗‴
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x27;&#x2057;&#x2034;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x27;&#x2057;&#x2034;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-232.raw
+  input:
+    str: a+b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+- id: unicode-external-233.raw
+  input:
+    str: a+b\\+c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b\+c
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+              - - sym: expr
+                - hash:
+                  - - sym: slashed_value
+                    - slice: "+"
+                      byte_offset: 4
+                      char_offset: 4
+                  - - sym: expr
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 5
+                                  char_offset: 5
+- id: unicode-external-234.raw
+  input:
+    str: a+{(1]/4⟩
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+{(1]/4&#x27e9;
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: intermediate_exp
+                    - hash:
+                      - - sym: open_paren
+                        - slice: "{"
+                          byte_offset: 2
+                          char_offset: 2
+                      - - sym: frac
+                        - hash:
+                          - - sym: numerator
+                            - hash:
+                              - - sym: intermediate_exp
+                                - hash:
+                                  - - sym: open_paren
+                                    - slice: "("
+                                      byte_offset: 3
+                                      char_offset: 3
+                                  - - sym: factor
+                                    - hash:
+                                      - - sym: digit
+                                        - hash:
+                                          - - sym: number
+                                            - slice: '1'
+                                              byte_offset: 4
+                                              char_offset: 4
+                                  - - sym: close_paren
+                                    - slice: "]"
+                                      byte_offset: 5
+                                      char_offset: 5
+                          - - sym: denominator
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: digit
+                                    - hash:
+                                      - - sym: number
+                                        - slice: '4'
+                                          byte_offset: 7
+                                          char_offset: 7
+                      - - sym: close_paren
+                        - slice: "&#x27e9;"
+                          byte_offset: 8
+                          char_offset: 8
+- id: unicode-external-235.raw
+  input:
+    str: "a+{(1]/4⟩ \U0001F4CC+1 Jⁱ⁼⁵ |_a"
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+{(1]/4&#x27e9; &#x1f4cc;+1 J&#x2071;&#x207c;&#x2075; |_a
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: intermediate_exp
+                    - hash:
+                      - - sym: open_paren
+                        - slice: "{"
+                          byte_offset: 2
+                          char_offset: 2
+                      - - sym: frac
+                        - hash:
+                          - - sym: numerator
+                            - hash:
+                              - - sym: intermediate_exp
+                                - hash:
+                                  - - sym: open_paren
+                                    - slice: "("
+                                      byte_offset: 3
+                                      char_offset: 3
+                                  - - sym: factor
+                                    - hash:
+                                      - - sym: digit
+                                        - hash:
+                                          - - sym: number
+                                            - slice: '1'
+                                              byte_offset: 4
+                                              char_offset: 4
+                                  - - sym: close_paren
+                                    - slice: "]"
+                                      byte_offset: 5
+                                      char_offset: 5
+                          - - sym: denominator
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: digit
+                                    - hash:
+                                      - - sym: number
+                                        - slice: '4'
+                                          byte_offset: 7
+                                          char_offset: 7
+                      - - sym: close_paren
+                        - slice: "&#x27e9;"
+                          byte_offset: 8
+                          char_offset: 8
+              - - sym: expr
+                - hash:
+                  - - sym: factor
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: char
+                            - hash:
+                              - - sym: unicode_symbols
+                                - slice: "&#x1f4cc;"
+                                  byte_offset: 17
+                                  char_offset: 17
+                  - - sym: expr
+                    - hash:
+                      - - sym: operator
+                        - slice: "+"
+                          byte_offset: 26
+                          char_offset: 26
+                      - - sym: expr
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: digit
+                                - hash:
+                                  - - sym: number
+                                    - slice: '1'
+                                      byte_offset: 27
+                                      char_offset: 27
+                          - - sym: expr
+                            - hash:
+                              - - sym: mini_sup
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: symbol
+                                        - slice: J
+                                          byte_offset: 29
+                                          char_offset: 29
+                                  - - sym: sup
+                                    - hash:
+                                      - - sym: sup_alpha
+                                        - slice: "&#x2071;"
+                                          byte_offset: 30
+                                          char_offset: 30
+                                      - - sym: sup_recursion_expr
+                                        - hash:
+                                          - - sym: sup_operators
+                                            - slice: "&#x207c;"
+                                              byte_offset: 38
+                                              char_offset: 38
+                                          - - sym: sup_recursions
+                                            - hash:
+                                              - - sym: sup_digits
+                                                - slice: "&#x2075;"
+                                                  byte_offset: 46
+                                                  char_offset: 46
+                              - - sym: expr
+                                - hash:
+                                  - - sym: sub_exp
+                                    - hash:
+                                      - - sym: base
+                                        - hash:
+                                          - - sym: symbol
+                                            - slice: "|"
+                                              byte_offset: 55
+                                              char_offset: 55
+                                      - - sym: sub
+                                        - hash:
+                                          - - sym: sub_script
+                                            - hash:
+                                              - - sym: operand
+                                                - hash:
+                                                  - - sym: factor
+                                                    - hash:
+                                                      - - sym: atom
+                                                        - hash:
+                                                          - - sym: alphanumeric
+                                                            - slice: a
+                                                              byte_offset: 57
+                                                              char_offset: 57
+- id: unicode-external-236.raw
+  input:
+    str: a+⫷stuf\\⫸fandthings+1⫸b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+- id: unicode-external-237.raw
+  input:
+    str: a+⫷stuff⫸b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 1
+              char_offset: 1
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+- id: unicode-external-238.raw
+  input:
+    str: a/b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a/b
+    tree:
+      hash:
+      - - sym: frac
+        - hash:
+          - - sym: numerator
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: denominator
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 2
+                          char_offset: 2
+- id: unicode-external-239.raw
+  input:
+    str: a/b/c/d/e/f/g/h/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a/b/c/d/e/f/g/h/i/j/k/l/m/n/o/p/q/r/s/t/u/v/w/x/y/z
+    tree:
+      hash:
+      - - sym: frac
+        - hash:
+          - - sym: numerator
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: denominator
+            - hash:
+              - - sym: frac
+                - hash:
+                  - - sym: numerator
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: b
+                              byte_offset: 2
+                              char_offset: 2
+                  - - sym: denominator
+                    - hash:
+                      - - sym: frac
+                        - hash:
+                          - - sym: numerator
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: c
+                                      byte_offset: 4
+                                      char_offset: 4
+                          - - sym: denominator
+                            - hash:
+                              - - sym: frac
+                                - hash:
+                                  - - sym: numerator
+                                    - hash:
+                                      - - sym: atom
+                                        - hash:
+                                          - - sym: alphanumeric
+                                            - slice: d
+                                              byte_offset: 6
+                                              char_offset: 6
+                                  - - sym: denominator
+                                    - hash:
+                                      - - sym: frac
+                                        - hash:
+                                          - - sym: numerator
+                                            - hash:
+                                              - - sym: atom
+                                                - hash:
+                                                  - - sym: alphanumeric
+                                                    - slice: e
+                                                      byte_offset: 8
+                                                      char_offset: 8
+                                          - - sym: denominator
+                                            - hash:
+                                              - - sym: frac
+                                                - hash:
+                                                  - - sym: numerator
+                                                    - hash:
+                                                      - - sym: atom
+                                                        - hash:
+                                                          - - sym: alphanumeric
+                                                            - slice: f
+                                                              byte_offset: 10
+                                                              char_offset: 10
+                                                  - - sym: denominator
+                                                    - hash:
+                                                      - - sym: frac
+                                                        - hash:
+                                                          - - sym: numerator
+                                                            - hash:
+                                                              - - sym: atom
+                                                                - hash:
+                                                                  - - sym: alphanumeric
+                                                                    - slice: g
+                                                                      byte_offset: 12
+                                                                      char_offset: 12
+                                                          - - sym: denominator
+                                                            - hash:
+                                                              - - sym: frac
+                                                                - hash:
+                                                                  - - sym: numerator
+                                                                    - hash:
+                                                                      - - sym: atom
+                                                                        - hash:
+                                                                          - - sym: alphanumeric
+                                                                            - slice: h
+                                                                              byte_offset: 14
+                                                                              char_offset: 14
+                                                                  - - sym: denominator
+                                                                    - hash:
+                                                                      - - sym: frac
+                                                                        - hash:
+                                                                          - - sym: numerator
+                                                                            - hash:
+                                                                              - - sym: atom
+                                                                                - hash:
+                                                                                  - - sym: alphanumeric
+                                                                                    - slice: i
+                                                                                      byte_offset: 16
+                                                                                      char_offset: 16
+                                                                          - - sym: denominator
+                                                                            - hash:
+                                                                              - - sym: frac
+                                                                                - hash:
+                                                                                  - - sym: numerator
+                                                                                    - hash:
+                                                                                      - - sym: atom
+                                                                                        - hash:
+                                                                                          - - sym: alphanumeric
+                                                                                            - slice: j
+                                                                                              byte_offset: 18
+                                                                                              char_offset: 18
+                                                                                  - - sym: denominator
+                                                                                    - hash:
+                                                                                      - - sym: frac
+                                                                                        - hash:
+                                                                                          - - sym: numerator
+                                                                                            - hash:
+                                                                                              - - sym: atom
+                                                                                                - hash:
+                                                                                                  - - sym: alphanumeric
+                                                                                                    - slice: k
+                                                                                                      byte_offset: 20
+                                                                                                      char_offset: 20
+                                                                                          - - sym: denominator
+                                                                                            - hash:
+                                                                                              - - sym: frac
+                                                                                                - hash:
+                                                                                                  - - sym: numerator
+                                                                                                    - hash:
+                                                                                                      - - sym: atom
+                                                                                                        - hash:
+                                                                                                          - - sym: alphanumeric
+                                                                                                            - slice: l
+                                                                                                              byte_offset: 22
+                                                                                                              char_offset: 22
+                                                                                                  - - sym: denominator
+                                                                                                    - hash:
+                                                                                                      - - sym: frac
+                                                                                                        - hash:
+                                                                                                          - - sym: numerator
+                                                                                                            - hash:
+                                                                                                              - - sym: atom
+                                                                                                                - hash:
+                                                                                                                  - - sym: alphanumeric
+                                                                                                                    - slice: m
+                                                                                                                      byte_offset: 24
+                                                                                                                      char_offset: 24
+                                                                                                          - - sym: denominator
+                                                                                                            - hash:
+                                                                                                              - - sym: frac
+                                                                                                                - hash:
+                                                                                                                  - - sym: numerator
+                                                                                                                    - hash:
+                                                                                                                      - - sym: atom
+                                                                                                                        - hash:
+                                                                                                                          - - sym: alphanumeric
+                                                                                                                            - slice: "n"
+                                                                                                                              byte_offset: 26
+                                                                                                                              char_offset: 26
+                                                                                                                  - - sym: denominator
+                                                                                                                    - hash:
+                                                                                                                      - - sym: frac
+                                                                                                                        - hash:
+                                                                                                                          - - sym: numerator
+                                                                                                                            - hash:
+                                                                                                                              - - sym: atom
+                                                                                                                                - hash:
+                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                    - slice: o
+                                                                                                                                      byte_offset: 28
+                                                                                                                                      char_offset: 28
+                                                                                                                          - - sym: denominator
+                                                                                                                            - hash:
+                                                                                                                              - - sym: frac
+                                                                                                                                - hash:
+                                                                                                                                  - - sym: numerator
+                                                                                                                                    - hash:
+                                                                                                                                      - - sym: atom
+                                                                                                                                        - hash:
+                                                                                                                                          - - sym: alphanumeric
+                                                                                                                                            - slice: p
+                                                                                                                                              byte_offset: 30
+                                                                                                                                              char_offset: 30
+                                                                                                                                  - - sym: denominator
+                                                                                                                                    - hash:
+                                                                                                                                      - - sym: frac
+                                                                                                                                        - hash:
+                                                                                                                                          - - sym: numerator
+                                                                                                                                            - hash:
+                                                                                                                                              - - sym: atom
+                                                                                                                                                - hash:
+                                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                                    - slice: q
+                                                                                                                                                      byte_offset: 32
+                                                                                                                                                      char_offset: 32
+                                                                                                                                          - - sym: denominator
+                                                                                                                                            - hash:
+                                                                                                                                              - - sym: frac
+                                                                                                                                                - hash:
+                                                                                                                                                  - - sym: numerator
+                                                                                                                                                    - hash:
+                                                                                                                                                      - - sym: atom
+                                                                                                                                                        - hash:
+                                                                                                                                                          - - sym: alphanumeric
+                                                                                                                                                            - slice: r
+                                                                                                                                                              byte_offset: 34
+                                                                                                                                                              char_offset: 34
+                                                                                                                                                  - - sym: denominator
+                                                                                                                                                    - hash:
+                                                                                                                                                      - - sym: frac
+                                                                                                                                                        - hash:
+                                                                                                                                                          - - sym: numerator
+                                                                                                                                                            - hash:
+                                                                                                                                                              - - sym: atom
+                                                                                                                                                                - hash:
+                                                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                                                    - slice: s
+                                                                                                                                                                      byte_offset: 36
+                                                                                                                                                                      char_offset: 36
+                                                                                                                                                          - - sym: denominator
+                                                                                                                                                            - hash:
+                                                                                                                                                              - - sym: frac
+                                                                                                                                                                - hash:
+                                                                                                                                                                  - - sym: numerator
+                                                                                                                                                                    - hash:
+                                                                                                                                                                      - - sym: atom
+                                                                                                                                                                        - hash:
+                                                                                                                                                                          - - sym: alphanumeric
+                                                                                                                                                                            - slice: t
+                                                                                                                                                                              byte_offset: 38
+                                                                                                                                                                              char_offset: 38
+                                                                                                                                                                  - - sym: denominator
+                                                                                                                                                                    - hash:
+                                                                                                                                                                      - - sym: frac
+                                                                                                                                                                        - hash:
+                                                                                                                                                                          - - sym: numerator
+                                                                                                                                                                            - hash:
+                                                                                                                                                                              - - sym: atom
+                                                                                                                                                                                - hash:
+                                                                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                                                                    - slice: u
+                                                                                                                                                                                      byte_offset: 40
+                                                                                                                                                                                      char_offset: 40
+                                                                                                                                                                          - - sym: denominator
+                                                                                                                                                                            - hash:
+                                                                                                                                                                              - - sym: frac
+                                                                                                                                                                                - hash:
+                                                                                                                                                                                  - - sym: numerator
+                                                                                                                                                                                    - hash:
+                                                                                                                                                                                      - - sym: atom
+                                                                                                                                                                                        - hash:
+                                                                                                                                                                                          - - sym: alphanumeric
+                                                                                                                                                                                            - slice: v
+                                                                                                                                                                                              byte_offset: 42
+                                                                                                                                                                                              char_offset: 42
+                                                                                                                                                                                  - - sym: denominator
+                                                                                                                                                                                    - hash:
+                                                                                                                                                                                      - - sym: frac
+                                                                                                                                                                                        - hash:
+                                                                                                                                                                                          - - sym: numerator
+                                                                                                                                                                                            - hash:
+                                                                                                                                                                                              - - sym: atom
+                                                                                                                                                                                                - hash:
+                                                                                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                                                                                    - slice: w
+                                                                                                                                                                                                      byte_offset: 44
+                                                                                                                                                                                                      char_offset: 44
+                                                                                                                                                                                          - - sym: denominator
+                                                                                                                                                                                            - hash:
+                                                                                                                                                                                              - - sym: frac
+                                                                                                                                                                                                - hash:
+                                                                                                                                                                                                  - - sym: numerator
+                                                                                                                                                                                                    - hash:
+                                                                                                                                                                                                      - - sym: atom
+                                                                                                                                                                                                        - hash:
+                                                                                                                                                                                                          - - sym: alphanumeric
+                                                                                                                                                                                                            - slice: x
+                                                                                                                                                                                                              byte_offset: 46
+                                                                                                                                                                                                              char_offset: 46
+                                                                                                                                                                                                  - - sym: denominator
+                                                                                                                                                                                                    - hash:
+                                                                                                                                                                                                      - - sym: frac
+                                                                                                                                                                                                        - hash:
+                                                                                                                                                                                                          - - sym: numerator
+                                                                                                                                                                                                            - hash:
+                                                                                                                                                                                                              - - sym: atom
+                                                                                                                                                                                                                - hash:
+                                                                                                                                                                                                                  - - sym: alphanumeric
+                                                                                                                                                                                                                    - slice: "y"
+                                                                                                                                                                                                                      byte_offset: 48
+                                                                                                                                                                                                                      char_offset: 48
+                                                                                                                                                                                                          - - sym: denominator
+                                                                                                                                                                                                            - hash:
+                                                                                                                                                                                                              - - sym: factor
+                                                                                                                                                                                                                - hash:
+                                                                                                                                                                                                                  - - sym: atom
+                                                                                                                                                                                                                    - hash:
+                                                                                                                                                                                                                      - - sym: alphanumeric
+                                                                                                                                                                                                                        - slice: z
+                                                                                                                                                                                                                          byte_offset: 50
+                                                                                                                                                                                                                          char_offset: 50
+- id: unicode-external-240.raw
+  input:
+    str: a^1_2_3_4
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^1_2_3_4
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '1'
+                                  byte_offset: 2
+                                  char_offset: 2
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 4
+                                  char_offset: 4
+              - - sym: sub_recursion
+                - hash:
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: digit
+                                - hash:
+                                  - - sym: number
+                                    - slice: '3'
+                                      byte_offset: 6
+                                      char_offset: 6
+                  - - sym: sub_recursion
+                    - hash:
+                      - - sym: sub_script
+                        - hash:
+                          - - sym: operand
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: digit
+                                    - hash:
+                                      - - sym: number
+                                        - slice: '4'
+                                          byte_offset: 8
+                                          char_offset: 8
+- id: unicode-external-241.raw
+  input:
+    str: a^(1_2)_3_4
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^(1_2)_3_4
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: intermediate_exp
+                            - hash:
+                              - - sym: open_paren
+                                - slice: "("
+                                  byte_offset: 2
+                                  char_offset: 2
+                              - - sym: sub_exp
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: digit
+                                        - hash:
+                                          - - sym: number
+                                            - slice: '1'
+                                              byte_offset: 3
+                                              char_offset: 3
+                                  - - sym: sub
+                                    - hash:
+                                      - - sym: sub_script
+                                        - hash:
+                                          - - sym: operand
+                                            - hash:
+                                              - - sym: factor
+                                                - hash:
+                                                  - - sym: digit
+                                                    - hash:
+                                                      - - sym: number
+                                                        - slice: '2'
+                                                          byte_offset: 5
+                                                          char_offset: 5
+                              - - sym: close_paren
+                                - slice: ")"
+                                  byte_offset: 6
+                                  char_offset: 6
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '3'
+                                  byte_offset: 8
+                                  char_offset: 8
+              - - sym: sub_recursion
+                - hash:
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: digit
+                                - hash:
+                                  - - sym: number
+                                    - slice: '4'
+                                      byte_offset: 10
+                                      char_offset: 10
+- id: unicode-external-242.raw
+  input:
+    str: a^*
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^*
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: operator
+                - slice: "*"
+                  byte_offset: 2
+                  char_offset: 2
+- id: unicode-external-243.raw
+  input:
+    str: a^+_2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^+_2
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: operator
+                - slice: "+"
+                  byte_offset: 2
+                  char_offset: 2
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 4
+                                  char_offset: 4
+- id: unicode-external-244.raw
+  input:
+    str: a^+a_b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^+a_b
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: operator
+                - slice: "+"
+                  byte_offset: 2
+                  char_offset: 2
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: a
+                                  byte_offset: 3
+                                  char_offset: 3
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 5
+                                  char_offset: 5
+- id: unicode-external-245.raw
+  input:
+    str: a^+̸/2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^+&#x338;/2
+    tree:
+      hash:
+      - - sym: frac
+        - hash:
+          - - sym: numerator
+            - hash:
+              - - sym: sup_exp
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: sup
+                    - hash:
+                      - - sym: negated_operator
+                        - slice: "+"
+                          byte_offset: 2
+                          char_offset: 2
+          - - sym: denominator
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: digit
+                    - hash:
+                      - - sym: number
+                        - slice: '2'
+                          byte_offset: 11
+                          char_offset: 11
+- id: unicode-external-246.raw
+  input:
+    str: a^b^b^b^b_c_c_c_c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^b^b^b^b_c_c_c_c
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+              - - sym: sup_recursion
+                - hash:
+                  - - sym: sup_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: b
+                                      byte_offset: 4
+                                      char_offset: 4
+                  - - sym: sup_recursion
+                    - hash:
+                      - - sym: sup_script
+                        - hash:
+                          - - sym: operand
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: atom
+                                    - hash:
+                                      - - sym: alphanumeric
+                                        - slice: b
+                                          byte_offset: 6
+                                          char_offset: 6
+                      - - sym: sup_recursion
+                        - hash:
+                          - - sym: sup_script
+                            - hash:
+                              - - sym: operand
+                                - hash:
+                                  - - sym: factor
+                                    - hash:
+                                      - - sym: atom
+                                        - hash:
+                                          - - sym: alphanumeric
+                                            - slice: b
+                                              byte_offset: 8
+                                              char_offset: 8
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 10
+                                  char_offset: 10
+              - - sym: sub_recursion
+                - hash:
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: c
+                                      byte_offset: 12
+                                      char_offset: 12
+                  - - sym: sub_recursion
+                    - hash:
+                      - - sym: sub_script
+                        - hash:
+                          - - sym: operand
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: atom
+                                    - hash:
+                                      - - sym: alphanumeric
+                                        - slice: c
+                                          byte_offset: 14
+                                          char_offset: 14
+                      - - sym: sub_recursion
+                        - hash:
+                          - - sym: sub_script
+                            - hash:
+                              - - sym: operand
+                                - hash:
+                                  - - sym: factor
+                                    - hash:
+                                      - - sym: atom
+                                        - hash:
+                                          - - sym: alphanumeric
+                                            - slice: c
+                                              byte_offset: 16
+                                              char_offset: 16
+- id: unicode-external-247.raw
+  input:
+    str: a^b^c^d
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^b^c^d
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+              - - sym: sup_recursion
+                - hash:
+                  - - sym: sup_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: c
+                                      byte_offset: 4
+                                      char_offset: 4
+                  - - sym: sup_recursion
+                    - hash:
+                      - - sym: sup_script
+                        - hash:
+                          - - sym: operand
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: atom
+                                    - hash:
+                                      - - sym: alphanumeric
+                                        - slice: d
+                                          byte_offset: 6
+                                          char_offset: 6
+- id: unicode-external-248.raw
+  input:
+    str: a^b_c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^b_c
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 4
+                                  char_offset: 4
+- id: unicode-external-249.raw
+  input:
+    str: a^b₁
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^b&#x2081;
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: mini_sub
+                    - hash:
+                      - - sym: base
+                        - hash:
+                          - - sym: symbol
+                            - slice: b
+                              byte_offset: 2
+                              char_offset: 2
+                      - - sym: sub
+                        - hash:
+                          - - sym: sub_digits
+                            - slice: "&#x2081;"
+                              byte_offset: 3
+                              char_offset: 3
+- id: unicode-external-250.raw
+  input:
+    str: a^′′′
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a^&#x2032;&#x2032;&#x2032;
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: accents
+                    - hash:
+                      - - sym: first_value
+                        - hash:
+                          - - sym: symbol
+                            - slice: "&#x2032;"
+                              byte_offset: 2
+                              char_offset: 2
+                      - - sym: prime_accent_symbols
+                        - slice: "&#x2032;&#x2032;"
+                          byte_offset: 10
+                          char_offset: 10
+- id: unicode-external-251.raw
+  input:
+    str: a_1 + a_2 + ⋯ + a_(i-1) + a_i + ⏞(a_(i+1) + ⋯ + a_(n-1) + a_n)^(n-i " times")
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_1 + a_2 + &#x22ef; + a_(i-1) + a_i + &#x23de;(a_(i+1) + &#x22ef; + a_(n-1) + a_n)^(n-i " times")
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '1'
+                                  byte_offset: 2
+                                  char_offset: 2
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 4
+              char_offset: 4
+          - - sym: expr
+            - hash:
+              - - sym: sub_exp
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 6
+                          char_offset: 6
+                  - - sym: sub
+                    - hash:
+                      - - sym: sub_script
+                        - hash:
+                          - - sym: operand
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: digit
+                                    - hash:
+                                      - - sym: number
+                                        - slice: '2'
+                                          byte_offset: 8
+                                          char_offset: 8
+              - - sym: expr
+                - hash:
+                  - - sym: operator
+                    - slice: "+"
+                      byte_offset: 10
+                      char_offset: 10
+                  - - sym: expr
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: char
+                                - hash:
+                                  - - sym: unicode_symbols
+                                    - slice: "&#x22ef;"
+                                      byte_offset: 12
+                                      char_offset: 12
+                      - - sym: expr
+                        - hash:
+                          - - sym: operator
+                            - slice: "+"
+                              byte_offset: 21
+                              char_offset: 21
+                          - - sym: expr
+                            - hash:
+                              - - sym: sub_exp
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: symbol
+                                        - slice: a
+                                          byte_offset: 23
+                                          char_offset: 23
+                                  - - sym: sub
+                                    - hash:
+                                      - - sym: sub_script
+                                        - hash:
+                                          - - sym: operand
+                                            - hash:
+                                              - - sym: factor
+                                                - hash:
+                                                  - - sym: intermediate_exp
+                                                    - hash:
+                                                      - - sym: open_paren
+                                                        - slice: "("
+                                                          byte_offset: 25
+                                                          char_offset: 25
+                                                      - - sym: factor
+                                                        - hash:
+                                                          - - sym: atom
+                                                            - hash:
+                                                              - - sym: alphanumeric
+                                                                - slice: i
+                                                                  byte_offset: 26
+                                                                  char_offset: 26
+                                                      - - sym: exp
+                                                        - hash:
+                                                          - - sym: operator
+                                                            - slice: "-"
+                                                              byte_offset: 27
+                                                              char_offset: 27
+                                                          - - sym: exp
+                                                            - hash:
+                                                              - - sym: factor
+                                                                - hash:
+                                                                  - - sym: digit
+                                                                    - hash:
+                                                                      - - sym: number
+                                                                        - slice: '1'
+                                                                          byte_offset: 28
+                                                                          char_offset: 28
+                                                      - - sym: close_paren
+                                                        - slice: ")"
+                                                          byte_offset: 29
+                                                          char_offset: 29
+                              - - sym: expr
+                                - hash:
+                                  - - sym: operator
+                                    - slice: "+"
+                                      byte_offset: 31
+                                      char_offset: 31
+                                  - - sym: expr
+                                    - hash:
+                                      - - sym: sub_exp
+                                        - hash:
+                                          - - sym: base
+                                            - hash:
+                                              - - sym: symbol
+                                                - slice: a
+                                                  byte_offset: 33
+                                                  char_offset: 33
+                                          - - sym: sub
+                                            - hash:
+                                              - - sym: sub_script
+                                                - hash:
+                                                  - - sym: operand
+                                                    - hash:
+                                                      - - sym: factor
+                                                        - hash:
+                                                          - - sym: atom
+                                                            - hash:
+                                                              - - sym: alphanumeric
+                                                                - slice: i
+                                                                  byte_offset: 35
+                                                                  char_offset: 35
+                                      - - sym: expr
+                                        - hash:
+                                          - - sym: operator
+                                            - slice: "+"
+                                              byte_offset: 37
+                                              char_offset: 37
+                                          - - sym: expr
+                                            - hash:
+                                              - - sym: sup_exp
+                                                - hash:
+                                                  - - sym: base
+                                                    - hash:
+                                                      - - sym: factor
+                                                        - hash:
+                                                          - - sym: hbracket_class
+                                                            - slice: "&#x23de;"
+                                                              byte_offset: 39
+                                                              char_offset: 39
+                                                          - - sym: first_value
+                                                            - hash:
+                                                              - - sym: open_paren
+                                                                - slice: "("
+                                                                  byte_offset: 47
+                                                                  char_offset: 47
+                                                              - - sym: sub_exp
+                                                                - hash:
+                                                                  - - sym: base
+                                                                    - hash:
+                                                                      - - sym: symbol
+                                                                        - slice: a
+                                                                          byte_offset: 48
+                                                                          char_offset: 48
+                                                                  - - sym: sub
+                                                                    - hash:
+                                                                      - - sym: sub_script
+                                                                        - hash:
+                                                                          - - sym: operand
+                                                                            - hash:
+                                                                              - - sym: factor
+                                                                                - hash:
+                                                                                  - - sym: intermediate_exp
+                                                                                    - hash:
+                                                                                      - - sym: open_paren
+                                                                                        - slice: "("
+                                                                                          byte_offset: 50
+                                                                                          char_offset: 50
+                                                                                      - - sym: factor
+                                                                                        - hash:
+                                                                                          - - sym: atom
+                                                                                            - hash:
+                                                                                              - - sym: alphanumeric
+                                                                                                - slice: i
+                                                                                                  byte_offset: 51
+                                                                                                  char_offset: 51
+                                                                                      - - sym: exp
+                                                                                        - hash:
+                                                                                          - - sym: operator
+                                                                                            - slice: "+"
+                                                                                              byte_offset: 52
+                                                                                              char_offset: 52
+                                                                                          - - sym: exp
+                                                                                            - hash:
+                                                                                              - - sym: factor
+                                                                                                - hash:
+                                                                                                  - - sym: digit
+                                                                                                    - hash:
+                                                                                                      - - sym: number
+                                                                                                        - slice: '1'
+                                                                                                          byte_offset: 53
+                                                                                                          char_offset: 53
+                                                                                      - - sym: close_paren
+                                                                                        - slice: ")"
+                                                                                          byte_offset: 54
+                                                                                          char_offset: 54
+                                                              - - sym: exp
+                                                                - hash:
+                                                                  - - sym: operator
+                                                                    - slice: "+"
+                                                                      byte_offset: 56
+                                                                      char_offset: 56
+                                                                  - - sym: exp
+                                                                    - hash:
+                                                                      - - sym: factor
+                                                                        - hash:
+                                                                          - - sym: atom
+                                                                            - hash:
+                                                                              - - sym: char
+                                                                                - hash:
+                                                                                  - - sym: unicode_symbols
+                                                                                    - slice: "&#x22ef;"
+                                                                                      byte_offset: 58
+                                                                                      char_offset: 58
+                                                                      - - sym: exp
+                                                                        - hash:
+                                                                          - - sym: operator
+                                                                            - slice: "+"
+                                                                              byte_offset: 67
+                                                                              char_offset: 67
+                                                                          - - sym: exp
+                                                                            - hash:
+                                                                              - - sym: sub_exp
+                                                                                - hash:
+                                                                                  - - sym: base
+                                                                                    - hash:
+                                                                                      - - sym: symbol
+                                                                                        - slice: a
+                                                                                          byte_offset: 69
+                                                                                          char_offset: 69
+                                                                                  - - sym: sub
+                                                                                    - hash:
+                                                                                      - - sym: sub_script
+                                                                                        - hash:
+                                                                                          - - sym: operand
+                                                                                            - hash:
+                                                                                              - - sym: factor
+                                                                                                - hash:
+                                                                                                  - - sym: intermediate_exp
+                                                                                                    - hash:
+                                                                                                      - - sym: open_paren
+                                                                                                        - slice: "("
+                                                                                                          byte_offset: 71
+                                                                                                          char_offset: 71
+                                                                                                      - - sym: factor
+                                                                                                        - hash:
+                                                                                                          - - sym: atom
+                                                                                                            - hash:
+                                                                                                              - - sym: alphanumeric
+                                                                                                                - slice: "n"
+                                                                                                                  byte_offset: 72
+                                                                                                                  char_offset: 72
+                                                                                                      - - sym: exp
+                                                                                                        - hash:
+                                                                                                          - - sym: operator
+                                                                                                            - slice: "-"
+                                                                                                              byte_offset: 73
+                                                                                                              char_offset: 73
+                                                                                                          - - sym: exp
+                                                                                                            - hash:
+                                                                                                              - - sym: factor
+                                                                                                                - hash:
+                                                                                                                  - - sym: digit
+                                                                                                                    - hash:
+                                                                                                                      - - sym: number
+                                                                                                                        - slice: '1'
+                                                                                                                          byte_offset: 74
+                                                                                                                          char_offset: 74
+                                                                                                      - - sym: close_paren
+                                                                                                        - slice: ")"
+                                                                                                          byte_offset: 75
+                                                                                                          char_offset: 75
+                                                                              - - sym: exp
+                                                                                - hash:
+                                                                                  - - sym: operator
+                                                                                    - slice: "+"
+                                                                                      byte_offset: 77
+                                                                                      char_offset: 77
+                                                                                  - - sym: exp
+                                                                                    - hash:
+                                                                                      - - sym: sub_exp
+                                                                                        - hash:
+                                                                                          - - sym: base
+                                                                                            - hash:
+                                                                                              - - sym: symbol
+                                                                                                - slice: a
+                                                                                                  byte_offset: 79
+                                                                                                  char_offset: 79
+                                                                                          - - sym: sub
+                                                                                            - hash:
+                                                                                              - - sym: sub_script
+                                                                                                - hash:
+                                                                                                  - - sym: operand
+                                                                                                    - hash:
+                                                                                                      - - sym: factor
+                                                                                                        - hash:
+                                                                                                          - - sym: atom
+                                                                                                            - hash:
+                                                                                                              - - sym: alphanumeric
+                                                                                                                - slice: "n"
+                                                                                                                  byte_offset: 81
+                                                                                                                  char_offset: 81
+                                                              - - sym: close_paren
+                                                                - slice: ")"
+                                                                  byte_offset: 82
+                                                                  char_offset: 82
+                                                  - - sym: sup
+                                                    - hash:
+                                                      - - sym: sup_script
+                                                        - hash:
+                                                          - - sym: operand
+                                                            - hash:
+                                                              - - sym: factor
+                                                                - hash:
+                                                                  - - sym: intermediate_exp
+                                                                    - hash:
+                                                                      - - sym: open_paren
+                                                                        - slice: "("
+                                                                          byte_offset: 84
+                                                                          char_offset: 84
+                                                                      - - sym: factor
+                                                                        - hash:
+                                                                          - - sym: atom
+                                                                            - hash:
+                                                                              - - sym: alphanumeric
+                                                                                - slice: "n"
+                                                                                  byte_offset: 85
+                                                                                  char_offset: 85
+                                                                      - - sym: exp
+                                                                        - hash:
+                                                                          - - sym: operator
+                                                                            - slice: "-"
+                                                                              byte_offset: 86
+                                                                              char_offset: 86
+                                                                          - - sym: exp
+                                                                            - hash:
+                                                                              - - sym: factor
+                                                                                - hash:
+                                                                                  - - sym: atom
+                                                                                    - hash:
+                                                                                      - - sym: alphanumeric
+                                                                                        - slice: i
+                                                                                          byte_offset: 87
+                                                                                          char_offset: 87
+                                                                              - - sym: exp
+                                                                                - hash:
+                                                                                  - - sym: text
+                                                                                    - slice: " times"
+                                                                                      byte_offset: 90
+                                                                                      char_offset: 90
+                                                                      - - sym: close_paren
+                                                                        - slice: ")"
+                                                                          byte_offset: 97
+                                                                          char_offset: 97
+- id: unicode-external-252.raw
+  input:
+    str: a_2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_2
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: digit
+                            - hash:
+                              - - sym: number
+                                - slice: '2'
+                                  byte_offset: 2
+                                  char_offset: 2
+- id: unicode-external-253.raw
+  input:
+    str: a_(a) + a_├1(a) + a_├2(a) + a_├3(a) + a_├4(a)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_(a) + a_&#x251c;1(a) + a_&#x251c;2(a) + a_&#x251c;3(a) + a_&#x251c;4(a)
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: int_exp
+                    - hash:
+                      - - sym: opener
+                        - hash:
+                          - - sym: open_paren
+                            - slice: "("
+                              byte_offset: 2
+                              char_offset: 2
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: a
+                                      byte_offset: 3
+                                      char_offset: 3
+                      - - sym: closer
+                        - hash:
+                          - - sym: close_paren
+                            - slice: ")"
+                              byte_offset: 4
+                              char_offset: 4
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 6
+              char_offset: 6
+          - - sym: expr
+            - hash:
+              - - sym: sub_exp
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 8
+                          char_offset: 8
+                  - - sym: sub
+                    - hash:
+                      - - sym: sub_script
+                        - hash:
+                          - - sym: int_exp
+                            - hash:
+                              - - sym: opener
+                                - hash:
+                                  - - sym: open_paren
+                                    - hash:
+                                      - - sym: paren_open_prefix
+                                        - slice: "&#x251c;"
+                                          byte_offset: 10
+                                          char_offset: 10
+                                      - - sym: open_paren_mask
+                                        - hash:
+                                          - - sym: number
+                                            - slice: '1'
+                                              byte_offset: 18
+                                              char_offset: 18
+                                      - - sym: open_paren
+                                        - slice: "("
+                                          byte_offset: 19
+                                          char_offset: 19
+                              - - sym: operand
+                                - hash:
+                                  - - sym: factor
+                                    - hash:
+                                      - - sym: atom
+                                        - hash:
+                                          - - sym: alphanumeric
+                                            - slice: a
+                                              byte_offset: 20
+                                              char_offset: 20
+                              - - sym: closer
+                                - hash:
+                                  - - sym: close_paren
+                                    - slice: ")"
+                                      byte_offset: 21
+                                      char_offset: 21
+              - - sym: expr
+                - hash:
+                  - - sym: operator
+                    - slice: "+"
+                      byte_offset: 23
+                      char_offset: 23
+                  - - sym: expr
+                    - hash:
+                      - - sym: sub_exp
+                        - hash:
+                          - - sym: base
+                            - hash:
+                              - - sym: symbol
+                                - slice: a
+                                  byte_offset: 25
+                                  char_offset: 25
+                          - - sym: sub
+                            - hash:
+                              - - sym: sub_script
+                                - hash:
+                                  - - sym: int_exp
+                                    - hash:
+                                      - - sym: opener
+                                        - hash:
+                                          - - sym: open_paren
+                                            - hash:
+                                              - - sym: paren_open_prefix
+                                                - slice: "&#x251c;"
+                                                  byte_offset: 27
+                                                  char_offset: 27
+                                              - - sym: open_paren_mask
+                                                - hash:
+                                                  - - sym: number
+                                                    - slice: '2'
+                                                      byte_offset: 35
+                                                      char_offset: 35
+                                              - - sym: open_paren
+                                                - slice: "("
+                                                  byte_offset: 36
+                                                  char_offset: 36
+                                      - - sym: operand
+                                        - hash:
+                                          - - sym: factor
+                                            - hash:
+                                              - - sym: atom
+                                                - hash:
+                                                  - - sym: alphanumeric
+                                                    - slice: a
+                                                      byte_offset: 37
+                                                      char_offset: 37
+                                      - - sym: closer
+                                        - hash:
+                                          - - sym: close_paren
+                                            - slice: ")"
+                                              byte_offset: 38
+                                              char_offset: 38
+                      - - sym: expr
+                        - hash:
+                          - - sym: operator
+                            - slice: "+"
+                              byte_offset: 40
+                              char_offset: 40
+                          - - sym: expr
+                            - hash:
+                              - - sym: sub_exp
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: symbol
+                                        - slice: a
+                                          byte_offset: 42
+                                          char_offset: 42
+                                  - - sym: sub
+                                    - hash:
+                                      - - sym: sub_script
+                                        - hash:
+                                          - - sym: int_exp
+                                            - hash:
+                                              - - sym: opener
+                                                - hash:
+                                                  - - sym: open_paren
+                                                    - hash:
+                                                      - - sym: paren_open_prefix
+                                                        - slice: "&#x251c;"
+                                                          byte_offset: 44
+                                                          char_offset: 44
+                                                      - - sym: open_paren_mask
+                                                        - hash:
+                                                          - - sym: number
+                                                            - slice: '3'
+                                                              byte_offset: 52
+                                                              char_offset: 52
+                                                      - - sym: open_paren
+                                                        - slice: "("
+                                                          byte_offset: 53
+                                                          char_offset: 53
+                                              - - sym: operand
+                                                - hash:
+                                                  - - sym: factor
+                                                    - hash:
+                                                      - - sym: atom
+                                                        - hash:
+                                                          - - sym: alphanumeric
+                                                            - slice: a
+                                                              byte_offset: 54
+                                                              char_offset: 54
+                                              - - sym: closer
+                                                - hash:
+                                                  - - sym: close_paren
+                                                    - slice: ")"
+                                                      byte_offset: 55
+                                                      char_offset: 55
+                              - - sym: expr
+                                - hash:
+                                  - - sym: operator
+                                    - slice: "+"
+                                      byte_offset: 57
+                                      char_offset: 57
+                                  - - sym: expr
+                                    - hash:
+                                      - - sym: sub_exp
+                                        - hash:
+                                          - - sym: base
+                                            - hash:
+                                              - - sym: symbol
+                                                - slice: a
+                                                  byte_offset: 59
+                                                  char_offset: 59
+                                          - - sym: sub
+                                            - hash:
+                                              - - sym: sub_script
+                                                - hash:
+                                                  - - sym: int_exp
+                                                    - hash:
+                                                      - - sym: opener
+                                                        - hash:
+                                                          - - sym: open_paren
+                                                            - hash:
+                                                              - - sym: paren_open_prefix
+                                                                - slice: "&#x251c;"
+                                                                  byte_offset: 61
+                                                                  char_offset: 61
+                                                              - - sym: open_paren_mask
+                                                                - hash:
+                                                                  - - sym: number
+                                                                    - slice: '4'
+                                                                      byte_offset: 69
+                                                                      char_offset: 69
+                                                              - - sym: open_paren
+                                                                - slice: "("
+                                                                  byte_offset: 70
+                                                                  char_offset: 70
+                                                      - - sym: operand
+                                                        - hash:
+                                                          - - sym: factor
+                                                            - hash:
+                                                              - - sym: atom
+                                                                - hash:
+                                                                  - - sym: alphanumeric
+                                                                    - slice: a
+                                                                      byte_offset: 71
+                                                                      char_offset: 71
+                                                      - - sym: closer
+                                                        - hash:
+                                                          - - sym: close_paren
+                                                            - slice: ")"
+                                                              byte_offset: 72
+                                                              char_offset: 72
+- id: unicode-external-254.raw
+  input:
+    str: a_(a┬b)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_(a&#x252c;b)
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: intermediate_exp
+                            - hash:
+                              - - sym: open_paren
+                                - slice: "("
+                                  byte_offset: 2
+                                  char_offset: 2
+                              - - sym: sub_exp
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: symbol
+                                        - slice: a
+                                          byte_offset: 3
+                                          char_offset: 3
+                                  - - sym: sub
+                                    - hash:
+                                      - - sym: under
+                                        - slice: "&#x252c;"
+                                          byte_offset: 4
+                                          char_offset: 4
+                                      - - sym: sub_script
+                                        - hash:
+                                          - - sym: operand
+                                            - hash:
+                                              - - sym: factor
+                                                - hash:
+                                                  - - sym: atom
+                                                    - hash:
+                                                      - - sym: alphanumeric
+                                                        - slice: b
+                                                          byte_offset: 12
+                                                          char_offset: 12
+                              - - sym: close_paren
+                                - slice: ")"
+                                  byte_offset: 13
+                                  char_offset: 13
+- id: unicode-external-255.raw
+  input:
+    str: a_-a
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_-a
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: operator
+                - slice: "-"
+                  byte_offset: 2
+                  char_offset: 2
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: a
+                                  byte_offset: 3
+                                  char_offset: 3
+- id: unicode-external-256.raw
+  input:
+    str: a_b^c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_b^c
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 4
+                                  char_offset: 4
+- id: unicode-external-257.raw
+  input:
+    str: a_b_b^c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_b_b^c
+    tree:
+      hash:
+      - - sym: subsup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+              - - sym: sub_recursion
+                - hash:
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: b
+                                      byte_offset: 4
+                                      char_offset: 4
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 6
+                                  char_offset: 6
+- id: unicode-external-258.raw
+  input:
+    str: a_b_c
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_b_c
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 2
+                                  char_offset: 2
+              - - sym: sub_recursion
+                - hash:
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: c
+                                      byte_offset: 4
+                                      char_offset: 4
+- id: unicode-external-259.raw
+  input:
+    str: a_ℲA2
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_&#x2132;A2
+    tree:
+      hash:
+      - - sym: override_subsup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: size_overrides
+            - slice: A
+              byte_offset: 10
+              char_offset: 10
+          - - sym: sub_script
+            - hash:
+              - - sym: operand
+                - hash:
+                  - - sym: factor
+                    - hash:
+                      - - sym: digit
+                        - hash:
+                          - - sym: number
+                            - slice: '2'
+                              byte_offset: 11
+                              char_offset: 11
+- id: unicode-external-260.raw
+  input:
+    str: a_ℲDa + a_ℲCa + a_a + a_ℲAa + a_ℲBa
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a_&#x2132;Da + a_&#x2132;Ca + a_a + a_&#x2132;Aa + a_&#x2132;Ba
+    tree:
+      hash:
+      - - sym: override_subsup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: size_overrides
+            - slice: D
+              byte_offset: 10
+              char_offset: 10
+          - - sym: sub_script
+            - hash:
+              - - sym: operand
+                - hash:
+                  - - sym: factor
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: a
+                              byte_offset: 11
+                              char_offset: 11
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 13
+              char_offset: 13
+          - - sym: expr
+            - hash:
+              - - sym: override_subsup
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 15
+                          char_offset: 15
+                  - - sym: size_overrides
+                    - slice: C
+                      byte_offset: 25
+                      char_offset: 25
+                  - - sym: sub_script
+                    - hash:
+                      - - sym: operand
+                        - hash:
+                          - - sym: factor
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: a
+                                      byte_offset: 26
+                                      char_offset: 26
+              - - sym: expr
+                - hash:
+                  - - sym: operator
+                    - slice: "+"
+                      byte_offset: 28
+                      char_offset: 28
+                  - - sym: expr
+                    - hash:
+                      - - sym: sub_exp
+                        - hash:
+                          - - sym: base
+                            - hash:
+                              - - sym: symbol
+                                - slice: a
+                                  byte_offset: 30
+                                  char_offset: 30
+                          - - sym: sub
+                            - hash:
+                              - - sym: sub_script
+                                - hash:
+                                  - - sym: operand
+                                    - hash:
+                                      - - sym: factor
+                                        - hash:
+                                          - - sym: atom
+                                            - hash:
+                                              - - sym: alphanumeric
+                                                - slice: a
+                                                  byte_offset: 32
+                                                  char_offset: 32
+                      - - sym: expr
+                        - hash:
+                          - - sym: operator
+                            - slice: "+"
+                              byte_offset: 34
+                              char_offset: 34
+                          - - sym: expr
+                            - hash:
+                              - - sym: override_subsup
+                                - hash:
+                                  - - sym: base
+                                    - hash:
+                                      - - sym: symbol
+                                        - slice: a
+                                          byte_offset: 36
+                                          char_offset: 36
+                                  - - sym: size_overrides
+                                    - slice: A
+                                      byte_offset: 46
+                                      char_offset: 46
+                                  - - sym: sub_script
+                                    - hash:
+                                      - - sym: operand
+                                        - hash:
+                                          - - sym: factor
+                                            - hash:
+                                              - - sym: atom
+                                                - hash:
+                                                  - - sym: alphanumeric
+                                                    - slice: a
+                                                      byte_offset: 47
+                                                      char_offset: 47
+                              - - sym: expr
+                                - hash:
+                                  - - sym: operator
+                                    - slice: "+"
+                                      byte_offset: 49
+                                      char_offset: 49
+                                  - - sym: expr
+                                    - hash:
+                                      - - sym: override_subsup
+                                        - hash:
+                                          - - sym: base
+                                            - hash:
+                                              - - sym: symbol
+                                                - slice: a
+                                                  byte_offset: 51
+                                                  char_offset: 51
+                                          - - sym: size_overrides
+                                            - slice: B
+                                              byte_offset: 61
+                                              char_offset: 61
+                                          - - sym: sub_script
+                                            - hash:
+                                              - - sym: operand
+                                                - hash:
+                                                  - - sym: factor
+                                                    - hash:
+                                                      - - sym: atom
+                                                        - hash:
+                                                          - - sym: alphanumeric
+                                                            - slice: a
+                                                              byte_offset: 62
+                                                              char_offset: 62
+- id: unicode-external-261.raw
+  input:
+    str: ab/cd/ef/√(10&gh)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: ab/cd/ef/&#x221a;(10&gh)
+    tree:
+      hash:
+      - - sym: frac
+        - hash:
+          - - sym: numerator
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+              - - sym: atoms
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 1
+                          char_offset: 1
+          - - sym: denominator
+            - hash:
+              - - sym: frac
+                - hash:
+                  - - sym: numerator
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: c
+                              byte_offset: 3
+                              char_offset: 3
+                      - - sym: atoms
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: d
+                                  byte_offset: 4
+                                  char_offset: 4
+                  - - sym: denominator
+                    - hash:
+                      - - sym: frac
+                        - hash:
+                          - - sym: numerator
+                            - hash:
+                              - - sym: atom
+                                - hash:
+                                  - - sym: alphanumeric
+                                    - slice: e
+                                      byte_offset: 6
+                                      char_offset: 6
+                              - - sym: atoms
+                                - hash:
+                                  - - sym: atom
+                                    - hash:
+                                      - - sym: alphanumeric
+                                        - slice: f
+                                          byte_offset: 7
+                                          char_offset: 7
+                          - - sym: denominator
+                            - hash:
+                              - - sym: factor
+                                - hash:
+                                  - - sym: root
+                                    - hash:
+                                      - - sym: first_value
+                                        - hash:
+                                          - - sym: expr
+                                            - hash:
+                                              - - sym: factor
+                                                - hash:
+                                                  - - sym: digit
+                                                    - hash:
+                                                      - - sym: number
+                                                        - slice: '10'
+                                                          byte_offset: 18
+                                                          char_offset: 18
+                                      - - sym: second_value
+                                        - hash:
+                                          - - sym: expr
+                                            - hash:
+                                              - - sym: factor
+                                                - hash:
+                                                  - - sym: atom
+                                                    - hash:
+                                                      - - sym: alphanumeric
+                                                        - slice: g
+                                                          byte_offset: 21
+                                                          char_offset: 21
+                                                  - - sym: atoms
+                                                    - hash:
+                                                      - - sym: atom
+                                                        - hash:
+                                                          - - sym: alphanumeric
+                                                            - slice: h
+                                                              byte_offset: 22
+                                                              char_offset: 22
+- id: unicode-external-262.raw
+  input:
+    str: abc+a
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: abc+a
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: atoms
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: b
+                      byte_offset: 1
+                      char_offset: 1
+              - - sym: atoms
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: c
+                          byte_offset: 2
+                          char_offset: 2
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 3
+              char_offset: 3
+          - - sym: expr
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 4
+                          char_offset: 4
+- id: unicode-external-263.raw
+  input:
+    str: abcde┬→
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: abcde&#x252c;&#x2192;
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+              - - sym: expr
+                - hash:
+                  - - sym: symbol
+                    - slice: b
+                      byte_offset: 1
+                      char_offset: 1
+                  - - sym: expr
+                    - hash:
+                      - - sym: symbol
+                        - slice: c
+                          byte_offset: 2
+                          char_offset: 2
+                      - - sym: expr
+                        - hash:
+                          - - sym: symbol
+                            - slice: d
+                              byte_offset: 3
+                              char_offset: 3
+                          - - sym: expr
+                            - hash:
+                              - - sym: symbol
+                                - slice: e
+                                  byte_offset: 4
+                                  char_offset: 4
+          - - sym: sub
+            - hash:
+              - - sym: under
+                - slice: "&#x252c;"
+                  byte_offset: 5
+                  char_offset: 5
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: relational_symbols
+                            - slice: "&#x2192;"
+                              byte_offset: 13
+                              char_offset: 13
+- id: unicode-external-264.raw
+  input:
+    str: abc⃟
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: abc&#x20df;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: atoms
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: b
+                              byte_offset: 1
+                              char_offset: 1
+                      - - sym: atoms
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: c
+                                  byte_offset: 2
+                                  char_offset: 2
+          - - sym: overlay_after
+            - hash:
+              - - sym: diacritic_overlays
+                - slice: "&#x20df;"
+                  byte_offset: 3
+                  char_offset: 3
+- id: unicode-external-265.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: expr
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: b
+                      byte_offset: 2
+                      char_offset: 2
+- id: unicode-external-266.raw
+  input:
+    str: a²⋅b²=c²
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#xb2;&#x22c5;b&#xb2;=c&#xb2;
+    tree:
+      hash:
+      - - sym: mini_sup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sup
+            - hash:
+              - - sym: sup_digits
+                - slice: "&#xb2;"
+                  byte_offset: 1
+                  char_offset: 1
+      - - sym: expr
+        - hash:
+          - - sym: binary_symbols
+            - slice: "&#x22c5;"
+              byte_offset: 7
+              char_offset: 7
+          - - sym: expr
+            - hash:
+              - - sym: mini_sup
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: b
+                          byte_offset: 15
+                          char_offset: 15
+                  - - sym: sup
+                    - hash:
+                      - - sym: sup_digits
+                        - slice: "&#xb2;"
+                          byte_offset: 16
+                          char_offset: 16
+              - - sym: expr
+                - hash:
+                  - - sym: operator
+                    - slice: "="
+                      byte_offset: 22
+                      char_offset: 22
+                  - - sym: expr
+                    - hash:
+                      - - sym: mini_sup
+                        - hash:
+                          - - sym: base
+                            - hash:
+                              - - sym: symbol
+                                - slice: c
+                                  byte_offset: 23
+                                  char_offset: 23
+                          - - sym: sup
+                            - hash:
+                              - - sym: sup_digits
+                                - slice: "&#xb2;"
+                                  byte_offset: 24
+                                  char_offset: 24
+- id: unicode-external-267.raw
+  input:
+    str: ā+ ̄(a)
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x304;+ &#x304;(a)
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: overlay_after
+            - hash:
+              - - sym: diacritic_overlays
+                - slice: "&#x304;"
+                  byte_offset: 1
+                  char_offset: 1
+      - - sym: expr
+        - hash:
+          - - sym: operator
+            - slice: "+"
+              byte_offset: 8
+              char_offset: 8
+          - - sym: expr
+            - hash:
+              - - sym: diacritics_accents
+                - hash:
+                  - - sym: overlay_before
+                    - hash:
+                      - - sym: diacritic_overlays
+                        - slice: "&#x304;"
+                          byte_offset: 10
+                          char_offset: 10
+                  - - sym: first_value
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: intermediate_exp
+                            - hash:
+                              - - sym: open_paren
+                                - slice: "("
+                                  byte_offset: 17
+                                  char_offset: 17
+                              - - sym: factor
+                                - hash:
+                                  - - sym: atom
+                                    - hash:
+                                      - - sym: alphanumeric
+                                        - slice: a
+                                          byte_offset: 18
+                                          char_offset: 18
+                              - - sym: close_paren
+                                - slice: ")"
+                                  byte_offset: 19
+                                  char_offset: 19
+- id: unicode-external-268.raw
+  input:
+    str: a̼
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x33c;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: below_after
+            - hash:
+              - - sym: diacritic_belows
+                - slice: "&#x33c;"
+                  byte_offset: 1
+                  char_offset: 1
+- id: unicode-external-269.raw
+  input:
+    str: a͖
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x356;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: below_after
+            - hash:
+              - - sym: diacritic_belows
+                - slice: "&#x356;"
+                  byte_offset: 1
+                  char_offset: 1
+- id: unicode-external-270.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2002;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2002;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-271.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2003;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2003;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-272.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2004;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2004;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-273.raw
+  input:
+    str: a  b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2004;&#x200a;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2004;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: spaces
+                    - slice: "&#x200a;"
+                      byte_offset: 9
+                      char_offset: 9
+              - - sym: operand
+                - hash:
+                  - - sym: factor
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: b
+                              byte_offset: 17
+                              char_offset: 17
+- id: unicode-external-274.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2005;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2005;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-275.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2007;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x2007;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-276.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2009;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: atoms
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: char
+                    - hash:
+                      - - sym: unicode_symbols
+                        - slice: "&#x2009;"
+                          byte_offset: 1
+                          char_offset: 1
+                  - - sym: alphanumeric
+                    - slice: b
+                      byte_offset: 9
+                      char_offset: 9
+- id: unicode-external-277.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x200a;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x200a;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-278.raw
+  input:
+    str: a  b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x200a;&#x200a;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: spaces
+                - slice: "&#x200a;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: spaces
+                    - slice: "&#x200a;"
+                      byte_offset: 9
+                      char_offset: 9
+              - - sym: operand
+                - hash:
+                  - - sym: factor
+                    - hash:
+                      - - sym: atom
+                        - hash:
+                          - - sym: alphanumeric
+                            - slice: b
+                              byte_offset: 17
+                              char_offset: 17
+- id: unicode-external-279.raw
+  input:
+    str: a​b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x200b;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: ordinary_symbols
+                - slice: "&#x200b;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-280.raw
+  input:
+    str: a′
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2032;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2032;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-281.raw
+  input:
+    str: a′′′
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2032;&#x2032;&#x2032;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2032;&#x2032;&#x2032;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-282.raw
+  input:
+    str: a′′′'''
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2032;&#x2032;&#x2032;&#x27;&#x27;&#x27;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2032;&#x2032;&#x2032;&#x27;&#x27;&#x27;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-283.raw
+  input:
+    str: a″
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2033;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2033;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-284.raw
+  input:
+    str: a‴
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2034;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2034;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-285.raw
+  input:
+    str: a‼
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x203c;
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: atoms
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: char
+                    - hash:
+                      - - sym: unicode_symbols
+                        - slice: "&#x203c;"
+                          byte_offset: 1
+                          char_offset: 1
+- id: unicode-external-286.raw
+  input:
+    str: a⁗
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2057;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2057;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-287.raw
+  input:
+    str: a⁗'
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2057;&#x27;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2057;&#x27;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-288.raw
+  input:
+    str: a⁗'‴
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2057;&#x27;&#x2034;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2057;&#x27;&#x2034;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-289.raw
+  input:
+    str: a⁗⁗'⁗‴
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2057;&#x2057;&#x27;&#x2057;&#x2034;
+    tree:
+      hash:
+      - - sym: accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: atom
+                - hash:
+                  - - sym: alphanumeric
+                    - slice: a
+                      byte_offset: 0
+                      char_offset: 0
+          - - sym: prime_accent_symbols
+            - slice: "&#x2057;&#x2057;&#x27;&#x2057;&#x2034;"
+              byte_offset: 1
+              char_offset: 1
+- id: unicode-external-290.raw
+  input:
+    str: a b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x205f;b
+    tree:
+      hash:
+      - - sym: factor
+        - hash:
+          - - sym: atom
+            - hash:
+              - - sym: alphanumeric
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+      - - sym: operand
+        - hash:
+          - - sym: factor
+            - hash:
+              - - sym: ordinary_symbols
+                - slice: "&#x205f;"
+                  byte_offset: 1
+                  char_offset: 1
+          - - sym: operand
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: b
+                          byte_offset: 9
+                          char_offset: 9
+- id: unicode-external-291.raw
+  input:
+    str: aⁱ_b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2071;_b
+    tree:
+      hash:
+      - - sym: sub_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: mini_sup
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: sup
+                    - hash:
+                      - - sym: sup_alpha
+                        - slice: "&#x2071;"
+                          byte_offset: 1
+                          char_offset: 1
+          - - sym: sub
+            - hash:
+              - - sym: sub_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 10
+                                  char_offset: 10
+- id: unicode-external-292.raw
+  input:
+    str: a₀₋₉⁴⁼ⁱ
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2080;&#x208b;&#x2089;&#x2074;&#x207c;&#x2071;
+    tree:
+      hash:
+      - - sym: mini_sub_sup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: symbol
+                - slice: a
+                  byte_offset: 0
+                  char_offset: 0
+          - - sym: sub
+            - hash:
+              - - sym: sub_digits
+                - slice: "&#x2080;"
+                  byte_offset: 1
+                  char_offset: 1
+              - - sym: sub_recursion_expr
+                - hash:
+                  - - sym: sub_operators
+                    - slice: "&#x208b;"
+                      byte_offset: 9
+                      char_offset: 9
+                  - - sym: sub_recursions
+                    - hash:
+                      - - sym: sub_digits
+                        - slice: "&#x2089;"
+                          byte_offset: 17
+                          char_offset: 17
+          - - sym: sup
+            - hash:
+              - - sym: sup_digits
+                - slice: "&#x2074;"
+                  byte_offset: 25
+                  char_offset: 25
+              - - sym: sup_recursion_expr
+                - hash:
+                  - - sym: sup_operators
+                    - slice: "&#x207c;"
+                      byte_offset: 33
+                      char_offset: 33
+                  - - sym: sup_recursions
+                    - hash:
+                      - - sym: sup_alpha
+                        - slice: "&#x2071;"
+                          byte_offset: 41
+                          char_offset: 41
+- id: unicode-external-293.raw
+  input:
+    str: a₁^b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2081;^b
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: mini_sub
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: sub
+                    - hash:
+                      - - sym: sub_digits
+                        - slice: "&#x2081;"
+                          byte_offset: 1
+                          char_offset: 1
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: atom
+                            - hash:
+                              - - sym: alphanumeric
+                                - slice: b
+                                  byte_offset: 10
+                                  char_offset: 10
+- id: unicode-external-294.raw
+  input:
+    str: a₂^α
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2082;^&#x3b1;
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: mini_sub
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: sub
+                    - hash:
+                      - - sym: sub_digits
+                        - slice: "&#x2082;"
+                          byte_offset: 1
+                          char_offset: 1
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: operand
+                    - hash:
+                      - - sym: factor
+                        - hash:
+                          - - sym: ordinary_symbols
+                            - slice: "&#x3b1;"
+                              byte_offset: 10
+                              char_offset: 10
+- id: unicode-external-295.raw
+  input:
+    str: a₉^+-b₁
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2089;^+-b&#x2081;
+    tree:
+      hash:
+      - - sym: sup_exp
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: mini_sub
+                - hash:
+                  - - sym: base
+                    - hash:
+                      - - sym: symbol
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+                  - - sym: sub
+                    - hash:
+                      - - sym: sub_digits
+                        - slice: "&#x2089;"
+                          byte_offset: 1
+                          char_offset: 1
+          - - sym: sup
+            - hash:
+              - - sym: combined_symbols
+                - slice: "+-"
+                  byte_offset: 10
+                  char_offset: 10
+              - - sym: sup_script
+                - hash:
+                  - - sym: mini_sub
+                    - hash:
+                      - - sym: base
+                        - hash:
+                          - - sym: symbol
+                            - slice: b
+                              byte_offset: 12
+                              char_offset: 12
+                      - - sym: sub
+                        - hash:
+                          - - sym: sub_digits
+                            - slice: "&#x2081;"
+                              byte_offset: 13
+                              char_offset: 13
+- id: unicode-external-296.raw
+  input:
+    str: a⃑
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x20d1;
+    tree:
+      hash:
+      - - sym: accents
+        - array:
+          - hash:
+            - - sym: first_value
+              - hash:
+                - - sym: atom
+                  - hash:
+                    - - sym: alphanumeric
+                      - slice: a
+                        byte_offset: 0
+                        char_offset: 0
+          - hash:
+            - - sym: accent_symbols
+              - slice: "&#x20d1;"
+                byte_offset: 1
+                char_offset: 1
+- id: unicode-external-297.raw
+  input:
+    str: a⃒
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x20d2;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: overlay_after
+            - hash:
+              - - sym: diacritic_overlays
+                - slice: "&#x20d2;"
+                  byte_offset: 1
+                  char_offset: 1
+- id: unicode-external-298.raw
+  input:
+    str: a⃗ⁿ
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x20d7;&#x207f;
+    tree:
+      hash:
+      - - sym: accents_subsup
+        - hash:
+          - - sym: base
+            - hash:
+              - - sym: accents
+                - array:
+                  - hash:
+                    - - sym: first_value
+                      - hash:
+                        - - sym: atom
+                          - hash:
+                            - - sym: alphanumeric
+                              - slice: a
+                                byte_offset: 0
+                                char_offset: 0
+                  - hash:
+                    - - sym: accent_symbols
+                      - slice: "&#x20d7;"
+                        byte_offset: 1
+                        char_offset: 1
+          - - sym: sup
+            - hash:
+              - - sym: sup_script
+                - hash:
+                  - - sym: sup_alpha
+                    - slice: "&#x207f;"
+                      byte_offset: 9
+                      char_offset: 9
+- id: unicode-external-299.raw
+  input:
+    str: a⃚
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x20da;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: overlay_after
+            - hash:
+              - - sym: diacritic_overlays
+                - slice: "&#x20da;"
+                  byte_offset: 1
+                  char_offset: 1
+- id: unicode-external-300.raw
+  input:
+    str: a⃝
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x20dd;
+    tree:
+      hash:
+      - - sym: diacritics_accents
+        - hash:
+          - - sym: first_value
+            - hash:
+              - - sym: factor
+                - hash:
+                  - - sym: atom
+                    - hash:
+                      - - sym: alphanumeric
+                        - slice: a
+                          byte_offset: 0
+                          char_offset: 0
+          - - sym: overlay_after
+            - hash:
+              - - sym: diacritic_overlays
+                - slice: "&#x20dd;"
+                  byte_offset: 1
+                  char_offset: 1

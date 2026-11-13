@@ -45,3 +45,13 @@ entries:
   - stage-gem
   change: extend
   rationale: Keeps every generation 3 row; rewrites the five raw-tree payloads with scripts/stage_cases.rb at umath 0302568ef9446b1b099d15a56445ed7624816462 so their header comment and description name umath after the rename. No row changes.
+- generation: 5
+  path: stages/unicode/generations/000005
+  snapshot_digest: sha256:282fb3eead874618dda3229320a3a5d061434ea3766c8c95c641e07d49444b10
+  payloads: 33
+  rows: 1566
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: Keeps every generation 4 payload byte for byte and adds umath raw-tree and typed-model rows (Ruby and native engines agreeing) for all 675 external UnicodeMath inputs of fixtures/unicode-expectations.yaml, computed by scripts/stage_cases.rb at umath c7587f0c7d4d90a12d818bd3887fbb871e0da18a and written by scripts/generate-unicode-external.rb.

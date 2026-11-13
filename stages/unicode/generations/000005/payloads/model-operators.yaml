@@ -1,0 +1,386 @@
+# Typed-model rows for payloads/operators.yaml. Written by scripts/stage_cases.rb
+# (plurimath/unicodemath). Do not edit; see provenance.yaml.
+---
+schema: plurimath-stage/unicode/cases/1
+group: model-operators
+description: 'Typed model (Unicodemath::Model::Document) from Unicodemath.parse for each input of payloads/operators.yaml (generation 2): the legacy preprocessing and the model, each object its model class (model/unicodemath.lml.json) with its set fields in declaration order (nil fields left out), or a refusal with its byte offset into the caller''s input. Default decimal marker; the Ruby and native engines agree on every row.'
+boundary: typed-model
+cases:
+- id: unicode-operator-plus.model
+  input:
+    str: a+b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a+b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - expr
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - expr
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+              - - operator
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "+"
+                  - - value
+                    - str: "+"
+                  - - kind
+                    - str: symbol
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+      - - decimal
+        - str: "."
+- id: unicode-operator-times.model
+  input:
+    str: a×b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#xd7;b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - expr
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - binary_symbols
+                - node: Unicodemath::Model::MathSymbol
+                  fields:
+                  - - spelling
+                    - str: "&#xd7;"
+                  - - value
+                    - str: "×"
+                  - - kind
+                    - str: symbol
+              - - expr
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+      - - decimal
+        - str: "."
+- id: unicode-operator-leq.model
+  input:
+    str: a≤b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2264;b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+          - - operand
+            - node: Unicodemath::Model::Operand
+              fields:
+              - - factor
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - relational_symbols
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "&#x2264;"
+                      - - value
+                        - str: "≤"
+                      - - kind
+                        - str: symbol
+              - - operand
+                - node: Unicodemath::Model::Operand
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+      - - decimal
+        - str: "."
+- id: unicode-operator-equiv.model
+  input:
+    str: a≡b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2261;b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+          - - operand
+            - node: Unicodemath::Model::Operand
+              fields:
+              - - factor
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - relational_symbols
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "&#x2261;"
+                      - - value
+                        - str: "≡"
+                      - - kind
+                        - str: symbol
+              - - operand
+                - node: Unicodemath::Model::Operand
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+      - - decimal
+        - str: "."
+- id: unicode-operator-plus-minus.model
+  input:
+    str: a±b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#xb1;b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+          - - operand
+            - node: Unicodemath::Model::Operand
+              fields:
+              - - factor
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - combined_symbols
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "&#xb1;"
+                      - - value
+                        - str: "±"
+                      - - kind
+                        - str: symbol
+              - - operand
+                - node: Unicodemath::Model::Operand
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+      - - decimal
+        - str: "."
+- id: unicode-operator-minus-plus.model
+  input:
+    str: a∓b
+  options:
+    decimal: "."
+  expected:
+    preprocessed:
+      str: a&#x2213;b
+    tree:
+      node: Unicodemath::Model::Document
+      fields:
+      - - expression
+        - node: Unicodemath::Model::Expression
+          fields:
+          - - factor
+            - node: Unicodemath::Model::Expression
+              fields:
+              - - atom
+                - node: Unicodemath::Model::Atom
+                  fields:
+                  - - alphanumeric
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: a
+                      - - value
+                        - str: a
+                      - - kind
+                        - str: unlisted
+          - - operand
+            - node: Unicodemath::Model::Operand
+              fields:
+              - - factor
+                - node: Unicodemath::Model::Expression
+                  fields:
+                  - - combined_symbols
+                    - node: Unicodemath::Model::MathSymbol
+                      fields:
+                      - - spelling
+                        - str: "&#x2213;"
+                      - - value
+                        - str: "∓"
+                      - - kind
+                        - str: symbol
+              - - operand
+                - node: Unicodemath::Model::Operand
+                  fields:
+                  - - factor
+                    - node: Unicodemath::Model::Expression
+                      fields:
+                      - - atom
+                        - node: Unicodemath::Model::Atom
+                          fields:
+                          - - alphanumeric
+                            - node: Unicodemath::Model::MathSymbol
+                              fields:
+                              - - spelling
+                                - str: b
+                              - - value
+                                - str: b
+                              - - kind
+                                - str: unlisted
+      - - decimal
+        - str: "."

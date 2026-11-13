@@ -585,7 +585,19 @@ a schema cannot — that every payload is recorded, and that each one still
 hashes to what `provenance.yaml` says
 `consumers/`:: client projects that build each published Rust crate from its
 exact public commit; see `consumers/README.adoc`
+`scripts/generate-unicode-external.rb`, `scripts/validate-unicode-external.rb`::
+write and check the unicode stage rows for the 675 external UnicodeMath
+inputs; see `docs/unicode-external-rows.adoc`
+`LICENSES/`:: license texts of third-party data kept here
 
 == Copyright and license
 
 Copyright Ribose. BSD 2-clause license.
+
+The UnicodeMath inputs in `fixtures/unicode-expectations.yaml` and in the
+unicode stage rows made from them come from
+https://github.com/MurrayIII/UnicodeMathML[UnicodeMathML] by Sargent Murray III,
+through https://github.com/plurimath/unicodemath-tests[plurimath/unicodemath-tests].
+UnicodeMathML is released under the MIT license, copyright (c) 2019 Noah
+Doersing; see `LICENSES/UnicodeMathML-MIT.txt` and
+`docs/unicode-external-rows.adoc`.

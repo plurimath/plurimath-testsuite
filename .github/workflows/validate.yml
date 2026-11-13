@@ -144,6 +144,11 @@ jobs:
           else
             ruby scripts/validate-stages.rb --base "$BASE_SHA"
           fi
+      # The unicode rows for the 675 external inputs of
+      # fixtures/unicode-expectations.yaml, against that fixture
+      # (docs/unicode-external-rows.adoc).
+      - name: Validate the external UnicodeMath stage rows
+        run: ruby --disable-gems scripts/validate-unicode-external.rb
       # A second, independent reading of the stage manifests: the same
       # schemas through check-jsonschema rather than validate.rb's subset.
       - uses: actions/setup-python@v5
