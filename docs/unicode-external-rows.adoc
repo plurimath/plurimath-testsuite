@@ -1,0 +1,108 @@
+= External UnicodeMath stage rows
+:toc:
+
+`fixtures/unicode-expectations.yaml` holds 675 UnicodeMath inputs from
+https://github.com/plurimath/unicodemath-tests[plurimath/unicodemath-tests],
+with the trees and models the plurimath gem gave them. This document describes
+how the same 675 inputs are given to the umath stage gem in a unicode stage
+generation, so that every umath port replays one pinned set of rows.
+
+The rules of `docs/stage-corpus-contract.adoc` apply unchanged. This document
+adds what is specific to these rows.
+
+== Where the rows come from
+
+The inputs were written for UnicodeMathML by Sargent Murray III, in
+https://github.com/MurrayIII/UnicodeMathML/blob/eee21af94f1ca15727a1f99f3cfa278d77c3127b/dist/unicodemathml-integration.js[`dist/unicodemathml-integration.js`]
+at commit `eee21af94f1ca15727a1f99f3cfa278d77c3127b`. UnicodeMathML is released
+under the MIT license, copyright (c) 2019 Noah Doersing; the license text is
+kept in `LICENSES/UnicodeMathML-MIT.txt`, byte for byte as in that commit
+(git blob `6cf52a09e68b6d7bc92468f52af57d89d5528549`).
+
+plurimath/unicodemath-tests copied them, with the MathML UnicodeMathML gives
+for each, into `unicodemath_tests.yaml` at commit
+`ac19358ebdd0044cafe769feb121a49aff3230c8` (sha256
+`1af5f6775afabf7fd7076f85c8378981334885a2d63005f2f6f734695c401c1d`). The
+fixture records that file in its `source.input` block, and each case keeps
+the upstream position in `index` and the SHA-256 of its JSON text in
+`source.input_sha256`.
+
+Each upstream input starts with a display flag, `0` for inline and `1` for
+block math, which is not UnicodeMath. Two inputs are plain YAML numbers
+(`10` and `11.25`, cases 645 and 654), and three inputs occur twice (cases
+220 and 265, 356 and 357, 390 and 391). Every case keeps its own id.
+
+== The rows
+
+`scripts/generate-unicode-external.rb` writes the next unicode generation:
+every payload of the latest one copied byte for byte, and for each fixture
+case, in fixture order:
+
+* a raw-tree row `<fixture id>.raw` in
+  `payloads/raw-external-<first>-<last>.yaml`, the outcome of
+  `Umath::RawParser.parse`;
+* a typed-model row `<fixture id>.model` in
+  `payloads/model-external-<first>-<last>.yaml`, the outcome of `Umath.parse`.
+
+Each payload holds 75 consecutive cases. A row's input is the fixture input
+without its display flag (the fixture's own `remove_prefix` boundary), and its
+options are the default decimal marker.
+
+The outcome of each input is computed by `scripts/stage_cases.rb` of a clean
+plurimath/umath checkout, the producer that wrote the earlier raw-tree and
+typed-model rows, on the Ruby and the native engine; the run fails unless both
+agree. Refusals are rows too, with their byte offset. The two producers,
+`umath-external-raw` and `umath-external-model`, record that umath commit and
+the script's sha256, this repository's generator and fixture at the commit
+that ran, and in `configuration.selection` the ids, the plain-scalar inputs
+and the duplicate inputs.
+
+These rows are not the fixture's expectations under another name. The raw-tree
+rows record umath's own preprocessing and grammar tree, not the
+`UnicodeMath::Parse` tree the fixture holds after the plurimath spec helper
+`unicode_encode_entities`. The typed-model rows are `Umath::Model::Document`,
+not the fixture's `Math::Formula`. The fixture and the upstream MathML stay as
+they are and serve as references; nothing compares the rows with them.
+
+== Checking
+
+[source,sh]
+----
+ruby scripts/validate-unicode-external.rb [root]
+ruby scripts/validate-unicode-external.rb --generation N --executed IDS
+----
+
+Beside `scripts/validate-stages.rb`, which checks every generation, this
+checks each generation with external rows against the fixture it names: the
+fixture bytes have the recorded sha256 (in the working tree, or else at the
+recorded commit), it has 675 cases in order with matching input digests and
+upstream source, each producer has exactly one row per case in order with the
+right id and input, both producers agree on the fixture and umath commit, the
+selection record matches the fixture, rows with the same input have the same
+outcome, and the license notice is present. `spec/unicode_external_validator_spec.rb`
+proves the refusals for dropped, reordered and renamed rows, changed inputs,
+tampered fixtures and digests, a missing case, a missing display flag, a
+hidden plain-scalar input, a changed upstream reference, a missing notice, a
+missing producer and incomplete executed-id lists.
+
+With `--executed IDS`, a file of the row ids a consumer replayed from
+generation N, one per line, every external row id of that generation must be
+listed exactly once and no unknown external id may be. A consumer that pins the
+generation runs it after its replay, so a run that silently skipped rows
+fails.
+
+== Generating
+
+[source,sh]
+----
+cd UMATH && bundle install
+cd TESTSUITE
+BUNDLE_GEMFILE=UMATH/Gemfile bundle exec ruby \
+  scripts/generate-unicode-external.rb --umath UMATH --out OUT
+----
+
+`UMATH` is a clean plurimath/umath checkout with the native engine built, and
+the testsuite checkout must be clean for the generator, the fixture,
+`stages/` and `generations/`. `OUT` receives the new generation directory and
+the ledger with one entry appended, at the testsuite's paths. Copy them in,
+then run both validators.
