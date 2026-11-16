@@ -1,0 +1,3965 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: roundtrip-s-dist1
+description: Openmath.parse and to_xml for every OpenMath object in the official s_dist1
+  content dictionary, on OpenMath 2 and OpenMath 3. A refusal names the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: openmath-s_dist1-001-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"mean\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"calculus1\" name=\"defint\"/>\n      <OMA>\n        <OMS cd=\"interval1\"
+      name=\"interval\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\" name=\"unary_minus\"/>\n\t
+      \ <OMS cd=\"nums1\" name=\"infinity\"/>\n\t</OMA>\n\t<OMS cd=\"nums1\" name=\"infinity\"/>\n
+      \     </OMA>\n      <OMBIND>\n        <OMS cd=\"fns1\" name=\"lambda\"/>\n\t<OMBVAR>\n\t
+      \ <OMV name=\"x\"/>\n\t</OMBVAR>\n\t<OMA>\n\t  <OMS cd=\"arith1\" name=\"times\"/>\n\t
+      \ <OMV name=\"x\"/>\n\t  <OMA>\n\t    <OMV name=\"f\"/>\n\t    <OMV name=\"x\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMBIND>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 1
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: mean
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: defint
+                        - - cd
+                          - str: calculus1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V2::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: interval
+                              - - cd
+                                - str: interval1
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: infinity
+                              - - cd
+                                - str: nums1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V2::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: unary_minus
+                                    - - cd
+                                      - str: arith1
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: infinity
+                                    - - cd
+                                      - str: nums1
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - ombind_value
+                    - array:
+                      - node: Openmath::V2::Ombind
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: lambda
+                              - - cd
+                                - str: fns1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V2::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: times
+                                    - - cd
+                                      - str: arith1
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V2::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V2::Oma
+                                    fields:
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: x
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - ombvar_value
+                          - array:
+                            - node: Openmath::V2::Ombvar
+                              fields:
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V2::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMBVAR
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMBIND
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="mean"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="calculus1" name="defint"/>
+              <OMA>
+                <OMS cd="interval1" name="interval"/>
+                <OMA>
+                  <OMS cd="arith1" name="unary_minus"/>
+                  <OMS cd="nums1" name="infinity"/>
+                </OMA>
+                <OMS cd="nums1" name="infinity"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="fns1" name="lambda"/>
+                <OMBVAR>
+                  <OMV name="x"/>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="arith1" name="times"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-001-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"mean\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"calculus1\" name=\"defint\"/>\n      <OMA>\n        <OMS cd=\"interval1\"
+      name=\"interval\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\" name=\"unary_minus\"/>\n\t
+      \ <OMS cd=\"nums1\" name=\"infinity\"/>\n\t</OMA>\n\t<OMS cd=\"nums1\" name=\"infinity\"/>\n
+      \     </OMA>\n      <OMBIND>\n        <OMS cd=\"fns1\" name=\"lambda\"/>\n\t<OMBVAR>\n\t
+      \ <OMV name=\"x\"/>\n\t</OMBVAR>\n\t<OMA>\n\t  <OMS cd=\"arith1\" name=\"times\"/>\n\t
+      \ <OMV name=\"x\"/>\n\t  <OMA>\n\t    <OMV name=\"f\"/>\n\t    <OMV name=\"x\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMBIND>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 1
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: mean
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: defint
+                        - - cd
+                          - str: calculus1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V3::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: interval
+                              - - cd
+                                - str: interval1
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: infinity
+                              - - cd
+                                - str: nums1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V3::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: unary_minus
+                                    - - cd
+                                      - str: arith1
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: infinity
+                                    - - cd
+                                      - str: nums1
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - ombind_value
+                    - array:
+                      - node: Openmath::V3::Ombind
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: lambda
+                              - - cd
+                                - str: fns1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V3::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: times
+                                    - - cd
+                                      - str: arith1
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V3::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V3::Oma
+                                    fields:
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: x
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - ombvar_value
+                          - array:
+                            - node: Openmath::V3::Ombvar
+                              fields:
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V3::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMBVAR
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMBIND
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="mean"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="calculus1" name="defint"/>
+              <OMA>
+                <OMS cd="interval1" name="interval"/>
+                <OMA>
+                  <OMS cd="arith1" name="unary_minus"/>
+                  <OMS cd="nums1" name="infinity"/>
+                </OMA>
+                <OMS cd="nums1" name="infinity"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="fns1" name="lambda"/>
+                <OMBVAR>
+                  <OMV name="x"/>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="arith1" name="times"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-002-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"sdev\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"s_dist1\" name=\"mean\"/>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"power\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"minus\"/>\n\t  <OMV name=\"f\"/>\n\t  <OMA>\n\t
+      \   <OMS cd=\"s_dist1\" name=\"mean\"/>\n\t    <OMV name=\"f\"/>\n\t  </OMA>\n\t</OMA>\n\t<OMI>
+      2 </OMI>\n      </OMA>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 2
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: sdev
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: mean
+                        - - cd
+                          - str: s_dist1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V2::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: power
+                              - - cd
+                                - str: arith1
+                        - - omi_value
+                          - array:
+                            - node: Openmath::V2::Omi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: " 2 "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: " 2 "
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V2::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: minus
+                                    - - cd
+                                      - str: arith1
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V2::Omv
+                                    fields:
+                                    - - name
+                                      - str: f
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V2::Oma
+                                    fields:
+                                    - - oms_value
+                                      - array:
+                                        - node: Openmath::V2::Oms
+                                          fields:
+                                          - - name
+                                            - str: mean
+                                          - - cd
+                                            - str: s_dist1
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMS
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMI
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="sdev"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="s_dist1" name="mean"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="minus"/>
+                  <OMV name="f"/>
+                  <OMA>
+                    <OMS cd="s_dist1" name="mean"/>
+                    <OMV name="f"/>
+                  </OMA>
+                </OMA>
+                <OMI> 2 </OMI>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-002-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"sdev\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"s_dist1\" name=\"mean\"/>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"power\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"minus\"/>\n\t  <OMV name=\"f\"/>\n\t  <OMA>\n\t
+      \   <OMS cd=\"s_dist1\" name=\"mean\"/>\n\t    <OMV name=\"f\"/>\n\t  </OMA>\n\t</OMA>\n\t<OMI>
+      2 </OMI>\n      </OMA>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 2
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: sdev
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: mean
+                        - - cd
+                          - str: s_dist1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V3::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: power
+                              - - cd
+                                - str: arith1
+                        - - omi_value
+                          - array:
+                            - node: Openmath::V3::Omi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: " 2 "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: " 2 "
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V3::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: minus
+                                    - - cd
+                                      - str: arith1
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V3::Omv
+                                    fields:
+                                    - - name
+                                      - str: f
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V3::Oma
+                                    fields:
+                                    - - oms_value
+                                      - array:
+                                        - node: Openmath::V3::Oms
+                                          fields:
+                                          - - name
+                                            - str: mean
+                                          - - cd
+                                            - str: s_dist1
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMS
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMI
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="sdev"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="s_dist1" name="mean"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="minus"/>
+                  <OMV name="f"/>
+                  <OMA>
+                    <OMS cd="s_dist1" name="mean"/>
+                    <OMV name="f"/>
+                  </OMA>
+                </OMA>
+                <OMI> 2 </OMI>
+              </OMA>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-003-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"variance\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"arith1\" name=\"power\"/>\n      <OMA>\n        <OMS cd=\"s_dist1\" name=\"sdev\"/>\n\t<OMV
+      name=\"f\"/>\n      </OMA>\n      <OMI> 2 </OMI>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 3
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: variance
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: power
+                        - - cd
+                          - str: arith1
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 2 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 2 "
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V2::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: sdev
+                              - - cd
+                                - str: s_dist1
+                        - - omv_value
+                          - array:
+                            - node: Openmath::V2::Omv
+                              fields:
+                              - - name
+                                - str: f
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMV
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="variance"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="power"/>
+              <OMA>
+                <OMS cd="s_dist1" name="sdev"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMI> 2 </OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-003-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"variance\"/>\n      <OMV name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"arith1\" name=\"power\"/>\n      <OMA>\n        <OMS cd=\"s_dist1\" name=\"sdev\"/>\n\t<OMV
+      name=\"f\"/>\n      </OMA>\n      <OMI> 2 </OMI>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 3
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: variance
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: power
+                        - - cd
+                          - str: arith1
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 2 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 2 "
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V3::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: sdev
+                              - - cd
+                                - str: s_dist1
+                        - - omv_value
+                          - array:
+                            - node: Openmath::V3::Omv
+                              fields:
+                              - - name
+                                - str: f
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMV
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="variance"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="power"/>
+              <OMA>
+                <OMS cd="s_dist1" name="sdev"/>
+                <OMV name="f"/>
+              </OMA>
+              <OMI> 2 </OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-004-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"moment\"/>\n      <OMV name=\"i\"/>\n      <OMV name=\"c\"/>\n      <OMV
+      name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"calculus1\" name=\"defint\"/>\n
+      \     <OMA>\n        <OMS cd=\"interval1\" name=\"interval\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"unary_minus\"/>\n\t  <OMS cd=\"nums1\" name=\"infinity\"/>\n\t</OMA>\n\t<OMS
+      cd=\"nums1\" name=\"infinity\"/>\n      </OMA>\n      <OMBIND>\n        <OMS
+      cd=\"fns1\" name=\"lambda\"/>\n\t<OMBVAR>\n\t  <OMV name=\"x\"/>\n\t</OMBVAR>\n
+      \       <OMA>\n          <OMS cd=\"arith1\" name=\"times\"/>\n\t  <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"power\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t      <OMV name=\"x\"/>\n\t      <OMV name=\"c\"/>\n\t    </OMA>\n\t
+      \   <OMV name=\"i\"/>\n\t  </OMA>\n\t  <OMA>\n\t    <OMV name=\"f\"/>\n\t    <OMV
+      name=\"x\"/>\n\t  </OMA>\n        </OMA>\n      </OMBIND>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 4
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: moment
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: i
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: c
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: defint
+                        - - cd
+                          - str: calculus1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V2::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: interval
+                              - - cd
+                                - str: interval1
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: infinity
+                              - - cd
+                                - str: nums1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V2::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: unary_minus
+                                    - - cd
+                                      - str: arith1
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: infinity
+                                    - - cd
+                                      - str: nums1
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - ombind_value
+                    - array:
+                      - node: Openmath::V2::Ombind
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V2::Oms
+                              fields:
+                              - - name
+                                - str: lambda
+                              - - cd
+                                - str: fns1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V2::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V2::Oms
+                                    fields:
+                                    - - name
+                                      - str: times
+                                    - - cd
+                                      - str: arith1
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V2::Oma
+                                    fields:
+                                    - - oms_value
+                                      - array:
+                                        - node: Openmath::V2::Oms
+                                          fields:
+                                          - - name
+                                            - str: power
+                                          - - cd
+                                            - str: arith1
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: i
+                                    - - oma_value
+                                      - array:
+                                        - node: Openmath::V2::Oma
+                                          fields:
+                                          - - oms_value
+                                            - array:
+                                              - node: Openmath::V2::Oms
+                                                fields:
+                                                - - name
+                                                  - str: minus
+                                                - - cd
+                                                  - str: arith1
+                                          - - omv_value
+                                            - array:
+                                              - node: Openmath::V2::Omv
+                                                fields:
+                                                - - name
+                                                  - str: x
+                                              - node: Openmath::V2::Omv
+                                                fields:
+                                                - - name
+                                                  - str: c
+                                          - - "@element_order"
+                                            - array:
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMS
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMV
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMV
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t    "
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMS
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMA
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                                  - node: Openmath::V2::Oma
+                                    fields:
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                        - node: Openmath::V2::Omv
+                                          fields:
+                                          - - name
+                                            - str: x
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - ombvar_value
+                          - array:
+                            - node: Openmath::V2::Ombvar
+                              fields:
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V2::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMBVAR
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMBIND
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="moment"/>
+              <OMV name="i"/>
+              <OMV name="c"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="calculus1" name="defint"/>
+              <OMA>
+                <OMS cd="interval1" name="interval"/>
+                <OMA>
+                  <OMS cd="arith1" name="unary_minus"/>
+                  <OMS cd="nums1" name="infinity"/>
+                </OMA>
+                <OMS cd="nums1" name="infinity"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="fns1" name="lambda"/>
+                <OMBVAR>
+                  <OMV name="x"/>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="arith1" name="times"/>
+                  <OMA>
+                    <OMS cd="arith1" name="power"/>
+                    <OMA>
+                      <OMS cd="arith1" name="minus"/>
+                      <OMV name="x"/>
+                      <OMV name="c"/>
+                    </OMA>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-s_dist1-004-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n    <OMA>\n      <OMS cd=\"s_dist1\"
+      name=\"moment\"/>\n      <OMV name=\"i\"/>\n      <OMV name=\"c\"/>\n      <OMV
+      name=\"f\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"calculus1\" name=\"defint\"/>\n
+      \     <OMA>\n        <OMS cd=\"interval1\" name=\"interval\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"unary_minus\"/>\n\t  <OMS cd=\"nums1\" name=\"infinity\"/>\n\t</OMA>\n\t<OMS
+      cd=\"nums1\" name=\"infinity\"/>\n      </OMA>\n      <OMBIND>\n        <OMS
+      cd=\"fns1\" name=\"lambda\"/>\n\t<OMBVAR>\n\t  <OMV name=\"x\"/>\n\t</OMBVAR>\n
+      \       <OMA>\n          <OMS cd=\"arith1\" name=\"times\"/>\n\t  <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"power\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t      <OMV name=\"x\"/>\n\t      <OMV name=\"c\"/>\n\t    </OMA>\n\t
+      \   <OMV name=\"i\"/>\n\t  </OMA>\n\t  <OMA>\n\t    <OMV name=\"f\"/>\n\t    <OMV
+      name=\"x\"/>\n\t  </OMA>\n        </OMA>\n      </OMBIND>\n    </OMA>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD s_dist1
+    section: fmp 4
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: eq
+                  - - cd
+                    - str: relation1
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: moment
+                        - - cd
+                          - str: s_dist1
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: i
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: c
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: f
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: defint
+                        - - cd
+                          - str: calculus1
+                  - - oma_value
+                    - array:
+                      - node: Openmath::V3::Oma
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: interval
+                              - - cd
+                                - str: interval1
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: infinity
+                              - - cd
+                                - str: nums1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V3::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: unary_minus
+                                    - - cd
+                                      - str: arith1
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: infinity
+                                    - - cd
+                                      - str: nums1
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - ombind_value
+                    - array:
+                      - node: Openmath::V3::Ombind
+                        fields:
+                        - - oms_value
+                          - array:
+                            - node: Openmath::V3::Oms
+                              fields:
+                              - - name
+                                - str: lambda
+                              - - cd
+                                - str: fns1
+                        - - oma_value
+                          - array:
+                            - node: Openmath::V3::Oma
+                              fields:
+                              - - oms_value
+                                - array:
+                                  - node: Openmath::V3::Oms
+                                    fields:
+                                    - - name
+                                      - str: times
+                                    - - cd
+                                      - str: arith1
+                              - - oma_value
+                                - array:
+                                  - node: Openmath::V3::Oma
+                                    fields:
+                                    - - oms_value
+                                      - array:
+                                        - node: Openmath::V3::Oms
+                                          fields:
+                                          - - name
+                                            - str: power
+                                          - - cd
+                                            - str: arith1
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: i
+                                    - - oma_value
+                                      - array:
+                                        - node: Openmath::V3::Oma
+                                          fields:
+                                          - - oms_value
+                                            - array:
+                                              - node: Openmath::V3::Oms
+                                                fields:
+                                                - - name
+                                                  - str: minus
+                                                - - cd
+                                                  - str: arith1
+                                          - - omv_value
+                                            - array:
+                                              - node: Openmath::V3::Omv
+                                                fields:
+                                                - - name
+                                                  - str: x
+                                              - node: Openmath::V3::Omv
+                                                fields:
+                                                - - name
+                                                  - str: c
+                                          - - "@element_order"
+                                            - array:
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMS
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMV
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t      "
+                                              - hash:
+                                                - - str: type
+                                                  - str: Element
+                                                - - str: name
+                                                  - str: OMV
+                                              - hash:
+                                                - - str: type
+                                                  - str: Text
+                                                - - str: name
+                                                  - str: text
+                                                - - str: text
+                                                  - str: "\n\t    "
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMS
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMA
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                                  - node: Openmath::V3::Oma
+                                    fields:
+                                    - - omv_value
+                                      - array:
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: f
+                                        - node: Openmath::V3::Omv
+                                          fields:
+                                          - - name
+                                            - str: x
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t    "
+                                        - hash:
+                                          - - str: type
+                                            - str: Element
+                                          - - str: name
+                                            - str: OMV
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "\n\t  "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMS
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMA
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - ombvar_value
+                          - array:
+                            - node: Openmath::V3::Ombvar
+                              fields:
+                              - - omv_value
+                                - array:
+                                  - node: Openmath::V3::Omv
+                                    fields:
+                                    - - name
+                                      - str: x
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t  "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: OMV
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n\t"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMS
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n\t"
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMBVAR
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: OMA
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMA
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMBIND
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="s_dist1" name="moment"/>
+              <OMV name="i"/>
+              <OMV name="c"/>
+              <OMV name="f"/>
+            </OMA>
+            <OMA>
+              <OMS cd="calculus1" name="defint"/>
+              <OMA>
+                <OMS cd="interval1" name="interval"/>
+                <OMA>
+                  <OMS cd="arith1" name="unary_minus"/>
+                  <OMS cd="nums1" name="infinity"/>
+                </OMA>
+                <OMS cd="nums1" name="infinity"/>
+              </OMA>
+              <OMBIND>
+                <OMS cd="fns1" name="lambda"/>
+                <OMBVAR>
+                  <OMV name="x"/>
+                </OMBVAR>
+                <OMA>
+                  <OMS cd="arith1" name="times"/>
+                  <OMA>
+                    <OMS cd="arith1" name="power"/>
+                    <OMA>
+                      <OMS cd="arith1" name="minus"/>
+                      <OMV name="x"/>
+                      <OMV name="c"/>
+                    </OMA>
+                    <OMV name="i"/>
+                  </OMA>
+                  <OMA>
+                    <OMV name="f"/>
+                    <OMV name="x"/>
+                  </OMA>
+                </OMA>
+              </OMBIND>
+            </OMA>
+          </OMA>
+        </OMOBJ>

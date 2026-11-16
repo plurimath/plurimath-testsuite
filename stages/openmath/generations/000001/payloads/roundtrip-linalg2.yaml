@@ -1,0 +1,1221 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: roundtrip-linalg2
+description: Openmath.parse and to_xml for every OpenMath object in the official linalg2
+  content dictionary, on OpenMath 2 and OpenMath 3. A refusal names the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: openmath-linalg2-001-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="vector"/>
+          <OMI> 3 </OMI>
+          <OMI> 6 </OMI>
+          <OMI> 9 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: vector
+                  - - cd
+                    - str: linalg2
+            - - omi_value
+              - array:
+                - node: Openmath::V2::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 3 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 3 "
+                - node: Openmath::V2::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 6 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 6 "
+                - node: Openmath::V2::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 9 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 9 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="vector"/>
+            <OMI> 3 </OMI>
+            <OMI> 6 </OMI>
+            <OMI> 9 </OMI>
+          </OMA>
+        </OMOBJ>
+- id: openmath-linalg2-001-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="vector"/>
+          <OMI> 3 </OMI>
+          <OMI> 6 </OMI>
+          <OMI> 9 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: vector
+                  - - cd
+                    - str: linalg2
+            - - omi_value
+              - array:
+                - node: Openmath::V3::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 3 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 3 "
+                - node: Openmath::V3::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 6 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 6 "
+                - node: Openmath::V3::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 9 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 9 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="vector"/>
+            <OMI> 3 </OMI>
+            <OMI> 6 </OMI>
+            <OMI> 9 </OMI>
+          </OMA>
+        </OMOBJ>
+- id: openmath-linalg2-002-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrixrow"/>
+          <OMI> 1 </OMI>
+          <OMI> 0 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: matrixrow
+                  - - cd
+                    - str: linalg2
+            - - omi_value
+              - array:
+                - node: Openmath::V2::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 1 "
+                - node: Openmath::V2::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 0 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 0 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 1 </OMI>
+            <OMI> 0 </OMI>
+          </OMA>
+        </OMOBJ>
+- id: openmath-linalg2-002-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrixrow"/>
+          <OMI> 1 </OMI>
+          <OMI> 0 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: matrixrow
+                  - - cd
+                    - str: linalg2
+            - - omi_value
+              - array:
+                - node: Openmath::V3::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 1 "
+                - node: Openmath::V3::Omi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 0 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 0 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMI
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 1 </OMI>
+            <OMI> 0 </OMI>
+          </OMA>
+        </OMOBJ>
+- id: openmath-linalg2-003-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrix"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 1 </OMI>
+            <OMI> 0 </OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 0 </OMI>
+            <OMI> 1 </OMI>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: matrix
+                  - - cd
+                    - str: linalg2
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: matrixrow
+                        - - cd
+                          - str: linalg2
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 1 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 1 "
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 0 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 0 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: matrixrow
+                        - - cd
+                          - str: linalg2
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 0 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 0 "
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 1 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 1 </OMI>
+              <OMI> 0 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 0 </OMI>
+              <OMI> 1 </OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>
+- id: openmath-linalg2-003-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrix"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 1 </OMI>
+            <OMI> 0 </OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 0 </OMI>
+            <OMI> 1 </OMI>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD linalg2
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: matrix
+                  - - cd
+                    - str: linalg2
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: matrixrow
+                        - - cd
+                          - str: linalg2
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 1 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 1 "
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 0 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 0 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: matrixrow
+                        - - cd
+                          - str: linalg2
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 0 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 0 "
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 1 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 1 </OMI>
+              <OMI> 0 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 0 </OMI>
+              <OMI> 1 </OMI>
+            </OMA>
+          </OMA>
+        </OMOBJ>

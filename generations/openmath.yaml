@@ -1,0 +1,16 @@
+# Append-only ledger of the openmath stage generations. Never edit or
+# remove an entry; append one. See docs/stage-corpus-contract.adoc.
+---
+schema: plurimath-stage/ledger/1
+language: openmath
+layout: 1
+entries:
+- generation: 1
+  path: stages/openmath/generations/000001
+  snapshot_digest: sha256:5e3bcf87574c24fc89a3398ee6e9e2ca659e75600cb1b23a45fd8ee727ecc078
+  payloads: 43
+  rows: 1618
+  producer_kinds:
+  - stage-gem
+  change: initial
+  rationale: First openmath generation. Parse and serialize rows on OpenMath 2 and 3, schema verdicts, content-dictionary loading and evaluation rows from the official CDs, the standard's complete examples and the OpenMath 3 effort drafts, written by scripts/generate-openmath-stage.rb at de93498c11e0bc1562ee613f1a5dab25bf81c8fd from openmath 7719764a4fc7fe1438a49edfae23adb9a0b14405.
