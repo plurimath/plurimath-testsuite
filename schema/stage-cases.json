@@ -15,7 +15,7 @@
   "properties": {
     "schema": {
       "type": "string",
-      "pattern": "^plurimath-stage/(asciimath|latex|unicode|mathml|omml|html)/cases/1$"
+      "pattern": "^plurimath-stage/(asciimath|latex|unicode|mathml|omml|html|openmath)/cases/1$"
     },
     "group": {
       "description": "Matches the file name without its extension.",
@@ -30,7 +30,10 @@
       "enum": [
         "raw-tree",
         "typed-model",
-        "model-roundtrip"
+        "model-roundtrip",
+        "validation",
+        "cd-loading",
+        "evaluation"
       ]
     },
     "cases": {

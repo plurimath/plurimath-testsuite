@@ -44,7 +44,7 @@ require_relative "validate"
 module Testsuite
   module Stages
     LAYOUT_REVISION = 1
-    LANGUAGES = %w[asciimath latex unicode mathml omml html roundtrip].freeze
+    LANGUAGES = %w[asciimath latex unicode mathml omml html openmath roundtrip].freeze
     GENERATION_DIR = /\A[0-9]{6}\z/
     GROUP_FILE = /\A[a-z0-9]+(?:-[a-z0-9]+)*\.yaml\z/
     REPOSITORY = "https://github.com/plurimath/plurimath-testsuite"

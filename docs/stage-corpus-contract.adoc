@@ -22,7 +22,9 @@ schema/stage-*.json
 ----
 
 `<language>` is one of `asciimath`, `latex`, `unicode`, `mathml`, `omml`,
-`html` and `roundtrip`. The UnicodeMath key is `unicode`, as in `corpus/`.
+`html`, `openmath` and `roundtrip`. The UnicodeMath key is `unicode`, as in
+`corpus/`. `openmath` has stage generations only and no `corpus/` directory;
+see `docs/openmath-stage.adoc`.
 `roundtrip` holds cases that start in one language and are rendered into
 others. Any other language key needs a new layout revision.
 

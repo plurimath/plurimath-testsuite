@@ -23,7 +23,7 @@
   "$defs": {
     "language": {
       "type": "string",
-      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "roundtrip"]
+      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "openmath", "roundtrip"]
     },
     "entry": {
       "type": "object",

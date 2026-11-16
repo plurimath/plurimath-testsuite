@@ -1,0 +1,123 @@
+= OpenMath stage rows
+:toc:
+
+The `openmath` stage holds rows for the OpenMath gem
+(https://github.com/plurimath/openmath[plurimath/openmath]) and for any
+OpenMath implementation that replays them. It follows
+`docs/stage-corpus-contract.adoc`. This document adds what is specific to
+OpenMath. The work is tracked in plurimath/plurimath#584.
+
+There is no legacy facade corpus for OpenMath: the plurimath gem has no
+OpenMath support yet. Every payload therefore has a `stage-gem` producer, and
+the `corpus/` directory has no `openmath` entry.
+
+== Producer and inputs
+
+Generation 1 is written by `scripts/generate-openmath-stage.rb` from the
+openmath gem 0.1.1 at `7719764a4fc7fe1438a49edfae23adb9a0b14405` (the commit
+the `v0.1.1` tag points to). Every file the generator reads is listed in
+`provenance.yaml` with its repository, commit, path and sha256:
+
+* OpenMath/CDs at `cbf607561e3f90630ce7a57fe9a85f5bc0dfdd3c`:
+  `cd/Official/*.ocd`, the 39 official content dictionaries.
+* OpenMath/OMSVN at `a09aa08db33a049b350c6b7efeb150a115b8c810`:
+  `www/standard/om20-2013-07-11/omstd20.xml` (the standard's source) and its
+  `arith1.ocd`, `error.ocd` and `meta.ocd`;
+  `OpenMath3-effort-2009/cd/Official/*.ocd`, the OpenMath 3 effort draft CDs.
+* The gem's `data/binding-table-1.yml`, which binds the symbols the evaluator
+  accepts.
+
+No upstream file is edited. Objects are extracted from the `.ocd` files the
+way the gem's own `scripts/vendor_corpus.rb` does it, so the 345 official
+objects here are the gem's 345 corpus files.
+
+Each content dictionary's header states that its copyright holder permits
+redistribution as a verbatim copy. The rows hold the dictionaries and objects
+unchanged as inputs; the serialized forms that appear as expectations are the
+gem's output.
+
+== Row kinds
+
+Every row carries the input as written, and the gem's answer as the
+expectation. All inputs are OpenMath XML strings except CD loading.
+
+[cols="2,3,3"]
+|===
+|Boundary |Group names |Expectation
+
+|`model-roundtrip`
+|`roundtrip-<cd>` per official CD, `roundtrip-standard-examples`,
+ `roundtrip-om3-draft-cds`
+|`Openmath.parse(input, version:)` in canonical tagged form, and the string
+ `to_xml` returns, or a refusal with the raising stage and the exception
+ class. Each object has one row for OpenMath 2 and one for OpenMath 3
+ (`options.version`, ids ending `-v2` and `-v3`).
+
+|`validation`
+|`validation-official-cds`, `validation-standard-examples`,
+ `validation-om3-draft-cds`
+|`model` is the verdict of the version's schema (`bool`), `output` the number
+ of schema errors.
+
+|`cd-loading`
+|`cd-loading`
+|`Openmath.parse_cd` summary (CD header fields, each definition's name, role
+ and counts of CMP, FMP and Example elements, schema errors of the CD) and the
+ string `to_xml` returns. Rows with ids `openmath-cd-resolve-*` give
+ symbol resolution against the loaded official collection: `model` is whether
+ the symbol was found, `output` its role.
+
+|`evaluation`
+|`evaluation-closed-examples`, `evaluation-fmp-instances`
+|`Openmath.evaluate` under the binding table named in
+ `options.binding_table_sha256`. `model` is the value in tagged form; `output`
+ is its canonical JSON wire (`{"ok":true,"value":{"kind":...}}`, no spaces).
+ A refusal names the evaluator's exception class.
+|===
+
+Evaluation rows come from two sources. The first is each example object of
+the official CDs that has no free variable and no binder. The second is each
+formal mathematical property (FMP) whose binder is a single `forall`: the
+binder is removed and the free variables are bound by fixed vectors
+(`options.variables`, a JSON object): booleans exhaustively for `logic1`,
+and small integer vectors otherwise. Objects whose symbols the binding table does not bind stay in the payload as
+refusals; none is dropped. Expectations are exactly what the gem returned.
+Generation 1 has 56 closed-example rows (8 values, 48
+`UnsupportedExpressionError`) and 81 FMP instance rows (15 return `true`, 6
+raise `OperandTypeError`, 60 raise `UnsupportedExpressionError`). No row
+returned `false`: no FMP instance contradicts the standard. The description
+inside `evaluation-fmp-instances.yaml` says "whose symbols the table binds";
+the rows are in fact every `forall` FMP, and the 60 unsupported ones are the
+properties with symbols outside the table.
+
+The gem has no serializer from a value to OpenMath XML, so the wire is defined
+by the generator and is not an OpenMath encoding.
+
+== What is not adopted
+
+* Standard blocks that are not one complete OMOBJ: fragments without an
+  OMOBJ wrapper (16 blocks) and two side-by-side layouts. `provenance.yaml`
+  lists them by line of `omstd20.xml`.
+* The standard's examples carry no XML namespace as printed, so the gem's
+  schema validation rejects them. Their `validation` rows record that verdict;
+  the `model-roundtrip` rows are unaffected.
+* `www/cdfiles2/contrib/cd/om2test1.om` is an error report page, not a corpus.
+* Corpora of other OpenMath implementations were surveyed and none was
+  adopted; see the pull request.
+
+== Superseding a row
+
+A row is never edited. A row whose answer a later gem changes is superseded
+through the `-r2` flow of `docs/stage-corpus-contract.adoc`.
+
+== Regenerating
+
+[source,sh]
+----
+cd openmath && bundle exec ruby <testsuite>/scripts/generate-openmath-stage.rb \
+  --cds <CDs checkout> --omsvn <OMSVN checkout> --testsuite <testsuite> \
+  --generator-commit <testsuite commit of the script> --out <generation dir>
+----
+
+The gem's own parity spec replays the ledger's latest generation; that spec
+lives in the gem, not here.
