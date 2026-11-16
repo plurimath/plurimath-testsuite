@@ -508,7 +508,7 @@ module OpenmathStage
                                "serializer" => "to_xml" },
         },
       },
-      "payloads" => payloads.map do |p|
+      "payloads" => payloads.sort_by { |p| p["path"].b }.map do |p|
         { "path" => p["path"], "bytes" => p["bytes"], "sha256" => p["sha256"],
           "producer" => "openmath", "source" => { "relation" => "generated", "file" => nil },
           "rows" => p["rows"] }
