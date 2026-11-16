@@ -452,6 +452,32 @@ module OpenmathStage
     warn "payloads=#{payloads.size} rows=#{payloads.sum { |p| p['rows'].size }} #{stats.to_json}"
   end
 
+  def lock_facts
+    text = File.read("Gemfile.lock")
+    resolved = text.scan(/^    ([a-z0-9_.-]+) \(([^)\s-]+(?:-[a-z0-9.]+)?)\)$/)
+                   .to_h.sort.to_h
+    git = text[/^GIT\n(.*?)\n\n/m, 1].to_s
+    { "text" => text, "resolved" => resolved,
+      "bundler" => text[/^BUNDLED WITH\n\s+(\S+)/, 1],
+      "git" => { "repository" => git[/remote: (\S+)/, 1],
+                 "branch" => git[/branch: (\S+)/, 1],
+                 "revision" => git[/revision: (\S+)/, 1] } }
+  end
+
+  def environment
+    lock = lock_facts
+    { "ruby" => { "engine" => RUBY_ENGINE, "version" => RUBY_VERSION },
+      "xml_engine" => "nokogiri #{Nokogiri::VERSION}",
+      "lockfile" => { "path" => "Gemfile.lock", "committed" => false,
+                      "sha256" => sha(lock["text"]),
+                      "bundler" => lock["bundler"],
+                      "git_sources" => { "lutaml-model" => lock["git"] },
+                      "resolved" => lock["resolved"] },
+      "dependencies" => lock["resolved"].slice("lutaml-model", "moxml",
+                                               "nokogiri"),
+      "compiler" => nil, "binding" => nil, "lml" => nil }
+  end
+
   def write_provenance(out, opts, gem_commit, cds_commit, omsvn_commit, gen_path, gen_sha, inputs, payloads, skipped)
     inputs = inputs.map { |i| i.reject { |k, _| k == "_base" } }
                    .sort_by { |i| [i["repository"], i["path"].b] }
@@ -476,14 +502,7 @@ module OpenmathStage
           "generator" => { "repository" => SUITE_URL, "commit" => opts["generator-commit"],
                            "path" => gen_path, "sha256" => gen_sha },
           "inputs" => inputs,
-          "environment" => {
-            "ruby" => { "engine" => RUBY_ENGINE, "version" => RUBY_VERSION },
-            "xml_engine" => "nokogiri #{Nokogiri::VERSION}",
-            "lockfile" => { "path" => "Gemfile.lock", "committed" => false,
-                            "sha256" => sha(File.binread("Gemfile.lock")) },
-            "resolved" => Gem.loaded_specs.transform_values(&:version).transform_values(&:to_s)
-                             .select { |k, _| %w[lutaml-model moxml nokogiri openmath].include?(k) },
-          },
+          "environment" => environment,
           "semantic_boundary" => "model-roundtrip",
           "configuration" => { "entry_point" => "Openmath.parse", "versions" => %w[2 3],
                                "serializer" => "to_xml" },
