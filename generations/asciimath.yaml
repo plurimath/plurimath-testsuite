@@ -55,3 +55,20 @@ entries:
     0a1df68a5903d43da13b1e1ef85b6c0523feb1b4 (0.11.17, includes PR #549 merge 2967dcc4), whose
     unicodemath expectation \mup"kg" supersedes text-unitsml-valid's \mupkg; text-unitsml-valid and every
     generation 3 payload are kept byte for byte.
+- generation: 5
+  path: stages/asciimath/generations/000005
+  snapshot_digest: sha256:936bc31ff88f3e75a1cb8c806a628e7e37808e198658c240e85d4381d798cbcd
+  payloads: 31
+  rows: 194
+  producer_kinds:
+  - legacy-oracle
+  - stage-gem
+  change: extend
+  rationale: >-
+    Re-home amath's uncertainty call syntax to the quoted channel (amath#17, commit
+    df8851120402840c274e1ee77ee719280528a76e): the bareword ustd/uexp/ucov forms were an
+    unreleased extension; "ustd(10.3, 0.2)" rides asciimath's own string literal with the
+    identical tree contract, bareword calls read as letters exactly as standard asciimath,
+    and +- stays the plain Pm symbol. The two amath uncertainty payloads are regenerated
+    (raw-tree and typed-model) by scripts/generate_stage_cases.rb under parsanol 1.5.1.0;
+    every generation 4 payload is kept byte for byte.
