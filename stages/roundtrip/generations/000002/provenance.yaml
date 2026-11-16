@@ -1,0 +1,322 @@
+# Generation 2 of the roundtrip stage corpus. Immutable: never edit this
+# directory; add a new generation instead. See docs/stage-corpus-contract.adoc.
+schema: plurimath-stage/provenance/1
+language: roundtrip
+generation: 2
+notes: 'Generation 1''s payload rows kept byte for byte, plus -r2 supersession rows
+  appended to the nine uncertainty payloads (the text-unitsml-valid-r2 pattern): plurimath
+  at the recorded commit renders the uncertainty quoted channel (amath#17) - "ustd(10.3,
+  0.2)" rides asciimath''s own string literal - and the roundtrip cases'' asciimath
+  cells carry the quoted inputs and outputs; the comma-spelled locale variants remain
+  in the asciimath-locale payload but are roundtrip fixed points only in their canonical
+  spelling. The -r2 rows carry the new expectations; the generation 1 rows are classified
+  superseded by their -r2 siblings. Producer: plurimath scripts/roundtrip_cases.rb
+  on both XML engines.'
+producers:
+  plurimath:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: d643ef8ca8f3fad659662bb2cf9cf0a838bf951d
+    version: 0.11.18
+    generator:
+      repository: https://github.com/plurimath/plurimath
+      commit: d643ef8ca8f3fad659662bb2cf9cf0a838bf951d
+      path: scripts/roundtrip_cases.rb
+      sha256: ab41e833d29427704cb35f26c0786343d037d490fda6705964f74928d4e81e69
+    inputs: []
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.7
+      xml_engine: Plurimath::XmlEngine::OxEngine, Plurimath::XmlEngine::Oga
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.10
+        resolved:
+          amath: 0.2.1
+          ansi: 1.6.0
+          asciiunits: 0.1.6
+          ast: 2.4.3
+          base64: 0.3.0
+          bcp47_spec: 0.2.1
+          bigdecimal: 4.1.3
+          bundler: 4.0.10
+          canon: 0.3.127
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          date: 3.5.1
+          diff-lcs: 1.6.2
+          docile: 1.4.1
+          ebnf: 2.6.0
+          erb: 6.0.4
+          ffi: 1.17.4
+          fiddle: 1.1.8
+          fuzzy_match: 2.1.0
+          htmlentities: 4.4.2
+          io-console: 0.8.2
+          irb: 1.18.0
+          json: 2.21.2
+          language_server-protocol: 3.17.0.5
+          lasem: 0.1.0
+          latexmath: 1.0.0
+          leptris: 1.9.424.0
+          link_header: 0.0.8
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          logger: 1.7.0
+          lutaml-model: 0.8.175
+          matrix: 0.4.3
+          memo_wise: 1.13.0
+          mml: 2.4.8
+          moxml: 0.6.14
+          nokogiri: 1.19.7
+          oga: '3.5'
+          omml: 0.2.7
+          opal: 1.8.3
+          opal-rspec: 1.1.0.alpha3
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.1.0
+          parsanol: 1.5.1.0
+          parser: 3.3.11.1
+          parslet: 2.0.0
+          plurimath: 0.11.18
+          pp: 0.6.4
+          prettyprint: 0.2.0
+          prism: 1.9.0
+          psych: 5.4.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          rdf: 3.3.1
+          rdf-turtle: 3.3.0
+          rdoc: 7.2.0
+          regexp_parser: 2.12.0
+          reline: 0.6.3
+          rspec: 3.13.2
+          rspec-core: 3.13.6
+          rspec-expectations: 3.13.5
+          rspec-mocks: 3.13.8
+          rspec-support: 3.13.7
+          rubocop: 1.86.1
+          rubocop-ast: 1.49.1
+          rubocop-performance: 1.26.1
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.9.0
+          ruby-ll: 2.2.0
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          scanf: 1.0.0
+          simplecov: 0.22.0
+          simplecov-html: 0.13.2
+          simplecov_json_formatter: 0.1.4
+          stringio: 3.2.0
+          strscan: 3.1.8
+          sxp: 2.0.0
+          table_tennis: 0.0.7
+          thor: 1.5.0
+          tsort: 0.2.0
+          umath: 0.2.1
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          unitsdb: 2.2.15
+          unitsml: 0.6.14
+          yeptris: 0.6.69.0
+      dependencies:
+        amath: 0.2.1
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        latexmath: 1.0.0
+        lutaml-model: 0.8.175
+        mml: 2.4.8
+        omml: 0.2.7
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parsanol: 1.5.1.0
+        parslet: 2.0.0
+        thor: 1.5.0
+        umath: 0.2.1
+        unitsml: 0.6.14
+      compiler:
+      binding:
+      lml:
+    semantic_boundary: roundtrip
+    configuration:
+      entry_point: Plurimath::Math.parse, Formula#to_<target>
+      targets:
+      - asciimath
+      - unicode
+      - mathml
+      - omml
+      xml_engines:
+      - ox
+      - oga
+payloads:
+- path: payloads/asciimath-coverage-interval.yaml
+  bytes: 44221
+  sha256: ab2242ff7454916c8ca6b033c9a47cd58bc294ea8e960ce7dec39582e650824d
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-coverage-interval.unspecified
+  - asciimath-coverage-interval.shortest
+  - asciimath-coverage-interval.symmetric
+  - asciimath-coverage-interval.negative
+  - asciimath-coverage-interval.unspecified-r2
+  - asciimath-coverage-interval.shortest-r2
+  - asciimath-coverage-interval.symmetric-r2
+  - asciimath-coverage-interval.negative-r2
+- path: payloads/asciimath-expanded.yaml
+  bytes: 31152
+  sha256: ae008f060f47e1e9a44321b046fca77b69832f9f5714fd0179aaf7d1e103c68c
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-expanded.k
+  - asciimath-expanded.k-p
+  - asciimath-expanded.negative
+  - asciimath-expanded.k-r2
+  - asciimath-expanded.k-p-r2
+  - asciimath-expanded.negative-r2
+- path: payloads/asciimath-invalid.yaml
+  bytes: 2615
+  sha256: d0012898578634a5e5f823c56b356c8cef3cf3741537993586f9f5ae3d5bdf0d
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-invalid.zero-k
+  - asciimath-invalid.reversed-interval
+  - asciimath-invalid.zero-k-r2
+  - asciimath-invalid.reversed-interval-r2
+- path: payloads/asciimath-locale.yaml
+  bytes: 16286
+  sha256: ef3364b01aa6e4271084a1ea2fe272f5e55f807dc43347181a62c11905a632f3
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-locale.fr-dot
+  - asciimath-locale.fr-comma
+  - asciimath-locale.fr-comma-pair
+  - asciimath-locale.fr-dot-r2
+  - asciimath-locale.fr-comma-r2
+  - asciimath-locale.fr-comma-pair-r2
+- path: payloads/asciimath-shared-exponent.yaml
+  bytes: 39359
+  sha256: c6e5568fae82b2abea12edbcd3ffb6d28c20180257e6ddb556b2f9d2ffc7053e
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-shared-exponent.standard
+  - asciimath-shared-exponent.concise
+  - asciimath-shared-exponent.expanded
+  - asciimath-shared-exponent.interval
+  - asciimath-shared-exponent.standard-r2
+  - asciimath-shared-exponent.concise-r2
+  - asciimath-shared-exponent.expanded-r2
+  - asciimath-shared-exponent.interval-r2
+- path: payloads/asciimath-standard.yaml
+  bytes: 50197
+  sha256: d84accd372503980f36a944e375df64c64f1ce6043c5a0aab33b1517614ef4be
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-standard.absolute
+  - asciimath-standard.concise
+  - asciimath-standard.concise-long
+  - asciimath-standard.negative
+  - asciimath-standard.negative-concise
+  - asciimath-standard.zero-magnitude
+  - asciimath-standard.absolute-r2
+  - asciimath-standard.concise-r2
+  - asciimath-standard.concise-long-r2
+  - asciimath-standard.negative-r2
+  - asciimath-standard.negative-concise-r2
+  - asciimath-standard.zero-magnitude-r2
+- path: payloads/asciimath-units.yaml
+  bytes: 80076
+  sha256: f0e7acf36a9be25435098cfb5a04632ceaec2f8b6cfb945280482549e256527a
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - asciimath-units.expanded-g
+  - asciimath-units.standard-kg
+  - asciimath-units.standard-m-per-s
+  - asciimath-units.standard-kg-m2
+  - asciimath-units.standard-um
+  - asciimath-units.concise-g
+  - asciimath-units.interval-m
+  - asciimath-units.expanded-g-r2
+  - asciimath-units.standard-kg-r2
+  - asciimath-units.standard-m-per-s-r2
+  - asciimath-units.standard-kg-m2-r2
+  - asciimath-units.standard-um-r2
+  - asciimath-units.concise-g-r2
+  - asciimath-units.interval-m-r2
+- path: payloads/mathml-markers.yaml
+  bytes: 48158
+  sha256: e257a13a9ecba9177d83f63ed0bd89b83081b9b7425f9671d7ad85dd0f753211
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - mathml-markers.standard
+  - mathml-markers.concise
+  - mathml-markers.expanded
+  - mathml-markers.unit-kg
+  - mathml-markers.unit-kg-m2
+  - mathml-markers.standard-r2
+  - mathml-markers.concise-r2
+  - mathml-markers.expanded-r2
+  - mathml-markers.unit-kg-r2
+  - mathml-markers.unit-kg-m2-r2
+- path: payloads/unicode-markers.yaml
+  bytes: 113178
+  sha256: '0317589bd6cd672520fc799b55d3b13b45cfbfd9ab667145c329a0b1cb91e004'
+  producer: plurimath
+  source:
+    relation: generated
+    file:
+  rows:
+  - unicode-markers.standard
+  - unicode-markers.concise
+  - unicode-markers.expanded-p
+  - unicode-markers.expanded-spaced
+  - unicode-markers.interval-shortest
+  - unicode-markers.negative
+  - unicode-markers.unit-g
+  - unicode-markers.unit-kg
+  - unicode-markers.unit-kg-quoted
+  - unicode-markers.unit-m-per-s
+  - unicode-markers.unit-um
+  - unicode-markers.unit-kg-m2
+  - unicode-markers.standard-r2
+  - unicode-markers.concise-r2
+  - unicode-markers.expanded-p-r2
+  - unicode-markers.expanded-spaced-r2
+  - unicode-markers.interval-shortest-r2
+  - unicode-markers.negative-r2
+  - unicode-markers.unit-g-r2
+  - unicode-markers.unit-kg-r2
+  - unicode-markers.unit-kg-quoted-r2
+  - unicode-markers.unit-m-per-s-r2
+  - unicode-markers.unit-um-r2
+  - unicode-markers.unit-kg-m2-r2
