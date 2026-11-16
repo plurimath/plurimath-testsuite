@@ -57,9 +57,9 @@ entries:
     generation 3 payload are kept byte for byte.
 - generation: 5
   path: stages/asciimath/generations/000005
-  snapshot_digest: sha256:936bc31ff88f3e75a1cb8c806a628e7e37808e198658c240e85d4381d798cbcd
+  snapshot_digest: sha256:d3ee5a267373c235e555f2c0d01ae72e730ea2648113adcf7b0c87238b0ff63b
   payloads: 31
-  rows: 194
+  rows: 214
   producer_kinds:
   - legacy-oracle
   - stage-gem
