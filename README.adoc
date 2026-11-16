@@ -588,6 +588,8 @@ exact public commit; see `consumers/README.adoc`
 `scripts/generate-unicode-external.rb`, `scripts/validate-unicode-external.rb`::
 write and check the unicode stage rows for the 675 external UnicodeMath
 inputs; see `docs/unicode-external-rows.adoc`
+`scripts/generate-openmath-stage.rb`:: writes the openmath stage rows from the
+openmath gem and the OpenMath CD sources; see `docs/openmath-stage.adoc`
 `LICENSES/`:: license texts of third-party data kept here
 
 == Copyright and license
@@ -601,3 +603,11 @@ through https://github.com/plurimath/unicodemath-tests[plurimath/unicodemath-tes
 UnicodeMathML is released under the MIT license, copyright (c) 2019 Noah
 Doersing; see `LICENSES/UnicodeMathML-MIT.txt` and
 `docs/unicode-external-rows.adoc`.
+
+The OpenMath objects and content dictionaries in the openmath stage rows come
+from https://github.com/OpenMath/CDs[OpenMath/CDs] and
+https://github.com/OpenMath/OMSVN[OpenMath/OMSVN], at the commits recorded in
+`stages/openmath/generations/000001/provenance.yaml`. Each content dictionary
+states its own terms in its header: it may be redistributed freely as a
+verbatim copy, and the rows hold the inputs verbatim; see
+`docs/openmath-stage.adoc`.
