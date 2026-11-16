@@ -12,7 +12,7 @@
     "commit": {"type": "string", "pattern": "^[0-9a-f]{40}$"},
     "language": {
       "type": "string",
-      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "roundtrip"]
+      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "openmath", "roundtrip"]
     },
     "generation": {"type": "integer", "minimum": 1},
     "snapshot_digest": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}

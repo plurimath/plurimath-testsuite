@@ -10,7 +10,7 @@
     "schema": {"type": "string", "const": "plurimath-stage/provenance/1"},
     "language": {
       "type": "string",
-      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "roundtrip"]
+      "enum": ["asciimath", "latex", "unicode", "mathml", "omml", "html", "openmath", "roundtrip"]
     },
     "generation": {"type": "integer", "minimum": 1},
     "notes": {"type": "string", "minLength": 1},
