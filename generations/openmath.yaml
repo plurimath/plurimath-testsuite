@@ -1,5 +1,3 @@
-# Append-only ledger of the openmath stage generations. Never edit or
-# remove an entry; append one. See docs/stage-corpus-contract.adoc.
 ---
 schema: plurimath-stage/ledger/1
 language: openmath
@@ -13,4 +11,20 @@ entries:
   producer_kinds:
   - stage-gem
   change: initial
-  rationale: First openmath generation. Parse and serialize rows on OpenMath 2 and 3, schema verdicts, content-dictionary loading and evaluation rows from the official CDs, the standard's complete examples and the OpenMath 3 effort drafts, written by scripts/generate-openmath-stage.rb at de93498c11e0bc1562ee613f1a5dab25bf81c8fd from openmath 7719764a4fc7fe1438a49edfae23adb9a0b14405.
+  rationale: First openmath generation. Parse and serialize rows on OpenMath 2 and
+    3, schema verdicts, content-dictionary loading and evaluation rows from the official
+    CDs, the standard's complete examples and the OpenMath 3 effort drafts, written
+    by scripts/generate-openmath-stage.rb at de93498c11e0bc1562ee613f1a5dab25bf81c8fd
+    from openmath 7719764a4fc7fe1438a49edfae23adb9a0b14405.
+- generation: 2
+  path: stages/openmath/generations/000002
+  snapshot_digest: sha256:6b16742bacc9817e30cb629282262808d1c4d830bbeb96107251311703a5d4bf
+  payloads: 47
+  rows: 1843
+  producer_kinds:
+  - stage-gem
+  change: extend
+  rationale: 'Generation 2: supersession of generation 1 under the expanded openmath
+    gem (binding table v4, OMFOREIGN capture) — the changed groups (evaluation-closed-examples,
+    evaluation-fmp-instances, roundtrip-altenc, roundtrip-om3-draft-cds) gain -r2
+    rows at openmath 8fe912c; every other payload copies byte for byte.'

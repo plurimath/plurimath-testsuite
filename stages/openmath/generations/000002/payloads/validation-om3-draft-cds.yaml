@@ -1,0 +1,762 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: validation-om3-draft-cds
+description: Schema verdict of every object of the OpenMath 3 effort draft content
+  dictionaries, on OpenMath 2 and OpenMath 3.
+boundary: validation
+cases:
+- id: openmath-om3draft-alg1-001-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-001-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-002-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-002-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-003-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="x"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 3
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-003-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="x"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 3
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-004-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 4
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-004-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 4
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-005-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 5
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-005-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="a"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 5
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-006-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="x"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 6
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-alg1-006-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMBIND>
+          <OMS cd="quant1" name="forall"/>
+          <OMBVAR>
+             <OMV name="x"/>
+          </OMBVAR>
+          <OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA>
+        </OMBIND>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD alg1
+    section: fmp 6
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-001-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="MathML_encoding"/>
+          <OMFOREIGN encoding="MathML-Presentation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+            </math>
+          </OMFOREIGN>
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-001-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="MathML_encoding"/>
+          <OMFOREIGN encoding="MathML-Presentation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+            </math>
+          </OMFOREIGN>
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-002-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+      <OMATP>
+       <OMS cd="altenc" name="MathML_encoding"/>
+       <OMFOREIGN encoding="MathML-Presentaion">
+        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn mathcolor="green">3</mn>
+        </mrow>
+        </OMFOREIGN>
+      </OMATP>
+       <OMA>
+         <OMS cd="arith1" name="plus"/>
+         <OMI>1</OMI>
+         <OMI>2</OMI>
+       </OMA>
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-002-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+      <OMATP>
+       <OMS cd="altenc" name="MathML_encoding"/>
+       <OMFOREIGN encoding="MathML-Presentaion">
+        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn mathcolor="green">3</mn>
+        </mrow>
+        </OMFOREIGN>
+      </OMATP>
+       <OMA>
+         <OMS cd="arith1" name="plus"/>
+         <OMI>1</OMI>
+         <OMI>2</OMI>
+       </OMA>
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-003-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 3
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-altenc-003-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 3
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-bigfloat1-001-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloat"/>
+            <OMV name="m"/>
+            <OMV name="r"/>
+            <OMV name="e"/>
+          </OMA>
+          <OMA>
+            <OMS cd="arith1" name="times"/>
+            <OMV name="m"/>
+            <OMA>
+              <OMS cd="arith1" name="power"/>
+              <OMV name="r"/>
+              <OMV name="e"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD bigfloat1
+    section: fmp 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-bigfloat1-001-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloat"/>
+            <OMV name="m"/>
+            <OMV name="r"/>
+            <OMV name="e"/>
+          </OMA>
+          <OMA>
+            <OMS cd="arith1" name="times"/>
+            <OMV name="m"/>
+            <OMA>
+              <OMS cd="arith1" name="power"/>
+              <OMV name="r"/>
+              <OMV name="e"/>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD bigfloat1
+    section: fmp 1
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-bigfloat1-002-v2.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloatprec"/>
+            <OMA>
+              <OMS cd="bigfloat1" name="bigfloat"/>
+              <OMV name="m"/>
+              <OMV name="r"/>
+              <OMV name="e"/>
+            </OMA>
+            <OMV name="r"/>
+            <OMA>
+              <OMS cd="rounding1" name="ceiling"/>
+              <OMA>
+                <OMS cd="transc1" name="log"/>
+                <OMV name="r"/>
+                <OMV name="m"/>
+              </OMA>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloat"/>
+            <OMV name="m"/>
+            <OMV name="r"/>
+            <OMV name="e"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD bigfloat1
+    section: fmp 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'
+- id: openmath-om3draft-bigfloat1-002-v3.validation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloatprec"/>
+            <OMA>
+              <OMS cd="bigfloat1" name="bigfloat"/>
+              <OMV name="m"/>
+              <OMV name="r"/>
+              <OMV name="e"/>
+            </OMA>
+            <OMV name="r"/>
+            <OMA>
+              <OMS cd="rounding1" name="ceiling"/>
+              <OMA>
+                <OMS cd="transc1" name="log"/>
+                <OMV name="r"/>
+                <OMV name="m"/>
+              </OMA>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="bigfloat1" name="bigfloat"/>
+            <OMV name="m"/>
+            <OMV name="r"/>
+            <OMV name="e"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD bigfloat1
+    section: fmp 2
+  expected:
+    model:
+      bool: true
+    output:
+      int: '0'

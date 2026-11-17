@@ -1,0 +1,2083 @@
+# Written by plurimath-testsuite scripts/supersede-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: evaluation-closed-examples-r2
+description: 'Generation 2 supersessions of evaluation-closed-examples: the answers
+  the current openmath gem returns for the rows its expansion changed. -r2 ids supersede
+  their originals (kept above); unrenamed ids are cases the wider selection adds.'
+boundary: evaluation
+cases:
+- id: openmath-eval-altenc-example-001-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="MathML_encoding"/>
+          <OMFOREIGN encoding="MathML-Presentation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+            </math>
+          </OMFOREIGN>
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-altenc-example-002-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+      <OMATP>
+       <OMS cd="altenc" name="MathML_encoding"/>
+       <OMFOREIGN encoding="MathML-Presentaion">
+        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn mathcolor="green">3</mn>
+        </mrow>
+        </OMFOREIGN>
+      </OMATP>
+       <OMA>
+         <OMS cd="arith1" name="plus"/>
+         <OMI>1</OMI>
+         <OMI>2</OMI>
+       </OMA>
+      </OMATTR>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD altenc
+    section: example 2
+  expected:
+    model:
+      int: '3'
+    output:
+      str: '{"ok":true,"value":{"kind":"integer","value":"3"}}'
+- id: openmath-eval-altenc-example-003-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-arith1-example-008.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMA>
+          <OMS cd="arith1" name="times"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 1 </OMI>
+              <OMI> 2 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 3 </OMI>
+              <OMI> 4 </OMI>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 5 </OMI>
+              <OMI> 6 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 7 </OMI>
+              <OMI> 8 </OMI>
+            </OMA>
+          </OMA>
+        </OMA>
+        <OMA>
+          <OMS cd="linalg2" name="matrix"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 19 </OMI>
+            <OMI> 22 </OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 43 </OMI>
+            <OMI> 50 </OMI>
+          </OMA>
+        </OMA>
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: example 8
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-arith1-example-014.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMA>
+          <OMS cd="arith1" name="power"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 1 </OMI>
+              <OMI> 2 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 3 </OMI>
+              <OMI> 4 </OMI>
+            </OMA>
+          </OMA>
+          <OMI>3</OMI>
+        </OMA>
+        <OMA>
+          <OMS cd="linalg2" name="matrix"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 37 </OMI>
+            <OMI> 54 </OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 81 </OMI>
+            <OMI> 118 </OMI>
+          </OMA>
+        </OMA>
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: example 14
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: NoMethodError
+- id: openmath-eval-arith1-example-015-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMA>
+          <OMS cd="arith1" name="power"/>
+          <OMS cd="nums1" name="e"/>
+          <OMA>
+            <OMS cd="arith1" name="times"/>
+            <OMS cd="nums1" name="i"/>
+            <OMS cd="nums1" name="pi"/>
+          </OMA>
+        </OMA>
+        <OMA>
+          <OMS cd="arith1" name="unary_minus"/>
+          <OMS cd="alg1" name="one"/>
+        </OMA>
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: example 15
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-complex1-example-007-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMS cd="nums1" name="i"/>
+        <OMA>
+          <OMS cd="complex1" name="complex_polar"/>
+          <OMS cd="alg1" name="one"/>
+          <OMA>
+            <OMS cd="arith1" name="divide"/>
+            <OMS cd="nums1" name="pi"/>
+            <OMI> 2 </OMI>
+          </OMA>
+        </OMA>
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD complex1
+    section: example 7
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-error-example-001-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unhandled_symbol"/>
+          <OMS cd="setname1" name="C"/>
+        </OME>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD error
+    section: example 1
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-error-example-002-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unexpected_symbol"/>
+          <OMS cd="arith1" name="plurse"/>
+        </OME>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD error
+    section: example 2
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-error-example-003-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unsupported_CD"/>
+          <OMS cd="specfun1" name="BesselJ"/>
+        </OME>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD error
+    section: example 3
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-interval1-example-003.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="interval1" name="interval"/>
+          <OMF dec="1.0"/>
+          <OMF dec="10.0"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD interval1
+    section: example 3
+  expected:
+    model:
+      node: Openmath::Evaluation::Interval
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Openmath::Evaluation::Interval"}}'
+- id: openmath-eval-interval1-example-007.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="interval1" name="interval_oo"/>
+          <OMI>1</OMI>
+          <OMI>10</OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD interval1
+    section: example 7
+  expected:
+    model:
+      node: Openmath::Evaluation::Interval
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Openmath::Evaluation::Interval"}}'
+- id: openmath-eval-interval1-example-011.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="interval1" name="interval_oc"/>
+          <OMI>1</OMI>
+          <OMI>10</OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD interval1
+    section: example 11
+  expected:
+    model:
+      node: Openmath::Evaluation::Interval
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Openmath::Evaluation::Interval"}}'
+- id: openmath-eval-interval1-example-013.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="interval1" name="interval_co"/>
+          <OMI>1</OMI>
+          <OMI>10</OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD interval1
+    section: example 13
+  expected:
+    model:
+      node: Openmath::Evaluation::Interval
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Openmath::Evaluation::Interval"}}'
+- id: openmath-eval-linalg1-example-004.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="linalg1" name="transpose"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrix"/>
+              <OMA>
+                <OMS cd="linalg2" name="matrixrow"/>
+                <OMI> 0 </OMI>
+                <OMI> 1 </OMI>
+              </OMA>
+              <OMA>
+                <OMS cd="linalg2" name="matrixrow"/>
+                <OMI> 2 </OMI>
+                <OMI> 3 </OMI>
+              </OMA>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrix"/>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 0 </OMI>
+              <OMI> 2 </OMI>
+            </OMA>
+            <OMA>
+              <OMS cd="linalg2" name="matrixrow"/>
+              <OMI> 1 </OMI>
+              <OMI> 3 </OMI>
+            </OMA>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD linalg1
+    section: example 4
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-linalg2-example-002.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrixrow"/>
+          <OMI> 1 </OMI>
+          <OMI> 0 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD linalg2
+    section: example 2
+  expected:
+    model:
+      node: Array
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Array"}}'
+- id: openmath-eval-linalg2-example-003.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="linalg2" name="matrix"/>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 1 </OMI>
+            <OMI> 0 </OMI>
+          </OMA>
+          <OMA>
+            <OMS cd="linalg2" name="matrixrow"/>
+            <OMI> 0 </OMI>
+            <OMI> 1 </OMI>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD linalg2
+    section: example 3
+  expected:
+    model:
+      node: Array
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Array"}}'
+- id: openmath-eval-list1-example-003.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="list1" name="list"/>
+          <OMI> 3 </OMI>
+          <OMI> 6 </OMI>
+          <OMI> 9 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD list1
+    section: example 3
+  expected:
+    model:
+      node: Array
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Array"}}'
+- id: openmath-eval-nums1-example-001.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+        <OMS cd="relation1" name="eq"/>
+        <OMI>8</OMI>
+        <OMA>
+          <OMS cd="nums1" name="based_integer"/>
+          <OMI>8</OMI>
+          <OMSTR>10</OMSTR>
+        </OMA>
+
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD nums1
+    section: example 1
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-nums1-example-003-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+        <OMS cd="nums1" name="rational"/>
+        <OMI>1</OMI>
+        <OMI>2</OMI>
+      </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD nums1
+    section: example 3
+  expected:
+    model:
+      node: Rational
+      fields:
+      - - numerator
+        - int: '1'
+      - - denominator
+        - int: '2'
+    output:
+      str: '{"ok":true,"value":{"kind":"rational","numerator":"1","denominator":"2"}}'
+- id: openmath-eval-nums1-example-006.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="approx"/>
+            <OMF dec="2.718"/>
+            <OMS cd="nums1" name="e"/>
+          </OMA>
+        </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD nums1
+    section: example 6
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-nums1-example-009.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="approx"/>
+            <OMF dec="3.142"/>
+            <OMS cd="nums1" name="pi"/>
+          </OMA>
+        </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD nums1
+    section: example 9
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-nums1-example-011.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="relation1" name="approx"/>
+            <OMF dec="0.577"/>
+            <OMS cd="nums1" name="gamma"/>
+          </OMA>
+        </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD nums1
+    section: example 11
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-relation1-example-002-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 3 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 2
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-004-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="lt"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 4 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 4
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-006-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="gt"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 2 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 6
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-008-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="neq"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 2 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 8
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-010-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="leq"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 4 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 10
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-012-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="geq"/>
+          <OMA>
+            <OMS cd="arith1" name="plus"/>
+            <OMI> 1 </OMI>
+            <OMI> 2 </OMI>
+          </OMA>
+          <OMI> 3 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 12
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-relation1-example-013.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="approx"/>
+          <OMS cd="nums1" name="pi"/>
+          <OMA>
+            <OMS cd="nums1" name="rational"/>
+            <OMI> 355 </OMI>
+            <OMI> 113 </OMI>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD relation1
+    section: example 13
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-scscp1-example-001-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_runtime"/>
+                  <OMI>300000</OMI>
+                  <OMS cd="scscp1" name="option_min_memory"/>
+                  <OMI>40964</OMI>
+                  <OMS cd="scscp1" name="option_max_memory"/>
+                  <OMI>134217728</OMI>
+                  <OMS cd="scscp1" name="option_debuglevel"/>
+                  <OMI>2</OMI>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp_transient_1" name="GroupIdentificationService"/>
+                    <OMA>
+                      <OMS cd="group1" name="group"/>
+                      <OMA>
+                        <OMS cd="permut1" name="permutation"/>
+                        <OMI> 2</OMI>
+                        <OMI> 3</OMI>
+                        <OMI> 1</OMI>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="permut1" name="permutation"/>
+                        <OMI> 1</OMI>
+                        <OMI> 2</OMI>
+                        <OMI> 4</OMI>
+                        <OMI> 3</OMI>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-002-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>a1d0c6e83f027327d8461063f4ac58a6</OMSTR>
+                  <OMS cd="scscp1" name="info_runtime"/>
+                  <OMI>72643</OMI>
+                  <OMS cd="scscp1" name="info_memory"/>
+                  <OMI>52876</OMI>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMI>26925748508234281076009</OMI>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-003-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>a1d0c6e83f027327d8461063f4ac58a6</OMSTR>
+                  <OMS cd="scscp1" name="info_runtime"/>
+                  <OMI>72643</OMI>
+                  <OMS cd="scscp1" name="info_memory"/>
+                  <OMI>52876</OMI>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMR href="scscp://somehost:26133/92cfceb39d57d914ed8b14d0e37643de0797ae56"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-004-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>a24904e5d3ed28eae9225fd787f64a71</OMSTR>
+                  <OMS cd="scscp1" name="info_runtime"/>
+                  <OMSTR>21897</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_terminated"/>
+                  <OME>
+                    <OMS cd="scscp1" name="error_system_specific"/>
+                    <OMSTR>Segmentation fault</OMSTR>
+                  </OME>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-005-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>a1d0c6e83f027327d8461063f4ac58a6</OMSTR>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 5
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-006-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_max_memory"/>
+                  <OMI>20971520</OMI>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 6
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-007-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_min_memory"/>
+                  <OMI>250971520</OMI>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 7
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-008-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_runtime"/>
+                  <OMI>600000</OMI>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 8
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-009-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_debuglevel"/>
+                  <OMI>2</OMI>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 9
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-010-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_return_cookie"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR>The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 10
+  expected:
+    model:
+      str: 'The OMA goes here '
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":"The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-011-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMR href="scscp://somehost.somedomain:26133/q9t4eX"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-012-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 12
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-013-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMI>42</OMI>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-014-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="option_return_nothing"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 14
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-015-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp1-example-016-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="info_memory"/>
+                  <OMI>134218000</OMI>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 16
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-017-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="info_runtime"/>
+                  <OMI>76543</OMI>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 17
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp1-example-018-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>localhost:26137:18668:s2sYf1pg</OMSTR>
+                  <OMS cd="scscp1" name="info_message"/>
+                  <OMSTR>The weather in St. Andrews is beautiful this time of year</OMSTR>
+                </OMATP>
+                <OMSTR> The OMA goes here </OMSTR>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp1
+    section: example 18
+  expected:
+    model:
+      str: " The OMA goes here "
+    output:
+      str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
+- id: openmath-eval-scscp2-example-001-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882860</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="store_session"/>
+                    <OMI>6177887</OMI>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-002-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882860</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMR href="scscp://somewhere:26133/qjhtkoeurthoedu"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-003-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882861</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="retrieve"/>
+                    <OMR href="scscp://somewhere:26133/qjhtkoeurthoedu"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-004-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882861</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMI>6177887</OMI>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-005-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882862</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="unbind"/>
+                    <OMR href="scscp://somewhere:26133/qjhtkoeurthoedu"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-006-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>9882862</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-007-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324765</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="get_allowed_heads"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-008-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324765</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="symbol_set"/>
+                    <OMS cd="scscp_transient_1" name="GroupIdentificationService"/>
+                    <OMS cd="group1" name="group"/>
+                    <OMA>
+                      <OMS cd="meta" name="CDName"/>
+                      <OMSTR>permut1</OMSTR>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="metagrp" name="CDGroupName"/>
+                      <OMSTR>scscp</OMSTR>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-009-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>xy87263</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="is_allowed_head"/>
+                    <OMS cd="arith1" name="plus"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-010-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>xy87263</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMS cd="logic1" name="false"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-011-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>xy87263</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="is_allowed_head"/>
+                    <OMS cd="scscp2" name="is_allowed_head"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-012-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>xy87263</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMS cd="logic1" name="true"/>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-013-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324766</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="get_transient_cd"/>
+                    <OMA>
+                      <OMS cd="meta" name="CDName"/>
+                      <OMSTR>scscp_transient_1</OMSTR>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-014-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324766</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="meta" name="CD"/>
+                    <OMA>
+                      <OMS cd="meta" name="CDName"/>
+                      <OMSTR>scscp_transient_1</OMSTR>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="meta" name="CDDate"/>
+                      <OMSTR>2007-08-24</OMSTR>
+                    </OMA>
+                    <OMA>
+                      <OMS cd="meta" name="Description"/>
+                      <OMSTR>CD created by the service provider</OMSTR>
+                    </OMA>
+                    <OMA>
+                      <OMS name="CDDefinition" cd="meta"/>
+                      <OMA>
+                        <OMS cd="meta" name="Name"/>
+                        <OMSTR>GroupIdentificationService</OMSTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="meta" name="Description"/>
+                        <OMSTR>IdGroup(permgroup by gens)</OMSTR>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-015-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324767</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="get_signature"/>
+                    <OMS cd="scscp_transient_1" name="GroupIdentificationService"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-016-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324769</OMSTR>
+                  <OMS cd="scscp1" name="option_return_object"/>
+                  <OMSTR/>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_call"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="get_service_description"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-017-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324767</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="signature"/>
+                    <OMS cd="scscp_transient_1" name="GroupIdentificationService"/>
+                    <OMI>1</OMI>
+                    <OMI>1</OMI>
+                    <OMA>
+                      <OMS cd="list1" name="list"/>
+                      <OMA>
+                        <OMS cd="scscp2" name="symbol_set"/>
+                        <OMS cd="group1" name="group"/>
+                        <OMA>
+                          <OMS cd="meta" name="CDName"/>
+                          <OMSTR>permut1</OMSTR>
+                        </OMA>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-018-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324767</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="signature"/>
+                    <OMS cd="scscp_transient_1" name="CAS_Service"/>
+                    <OMI>0</OMI>
+                    <OMS cd="nums1" name="infinity"/>
+                    <OMA>
+                      <OMS cd="list1" name="list"/>
+                      <OMA>
+                        <OMS cd="meta" name="CDGroupName"/>
+                        <OMSTR>scscp</OMSTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="meta" name="CDName"/>
+                        <OMSTR>scscp_transient_0</OMSTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="meta" name="CDName"/>
+                        <OMSTR>scscp_transient_1</OMSTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="meta" name="CDName"/>
+                        <OMSTR>arith1</OMSTR>
+                      </OMA>
+                      <OMA>
+                        <OMS cd="meta" name="CDName"/>
+                        <OMSTR>transc1</OMSTR>
+                      </OMA>
+                    </OMA>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-019-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324769</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="service_description"/>
+                    <OMSTR>MyGreatService</OMSTR>
+                    <OMSTR>1.1.0</OMSTR>
+                    <OMSTR>This service does fantastic things!</OMSTR>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-020-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OMATTR>
+                <OMATP>
+                  <OMS cd="scscp1" name="call_id"/>
+                  <OMSTR>1324767</OMSTR>
+                </OMATP>
+                <OMA>
+                  <OMS cd="scscp1" name="procedure_completed"/>
+                  <OMA>
+                    <OMS cd="scscp2" name="signature"/>
+                    <OMS cd="scscp_transient_1" name="Something"/>
+                    <OMI>0</OMI>
+                    <OMS cd="nums1" name="infinity"/>
+                    <OMS cd="scscp2" name="symbol_set_all"/>
+                  </OMA>
+                </OMA>
+              </OMATTR>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-scscp2-example-021-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath">
+              <OME>
+                <OMS cd="scscp2" name="no_such_transient_cd"/>
+                <OMSTR>scscp_transient_7</OMSTR>
+              </OME>
+            </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD scscp2
+    section: example 21
+  expected:
+    model:
+      node: Openmath::Evaluation::ErrorValue
+      fields:
+      - - cd
+        - str: scscp2
+      - - name
+        - str: no_such_transient_cd
+      - - arguments
+        - array:
+          - str: scscp_transient_7
+    output:
+      str: '{"ok":true,"value":{"kind":"error","cd":"scscp2","name":"no_such_transient_cd","arguments":[{"kind":"string","value":"scscp_transient_7"}]}}'
+- id: openmath-eval-set1-example-006.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="set1" name="size"/>
+            <OMA>
+              <OMS cd="set1" name="set"/>
+              <OMI> 3 </OMI>
+              <OMI> 6 </OMI>
+              <OMI> 9 </OMI>
+            </OMA>
+          </OMA>
+          <OMI> 3 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD set1
+    section: example 6
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-set1-example-007.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="set1" name="size"/>
+            <OMS cd="setname1" name="Z"/>
+          </OMA>
+          <OMS cd="nums1" name="infinity"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD set1
+    section: example 7
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-set1-example-009.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="set1" name="set"/>
+          <OMI> 3 </OMI>
+          <OMI> 6 </OMI>
+          <OMI> 9 </OMI>
+        </OMA>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD set1
+    section: example 9
+  expected:
+    model:
+      node: Array
+      fields: []
+    output:
+      str: '{"ok":true,"value":{"kind":"Array"}}'
+- id: openmath-eval-sts-example-007-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="binder" cd="sts"/>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD sts
+    section: example 7
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-sts-example-008-r2.evaluation
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="attribution" cd="sts"/>
+      </OMOBJ>
+  options:
+    variables: "{}"
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD sts
+    section: example 8
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError

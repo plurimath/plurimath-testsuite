@@ -1,0 +1,94 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: validation-standard-examples
+description: Schema verdict of each complete OMOBJ printed in the OpenMath 2.0 standard
+  source, on OpenMath 2 and OpenMath 3.
+boundary: validation
+cases:
+- id: openmath-standard-l2430-v2.validation
+  input:
+    str: "<OMOBJ version=\"2.0\">\n  <OMA id=\"foo\">\n    <OMS cd=\"arith1\" name=\"divide\"/>\n
+      \   <OMI>1</OMI>\n    <OMA>\n       <OMS cd=\"arith1\" name=\"plus\"/>\n       <OMI>1</OMI>\n
+      \      <OMR xref=\"foo\"/>\n    </OMA> \n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 2.0 standard (omstd20.xml)
+    section: line 2430
+  expected:
+    model:
+      bool: false
+    output:
+      int: '1'
+- id: openmath-standard-l2430-v3.validation
+  input:
+    str: "<OMOBJ version=\"2.0\">\n  <OMA id=\"foo\">\n    <OMS cd=\"arith1\" name=\"divide\"/>\n
+      \   <OMI>1</OMI>\n    <OMA>\n       <OMS cd=\"arith1\" name=\"plus\"/>\n       <OMI>1</OMI>\n
+      \      <OMR xref=\"foo\"/>\n    </OMA> \n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 2.0 standard (omstd20.xml)
+    section: line 2430
+  expected:
+    model:
+      bool: false
+    output:
+      int: '1'
+- id: openmath-standard-l3993-v2.validation
+  input:
+    str: |
+      <OMOBJ version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS name="times" cd="arith1"/>
+          <OMA>
+            <OMS name="plus" cd="arith1"/>
+            <OMV name="x"/>
+            <OMV name="y"/>
+          </OMA>
+          <OMA>
+            <OMS name="plus" cd="arith1"/>
+            <OMV name="x"/>
+            <OMV name="z"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 2.0 standard (omstd20.xml)
+    section: line 3993
+  expected:
+    model:
+      bool: false
+    output:
+      int: '1'
+- id: openmath-standard-l3993-v3.validation
+  input:
+    str: |
+      <OMOBJ version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS name="times" cd="arith1"/>
+          <OMA>
+            <OMS name="plus" cd="arith1"/>
+            <OMV name="x"/>
+            <OMV name="y"/>
+          </OMA>
+          <OMA>
+            <OMS name="plus" cd="arith1"/>
+            <OMV name="x"/>
+            <OMV name="z"/>
+          </OMA>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 2.0 standard (omstd20.xml)
+    section: line 3993
+  expected:
+    model:
+      bool: false
+    output:
+      int: '1'
