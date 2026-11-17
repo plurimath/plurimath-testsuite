@@ -1,0 +1,621 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: roundtrip-error
+description: Openmath.parse and to_xml for every OpenMath object in the official error
+  content dictionary, on OpenMath 2 and OpenMath 3. A refusal names the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: openmath-error-001-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unhandled_symbol"/>
+          <OMS cd="setname1" name="C"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD error
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V2::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: unhandled_symbol
+                  - - cd
+                    - str: error
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: C
+                  - - cd
+                    - str: setname1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unhandled_symbol"/>
+            <OMS cd="setname1" name="C"/>
+          </OME>
+        </OMOBJ>
+- id: openmath-error-001-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unhandled_symbol"/>
+          <OMS cd="setname1" name="C"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD error
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V3::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: unhandled_symbol
+                  - - cd
+                    - str: error
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: C
+                  - - cd
+                    - str: setname1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unhandled_symbol"/>
+            <OMS cd="setname1" name="C"/>
+          </OME>
+        </OMOBJ>
+- id: openmath-error-002-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unexpected_symbol"/>
+          <OMS cd="arith1" name="plurse"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD error
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V2::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: unexpected_symbol
+                  - - cd
+                    - str: error
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: plurse
+                  - - cd
+                    - str: arith1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unexpected_symbol"/>
+            <OMS cd="arith1" name="plurse"/>
+          </OME>
+        </OMOBJ>
+- id: openmath-error-002-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unexpected_symbol"/>
+          <OMS cd="arith1" name="plurse"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD error
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V3::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: unexpected_symbol
+                  - - cd
+                    - str: error
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: plurse
+                  - - cd
+                    - str: arith1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unexpected_symbol"/>
+            <OMS cd="arith1" name="plurse"/>
+          </OME>
+        </OMOBJ>
+- id: openmath-error-003-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unsupported_CD"/>
+          <OMS cd="specfun1" name="BesselJ"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD error
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V2::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: unsupported_CD
+                  - - cd
+                    - str: error
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: BesselJ
+                  - - cd
+                    - str: specfun1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unsupported_CD"/>
+            <OMS cd="specfun1" name="BesselJ"/>
+          </OME>
+        </OMOBJ>
+- id: openmath-error-003-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OME>
+          <OMS cd="error" name="unsupported_CD"/>
+          <OMS cd="specfun1" name="BesselJ"/>
+        </OME>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD error
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - ome_value
+        - array:
+          - node: Openmath::V3::Ome
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: unsupported_CD
+                  - - cd
+                    - str: error
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: BesselJ
+                  - - cd
+                    - str: specfun1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OME
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OME>
+            <OMS cd="error" name="unsupported_CD"/>
+            <OMS cd="specfun1" name="BesselJ"/>
+          </OME>
+        </OMOBJ>

@@ -1,0 +1,2929 @@
+# Written by plurimath-testsuite scripts/generate-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: roundtrip-sts
+description: Openmath.parse and to_xml for every OpenMath object in the official sts
+  content dictionary, on OpenMath 2 and OpenMath 3. A refusal names the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: openmath-sts-001-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMATTR>
+          <OMATP>
+             <OMS cd="sts" name="type"/>
+             <OMS name="C" cd="setname1"/>
+          </OMATP>
+          <OMV name="z"/>
+        </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V2::Omattr
+            fields:
+            - - omv_value
+              - array:
+                - node: Openmath::V2::Omv
+                  fields:
+                  - - name
+                    - str: z
+            - - omatp_value
+              - array:
+                - node: Openmath::V2::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: type
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: C
+                        - - cd
+                          - str: setname1
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n       "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n       "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="sts" name="type"/>
+              <OMS name="C" cd="setname1"/>
+            </OMATP>
+            <OMV name="z"/>
+          </OMATTR>
+        </OMOBJ>
+- id: openmath-sts-001-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMATTR>
+          <OMATP>
+             <OMS cd="sts" name="type"/>
+             <OMS name="C" cd="setname1"/>
+          </OMATP>
+          <OMV name="z"/>
+        </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V3::Omattr
+            fields:
+            - - omv_value
+              - array:
+                - node: Openmath::V3::Omv
+                  fields:
+                  - - name
+                    - str: z
+            - - omatp_value
+              - array:
+                - node: Openmath::V3::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: type
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: C
+                        - - cd
+                          - str: setname1
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n       "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n       "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="sts" name="type"/>
+              <OMS name="C" cd="setname1"/>
+            </OMATP>
+            <OMV name="z"/>
+          </OMATTR>
+        </OMOBJ>
+- id: openmath-sts-002-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMS cd="setname1" name="R"/>
+          <OMS cd="setname1" name="Z"/>
+          <OMS cd="setname1" name="R"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: R
+                  - - cd
+                    - str: setname1
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: Z
+                  - - cd
+                    - str: setname1
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: R
+                  - - cd
+                    - str: setname1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMS cd="setname1" name="R"/>
+            <OMS cd="setname1" name="Z"/>
+            <OMS cd="setname1" name="R"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-002-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMS cd="setname1" name="R"/>
+          <OMS cd="setname1" name="Z"/>
+          <OMS cd="setname1" name="R"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: R
+                  - - cd
+                    - str: setname1
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: Z
+                  - - cd
+                    - str: setname1
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: R
+                  - - cd
+                    - str: setname1
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMS cd="setname1" name="R"/>
+            <OMS cd="setname1" name="Z"/>
+            <OMS cd="setname1" name="R"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-003-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMA>
+        <OMS name="mapsto" cd="sts"/>
+         <OMA>
+           <OMS name="nary" cd="sts"/>
+           <OMS name="Object" cd="sts"/>
+         </OMA>
+        <OMS name="Object" cd="sts"/>
+       </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: Object
+                  - - cd
+                    - str: sts
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: nary
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: Object
+                        - - cd
+                          - str: sts
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n   "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nary" cd="sts"/>
+              <OMS name="Object" cd="sts"/>
+            </OMA>
+            <OMS name="Object" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-003-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMA>
+        <OMS name="mapsto" cd="sts"/>
+         <OMA>
+           <OMS name="nary" cd="sts"/>
+           <OMS name="Object" cd="sts"/>
+         </OMA>
+        <OMS name="Object" cd="sts"/>
+       </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 3
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: Object
+                  - - cd
+                    - str: sts
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: nary
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: Object
+                        - - cd
+                          - str: sts
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n   "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nary" cd="sts"/>
+              <OMS name="Object" cd="sts"/>
+            </OMA>
+            <OMS name="Object" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-004-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS name=\"mapsto\" cd=\"sts\"/>\n    <OMA>\n      <OMS name=\"nassoc\"
+      cd=\"sts\"/> \n      <OMV name=\"AbelianSemiGroup\"/>\n    </OMA>\n    <OMV
+      name=\"AbelianSemiGroup\"/>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 4
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V2::Omv
+                  fields:
+                  - - name
+                    - str: AbelianSemiGroup
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: nassoc
+                        - - cd
+                          - str: sts
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: AbelianSemiGroup
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " \n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nassoc" cd="sts"/>
+              <OMV name="AbelianSemiGroup"/>
+            </OMA>
+            <OMV name="AbelianSemiGroup"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-004-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      \ <OMA>\n    <OMS name=\"mapsto\" cd=\"sts\"/>\n    <OMA>\n      <OMS name=\"nassoc\"
+      cd=\"sts\"/> \n      <OMV name=\"AbelianSemiGroup\"/>\n    </OMA>\n    <OMV
+      name=\"AbelianSemiGroup\"/>\n  </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 4
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V3::Omv
+                  fields:
+                  - - name
+                    - str: AbelianSemiGroup
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: nassoc
+                        - - cd
+                          - str: sts
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: AbelianSemiGroup
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " \n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nassoc" cd="sts"/>
+              <OMV name="AbelianSemiGroup"/>
+            </OMA>
+            <OMV name="AbelianSemiGroup"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-005-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMV name="OMSymbol"/>
+          <OMS name="error" cd="sts"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 5
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: error
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V2::Omv
+                  fields:
+                  - - name
+                    - str: OMSymbol
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMV name="OMSymbol"/>
+            <OMS name="error" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-005-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMV name="OMSymbol"/>
+          <OMS name="error" cd="sts"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 5
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: error
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V3::Omv
+                  fields:
+                  - - name
+                    - str: OMSymbol
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMV name="OMSymbol"/>
+            <OMS name="error" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-006-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMA>
+            <OMS cd="sts" name="structure"/>
+            <OMV name="set"/>
+          </OMA>
+          <OMV name="set"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 6
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V2::Omv
+                  fields:
+                  - - name
+                    - str: set
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: structure
+                        - - cd
+                          - str: sts
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V2::Omv
+                        fields:
+                        - - name
+                          - str: set
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMA>
+              <OMS cd="sts" name="structure"/>
+              <OMV name="set"/>
+            </OMA>
+            <OMV name="set"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-006-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+        <OMA>
+          <OMS cd="sts" name="mapsto"/>
+          <OMA>
+            <OMS cd="sts" name="structure"/>
+            <OMV name="set"/>
+          </OMA>
+          <OMV name="set"/>
+        </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 6
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+            - - omv_value
+              - array:
+                - node: Openmath::V3::Omv
+                  fields:
+                  - - name
+                    - str: set
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: structure
+                        - - cd
+                          - str: sts
+                  - - omv_value
+                    - array:
+                      - node: Openmath::V3::Omv
+                        fields:
+                        - - name
+                          - str: set
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMV
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMV
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS cd="sts" name="mapsto"/>
+            <OMA>
+              <OMS cd="sts" name="structure"/>
+              <OMV name="set"/>
+            </OMA>
+            <OMV name="set"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-007-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="binder" cd="sts"/>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 7
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oms_value
+        - array:
+          - node: Openmath::V2::Oms
+            fields:
+            - - name
+              - str: binder
+            - - cd
+              - str: sts
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMS
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMS name="binder" cd="sts"/>
+        </OMOBJ>
+- id: openmath-sts-007-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="binder" cd="sts"/>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 7
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oms_value
+        - array:
+          - node: Openmath::V3::Oms
+            fields:
+            - - name
+              - str: binder
+            - - cd
+              - str: sts
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMS
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMS name="binder" cd="sts"/>
+        </OMOBJ>
+- id: openmath-sts-008-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="attribution" cd="sts"/>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 8
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oms_value
+        - array:
+          - node: Openmath::V2::Oms
+            fields:
+            - - name
+              - str: attribution
+            - - cd
+              - str: sts
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMS
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMS name="attribution" cd="sts"/>
+        </OMOBJ>
+- id: openmath-sts-008-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMS name="attribution" cd="sts"/>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 8
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oms_value
+        - array:
+          - node: Openmath::V3::Oms
+            fields:
+            - - name
+              - str: attribution
+            - - cd
+              - str: sts
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMS
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMS name="attribution" cd="sts"/>
+        </OMOBJ>
+- id: openmath-sts-009-v2.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMA>
+        <OMS name="mapsto" cd="sts"/>
+         <OMA>
+           <OMS name="nary" cd="sts"/>
+           <OMS name="Object" cd="sts"/>
+         </OMA>
+        <OMS name="Object" cd="sts"/>
+       </OMA>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 9
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: Object
+                  - - cd
+                    - str: sts
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: nary
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: Object
+                        - - cd
+                          - str: sts
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n   "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nary" cd="sts"/>
+              <OMS name="Object" cd="sts"/>
+            </OMA>
+            <OMS name="Object" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-009-v3.model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+       <OMA>
+        <OMS name="mapsto" cd="sts"/>
+         <OMA>
+           <OMS name="nary" cd="sts"/>
+           <OMS name="Object" cd="sts"/>
+         </OMA>
+        <OMS name="Object" cd="sts"/>
+       </OMA>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 9
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: Object
+                  - - cd
+                    - str: sts
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: nary
+                        - - cd
+                          - str: sts
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: Object
+                        - - cd
+                          - str: sts
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n   "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMA>
+              <OMS name="nary" cd="sts"/>
+              <OMS name="Object" cd="sts"/>
+            </OMA>
+            <OMS name="Object" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-010-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      <OMA>\n  <OMS name=\"mapsto\" cd=\"sts\"/>\n  <OMS name=\"NumericalValue\" cd=\"sts\"/>
+      \n  <OMS name=\"NumericalValue\" cd=\"sts\"/> \n  <OMS name=\"NumericalValue\"
+      cd=\"sts\"/> \n </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 10
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-010-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      <OMA>\n  <OMS name=\"mapsto\" cd=\"sts\"/>\n  <OMS name=\"NumericalValue\" cd=\"sts\"/>
+      \n  <OMS name=\"NumericalValue\" cd=\"sts\"/> \n  <OMS name=\"NumericalValue\"
+      cd=\"sts\"/> \n </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 10
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-011-v2.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      <OMA>\n  <OMS name=\"mapsto\" cd=\"sts\"/>\n  <OMS name=\"NumericalValue\" cd=\"sts\"/>
+      \n  <OMS name=\"SetNumericalValue\" cd=\"sts\"/> \n </OMA>\n</OMOBJ>\n"
+  options:
+    version: '2'
+  spec:
+    document: OpenMath CD sts
+    section: example 11
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V2::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V2::Oms
+                  fields:
+                  - - name
+                    - str: SetNumericalValue
+                  - - cd
+                    - str: sts
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="SetNumericalValue" cd="sts"/>
+          </OMA>
+        </OMOBJ>
+- id: openmath-sts-011-v3.model-roundtrip
+  input:
+    str: "<OMOBJ xmlns=\"http://www.openmath.org/OpenMath\" version=\"2.0\" cdbase=\"http://www.openmath.org/cd\">\n
+      <OMA>\n  <OMS name=\"mapsto\" cd=\"sts\"/>\n  <OMS name=\"NumericalValue\" cd=\"sts\"/>
+      \n  <OMS name=\"SetNumericalValue\" cd=\"sts\"/> \n </OMA>\n</OMOBJ>\n"
+  options:
+    version: '3'
+  spec:
+    document: OpenMath CD sts
+    section: example 11
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - oma_value
+        - array:
+          - node: Openmath::V3::Oma
+            fields:
+            - - oms_value
+              - array:
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: mapsto
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: NumericalValue
+                  - - cd
+                    - str: sts
+                - node: Openmath::V3::Oms
+                  fields:
+                  - - name
+                    - str: SetNumericalValue
+                  - - cd
+                    - str: sts
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMS
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " \n "
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMA
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMA>
+            <OMS name="mapsto" cd="sts"/>
+            <OMS name="NumericalValue" cd="sts"/>
+            <OMS name="SetNumericalValue" cd="sts"/>
+          </OMA>
+        </OMOBJ>

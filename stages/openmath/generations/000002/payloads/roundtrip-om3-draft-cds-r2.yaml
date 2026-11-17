@@ -1,0 +1,1153 @@
+# Written by plurimath-testsuite scripts/supersede-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: roundtrip-om3-draft-cds-r2
+description: 'Generation 2 supersessions of roundtrip-om3-draft-cds: the answers the
+  current openmath gem returns for the rows its expansion changed. -r2 ids supersede
+  their originals (kept above); unrenamed ids are cases the wider selection adds.'
+boundary: model-roundtrip
+cases:
+- id: openmath-om3draft-altenc-001-v2-r2model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="MathML_encoding"/>
+          <OMFOREIGN encoding="MathML-Presentation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+            </math>
+          </OMFOREIGN>
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V2::Omattr
+            fields:
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: sin
+                        - - cd
+                          - str: transc1
+                  - - omf_value
+                    - array:
+                      - node: Openmath::V2::Omf
+                        fields:
+                        - - dec
+                          - str: '1.5'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMF
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n  "
+            - - omatp_value
+              - array:
+                - node: Openmath::V2::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: MathML_encoding
+                        - - cd
+                          - str: altenc
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: LaTeX_encoding
+                        - - cd
+                          - str: altenc
+                  - - omstr_value
+                    - array:
+                      - node: Openmath::V2::Omstr
+                        fields:
+                        - - value
+                          - array:
+                            - str: "\n    \\sin(1.5)\n    "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n    \\sin(1.5)\n    "
+                  - - omforeign_value
+                    - array:
+                      - node: Openmath::V2::Omforeign
+                        fields:
+                        - - foreign_encoding
+                          - str: MathML-Presentation
+                        - - notom_value
+                          - array:
+                            - str: |-
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+                                      </math>
+                        - - notom_positions
+                          - array:
+                            - int: '0'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: math
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n    "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMFOREIGN
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMSTR
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n\n  "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n\n"
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="altenc" name="MathML_encoding"/>
+              <OMFOREIGN encoding="MathML-Presentation"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+              </math></OMFOREIGN>
+              <OMS cd="altenc" name="LaTeX_encoding"/>
+              <OMSTR>
+            \sin(1.5)
+            </OMSTR>
+            </OMATP>
+            <OMA>
+              <OMS cd="transc1" name="sin"/>
+              <OMF dec="1.5"/>
+            </OMA>
+          </OMATTR>
+        </OMOBJ>
+- id: openmath-om3draft-altenc-001-v3-r2model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+        <OMATP>
+
+          <OMS cd="altenc" name="MathML_encoding"/>
+          <OMFOREIGN encoding="MathML-Presentation">
+            <math xmlns="http://www.w3.org/1998/Math/MathML">
+              <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+            </math>
+          </OMFOREIGN>
+          <OMS cd="altenc" name="LaTeX_encoding"/>
+          <OMSTR>
+          \sin(1.5)
+          </OMSTR>
+
+        </OMATP>
+
+        <OMA>
+          <OMS cd="transc1" name="sin"/>
+          <OMF dec="1.5"/>
+        </OMA>
+
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 1
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V3::Omattr
+            fields:
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: sin
+                        - - cd
+                          - str: transc1
+                  - - omf_value
+                    - array:
+                      - node: Openmath::V3::Omf
+                        fields:
+                        - - dec
+                          - str: '1.5'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMF
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n  "
+            - - omatp_value
+              - array:
+                - node: Openmath::V3::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: MathML_encoding
+                        - - cd
+                          - str: altenc
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: LaTeX_encoding
+                        - - cd
+                          - str: altenc
+                  - - omstr_value
+                    - array:
+                      - node: Openmath::V3::Omstr
+                        fields:
+                        - - value
+                          - array:
+                            - str: "\n    \\sin(1.5)\n    "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n    \\sin(1.5)\n    "
+                  - - omforeign_value
+                    - array:
+                      - node: Openmath::V3::Omforeign
+                        fields:
+                        - - foreign_encoding
+                          - str: MathML-Presentation
+                        - - notom_value
+                          - array:
+                            - str: |-
+                                <math xmlns="http://www.w3.org/1998/Math/MathML">
+                                        <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+                                      </math>
+                        - - notom_positions
+                          - array:
+                            - int: '0'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: math
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n    "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMFOREIGN
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMSTR
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n\n  "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n\n  "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n\n"
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="altenc" name="MathML_encoding"/>
+              <OMFOREIGN encoding="MathML-Presentation"><math xmlns="http://www.w3.org/1998/Math/MathML">
+                <mi>sin</mi><mfenced><mn>1.5</mn></mfenced>
+              </math></OMFOREIGN>
+              <OMS cd="altenc" name="LaTeX_encoding"/>
+              <OMSTR>
+            \sin(1.5)
+            </OMSTR>
+            </OMATP>
+            <OMA>
+              <OMS cd="transc1" name="sin"/>
+              <OMF dec="1.5"/>
+            </OMA>
+          </OMATTR>
+        </OMOBJ>
+- id: openmath-om3draft-altenc-002-v2-r2model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+      <OMATP>
+       <OMS cd="altenc" name="MathML_encoding"/>
+       <OMFOREIGN encoding="MathML-Presentaion">
+        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn mathcolor="green">3</mn>
+        </mrow>
+        </OMFOREIGN>
+      </OMATP>
+       <OMA>
+         <OMS cd="arith1" name="plus"/>
+         <OMI>1</OMI>
+         <OMI>2</OMI>
+       </OMA>
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '2'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V2::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V2::Omattr
+            fields:
+            - - oma_value
+              - array:
+                - node: Openmath::V2::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: plus
+                        - - cd
+                          - str: arith1
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: '1'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '1'
+                      - node: Openmath::V2::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: '2'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '2'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+            - - omatp_value
+              - array:
+                - node: Openmath::V2::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V2::Oms
+                        fields:
+                        - - name
+                          - str: MathML_encoding
+                        - - cd
+                          - str: altenc
+                  - - omforeign_value
+                    - array:
+                      - node: Openmath::V2::Omforeign
+                        fields:
+                        - - foreign_encoding
+                          - str: MathML-Presentaion
+                        - - notom_value
+                          - array:
+                            - str: |-
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                  <mn mathcolor="green">3</mn>
+                                  </mrow>
+                        - - notom_positions
+                          - array:
+                            - int: '0'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n  "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mrow
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n  "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMFOREIGN
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n"
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n"
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="altenc" name="MathML_encoding"/>
+              <OMFOREIGN encoding="MathML-Presentaion"><mrow xmlns="http://www.w3.org/1998/Math/MathML">
+          <mn mathcolor="green">3</mn>
+          </mrow></OMFOREIGN>
+            </OMATP>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMI>1</OMI>
+              <OMI>2</OMI>
+            </OMA>
+          </OMATTR>
+        </OMOBJ>
+- id: openmath-om3draft-altenc-002-v3-r2model-roundtrip
+  input:
+    str: |
+      <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+      <OMATTR>
+      <OMATP>
+       <OMS cd="altenc" name="MathML_encoding"/>
+       <OMFOREIGN encoding="MathML-Presentaion">
+        <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+        <mn mathcolor="green">3</mn>
+        </mrow>
+        </OMFOREIGN>
+      </OMATP>
+       <OMA>
+         <OMS cd="arith1" name="plus"/>
+         <OMI>1</OMI>
+         <OMI>2</OMI>
+       </OMA>
+      </OMATTR>
+      </OMOBJ>
+  options:
+    version: '3'
+  spec:
+    document: OpenMath 3 effort CD altenc
+    section: example 2
+  expected:
+    model:
+      node: Openmath::V3::Omobj
+      fields:
+      - - omattr_value
+        - array:
+          - node: Openmath::V3::Omattr
+            fields:
+            - - oma_value
+              - array:
+                - node: Openmath::V3::Oma
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: plus
+                        - - cd
+                          - str: arith1
+                  - - omi_value
+                    - array:
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: '1'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '1'
+                      - node: Openmath::V3::Omi
+                        fields:
+                        - - value
+                          - array:
+                            - str: '2'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '2'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n   "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMI
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+            - - omatp_value
+              - array:
+                - node: Openmath::V3::Omatp
+                  fields:
+                  - - oms_value
+                    - array:
+                      - node: Openmath::V3::Oms
+                        fields:
+                        - - name
+                          - str: MathML_encoding
+                        - - cd
+                          - str: altenc
+                  - - omforeign_value
+                    - array:
+                      - node: Openmath::V3::Omforeign
+                        fields:
+                        - - foreign_encoding
+                          - str: MathML-Presentaion
+                        - - notom_value
+                          - array:
+                            - str: |-
+                                <mrow xmlns="http://www.w3.org/1998/Math/MathML">
+                                  <mn mathcolor="green">3</mn>
+                                  </mrow>
+                        - - notom_positions
+                          - array:
+                            - int: '0'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n  "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mrow
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n  "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMS
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: OMFOREIGN
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n"
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMATP
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: OMA
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n"
+      - - cdbase
+        - str: http://www.openmath.org/cd
+      - - version
+        - str: '2.0'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: OMATTR
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
+          <OMATTR>
+            <OMATP>
+              <OMS cd="altenc" name="MathML_encoding"/>
+              <OMFOREIGN encoding="MathML-Presentaion"><mrow xmlns="http://www.w3.org/1998/Math/MathML">
+          <mn mathcolor="green">3</mn>
+          </mrow></OMFOREIGN>
+            </OMATP>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMI>1</OMI>
+              <OMI>2</OMI>
+            </OMA>
+          </OMATTR>
+        </OMOBJ>

@@ -1,0 +1,4387 @@
+# Written by plurimath-testsuite scripts/supersede-openmath-stage.rb. Do not edit.
+---
+schema: plurimath-stage/openmath/cases/1
+group: evaluation-fmp-instances-r2
+description: 'Generation 2 supersessions of evaluation-fmp-instances: the answers
+  the current openmath gem returns for the rows its expansion changed. -r2 ids supersede
+  their originals (kept above); unrenamed ids are cases the wider selection adds.'
+boundary: evaluation
+cases:
+- id: openmath-eval-alg1-fmp-001-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-001-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-001-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-001-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-002-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-002-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-002-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-002-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="zero"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-003-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-003-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-003-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-003-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>0</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-004-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-004-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-004-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-004-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMS cd="alg1" name="one"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-005-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-005-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-005-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-005-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="times"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+            <OMV name="a"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-006-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-006-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-006-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-alg1-fmp-006-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="set1" name="in"/>
+                <OMV name="x"/>
+                <OMS cd="setname1" name="Z"/>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="eq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMV name="x"/>
+            <OMI>1</OMI>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD alg1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-002-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"relation1\" name=\"gt\"/>\n              <OMV name=\"c\"/>\n              <OMI>0</OMI>\n
+      \         </OMA>\n          <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n
+      \             <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n              <OMV
+      name=\"b\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n          <OMA>\n
+      \           <OMS cd=\"relation1\" name=\"lt\"/>\n            <OMV name=\"c\"/>\n
+      \           <OMA>\n              <OMS cd=\"arith1\" name=\"lcm\"/>\n              <OMV
+      name=\"a\"/>\n              <OMV name=\"b\"/>\n            </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMBIND>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":1,"b":2,"c":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-002-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"relation1\" name=\"gt\"/>\n              <OMV name=\"c\"/>\n              <OMI>0</OMI>\n
+      \         </OMA>\n          <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n
+      \             <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n              <OMV
+      name=\"b\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n          <OMA>\n
+      \           <OMS cd=\"relation1\" name=\"lt\"/>\n            <OMV name=\"c\"/>\n
+      \           <OMA>\n              <OMS cd=\"arith1\" name=\"lcm\"/>\n              <OMV
+      name=\"a\"/>\n              <OMV name=\"b\"/>\n            </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMBIND>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-1,"b":0,"c":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-002-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"relation1\" name=\"gt\"/>\n              <OMV name=\"c\"/>\n              <OMI>0</OMI>\n
+      \         </OMA>\n          <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n
+      \             <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"integer1\" name=\"factorof\"/>\n              <OMV
+      name=\"b\"/>\n              <OMV name=\"c\"/>\n          </OMA>\n          <OMA>\n
+      \           <OMS cd=\"relation1\" name=\"lt\"/>\n            <OMV name=\"c\"/>\n
+      \           <OMA>\n              <OMS cd=\"arith1\" name=\"lcm\"/>\n              <OMV
+      name=\"a\"/>\n              <OMV name=\"b\"/>\n            </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMBIND>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":2,"c":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-003-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"set1\" name=\"in\"/>\n            <OMA>\n              <OMS cd=\"arith1\"
+      name=\"divide\"/>\n              <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n
+      \           </OMA>\n            <OMS cd=\"setname1\" name=\"Z\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"set1\" name=\"in\"/>\n            <OMA>\n
+      \             <OMS cd=\"arith1\" name=\"divide\"/>\n              <OMV name=\"b\"/>\n
+      \             <OMV name=\"c\"/>\n            </OMA>\n            <OMS cd=\"setname1\"
+      name=\"Z\"/>\n          </OMA>\n          <OMA>\n            <OMS cd=\"relation1\"
+      name=\"gt\"/>\n            <OMV name=\"c\"/>\n            <OMA>\n              <OMS
+      cd=\"arith1\" name=\"gcd\"/>\n              <OMV name=\"a\"/>\n              <OMV
+      name=\"b\"/>\n            </OMA>\n          </OMA>\n        </OMA>\n      </OMBIND>\n
+      \   </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":1,"b":2,"c":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-003-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"set1\" name=\"in\"/>\n            <OMA>\n              <OMS cd=\"arith1\"
+      name=\"divide\"/>\n              <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n
+      \           </OMA>\n            <OMS cd=\"setname1\" name=\"Z\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"set1\" name=\"in\"/>\n            <OMA>\n
+      \             <OMS cd=\"arith1\" name=\"divide\"/>\n              <OMV name=\"b\"/>\n
+      \             <OMV name=\"c\"/>\n            </OMA>\n            <OMS cd=\"setname1\"
+      name=\"Z\"/>\n          </OMA>\n          <OMA>\n            <OMS cd=\"relation1\"
+      name=\"gt\"/>\n            <OMV name=\"c\"/>\n            <OMA>\n              <OMS
+      cd=\"arith1\" name=\"gcd\"/>\n              <OMV name=\"a\"/>\n              <OMV
+      name=\"b\"/>\n            </OMA>\n          </OMA>\n        </OMA>\n      </OMBIND>\n
+      \   </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-1,"b":0,"c":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-003-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"logic1\" name=\"not\"/>\n      <OMBIND>\n        <OMS cd=\"quant1\" name=\"exists\"/>\n
+      \       <OMBVAR>\n          <OMV name=\"c\"/>\n        </OMBVAR>\n        <OMA>\n
+      \         <OMS cd=\"logic1\" name=\"and\"/>\n          <OMA>\n            <OMS
+      cd=\"set1\" name=\"in\"/>\n            <OMA>\n              <OMS cd=\"arith1\"
+      name=\"divide\"/>\n              <OMV name=\"a\"/>\n              <OMV name=\"c\"/>\n
+      \           </OMA>\n            <OMS cd=\"setname1\" name=\"Z\"/>\n          </OMA>\n
+      \         <OMA>\n            <OMS cd=\"set1\" name=\"in\"/>\n            <OMA>\n
+      \             <OMS cd=\"arith1\" name=\"divide\"/>\n              <OMV name=\"b\"/>\n
+      \             <OMV name=\"c\"/>\n            </OMA>\n            <OMS cd=\"setname1\"
+      name=\"Z\"/>\n          </OMA>\n          <OMA>\n            <OMS cd=\"relation1\"
+      name=\"gt\"/>\n            <OMV name=\"c\"/>\n            <OMA>\n              <OMS
+      cd=\"arith1\" name=\"gcd\"/>\n              <OMV name=\"a\"/>\n              <OMV
+      name=\"b\"/>\n            </OMA>\n          </OMA>\n        </OMA>\n      </OMBIND>\n
+      \   </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":2,"c":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-005-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="b"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0,"b":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 5, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-005-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="b"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":2,"b":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 5, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-005-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="b"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-4,"b":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 5, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-005-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="b"/>
+              <OMV name="a"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":7,"b":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 5, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-006-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                 <OMS cd="arith1" name="unary_minus"/>
+                 <OMV name="a"/>
+              </OMA>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-006-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                 <OMS cd="arith1" name="unary_minus"/>
+                 <OMV name="a"/>
+              </OMA>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-006-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                 <OMS cd="arith1" name="unary_minus"/>
+                 <OMV name="a"/>
+              </OMA>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-006-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                 <OMS cd="arith1" name="unary_minus"/>
+                 <OMV name="a"/>
+              </OMA>
+            </OMA>
+            <OMS cd="alg1" name="zero"/>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-007-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="minus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="arith1" name="unary_minus"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0,"b":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 7, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-007-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="minus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="arith1" name="unary_minus"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":2,"b":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 7, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-007-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="minus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="arith1" name="unary_minus"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-4,"b":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 7, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-007-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="eq"/>
+            <OMA>
+              <OMS cd="arith1" name="minus"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMV name="a"/>
+              <OMA>
+                <OMS cd="arith1" name="unary_minus"/>
+                <OMV name="b"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":7,"b":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 7, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-009-v1-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"and\"/>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n        <OMV name=\"a\"/>\n        <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \     </OMA>\n      <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n
+      \       <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t    <OMV name=\"b\"/>\n\t    <OMS cd=\"alg1\" name=\"one\"/>\n\t
+      \ </OMA>\n\t</OMA>\n\t<OMV name=\"a\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":0,"b":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 9, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-009-v2-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"and\"/>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n        <OMV name=\"a\"/>\n        <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \     </OMA>\n      <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n
+      \       <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t    <OMV name=\"b\"/>\n\t    <OMS cd=\"alg1\" name=\"one\"/>\n\t
+      \ </OMA>\n\t</OMA>\n\t<OMV name=\"a\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 9, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-009-v3-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"and\"/>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n        <OMV name=\"a\"/>\n        <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \     </OMA>\n      <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n
+      \       <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t    <OMV name=\"b\"/>\n\t    <OMS cd=\"alg1\" name=\"one\"/>\n\t
+      \ </OMA>\n\t</OMA>\n\t<OMV name=\"a\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-4,"b":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 9, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-009-v4-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"and\"/>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n        <OMV name=\"a\"/>\n        <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \     </OMA>\n      <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n
+      \     <OMS cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n
+      \       <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"minus\"/>\n\t    <OMV name=\"b\"/>\n\t    <OMS cd=\"alg1\" name=\"one\"/>\n\t
+      \ </OMA>\n\t</OMA>\n\t<OMV name=\"a\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":7,"b":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 9, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-010-v1-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n
+      \   <OMA>\n      <OMS cd=\"arith1\" name=\"times\"/>\n      <OMV name=\"a\"/>\n
+      \     <OMA>\n        <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMV name=\"b\"/>\n\t<OMV
+      name=\"c\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS cd=\"arith1\"
+      name=\"plus\"/>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMV
+      name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"c\"/>\n      </OMA>\n    </OMA>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":1,"b":2,"c":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 10, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-010-v2-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n
+      \   <OMA>\n      <OMS cd=\"arith1\" name=\"times\"/>\n      <OMV name=\"a\"/>\n
+      \     <OMA>\n        <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMV name=\"b\"/>\n\t<OMV
+      name=\"c\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS cd=\"arith1\"
+      name=\"plus\"/>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMV
+      name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"c\"/>\n      </OMA>\n    </OMA>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-1,"b":0,"c":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 10, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-010-v3-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"relation1\" name=\"eq\"/>\n
+      \   <OMA>\n      <OMS cd=\"arith1\" name=\"times\"/>\n      <OMV name=\"a\"/>\n
+      \     <OMA>\n        <OMS cd=\"arith1\" name=\"plus\"/>\n\t<OMV name=\"b\"/>\n\t<OMV
+      name=\"c\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS cd=\"arith1\"
+      name=\"plus\"/>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMV
+      name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"c\"/>\n      </OMA>\n    </OMA>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":2,"c":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 10, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-011-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="neq"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="divide"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-011-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="neq"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="divide"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-011-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="neq"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="divide"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-011-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="neq"/>
+              <OMV name="a"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="divide"/>
+                <OMV name="a"/>
+                <OMV name="a"/>
+              </OMA>
+              <OMS cd="alg1" name="one"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"a":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-arith1-fmp-016-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="geq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="y"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="abs"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0,"y":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 16, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-016-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="geq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="y"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="abs"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":2,"y":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 16, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-016-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="geq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="y"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="abs"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-4,"y":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 16, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-016-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="relation1" name="geq"/>
+            <OMA>
+              <OMS cd="arith1" name="plus"/>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMS cd="arith1" name="abs"/>
+                  <OMV name="y"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="arith1" name="abs"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMV name="x"/>
+                <OMV name="y"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":7,"y":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 16, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-018-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="root"/>
+                  <OMV name="a"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"a":0,"n":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 18, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-018-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="root"/>
+                  <OMV name="a"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"a":2,"n":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 18, binder removed
+  expected:
+    model:
+      bool: true
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
+- id: openmath-eval-arith1-fmp-018-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="root"/>
+                  <OMV name="a"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"a":-4,"n":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 18, binder removed
+  expected:
+    model:
+      bool: false
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":false}}'
+- id: openmath-eval-arith1-fmp-018-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMS cd="arith1" name="power"/>
+                <OMA>
+                  <OMS cd="arith1" name="root"/>
+                  <OMV name="a"/>
+                  <OMV name="n"/>
+                </OMA>
+                <OMV name="n"/>
+              </OMA>
+              <OMV name="a"/>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"a":7,"n":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD arith1
+    section: fmp 18, binder removed
+  expected:
+    model:
+      bool: false
+    output:
+      str: '{"ok":true,"value":{"kind":"boolean","value":false}}'
+- id: openmath-eval-complex1-fmp-006-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"R\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"k\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"complex1\" name=\"complex_polar\"/>\n\t<OMV
+      name=\"x\"/>\n\t<OMV name=\"a\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"complex1\"
+      name=\"complex_polar\"/>\n\t<OMV name=\"x\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"plus\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t    <OMI> 2 </OMI>\n\t    <OMS cd=\"nums1\" name=\"pi\"/>\n\t
+      \   <OMV name=\"k\"/>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":1,"k":2,"x":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD complex1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-complex1-fmp-006-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"R\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"k\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"complex1\" name=\"complex_polar\"/>\n\t<OMV
+      name=\"x\"/>\n\t<OMV name=\"a\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"complex1\"
+      name=\"complex_polar\"/>\n\t<OMV name=\"x\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"plus\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t    <OMI> 2 </OMI>\n\t    <OMS cd=\"nums1\" name=\"pi\"/>\n\t
+      \   <OMV name=\"k\"/>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-1,"k":0,"x":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD complex1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-complex1-fmp-006-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"R\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"k\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Z\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"complex1\" name=\"complex_polar\"/>\n\t<OMV
+      name=\"x\"/>\n\t<OMV name=\"a\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"complex1\"
+      name=\"complex_polar\"/>\n\t<OMV name=\"x\"/>\n\t<OMA>\n\t  <OMS cd=\"arith1\"
+      name=\"plus\"/>\n\t  <OMV name=\"a\"/>\n\t  <OMA>\n\t    <OMS cd=\"arith1\"
+      name=\"times\"/>\n\t    <OMI> 2 </OMI>\n\t    <OMS cd=\"nums1\" name=\"pi\"/>\n\t
+      \   <OMV name=\"k\"/>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"k":2,"x":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD complex1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-fns1-fmp-009-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMA>
+              <OMS cd="fns1" name="left_compose"/>
+              <OMV name="f"/>
+              <OMV name="g"/>
+            </OMA>
+            <OMV name="x"/>
+          </OMA>
+          <OMA>
+            <OMV name="f"/>
+            <OMA>
+              <OMV name="g"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"f":1,"g":2,"x":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-fns1-fmp-009-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMA>
+              <OMS cd="fns1" name="left_compose"/>
+              <OMV name="f"/>
+              <OMV name="g"/>
+            </OMA>
+            <OMV name="x"/>
+          </OMA>
+          <OMA>
+            <OMV name="f"/>
+            <OMA>
+              <OMV name="g"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"f":-1,"g":0,"x":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-fns1-fmp-009-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMA>
+              <OMS cd="fns1" name="left_compose"/>
+              <OMV name="f"/>
+              <OMV name="g"/>
+            </OMA>
+            <OMV name="x"/>
+          </OMA>
+          <OMA>
+            <OMV name="f"/>
+            <OMA>
+              <OMV name="g"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"f":2,"g":2,"x":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-fns2-fmp-008-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="fns2" name="right_compose"/>
+                  <OMV name="f"/>
+                  <OMV name="g"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMV name="g"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"f":1,"g":2,"x":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-fns2-fmp-008-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="fns2" name="right_compose"/>
+                  <OMV name="f"/>
+                  <OMV name="g"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMV name="g"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"f":-1,"g":0,"x":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-fns2-fmp-008-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="relation1" name="eq"/>
+              <OMA>
+                <OMA>
+                  <OMS cd="fns2" name="right_compose"/>
+                  <OMV name="f"/>
+                  <OMV name="g"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+              <OMA>
+                <OMV name="g"/>
+                <OMA>
+                  <OMV name="f"/>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"f":2,"g":2,"x":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnboundSymbolError
+- id: openmath-eval-integer1-fmp-003-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":0,"b":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-003-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-003-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-4,"b":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-003-v4.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":7,"b":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-004-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":0,"b":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-004-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-004-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-4,"b":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-integer1-fmp-004-v4.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n         <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \        <OMA>\n           <OMS cd=\"logic1\" name=\"and\"/>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"a\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n           <OMA>\n
+      \            <OMS cd=\"set1\" name=\"in\"/>\n             <OMV name=\"b\"/>\n
+      \            <OMS cd=\"setname1\" name=\"Z\"/>\n           </OMA>\n         </OMA>\n
+      \        <OMA>\n\t   <OMS cd=\"logic1\" name=\"and\"/>\n\t   <OMA>\n             <OMS
+      cd=\"relation1\" name=\"eq\"/>\n             <OMV name=\"a\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"plus\"/>\n               <OMA>\n                 <OMS
+      cd=\"arith1\" name=\"times\"/>\n                 <OMV name=\"b\"/>\n                 <OMA>\n
+      \                  <OMS cd=\"integer1\" name=\"quotient\"/>\n                   <OMV
+      name=\"a\"/>\n                   <OMV name=\"b\"/>\n                 </OMA>\n
+      \              </OMA>\n               <OMA>\n                 <OMS cd=\"integer1\"
+      name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n           </OMA>\n
+      \          <OMA>\n             <OMS cd=\"relation1\" name=\"lt\"/>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMA>\n                 <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n                 <OMV name=\"a\"/>\n                 <OMV
+      name=\"b\"/>\n               </OMA>\n             </OMA>\n             <OMA>\n
+      \              <OMS cd=\"arith1\" name=\"abs\"/>\n               <OMV name=\"b\"/>\n
+      \            </OMA>\n           </OMA>\n           <OMA>\n             <OMS
+      cd=\"relation1\" name=\"geq\"/>\n             <OMA>\n               <OMS cd=\"arith1\"
+      name=\"times\"/>\n               <OMV name=\"a\"/>\n\t       <OMA>\n\t         <OMS
+      cd=\"integer1\" name=\"remainder\"/>\n\t\t <OMV name=\"a\"/>\n\t\t <OMV name=\"b\"/>\n\t
+      \      </OMA>\n             </OMA>\n             <OMS cd=\"alg1\" name=\"zero\"/>\n
+      \          </OMA>\n         </OMA>\n       </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":7,"b":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD integer1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-002-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMV name="x"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-002-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMV name="x"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-003-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="and"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="false"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-003-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="and"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="false"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-006-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="xor"/>
+            <OMV name="x"/>
+            <OMV name="x"/>
+          </OMA>
+          <OMS cd="logic1" name="false"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-006-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="xor"/>
+            <OMV name="x"/>
+            <OMV name="x"/>
+          </OMA>
+          <OMS cd="logic1" name="false"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-007-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="xor"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="true"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 7, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-007-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="xor"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="true"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 7, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-011-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="or"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="true"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-011-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA><OMS cd="logic1" name="or"/>
+            <OMV name="x"/>
+            <OMA><OMS cd="logic1" name="not"/>
+              <OMV name="x"/>
+            </OMA>
+          </OMA>
+          <OMS cd="logic1" name="true"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 11, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-012-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="logic1" name="or"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"a":true,"b":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 12, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-012-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="logic1" name="or"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"a":true,"b":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 12, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-012-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="logic1" name="or"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"a":false,"b":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 12, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-012-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="relation1" name="eq"/>
+          <OMA>
+            <OMS cd="logic1" name="not"/>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMV name="a"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+          <OMA>
+            <OMS cd="logic1" name="or"/>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="a"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="not"/>
+              <OMV name="b"/>
+            </OMA>
+          </OMA>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"a":false,"b":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 12, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::OperandTypeError
+- id: openmath-eval-logic1-fmp-016-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="logic1" name="implies"/>
+          <OMS cd="logic1" name="false"/>
+          <OMV name="x"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":true}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 16, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-logic1-fmp-016-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+          <OMS cd="logic1" name="implies"/>
+          <OMS cd="logic1" name="false"/>
+          <OMV name="x"/>
+        </OMA></OMOBJ>
+  options:
+    variables: '{"x":false}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD logic1
+    section: fmp 16, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-001-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMA>
+                <OMS cd="arith1" name="minus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="rounding1" name="ceiling"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-001-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMA>
+                <OMS cd="arith1" name="minus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="rounding1" name="ceiling"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-001-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMA>
+                <OMS cd="arith1" name="minus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="rounding1" name="ceiling"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-001-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMA>
+                <OMS cd="arith1" name="minus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="ceiling"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="rounding1" name="ceiling"/>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 1, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-002-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMA>
+                <OMS cd="rounding1" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-002-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMA>
+                <OMS cd="rounding1" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-002-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMA>
+                <OMS cd="rounding1" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-002-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="and"/>
+            <OMA>
+              <OMS cd="relation1" name="lt"/>
+              <OMV name="x"/>
+              <OMA>
+                <OMS cd="arith1" name="plus"/>
+                <OMA>
+                  <OMS cd="rounding1" name="floor"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMS cd="alg1" name="one"/>
+              </OMA>
+            </OMA>
+            <OMA>
+              <OMS cd="relation1" name="leq"/>
+              <OMA>
+                <OMS cd="rounding1" name="floor"/>
+                <OMV name="x"/>
+              </OMA>
+              <OMV name="x"/>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-003-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="geq"/>
+              <OMV name="x"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="relation1" name="lt"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="arith1" name="plus"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMS cd="alg1" name="one"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMA>
+                  <OMS cd="rounding1" name="trunc"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-003-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="geq"/>
+              <OMV name="x"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="relation1" name="lt"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="arith1" name="plus"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMS cd="alg1" name="one"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMA>
+                  <OMS cd="rounding1" name="trunc"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-003-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="geq"/>
+              <OMV name="x"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="relation1" name="lt"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="arith1" name="plus"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMS cd="alg1" name="one"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMA>
+                  <OMS cd="rounding1" name="trunc"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-003-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS cd="logic1" name="implies"/>
+            <OMA>
+              <OMS cd="relation1" name="geq"/>
+              <OMV name="x"/>
+              <OMS cd="alg1" name="zero"/>
+            </OMA>
+            <OMA>
+              <OMS cd="logic1" name="and"/>
+              <OMA>
+                <OMS cd="relation1" name="lt"/>
+                <OMV name="x"/>
+                <OMA>
+                  <OMS cd="arith1" name="plus"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMS cd="alg1" name="one"/>
+                </OMA>
+              </OMA>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMA>
+                  <OMS cd="rounding1" name="trunc"/>
+                  <OMV name="x"/>
+                </OMA>
+                <OMV name="x"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-004-v1-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="logic1" name="implies"/>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+              <OMA>
+                <OMS cd="logic1" name="and"/>
+                <OMA>
+                  <OMS cd="relation1" name="gt"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="arith1" name="minus"/>
+                    <OMA>
+                      <OMS cd="rounding1" name="trunc"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMS cd="alg1" name="one"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation1" name="geq"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-004-v2-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="logic1" name="implies"/>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+              <OMA>
+                <OMS cd="logic1" name="and"/>
+                <OMA>
+                  <OMS cd="relation1" name="gt"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="arith1" name="minus"/>
+                    <OMA>
+                      <OMS cd="rounding1" name="trunc"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMS cd="alg1" name="one"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation1" name="geq"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-004-v3-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="logic1" name="implies"/>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+              <OMA>
+                <OMS cd="logic1" name="and"/>
+                <OMA>
+                  <OMS cd="relation1" name="gt"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="arith1" name="minus"/>
+                    <OMA>
+                      <OMS cd="rounding1" name="trunc"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMS cd="alg1" name="one"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation1" name="geq"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-004-v4-r2evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+              <OMS cd="logic1" name="implies"/>
+              <OMA>
+                <OMS cd="relation1" name="leq"/>
+                <OMV name="x"/>
+                <OMS cd="alg1" name="zero"/>
+              </OMA>
+              <OMA>
+                <OMS cd="logic1" name="and"/>
+                <OMA>
+                  <OMS cd="relation1" name="gt"/>
+                  <OMV name="x"/>
+                  <OMA>
+                    <OMS cd="arith1" name="minus"/>
+                    <OMA>
+                      <OMS cd="rounding1" name="trunc"/>
+                      <OMV name="x"/>
+                    </OMA>
+                    <OMS cd="alg1" name="one"/>
+                  </OMA>
+                </OMA>
+                <OMA>
+                  <OMS cd="relation1" name="geq"/>
+                  <OMA>
+                    <OMS cd="rounding1" name="trunc"/>
+                    <OMV name="x"/>
+                  </OMA>
+                  <OMV name="x"/>
+                </OMA>
+              </OMA>
+            </OMA></OMOBJ>
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-006-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n      <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \     <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t  <OMS cd=\"logic1\"
+      name=\"not\"/>\n\t  <OMA>\n\t    <OMS cd=\"set1\" name=\"in\"/>\n\t    <OMV
+      name=\"x\"/>\n\t    <OMS cd=\"setname1\" name=\"Z\"/>\n\t  </OMA>\n\t</OMA>\n
+      \       <OMA>\n          <OMS cd=\"set1\" name=\"in\"/>\n          <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"times\"/>\n  \t    <OMV name=\"x\"/>\n\t    <OMI>
+      2 </OMI>\n  \t  </OMA>\n\t  <OMS cd=\"setname1\" name=\"Z\"/>\n        </OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n        <OMA>\n
+      \         <OMS cd=\"arith1\" name=\"divide\"/>\n          <OMA>\n            <OMS
+      cd=\"rounding1\" name=\"round\"/>\n            <OMV name=\"x\"/>\n          </OMA>\n\t
+      \ <OMI> 2 </OMI>\n        </OMA>\n        <OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n    </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-006-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n      <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \     <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t  <OMS cd=\"logic1\"
+      name=\"not\"/>\n\t  <OMA>\n\t    <OMS cd=\"set1\" name=\"in\"/>\n\t    <OMV
+      name=\"x\"/>\n\t    <OMS cd=\"setname1\" name=\"Z\"/>\n\t  </OMA>\n\t</OMA>\n
+      \       <OMA>\n          <OMS cd=\"set1\" name=\"in\"/>\n          <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"times\"/>\n  \t    <OMV name=\"x\"/>\n\t    <OMI>
+      2 </OMI>\n  \t  </OMA>\n\t  <OMS cd=\"setname1\" name=\"Z\"/>\n        </OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n        <OMA>\n
+      \         <OMS cd=\"arith1\" name=\"divide\"/>\n          <OMA>\n            <OMS
+      cd=\"rounding1\" name=\"round\"/>\n            <OMV name=\"x\"/>\n          </OMA>\n\t
+      \ <OMI> 2 </OMI>\n        </OMA>\n        <OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n    </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-006-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n      <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \     <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t  <OMS cd=\"logic1\"
+      name=\"not\"/>\n\t  <OMA>\n\t    <OMS cd=\"set1\" name=\"in\"/>\n\t    <OMV
+      name=\"x\"/>\n\t    <OMS cd=\"setname1\" name=\"Z\"/>\n\t  </OMA>\n\t</OMA>\n
+      \       <OMA>\n          <OMS cd=\"set1\" name=\"in\"/>\n          <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"times\"/>\n  \t    <OMV name=\"x\"/>\n\t    <OMI>
+      2 </OMI>\n  \t  </OMA>\n\t  <OMS cd=\"setname1\" name=\"Z\"/>\n        </OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n        <OMA>\n
+      \         <OMS cd=\"arith1\" name=\"divide\"/>\n          <OMA>\n            <OMS
+      cd=\"rounding1\" name=\"round\"/>\n            <OMV name=\"x\"/>\n          </OMA>\n\t
+      \ <OMI> 2 </OMI>\n        </OMA>\n        <OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n    </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-rounding1-fmp-006-v4.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n      <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \     <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t  <OMS cd=\"logic1\"
+      name=\"not\"/>\n\t  <OMA>\n\t    <OMS cd=\"set1\" name=\"in\"/>\n\t    <OMV
+      name=\"x\"/>\n\t    <OMS cd=\"setname1\" name=\"Z\"/>\n\t  </OMA>\n\t</OMA>\n
+      \       <OMA>\n          <OMS cd=\"set1\" name=\"in\"/>\n          <OMA>\n\t
+      \   <OMS cd=\"arith1\" name=\"times\"/>\n  \t    <OMV name=\"x\"/>\n\t    <OMI>
+      2 </OMI>\n  \t  </OMA>\n\t  <OMS cd=\"setname1\" name=\"Z\"/>\n        </OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n        <OMA>\n
+      \         <OMS cd=\"arith1\" name=\"divide\"/>\n          <OMA>\n            <OMS
+      cd=\"rounding1\" name=\"round\"/>\n            <OMV name=\"x\"/>\n          </OMA>\n\t
+      \ <OMI> 2 </OMI>\n        </OMA>\n        <OMS cd=\"setname1\" name=\"Z\"/>\n
+      \     </OMA>\n    </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD rounding1
+    section: fmp 6, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-002-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="n"/>
+              <OMS name="N" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="eq" cd="relation1"/>
+                <OMV name="n"/>
+                <OMS name="zero" cd="alg1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="minus" cd="arith1"/>
+                  <OMV name="n"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"n":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-002-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="n"/>
+              <OMS name="N" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="eq" cd="relation1"/>
+                <OMV name="n"/>
+                <OMS name="zero" cd="alg1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="minus" cd="arith1"/>
+                  <OMV name="n"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"n":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-002-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="n"/>
+              <OMS name="N" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="eq" cd="relation1"/>
+                <OMV name="n"/>
+                <OMS name="zero" cd="alg1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="minus" cd="arith1"/>
+                  <OMV name="n"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"n":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-002-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="n"/>
+              <OMS name="N" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="eq" cd="relation1"/>
+                <OMV name="n"/>
+                <OMS name="zero" cd="alg1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="minus" cd="arith1"/>
+                  <OMV name="n"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"n":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 2, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-003-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Z" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMV name="z"/>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="unary_minus" cd="arith1"/>
+                  <OMV name="z"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"z":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-003-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Z" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMV name="z"/>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="unary_minus" cd="arith1"/>
+                  <OMV name="z"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"z":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-003-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Z" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMV name="z"/>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="unary_minus" cd="arith1"/>
+                  <OMV name="z"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"z":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-003-v4.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Z" cd="setname1"/>
+            </OMA>
+            <OMA>
+              <OMS name="or" cd="logic1"/>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMV name="z"/>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+              <OMA>
+                <OMS name="in" cd="set1"/>
+                <OMA>
+                  <OMS name="unary_minus" cd="arith1"/>
+                  <OMV name="z"/>
+                </OMA>
+                <OMS name="N" cd="setname1"/>
+              </OMA>
+            </OMA>
+          </OMA></OMOBJ>
+  options:
+    variables: '{"z":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 3, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-004-v1.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Q" cd="setname1"/>
+            </OMA>
+            <OMBIND>
+              <OMS name="exists" cd="quant1"/>
+              <OMBVAR>
+                <OMV name="p"/>
+                <OMV name="q"/>
+              </OMBVAR>
+              <OMA>
+                <OMS name="and" cd="logic1"/>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="p"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="q"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="geq" cd="relation1"/>
+                  <OMV name="q"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="eq" cd="relation1"/>
+                  <OMV name="z"/>
+                  <OMA>
+                    <OMS name="divide" cd="arith1"/>
+                    <OMV name="p"/>
+                    <OMV name="q"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+           </OMA></OMOBJ>
+  options:
+    variables: '{"z":1,"p":2,"q":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-004-v2.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Q" cd="setname1"/>
+            </OMA>
+            <OMBIND>
+              <OMS name="exists" cd="quant1"/>
+              <OMBVAR>
+                <OMV name="p"/>
+                <OMV name="q"/>
+              </OMBVAR>
+              <OMA>
+                <OMS name="and" cd="logic1"/>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="p"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="q"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="geq" cd="relation1"/>
+                  <OMV name="q"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="eq" cd="relation1"/>
+                  <OMV name="z"/>
+                  <OMA>
+                    <OMS name="divide" cd="arith1"/>
+                    <OMV name="p"/>
+                    <OMV name="q"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+           </OMA></OMOBJ>
+  options:
+    variables: '{"z":-1,"p":0,"q":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-004-v3.evaluation
+  input:
+    str: |
+      <OMOBJ version="2.0"><OMA>
+            <OMS name="implies" cd="logic1"/>
+            <OMA>
+              <OMS name="in" cd="set1"/>
+              <OMV name="z"/>
+              <OMS name="Q" cd="setname1"/>
+            </OMA>
+            <OMBIND>
+              <OMS name="exists" cd="quant1"/>
+              <OMBVAR>
+                <OMV name="p"/>
+                <OMV name="q"/>
+              </OMBVAR>
+              <OMA>
+                <OMS name="and" cd="logic1"/>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="p"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="in" cd="set1"/>
+                  <OMV name="q"/>
+                  <OMS name="Z" cd="setname1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="geq" cd="relation1"/>
+                  <OMV name="q"/>
+                  <OMS name="one" cd="alg1"/>
+                </OMA>
+                <OMA>
+                  <OMS name="eq" cd="relation1"/>
+                  <OMV name="z"/>
+                  <OMA>
+                    <OMS name="divide" cd="arith1"/>
+                    <OMV name="p"/>
+                    <OMV name="q"/>
+                  </OMA>
+                </OMA>
+              </OMA>
+            </OMBIND>
+           </OMA></OMOBJ>
+  options:
+    variables: '{"z":2,"p":2,"q":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 4, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-005-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Q\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Q\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n    </OMA>\n
+      \   <OMBIND>\n      <OMS cd=\"quant1\" name=\"exists\"/>\n      <OMBVAR>\n        <OMV
+      name=\"c\"/>\n      </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"Q\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\" name=\"lt\"/>\n\t
+      \ <OMV name=\"a\"/>\n\t  <OMV name=\"c\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMV name=\"b\"/>\n\t</OMA>\n      </OMA>\n
+      \   </OMBIND>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":1,"b":2,"c":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-005-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Q\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Q\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n    </OMA>\n
+      \   <OMBIND>\n      <OMS cd=\"quant1\" name=\"exists\"/>\n      <OMBVAR>\n        <OMV
+      name=\"c\"/>\n      </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"Q\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\" name=\"lt\"/>\n\t
+      \ <OMV name=\"a\"/>\n\t  <OMV name=\"c\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMV name=\"b\"/>\n\t</OMA>\n      </OMA>\n
+      \   </OMBIND>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":-1,"b":0,"c":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-005-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"a\"/>\n\t<OMS cd=\"setname1\" name=\"Q\"/>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"set1\" name=\"in\"/>\n\t<OMV name=\"b\"/>\n\t<OMS
+      cd=\"setname1\" name=\"Q\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t<OMV name=\"a\"/>\n\t<OMV name=\"b\"/>\n      </OMA>\n    </OMA>\n
+      \   <OMBIND>\n      <OMS cd=\"quant1\" name=\"exists\"/>\n      <OMBVAR>\n        <OMV
+      name=\"c\"/>\n      </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"Q\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\" name=\"lt\"/>\n\t
+      \ <OMV name=\"a\"/>\n\t  <OMV name=\"c\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"relation1\"
+      name=\"lt\"/>\n\t  <OMV name=\"c\"/>\n\t  <OMV name=\"b\"/>\n\t</OMA>\n      </OMA>\n
+      \   </OMBIND>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"a":2,"b":2,"c":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-007-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"z\"/>\n      <OMS
+      cd=\"setname1\" name=\"C\"/>\n    </OMA>\n    <OMBIND>\n      <OMS cd=\"quant1\"
+      name=\"exists\"/>\n      <OMBVAR>\n        <OMV name=\"x\"/>\n\t<OMV name=\"y\"/>\n
+      \     </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV
+      name=\"y\"/>\n\t  <OMS cd=\"setname1\" name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS
+      cd=\"relation1\" name=\"eq\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"plus\"/>\n\t    <OMV name=\"x\"/>\n\t    <OMA>\n\t      <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t      <OMS cd=\"nums1\" name=\"i\"/>\n\t      <OMV
+      name=\"y\"/>\n\t    </OMA>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMBIND>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":1,"x":2,"y":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 7, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-007-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"z\"/>\n      <OMS
+      cd=\"setname1\" name=\"C\"/>\n    </OMA>\n    <OMBIND>\n      <OMS cd=\"quant1\"
+      name=\"exists\"/>\n      <OMBVAR>\n        <OMV name=\"x\"/>\n\t<OMV name=\"y\"/>\n
+      \     </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV
+      name=\"y\"/>\n\t  <OMS cd=\"setname1\" name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS
+      cd=\"relation1\" name=\"eq\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"plus\"/>\n\t    <OMV name=\"x\"/>\n\t    <OMA>\n\t      <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t      <OMS cd=\"nums1\" name=\"i\"/>\n\t      <OMV
+      name=\"y\"/>\n\t    </OMA>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMBIND>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":-1,"x":0,"y":4}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 7, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-setname1-fmp-007-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"z\"/>\n      <OMS
+      cd=\"setname1\" name=\"C\"/>\n    </OMA>\n    <OMBIND>\n      <OMS cd=\"quant1\"
+      name=\"exists\"/>\n      <OMBVAR>\n        <OMV name=\"x\"/>\n\t<OMV name=\"y\"/>\n
+      \     </OMBVAR>\n      <OMA>\n        <OMS cd=\"logic1\" name=\"and\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMS cd=\"setname1\"
+      name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS cd=\"set1\" name=\"in\"/>\n\t  <OMV
+      name=\"y\"/>\n\t  <OMS cd=\"setname1\" name=\"R\"/>\n\t</OMA>\n\t<OMA>\n\t  <OMS
+      cd=\"relation1\" name=\"eq\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"plus\"/>\n\t    <OMV name=\"x\"/>\n\t    <OMA>\n\t      <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t      <OMS cd=\"nums1\" name=\"i\"/>\n\t      <OMV
+      name=\"y\"/>\n\t    </OMA>\n\t  </OMA>\n\t</OMA>\n      </OMA>\n    </OMBIND>\n
+      \ </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":2,"x":2,"y":2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD setname1
+    section: fmp 7, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-005-v1.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"k\"/>\n      <OMS
+      cd=\"setname1\" name=\"Z\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"plus\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t    <OMI>2</OMI>\n\t    <OMS cd=\"nums1\"
+      name=\"pi\"/>\n\t    <OMV name=\"k\"/>\n\t    <OMS cd=\"nums1\" name=\"i\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMA>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"k":0,"z":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-005-v2.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"k\"/>\n      <OMS
+      cd=\"setname1\" name=\"Z\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"plus\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t    <OMI>2</OMI>\n\t    <OMS cd=\"nums1\"
+      name=\"pi\"/>\n\t    <OMV name=\"k\"/>\n\t    <OMS cd=\"nums1\" name=\"i\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMA>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"k":2,"z":3}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-005-v3.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"k\"/>\n      <OMS
+      cd=\"setname1\" name=\"Z\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"plus\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t    <OMI>2</OMI>\n\t    <OMS cd=\"nums1\"
+      name=\"pi\"/>\n\t    <OMV name=\"k\"/>\n\t    <OMS cd=\"nums1\" name=\"i\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMA>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"k":-4,"z":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-005-v4.evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"set1\" name=\"in\"/>\n      <OMV name=\"k\"/>\n      <OMS
+      cd=\"setname1\" name=\"Z\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"plus\"/>\n\t  <OMV name=\"z\"/>\n\t  <OMA>\n\t    <OMS
+      cd=\"arith1\" name=\"times\"/>\n\t    <OMI>2</OMI>\n\t    <OMS cd=\"nums1\"
+      name=\"pi\"/>\n\t    <OMV name=\"k\"/>\n\t    <OMS cd=\"nums1\" name=\"i\"/>\n\t
+      \ </OMA>\n\t</OMA>\n      </OMA>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"exp\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"k":7,"z":7}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 5, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-040-v1-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"relation1\" name=\"leq\"/>\n\t<OMS cd=\"alg1\" name=\"zero\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"relation1\" name=\"lt\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n\t<OMS
+      cd=\"alg1\" name=\"one\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arctanh\"/>\n\t<OMV
+      name=\"x\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n
+      \       <OMA>\n          <OMS cd=\"nums1\" name=\"rational\"/>\n          <OMI>
+      1 </OMI>\n          <OMI> 2 </OMI>\n        </OMA>\n        <OMA>\n          <OMS
+      cd=\"transc1\" name=\"ln\"/>\n          <OMA>\n            <OMS cd=\"arith1\"
+      name=\"divide\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\" name=\"plus\"/>\n\t
+      \     <OMV name=\"x\"/>\n\t      <OMS cd=\"alg1\" name=\"one\"/>\n\t    </OMA>\n\t
+      \   <OMA>\n\t      <OMS cd=\"arith1\" name=\"minus\"/>\n\t      <OMS cd=\"alg1\"
+      name=\"one\"/>\n\t      <OMV name=\"x\"/>\n\t    </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 40, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-040-v2-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"relation1\" name=\"leq\"/>\n\t<OMS cd=\"alg1\" name=\"zero\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"relation1\" name=\"lt\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n\t<OMS
+      cd=\"alg1\" name=\"one\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arctanh\"/>\n\t<OMV
+      name=\"x\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n
+      \       <OMA>\n          <OMS cd=\"nums1\" name=\"rational\"/>\n          <OMI>
+      1 </OMI>\n          <OMI> 2 </OMI>\n        </OMA>\n        <OMA>\n          <OMS
+      cd=\"transc1\" name=\"ln\"/>\n          <OMA>\n            <OMS cd=\"arith1\"
+      name=\"divide\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\" name=\"plus\"/>\n\t
+      \     <OMV name=\"x\"/>\n\t      <OMS cd=\"alg1\" name=\"one\"/>\n\t    </OMA>\n\t
+      \   <OMA>\n\t      <OMS cd=\"arith1\" name=\"minus\"/>\n\t      <OMS cd=\"alg1\"
+      name=\"one\"/>\n\t      <OMV name=\"x\"/>\n\t    </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 40, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-040-v3-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"relation1\" name=\"leq\"/>\n\t<OMS cd=\"alg1\" name=\"zero\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"relation1\" name=\"lt\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n\t<OMS
+      cd=\"alg1\" name=\"one\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arctanh\"/>\n\t<OMV
+      name=\"x\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n
+      \       <OMA>\n          <OMS cd=\"nums1\" name=\"rational\"/>\n          <OMI>
+      1 </OMI>\n          <OMI> 2 </OMI>\n        </OMA>\n        <OMA>\n          <OMS
+      cd=\"transc1\" name=\"ln\"/>\n          <OMA>\n            <OMS cd=\"arith1\"
+      name=\"divide\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\" name=\"plus\"/>\n\t
+      \     <OMV name=\"x\"/>\n\t      <OMS cd=\"alg1\" name=\"one\"/>\n\t    </OMA>\n\t
+      \   <OMA>\n\t      <OMS cd=\"arith1\" name=\"minus\"/>\n\t      <OMS cd=\"alg1\"
+      name=\"one\"/>\n\t      <OMV name=\"x\"/>\n\t    </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 40, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-040-v4-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"logic1\" name=\"and\"/>\n      <OMA>\n        <OMS
+      cd=\"relation1\" name=\"leq\"/>\n\t<OMS cd=\"alg1\" name=\"zero\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n
+      \     </OMA>\n      <OMA>\n        <OMS cd=\"relation1\" name=\"lt\"/>\n\t<OMA>\n\t
+      \ <OMS cd=\"arith1\" name=\"power\"/>\n\t  <OMV name=\"x\"/>\n\t  <OMI> 2 </OMI>\n\t</OMA>\n\t<OMS
+      cd=\"alg1\" name=\"one\"/>\n      </OMA>\n    </OMA>\n    <OMA>\n      <OMS
+      cd=\"relation1\" name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arctanh\"/>\n\t<OMV
+      name=\"x\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n
+      \       <OMA>\n          <OMS cd=\"nums1\" name=\"rational\"/>\n          <OMI>
+      1 </OMI>\n          <OMI> 2 </OMI>\n        </OMA>\n        <OMA>\n          <OMS
+      cd=\"transc1\" name=\"ln\"/>\n          <OMA>\n            <OMS cd=\"arith1\"
+      name=\"divide\"/>\n\t    <OMA>\n\t      <OMS cd=\"arith1\" name=\"plus\"/>\n\t
+      \     <OMV name=\"x\"/>\n\t      <OMS cd=\"alg1\" name=\"one\"/>\n\t    </OMA>\n\t
+      \   <OMA>\n\t      <OMS cd=\"arith1\" name=\"minus\"/>\n\t      <OMS cd=\"alg1\"
+      name=\"one\"/>\n\t      <OMV name=\"x\"/>\n\t    </OMA>\n          </OMA>\n
+      \       </OMA>\n      </OMA>\n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"x":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 40, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-046-v1-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"relation1\" name=\"neq\"/>\n      <OMV name=\"z\"/>\n
+      \     <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arccoth\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMS
+      cd=\"nums1\" name=\"i\"/>\n        <OMA>\n          <OMS cd=\"transc1\" name=\"arccot\"/>\n\t
+      \ <OMA>\n            <OMS cd=\"arith1\" name=\"times\"/>\n\t    <OMS cd=\"nums1\"
+      name=\"i\"/>\n\t    <OMV name=\"z\"/>\n          </OMA>\n        </OMA>\n      </OMA>
+      \n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":0}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 46, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-046-v2-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"relation1\" name=\"neq\"/>\n      <OMV name=\"z\"/>\n
+      \     <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arccoth\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMS
+      cd=\"nums1\" name=\"i\"/>\n        <OMA>\n          <OMS cd=\"transc1\" name=\"arccot\"/>\n\t
+      \ <OMA>\n            <OMS cd=\"arith1\" name=\"times\"/>\n\t    <OMS cd=\"nums1\"
+      name=\"i\"/>\n\t    <OMV name=\"z\"/>\n          </OMA>\n        </OMA>\n      </OMA>
+      \n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":1}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 46, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-046-v3-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"relation1\" name=\"neq\"/>\n      <OMV name=\"z\"/>\n
+      \     <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arccoth\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMS
+      cd=\"nums1\" name=\"i\"/>\n        <OMA>\n          <OMS cd=\"transc1\" name=\"arccot\"/>\n\t
+      \ <OMA>\n            <OMS cd=\"arith1\" name=\"times\"/>\n\t    <OMS cd=\"nums1\"
+      name=\"i\"/>\n\t    <OMV name=\"z\"/>\n          </OMA>\n        </OMA>\n      </OMA>
+      \n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":-2}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 46, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
+- id: openmath-eval-transc1-fmp-046-v4-r2evaluation
+  input:
+    str: "<OMOBJ version=\"2.0\"><OMA>\n    <OMS cd=\"logic1\" name=\"implies\"/>\n
+      \   <OMA>\n      <OMS cd=\"relation1\" name=\"neq\"/>\n      <OMV name=\"z\"/>\n
+      \     <OMS cd=\"alg1\" name=\"zero\"/>\n    </OMA>\n    <OMA>\n      <OMS cd=\"relation1\"
+      name=\"eq\"/>\n      <OMA>\n        <OMS cd=\"transc1\" name=\"arccoth\"/>\n\t<OMV
+      name=\"z\"/>\n      </OMA>\n      <OMA>\n        <OMS cd=\"arith1\" name=\"times\"/>\n\t<OMS
+      cd=\"nums1\" name=\"i\"/>\n        <OMA>\n          <OMS cd=\"transc1\" name=\"arccot\"/>\n\t
+      \ <OMA>\n            <OMS cd=\"arith1\" name=\"times\"/>\n\t    <OMS cd=\"nums1\"
+      name=\"i\"/>\n\t    <OMV name=\"z\"/>\n          </OMA>\n        </OMA>\n      </OMA>
+      \n    </OMA>\n  </OMA></OMOBJ>\n"
+  options:
+    variables: '{"z":5}'
+    binding_table: openmath-binding-table/1
+    binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+  spec:
+    document: OpenMath CD transc1
+    section: fmp 46, binder removed
+  expected:
+    refusal:
+      category: evaluation_error
+      error_class: Openmath::Evaluation::UnsupportedExpressionError
