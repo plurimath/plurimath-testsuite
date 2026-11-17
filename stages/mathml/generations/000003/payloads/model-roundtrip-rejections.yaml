@@ -1,0 +1,241 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-rejections
+description: Mml.parse model and to_xml output for every case of payloads/rejections.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: mathml-unsupported-pi.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><pi/></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - pi_value
+        - array:
+          - node: Mml::V3::Pi
+            fields: []
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: pi
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <pi/>
+        </math>
+- id: mathml-unsupported-apply.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><apply/></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - apply_value
+        - array:
+          - node: Mml::V3::Apply
+            fields: []
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: apply
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <apply/>
+        </math>
+- id: mathml-whitespace-only.model-roundtrip
+  input:
+    str: " "
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-bare-text.model-roundtrip
+  input:
+    str: abc
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-lone-angle.model-roundtrip
+  input:
+    str: "<"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-empty-angles.model-roundtrip
+  input:
+    str: "<>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-stray-close.model-roundtrip
+  input:
+    str: "</math>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-unclosed-math.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields: []
+    output:
+      str: <math xmlns="http://www.w3.org/1998/Math/MathML"/>
+- id: mathml-unclosed-token.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a</math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mi_value
+        - array:
+          - node: Mml::V3::Mi
+            fields:
+            - - value
+              - array:
+                - str: a
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: a
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mi
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mi>a</mi>
+        </math>
+- id: mathml-unclosed-operator.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mo>+</math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mo_value
+        - array:
+          - node: Mml::V3::Mo
+            fields:
+            - - value
+              - array:
+                - str: "+"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "+"
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mo
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mo>+</mo>
+        </math>
+- id: mathml-mismatched-close.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a</mn></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mi_value
+        - array:
+          - node: Mml::V3::Mi
+            fields:
+            - - value
+              - array:
+                - str: a
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: a
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mi
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mi>a</mi>
+        </math>
+- id: mathml-bare-lt-in-token.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a<b</mi></math>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-unquoted-attribute.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi mathvariant=bold>a</mi></math>"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError
+- id: mathml-text-after-root.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mi>a</mi></math>x"
+  options: {}
+  expected:
+    refusal:
+      category: parse_error
+      error_class: Lutaml::Model::InvalidFormatError

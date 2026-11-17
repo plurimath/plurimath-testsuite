@@ -1,0 +1,695 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-text
+description: Mml.parse model and to_xml output for every case of payloads/text.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: mathml-text-001.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3b2;b</mtext></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: aβb
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: aβb
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>aβb</mtext>
+        </math>
+- id: mathml-text-002.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3c2;b</mtext></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: aςb
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: aςb
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>aςb</mtext>
+        </math>
+- id: mathml-text-003.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3c9;b</mtext></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: aωb
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: aωb
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>aωb</mtext>
+        </math>
+- id: mathml-text-004.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x3a9;b</mtext></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: aΩb
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: aΩb
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>aΩb</mtext>
+        </math>
+- id: mathml-text-005.model-roundtrip
+  input:
+    str: "<math xmlns='http://www.w3.org/1998/Math/MathML'><mtext>a&#x303;b</mtext></math>"
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: ãb
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: ãb
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>ãb</mtext>
+        </math>
+- id: mathml-text-006.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mtext>sinsumsom&#x393;gamma</mtext>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: sinsumsomΓgamma
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: sinsumsomΓgamma
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>sinsumsomΓgamma</mtext>
+        </math>
+- id: mathml-text-007.model-roundtrip
+  input:
+    str: |
+      <math xmlns='http://www.w3.org/1998/Math/MathML'>
+        <mtext>sinsumsom&#x393;&#x3B3;</mtext>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: sinsumsomΓγ
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: sinsumsomΓγ
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>sinsumsomΓγ</mtext>
+        </math>
+- id: mathml-text-008.model-roundtrip
+  input:
+    str: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML">
+        <mstyle mathcolor="#ff0000">
+          <mtext>Assigned value</mtext>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mtext_value
+              - array:
+                - node: Mml::V3::Mtext
+                  fields:
+                  - - value
+                    - array:
+                      - str: Assigned value
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: Assigned value
+            - - mathcolor
+              - str: "#ff0000"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mtext
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle mathcolor="#ff0000">
+            <mtext>Assigned value</mtext>
+          </mstyle>
+        </math>
+- id: mathml-text-009.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mtext>&#xA0;<!--NO-BREAK SPACE-->Theorem &#xA0;<!--NO-BREAK SPACE-->1:</mtext>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: " "
+                - str: Theorem  
+                - str: '1:'
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: Theorem  
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: '1:'
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext> <!--NO-BREAK SPACE-->Theorem  <!--NO-BREAK SPACE-->1:</mtext>
+        </math>
+- id: mathml-text-010.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mtext>
+          Theorem
+          1:
+        </mtext>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: "\n    Theorem\n    1:\n  "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    Theorem\n    1:\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext>
+            Theorem
+            1:
+          </mtext>
+        </math>
+- id: mathml-text-011.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mtext> Theorem 1: </mtext>
+        <mtext> &#x2009;<!--THIN SPACE--> </mtext>
+        <mtext> &#x205F;&#x200A;<!--space of width 5/18 em-->&#x205F;&#x200A;<!--space of width 5/18 em--> </mtext>
+        <mtext> /* a comment */ </mtext>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mtext_value
+        - array:
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: " Theorem 1: "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " Theorem 1: "
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: "  "
+                - str: " "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "  "
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: "   "
+                - str: "  "
+                - str: " "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "   "
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "  "
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+          - node: Mml::V3::Mtext
+            fields:
+            - - value
+              - array:
+                - str: " /* a comment */ "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " /* a comment */ "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mtext
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mtext> Theorem 1: </mtext>
+          <mtext>  <!--THIN SPACE--> </mtext>
+          <mtext>   <!--space of width 5/18 em-->  <!--space of width 5/18 em--> </mtext>
+          <mtext> /* a comment */ </mtext>
+        </math>
