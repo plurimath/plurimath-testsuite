@@ -84,6 +84,15 @@ Dir[File.join(prev_payloads, "*.yaml")].sort.each do |path|
   # land in a <group>-r2 payload.
   changed_groups << group
   FileUtils.cp(path, File.join(out, "payloads", name))
+  payloads << { "path" => "payloads/#{name}", "bytes" => File.size(path),
+                "sha256" => Digest::SHA256.file(path).hexdigest,
+                "producer" => "openmath",
+                "source" => { "relation" => "copy",
+                              "file" => { "repository" => OpenmathStage::SUITE_URL,
+                                          "commit" => prev_commit,
+                                          "path" => "stages/openmath/generations/#{format('%06d', prev_number)}/payloads/#{name}",
+                                          "sha256" => Digest::SHA256.file(path).hexdigest } },
+                "rows" => YAML.safe_load_file(path, aliases: false)["cases"].map { |c| c["id"] } }
   previous = YAML.safe_load_file(path, aliases: false)
   current = YAML.safe_load_file(candidate, aliases: false)
   prev_by_id = previous["cases"].to_h { |c| [c["id"], c] }
