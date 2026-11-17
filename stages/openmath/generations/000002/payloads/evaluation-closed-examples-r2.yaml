@@ -7,7 +7,7 @@ description: 'Generation 2 supersessions of evaluation-closed-examples: the answ
   their originals (kept above); unrenamed ids are cases the wider selection adds.'
 boundary: evaluation
 cases:
-- id: openmath-eval-altenc-example-001-r2evaluation
+- id: openmath-eval-altenc-example-001-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -42,7 +42,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-altenc-example-002-r2evaluation
+- id: openmath-eval-altenc-example-002-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -74,7 +74,7 @@ cases:
       int: '3'
     output:
       str: '{"ok":true,"value":{"kind":"integer","value":"3"}}'
-- id: openmath-eval-altenc-example-003-r2evaluation
+- id: openmath-eval-altenc-example-003-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -213,7 +213,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: NoMethodError
-- id: openmath-eval-arith1-example-015-r2evaluation
+- id: openmath-eval-arith1-example-015-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -245,7 +245,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-complex1-example-007-r2evaluation
+- id: openmath-eval-complex1-example-007-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -274,7 +274,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-error-example-001-r2evaluation
+- id: openmath-eval-error-example-001-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -294,7 +294,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-error-example-002-r2evaluation
+- id: openmath-eval-error-example-002-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -314,7 +314,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-error-example-003-r2evaluation
+- id: openmath-eval-error-example-003-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -579,7 +579,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-nums1-example-003-r2evaluation
+- id: openmath-eval-nums1-example-003-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -669,7 +669,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-relation1-example-002-r2evaluation
+- id: openmath-eval-relation1-example-002-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -695,7 +695,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-relation1-example-004-r2evaluation
+- id: openmath-eval-relation1-example-004-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -721,7 +721,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-relation1-example-006-r2evaluation
+- id: openmath-eval-relation1-example-006-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -747,7 +747,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-relation1-example-008-r2evaluation
+- id: openmath-eval-relation1-example-008-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -773,7 +773,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-relation1-example-010-r2evaluation
+- id: openmath-eval-relation1-example-010-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -799,7 +799,7 @@ cases:
       bool: true
     output:
       str: '{"ok":true,"value":{"kind":"boolean","value":true}}'
-- id: openmath-eval-relation1-example-012-r2evaluation
+- id: openmath-eval-relation1-example-012-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -850,7 +850,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-scscp1-example-001-r2evaluation
+- id: openmath-eval-scscp1-example-001-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -901,7 +901,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-002-r2evaluation
+- id: openmath-eval-scscp1-example-002-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -928,7 +928,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-003-r2evaluation
+- id: openmath-eval-scscp1-example-003-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -955,7 +955,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-004-r2evaluation
+- id: openmath-eval-scscp1-example-004-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -983,7 +983,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-005-r2evaluation
+- id: openmath-eval-scscp1-example-005-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1007,7 +1007,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-006-r2evaluation
+- id: openmath-eval-scscp1-example-006-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1035,7 +1035,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-007-r2evaluation
+- id: openmath-eval-scscp1-example-007-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1063,7 +1063,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-008-r2evaluation
+- id: openmath-eval-scscp1-example-008-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1091,7 +1091,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-009-r2evaluation
+- id: openmath-eval-scscp1-example-009-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1119,7 +1119,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-010-r2evaluation
+- id: openmath-eval-scscp1-example-010-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1145,7 +1145,7 @@ cases:
       str: 'The OMA goes here '
     output:
       str: '{"ok":true,"value":{"kind":"string","value":"The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-011-r2evaluation
+- id: openmath-eval-scscp1-example-011-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1168,7 +1168,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-012-r2evaluation
+- id: openmath-eval-scscp1-example-012-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1194,7 +1194,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-013-r2evaluation
+- id: openmath-eval-scscp1-example-013-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1217,7 +1217,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-014-r2evaluation
+- id: openmath-eval-scscp1-example-014-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1243,7 +1243,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-015-r2evaluation
+- id: openmath-eval-scscp1-example-015-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1265,7 +1265,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp1-example-016-r2evaluation
+- id: openmath-eval-scscp1-example-016-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1291,7 +1291,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-017-r2evaluation
+- id: openmath-eval-scscp1-example-017-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1317,7 +1317,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp1-example-018-r2evaluation
+- id: openmath-eval-scscp1-example-018-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1343,7 +1343,7 @@ cases:
       str: " The OMA goes here "
     output:
       str: '{"ok":true,"value":{"kind":"string","value":" The OMA goes here "}}'
-- id: openmath-eval-scscp2-example-001-r2evaluation
+- id: openmath-eval-scscp2-example-001-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1371,7 +1371,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-002-r2evaluation
+- id: openmath-eval-scscp2-example-002-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1394,7 +1394,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-003-r2evaluation
+- id: openmath-eval-scscp2-example-003-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1422,7 +1422,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-004-r2evaluation
+- id: openmath-eval-scscp2-example-004-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1445,7 +1445,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-005-r2evaluation
+- id: openmath-eval-scscp2-example-005-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1473,7 +1473,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-006-r2evaluation
+- id: openmath-eval-scscp2-example-006-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1495,7 +1495,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-007-r2evaluation
+- id: openmath-eval-scscp2-example-007-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1522,7 +1522,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-008-r2evaluation
+- id: openmath-eval-scscp2-example-008-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1557,7 +1557,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-009-r2evaluation
+- id: openmath-eval-scscp2-example-009-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1585,7 +1585,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-010-r2evaluation
+- id: openmath-eval-scscp2-example-010-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1608,7 +1608,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-011-r2evaluation
+- id: openmath-eval-scscp2-example-011-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1636,7 +1636,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-012-r2evaluation
+- id: openmath-eval-scscp2-example-012-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1659,7 +1659,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-013-r2evaluation
+- id: openmath-eval-scscp2-example-013-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1690,7 +1690,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-014-r2evaluation
+- id: openmath-eval-scscp2-example-014-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1738,7 +1738,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-015-r2evaluation
+- id: openmath-eval-scscp2-example-015-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1766,7 +1766,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-016-r2evaluation
+- id: openmath-eval-scscp2-example-016-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1793,7 +1793,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-017-r2evaluation
+- id: openmath-eval-scscp2-example-017-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1832,7 +1832,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-018-r2evaluation
+- id: openmath-eval-scscp2-example-018-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1883,7 +1883,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-019-r2evaluation
+- id: openmath-eval-scscp2-example-019-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1911,7 +1911,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-020-r2evaluation
+- id: openmath-eval-scscp2-example-020-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -1940,7 +1940,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnboundSymbolError
-- id: openmath-eval-scscp2-example-021-r2evaluation
+- id: openmath-eval-scscp2-example-021-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath">
@@ -2047,7 +2047,7 @@ cases:
       fields: []
     output:
       str: '{"ok":true,"value":{"kind":"Array"}}'
-- id: openmath-eval-sts-example-007-r2evaluation
+- id: openmath-eval-sts-example-007-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -2064,7 +2064,7 @@ cases:
     refusal:
       category: evaluation_error
       error_class: Openmath::Evaluation::UnsupportedExpressionError
-- id: openmath-eval-sts-example-008-r2evaluation
+- id: openmath-eval-sts-example-008-r2.evaluation
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">

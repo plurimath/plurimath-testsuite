@@ -18,7 +18,7 @@ entries:
     from openmath 7719764a4fc7fe1438a49edfae23adb9a0b14405.
 - generation: 2
   path: stages/openmath/generations/000002
-  snapshot_digest: sha256:d692c8d118f7900d56733f112a277f8962ac60db6ab5fa5f2b112eacca153fca
+  snapshot_digest: sha256:6b16742bacc9817e30cb629282262808d1c4d830bbeb96107251311703a5d4bf
   payloads: 47
   rows: 1843
   producer_kinds:

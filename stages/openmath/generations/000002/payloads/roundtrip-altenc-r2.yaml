@@ -7,7 +7,7 @@ description: 'Generation 2 supersessions of roundtrip-altenc: the answers the cu
   originals (kept above); unrenamed ids are cases the wider selection adds.'
 boundary: model-roundtrip
 cases:
-- id: openmath-altenc-001-v2-r2model-roundtrip
+- id: openmath-altenc-001-v2-r2.model-roundtrip
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -303,7 +303,7 @@ cases:
             </OMA>
           </OMATTR>
         </OMOBJ>
-- id: openmath-altenc-001-v3-r2model-roundtrip
+- id: openmath-altenc-001-v3-r2.model-roundtrip
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -599,7 +599,7 @@ cases:
             </OMA>
           </OMATTR>
         </OMOBJ>
-- id: openmath-altenc-002-v2-r2model-roundtrip
+- id: openmath-altenc-002-v2-r2.model-roundtrip
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
@@ -875,7 +875,7 @@ cases:
             </OMA>
           </OMATTR>
         </OMOBJ>
-- id: openmath-altenc-002-v3-r2model-roundtrip
+- id: openmath-altenc-002-v3-r2.model-roundtrip
   input:
     str: |
       <OMOBJ xmlns="http://www.openmath.org/OpenMath" version="2.0" cdbase="http://www.openmath.org/cd">
