@@ -138,9 +138,9 @@ git_block.scan(/^  (\S+):\n    remote: (\S+)\n    revision: ([0-9a-f]+)/) do |na
   git_sources[name] = { "repository" => remote, "branch" => branch,
                         "revision" => revision }
 end
-release_tag = Open3.capture2("git", "describe", "--tags", "--exact-match",
-                             "HEAD").first.strip
-release_tag = "v#{Mml::VERSION}" unless $CHILD_STATUS.success?
+tag_out, tag_ok = Open3.capture2("git", "describe", "--tags",
+                                 "--exact-match", "HEAD")
+release_tag = tag_ok ? tag_out.strip : "v#{Mml::VERSION}"
 adapter = Lutaml::Model::Config.xml_adapter
 adapter_name = adapter.is_a?(String) ? adapter : adapter.name
 
