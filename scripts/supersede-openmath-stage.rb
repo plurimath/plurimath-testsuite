@@ -74,7 +74,8 @@ Dir[File.join(prev_payloads, "*.yaml")].sort.each do |path|
                   "source" => { "relation" => "copy",
                                 "file" => { "repository" => OpenmathStage::SUITE_URL,
                                             "commit" => prev_commit,
-                                            "path" => "stages/openmath/generations/#{format('%06d', prev_number)}/payloads/#{name}" } },
+                                            "path" => "stages/openmath/generations/#{format('%06d', prev_number)}/payloads/#{name}",
+                                            "sha256" => Digest::SHA256.file(path).hexdigest } },
                   "rows" => YAML.safe_load_file(path, aliases: false)["cases"].map { |c| c["id"] } }
     next
   end
