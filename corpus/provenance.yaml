@@ -65,8 +65,8 @@ direct_runtime:
   unitsml: 0.6.8
 payloads:
 - path: asciimath/colour.yaml
-  sha256: c821d26abb818420e780643164f2f1d79df7fe07ee0f8c0825e65562ce07e1c6
-  bytes: 7271
+  sha256: 0fd701b50d6cfe9cc73b33558ece0a2376272949dd773f1f4eee02089524c36d
+  bytes: 7266
 - path: asciimath/fences.yaml
   sha256: bd573a711b45675ca49306a10bd63d7e3f4ac129785781a9ba07ac47e5b88766
   bytes: 20200
