@@ -1,0 +1,876 @@
+# Written by plurimath-testsuite scripts/supersede-mathml-stage.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-partial-render-r2
+description: 'Supersessions of model-roundtrip-partial-render: the answers the current
+  mml gem returns for the rows its dependency resolution changed. -r2 ids supersede
+  the originals, which stay for history.'
+boundary: model-roundtrip
+cases:
+- id: mathml-partial-019-r2.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mstyle decimalpoint="&#x066B;"><!--ARABIC DECIMAL SEPARATOR-->
+          <mlongdiv longdivstyle="stackedleftlinetop">
+            <mn> &#x0663;<!--ARABIC-INDIC DIGIT THREE--> </mn>
+            <mn> &#x0664;<!--ARABIC-INDIC DIGIT FOUR-->&#x0663;<!--ARABIC-INDIC DIGIT THREE-->&#x0665;<!--ARABIC-INDIC DIGIT FIVE-->&#x066B;<!--ARABIC DECIMAL SEPARATOR-->&#x0663;<!--ARABIC-INDIC DIGIT THREE--></mn>
+
+            <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0663;<!--ARABIC-INDIC DIGIT THREE-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO-->&#x0666;<!--ARABIC-INDIC DIGIT SIX--></mn>
+            <msgroup position="2" shift="-1">
+              <msgroup>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0662;<!--ARABIC-INDIC DIGIT TWO--></mn>
+                <msline length="2"/>
+              </msgroup>
+              <msgroup>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO--></mn>
+                <mn> &#x0669;<!--ARABIC-INDIC DIGIT NINE--></mn>
+                <msline length="2"/>
+              </msgroup>
+              <msgroup>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0666;<!--ARABIC-INDIC DIGIT SIX--></mn>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x0665;<!--ARABIC-INDIC DIGIT FIVE--></mn>
+                <msline length="2"/>
+                  <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE-->&#x066B;<!--ARABIC DECIMAL SEPARATOR-->&#x0660;<!--ARABIC-INDIC DIGIT ZERO--></mn>
+             </msgroup>
+             <msgroup position='-1'>
+                 <mn> &#x0669;<!--ARABIC-INDIC DIGIT NINE--></mn>
+                <msline length="3"/>
+                <mn> &#x0661;<!--ARABIC-INDIC DIGIT ONE--></mn>
+              </msgroup>
+            </msgroup>
+          </mlongdiv>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mlongdiv_value
+              - array:
+                - node: Mml::V3::Mlongdiv
+                  fields:
+                  - - msgroup_value
+                    - array:
+                      - node: Mml::V3::Msgroup
+                        fields:
+                        - - msgroup_value
+                          - array:
+                            - node: Mml::V3::Msgroup
+                              fields:
+                              - - msline_value
+                                - array:
+                                  - node: Mml::V3::Msline
+                                    fields:
+                                    - - length
+                                      - int: '2'
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                        - str: ٢
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: ٢
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: msline
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                            - node: Mml::V3::Msgroup
+                              fields:
+                              - - msline_value
+                                - array:
+                                  - node: Mml::V3::Msline
+                                    fields:
+                                    - - length
+                                      - int: '2'
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                        - str: ٠
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: ٠
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ٩"
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ٩"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: msline
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                            - node: Mml::V3::Msgroup
+                              fields:
+                              - - msline_value
+                                - array:
+                                  - node: Mml::V3::Msline
+                                    fields:
+                                    - - length
+                                      - int: '2'
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                        - str: ٦
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: ٦
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                        - str: ٥
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: ٥
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                        - str: "٫"
+                                        - str: ٠
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "٫"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: ٠
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: msline
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n            "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n       "
+                            - node: Mml::V3::Msgroup
+                              fields:
+                              - - msline_value
+                                - array:
+                                  - node: Mml::V3::Msline
+                                    fields:
+                                    - - length
+                                      - int: '3'
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ٩"
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ٩"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: " ١"
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: " ١"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - position
+                                - int: "-1"
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n           "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: msline
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - position
+                          - int: '2'
+                        - - shift
+                          - int: "-1"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: msgroup
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: msgroup
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: msgroup
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n       "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: msgroup
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ٣"
+                            - str: " "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ٣"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ٤"
+                            - str: ٣
+                            - str: ٥
+                            - str: "٫"
+                            - str: ٣
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ٤"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٣
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٥
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "٫"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٣
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ١"
+                            - str: ٣
+                            - str: ٠
+                            - str: ٦
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ١"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٣
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٠
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ٦
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                  - - longdivstyle
+                    - str: stackedleftlinetop
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: msgroup
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - decimalpoint
+              - str: "٫"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mlongdiv
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle decimalpoint="٫">
+            <!--ARABIC DECIMAL SEPARATOR-->
+            <mlongdiv longdivstyle="stackedleftlinetop">
+              <mn> ٣<!--ARABIC-INDIC DIGIT THREE--> </mn>
+              <mn> ٤<!--ARABIC-INDIC DIGIT FOUR-->٣<!--ARABIC-INDIC DIGIT THREE-->٥<!--ARABIC-INDIC DIGIT FIVE-->٫<!--ARABIC DECIMAL SEPARATOR-->٣<!--ARABIC-INDIC DIGIT THREE--></mn>
+              <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٣<!--ARABIC-INDIC DIGIT THREE-->٠<!--ARABIC-INDIC DIGIT ZERO-->٦<!--ARABIC-INDIC DIGIT SIX--></mn>
+              <msgroup position="2" shift="-1">
+                <msgroup>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٢<!--ARABIC-INDIC DIGIT TWO--></mn>
+                  <msline length="2"/>
+                </msgroup>
+                <msgroup>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٠<!--ARABIC-INDIC DIGIT ZERO--></mn>
+                  <mn> ٩<!--ARABIC-INDIC DIGIT NINE--></mn>
+                  <msline length="2"/>
+                </msgroup>
+                <msgroup>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٦<!--ARABIC-INDIC DIGIT SIX--></mn>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٥<!--ARABIC-INDIC DIGIT FIVE--></mn>
+                  <msline length="2"/>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE-->٫<!--ARABIC DECIMAL SEPARATOR-->٠<!--ARABIC-INDIC DIGIT ZERO--></mn>
+                </msgroup>
+                <msgroup position="-1">
+                  <mn> ٩<!--ARABIC-INDIC DIGIT NINE--></mn>
+                  <msline length="3"/>
+                  <mn> ١<!--ARABIC-INDIC DIGIT ONE--></mn>
+                </msgroup>
+              </msgroup>
+            </mlongdiv>
+          </mstyle>
+        </math>
