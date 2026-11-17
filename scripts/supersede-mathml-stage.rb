@@ -115,7 +115,7 @@ new_payloads.each do |name, bytes|
       "file" => {
         "repository" => "https://github.com/plurimath/plurimath-testsuite",
         "commit" => prev_commit,
-        "path" => "#{prev_dir}/#{name}",
+        "path" => "stages/mathml/generations/#{format('%06d', prev_number)}/#{name}",
         "sha256" => Digest::SHA256.hexdigest(bytes),
       },
     },
@@ -127,6 +127,23 @@ end
 changed_list = changed.map do |name, _, supers|
   "#{name} (#{supers.map { |c| c["id"] }.join(', ')})"
 end.join("; ")
+
+lock = Bundler::LockfileParser.new(File.read(File.join(Dir.pwd, "Gemfile.lock")))
+resolved = lock.specs.to_h { |s| [s.name, s.version.to_s] }
+lock_text = File.read(File.join(Dir.pwd, "Gemfile.lock"))
+git_block = lock_text[/^GIT\n(.*?)^PLATFORMS\n/m, 1] || ""
+git_sources = {}
+git_block.scan(/^  (\S+):\n    remote: (\S+)\n    revision: ([0-9a-f]+)/) do |name, remote, revision|
+  branch = git_block[/^  #{Regexp.escape(name)}:\n.*?^    branch: (\S+)\n/m, 1]
+  git_sources[name] = { "repository" => remote, "branch" => branch,
+                        "revision" => revision }
+end
+release_tag = Open3.capture2("git", "describe", "--tags", "--exact-match",
+                             "HEAD").first.strip
+release_tag = "v#{Mml::VERSION}" unless $CHILD_STATUS.success?
+adapter = Lutaml::Model::Config.xml_adapter
+adapter_name = adapter.is_a?(String) ? adapter : adapter.name
+
 provenance = {
   "schema" => "plurimath-stage/provenance/1",
   "language" => "mathml",
@@ -153,13 +170,44 @@ provenance = {
         "sha256" => script_sha,
       },
       "inputs" => prev_inputs,
+      "environment" => {
+        "ruby" => { "engine" => defined?(RUBY_ENGINE) ? RUBY_ENGINE : "ruby",
+                    "version" => RUBY_VERSION },
+        "xml_engine" => adapter_name,
+        "lockfile" => {
+          "path" => "Gemfile.lock",
+          "committed" => false,
+          "sha256" => Digest::SHA256.hexdigest(
+            File.read(File.join(Dir.pwd, "Gemfile.lock"))
+          ),
+          "bundler" => Bundler::VERSION,
+          "platforms" => lock.platforms.map(&:to_s),
+          "git_sources" => git_sources,
+          "resolved" => resolved,
+        },
+        "dependencies" => {
+          "lutaml-model" => resolved["lutaml-model"],
+          "moxml" => resolved["moxml"],
+        },
+        "compiler" => nil,
+        "binding" => nil,
+        "lml" => nil,
+      },
+      "semantic_boundary" => "model-roundtrip",
+      "configuration" => {
+        "entry_point" => "Mml.parse",
+        "options" => { "version" => 3, "namespace_exist" => true },
+        "serializer" => "to_xml",
+        "release_tag" => release_tag,
+        "installed_with" => "bundle install",
+      },
     },
   },
   "payloads" => payload_entries.sort_by { |e| e["path"].b },
 }
 text = "# Generation #{number} of the mathml stage corpus. Immutable: " \
        "never edit this directory; add a new generation instead. See " \
-       "docs/stage-corpus-contract.adoc.\n---\n" + YAML.dump(provenance)
+       "docs/stage-corpus-contract.adoc.\n" + YAML.dump(provenance)
 File.binwrite(File.join(out, "provenance.yaml"), text)
 
 snapshot = Dir.glob(File.join(out, "**", "*"))
