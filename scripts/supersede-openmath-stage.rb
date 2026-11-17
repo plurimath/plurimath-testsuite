@@ -105,7 +105,7 @@ Dir[File.join(prev_payloads, "*.yaml")].sort.each do |path|
       rows << case_row # a plainly new case
     elsif old != case_row
       superseded = case_row.dup
-      superseded["id"] = case_row["id"].sub(SUFFIX, "-r2\\1")
+      superseded["id"] = case_row["id"].sub(SUFFIX, "-r2.\\1")
       rows << superseded
     end
   end
@@ -116,7 +116,7 @@ Dir[File.join(prev_payloads, "*.yaml")].sort.each do |path|
     old = prev_by_id[id]
     vars = JSON.parse(old.dig("options", "variables") || "{}")
     expected = OpenmathStage.evaluate_expected(old.dig("input", "str"), vars, nil)
-    rows << { "id" => id.sub(SUFFIX, "-r2\\1"), "input" => old["input"],
+    rows << { "id" => id.sub(SUFFIX, "-r2.\\1"), "input" => old["input"],
               "options" => OpenmathStage.evaluation_options(vars, table_sha),
               "expected" => expected }
   end
