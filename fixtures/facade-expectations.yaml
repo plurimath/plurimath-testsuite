@@ -38377,7 +38377,7 @@
       "save": "v6"
       "recipe":
         "kind": "literal"
-        "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mn>1</mn>\n    <mo rspace=\"0.2778em\">&#x2062;</mo>\n    <mrow>\n      <mstyle mathvariant=\"normal\">\n        <mi>bar</mi>\n      </mstyle>\n    </mrow>\n  </mstyle>\n</math>\n"
+        "value": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mn>1</mn>\n  <mo rspace=\"0.2778em\">&#x2062;</mo>\n  <mrow>\n    <mrow mathvariant=\"normal\">\n      <mi>bar</mi>\n    </mrow>\n  </mrow>\n</math>\n"
     - "kind": "render"
       "save": "v7"
       "source": "v5"
