@@ -22,12 +22,10 @@ cases:
     asciimath: color(red)(x)
     latex: "{\\color{red} x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="red">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="red">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "✎(red&x)"
     omml: |
@@ -99,14 +97,12 @@ cases:
     asciimath: color(blue)(x) + y
     latex: "{\\color{blue} x} + y"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="blue">
-            <mi>x</mi>
-          </mstyle>
-          <mo>+</mo>
-          <mi>y</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="blue">
+          <mi>x</mi>
+        </mrow>
+        <mo>+</mo>
+        <mi>y</mi>
       </math>
     unicodemath: "✎(blue&x) + y"
     omml: |

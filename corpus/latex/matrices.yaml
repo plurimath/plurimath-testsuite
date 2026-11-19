@@ -22,19 +22,17 @@ cases:
     asciimath: "{:[a, b]:}"
     latex: "\\begin{matrix}a & b\\end{matrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mi>a</mi>
-              </mtd>
-              <mtd>
-                <mi>b</mi>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mi>a</mi>
+            </mtd>
+            <mtd>
+              <mi>b</mi>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(a&b)"
     omml: |
@@ -124,25 +122,23 @@ cases:
     asciimath: "([a], [b])"
     latex: "\\begin{pmatrix}a \\\\ b\\end{pmatrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mi>a</mi>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mi>b</mi>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mi>a</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>b</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "⒨(a@b)"
     omml: |
@@ -241,20 +237,18 @@ cases:
     asciimath: "[[a]]"
     latex: "\\begin{bmatrix}a\\end{bmatrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mi>a</mi>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mi>a</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: ⓢ(a)
     omml: |
@@ -332,31 +326,29 @@ cases:
     asciimath: "|[a, b], [c, d]|"
     latex: "\\begin{vmatrix}a & b \\\\ c & d\\end{vmatrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>|</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mi>a</mi>
-                </mtd>
-                <mtd>
-                  <mi>b</mi>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mi>c</mi>
-                </mtd>
-                <mtd>
-                  <mi>d</mi>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>|</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>|</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mi>a</mi>
+              </mtd>
+              <mtd>
+                <mi>b</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mi>c</mi>
+              </mtd>
+              <mtd>
+                <mi>d</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>|</mo>
+        </mrow>
       </math>
     unicodemath: "⒱(a&b@c&d)"
     omml: |
@@ -503,20 +495,18 @@ cases:
     asciimath: "{[a]}"
     latex: "\\begin{Bmatrix}a\\end{Bmatrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mi>a</mi>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>}</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mi>a</mi>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: Ⓢ(a)
     omml: |
@@ -594,19 +584,17 @@ cases:
     asciimath: "{:[a, b]:}"
     latex: "\\begin{array}{cc}a & b\\end{array}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd columnalign="center">
-                <mi>a</mi>
-              </mtd>
-              <mtd columnalign="center">
-                <mi>b</mi>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd columnalign="center">
+              <mi>a</mi>
+            </mtd>
+            <mtd columnalign="center">
+              <mi>b</mi>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(a&b)"
     omml: |

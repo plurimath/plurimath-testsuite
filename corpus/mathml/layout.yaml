@@ -34,14 +34,12 @@ cases:
     asciimath: sin 1
     latex: "\\sin{} 1"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>sin</mi>
-          </mrow>
-          <mn>1</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>sin</mi>
+        </mrow>
+        <mn>1</mn>
       </math>
     unicodemath: sin⁡ 1
     omml: |
@@ -97,12 +95,10 @@ cases:
     asciimath: mathfrak(f)
     latex: "\\mathfrak{f}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="fraktur">
-            <mi>f</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="fraktur">
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: "\\mfrakf"
     omml: |
@@ -156,12 +152,10 @@ cases:
     asciimath: mathsf(f)
     latex: "\\mathsf{f}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="sans-serif">
-            <mi>f</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="sans-serif">
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: "\\msansf"
     omml: |
@@ -215,12 +209,10 @@ cases:
     asciimath: mathtt(f)
     latex: "\\mathtt{f}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="monospace">
-            <mi>f</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="monospace">
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: ￗ(f)
     omml: |
@@ -273,12 +265,10 @@ cases:
     asciimath: mathcal(f)
     latex: "\\mathcal{f}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="script">
-            <mi>f</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="script">
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: "\\mscrf"
     omml: |
@@ -332,12 +322,10 @@ cases:
     asciimath: mathbb(s)
     latex: "\\mathbb{s}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="double-struck">
-            <mi>s</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="double-struck">
+          <mi>s</mi>
+        </mrow>
       </math>
     unicodemath: "\\Bbbs"
     omml: |
@@ -390,12 +378,10 @@ cases:
     asciimath: mathbf(d)
     latex: "\\mathbf{d}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="bold">
-            <mi>d</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="bold">
+          <mi>d</mi>
+        </mrow>
       </math>
     unicodemath: "\\mbfd"
     omml: |
@@ -448,14 +434,12 @@ cases:
     asciimath: mathfrak(color("red")(d))
     latex: \mathfrak{{\color{"red"} d}}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="fraktur">
-            <mstyle mathcolor="red">
-              <mi>d</mi>
-            </mstyle>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="fraktur">
+          <mrow mathcolor="red">
+            <mi>d</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: \mfrak✎("red"&d)
     omml: |
@@ -517,12 +501,10 @@ cases:
     asciimath: color("red")(d)
     latex: '{\color{"red"} d}'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="red">
-            <mi>d</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="red">
+          <mi>d</mi>
+        </mrow>
       </math>
     unicodemath: ✎("red"&d)
     omml: |
@@ -592,17 +574,15 @@ cases:
         + c
     latex: a + b \\  + c
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mo>+</mo>
-            <mi>b</mi>
-            <mo linebreak="newline"/>
-            <mo>+</mo>
-            <mi>c</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mo>+</mo>
+          <mi>b</mi>
+          <mo linebreak="newline"/>
+          <mo>+</mo>
+          <mi>c</mi>
+        </mrow>
       </math>
     unicodemath: "a + b \n + c"
     omml: |
@@ -697,16 +677,14 @@ cases:
     asciimath: x y z
     latex: x y z
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>x</mi>
-            <mpadded>
-              <mi>y</mi>
-            </mpadded>
-            <mi>z</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>x</mi>
+          <mpadded>
+            <mi>y</mi>
+          </mpadded>
+          <mi>z</mi>
+        </mrow>
       </math>
     unicodemath: x ⟡(y) z
     omml: |

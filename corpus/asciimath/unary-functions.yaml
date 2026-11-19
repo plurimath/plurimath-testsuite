@@ -22,20 +22,18 @@ cases:
     asciimath: sin(x)
     latex: "\\sin{( x )}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>sin</mi>
             <mrow>
-              <mi>sin</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: sin⁡(x)
     omml: |
@@ -121,16 +119,14 @@ cases:
     asciimath: sinx
     latex: "\\sin{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
-            <mrow>
-              <mi>sin</mi>
-              <mi>x</mi>
-            </mrow>
+            <mi>sin</mi>
+            <mi>x</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: sin⁡x
     omml: |
@@ -189,21 +185,19 @@ cases:
     asciimath: cos(2 x)
     latex: "\\cos{( 2 x )}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>cos</mi>
             <mrow>
-              <mi>cos</mi>
-              <mrow>
-                <mo>(</mo>
-                <mn>2</mn>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mn>2</mn>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: cos⁡(2 x)
     omml: |
@@ -301,14 +295,12 @@ cases:
     asciimath: abs(x)
     latex: "\\abs{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>|</mo>
-            <mi>x</mi>
-            <mo>|</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>|</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+        </mrow>
       </math>
     unicodemath: "⒜(x)"
     omml: |
@@ -366,13 +358,11 @@ cases:
     asciimath: hat(x)
     latex: "\\hat{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>x</mi>
-            <mo>^</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>x</mi>
+          <mo>^</mo>
+        </mover>
       </math>
     unicodemath: "(x)̂"
     omml: |
@@ -435,13 +425,11 @@ cases:
     asciimath: bar(x)
     latex: "\\overline{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>x</mi>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>x</mi>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "(x)̅"
     omml: |
@@ -500,13 +488,11 @@ cases:
     asciimath: vec(v)
     latex: "\\vec{v}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>v</mi>
-            <mo>&#x2192;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>v</mi>
+          <mo>&#x2192;</mo>
+        </mover>
       </math>
     unicodemath: "(v)⃗"
     omml: |

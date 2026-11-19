@@ -130,34 +130,32 @@ cases:
     asciimath: sum_([["0≤ i ≤ m"], ["0<j<n "]]) "P" ("i,j")
     latex: "\\sum_{\\left .\\begin{matrix}\\text{0≤ i ≤ m} \\\\ \\text{0<j<n }\\end{matrix}\\right .} \\text{P} ( \\text{i,j} )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>&#x2211;</mo>
+            <mtable>
+              <mtr>
+                <mtd>
+                  <mtext>0≤ i ≤ m</mtext>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd>
+                  <mtext>0&lt;j&lt;n </mtext>
+                </mtd>
+              </mtr>
+            </mtable>
+          </munder>
           <mrow>
-            <munder>
-              <mo>&#x2211;</mo>
-              <mtable>
-                <mtr>
-                  <mtd>
-                    <mtext>0≤ i ≤ m</mtext>
-                  </mtd>
-                </mtr>
-                <mtr>
-                  <mtd>
-                    <mtext>0&lt;j&lt;n </mtext>
-                  </mtd>
-                </mtr>
-              </mtable>
-            </munder>
+            <mtext>P</mtext>
             <mrow>
-              <mtext>P</mtext>
-              <mrow>
-                <mo>(</mo>
-                <mtext>i,j</mtext>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mtext>i,j</mtext>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: ∑_(■("0≤ i ≤ m"@"0<j<n "))▒〖"P" ("i,j")〗
     omml: |
@@ -413,25 +411,23 @@ cases:
     asciimath: "{[1], [2])"
     latex: "\\left \\{\\begin{matrix}1 \\\\ 2\\end{matrix}\\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>2</mn>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>2</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: Ⓢ(1@2)
     omml: |
@@ -633,30 +629,28 @@ cases:
     asciimath: "{[1], [2], [3])"
     latex: "\\left \\{\\begin{matrix}1 \\\\ 2 \\\\ 3\\end{matrix}\\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>2</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>3</mn>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>2</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>3</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: Ⓢ(1@2@3)
     omml: |
@@ -903,32 +897,30 @@ cases:
     asciimath: '"f" ("x") = {["-x,  &x<0"], ["x,  &x≥0"])'
     latex: "\\text{f} ( \\text{x} ) = \\left \\{\\begin{matrix}\\text{-x,  &x<0} \\\\ \\text{x,  &x≥0}\\end{matrix}\\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>f</mtext>
-          <mrow>
-            <mo>(</mo>
-            <mtext>x</mtext>
-            <mo>)</mo>
-          </mrow>
-          <mo>=</mo>
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mtext>-x,  &x&lt;0</mtext>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mtext>x,  &x≥0</mtext>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>f</mtext>
+        <mrow>
+          <mo>(</mo>
+          <mtext>x</mtext>
+          <mo>)</mo>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mtext>-x,  &x&lt;0</mtext>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mtext>x,  &x≥0</mtext>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: '"f" ("x") = Ⓢ("-x,  &x<0"@"x,  &x≥0")'
     omml: |
@@ -1156,21 +1148,19 @@ cases:
     asciimath: '[["a"], ["b"]]'
     latex: "\\left .\\begin{matrix}\\text{a} \\\\ \\text{b}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>a</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>a</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("a"@"b")
     omml: |
@@ -1325,26 +1315,24 @@ cases:
     asciimath: '[["a"], ["b"], ["c"]]'
     latex: "\\left .\\begin{matrix}\\text{a} \\\\ \\text{b} \\\\ \\text{c}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>a</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>a</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("a"@"b"@"c")
     omml: |
@@ -1922,81 +1910,79 @@ cases:
     asciimath: '"U=" {["Q"_("e") "*E" ,  & "if" "" "Q"_("e") <1], ["E,  &" "if " "Q"_("e") "<S"], [(|__frac("Q"_("e"))("S")__| + |~frac("Q"_("e") "mod S")("S")~| "") "E,  &" "otherwise"])'
     latex: "\\text{U=} \\left \\{\\begin{matrix}\\text{Q}_{\\text{e}} \\text{*E} ,  & \\text{if} \\text{} \\text{Q}_{\\text{e}} <1 \\\\ \\text{E,  &} \\text{if } \\text{Q}_{\\text{e}} \\text{<S} \\\\ ( \\lfloor \\frac{\\text{Q}_{\\text{e}}}{\\text{S}} \\rfloor + \\lceil \\frac{\\text{Q}_{\\text{e}} \\text{mod S}}{\\text{S}} \\rceil \\text{} ) \\text{E,  &} \\text{otherwise}\\end{matrix}\\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>U=</mtext>
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <msub>
-                    <mtext>Q</mtext>
-                    <mtext>e</mtext>
-                  </msub>
-                  <mtext>*E</mtext>
-                  <mi>,  &</mi>
-                  <mtext>if</mtext>
-                  <mtext></mtext>
-                  <msub>
-                    <mtext>Q</mtext>
-                    <mtext>e</mtext>
-                  </msub>
-                  <mi>&lt;1</mi>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mtext>E,  &</mtext>
-                  <mtext>if </mtext>
-                  <msub>
-                    <mtext>Q</mtext>
-                    <mtext>e</mtext>
-                  </msub>
-                  <mtext>&lt;S</mtext>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>U=</mtext>
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <msub>
+                  <mtext>Q</mtext>
+                  <mtext>e</mtext>
+                </msub>
+                <mtext>*E</mtext>
+                <mi>,  &</mi>
+                <mtext>if</mtext>
+                <mtext></mtext>
+                <msub>
+                  <mtext>Q</mtext>
+                  <mtext>e</mtext>
+                </msub>
+                <mi>&lt;1</mi>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mtext>E,  &</mtext>
+                <mtext>if </mtext>
+                <msub>
+                  <mtext>Q</mtext>
+                  <mtext>e</mtext>
+                </msub>
+                <mtext>&lt;S</mtext>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mrow>
+                  <mo>(</mo>
                   <mrow>
-                    <mo>(</mo>
-                    <mrow>
-                      <mo>⌊</mo>
-                      <mfrac>
+                    <mo>⌊</mo>
+                    <mfrac>
+                      <msub>
+                        <mtext>Q</mtext>
+                        <mtext>e</mtext>
+                      </msub>
+                      <mtext>S</mtext>
+                    </mfrac>
+                    <mo>⌋</mo>
+                  </mrow>
+                  <mo>+</mo>
+                  <mrow>
+                    <mo>⌈</mo>
+                    <mfrac>
+                      <mrow>
                         <msub>
                           <mtext>Q</mtext>
                           <mtext>e</mtext>
                         </msub>
-                        <mtext>S</mtext>
-                      </mfrac>
-                      <mo>⌋</mo>
-                    </mrow>
-                    <mo>+</mo>
-                    <mrow>
-                      <mo>⌈</mo>
-                      <mfrac>
-                        <mrow>
-                          <msub>
-                            <mtext>Q</mtext>
-                            <mtext>e</mtext>
-                          </msub>
-                          <mtext>mod S</mtext>
-                        </mrow>
-                        <mtext>S</mtext>
-                      </mfrac>
-                      <mo>⌉</mo>
-                    </mrow>
-                    <mtext></mtext>
-                    <mo>)</mo>
+                        <mtext>mod S</mtext>
+                      </mrow>
+                      <mtext>S</mtext>
+                    </mfrac>
+                    <mo>⌉</mo>
                   </mrow>
-                  <mtext>E,  &</mtext>
-                  <mtext>otherwise</mtext>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+                  <mtext></mtext>
+                  <mo>)</mo>
+                </mrow>
+                <mtext>E,  &</mtext>
+                <mtext>otherwise</mtext>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: '"U=" Ⓢ("Q"_("e")"*E",  &"if""""Q"_("e")<1@"E,  &""if ""Q"_("e")"<S"@(⌊("Q"_("e"))/("S")⌋ + ⌈("Q"_("e") "mod S")/("S")⌉ "")"E,  &""otherwise")'
     omml: |

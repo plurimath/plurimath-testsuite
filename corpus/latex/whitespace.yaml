@@ -22,12 +22,10 @@ cases:
     asciimath: a quad b
     latex: a \quad b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mi>&#xa0;&#xa0;</mi>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mi>&#xa0;&#xa0;</mi>
+        <mi>b</mi>
       </math>
     unicodemath: a    b
     omml: |
@@ -77,14 +75,12 @@ cases:
     asciimath: a quad b quad c
     latex: a \quad b \quad c
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mi>&#xa0;&#xa0;</mi>
-          <mi>b</mi>
-          <mi>&#xa0;&#xa0;</mi>
-          <mi>c</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mi>&#xa0;&#xa0;</mi>
+        <mi>b</mi>
+        <mi>&#xa0;&#xa0;</mi>
+        <mi>c</mi>
       </math>
     unicodemath: a    b    c
     omml: |
@@ -152,12 +148,10 @@ cases:
     asciimath: a , b
     latex: a , b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>,</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>,</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a , b
     omml: |
@@ -207,12 +201,10 @@ cases:
     asciimath: 'a : b'
     latex: 'a : b'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>&#x3a;</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>&#x3a;</mo>
+        <mi>b</mi>
       </math>
     unicodemath: 'a : b'
     omml: |
@@ -262,12 +254,10 @@ cases:
     asciimath: a "P{\;}" b
     latex: a \; b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>&#x2004;</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>&#x2004;</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a   b
     omml: |
@@ -317,12 +307,10 @@ cases:
     asciimath: a "P{qquad}" b
     latex: a \qquad b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mi>&#xa0;&#xa0;&#xa0;&#xa0;</mi>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mi>&#xa0;&#xa0;&#xa0;&#xa0;</mi>
+        <mi>b</mi>
       </math>
     unicodemath: a      b
     omml: |

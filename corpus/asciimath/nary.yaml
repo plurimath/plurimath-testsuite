@@ -22,14 +22,12 @@ cases:
     asciimath: log_(2) 8
     latex: "\\log_{2} 8"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>log</mi>
-            <mn>2</mn>
-          </msub>
-          <mn>8</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>log</mi>
+          <mn>2</mn>
+        </msub>
+        <mn>8</mn>
       </math>
     unicodemath: log_(2) 8
     omml: |
@@ -110,23 +108,21 @@ cases:
     asciimath: lim_(x to oo) f (x)
     latex: "\\lim_{x \\to \\infty} f ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mo>lim</mo>
-            <mrow>
-              <mi>x</mi>
-              <mo>&#x2192;</mo>
-              <mo>&#x221e;</mo>
-            </mrow>
-          </munder>
-          <mi>f</mi>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mo>lim</mo>
           <mrow>
-            <mo>(</mo>
             <mi>x</mi>
-            <mo>)</mo>
+            <mo>&#x2192;</mo>
+            <mo>&#x221e;</mo>
           </mrow>
-        </mstyle>
+        </munder>
+        <mi>f</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: lim_(x → ∞) f (x)
     omml: |
@@ -275,21 +271,19 @@ cases:
     asciimath: sum_(i = 1)^(n) i
     latex: "\\sum_{i = 1}^{n} i"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x2211;</mo>
-              <mrow>
-                <mi>i</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-            <mi>i</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x2211;</mo>
+            <mrow>
+              <mi>i</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>n</mi>
+          </munderover>
+          <mi>i</mi>
+        </mrow>
       </math>
     unicodemath: "∑_(i = 1)^(n)▒〖i〗"
     omml: |
@@ -393,21 +387,19 @@ cases:
     asciimath: int_(0)^(1) x d x
     latex: "\\int_{0}^{1} x d x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <msubsup>
-              <mo>&#x222b;</mo>
-              <mn>0</mn>
-              <mn>1</mn>
-            </msubsup>
-            <mi>x</mi>
-          </mrow>
-          <mrow>
-            <mi>d</mi>
-            <mi>x</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <msubsup>
+            <mo>&#x222b;</mo>
+            <mn>0</mn>
+            <mn>1</mn>
+          </msubsup>
+          <mi>x</mi>
+        </mrow>
+        <mrow>
+          <mi>d</mi>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "∫_(0)^(1)▒〖x〗 d x"
     omml: |
@@ -507,21 +499,19 @@ cases:
     asciimath: prod_(k = 1)^(n) k
     latex: "\\prod_{k = 1}^{n} k"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x220f;</mo>
-              <mrow>
-                <mi>k</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-            <mi>k</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x220f;</mo>
+            <mrow>
+              <mi>k</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>n</mi>
+          </munderover>
+          <mi>k</mi>
+        </mrow>
       </math>
     unicodemath: "∏_(k = 1)^(n)▒〖k〗"
     omml: |
@@ -625,11 +615,9 @@ cases:
     asciimath: sum x
     latex: "\\sum x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x2211;</mo>
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x2211;</mo>
+        <mi>x</mi>
       </math>
     unicodemath: "∑ x"
     omml: |

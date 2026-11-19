@@ -22,13 +22,11 @@ cases:
     asciimath: frac(1)(2)
     latex: "\\frac{1}{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mn>1</mn>
+          <mn>2</mn>
+        </mfrac>
       </math>
     unicodemath: "(1)/(2)"
     omml: |
@@ -97,16 +95,14 @@ cases:
     asciimath: frac(frac(1)(2))(3)
     latex: "\\frac{\\frac{1}{2}}{3}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
           <mfrac>
-            <mfrac>
-              <mn>1</mn>
-              <mn>2</mn>
-            </mfrac>
-            <mn>3</mn>
+            <mn>1</mn>
+            <mn>2</mn>
           </mfrac>
-        </mstyle>
+          <mn>3</mn>
+        </mfrac>
       </math>
     unicodemath: "((1)/(2))/(3)"
     omml: |
@@ -209,17 +205,15 @@ cases:
     asciimath: frac(a + b)(c)
     latex: "\\frac{a + b}{c}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-            </mrow>
-            <mi>c</mi>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+          </mrow>
+          <mi>c</mi>
+        </mfrac>
       </math>
     unicodemath: "(a + b)/(c)"
     omml: |
@@ -305,17 +299,15 @@ cases:
     asciimath: frac(x)(y + z)
     latex: "\\frac{x}{y + z}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>x</mi>
-            <mrow>
-              <mi>y</mi>
-              <mo>+</mo>
-              <mi>z</mi>
-            </mrow>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>x</mi>
+          <mrow>
+            <mi>y</mi>
+            <mo>+</mo>
+            <mi>z</mi>
+          </mrow>
+        </mfrac>
       </math>
     unicodemath: "(x)/(y + z)"
     omml: |
@@ -401,18 +393,16 @@ cases:
     asciimath: frac(1)(2) + frac(3)(4)
     latex: "\\frac{1}{2} + \\frac{3}{4}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mfrac>
-          <mo>+</mo>
-          <mfrac>
-            <mn>3</mn>
-            <mn>4</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mn>1</mn>
+          <mn>2</mn>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+          <mn>3</mn>
+          <mn>4</mn>
+        </mfrac>
       </math>
     unicodemath: "(1)/(2) + (3)/(4)"
     omml: |
@@ -536,15 +526,13 @@ cases:
     asciimath: frac(1)(sqrt(2))
     latex: "\\frac{1}{\\sqrt{2}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mn>1</mn>
-            <msqrt>
-              <mn>2</mn>
-            </msqrt>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mn>1</mn>
+          <msqrt>
+            <mn>2</mn>
+          </msqrt>
+        </mfrac>
       </math>
     unicodemath: "(1)/(√(2))"
     omml: |

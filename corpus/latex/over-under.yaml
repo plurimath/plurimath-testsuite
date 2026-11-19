@@ -22,16 +22,14 @@ cases:
     asciimath: bar(a b)
     latex: "\\overline{a b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow>
-              <mi>a</mi>
-              <mi>b</mi>
-            </mrow>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow>
+            <mi>a</mi>
+            <mi>b</mi>
+          </mrow>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "(a b)̅"
     omml: |
@@ -98,17 +96,15 @@ cases:
     asciimath: bar(a + b)
     latex: "\\overline{a + b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-            </mrow>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+          </mrow>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "(a + b)̅"
     omml: |
@@ -184,16 +180,14 @@ cases:
     asciimath: bar(bar(a))
     latex: "\\overline{\\overline{a}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
           <mover>
-            <mover>
-              <mi>a</mi>
-              <mo>&#xaf;</mo>
-            </mover>
+            <mi>a</mi>
             <mo>&#xaf;</mo>
           </mover>
-        </mstyle>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "((a)̅)̅"
     omml: |
@@ -267,16 +261,14 @@ cases:
     asciimath: ubrace(a b)
     latex: "\\underbrace{a b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mrow>
-              <mi>a</mi>
-              <mi>b</mi>
-            </mrow>
-            <mo>&#x23df;</mo>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mrow>
+            <mi>a</mi>
+            <mi>b</mi>
+          </mrow>
+          <mo>&#x23df;</mo>
+        </munder>
       </math>
     unicodemath: "⏟(a b)"
     omml: |
@@ -347,17 +339,15 @@ cases:
     asciimath: ubrace(a + b)
     latex: "\\underbrace{a + b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mrow>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-            </mrow>
-            <mo>&#x23df;</mo>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mrow>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+          </mrow>
+          <mo>&#x23df;</mo>
+        </munder>
       </math>
     unicodemath: "⏟(a + b)"
     omml: |
@@ -437,16 +427,14 @@ cases:
     asciimath: ubrace(x)_(y)
     latex: "\\underbrace{x}_{y}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
           <munder>
-            <munder>
-              <mi>x</mi>
-              <mo>&#x23df;</mo>
-            </munder>
-            <mi>y</mi>
+            <mi>x</mi>
+            <mo>&#x23df;</mo>
           </munder>
-        </mstyle>
+          <mi>y</mi>
+        </munder>
       </math>
     unicodemath: "⏟(x)_(y)"
     omml: |
@@ -531,13 +519,11 @@ cases:
     asciimath: overset(x)(y)
     latex: "\\overset{x}{y}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>y</mi>
-            <mi>x</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>y</mi>
+          <mi>x</mi>
+        </mover>
       </math>
     unicodemath: "(y)┴(x)"
     omml: |
@@ -600,13 +586,11 @@ cases:
     asciimath: underset(x)(y)
     latex: "\\underset{x}{y}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mi>y</mi>
-            <mi>x</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mi>y</mi>
+          <mi>x</mi>
+        </munder>
       </math>
     unicodemath: "(y)┬x"
     omml: |
@@ -670,17 +654,15 @@ cases:
     asciimath: stackrel(x)(y)
     latex: "\\stackrel{x}{y}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow>
-              <mi>y</mi>
-            </mrow>
-            <mrow>
-              <mi>x</mi>
-            </mrow>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow>
+            <mi>y</mi>
+          </mrow>
+          <mrow>
+            <mi>x</mi>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "(y)┴(x)"
     omml: |
@@ -743,14 +725,12 @@ cases:
     asciimath: '"P{underline}" a b'
     latex: "\\underline a b"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x332;</mi>
-          <mrow>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x332;</mi>
+        <mrow>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: ̲ a b
     omml: |
@@ -806,14 +786,12 @@ cases:
     asciimath: '"P{wideparen}" a b'
     latex: "\\overparen a b"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x23dc;</mi>
-          <mrow>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x23dc;</mi>
+        <mrow>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: "⏜ a b"
     omml: |

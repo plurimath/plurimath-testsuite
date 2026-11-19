@@ -13,7 +13,7 @@
   - "convert"
   - "-i"
   - "sum"
-  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <mo>&#x2211;</mo>\n  </mstyle>\n</math>\n"
+  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <mo>&#x2211;</mo>\n</math>\n"
   "source":
     "path": "spec/plurimath/cli_spec.rb"
     "line": 16
@@ -41,7 +41,7 @@
   - "latex"
   - "-t"
   - "mathml"
-  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <msub>\n      <mfrac>\n        <mi>s</mi>\n        <mi>c</mi>\n      </mfrac>\n      <mi>d</mi>\n    </msub>\n  </mstyle>\n</math>\n"
+  "stdout": "<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\" displaystyle=\"true\">\n  <msub>\n    <mfrac>\n      <mi>s</mi>\n      <mi>c</mi>\n    </mfrac>\n    <mi>d</mi>\n  </msub>\n</math>\n"
   "source":
     "path": "spec/plurimath/cli_spec.rb"
     "line": 53

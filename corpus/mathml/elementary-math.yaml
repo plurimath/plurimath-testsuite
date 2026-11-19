@@ -42,22 +42,20 @@ cases:
     asciimath: stackrel(424 + 33 )()
     latex: "\\stackrel{ \\left ( 424 + 33  \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
+              <mn>424</mn>
               <mrow>
-                <mn>424</mn>
-                <mrow>
-                  <mo>+</mo>
-                  <mn>33</mn>
-                </mrow>
-                <msline/>
+                <mo>+</mo>
+                <mn>33</mn>
               </mrow>
+              <msline/>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(424 + 33 )"
     omml: |
@@ -172,23 +170,21 @@ cases:
     asciimath: stackrel(123 456 +  579)()
     latex: "\\stackrel{ \\left ( 123 456 +  579 \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
+              <mn>123</mn>
               <mrow>
-                <mn>123</mn>
-                <mrow>
-                  <mn>456</mn>
-                  <mo>+</mo>
-                </mrow>
-                <msline/>
-                <mn>579</mn>
+                <mn>456</mn>
+                <mo>+</mo>
               </mrow>
+              <msline/>
+              <mn>579</mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(123 456 +  579)"
     omml: |
@@ -309,21 +305,19 @@ cases:
     asciimath: stackrel(456 + )()
     latex: "\\stackrel{ \\left ( 456 +  \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
               <mrow>
-                <mrow>
-                  <mn>456</mn>
-                  <mo>+</mo>
-                </mrow>
-                <msline/>
+                <mn>456</mn>
+                <mo>+</mo>
               </mrow>
+              <msline/>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(456 + )"
     omml: |
@@ -442,29 +436,27 @@ cases:
     asciimath: stackrel(2 12 2,327 -  1,156  1,171)()
     latex: "\\stackrel{ \\left ( 2 12 2,327 -  1,156  1,171 \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
-              <mrow>
-                <mscarries>
-                  <mrow>
-                    <mn>2</mn>
-                    <mn>12</mn>
-                  </mrow>
-                </mscarries>
-                <mn>2,327</mn>
+              <mscarries>
                 <mrow>
-                  <mo>&#x2212;</mo>
-                  <mn> 1,156</mn>
+                  <mn>2</mn>
+                  <mn>12</mn>
                 </mrow>
-                <msline/>
-                <mn>1,171</mn>
+              </mscarries>
+              <mn>2,327</mn>
+              <mrow>
+                <mo>&#x2212;</mo>
+                <mn> 1,156</mn>
               </mrow>
+              <msline/>
+              <mn>1,171</mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(scarries⁡2 12 2,327 −  1,156  1,171)"
     omml: |
@@ -628,26 +620,24 @@ cases:
     asciimath: stackrel(1 2,327 -  1,156  1,171)()
     latex: "\\stackrel{ \\left ( 1 2,327 -  1,156  1,171 \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
+              <mscarries>
+                <mn>1</mn>
+              </mscarries>
+              <mn>2,327</mn>
               <mrow>
-                <mscarries>
-                  <mn>1</mn>
-                </mscarries>
-                <mn>2,327</mn>
-                <mrow>
-                  <mo>&#x2212;</mo>
-                  <mn> 1,156</mn>
-                </mrow>
-                <msline/>
-                <mn>1,171</mn>
+                <mo>&#x2212;</mo>
+                <mn> 1,156</mn>
               </mrow>
+              <msline/>
+              <mn>1,171</mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(scarries⁡1 2,327 −  1,156  1,171)"
     omml: |
@@ -789,28 +779,26 @@ cases:
     asciimath: stackrel(10 52 -  7  45)()
     latex: "\\stackrel{ \\left ( 10 52 -  7  45 \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
+              <mscarries>
+                <menclose notation="bottom">
+                  <mn>10</mn>
+                </menclose>
+              </mscarries>
+              <mn>52</mn>
               <mrow>
-                <mscarries>
-                  <menclose notation="bottom">
-                    <mn>10</mn>
-                  </menclose>
-                </mscarries>
-                <mn>52</mn>
-                <mrow>
-                  <mo>&#x2212;</mo>
-                  <mn> 7</mn>
-                </mrow>
-                <msline/>
-                <mn>45</mn>
+                <mo>&#x2212;</mo>
+                <mn> 7</mn>
               </mrow>
+              <msline/>
+              <mn>45</mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(scarries⁡▁(10) 52 −  7  45)"
     omml: |
@@ -951,18 +939,16 @@ cases:
     asciimath: stackrel(  0.3333 )()
     latex: "\\stackrel{ \\left (   0.3333  \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
-              <mrow>
-                <msline/>
-                <mn> 0.3333 </mn>
-              </mrow>
+              <msline/>
+              <mn> 0.3333 </mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(  0.3333 )"
     omml: |
@@ -1043,18 +1029,16 @@ cases:
     asciimath: stackrel(  0.142857 )()
     latex: "\\stackrel{ \\left (   0.142857  \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
-              <mrow>
-                <msline/>
-                <mn> 0.142857 </mn>
-              </mrow>
+              <msline/>
+              <mn> 0.142857 </mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(  0.142857 )"
     omml: |
@@ -1135,18 +1119,16 @@ cases:
     asciimath: stackrel( 0.142857  )()
     latex: "\\stackrel{ \\left (  0.142857   \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
-              <mrow>
-                <mn> 0.142857 </mn>
-                <msline/>
-              </mrow>
+              <mn> 0.142857 </mn>
+              <msline/>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴( 0.142857  )"
     omml: |
@@ -1237,21 +1219,19 @@ cases:
     asciimath: stackrel(. .  0.142857 )()
     latex: "\\stackrel{ \\left ( . .  0.142857  \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mrow></mrow>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow></mrow>
+          <mrow>
             <mrow>
               <mrow>
-                <mrow>
-                  <mo>&#x2e;</mo>
-                  <mo>&#x2e;</mo>
-                </mrow>
-                <mn> 0.142857 </mn>
+                <mo>&#x2e;</mo>
+                <mo>&#x2e;</mo>
               </mrow>
+              <mn> 0.142857 </mn>
             </mrow>
-          </mover>
-        </mstyle>
+          </mrow>
+        </mover>
       </math>
     unicodemath: "()┴(. .  0.142857 )"
     omml: |

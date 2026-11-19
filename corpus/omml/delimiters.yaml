@@ -50,14 +50,12 @@ cases:
     asciimath: "(1)"
     latex: "( 1 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mn>1</mn>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mn>1</mn>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(1)"
     omml: |
@@ -159,14 +157,12 @@ cases:
     asciimath: "[2]"
     latex: "[ 2 ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mn>2</mn>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mn>2</mn>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: "[2]"
     omml: |
@@ -270,14 +266,12 @@ cases:
     asciimath: "{3}"
     latex: "\\{ 3 \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mn>3</mn>
-            <mo>}</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mn>3</mn>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{3}"
     omml: |
@@ -381,14 +375,12 @@ cases:
     asciimath: "<<4>>"
     latex: "\\langle 4 \\rangle"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2329;</mo>
-            <mn>4</mn>
-            <mo>&#x232a;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2329;</mo>
+          <mn>4</mn>
+          <mo>&#x232a;</mo>
+        </mrow>
       </math>
     unicodemath: "⟨4⟩"
     omml: |
@@ -492,14 +484,12 @@ cases:
     asciimath: "|__5__|"
     latex: "\\lfloor 5 \\rfloor"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⌊</mo>
-            <mn>5</mn>
-            <mo>⌋</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⌊</mo>
+          <mn>5</mn>
+          <mo>⌋</mo>
+        </mrow>
       </math>
     unicodemath: "⌊5⌋"
     omml: |
@@ -603,14 +593,12 @@ cases:
     asciimath: "|~6~|"
     latex: "\\lceil 6 \\rceil"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⌈</mo>
-            <mn>6</mn>
-            <mo>⌉</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⌈</mo>
+          <mn>6</mn>
+          <mo>⌉</mo>
+        </mrow>
       </math>
     unicodemath: "⌈6⌉"
     omml: |
@@ -714,14 +702,12 @@ cases:
     asciimath: "|7|"
     latex: "| 7 |"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>|</mo>
-            <mn>7</mn>
-            <mo>|</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>|</mo>
+          <mn>7</mn>
+          <mo>|</mo>
+        </mrow>
       </math>
     unicodemath: "|(7)|"
     omml: |
@@ -825,14 +811,12 @@ cases:
     asciimath: norm8norm
     latex: "\\Vert 8 \\Vert"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>‖</mo>
-            <mn>8</mn>
-            <mo>‖</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>‖</mo>
+          <mn>8</mn>
+          <mo>‖</mo>
+        </mrow>
       </math>
     unicodemath: "‖8‖"
     omml: |
@@ -936,14 +920,12 @@ cases:
     asciimath: "[9["
     latex: "[ 9 ["
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mn>9</mn>
-            <mo>[</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mn>9</mn>
+          <mo>[</mo>
+        </mrow>
       </math>
     unicodemath: "[9["
     omml: |
@@ -1047,14 +1029,12 @@ cases:
     asciimath: "]0]"
     latex: "] 0 ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>]</mo>
-            <mn>0</mn>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>]</mo>
+          <mn>0</mn>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: "]0]"
     omml: |
@@ -1158,14 +1138,12 @@ cases:
     asciimath: "]1["
     latex: "] 1 ["
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>]</mo>
-            <mn>1</mn>
-            <mo>[</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>]</mo>
+          <mn>1</mn>
+          <mo>[</mo>
+        </mrow>
       </math>
     unicodemath: "]1["
     omml: |
@@ -1269,14 +1247,12 @@ cases:
     asciimath: '"P{lbbrack}"2"P{rbbrack}"'
     latex: "\\lbbrack 2 \\rbbrack"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⟦</mo>
-            <mn>2</mn>
-            <mo>⟧</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⟦</mo>
+          <mn>2</mn>
+          <mo>⟧</mo>
+        </mrow>
       </math>
     unicodemath: "⟦2⟧"
     omml: |
@@ -1382,15 +1358,13 @@ cases:
     asciimath: "(1 2)"
     latex: "( 1 2 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mn>1</mn>
-            <mn>2</mn>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mn>1</mn>
+          <mn>2</mn>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(1 2)"
     omml: |
@@ -1510,15 +1484,13 @@ cases:
     asciimath: "{3 4}"
     latex: "\\{ 3 4 \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mn>3</mn>
-            <mn>4</mn>
-            <mo>}</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mn>3</mn>
+          <mn>4</mn>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{3 4}"
     omml: |
@@ -1640,15 +1612,13 @@ cases:
     asciimath: "<<5 6>>"
     latex: "\\langle 5 6 \\rangle"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2329;</mo>
-            <mn>5</mn>
-            <mn>6</mn>
-            <mo>&#x232a;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2329;</mo>
+          <mn>5</mn>
+          <mn>6</mn>
+          <mo>&#x232a;</mo>
+        </mrow>
       </math>
     unicodemath: "⟨5 6⟩"
     omml: |
@@ -1776,16 +1746,14 @@ cases:
     asciimath: "<<7 8 9>>"
     latex: "\\langle 7 8 9 \\rangle"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2329;</mo>
-            <mn>7</mn>
-            <mn>8</mn>
-            <mn>9</mn>
-            <mo>&#x232a;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2329;</mo>
+          <mn>7</mn>
+          <mn>8</mn>
+          <mn>9</mn>
+          <mo>&#x232a;</mo>
+        </mrow>
       </math>
     unicodemath: "⟨7 8 9⟩"
     omml: |

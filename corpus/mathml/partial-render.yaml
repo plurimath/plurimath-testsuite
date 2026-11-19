@@ -31,10 +31,8 @@ cases:
       output: "\\sqrt{}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msqrt/>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msqrt/>
         </math>
     unicodemath:
       error:
@@ -99,10 +97,8 @@ cases:
       output: "\\sqrt{}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msqrt/>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msqrt/>
         </math>
     unicodemath:
       error:
@@ -175,15 +171,13 @@ cases:
           }
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msgroup>
-              <mi>33</mi>
-              <mtext>dd</mtext>
-              <mtext>0
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msgroup>
+            <mi>33</mi>
+            <mtext>dd</mtext>
+            <mtext>0
           </mtext>
-            </msgroup>
-          </mstyle>
+          </msgroup>
         </math>
     unicodemath:
       output: |-
@@ -268,15 +262,13 @@ cases:
           }
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msgroup>
-              <mi>33</mi>
-              <mi>dd</mi>
-              <mtext>0
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msgroup>
+            <mi>33</mi>
+            <mi>dd</mi>
+            <mtext>0
           </mtext>
-            </msgroup>
-          </mstyle>
+          </msgroup>
         </math>
     unicodemath:
       output: |-
@@ -355,14 +347,12 @@ cases:
       output: n<1
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msgroup>
-              <mi>n</mi>
-              <mo>&#x3c;</mo>
-              <mn>1</mn>
-            </msgroup>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msgroup>
+            <mi>n</mi>
+            <mo>&#x3c;</mo>
+            <mn>1</mn>
+          </msgroup>
         </math>
     unicodemath:
       output: n<1
@@ -435,12 +425,10 @@ cases:
       output: '1.4'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msgroup>
-              <mn>1.4</mn>
-            </msgroup>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msgroup>
+            <mn>1.4</mn>
+          </msgroup>
         </math>
     unicodemath:
       output: '1.4'
@@ -499,12 +487,10 @@ cases:
       output: '1,4'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msgroup>
-              <mn>1,4</mn>
-            </msgroup>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msgroup>
+            <mn>1,4</mn>
+          </msgroup>
         </math>
     unicodemath:
       output: '1,4'
@@ -621,35 +607,33 @@ cases:
       output: "\\int_{t_{2}}^{t_{1}} f ( t ) d t"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <semantics>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <semantics>
+            <mrow>
+              <msubsup>
+                <mo>&#x222b;</mo>
+                <msub>
+                  <mi>t</mi>
+                  <mn>2</mn>
+                </msub>
+                <msub>
+                  <mi>t</mi>
+                  <mn>1</mn>
+                </msub>
+              </msubsup>
               <mrow>
-                <msubsup>
-                  <mo>&#x222b;</mo>
-                  <msub>
-                    <mi>t</mi>
-                    <mn>2</mn>
-                  </msub>
-                  <msub>
-                    <mi>t</mi>
-                    <mn>1</mn>
-                  </msub>
-                </msubsup>
-                <mrow>
-                  <mi>f</mi>
-                  <mo>(</mo>
-                  <mi>t</mi>
-                  <mo>)</mo>
-                  <mi>d</mi>
-                  <mi>t</mi>
-                </mrow>
+                <mi>f</mi>
+                <mo>(</mo>
+                <mi>t</mi>
+                <mo>)</mo>
+                <mi>d</mi>
+                <mi>t</mi>
               </mrow>
-              <annotation>
-                <mi>MathType@MTEF@5@5@+= feaagKart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbbjxAHX garuavP1wzZbItLDhis9wBH5garmWu51MyVXgarqqtubsr4rNCHbGe aGqipG0dh9qqWrVepG0dbbL8F4rqqrVepeea0xe9LqFf0xc9q8qqaq Fn0lXdHiVcFbIOFHK8Feea0dXdar=Jb9hs0dXdHuk9fr=xfr=xfrpe WZqaaeaaciWacmGadaGadeaabaGaaqaaaOqaamaapedabaGaamOzai aacIcacaWG0bGaaiykaKqzaeGaaiizaOGaamiDaaWcbaGaamiDamaa BaaameaacaaIYaaabeaaaSqaaiaadshadaWgaaadbaGaaGymaaqaba aaniabgUIiYdaaaa@40DD@ </mi>
-              </annotation>
-            </semantics>
-          </mstyle>
+            </mrow>
+            <annotation>
+              <mi>MathType@MTEF@5@5@+= feaagKart1ev2aaatCvAUfeBSjuyZL2yd9gzLbvyNv2CaerbbjxAHX garuavP1wzZbItLDhis9wBH5garmWu51MyVXgarqqtubsr4rNCHbGe aGqipG0dh9qqWrVepG0dbbL8F4rqqrVepeea0xe9LqFf0xc9q8qqaq Fn0lXdHiVcFbIOFHK8Feea0dXdar=Jb9hs0dXdHuk9fr=xfr=xfrpe WZqaaeaaciWacmGadaGadeaabaGaaqaaaOqaamaapedabaGaamOzai aacIcacaWG0bGaaiykaKqzaeGaaiizaOGaamiDaaWcbaGaamiDamaa BaaameaacaaIYaaabeaaaSqaaiaadshadaWgaaadbaGaaGymaaqaba aaniabgUIiYdaaaa@40DD@ </mi>
+            </annotation>
+          </semantics>
         </math>
     unicodemath:
       error:
@@ -890,29 +874,27 @@ cases:
       output: "\\frac{ x  +  y  +  z }{ x  \\phantom{+  y } +  z }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mfrac>
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mrow>
-                <mi> x </mi>
-                <mphantom>
-                  <mrow>
-                    <mo>+</mo>
-                    <mi> y </mi>
-                  </mrow>
-                </mphantom>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-            </mfrac>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mfrac>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mrow>
+              <mi> x </mi>
+              <mphantom>
+                <mrow>
+                  <mo>+</mo>
+                  <mi> y </mi>
+                </mrow>
+              </mphantom>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+          </mfrac>
         </math>
     unicodemath:
       output: "( x  +  y  +  z )/( x  ⟡(+  y ) +  z )"
@@ -1111,29 +1093,27 @@ cases:
       output: "\\frac{ x  +  y  +  z }{ x  \\phantom{+} \\phantom{ y } +  z }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mfrac>
-              <mrow>
-                <mi> x </mi>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mfrac>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mrow>
+              <mi> x </mi>
+              <mphantom>
                 <mo>+</mo>
+              </mphantom>
+              <mphantom>
                 <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mrow>
-                <mi> x </mi>
-                <mphantom>
-                  <mo>+</mo>
-                </mphantom>
-                <mphantom>
-                  <mi> y </mi>
-                </mphantom>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-            </mfrac>
-          </mstyle>
+              </mphantom>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+          </mfrac>
         </math>
     unicodemath:
       output: "( x  +  y  +  z )/( x  ⟡(+) ⟡( y ) +  z )"
@@ -1309,16 +1289,14 @@ cases:
       output: " x  +  y "
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <menclose notation="">
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-              </mrow>
-            </menclose>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <menclose notation="">
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+            </mrow>
+          </menclose>
         </math>
     unicodemath:
       error:
@@ -1418,30 +1396,28 @@ cases:
       output: "{}_{ 0 }^{} F _{ 1 }^{} \\text{P[funcapply]} (  ;   a   ;   z  )"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mmultiscripts>
+              <mi> F </mi>
+              <mn> 1 </mn>
+              <none/>
+              <mprescripts/>
+              <mn> 0 </mn>
+              <none/>
+            </mmultiscripts>
+            <mi>&#x2061;</mi>
             <mrow>
-              <mmultiscripts>
-                <mi> F </mi>
-                <mn> 1 </mn>
-                <none/>
-                <mprescripts/>
-                <mn> 0 </mn>
-                <none/>
-              </mmultiscripts>
-              <mi>&#x2061;</mi>
+              <mo>(</mo>
               <mrow>
-                <mo>(</mo>
-                <mrow>
-                  <mi> ; </mi>
-                  <mi> a </mi>
-                  <mi> ; </mi>
-                  <mi> z </mi>
-                </mrow>
-                <mo>)</mo>
+                <mi> ; </mi>
+                <mi> a </mi>
+                <mi> ; </mi>
+                <mi> z </mi>
               </mrow>
+              <mo>)</mo>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: _( 0 )^()  F _( 1 )^() ⁡ ( ;   a   ;   z )
@@ -1653,24 +1629,22 @@ cases:
       output: "{}_{}^{} R _{ i    k   l }^{  j   }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mmultiscripts>
-              <mi> R </mi>
-              <mrow>
-                <mi> i </mi>
-                <none/>
-                <mi> k </mi>
-                <mi> l </mi>
-              </mrow>
-              <mrow>
-                <none/>
-                <mi> j </mi>
-                <none/>
-                <none/>
-              </mrow>
-            </mmultiscripts>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mmultiscripts>
+            <mi> R </mi>
+            <mrow>
+              <mi> i </mi>
+              <none/>
+              <mi> k </mi>
+              <mi> l </mi>
+            </mrow>
+            <mrow>
+              <none/>
+              <mi> j </mi>
+              <none/>
+              <none/>
+            </mrow>
+          </mmultiscripts>
         </math>
     unicodemath:
       error:
@@ -1843,17 +1817,15 @@ cases:
       output: "{}_{}^{5}&#x644;_{12}^{}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mmultiscripts>
-              <mi>&#x644;</mi>
-              <mn>12</mn>
-              <none/>
-              <mprescripts/>
-              <none/>
-              <mn>5</mn>
-            </mmultiscripts>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mmultiscripts>
+            <mi>&#x644;</mi>
+            <mn>12</mn>
+            <none/>
+            <mprescripts/>
+            <none/>
+            <mn>5</mn>
+          </mmultiscripts>
         </math>
     unicodemath:
       output: _()^(5) ل_(12)^()
@@ -2158,30 +2130,28 @@ cases:
       output: "\\stackrel{ \\left ( 123\\times 321  123246369  \\right ) }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mrow></mrow>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mrow></mrow>
+            <mrow>
               <mrow>
-                <mrow>
-                  <msgroup>
-                    <mn>123</mn>
-                    <mrow>
-                      <mo>&#xd7;</mo>
-                      <mn>321</mn>
-                    </mrow>
-                  </msgroup>
-                  <msline/>
-                  <msgroup>
-                    <mn>123</mn>
-                    <mn>246</mn>
-                    <mn>369</mn>
-                  </msgroup>
-                  <msline/>
-                </mrow>
+                <msgroup>
+                  <mn>123</mn>
+                  <mrow>
+                    <mo>&#xd7;</mo>
+                    <mn>321</mn>
+                  </mrow>
+                </msgroup>
+                <msline/>
+                <msgroup>
+                  <mn>123</mn>
+                  <mn>246</mn>
+                  <mn>369</mn>
+                </msgroup>
+                <msline/>
               </mrow>
-            </mover>
-          </mstyle>
+            </mrow>
+          </mover>
         </math>
     unicodemath:
       output: "()┴(123× 321  123246369 )"
@@ -2378,53 +2348,51 @@ cases:
       output: "\\stackrel{ \\left ( 1 1 1 1 1,234 \\times 4,321  1 1 1 1 1 1,23424,68370,24,936  5,332,114 \\right ) }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mrow></mrow>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mrow></mrow>
+            <mrow>
               <mrow>
-                <mrow>
-                  <mscarries>
-                    <mrow>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                    </mrow>
-                  </mscarries>
-                  <mscarries>
-                    <mrow>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                    </mrow>
-                  </mscarries>
-                  <mn>1,234</mn>
+                <mscarries>
                   <mrow>
-                    <mo>&#xd7;</mo>
-                    <mn>4,321</mn>
+                    <mn>1</mn>
+                    <mn>1</mn>
                   </mrow>
-                  <msline/>
-                  <mscarries>
-                    <mrow>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                      <mn>1</mn>
-                    </mrow>
-                  </mscarries>
-                  <msgroup>
-                    <mn>1,234</mn>
-                    <mn>24,68</mn>
-                    <mn>370,2</mn>
-                    <mrow>
-                      <mn>4,936</mn>
-                    </mrow>
-                  </msgroup>
-                  <msline/>
-                  <mn>5,332,114</mn>
+                </mscarries>
+                <mscarries>
+                  <mrow>
+                    <mn>1</mn>
+                    <mn>1</mn>
+                  </mrow>
+                </mscarries>
+                <mn>1,234</mn>
+                <mrow>
+                  <mo>&#xd7;</mo>
+                  <mn>4,321</mn>
                 </mrow>
+                <msline/>
+                <mscarries>
+                  <mrow>
+                    <mn>1</mn>
+                    <mn>1</mn>
+                    <mn>1</mn>
+                    <mn>1</mn>
+                    <mn>1</mn>
+                  </mrow>
+                </mscarries>
+                <msgroup>
+                  <mn>1,234</mn>
+                  <mn>24,68</mn>
+                  <mn>370,2</mn>
+                  <mrow>
+                    <mn>4,936</mn>
+                  </mrow>
+                </msgroup>
+                <msline/>
+                <mn>5,332,114</mn>
               </mrow>
-            </mover>
-          </mstyle>
+            </mrow>
+          </mover>
         </math>
     unicodemath:
       output: "()┴(scarries⁡1 1 scarries⁡1 1 1,234 × 4,321  scarries⁡1 1 1 1 1 1,23424,68370,24,936  5,332,114)"
@@ -2765,36 +2733,34 @@ cases:
       output: " 3   435.3  1306  12 10 9 16 15 1.0 9 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mlongdiv>
-              <mn> 3 </mn>
-              <mn> 435.3</mn>
-              <mn> 1306</mn>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mlongdiv>
+            <mn> 3 </mn>
+            <mn> 435.3</mn>
+            <mn> 1306</mn>
+            <msgroup>
               <msgroup>
-                <msgroup>
-                  <mn> 12</mn>
-                  <msline/>
-                </msgroup>
-                <msgroup>
-                  <mn> 10</mn>
-                  <mn> 9</mn>
-                  <msline/>
-                </msgroup>
-                <msgroup>
-                  <mn> 16</mn>
-                  <mn> 15</mn>
-                  <msline/>
-                  <mn> 1.0</mn>
-                </msgroup>
-                <msgroup>
-                  <mn> 9</mn>
-                  <msline/>
-                  <mn> 1</mn>
-                </msgroup>
+                <mn> 12</mn>
+                <msline/>
               </msgroup>
-            </mlongdiv>
-          </mstyle>
+              <msgroup>
+                <mn> 10</mn>
+                <mn> 9</mn>
+                <msline/>
+              </msgroup>
+              <msgroup>
+                <mn> 16</mn>
+                <mn> 15</mn>
+                <msline/>
+                <mn> 1.0</mn>
+              </msgroup>
+              <msgroup>
+                <mn> 9</mn>
+                <msline/>
+                <mn> 1</mn>
+              </msgroup>
+            </msgroup>
+          </mlongdiv>
         </math>
     unicodemath:
       error:
@@ -3051,36 +3017,34 @@ cases:
       output: " ٣   ٤٣٥٫٣  ١٣٠٦  ١٢ ١٠ ٩ ١٦ ١٥ ١٫٠ ٩ ١"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mlongdiv>
-              <mn> ٣ </mn>
-              <mn> ٤٣٥٫٣</mn>
-              <mn> ١٣٠٦</mn>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mlongdiv>
+            <mn> ٣ </mn>
+            <mn> ٤٣٥٫٣</mn>
+            <mn> ١٣٠٦</mn>
+            <msgroup>
               <msgroup>
-                <msgroup>
-                  <mn> ١٢</mn>
-                  <msline/>
-                </msgroup>
-                <msgroup>
-                  <mn> ١٠</mn>
-                  <mn> ٩</mn>
-                  <msline/>
-                </msgroup>
-                <msgroup>
-                  <mn> ١٦</mn>
-                  <mn> ١٥</mn>
-                  <msline/>
-                  <mn> ١٫٠</mn>
-                </msgroup>
-                <msgroup>
-                  <mn> ٩</mn>
-                  <msline/>
-                  <mn> ١</mn>
-                </msgroup>
+                <mn> ١٢</mn>
+                <msline/>
               </msgroup>
-            </mlongdiv>
-          </mstyle>
+              <msgroup>
+                <mn> ١٠</mn>
+                <mn> ٩</mn>
+                <msline/>
+              </msgroup>
+              <msgroup>
+                <mn> ١٦</mn>
+                <mn> ١٥</mn>
+                <msline/>
+                <mn> ١٫٠</mn>
+              </msgroup>
+              <msgroup>
+                <mn> ٩</mn>
+                <msline/>
+                <mn> ١</mn>
+              </msgroup>
+            </msgroup>
+          </mlongdiv>
         </math>
     unicodemath:
       error:
@@ -3296,18 +3260,16 @@ cases:
       output: "\\{ \\text{“A”} , \\text{“B”} , \\text{“   ”} \\}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mo>{</mo>
-              <ms>A</ms>
-              <mo>,</mo>
-              <ms>B</ms>
-              <mo>,</mo>
-              <ms>   </ms>
-              <mo>}</mo>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mo>{</mo>
+            <ms>A</ms>
+            <mo>,</mo>
+            <ms>B</ms>
+            <mo>,</mo>
+            <ms>   </ms>
+            <mo>}</mo>
+          </mrow>
         </math>
     unicodemath:
       output: '{"A" , "B" , "   "}'
@@ -3441,30 +3403,28 @@ cases:
       output: "\\bigwedge_{i = 0}^{n} ( a_{i} > 0 )"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <munderover>
-                <mo>&#x22c0;</mo>
-                <mrow>
-                  <mi>i</mi>
-                  <mo>=</mo>
-                  <mn>0</mn>
-                </mrow>
-                <mi>n</mi>
-              </munderover>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x22c0;</mo>
               <mrow>
-                <mo>(</mo>
-                <msub>
-                  <mi>a</mi>
-                  <mi>i</mi>
-                </msub>
-                <mo>&#x3e;</mo>
+                <mi>i</mi>
+                <mo>=</mo>
                 <mn>0</mn>
-                <mo>)</mo>
               </mrow>
+              <mi>n</mi>
+            </munderover>
+            <mrow>
+              <mo>(</mo>
+              <msub>
+                <mi>a</mi>
+                <mi>i</mi>
+              </msub>
+              <mo>&#x3e;</mo>
+              <mn>0</mn>
+              <mo>)</mo>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋀_(i = 0)^(n)▒(a_(i) > 0)"
@@ -3664,18 +3624,16 @@ cases:
       output: "\\bigcup_{L} S"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munder>
+              <mi>&#x22c3;</mi>
+              <mi>L</mi>
+            </munder>
             <mrow>
-              <munder>
-                <mi>&#x22c3;</mi>
-                <mi>L</mi>
-              </munder>
-              <mrow>
-                <mi>S</mi>
-              </mrow>
+              <mi>S</mi>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋃_(L)▒〖S〗"
@@ -3779,18 +3737,16 @@ cases:
       output: "\\bigcap_{L} S"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munder>
+              <mi>&#x22c2;</mi>
+              <mi>L</mi>
+            </munder>
             <mrow>
-              <munder>
-                <mi>&#x22c2;</mi>
-                <mi>L</mi>
-              </munder>
-              <mrow>
-                <mi>S</mi>
-              </mrow>
+              <mi>S</mi>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋂_(L)▒〖S〗"
@@ -3910,31 +3866,29 @@ cases:
       output: "\\underset{ \\left ( x \\vec{} 0 \\right ) }{lim} \\sin{\\text{P[funcapply]}} x"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <munder>
-                <mi>lim</mi>
-                <mrow>
-                  <mi>x</mi>
-                  <mover>
-                    <mo>&#x2192;</mo>
-                  </mover>
-                  <mn>0</mn>
-                </mrow>
-              </munder>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munder>
+              <mi>lim</mi>
               <mrow>
-                <mrow>
-                  <mo rspace="thickmathspace"/>
-                  <mrow>
-                    <mi>sin</mi>
-                    <mi>&#x2061;</mi>
-                  </mrow>
-                </mrow>
                 <mi>x</mi>
+                <mover>
+                  <mo>&#x2192;</mo>
+                </mover>
+                <mn>0</mn>
               </mrow>
+            </munder>
+            <mrow>
+              <mrow>
+                <mo rspace="0.2778em"/>
+                <mrow>
+                  <mi>sin</mi>
+                  <mi>&#x2061;</mi>
+                </mrow>
+              </mrow>
+              <mi>x</mi>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       error:
@@ -4120,34 +4074,32 @@ cases:
       output: "\\underset{ \\left ( x \\vec{} a^{+} \\right ) }{lim} \\sin{\\text{P[funcapply]}} x"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <munder>
-                <mi>lim</mi>
-                <mrow>
-                  <mi>x</mi>
-                  <mover>
-                    <mo>&#x2192;</mo>
-                  </mover>
-                  <msup>
-                    <mi>a</mi>
-                    <mo>+</mo>
-                  </msup>
-                </mrow>
-              </munder>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munder>
+              <mi>lim</mi>
               <mrow>
-                <mrow>
-                  <mo rspace="thickmathspace"/>
-                  <mrow>
-                    <mi>sin</mi>
-                    <mi>&#x2061;</mi>
-                  </mrow>
-                </mrow>
                 <mi>x</mi>
+                <mover>
+                  <mo>&#x2192;</mo>
+                </mover>
+                <msup>
+                  <mi>a</mi>
+                  <mo>+</mo>
+                </msup>
               </mrow>
+            </munder>
+            <mrow>
+              <mrow>
+                <mo rspace="0.2778em"/>
+                <mrow>
+                  <mi>sin</mi>
+                  <mi>&#x2061;</mi>
+                </mrow>
+              </mrow>
+              <mi>x</mi>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       error:
@@ -4349,25 +4301,23 @@ cases:
       output: x^{2} \vec{} a^{2}^{+}
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msup>
+              <mi>x</mi>
+              <mn>2</mn>
+            </msup>
+            <mover>
+              <mo>&#x2192;</mo>
+            </mover>
+            <msup>
               <msup>
-                <mi>x</mi>
+                <mi>a</mi>
                 <mn>2</mn>
               </msup>
-              <mover>
-                <mo>&#x2192;</mo>
-              </mover>
-              <msup>
-                <msup>
-                  <mi>a</mi>
-                  <mn>2</mn>
-                </msup>
-                <mo>+</mo>
-              </msup>
-            </mrow>
-          </mstyle>
+              <mo>+</mo>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       error:
@@ -4599,58 +4549,56 @@ cases:
       output: "( \\left .\\begin{matrix}x \\\\ y\\end{matrix}\\right . ) \\vec{} ( \\left .\\begin{matrix}f \\text{P[funcapply]} ( x y ) \\\\ g \\text{P[funcapply]} ( x y )\\end{matrix}\\right . )"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mo>(</mo>
-              <mtable>
-                <mtr>
-                  <mtd>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mo>(</mo>
+            <mtable>
+              <mtr>
+                <mtd>
+                  <mi>x</mi>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd>
+                  <mi>y</mi>
+                </mtd>
+              </mtr>
+            </mtable>
+            <mo>)</mo>
+          </mrow>
+          <mover>
+            <mo>&#x2192;</mo>
+          </mover>
+          <mrow>
+            <mo>(</mo>
+            <mtable>
+              <mtr>
+                <mtd>
+                  <mi>f</mi>
+                  <mi>&#x2061;</mi>
+                  <mrow>
+                    <mo>(</mo>
                     <mi>x</mi>
-                  </mtd>
-                </mtr>
-                <mtr>
-                  <mtd>
                     <mi>y</mi>
-                  </mtd>
-                </mtr>
-              </mtable>
-              <mo>)</mo>
-            </mrow>
-            <mover>
-              <mo>&#x2192;</mo>
-            </mover>
-            <mrow>
-              <mo>(</mo>
-              <mtable>
-                <mtr>
-                  <mtd>
-                    <mi>f</mi>
-                    <mi>&#x2061;</mi>
-                    <mrow>
-                      <mo>(</mo>
-                      <mi>x</mi>
-                      <mi>y</mi>
-                      <mo>)</mo>
-                    </mrow>
-                  </mtd>
-                </mtr>
-                <mtr>
-                  <mtd>
-                    <mi>g</mi>
-                    <mi>&#x2061;</mi>
-                    <mrow>
-                      <mo>(</mo>
-                      <mi>x</mi>
-                      <mi>y</mi>
-                      <mo>)</mo>
-                    </mrow>
-                  </mtd>
-                </mtr>
-              </mtable>
-              <mo>)</mo>
-            </mrow>
-          </mstyle>
+                    <mo>)</mo>
+                  </mrow>
+                </mtd>
+              </mtr>
+              <mtr>
+                <mtd>
+                  <mi>g</mi>
+                  <mi>&#x2061;</mi>
+                  <mrow>
+                    <mo>(</mo>
+                    <mi>x</mi>
+                    <mi>y</mi>
+                    <mo>)</mo>
+                  </mrow>
+                </mtd>
+              </mtr>
+            </mtable>
+            <mo>)</mo>
+          </mrow>
         </math>
     unicodemath:
       error:

@@ -22,10 +22,8 @@ cases:
     asciimath: '"hello"'
     latex: "\\text{hello}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>hello</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>hello</mtext>
       </math>
     unicodemath: '"hello"'
     omml: |
@@ -64,10 +62,8 @@ cases:
     asciimath: '"hello world"'
     latex: "\\text{hello world}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>hello world</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>hello world</mtext>
       </math>
     unicodemath: '"hello world"'
     omml: |
@@ -105,14 +101,12 @@ cases:
     asciimath: rm(kg)
     latex: "\\mathrm{kg}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mstyle mathvariant="normal">
-              <mi>kg</mi>
-            </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mrow mathvariant="normal">
+            <mi>kg</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: \mup"kg"
     omml: |

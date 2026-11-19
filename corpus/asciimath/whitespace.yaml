@@ -22,12 +22,10 @@ cases:
     asciimath: x + y
     latex: x + y
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-          <mo>+</mo>
-          <mi>y</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
+        <mo>+</mo>
+        <mi>y</mi>
       </math>
     unicodemath: x + y
     omml: |
@@ -81,11 +79,9 @@ cases:
     asciimath: a b
     latex: a b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mi>b</mi>
       </math>
     unicodemath: a b
     omml: |
@@ -129,19 +125,17 @@ cases:
     asciimath: sum_(i = 1)^(n) i
     latex: "\\sum_{i = 1}^{n} i"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>i</mi>
-              <mo>=</mo>
-              <mn>1</mn>
-            </mrow>
-            <mi>n</mi>
-          </munderover>
-          <mi>i</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mi>n</mi>
+        </munderover>
+        <mi>i</mi>
       </math>
     unicodemath: "∑_(i = 1)^(n) i"
     omml: |
@@ -249,10 +243,8 @@ cases:
     asciimath: x
     latex: x
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
       </math>
     unicodemath: x
     omml: |
@@ -287,12 +279,10 @@ cases:
     asciimath: sqrt(x)
     latex: "\\sqrt{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mi>x</mi>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mi>x</mi>
+        </msqrt>
       </math>
     unicodemath: "√(x)"
     omml: |

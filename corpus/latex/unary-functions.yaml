@@ -22,16 +22,14 @@ cases:
     asciimath: sinx
     latex: "\\sin{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
-            <mrow>
-              <mi>sin</mi>
-              <mi>x</mi>
-            </mrow>
+            <mi>sin</mi>
+            <mi>x</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: sin⁡x
     omml: |
@@ -89,20 +87,18 @@ cases:
     asciimath: sin(x)
     latex: "\\sin{( x )}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>sin</mi>
             <mrow>
-              <mi>sin</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: sin⁡(x)
     omml: |
@@ -187,21 +183,19 @@ cases:
     asciimath: cos(2 x)
     latex: "\\cos{( 2 x )}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>cos</mi>
             <mrow>
-              <mi>cos</mi>
-              <mrow>
-                <mo>(</mo>
-                <mn>2</mn>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mn>2</mn>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: cos⁡(2 x)
     omml: |
@@ -298,11 +292,9 @@ cases:
     asciimath: log x
     latex: "\\log x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>log</mi>
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>log</mi>
+        <mi>x</mi>
       </math>
     unicodemath: log x
     omml: |
@@ -344,16 +336,14 @@ cases:
     asciimath: lnx
     latex: "\\ln{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
-            <mrow>
-              <mi>ln</mi>
-              <mi>x</mi>
-            </mrow>
+            <mi>ln</mi>
+            <mi>x</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: ln⁡x
     omml: |
@@ -394,11 +384,9 @@ cases:
     asciimath: lim x
     latex: "\\lim x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>lim</mo>
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>lim</mo>
+        <mi>x</mi>
       </math>
     unicodemath: lim x
     omml: |
@@ -440,16 +428,14 @@ cases:
     asciimath: detA
     latex: "\\det{A}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
-            <mrow>
-              <mi>det</mi>
-              <mi>A</mi>
-            </mrow>
+            <mi>det</mi>
+            <mi>A</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: det⁡A
     omml: |
@@ -490,16 +476,14 @@ cases:
     asciimath: maxA
     latex: "\\max{A}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
-            <mrow>
-              <mi>max</mi>
-              <mi>A</mi>
-            </mrow>
+            <mi>max</mi>
+            <mi>A</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: max⁡A
     omml: |
@@ -540,22 +524,20 @@ cases:
     asciimath: gcd(a , b)
     latex: "\\gcd{( a , b )}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>gcd</mi>
             <mrow>
-              <mi>gcd</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>a</mi>
-                <mo>,</mo>
-                <mi>b</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mi>a</mi>
+              <mo>,</mo>
+              <mi>b</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: gcd⁡(a , b)
     omml: |

@@ -35,10 +35,8 @@ cases:
       output: 123.456,789
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>123.456,789</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>123.456,789</mn>
         </math>
     unicodemath:
       output: 123.456,789
@@ -90,10 +88,8 @@ cases:
       output: 1.123_456_789
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1.123_456_789</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1.123_456_789</mn>
         </math>
     unicodemath:
       output: 1.123_456_789

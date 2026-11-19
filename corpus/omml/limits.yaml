@@ -70,13 +70,11 @@ cases:
     asciimath: ubrace("d")
     latex: "\\underbrace{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>d</mtext>
-            <mo>&#x23df;</mo>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>d</mtext>
+          <mo>&#x23df;</mo>
+        </munder>
       </math>
     unicodemath: ⏟("d")
     omml: |
@@ -215,16 +213,14 @@ cases:
     asciimath: overset(obrace("e"))("d")
     latex: "\\overset{\\overbrace{\\text{e}}}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>d</mtext>
-            <mover accent="true">
-              <mtext>e</mtext>
-              <mo>&#x23de;</mo>
-            </mover>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>d</mtext>
+          <mover accent="true">
+            <mtext>e</mtext>
+            <mo>&#x23de;</mo>
           </mover>
-        </mstyle>
+        </mover>
       </math>
     unicodemath: ("d")┴(⏞("e"))
     omml: |
@@ -406,16 +402,14 @@ cases:
     asciimath: underset(ubrace("d"))("e")
     latex: "\\underset{\\underbrace{\\text{d}}}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>e</mtext>
           <munder>
-            <mtext>e</mtext>
-            <munder>
-              <mtext>d</mtext>
-              <mo>&#x23df;</mo>
-            </munder>
+            <mtext>d</mtext>
+            <mo>&#x23df;</mo>
           </munder>
-        </mstyle>
+        </munder>
       </math>
     unicodemath: ("e")┬⏟("d")
     omml: |
@@ -583,13 +577,11 @@ cases:
     asciimath: overleftrightarrow("e")
     latex: "\\overleftrightarrow{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mo>&#x20e1;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mo>&#x20e1;</mo>
+        </mover>
       </math>
     unicodemath: ("e")⃡
     omml: |
@@ -720,14 +712,12 @@ cases:
     asciimath: underset("y")("lim") "x"
     latex: "\\underset{\\text{y}}{\\text{lim}} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>lim</mtext>
-            <mtext>y</mtext>
-          </munder>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>lim</mtext>
+          <mtext>y</mtext>
+        </munder>
+        <mtext>x</mtext>
       </math>
     unicodemath: ("lim")┬"y" "x"
     omml: |
@@ -873,17 +863,15 @@ cases:
     asciimath: underset("y")(min) "x"
     latex: "\\underset{\\text{y}}{\\min{}} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>min</mi>
-            </mrow>
-            <mtext>y</mtext>
-          </munder>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>min</mi>
+          </mrow>
+          <mtext>y</mtext>
+        </munder>
+        <mtext>x</mtext>
       </math>
     unicodemath: (min⁡)┬"y" "x"
     omml: |
@@ -1030,17 +1018,15 @@ cases:
     asciimath: underset("y")(max) "x"
     latex: "\\underset{\\text{y}}{\\max{}} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>max</mi>
-            </mrow>
-            <mtext>y</mtext>
-          </munder>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>max</mi>
+          </mrow>
+          <mtext>y</mtext>
+        </munder>
+        <mtext>x</mtext>
       </math>
     unicodemath: (max⁡)┬"y" "x"
     omml: |
@@ -1274,25 +1260,23 @@ cases:
     asciimath: underset("n→∞")("lim") (1+ frac(1)("n"))^("n")
     latex: "\\underset{\\text{n→∞}}{\\text{lim}} ( 1+ \\frac{1}{\\text{n}} )^{\\text{n}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>lim</mtext>
-            <mtext>n→∞</mtext>
-          </munder>
-          <msup>
-            <mrow>
-              <mo>(</mo>
-              <mi>1+</mi>
-              <mfrac>
-                <mn>1</mn>
-                <mtext>n</mtext>
-              </mfrac>
-              <mo>)</mo>
-            </mrow>
-            <mtext>n</mtext>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>lim</mtext>
+          <mtext>n→∞</mtext>
+        </munder>
+        <msup>
+          <mrow>
+            <mo>(</mo>
+            <mi>1+</mi>
+            <mfrac>
+              <mn>1</mn>
+              <mtext>n</mtext>
+            </mfrac>
+            <mo>)</mo>
+          </mrow>
+          <mtext>n</mtext>
+        </msup>
       </math>
     unicodemath: ("lim")┬"n→∞" (1+ (1)/("n"))^("n")
     omml: |
@@ -1642,27 +1626,25 @@ cases:
     asciimath: underset("0≤x≤1")(max) "x" "e"^(- "x"^(2))
     latex: "\\underset{\\text{0≤x≤1}}{\\max{}} \\text{x} \\text{e}^{- \\text{x}^{2}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>max</mi>
-            </mrow>
-            <mtext>0≤x≤1</mtext>
-          </munder>
-          <mtext>x</mtext>
-          <msup>
-            <mtext>e</mtext>
-            <mrow>
-              <mi>-</mi>
-              <msup>
-                <mtext>x</mtext>
-                <mn>2</mn>
-              </msup>
-            </mrow>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>max</mi>
+          </mrow>
+          <mtext>0≤x≤1</mtext>
+        </munder>
+        <mtext>x</mtext>
+        <msup>
+          <mtext>e</mtext>
+          <mrow>
+            <mi>-</mi>
+            <msup>
+              <mtext>x</mtext>
+              <mn>2</mn>
+            </msup>
+          </mrow>
+        </msup>
       </math>
     unicodemath: (max⁡)┬"0≤x≤1" "x" "e"^(- "x"^(2))
     omml: |
@@ -1911,13 +1893,11 @@ cases:
     asciimath: overset(larr)("c")
     latex: "\\overset{\\gets}{\\text{c}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>c</mtext>
-            <mo>&#x2190;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>c</mtext>
+          <mo>&#x2190;</mo>
+        </mover>
       </math>
     unicodemath: ("c")┴(←)
     omml: |
@@ -2045,13 +2025,11 @@ cases:
     asciimath: vec("c")
     latex: "\\vec{\\text{c}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>c</mtext>
-            <mo>&#x2192;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>c</mtext>
+          <mo>&#x2192;</mo>
+        </mover>
       </math>
     unicodemath: ("c")⃗
     omml: |
@@ -2176,13 +2154,11 @@ cases:
     asciimath: underset(larr)("c")
     latex: "\\underset{\\gets}{\\text{c}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>c</mtext>
-            <mo>&#x2190;</mo>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>c</mtext>
+          <mo>&#x2190;</mo>
+        </munder>
       </math>
     unicodemath: ("c")┬←
     omml: |
@@ -2311,13 +2287,11 @@ cases:
     asciimath: overset(lArr)("d")
     latex: "\\overset{\\Leftarrow}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>d</mtext>
-            <mi>&#x21d0;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>d</mtext>
+          <mi>&#x21d0;</mi>
+        </mover>
       </math>
     unicodemath: ("d")┴(⇐)
     omml: |
@@ -2445,13 +2419,11 @@ cases:
     asciimath: overset(Rightarrow)("d")
     latex: "\\overset{\\Rightarrow}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>d</mtext>
-            <mi>&#x21d2;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>d</mtext>
+          <mi>&#x21d2;</mi>
+        </mover>
       </math>
     unicodemath: ("d")┴(⇒)
     omml: |
@@ -2579,13 +2551,11 @@ cases:
     asciimath: underset(lArr)("d")
     latex: "\\underset{\\Leftarrow}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>d</mtext>
-            <mi>&#x21d0;</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>d</mtext>
+          <mi>&#x21d0;</mi>
+        </munder>
       </math>
     unicodemath: ("d")┬⇐
     omml: |
@@ -2714,13 +2684,11 @@ cases:
     asciimath: underset(Rightarrow)("d")
     latex: "\\underset{\\Rightarrow}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>d</mtext>
-            <mi>&#x21d2;</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>d</mtext>
+          <mi>&#x21d2;</mi>
+        </munder>
       </math>
     unicodemath: ("d")┬⇒
     omml: |
@@ -2849,13 +2817,11 @@ cases:
     asciimath: overset("P{rel}")("e")
     latex: "\\overset{\\leftrightarrow}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mi>&#x2194;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mi>&#x2194;</mi>
+        </mover>
       </math>
     unicodemath: ("e")┴(↔)
     omml: |
@@ -2983,13 +2949,11 @@ cases:
     asciimath: underset("P{rel}")("e")
     latex: "\\underset{\\leftrightarrow}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>e</mtext>
-            <mi>&#x2194;</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>e</mtext>
+          <mi>&#x2194;</mi>
+        </munder>
       </math>
     unicodemath: ("e")┬↔
     omml: |
@@ -3118,13 +3082,11 @@ cases:
     asciimath: overset(hArr)("e")
     latex: "\\overset{\\hArr}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mi>&#x21d4;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mi>&#x21d4;</mi>
+        </mover>
       </math>
     unicodemath: ("e")┴(⇔)
     omml: |
@@ -3252,13 +3214,11 @@ cases:
     asciimath: underset(hArr)("e")
     latex: "\\underset{\\hArr}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>e</mtext>
-            <mi>&#x21d4;</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>e</mtext>
+          <mi>&#x21d4;</mi>
+        </munder>
       </math>
     unicodemath: ("e")┬⇔
     omml: |
@@ -3387,13 +3347,11 @@ cases:
     asciimath: vec("yields")
     latex: "\\vec{\\text{yields}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>yields</mtext>
-            <mo>&#x2192;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>yields</mtext>
+          <mo>&#x2192;</mo>
+        </mover>
       </math>
     unicodemath: ("yields")⃗
     omml: |
@@ -3518,13 +3476,11 @@ cases:
     asciimath: vec("P{inc}")
     latex: "\\vec{\\increment}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>&#x2206;</mi>
-            <mo>&#x2192;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>&#x2206;</mi>
+          <mo>&#x2192;</mo>
+        </mover>
       </math>
     unicodemath: "(∆)⃗"
     omml: |
@@ -3648,13 +3604,11 @@ cases:
     asciimath: overset("P{LVec}")("d")
     latex: "\\overset{\\overleftarrow}{\\text{d}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>d</mtext>
-            <mi>&#x20d6;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>d</mtext>
+          <mi>&#x20d6;</mi>
+        </mover>
       </math>
     unicodemath: ("d")⃖
     omml: |
@@ -3782,13 +3736,11 @@ cases:
     asciimath: overset("P{Vec}")("e")
     latex: "\\overset{\\Vec}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mi>&#x20d7;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mi>&#x20d7;</mi>
+        </mover>
       </math>
     unicodemath: ("e")⃗
     omml: |
@@ -3916,13 +3868,11 @@ cases:
     asciimath: overset(&#x20d0;)("e")
     latex: "\\overset{&#x20d0;}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mi>&#x20d0;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mi>&#x20d0;</mi>
+        </mover>
       </math>
     unicodemath: ("e")⃐
     omml: |
@@ -4050,13 +4000,11 @@ cases:
     asciimath: overset("P{rightharpoonaccent}")("e")
     latex: "\\overset{\\rightharpoonaccent}{\\text{e}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>e</mtext>
-            <mi>&#x20d1;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>e</mtext>
+          <mi>&#x20d1;</mi>
+        </mover>
       </math>
     unicodemath: ("e")⃑
     omml: |

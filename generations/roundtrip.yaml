@@ -29,3 +29,18 @@ entries:
     (amath#17), changing the asciimath inputs and outputs of the uncertainty cases. The
     46 generation 1 rows are kept byte for byte and classified superseded by their -r2
     siblings; consumers replaying generation 2 replay only the siblings.
+- generation: 3
+  path: stages/roundtrip/generations/000003
+  snapshot_digest: sha256:f7c46cac4ccac29988edc3b1db2b1d626cc3a0b8f716ab95c3353e3629411fe1
+  payloads: 9
+  rows: 136
+  producer_kinds:
+  - legacy-oracle
+  change: extend
+  rationale: >-
+    The 44 roundtrip cases that parse enter as -r3 supersessions: plurimath at its
+    recorded commit writes the thick space before a UnitsML unit as rspace="0.2778em"
+    instead of rspace="thickmathspace" (plurimath#476) and no longer wraps its MathML
+    output in mstyle (plurimath#477), changing their MathML outputs. The 92 generation 2
+    rows are kept byte for byte and the 44 -r2 rows are classified superseded by
+    their -r3 siblings. The two refusal cases are unchanged.

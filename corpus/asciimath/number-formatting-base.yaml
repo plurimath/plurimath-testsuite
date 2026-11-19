@@ -35,13 +35,11 @@ cases:
       output: "\\mathrm{111 01110110}_{2}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>111 01110110</mn>
-              <mn>2</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>111 01110110</mn>
+            <mn>2</mn>
+          </msub>
         </math>
     unicodemath:
       output: 111 01110110_(2)
@@ -94,13 +92,11 @@ cases:
       output: "\\mathrm{10,10.11}_{2}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>10,10.11</mn>
-              <mn>2</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>10,10.11</mn>
+            <mn>2</mn>
+          </msub>
         </math>
     unicodemath:
       output: 10,10.11_(2)
@@ -153,13 +149,11 @@ cases:
       output: "\\mathrm{10,10.1}_{2}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>10,10.1</mn>
-              <mn>2</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>10,10.1</mn>
+            <mn>2</mn>
+          </msub>
         </math>
     unicodemath:
       output: 10,10.1_(2)
@@ -210,13 +204,11 @@ cases:
       output: "\\mathrm{377}_{8}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>377</mn>
-              <mn>8</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>377</mn>
+            <mn>8</mn>
+          </msub>
         </math>
     unicodemath:
       output: 377_(8)
@@ -267,13 +259,11 @@ cases:
       output: "\\mathrm{ff}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>ff</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>ff</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: ff_(16)
@@ -324,13 +314,11 @@ cases:
       output: "\\mathrm{0}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>0</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>0</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: 0_(16)
@@ -383,13 +371,11 @@ cases:
       output: "\\mathrm{BE,EF}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>BE,EF</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>BE,EF</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: BE,EF_(16)
@@ -443,13 +429,11 @@ cases:
       output: "\\mathrm{BEeEF}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>BEeEF</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>BEeEF</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: BEeEF_(16)
@@ -500,14 +484,12 @@ cases:
       output: "- \\mathrm{ff}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mo>&#x2212;</mo>
-            <msub>
-              <mn>ff</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mo>&#x2212;</mo>
+          <msub>
+            <mn>ff</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: "− ff_(16)"
@@ -570,13 +552,11 @@ cases:
       output: "\\mathrm{7b.400}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>7b.400</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>7b.400</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: 7b.400_(16)
@@ -628,13 +608,11 @@ cases:
       output: "\\mathrm{0.100}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>0.100</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>0.100</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: 0.100_(16)
@@ -687,13 +665,11 @@ cases:
       output: "\\mathrm{00ff}_{16}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msub>
-              <mn>00ff</mn>
-              <mn>16</mn>
-            </msub>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msub>
+            <mn>00ff</mn>
+            <mn>16</mn>
+          </msub>
         </math>
     unicodemath:
       output: 00ff_(16)
@@ -745,10 +721,8 @@ cases:
       output: 16#ff
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>16#ff</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>16#ff</mn>
         </math>
     unicodemath:
       output: 16#ff
@@ -800,10 +774,8 @@ cases:
       output: ff
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>ff</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>ff</mn>
         </math>
     unicodemath:
       output: ff
@@ -857,11 +829,9 @@ cases:
       output: "-  0B10,10.11"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mo>&#x2212;</mo>
-            <mn> 0B10,10.11</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mo>&#x2212;</mo>
+          <mn> 0B10,10.11</mn>
         </math>
     unicodemath:
       output: "−  0B10,10.11"
@@ -922,10 +892,8 @@ cases:
       output: ff_16
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>ff_16</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>ff_16</mn>
         </math>
     unicodemath:
       output: ff_16
@@ -979,10 +947,8 @@ cases:
       output: BE,EF_h
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>BE,EF_h</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>BE,EF_h</mn>
         </math>
     unicodemath:
       output: BE,EF_h
@@ -1035,10 +1001,8 @@ cases:
       output: 0xffh
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>0xffh</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>0xffh</mn>
         </math>
     unicodemath:
       output: 0xffh
@@ -1091,10 +1055,8 @@ cases:
       output: '255'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>255</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>255</mn>
         </math>
     unicodemath:
       output: '255'

@@ -22,10 +22,8 @@ cases:
     asciimath: '"abetab"'
     latex: "\\text{abetab}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a&#x3b2;b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a&#x3b2;b</mtext>
       </math>
     unicodemath: '"aunicode[:beta]b"'
     omml: |
@@ -60,10 +58,8 @@ cases:
     asciimath: '"avarsigmab"'
     latex: "\\text{avarsigmab}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a&#x3c2;b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a&#x3c2;b</mtext>
       </math>
     unicodemath: '"aunicode[:varsigma]b"'
     omml: |
@@ -98,10 +94,8 @@ cases:
     asciimath: '"aomegab"'
     latex: "\\text{aomegab}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a&#x3c9;b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a&#x3c9;b</mtext>
       </math>
     unicodemath: '"aunicode[:omega]b"'
     omml: |
@@ -136,10 +130,8 @@ cases:
     asciimath: '"aOmegab"'
     latex: "\\text{aOmegab}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a&#x3a9;b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a&#x3a9;b</mtext>
       </math>
     unicodemath: '"aunicode[:Omega]b"'
     omml: |
@@ -174,10 +166,8 @@ cases:
     asciimath: '"a&#x303;b"'
     latex: "\\text{a&#x303;b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a&#x303;b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a&#x303;b</mtext>
       </math>
     unicodemath: '"ãb"'
     omml: |
@@ -218,10 +208,8 @@ cases:
     asciimath: '"sinsumsomGammagamma"'
     latex: "\\text{sinsumsomGammagamma}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>sinsumsom&#x393;gamma</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>sinsumsom&#x393;gamma</mtext>
       </math>
     unicodemath: '"sinsumsomunicode[:Gamma]gamma"'
     omml: |
@@ -265,10 +253,8 @@ cases:
     asciimath: '"sinsumsomGammagamma"'
     latex: "\\text{sinsumsomGammagamma}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>sinsumsom&#x393;&#x3b3;</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>sinsumsom&#x393;&#x3b3;</mtext>
       </math>
     unicodemath: '"sinsumsomunicode[:Gamma]unicode[:gamma]"'
     omml: |
@@ -316,12 +302,10 @@ cases:
     asciimath: color("#ff0000")("Assigned value")
     latex: '{\color{"#ff0000"} \text{Assigned value}}'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="#ff0000">
-            <mtext>Assigned value</mtext>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="#ff0000">
+          <mtext>Assigned value</mtext>
+        </mrow>
       </math>
     unicodemath: ✎("#ff0000"&"Assigned value")
     omml: |
@@ -375,10 +359,8 @@ cases:
     asciimath: '"&#xa0;Theorem &#xa0;1:"'
     latex: "\\text{&#xa0;Theorem &#xa0;1:}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>&#xa0;Theorem &#xa0;1:</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>&#xa0;Theorem &#xa0;1:</mtext>
       </math>
     unicodemath: '" Theorem  1:"'
     omml: |
@@ -428,10 +410,8 @@ cases:
     asciimath: '"&#xa;    Theorem&#xa;    1:&#xa;  "'
     latex: "\\text{&#xa;    Theorem&#xa;    1:&#xa;  }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>&#xa;    Theorem&#xa;    1:&#xa;  </mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>&#xa;    Theorem&#xa;    1:&#xa;  </mtext>
       </math>
     unicodemath: |-
       "
@@ -488,13 +468,11 @@ cases:
     asciimath: '" Theorem 1: " " &#x2009; " " &#x205f;&#x200a;&#x205f;&#x200a; " " /* a comment */ "'
     latex: "\\text{ Theorem 1: } \\text{ &#x2009; } \\text{ &#x205f;&#x200a;&#x205f;&#x200a; } \\text{ /* a comment */ }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext> Theorem 1: </mtext>
-          <mtext> &#x2009; </mtext>
-          <mtext> &#x205f;&#x200a;&#x205f;&#x200a; </mtext>
-          <mtext> /* a comment */ </mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext> Theorem 1: </mtext>
+        <mtext> &#x2009; </mtext>
+        <mtext> &#x205f;&#x200a;&#x205f;&#x200a; </mtext>
+        <mtext> /* a comment */ </mtext>
       </math>
     unicodemath: '" Theorem 1: " "   " "      " " /* a comment */ "'
     omml: |

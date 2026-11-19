@@ -22,11 +22,9 @@ cases:
     asciimath: x ^
     latex: x ^
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-          <mo>^</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
+        <mo>^</mo>
       </math>
     unicodemath: x ^
     omml: |
@@ -69,14 +67,12 @@ cases:
     asciimath: "(a)"
     latex: "( a "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>a</mi>
-            <mo></mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>a</mi>
+          <mo></mo>
+        </mrow>
       </math>
     unicodemath: "(a"
     omml: |
@@ -133,11 +129,9 @@ cases:
     asciimath: a )
     latex: a )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>)</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>)</mo>
       </math>
     unicodemath: a )
     omml: |
@@ -179,13 +173,11 @@ cases:
     asciimath: ") ) ) )"
     latex: ") ) ) )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>)</mo>
-          <mo>)</mo>
-          <mo>)</mo>
-          <mo>)</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>)</mo>
+        <mo>)</mo>
+        <mo>)</mo>
+        <mo>)</mo>
       </math>
     unicodemath: ") ) ) )"
     omml: |
@@ -239,10 +231,8 @@ cases:
     asciimath: "$"
     latex: "\\mathdollar"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x24;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x24;</mi>
       </math>
     unicodemath: "$"
     omml: |
@@ -276,14 +266,12 @@ cases:
     asciimath: frac(a)(+) b
     latex: "\\frac{a}{+} b"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>a</mi>
-            <mo>+</mo>
-          </mfrac>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>a</mi>
+          <mo>+</mo>
+        </mfrac>
+        <mi>b</mi>
       </math>
     unicodemath: "(a)/(+) b"
     omml: |

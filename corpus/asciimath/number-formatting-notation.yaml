@@ -35,10 +35,8 @@ cases:
       output: 1@4E4
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1@4E4</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1@4E4</mn>
         </math>
     unicodemath:
       output: 1@4E4
@@ -92,17 +90,15 @@ cases:
       output: 1.400 0 x 10^+4
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>1.400 0</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>+4</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>1.400 0</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>+4</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 1.400 0 x 10^+4
@@ -155,17 +151,15 @@ cases:
       output: 1.2 * 10^-4
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>1.2</mn>
-              <mo>*</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>-4</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>1.2</mn>
+            <mo>*</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>-4</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 1.2 * 10^-4
@@ -218,17 +212,15 @@ cases:
       output: 14,00 x 10^3
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>14,00</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>3</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>14,00</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 14,00 x 10^3
@@ -279,17 +271,15 @@ cases:
       output: 14.236'392'39 x 10^3
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>14.236'392'39</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>3</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>14.236'392'39</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 14.236'392'39 x 10^3
@@ -340,10 +330,8 @@ cases:
       output: 0e0
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>0e0</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>0e0</mn>
         </math>
     unicodemath:
       output: 0e0
@@ -394,17 +382,15 @@ cases:
       output: 0 x 10^0
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>0</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
               <mn>0</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>0</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 0 x 10^0
@@ -455,17 +441,15 @@ cases:
       output: 0 x 10^0
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>0</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
               <mn>0</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>0</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 0 x 10^0
@@ -521,10 +505,8 @@ cases:
       output: 5,680 96 -4
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>5,680 96 -4</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>5,680 96 -4</mn>
         </math>
     unicodemath:
       output: 5,680 96 -4
@@ -576,10 +558,8 @@ cases:
       output: 1e21
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1e21</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1e21</mn>
         </math>
     unicodemath:
       output: 1e21
@@ -631,10 +611,8 @@ cases:
       output: '1.00e-3'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1.00e-3</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1.00e-3</mn>
         </math>
     unicodemath:
       output: '1.00e-3'
@@ -686,17 +664,15 @@ cases:
       output: 1.00 x 10^-3
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>1.00</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>-3</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>1.00</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>-3</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 1.00 x 10^-3
@@ -748,17 +724,15 @@ cases:
       output: 112.44 x 10^3
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>112.44</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>3</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>112.44</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>3</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 112.44 x 10^3
@@ -815,17 +789,15 @@ cases:
       output: 6,4212y15 x 10^17
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>6,4212y15</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>17</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>6,4212y15</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>17</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 6,4212y15 x 10^17
@@ -877,17 +849,15 @@ cases:
       output: 3.274'280'008'784'329'92 x 10^5
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow>
-              <mn>3.274'280'008'784'329'92</mn>
-              <mo>x</mo>
-              <msup>
-                <mn>10</mn>
-                <mn>5</mn>
-              </msup>
-            </mrow>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <mn>3.274'280'008'784'329'92</mn>
+            <mo>x</mo>
+            <msup>
+              <mn>10</mn>
+              <mn>5</mn>
+            </msup>
+          </mrow>
         </math>
     unicodemath:
       output: 3.274'280'008'784'329'92 x 10^5

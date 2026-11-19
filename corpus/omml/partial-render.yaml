@@ -223,17 +223,15 @@ cases:
       output: "\\int 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
             <mrow>
-              <mrow>
-                <mo>&#x222b;</mo>
-              </mrow>
-              <mrow>
-                <mn>1</mn>
-              </mrow>
+              <mo>&#x222b;</mo>
             </mrow>
-          </mstyle>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+          </mrow>
         </math>
     unicodemath:
       output: "∫▒〖1〗"
@@ -402,19 +400,17 @@ cases:
       output: "\\int_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msubsup>
+              <mo>&#x222b;</mo>
+              <mn>2</mn>
+              <mn>1</mn>
+            </msubsup>
             <mrow>
-              <msubsup>
-                <mo>&#x222b;</mo>
-                <mn>2</mn>
-                <mn>1</mn>
-              </msubsup>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∫_(2)^(1)▒〖3〗"
@@ -591,19 +587,17 @@ cases:
       output: "\\int_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x222b;</mo>
+              <mn>2</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mo>&#x222b;</mo>
-                <mn>2</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∫_(2)^(1)▒〖3〗"
@@ -786,17 +780,15 @@ cases:
       output: "\\iint 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
             <mrow>
-              <mrow>
-                <mi>&#x222c;</mi>
-              </mrow>
-              <mrow>
-                <mn>1</mn>
-              </mrow>
+              <mi>&#x222c;</mi>
             </mrow>
-          </mstyle>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+          </mrow>
         </math>
     unicodemath:
       output: "∬▒〖1〗"
@@ -969,19 +961,17 @@ cases:
       output: "\\iint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msubsup>
+              <mi>&#x222c;</mi>
+              <mn>2</mn>
+              <mn>1</mn>
+            </msubsup>
             <mrow>
-              <msubsup>
-                <mi>&#x222c;</mi>
-                <mn>2</mn>
-                <mn>1</mn>
-              </msubsup>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∬_(2)^(1)▒〖3〗"
@@ -1162,19 +1152,17 @@ cases:
       output: "\\iint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mi>&#x222c;</mi>
+              <mn>2</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mi>&#x222c;</mi>
-                <mn>2</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∬_(2)^(1)▒〖3〗"
@@ -1359,17 +1347,15 @@ cases:
       output: "\\iiint 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
             <mrow>
-              <mrow>
-                <mi>&#x222d;</mi>
-              </mrow>
-              <mrow>
-                <mn>1</mn>
-              </mrow>
+              <mi>&#x222d;</mi>
             </mrow>
-          </mstyle>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+          </mrow>
         </math>
     unicodemath:
       output: "∭▒〖1〗"
@@ -1542,19 +1528,17 @@ cases:
       output: "\\iiint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msubsup>
+              <mi>&#x222d;</mi>
+              <mn>2</mn>
+              <mn>1</mn>
+            </msubsup>
             <mrow>
-              <msubsup>
-                <mi>&#x222d;</mi>
-                <mn>2</mn>
-                <mn>1</mn>
-              </msubsup>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∭_(2)^(1)▒〖3〗"
@@ -1735,19 +1719,17 @@ cases:
       output: "\\iiint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mi>&#x222d;</mi>
+              <mn>2</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mi>&#x222d;</mi>
-                <mn>2</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∭_(2)^(1)▒〖3〗"
@@ -1932,17 +1914,15 @@ cases:
       output: "\\dbloint 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
             <mrow>
-              <mrow>
-                <mo>&#x222f;</mo>
-              </mrow>
-              <mrow>
-                <mn>1</mn>
-              </mrow>
+              <mo>&#x222f;</mo>
             </mrow>
-          </mstyle>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+          </mrow>
         </math>
     unicodemath:
       output: "∯▒〖1〗"
@@ -2115,19 +2095,17 @@ cases:
       output: "\\dbloint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msubsup>
+              <mo>&#x222f;</mo>
+              <mn>2</mn>
+              <mn>1</mn>
+            </msubsup>
             <mrow>
-              <msubsup>
-                <mo>&#x222f;</mo>
-                <mn>2</mn>
-                <mn>1</mn>
-              </msubsup>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∯_(2)^(1)▒〖3〗"
@@ -2308,19 +2286,17 @@ cases:
       output: "\\dbloint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x222f;</mo>
+              <mn>2</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mo>&#x222f;</mo>
-                <mn>2</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∯_(2)^(1)▒〖3〗"
@@ -2505,17 +2481,15 @@ cases:
       output: "\\oiiint 1"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
             <mrow>
-              <mrow>
-                <mo>&#x2230;</mo>
-              </mrow>
-              <mrow>
-                <mn>1</mn>
-              </mrow>
+              <mo>&#x2230;</mo>
             </mrow>
-          </mstyle>
+            <mrow>
+              <mn>1</mn>
+            </mrow>
+          </mrow>
         </math>
     unicodemath:
       output: "∰▒〖1〗"
@@ -2688,19 +2662,17 @@ cases:
       output: "\\oiiint_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <msubsup>
+              <mo>&#x2230;</mo>
+              <mn>2</mn>
+              <mn>1</mn>
+            </msubsup>
             <mrow>
-              <msubsup>
-                <mo>&#x2230;</mo>
-                <mn>2</mn>
-                <mn>1</mn>
-              </msubsup>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∰_(2)^(1)▒〖3〗"
@@ -2881,19 +2853,17 @@ cases:
       output: "\\oiiint_{1}^{2} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x2230;</mo>
+              <mn>1</mn>
+              <mn>2</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mo>&#x2230;</mo>
-                <mn>1</mn>
-                <mn>2</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∰_(1)^(2)▒〖3〗"
@@ -3074,19 +3044,17 @@ cases:
       output: "\\coprod_{3}^{1} 2"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x2210;</mo>
+              <mn>3</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mo>&#x2210;</mo>
-                <mn>3</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>2</mn>
-              </mrow>
+              <mn>2</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "∐_(3)^(1)▒〖2〗"
@@ -3267,19 +3235,17 @@ cases:
       output: "\\bigcup_{2}^{1} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mi>&#x22c3;</mi>
+              <mn>2</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mi>&#x22c3;</mi>
-                <mn>2</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋃_(2)^(1)▒〖3〗"
@@ -3460,19 +3426,17 @@ cases:
       output: "\\bigcap_{3}^{1} 2"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mi>&#x22c2;</mi>
+              <mn>3</mn>
+              <mn>1</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mi>&#x22c2;</mi>
-                <mn>3</mn>
-                <mn>1</mn>
-              </munderover>
-              <mrow>
-                <mn>2</mn>
-              </mrow>
+              <mn>2</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋂_(3)^(1)▒〖2〗"
@@ -3655,18 +3619,16 @@ cases:
       output: "\\bigvee_{1} 2"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munder>
+              <mo>&#x22c1;</mo>
+              <mn>1</mn>
+            </munder>
             <mrow>
-              <munder>
-                <mo>&#x22c1;</mo>
-                <mn>1</mn>
-              </munder>
-              <mrow>
-                <mn>2</mn>
-              </mrow>
+              <mn>2</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋁_(1)▒〖2〗"
@@ -3843,19 +3805,17 @@ cases:
       output: "\\bigwedge_{1}^{2} 3"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mo>&#x22c0;</mo>
+              <mn>1</mn>
+              <mn>2</mn>
+            </munderover>
             <mrow>
-              <munderover>
-                <mo>&#x22c0;</mo>
-                <mn>1</mn>
-                <mn>2</mn>
-              </munderover>
-              <mrow>
-                <mn>3</mn>
-              </mrow>
+              <mn>3</mn>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: "⋀_(1)^(2)▒〖3〗"
@@ -4130,29 +4090,27 @@ cases:
       output: "\\bigcup_{\\text{n=1}}^{\\text{m}} ( \\text{X}_{\\text{n}} \\Cap \\text{Y}_{\\text{n}} )"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow>
+            <munderover>
+              <mi>&#x22c3;</mi>
+              <mtext>n=1</mtext>
+              <mtext>m</mtext>
+            </munderover>
             <mrow>
-              <munderover>
-                <mi>&#x22c3;</mi>
-                <mtext>n=1</mtext>
-                <mtext>m</mtext>
-              </munderover>
-              <mrow>
-                <mo>(</mo>
-                <msub>
-                  <mtext>X</mtext>
-                  <mtext>n</mtext>
-                </msub>
-                <mi>&#x2229;</mi>
-                <msub>
-                  <mtext>Y</mtext>
-                  <mtext>n</mtext>
-                </msub>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <msub>
+                <mtext>X</mtext>
+                <mtext>n</mtext>
+              </msub>
+              <mi>&#x2229;</mi>
+              <msub>
+                <mtext>Y</mtext>
+                <mtext>n</mtext>
+              </msub>
+              <mo>)</mo>
             </mrow>
-          </mstyle>
+          </mrow>
         </math>
     unicodemath:
       output: ⋃_("n=1")^("m")▒("X"_("n") ∩ "Y"_("n"))
@@ -4445,13 +4403,11 @@ cases:
       output: "\\overset{\\text{c}}{ \\left ( \\overline \\right ) }"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mo>&#xaf;</mo>
-              <mtext>c</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mo>&#xaf;</mo>
+            <mtext>c</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -4593,15 +4549,13 @@ cases:
       output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{over}}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <munder>
-              <mtext>over</mtext>
-              <mstyle mathvariant="normal">
-                <mo>&#xaf;</mo>
-              </mstyle>
-            </munder>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <munder>
+            <mtext>over</mtext>
+            <mrow mathvariant="normal">
+              <mo>&#xaf;</mo>
+            </mrow>
+          </munder>
         </math>
     unicodemath:
       error:
@@ -4754,15 +4708,13 @@ cases:
       output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{A}}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <munder>
-              <mtext>A</mtext>
-              <mstyle mathvariant="normal">
-                <mo>&#xaf;</mo>
-              </mstyle>
-            </munder>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <munder>
+            <mtext>A</mtext>
+            <mrow mathvariant="normal">
+              <mo>&#xaf;</mo>
+            </mrow>
+          </munder>
         </math>
     unicodemath:
       error:
@@ -4915,15 +4867,13 @@ cases:
       output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{ABC}}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <munder>
-              <mtext>ABC</mtext>
-              <mstyle mathvariant="normal">
-                <mo>&#xaf;</mo>
-              </mstyle>
-            </munder>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <munder>
+            <mtext>ABC</mtext>
+            <mrow mathvariant="normal">
+              <mo>&#xaf;</mo>
+            </mrow>
+          </munder>
         </math>
     unicodemath:
       error:
@@ -5076,15 +5026,13 @@ cases:
       output: "\\underset{ \\left ( \\mathrm{\\overline} \\right ) }{\\text{x⊕y}}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <munder>
-              <mtext>x⊕y</mtext>
-              <mstyle mathvariant="normal">
-                <mo>&#xaf;</mo>
-              </mstyle>
-            </munder>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <munder>
+            <mtext>x⊕y</mtext>
+            <mrow mathvariant="normal">
+              <mo>&#xaf;</mo>
+            </mrow>
+          </munder>
         </math>
     unicodemath:
       error:
@@ -5231,13 +5179,11 @@ cases:
       output: "\\overset{\\text{a}}{\\period}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x307;</mi>
-              <mtext>a</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x307;</mi>
+            <mtext>a</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -5372,13 +5318,11 @@ cases:
       output: "\\overset{\\text{a}}{\\ddot}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x308;</mi>
-              <mtext>a</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x308;</mi>
+            <mtext>a</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -5513,13 +5457,11 @@ cases:
       output: "\\overset{\\text{a}}{\\ddot}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x308;</mi>
-              <mtext>a</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x308;</mi>
+            <mtext>a</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -5654,13 +5596,11 @@ cases:
       output: "\\overset{\\text{b}}{\\check}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x30c;</mi>
-              <mtext>b</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x30c;</mi>
+            <mtext>b</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -5795,13 +5735,11 @@ cases:
       output: "\\overset{\\text{b}}{\\acute}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x301;</mi>
-              <mtext>b</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x301;</mi>
+            <mtext>b</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -5936,13 +5874,11 @@ cases:
       output: "\\overset{\\text{b}}{\\grave}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x300;</mi>
-              <mtext>b</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x300;</mi>
+            <mtext>b</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -6077,13 +6013,11 @@ cases:
       output: "\\overset{\\text{b}}{\\breve}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x306;</mi>
-              <mtext>b</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x306;</mi>
+            <mtext>b</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -6218,13 +6152,11 @@ cases:
       output: "\\overset{\\text{c}}{&#x303;}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x303;</mi>
-              <mtext>c</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x303;</mi>
+            <mtext>c</mtext>
+          </mover>
         </math>
     unicodemath:
       error:
@@ -6359,13 +6291,11 @@ cases:
       output: "\\overset{\\text{c}}{&#x33f;}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mover>
-              <mi>&#x33f;</mi>
-              <mtext>c</mtext>
-            </mover>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mover>
+            <mi>&#x33f;</mi>
+            <mtext>c</mtext>
+          </mover>
         </math>
     unicodemath:
       error:

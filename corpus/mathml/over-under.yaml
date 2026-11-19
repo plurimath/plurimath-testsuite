@@ -28,13 +28,11 @@ cases:
     asciimath: tilde(c)
     latex: "\\tilde{c}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover accent="true">
-            <mi>c</mi>
-            <mo>~</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover accent="true">
+          <mi>c</mi>
+          <mo>~</mo>
+        </mover>
       </math>
     unicodemath: "(c)̃"
     omml: |
@@ -94,14 +92,12 @@ cases:
     asciimath: sum_(prod)^(bigvee)
     latex: "\\sum_{\\prod}^{\\bigvee}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mo>&#x220f;</mo>
-            <mo>&#x22c1;</mo>
-          </munderover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mo>&#x220f;</mo>
+          <mo>&#x22c1;</mo>
+        </munderover>
       </math>
     unicodemath: "∑_(∏)^(⋁)"
     omml: |
@@ -183,14 +179,12 @@ cases:
     asciimath: sum_(x)^(s)
     latex: "\\sum_{x}^{s}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mi>x</mi>
-            <mi>s</mi>
-          </munderover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mi>x</mi>
+          <mi>s</mi>
+        </munderover>
       </math>
     unicodemath: "∑_(x)^(s)"
     omml: |
@@ -284,21 +278,19 @@ cases:
     asciimath: sum_(s x)^(s w) "something"
     latex: "\\sum_{s x}^{s w} \\text{something}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>s</mi>
-              <mi>x</mi>
-            </mrow>
-            <mrow>
-              <mi>s</mi>
-              <mi>w</mi>
-            </mrow>
-          </munderover>
-          <mtext>something</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>s</mi>
+            <mi>x</mi>
+          </mrow>
+          <mrow>
+            <mi>s</mi>
+            <mi>w</mi>
+          </mrow>
+        </munderover>
+        <mtext>something</mtext>
       </math>
     unicodemath: ∑_(s x)^(s w) "something"
     omml: |
@@ -425,18 +417,16 @@ cases:
     asciimath: sum_(1)^(n) i^(3)
     latex: "\\sum_{1}^{n} i^{3}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mn>1</mn>
-            <mi>n</mi>
-          </munderover>
-          <msup>
-            <mi>i</mi>
-            <mn>3</mn>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
       </math>
     unicodemath: "∑_(1)^(n) i^(3)"
     omml: |
@@ -580,26 +570,24 @@ cases:
     asciimath: sum_(1)^(n) i^(3) = frac(n)(2)^(2)
     latex: "\\sum_{1}^{n} i^{3} = \\frac{n}{2}^{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mn>1</mn>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
+        <mo>=</mo>
+        <msup>
+          <mfrac>
             <mi>n</mi>
-          </munderover>
-          <msup>
-            <mi>i</mi>
-            <mn>3</mn>
-          </msup>
-          <mo>=</mo>
-          <msup>
-            <mfrac>
-              <mi>n</mi>
-              <mn>2</mn>
-            </mfrac>
             <mn>2</mn>
-          </msup>
-        </mstyle>
+          </mfrac>
+          <mn>2</mn>
+        </msup>
       </math>
     unicodemath: "∑_(1)^(n) i^(3) = (n)/(2)^(2)"
     omml: |
@@ -793,17 +781,15 @@ cases:
     asciimath: sin overset(theta)(sum)
     latex: "\\sin{} \\overset{\\theta}{ \\left ( \\sum \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>sin</mi>
-          </mrow>
-          <mover>
-            <mo>&#x2211;</mo>
-            <mi>&#x3b8;</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>sin</mi>
+        </mrow>
+        <mover>
+          <mo>&#x2211;</mo>
+          <mi>&#x3b8;</mi>
+        </mover>
       </math>
     unicodemath: sin⁡ (∑)┴(θ)
     omml: |
@@ -885,13 +871,11 @@ cases:
     asciimath: overset(3)(sum)
     latex: "\\overset{3}{ \\left ( \\sum \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mo>&#x2211;</mo>
-            <mn>3</mn>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mo>&#x2211;</mo>
+          <mn>3</mn>
+        </mover>
       </math>
     unicodemath: "(∑)┴(3)"
     omml: |
@@ -969,13 +953,11 @@ cases:
     asciimath: overset(Theta)(sum)
     latex: "\\overset{\\Theta}{ \\left ( \\sum \\right ) }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mo>&#x2211;</mo>
-            <mo>&#x398;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mo>&#x2211;</mo>
+          <mo>&#x398;</mo>
+        </mover>
       </math>
     unicodemath: "(∑)┴(Θ)"
     omml: |
@@ -1066,21 +1048,19 @@ cases:
     asciimath: sum_(i = frac(12)("P{box}"))^(33)
     latex: "\\sum_{i = \\frac{12}{\\mdlgwhtsquare}}^{33}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>i</mi>
-              <mo>=</mo>
-              <mfrac>
-                <mn>12</mn>
-                <mo>&#x25a1;</mo>
-              </mfrac>
-            </mrow>
-            <mn>33</mn>
-          </munderover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mfrac>
+              <mn>12</mn>
+              <mo>&#x25a1;</mo>
+            </mfrac>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
       </math>
     unicodemath: "∑_(i = (12)/(□))^(33)"
     omml: |
@@ -1212,13 +1192,11 @@ cases:
     asciimath: overset(1234)(i)
     latex: "\\overset{1234}{i}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>i</mi>
-            <mn>1234</mn>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>i</mi>
+          <mn>1234</mn>
+        </mover>
       </math>
     unicodemath: "(i)┴(1234)"
     omml: |
@@ -1296,14 +1274,12 @@ cases:
     asciimath: prod_(theta) i
     latex: "\\prod_{\\theta} i"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mo>&#x220f;</mo>
-            <mi>&#x3b8;</mi>
-          </munder>
-          <mi>i</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mo>&#x220f;</mo>
+          <mi>&#x3b8;</mi>
+        </munder>
+        <mi>i</mi>
       </math>
     unicodemath: "∏_(θ) i"
     omml: |
@@ -1384,13 +1360,11 @@ cases:
     asciimath: ubrace(4)
     latex: "\\underbrace{4}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mn>4</mn>
-            <mo>&#x23df;</mo>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mn>4</mn>
+          <mo>&#x23df;</mo>
+        </munder>
       </math>
     unicodemath: "⏟(4)"
     omml: |
@@ -1463,13 +1437,11 @@ cases:
     asciimath: obrace(4)
     latex: "\\overbrace{4}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mn>4</mn>
-            <mo>&#x23de;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mn>4</mn>
+          <mo>&#x23de;</mo>
+        </mover>
       </math>
     unicodemath: "⏞(4)"
     omml: |
@@ -1556,20 +1528,18 @@ cases:
     asciimath: sum_(i = color("blue")(ne))^(33)
     latex: \sum_{i = {\color{"blue"} \ne}}^{33}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>i</mi>
-              <mo>=</mo>
-              <mstyle mathcolor="blue">
-                <mo>&#x2260;</mo>
-              </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mrow mathcolor="blue">
+              <mo>&#x2260;</mo>
             </mrow>
-            <mn>33</mn>
-          </munderover>
-        </mstyle>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
       </math>
     unicodemath: ∑_(i = ✎("blue"&≠))^(33)
     omml: |
@@ -1691,18 +1661,16 @@ cases:
     asciimath: sum_(i = frac)^(33)
     latex: "\\sum_{i = frac}^{33}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>i</mi>
-              <mo>=</mo>
-              <mi>frac</mi>
-            </mrow>
-            <mn>33</mn>
-          </munderover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
+            <mi>i</mi>
+            <mo>=</mo>
+            <mi>frac</mi>
+          </mrow>
+          <mn>33</mn>
+        </munderover>
       </math>
     unicodemath: "∑_(i = frac)^(33)"
     omml: |
@@ -1836,32 +1804,30 @@ cases:
     asciimath: sum_(1)^(n) i^(3) = sinfrac(n)(2)^(2)
     latex: "\\sum_{1}^{n} i^{3} = \\sin{\\frac{n}{2}}^{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mn>1</mn>
-            <mi>n</mi>
-          </munderover>
-          <msup>
-            <mi>i</mi>
-            <mn>3</mn>
-          </msup>
-          <mo>=</mo>
-          <msup>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mn>1</mn>
+          <mi>n</mi>
+        </munderover>
+        <msup>
+          <mi>i</mi>
+          <mn>3</mn>
+        </msup>
+        <mo>=</mo>
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>sin</mi>
-                <mfrac>
-                  <mi>n</mi>
-                  <mn>2</mn>
-                </mfrac>
-              </mrow>
+              <mi>sin</mi>
+              <mfrac>
+                <mi>n</mi>
+                <mn>2</mn>
+              </mfrac>
             </mrow>
-            <mn>2</mn>
-          </msup>
-        </mstyle>
+          </mrow>
+          <mn>2</mn>
+        </msup>
       </math>
     unicodemath: "∑_(1)^(n) i^(3) = sin⁡(n)/(2)^(2)"
     omml: |
@@ -2097,16 +2063,14 @@ cases:
     asciimath: hat(e)_(r)
     latex: "\\hat{e}_{r}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mover accent="true">
-              <mi>e</mi>
-              <mo>^</mo>
-            </mover>
-            <mi>r</mi>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mover accent="true">
+            <mi>e</mi>
+            <mo>^</mo>
+          </mover>
+          <mi>r</mi>
+        </msub>
       </math>
     unicodemath: "(e)̂_(r)"
     omml: |
@@ -2380,84 +2344,82 @@ cases:
     asciimath: ii(T)_(90) / rm(K) = ii(A)_(0) + sum_(i = 1)^(9) ii(A)_(i) [(ln (p / rm(Pa)) &#x2014; ii(B)) / ii(C)]^(i) .
     latex: "\\mathit{T}_{90} / \\mathrm{K} = \\mathit{A}_{0} + \\sum_{i = 1}^{9} \\mathit{A}_{i} [ ( \\ln{} ( p / \\mathrm{Pa} ) &#x2014; \\mathit{B} ) / \\mathit{C} ]^{i} ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mstyle mathvariant="italic">
-              <mi>T</mi>
-            </mstyle>
-            <mn>90</mn>
-          </msub>
-          <mo rspace="0em">/</mo>
-          <mstyle mathvariant="normal">
-            <mi>K</mi>
-          </mstyle>
-          <mo>=</mo>
-          <msub>
-            <mstyle mathvariant="italic">
-              <mi>A</mi>
-            </mstyle>
-            <mn>0</mn>
-          </msub>
-          <mo>+</mo>
-          <munderover>
-            <mo>&#x2211;</mo>
-            <mrow>
-              <mi>i</mi>
-              <mo>=</mo>
-              <mn>1</mn>
-            </mrow>
-            <mn>9</mn>
-          </munderover>
-          <msub>
-            <mstyle mathvariant="italic">
-              <mi>A</mi>
-            </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mrow mathvariant="italic">
+            <mi>T</mi>
+          </mrow>
+          <mn>90</mn>
+        </msub>
+        <mo rspace="0em">/</mo>
+        <mrow mathvariant="normal">
+          <mi>K</mi>
+        </mrow>
+        <mo>=</mo>
+        <msub>
+          <mrow mathvariant="italic">
+            <mi>A</mi>
+          </mrow>
+          <mn>0</mn>
+        </msub>
+        <mo>+</mo>
+        <munderover>
+          <mo>&#x2211;</mo>
+          <mrow>
             <mi>i</mi>
-          </msub>
-          <msup>
+            <mo>=</mo>
+            <mn>1</mn>
+          </mrow>
+          <mn>9</mn>
+        </munderover>
+        <msub>
+          <mrow mathvariant="italic">
+            <mi>A</mi>
+          </mrow>
+          <mi>i</mi>
+        </msub>
+        <msup>
+          <mrow>
+            <mo>[</mo>
             <mrow>
-              <mo>[</mo>
               <mrow>
+                <mo>(</mo>
                 <mrow>
-                  <mo>(</mo>
                   <mrow>
+                    <mo rspace="0.2778em"/>
                     <mrow>
-                      <mo rspace="thickmathspace"/>
-                      <mrow>
-                        <mi>ln</mi>
-                        <mo rspace="-0.35em"/>
-                      </mrow>
+                      <mi>ln</mi>
+                      <mo rspace="-0.35em"/>
                     </mrow>
-                    <mrow>
-                      <mo>(</mo>
-                      <mrow>
-                        <mi>p</mi>
-                        <mo rspace="0em">/</mo>
-                        <mstyle mathvariant="normal">
-                          <mi>Pa</mi>
-                        </mstyle>
-                      </mrow>
-                      <mo>)</mo>
-                    </mrow>
-                    <mi>&#x2014;</mi>
-                    <mstyle mathvariant="italic">
-                      <mi>B</mi>
-                    </mstyle>
                   </mrow>
-                  <mo>)</mo>
+                  <mrow>
+                    <mo>(</mo>
+                    <mrow>
+                      <mi>p</mi>
+                      <mo rspace="0em">/</mo>
+                      <mrow mathvariant="normal">
+                        <mi>Pa</mi>
+                      </mrow>
+                    </mrow>
+                    <mo>)</mo>
+                  </mrow>
+                  <mi>&#x2014;</mi>
+                  <mrow mathvariant="italic">
+                    <mi>B</mi>
+                  </mrow>
                 </mrow>
-                <mo rspace="0em">/</mo>
-                <mstyle mathvariant="italic">
-                  <mi>C</mi>
-                </mstyle>
+                <mo>)</mo>
               </mrow>
-              <mo>]</mo>
+              <mo rspace="0em">/</mo>
+              <mrow mathvariant="italic">
+                <mi>C</mi>
+              </mrow>
             </mrow>
-            <mi>i</mi>
-          </msup>
-          <mo>&#x2e;</mo>
-        </mstyle>
+            <mo>]</mo>
+          </mrow>
+          <mi>i</mi>
+        </msup>
+        <mo>&#x2e;</mo>
       </math>
     unicodemath: "\\mitT_(90)/\\mupK = \\mitA_(0) + ∑_(i = 1)^(9) \\mitA_(i) [(ln⁡ (p/\\mupPa) — \\mitB)/\\mitC]^(i) ."
     omml: |
@@ -3003,18 +2965,16 @@ cases:
     asciimath: dot(theta) ne ddot(theta)
     latex: "\\dot{\\theta} \\ne \\ddot{\\theta}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>&#x3b8;</mi>
-            <mo>.</mo>
-          </mover>
-          <mo>&#x2260;</mo>
-          <mover accent="true">
-            <mi>&#x3b8;</mi>
-            <mo>..</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>&#x3b8;</mi>
+          <mo>.</mo>
+        </mover>
+        <mo>&#x2260;</mo>
+        <mover accent="true">
+          <mi>&#x3b8;</mi>
+          <mo>..</mo>
+        </mover>
       </math>
     unicodemath: "(θ)̇ ≠ (θ)̈"
     omml: |
@@ -3145,23 +3105,21 @@ cases:
     asciimath: underline(() frac( a )( b ) bar())
     latex: "\\underline{(} \\frac{ a }{ b } \\overline{)}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mo>(</mo>
-              <mo>&#x332;</mo>
-            </munder>
-            <mfrac>
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mover>
-              <mo>)</mo>
-              <mo>&#xaf;</mo>
-            </mover>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>(</mo>
+            <mo>&#x332;</mo>
+          </munder>
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mover>
+            <mo>)</mo>
+            <mo>&#xaf;</mo>
+          </mover>
+        </mrow>
       </math>
     unicodemath: "▁(() ( a )/( b ) ())̅"
     omml: |
@@ -3307,17 +3265,15 @@ cases:
     asciimath: ' x  vec(" maps to ")  y '
     latex: " x  \\vec{\\text{ maps to }}  y "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi> x </mi>
-            <mover>
-              <mtext> maps to </mtext>
-              <mo>&#x2192;</mo>
-            </mover>
-            <mi> y </mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi> x </mi>
+          <mover>
+            <mtext> maps to </mtext>
+            <mo>&#x2192;</mo>
+          </mover>
+          <mi> y </mi>
+        </mrow>
       </math>
     unicodemath: ' x  (" maps to ")⃗  y '
     omml: |
@@ -3450,32 +3406,30 @@ cases:
     asciimath: ubrace( x  +  y  +  z ) "&#xa0;versus&#xa0;" ubrace( x  +  y  +  z )
     latex: "\\underbrace{ x  +  y  +  z } \\text{&#xa0;versus&#xa0;} \\underbrace{ x  +  y  +  z }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mo>&#x23df;</mo>
-            </munder>
-            <mtext>&#xa0;versus&#xa0;</mtext>
-            <munder>
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mo>&#x23df;</mo>
-            </munder>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23df;</mo>
+          </munder>
+          <mtext>&#xa0;versus&#xa0;</mtext>
+          <munder>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23df;</mo>
+          </munder>
+        </mrow>
       </math>
     unicodemath: ⏟( x  +  y  +  z ) " versus " ⏟( x  +  y  +  z )
     omml: |
@@ -3678,20 +3632,18 @@ cases:
     asciimath: hat( x ) "&#xa0;versus&#xa0;" hat( x )
     latex: "\\hat{ x } \\text{&#xa0;versus&#xa0;} \\hat{ x }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mover accent="true">
-              <mi> x </mi>
-              <mo>^</mo>
-            </mover>
-            <mtext>&#xa0;versus&#xa0;</mtext>
-            <mover>
-              <mi> x </mi>
-              <mo>^</mo>
-            </mover>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mover accent="true">
+            <mi> x </mi>
+            <mo>^</mo>
+          </mover>
+          <mtext>&#xa0;versus&#xa0;</mtext>
+          <mover>
+            <mi> x </mi>
+            <mo>^</mo>
+          </mover>
+        </mrow>
       </math>
     unicodemath: ( x )̂ " versus " ( x )̂
     omml: |
@@ -3839,32 +3791,30 @@ cases:
     asciimath: obrace( x  +  y  +  z ) "&#xa0;versus&#xa0;" obrace( x  +  y  +  z )
     latex: "\\overbrace{ x  +  y  +  z } \\text{&#xa0;versus&#xa0;} \\overbrace{ x  +  y  +  z }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mover>
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mo>&#x23de;</mo>
-            </mover>
-            <mtext>&#xa0;versus&#xa0;</mtext>
-            <mover>
-              <mrow>
-                <mi> x </mi>
-                <mo>+</mo>
-                <mi> y </mi>
-                <mo>+</mo>
-                <mi> z </mi>
-              </mrow>
-              <mo>&#x23de;</mo>
-            </mover>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mover>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23de;</mo>
+          </mover>
+          <mtext>&#xa0;versus&#xa0;</mtext>
+          <mover>
+            <mrow>
+              <mi> x </mi>
+              <mo>+</mo>
+              <mi> y </mi>
+              <mo>+</mo>
+              <mi> z </mi>
+            </mrow>
+            <mo>&#x23de;</mo>
+          </mover>
+        </mrow>
       </math>
     unicodemath: ⏞( x  +  y  +  z ) " versus " ⏞( x  +  y  +  z )
     omml: |
@@ -4075,25 +4025,23 @@ cases:
     asciimath: overset(oo)(int_( 0 )) "&#xa0;versus&#xa0;" int_( 0 )^(oo)
     latex: "\\overset{\\infty}{ \\left ( \\int_{ 0 } \\right ) } \\text{&#xa0;versus&#xa0;} \\int_{ 0 }^{\\infty}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mover>
-              <msubsup>
-                <mo>&#x222b;</mo>
-                <mn> 0 </mn>
-                <mrow/>
-              </msubsup>
-              <mo>&#x221e;</mo>
-            </mover>
-            <mtext>&#xa0;versus&#xa0;</mtext>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mover>
             <msubsup>
               <mo>&#x222b;</mo>
               <mn> 0 </mn>
-              <mo>&#x221e;</mo>
+              <mrow/>
             </msubsup>
-          </mrow>
-        </mstyle>
+            <mo>&#x221e;</mo>
+          </mover>
+          <mtext>&#xa0;versus&#xa0;</mtext>
+          <msubsup>
+            <mo>&#x222b;</mo>
+            <mn> 0 </mn>
+            <mo>&#x221e;</mo>
+          </msubsup>
+        </mrow>
       </math>
     unicodemath: (∫_( 0 ))┴(∞) " versus " ∫_( 0 )^(∞)
     omml: |
@@ -4273,25 +4221,23 @@ cases:
     asciimath: underset( X  in  D )(&#xa;      Op&#xa;      ) "P{funcapply}" (&#xa;      Expression-in-X&#xa;      )
     latex: "\\underset{ \\left (  X  \\in  D  \\right ) }{&#xa;      Op&#xa;      } \\text{P[funcapply]} ( &#xa;      Expression-in-X&#xa;       )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mi>&#xa;      Op&#xa;      </mi>
-              <mrow>
-                <mi> X </mi>
-                <mo>&#x2208;</mo>
-                <mi> D </mi>
-              </mrow>
-            </munder>
-            <mi>&#x2061;</mi>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mi>&#xa;      Op&#xa;      </mi>
             <mrow>
-              <mo>(</mo>
-              <mi>&#xa;      Expression-in-X&#xa;      </mi>
-              <mo>)</mo>
+              <mi> X </mi>
+              <mo>&#x2208;</mo>
+              <mi> D </mi>
             </mrow>
+          </munder>
+          <mi>&#x2061;</mi>
+          <mrow>
+            <mo>(</mo>
+            <mi>&#xa;      Expression-in-X&#xa;      </mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: |-
       (
@@ -4449,21 +4395,19 @@ cases:
     asciimath: bar(x + ⅈ &#x2062; y)
     latex: "\\overline{x + ⅈ &#x2062; y}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mrow>
+            <mi>x</mi>
+            <mo>+</mo>
             <mrow>
-              <mi>x</mi>
-              <mo>+</mo>
-              <mrow>
-                <mn>ⅈ</mn>
-                <mi>&#x2062;</mi>
-                <mi>y</mi>
-              </mrow>
+              <mn>ⅈ</mn>
+              <mi>&#x2062;</mi>
+              <mi>y</mi>
             </mrow>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+          </mrow>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "(x + ⅈ ⁢ y)̅"
     omml: |
@@ -4599,29 +4543,27 @@ cases:
     asciimath: sum_(x = a)^(b) f "P{funcapply}" (x)
     latex: "\\sum_{x = a}^{b} f \\text{P[funcapply]} ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x2211;</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>=</mo>
-                <mi>a</mi>
-              </mrow>
-              <mi>b</mi>
-            </munderover>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x2211;</mo>
             <mrow>
-              <mi>f</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mi>x</mi>
+              <mo>=</mo>
+              <mi>a</mi>
+            </mrow>
+            <mi>b</mi>
+          </munderover>
+          <mrow>
+            <mi>f</mi>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∑_(x = a)^(b)▒〖f ⁡ (x)〗"
     omml: |
@@ -4796,28 +4738,26 @@ cases:
     asciimath: sum_(x in B) f "P{funcapply}" (x)
     latex: "\\sum_{x \\in B} f \\text{P[funcapply]} ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mo>&#x2211;</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>&#x2208;</mo>
-                <mi>B</mi>
-              </mrow>
-            </munder>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>&#x2211;</mo>
             <mrow>
-              <mi>f</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mi>x</mi>
+              <mo>&#x2208;</mo>
+              <mi>B</mi>
+            </mrow>
+          </munder>
+          <mrow>
+            <mi>f</mi>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∑_(x ∈ B)▒〖f ⁡ (x)〗"
     omml: |
@@ -4968,16 +4908,14 @@ cases:
     asciimath: sum_(B) f
     latex: "\\sum_{B} f"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mo>&#x2211;</mo>
-              <mi>B</mi>
-            </munder>
-            <mi>f</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>&#x2211;</mo>
+            <mi>B</mi>
+          </munder>
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: "∑_(B)▒〖f〗"
     omml: |
@@ -5085,29 +5023,27 @@ cases:
     asciimath: prod_(x = a)^(b) f "P{funcapply}" (x)
     latex: "\\prod_{x = a}^{b} f \\text{P[funcapply]} ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x220f;</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>=</mo>
-                <mi>a</mi>
-              </mrow>
-              <mi>b</mi>
-            </munderover>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x220f;</mo>
             <mrow>
-              <mi>f</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mi>x</mi>
+              <mo>=</mo>
+              <mi>a</mi>
+            </mrow>
+            <mi>b</mi>
+          </munderover>
+          <mrow>
+            <mi>f</mi>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∏_(x = a)^(b)▒〖f ⁡ (x)〗"
     omml: |
@@ -5282,28 +5218,26 @@ cases:
     asciimath: prod_(x in B) f "P{funcapply}" (x)
     latex: "\\prod_{x \\in B} f \\text{P[funcapply]} ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mo>&#x220f;</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>&#x2208;</mo>
-                <mi>B</mi>
-              </mrow>
-            </munder>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>&#x220f;</mo>
             <mrow>
-              <mi>f</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
+              <mi>x</mi>
+              <mo>&#x2208;</mo>
+              <mi>B</mi>
+            </mrow>
+          </munder>
+          <mrow>
+            <mi>f</mi>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∏_(x ∈ B)▒〖f ⁡ (x)〗"
     omml: |
@@ -5448,13 +5382,11 @@ cases:
     asciimath: bar(X)
     latex: "\\overline{X}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mi>X</mi>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mi>X</mi>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: "(X)̅"
     omml: |

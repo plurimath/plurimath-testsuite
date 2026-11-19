@@ -66,27 +66,25 @@ cases:
     asciimath: rm(Delta A) = rm(frac(b)(2 * C C))
     latex: "\\mathrm{\\Delta A} = \\mathrm{\\frac{b}{2 \\cdot C C}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="normal">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="normal">
+          <mrow>
+            <mi>&#x394;</mi>
+            <mi>A</mi>
+          </mrow>
+        </mrow>
+        <mo>=</mo>
+        <mrow mathvariant="normal">
+          <mfrac>
+            <mi>b</mi>
             <mrow>
-              <mi>&#x394;</mi>
-              <mi>A</mi>
+              <mn>2</mn>
+              <mo>&#x22c5;</mo>
+              <mi>C</mi>
+              <mi>C</mi>
             </mrow>
-          </mstyle>
-          <mo>=</mo>
-          <mstyle mathvariant="normal">
-            <mfrac>
-              <mi>b</mi>
-              <mrow>
-                <mn>2</mn>
-                <mo>&#x22c5;</mo>
-                <mi>C</mi>
-                <mi>C</mi>
-              </mrow>
-            </mfrac>
-          </mstyle>
-        </mstyle>
+          </mfrac>
+        </mrow>
       </math>
     unicodemath: "\\mupΔ A = \\mup(b)/(2 ⋅ C C)"
     omml: |
@@ -269,24 +267,22 @@ cases:
     asciimath: ' 2  +  3   &#x2062;  "P{ii}" frac( 1 )( 2 ) pi  &#x2147; '
     latex: " 2  +  3   &#x2062;  \\ComplexI \\frac{ 1 }{ 2 } \\pi  &#x2147; "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn> 2 </mn>
+          <mo>+</mo>
           <mrow>
-            <mn> 2 </mn>
-            <mo>+</mo>
-            <mrow>
-              <mn> 3 </mn>
-              <mi> &#x2062; </mi>
-              <mi>&#x2148;</mi>
-            </mrow>
+            <mn> 3 </mn>
+            <mi> &#x2062; </mi>
+            <mi>&#x2148;</mi>
           </mrow>
-          <mfrac>
-            <mn> 1 </mn>
-            <mn> 2 </mn>
-          </mfrac>
-          <mi>&#x3c0;</mi>
-          <mi intent=" ⅇ "> &#x2147; </mi>
-        </mstyle>
+        </mrow>
+        <mfrac>
+          <mn> 1 </mn>
+          <mn> 2 </mn>
+        </mfrac>
+        <mi>&#x3c0;</mi>
+        <mi intent=" ⅇ "> &#x2147; </mi>
       </math>
     unicodemath: " 2  +  3   ⁢  ⅈ ( 1 )/( 2 ) π  ⅇ "
     omml: |
@@ -439,17 +435,15 @@ cases:
     asciimath: " 2   &#x2064;  frac( 3 )( 4 )"
     latex: " 2   &#x2064;  \\frac{ 3 }{ 4 }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn> 2 </mn>
-            <mi> &#x2064; </mi>
-            <mfrac>
-              <mn> 3 </mn>
-              <mn> 4 </mn>
-            </mfrac>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn> 2 </mn>
+          <mi> &#x2064; </mi>
+          <mfrac>
+            <mn> 3 </mn>
+            <mn> 4 </mn>
+          </mfrac>
+        </mrow>
       </math>
     unicodemath: " 2   ⁤  ( 3 )/( 4 )"
     omml: |
@@ -558,16 +552,14 @@ cases:
     asciimath: frac("P{dd}")("P{dd}"  x )
     latex: "\\frac{\\DifferentialD}{\\DifferentialD  x }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>&#x2146;</mi>
+          <mrow>
             <mi>&#x2146;</mi>
-            <mrow>
-              <mi>&#x2146;</mi>
-              <mi> x </mi>
-            </mrow>
-          </mfrac>
-        </mstyle>
+            <mi> x </mi>
+          </mrow>
+        </mfrac>
       </math>
     unicodemath: "(ⅆ)/(ⅆ  x )"
     omml: |
@@ -660,17 +652,15 @@ cases:
     asciimath: "(frac( a )( b ))"
     latex: "( \\frac{ a }{ b } )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac>
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(( a )/( b ))"
     omml: |
@@ -795,27 +785,25 @@ cases:
     asciimath: "(frac( a )( b )) frac(frac( a )( b ))(frac( c )( d ))"
     latex: "( \\frac{ a }{ b } ) \\frac{\\frac{ a }{ b }}{\\frac{ c }{ d }}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac linethickness="0">
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-          <mfrac linethickness="200%">
-            <mfrac>
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mfrac>
-              <mi> c </mi>
-              <mi> d </mi>
-            </mfrac>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac linethickness="0">
+            <mi> a </mi>
+            <mi> b </mi>
           </mfrac>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
+        <mfrac linethickness="200%">
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mfrac>
+            <mi> c </mi>
+            <mi> d </mi>
+          </mfrac>
+        </mfrac>
       </math>
     unicodemath: "(( a )¦( b )) (( a )/( b ))¦(( c )/( d ))"
     omml: |
@@ -1019,19 +1007,17 @@ cases:
     asciimath: frac(1  + sqrt(5 ))(2 )
     latex: "\\frac{1  + \\sqrt{5 }}{2 }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mn>1 </mn>
-              <mo>+</mo>
-              <msqrt>
-                <mn>5 </mn>
-              </msqrt>
-            </mrow>
-            <mn>2 </mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mn>1 </mn>
+            <mo>+</mo>
+            <msqrt>
+              <mn>5 </mn>
+            </msqrt>
+          </mrow>
+          <mn>2 </mn>
+        </mfrac>
       </math>
     unicodemath: "(1  + √(5 ))/(2 )"
     omml: |
@@ -1155,17 +1141,15 @@ cases:
     asciimath: "(frac( a )( b ))"
     latex: "( \\frac{ a }{ b } )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac>
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(( a )/( b ))"
     omml: |
@@ -1266,17 +1250,15 @@ cases:
     asciimath: "(frac( a )( b ))"
     latex: "( \\frac{ a }{ b } )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac>
-              <mi> a </mi>
-              <mi> b </mi>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac>
+            <mi> a </mi>
+            <mi> b </mi>
+          </mfrac>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(( a )/( b ))"
     omml: |
@@ -1385,19 +1367,17 @@ cases:
     asciimath: frac( 1  + sqrt( 5 ))( 2 )
     latex: "\\frac{ 1  + \\sqrt{ 5 }}{ 2 }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mn> 1 </mn>
-              <mo>+</mo>
-              <msqrt>
-                <mn> 5 </mn>
-              </msqrt>
-            </mrow>
-            <mn> 2 </mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mn> 1 </mn>
+            <mo>+</mo>
+            <msqrt>
+              <mn> 5 </mn>
+            </msqrt>
+          </mrow>
+          <mn> 2 </mn>
+        </mfrac>
       </math>
     unicodemath: "( 1  + √( 5 ))/( 2 )"
     omml: |
@@ -1535,19 +1515,17 @@ cases:
     asciimath: C - frac(pi)(2)
     latex: C - \frac{\pi}{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>C</mi>
-          <menclose notation="phasorangle">
-            <mrow>
-              <mo>&#x2212;</mo>
-              <mfrac>
-                <mi>&#x3c0;</mi>
-                <mn>2</mn>
-              </mfrac>
-            </mrow>
-          </menclose>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>C</mi>
+        <menclose notation="phasorangle">
+          <mrow>
+            <mo>&#x2212;</mo>
+            <mfrac>
+              <mi>&#x3c0;</mi>
+              <mn>2</mn>
+            </mfrac>
+          </mrow>
+        </menclose>
       </math>
     unicodemath: 'C '
     omml: |
@@ -1668,18 +1646,16 @@ cases:
     asciimath: ''
     latex: ''
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <merror>
-            <mrow>
-              <mtext>DivisionByZero:&#xa0;</mtext>
-              <mfrac>
-                <mi>x</mi>
-                <mn>0</mn>
-              </mfrac>
-            </mrow>
-          </merror>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <merror>
+          <mrow>
+            <mtext>DivisionByZero:&#xa0;</mtext>
+            <mfrac>
+              <mi>x</mi>
+              <mn>0</mn>
+            </mfrac>
+          </mrow>
+        </merror>
       </math>
     unicodemath: ''
     omml: |
@@ -1785,41 +1761,39 @@ cases:
     asciimath: frac(d sin"P{funcapply}" x)(d x) = cos"P{funcapply}" x
     latex: "\\frac{d \\sin{\\text{P[funcapply]}} x}{d x} = \\cos{\\text{P[funcapply]}} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mfrac>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mfrac>
+            <mrow>
+              <mi>d</mi>
               <mrow>
-                <mi>d</mi>
                 <mrow>
+                  <mo rspace="0.2778em"/>
                   <mrow>
-                    <mo rspace="thickmathspace"/>
-                    <mrow>
-                      <mi>sin</mi>
-                      <mi>&#x2061;</mi>
-                    </mrow>
+                    <mi>sin</mi>
+                    <mi>&#x2061;</mi>
                   </mrow>
-                  <mi>x</mi>
                 </mrow>
-              </mrow>
-              <mrow>
-                <mi>d</mi>
                 <mi>x</mi>
               </mrow>
-            </mfrac>
-            <mo>=</mo>
+            </mrow>
             <mrow>
-              <mrow>
-                <mo rspace="thickmathspace"/>
-                <mrow>
-                  <mi>cos</mi>
-                  <mi>&#x2061;</mi>
-                </mrow>
-              </mrow>
+              <mi>d</mi>
               <mi>x</mi>
             </mrow>
+          </mfrac>
+          <mo>=</mo>
+          <mrow>
+            <mrow>
+              <mo rspace="0.2778em"/>
+              <mrow>
+                <mi>cos</mi>
+                <mi>&#x2061;</mi>
+              </mrow>
+            </mrow>
+            <mi>x</mi>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "(d sin⁡⁡ x)/(d x) = cos⁡⁡ x"
     omml: |

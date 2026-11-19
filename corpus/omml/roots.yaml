@@ -64,12 +64,10 @@ cases:
     asciimath: sqrt(1)
     latex: "\\sqrt{1}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mn>1</mn>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mn>1</mn>
+        </msqrt>
       </math>
     unicodemath: "√(1)"
     omml: |
@@ -179,13 +177,11 @@ cases:
     asciimath: root(2)(1)
     latex: "\\sqrt[2]{1}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mn>1</mn>
+          <mn>2</mn>
+        </mroot>
       </math>
     unicodemath: "√(2&1)"
     omml: |
@@ -298,13 +294,11 @@ cases:
     asciimath: root(2)(3)
     latex: "\\sqrt[2]{3}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mn>3</mn>
-            <mn>2</mn>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mn>3</mn>
+          <mn>2</mn>
+        </mroot>
       </math>
     unicodemath: "√(2&3)"
     omml: |
@@ -417,13 +411,11 @@ cases:
     asciimath: root(3)(1)
     latex: "\\sqrt[3]{1}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mn>1</mn>
-            <mn>3</mn>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mn>1</mn>
+          <mn>3</mn>
+        </mroot>
       </math>
     unicodemath: "√(3&1)"
     omml: |

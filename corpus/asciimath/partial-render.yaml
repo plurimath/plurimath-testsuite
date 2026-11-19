@@ -25,10 +25,8 @@ cases:
       output: "\\sqrt{}"
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <msqrt/>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <msqrt/>
         </math>
     unicodemath:
       error:

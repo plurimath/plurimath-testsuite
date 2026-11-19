@@ -56,12 +56,10 @@ cases:
     asciimath: '"ax+b"'
     latex: "\\text{ax+b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <menclose notation="longdiv">
-            <mtext>ax+b</mtext>
-          </menclose>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <menclose notation="longdiv">
+          <mtext>ax+b</mtext>
+        </menclose>
       </math>
     unicodemath: ⟌("ax+b")
     omml: |
@@ -142,10 +140,8 @@ cases:
     asciimath: '"x"'
     latex: "\\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>x</mtext>
       </math>
     unicodemath: '"x"'
     omml: |

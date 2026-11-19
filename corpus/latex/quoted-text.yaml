@@ -22,10 +22,8 @@ cases:
     asciimath: '"hello"'
     latex: "\\text{hello}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>hello</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>hello</mtext>
       </math>
     unicodemath: '"hello"'
     omml: |
@@ -62,10 +60,8 @@ cases:
     asciimath: '"hello world"'
     latex: "\\text{hello world}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>hello world</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>hello world</mtext>
       </math>
     unicodemath: '"hello world"'
     omml: |
@@ -102,10 +98,8 @@ cases:
     asciimath: '"hi"'
     latex: "\\mbox{hi}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>hi</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>hi</mtext>
       </math>
     unicodemath: '"hi"'
     omml: |
@@ -136,10 +130,8 @@ cases:
     asciimath: '"a b"'
     latex: "\\mbox{a b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtext>a b</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtext>a b</mtext>
       </math>
     unicodemath: '"a b"'
     omml: |
