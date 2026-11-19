@@ -52,24 +52,22 @@ cases:
     asciimath: "(x , y) (x y)"
     latex: "( x , y ) ( x y )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
           <mrow>
-            <mo>(</mo>
-            <mrow>
-              <mi>x</mi>
-              <mo>,</mo>
-              <mi>y</mi>
-            </mrow>
-            <mo>)</mo>
-          </mrow>
-          <mrow>
-            <mo>(</mo>
             <mi>x</mi>
+            <mo>,</mo>
             <mi>y</mi>
-            <mo>)</mo>
           </mrow>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mi>y</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(x , y) (x y)"
     omml: |
@@ -198,15 +196,13 @@ cases:
     asciimath: "[ 0   1 )"
     latex: "[  0   1  "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mn> 0 </mn>
-            <mn> 1 </mn>
-            <mo></mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mn> 0 </mn>
+          <mn> 1 </mn>
+          <mo></mo>
+        </mrow>
       </math>
     unicodemath: "[ 0   1 "
     omml: |
@@ -292,19 +288,17 @@ cases:
     asciimath: ' f  "P{funcapply}" ( x   y )'
     latex: " f  \\text{P[funcapply]} (  x   y  )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi> f </mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi> f </mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi> x </mi>
-              <mi> y </mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi> x </mi>
+            <mi> y </mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: " f  ⁡ ( x   y )"
     omml: |
@@ -409,19 +403,17 @@ cases:
     asciimath: Polar "P{funcapply}" (2 3.1415)
     latex: Polar \text{P[funcapply]} ( 2 3.1415 )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>Polar</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>Polar</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mn>2</mn>
-              <mn>3.1415</mn>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mn>2</mn>
+            <mn>3.1415</mn>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: Polar ⁡ (2 3.1415)
     omml: |
@@ -524,15 +516,13 @@ cases:
     asciimath: "(x 1)"
     latex: "( x 1 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>x</mi>
-            <mn>1</mn>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mn>1</mn>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(x 1)"
     omml: |
@@ -611,15 +601,13 @@ cases:
     asciimath: "[0 1]"
     latex: "[ 0 1 ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mn>0</mn>
-            <mn>1</mn>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mn>1</mn>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: "[0 1]"
     omml: |
@@ -701,15 +689,13 @@ cases:
     asciimath: "(0 1]"
     latex: "( 0 1 ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mn>0</mn>
-            <mn>1</mn>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mn>0</mn>
+          <mn>1</mn>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: "(0 1]"
     omml: |
@@ -791,15 +777,13 @@ cases:
     asciimath: "[0 1)"
     latex: "[ 0 1 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mn>0</mn>
-            <mn>1</mn>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mn>0</mn>
+          <mn>1</mn>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "[0 1)"
     omml: |
@@ -909,34 +893,32 @@ cases:
     asciimath: lambda x . (sin"P{funcapply}" (x + 1))
     latex: "\\lambda x . ( \\sin{\\text{P[funcapply]}} ( x + 1 ) )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x3bb;</mi>
+          <mi>x</mi>
+          <mo>&#x2e;</mo>
           <mrow>
-            <mi>&#x3bb;</mi>
-            <mi>x</mi>
-            <mo>&#x2e;</mo>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
               <mrow>
+                <mo rspace="0.2778em"/>
                 <mrow>
-                  <mo rspace="thickmathspace"/>
-                  <mrow>
-                    <mi>sin</mi>
-                    <mi>&#x2061;</mi>
-                  </mrow>
-                </mrow>
-                <mrow>
-                  <mo>(</mo>
-                  <mi>x</mi>
-                  <mo>+</mo>
-                  <mn>1</mn>
-                  <mo>)</mo>
+                  <mi>sin</mi>
+                  <mi>&#x2061;</mi>
                 </mrow>
               </mrow>
-              <mo>)</mo>
+              <mrow>
+                <mo>(</mo>
+                <mi>x</mi>
+                <mo>+</mo>
+                <mn>1</mn>
+                <mo>)</mo>
+              </mrow>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: λ x . (sin⁡⁡ (x + 1))
     omml: |
@@ -1163,44 +1145,42 @@ cases:
     asciimath: (f @ g) "P{funcapply}" (x) = f "P{funcapply}" (g "P{funcapply}" (x))
     latex: "( f \\circ g ) \\text{P[funcapply]} ( x ) = f \\text{P[funcapply]} ( g \\text{P[funcapply]} ( x ) )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
             <mrow>
-              <mrow>
-                <mo>(</mo>
-                <mi>f</mi>
-                <mi>&#x2218;</mi>
-                <mi>g</mi>
-                <mo>)</mo>
-              </mrow>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>)</mo>
-              </mrow>
-            </mrow>
-            <mo>=</mo>
-            <mrow>
+              <mo>(</mo>
               <mi>f</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mrow>
-                  <mi>g</mi>
-                  <mi>&#x2061;</mi>
-                  <mrow>
-                    <mo>(</mo>
-                    <mi>x</mi>
-                    <mo>)</mo>
-                  </mrow>
-                </mrow>
-                <mo>)</mo>
-              </mrow>
+              <mi>&#x2218;</mi>
+              <mi>g</mi>
+              <mo>)</mo>
+            </mrow>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow>
+            <mi>f</mi>
+            <mi>&#x2061;</mi>
+            <mrow>
+              <mo>(</mo>
+              <mrow>
+                <mi>g</mi>
+                <mi>&#x2061;</mi>
+                <mrow>
+                  <mo>(</mo>
+                  <mi>x</mi>
+                  <mo>)</mo>
+                </mrow>
+              </mrow>
+              <mo>)</mo>
+            </mrow>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: "(f ∘ g) ⁡ (x) = f ⁡ (g ⁡ (x))"
     omml: |
@@ -1452,24 +1432,22 @@ cases:
     asciimath: domain "P{funcapply}" (f) = mathbb(R)
     latex: domain \text{P[funcapply]} ( f ) = \mathbb{R}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mi>domain</mi>
+            <mi>&#x2061;</mi>
             <mrow>
-              <mi>domain</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>f</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mi>f</mi>
+              <mo>)</mo>
             </mrow>
-            <mo>=</mo>
-            <mstyle mathvariant="double-struck">
-              <mi>R</mi>
-            </mstyle>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow mathvariant="double-struck">
+            <mi>R</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: domain ⁡ (f) = \BbbR
     omml: |
@@ -1601,24 +1579,22 @@ cases:
     asciimath: codomain "P{funcapply}" (f) = mathbb(Q)
     latex: codomain \text{P[funcapply]} ( f ) = \mathbb{Q}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mi>codomain</mi>
+            <mi>&#x2061;</mi>
             <mrow>
-              <mi>codomain</mi>
-              <mi>&#x2061;</mi>
-              <mrow>
-                <mo>(</mo>
-                <mi>f</mi>
-                <mo>)</mo>
-              </mrow>
+              <mo>(</mo>
+              <mi>f</mi>
+              <mo>)</mo>
             </mrow>
-            <mo>=</mo>
-            <mstyle mathvariant="double-struck">
-              <mi>Q</mi>
-            </mstyle>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow mathvariant="double-struck">
+            <mi>Q</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: codomain ⁡ (f) = \BbbQ
     omml: |
@@ -1756,30 +1732,28 @@ cases:
     asciimath: image "P{funcapply}" (sin) = [-1 1]
     latex: image \text{P[funcapply]} ( \sin{} ) = [ -1 1 ]
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mi>image</mi>
+            <mi>&#x2061;</mi>
             <mrow>
-              <mi>image</mi>
-              <mi>&#x2061;</mi>
+              <mo>(</mo>
               <mrow>
-                <mo>(</mo>
-                <mrow>
-                  <mo rspace="thickmathspace"/>
-                  <mi>sin</mi>
-                </mrow>
-                <mo>)</mo>
+                <mo rspace="0.2778em"/>
+                <mi>sin</mi>
               </mrow>
-            </mrow>
-            <mo>=</mo>
-            <mrow>
-              <mo>[</mo>
-              <mn>-1</mn>
-              <mn>1</mn>
-              <mo>]</mo>
+              <mo>)</mo>
             </mrow>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow>
+            <mo>[</mo>
+            <mn>-1</mn>
+            <mn>1</mn>
+            <mo>]</mo>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: image ⁡ (sin⁡) = [-1 1]
     omml: |
@@ -1936,25 +1910,23 @@ cases:
     asciimath: gcd"P{funcapply}" (a b c)
     latex: "\\gcd{\\text{P[funcapply]}} ( a b c )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>gcd</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
-            </mrow>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mi>b</mi>
-              <mi>c</mi>
-              <mo>)</mo>
+              <mi>gcd</mi>
+              <mi>&#x2061;</mi>
             </mrow>
           </mrow>
-        </mstyle>
+          <mrow>
+            <mo>(</mo>
+            <mi>a</mi>
+            <mi>b</mi>
+            <mi>c</mi>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: gcd⁡⁡ (a b c)
     omml: |
@@ -2082,27 +2054,25 @@ cases:
     asciimath: forall x . (x - x = 0)
     latex: "\\forall x . ( x - x = 0 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2200;</mi>
+          <mi>x</mi>
+          <mo>&#x2e;</mo>
           <mrow>
-            <mi>&#x2200;</mi>
-            <mi>x</mi>
-            <mo>&#x2e;</mo>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
               <mrow>
-                <mrow>
-                  <mi>x</mi>
-                  <mo>&#x2212;</mo>
-                  <mi>x</mi>
-                </mrow>
-                <mo>=</mo>
-                <mn>0</mn>
+                <mi>x</mi>
+                <mo>&#x2212;</mo>
+                <mi>x</mi>
               </mrow>
-              <mo>)</mo>
+              <mo>=</mo>
+              <mn>0</mn>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∀ x . (x − x = 0)"
     omml: |
@@ -2260,31 +2230,29 @@ cases:
     asciimath: exists x . (f "P{funcapply}" (x) = 0)
     latex: "\\exists x . ( f \\text{P[funcapply]} ( x ) = 0 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2203;</mi>
+          <mi>x</mi>
+          <mo>&#x2e;</mo>
           <mrow>
-            <mi>&#x2203;</mi>
-            <mi>x</mi>
-            <mo>&#x2e;</mo>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
               <mrow>
+                <mi>f</mi>
+                <mi>&#x2061;</mi>
                 <mrow>
-                  <mi>f</mi>
-                  <mi>&#x2061;</mi>
-                  <mrow>
-                    <mo>(</mo>
-                    <mi>x</mi>
-                    <mo>)</mo>
-                  </mrow>
+                  <mo>(</mo>
+                  <mi>x</mi>
+                  <mo>)</mo>
                 </mrow>
-                <mo>=</mo>
-                <mn>0</mn>
               </mrow>
-              <mo>)</mo>
+              <mo>=</mo>
+              <mn>0</mn>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∃ x . (f ⁡ (x) = 0)"
     omml: |
@@ -2483,39 +2451,37 @@ cases:
     asciimath: exists x . (x in mathbb(Z) ^^ f "P{funcapply}" (x) = 0)
     latex: "\\exists x . ( x \\in \\mathbb{Z} \\land f \\text{P[funcapply]} ( x ) = 0 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2203;</mi>
+          <mi>x</mi>
+          <mo>&#x2e;</mo>
           <mrow>
-            <mi>&#x2203;</mi>
-            <mi>x</mi>
-            <mo>&#x2e;</mo>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>&#x2208;</mo>
-                <mstyle mathvariant="double-struck">
-                  <mi>Z</mi>
-                </mstyle>
+              <mi>x</mi>
+              <mo>&#x2208;</mo>
+              <mrow mathvariant="double-struck">
+                <mi>Z</mi>
               </mrow>
-              <mo>&#x2227;</mo>
-              <mrow>
-                <mrow>
-                  <mi>f</mi>
-                  <mi>&#x2061;</mi>
-                  <mrow>
-                    <mo>(</mo>
-                    <mi>x</mi>
-                    <mo>)</mo>
-                  </mrow>
-                </mrow>
-                <mo>=</mo>
-                <mn>0</mn>
-              </mrow>
-              <mo>)</mo>
             </mrow>
+            <mo>&#x2227;</mo>
+            <mrow>
+              <mrow>
+                <mi>f</mi>
+                <mi>&#x2061;</mi>
+                <mrow>
+                  <mo>(</mo>
+                  <mi>x</mi>
+                  <mo>)</mo>
+                </mrow>
+              </mrow>
+              <mo>=</mo>
+              <mn>0</mn>
+            </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∃ x . (x ∈ \\BbbZ ∧ f ⁡ (x) = 0)"
     omml: |
@@ -2745,26 +2711,24 @@ cases:
     asciimath: arg "P{funcapply}" (x + i &#x2062; y)
     latex: arg \text{P[funcapply]} ( x + i &#x2062; y )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>arg</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>arg</mi>
-            <mi>&#x2061;</mi>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
+              <mi>x</mi>
+              <mo>+</mo>
               <mrow>
-                <mi>x</mi>
-                <mo>+</mo>
-                <mrow>
-                  <mi>i</mi>
-                  <mi>&#x2062;</mi>
-                  <mi>y</mi>
-                </mrow>
+                <mi>i</mi>
+                <mi>&#x2062;</mi>
+                <mi>y</mi>
               </mrow>
-              <mo>)</mo>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: arg ⁡ (x + i ⁢ y)
     omml: |
@@ -2907,26 +2871,24 @@ cases:
     asciimath: '&#x211b; "P{funcapply}" (x + i &#x2062; y)'
     latex: "&#x211b; \\text{P[funcapply]} ( x + i &#x2062; y )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x211b;</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#x211b;</mi>
-            <mi>&#x2061;</mi>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
+              <mi>x</mi>
+              <mo>+</mo>
               <mrow>
-                <mi>x</mi>
-                <mo>+</mo>
-                <mrow>
-                  <mi>i</mi>
-                  <mi>&#x2062;</mi>
-                  <mi>y</mi>
-                </mrow>
+                <mi>i</mi>
+                <mi>&#x2062;</mi>
+                <mi>y</mi>
               </mrow>
-              <mo>)</mo>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: ℛ ⁡ (x + i ⁢ y)
     omml: |
@@ -3065,26 +3027,24 @@ cases:
     asciimath: '"P{Im}" "P{funcapply}" (x + i &#x2062; y)'
     latex: "\\Im \\text{P[funcapply]} ( x + i &#x2062; y )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2111;</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#x2111;</mi>
-            <mi>&#x2061;</mi>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
+              <mi>x</mi>
+              <mo>+</mo>
               <mrow>
-                <mi>x</mi>
-                <mo>+</mo>
-                <mrow>
-                  <mi>i</mi>
-                  <mi>&#x2062;</mi>
-                  <mi>y</mi>
-                </mrow>
+                <mi>i</mi>
+                <mi>&#x2062;</mi>
+                <mi>y</mi>
               </mrow>
-              <mo>)</mo>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: ℑ ⁡ (x + i ⁢ y)
     omml: |
@@ -3219,25 +3179,23 @@ cases:
     asciimath: lcm "P{funcapply}" (a b c)
     latex: lcm{\text{P[funcapply]}} ( a b c )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>lcm</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
-            </mrow>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mi>b</mi>
-              <mi>c</mi>
-              <mo>)</mo>
+              <mi>lcm</mi>
+              <mi>&#x2061;</mi>
             </mrow>
           </mrow>
-        </mstyle>
+          <mrow>
+            <mo>(</mo>
+            <mi>a</mi>
+            <mi>b</mi>
+            <mi>c</mi>
+            <mo>)</mo>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: lcm⁡⁡ (a b c)
     omml: |
@@ -3347,18 +3305,16 @@ cases:
     asciimath: div "P{funcapply}" (a)
     latex: div \text{P[funcapply]} ( a )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>div</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>div</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>a</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: div ⁡ (a)
     omml: |
@@ -3454,18 +3410,16 @@ cases:
     asciimath: div "P{funcapply}" (E)
     latex: div \text{P[funcapply]} ( E )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>div</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>div</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>E</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>E</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: div ⁡ (E)
     omml: |
@@ -3561,18 +3515,16 @@ cases:
     asciimath: grad "P{funcapply}" (f)
     latex: grad \text{P[funcapply]} ( f )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>grad</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>grad</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>f</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>f</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: grad ⁡ (f)
     omml: |
@@ -3668,18 +3620,16 @@ cases:
     asciimath: nabla "P{funcapply}" (f)
     latex: "\\nabla \\text{P[funcapply]} ( f )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2207;</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#x2207;</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>f</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>f</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "∇ ⁡ (f)"
     omml: |
@@ -3803,32 +3753,30 @@ cases:
     asciimath: grad "P{funcapply}" ((x y z) mapsto x &#x2062; y &#x2062; z)
     latex: grad \text{P[funcapply]} ( ( x y z ) \mapsto x &#x2062; y &#x2062; z )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>grad</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>grad</mi>
-            <mi>&#x2061;</mi>
+            <mo>(</mo>
             <mrow>
               <mo>(</mo>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mi>y</mi>
-                <mi>z</mi>
-                <mo>)</mo>
-              </mrow>
-              <mi>&#x21a6;</mi>
-              <mrow>
-                <mi>x</mi>
-                <mi>&#x2062;</mi>
-                <mi>y</mi>
-                <mi>&#x2062;</mi>
-                <mi>z</mi>
-              </mrow>
+              <mi>x</mi>
+              <mi>y</mi>
+              <mi>z</mi>
               <mo>)</mo>
             </mrow>
+            <mi>&#x21a6;</mi>
+            <mrow>
+              <mi>x</mi>
+              <mi>&#x2062;</mi>
+              <mi>y</mi>
+              <mi>&#x2062;</mi>
+              <mi>z</mi>
+            </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: grad ⁡ ((x y z) ↦ x ⁢ y ⁢ z)
     omml: |
@@ -4006,18 +3954,16 @@ cases:
     asciimath: curl "P{funcapply}" (a)
     latex: curl \text{P[funcapply]} ( a )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>curl</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>curl</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>a</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: curl ⁡ (a)
     omml: |
@@ -4119,21 +4065,19 @@ cases:
     asciimath: sigma "P{funcapply}" (3 4 2 2)
     latex: "\\sigma \\text{P[funcapply]} ( 3 4 2 2 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x3c3;</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#x3c3;</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mn>3</mn>
-              <mn>4</mn>
-              <mn>2</mn>
-              <mn>2</mn>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: σ ⁡ (3 4 2 2)
     omml: |
@@ -4262,18 +4206,16 @@ cases:
     asciimath: sigma "P{funcapply}" (X)
     latex: "\\sigma \\text{P[funcapply]} ( X )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x3c3;</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#x3c3;</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>X</mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>X</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: σ ⁡ (X)
     omml: |
@@ -4375,21 +4317,19 @@ cases:
     asciimath: median "P{funcapply}" (3 4 2 2)
     latex: median \text{P[funcapply]} ( 3 4 2 2 )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>median</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>median</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mn>3</mn>
-              <mn>4</mn>
-              <mn>2</mn>
-              <mn>2</mn>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: median ⁡ (3 4 2 2)
     omml: |
@@ -4524,21 +4464,19 @@ cases:
     asciimath: mode "P{funcapply}" (3 4 2 2)
     latex: mode \text{P[funcapply]} ( 3 4 2 2 )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>mode</mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>mode</mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mn>3</mn>
-              <mn>4</mn>
-              <mn>2</mn>
-              <mn>2</mn>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mn>3</mn>
+            <mn>4</mn>
+            <mn>2</mn>
+            <mn>2</mn>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: mode ⁡ (3 4 2 2)
     omml: |

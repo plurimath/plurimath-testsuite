@@ -32,10 +32,8 @@ cases:
       output: '14,236.39'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>14,236.39</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>14,236.39</mn>
         </math>
     unicodemath:
       output: '14,236.39'
@@ -85,10 +83,8 @@ cases:
       output: 3.500'0
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>3.500'0</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>3.500'0</mn>
         </math>
     unicodemath:
       output: 3.500'0
@@ -138,10 +134,8 @@ cases:
       output: '2'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>2</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>2</mn>
         </math>
     unicodemath:
       output: '2'
@@ -193,10 +187,8 @@ cases:
       output: 1 234,5
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1 234,5</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1 234,5</mn>
         </math>
     unicodemath:
       output: 1 234,5
@@ -249,10 +241,8 @@ cases:
       output: 14,236.392 390 000 000 000 000 00
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>14,236.392 390 000 000 000 000 00</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>14,236.392 390 000 000 000 000 00</mn>
         </math>
     unicodemath:
       output: 14,236.392 390 000 000 000 000 00
@@ -303,10 +293,8 @@ cases:
       output: '283.180'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>283.180</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>283.180</mn>
         </math>
     unicodemath:
       output: '283.180'
@@ -360,10 +348,8 @@ cases:
       output: '1,000'
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>1,000</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>1,000</mn>
         </math>
     unicodemath:
       output: '1,000'
@@ -417,10 +403,8 @@ cases:
       output: 14,236.392 390 000 00
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mn>14,236.392 390 000 00</mn>
-          </mstyle>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mn>14,236.392 390 000 00</mn>
         </math>
     unicodemath:
       output: 14,236.392 390 000 00

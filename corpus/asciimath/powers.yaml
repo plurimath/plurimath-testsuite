@@ -22,13 +22,11 @@ cases:
     asciimath: x^(2)
     latex: x^{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mi>x</mi>
-            <mn>2</mn>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mi>x</mi>
+          <mn>2</mn>
+        </msup>
       </math>
     unicodemath: x^(2)
     omml: |
@@ -93,17 +91,15 @@ cases:
     asciimath: x^(n + 1)
     latex: x^{n + 1}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mi>x</mi>
-            <mrow>
-              <mi>n</mi>
-              <mo>+</mo>
-              <mn>1</mn>
-            </mrow>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mi>x</mi>
+          <mrow>
+            <mi>n</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+        </msup>
       </math>
     unicodemath: x^(n + 1)
     omml: |
@@ -197,13 +193,11 @@ cases:
     asciimath: a_(1)
     latex: a_{1}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>a</mi>
-            <mn>1</mn>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>a</mi>
+          <mn>1</mn>
+        </msub>
       </math>
     unicodemath: a_(1)
     omml: |
@@ -268,17 +262,15 @@ cases:
     asciimath: a_(n + 1)
     latex: a_{n + 1}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>a</mi>
-            <mrow>
-              <mi>n</mi>
-              <mo>+</mo>
-              <mn>1</mn>
-            </mrow>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>a</mi>
+          <mrow>
+            <mi>n</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+        </msub>
       </math>
     unicodemath: a_(n + 1)
     omml: |
@@ -372,14 +364,12 @@ cases:
     asciimath: x_(1)^(2)
     latex: x_{1}^{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msubsup>
-            <mi>x</mi>
-            <mn>1</mn>
-            <mn>2</mn>
-          </msubsup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msubsup>
+          <mi>x</mi>
+          <mn>1</mn>
+          <mn>2</mn>
+        </msubsup>
       </math>
     unicodemath: x_(1)^(2)
     omml: |
@@ -457,13 +447,11 @@ cases:
     asciimath: e^(x)
     latex: e^{x}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mi>e</mi>
-            <mi>x</mi>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mi>e</mi>
+          <mi>x</mi>
+        </msup>
       </math>
     unicodemath: e^(x)
     omml: |
@@ -525,13 +513,11 @@ cases:
     asciimath: 2^(10)
     latex: 2^{10}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mn>2</mn>
-            <mn>10</mn>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mn>2</mn>
+          <mn>10</mn>
+        </msup>
       </math>
     unicodemath: 2^(10)
     omml: |
@@ -599,16 +585,14 @@ cases:
     asciimath: frac(x^(2))(4)
     latex: "\\frac{x^{2}}{4}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <msup>
-              <mi>x</mi>
-              <mn>2</mn>
-            </msup>
-            <mn>4</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <msup>
+            <mi>x</mi>
+            <mn>2</mn>
+          </msup>
+          <mn>4</mn>
+        </mfrac>
       </math>
     unicodemath: "(x^(2))/(4)"
     omml: |

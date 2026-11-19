@@ -36,16 +36,14 @@ cases:
     asciimath: " x  +  y "
     latex: " x  +  y "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <menclose notation="circle box">
-            <mrow>
-              <mi> x </mi>
-              <mo>+</mo>
-              <mi> y </mi>
-            </mrow>
-          </menclose>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <menclose notation="circle box">
+          <mrow>
+            <mi> x </mi>
+            <mo>+</mo>
+            <mi> y </mi>
+          </mrow>
+        </menclose>
       </math>
     unicodemath: ''
     omml: |

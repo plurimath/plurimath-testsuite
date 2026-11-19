@@ -22,10 +22,8 @@ cases:
     asciimath: "&#x303;"
     latex: "&#x303;"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x303;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x303;</mi>
       </math>
     unicodemath: ̃
     omml: |
@@ -56,10 +54,8 @@ cases:
     asciimath: "&#x303;"
     latex: "&#x303;"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x303;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x303;</mi>
       </math>
     unicodemath: ̃
     omml: |
@@ -96,13 +92,11 @@ cases:
     asciimath: sin
     latex: "\\sin{}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>sin</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>sin</mi>
+        </mrow>
       </math>
     unicodemath: sin⁡
     omml: |
@@ -148,15 +142,13 @@ cases:
     asciimath: 12  mod  1234 i
     latex: 12  \mod  1234 i
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>12</mn>
-          <mrow>
-            <mi>mod</mi>
-          </mrow>
-          <mn>1234</mn>
-          <mi>i</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>12</mn>
+        <mrow>
+          <mi>mod</mi>
+        </mrow>
+        <mn>1234</mn>
+        <mi>i</mi>
       </math>
     unicodemath: 12 mod 1234 i
     omml: |
@@ -231,12 +223,10 @@ cases:
     asciimath: "| 4 |"
     latex: "| 4 |"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>|</mo>
-          <mn>4</mn>
-          <mo>|</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>|</mo>
+        <mn>4</mn>
+        <mo>|</mo>
       </math>
     unicodemath: "| 4 |"
     omml: |
@@ -299,11 +289,9 @@ cases:
     asciimath: Delta nu
     latex: "\\Delta \\nu"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x394;</mi>
-          <mi>&#x3bd;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x394;</mi>
+        <mi>&#x3bd;</mi>
       </math>
     unicodemath: Δ ν
     omml: |
@@ -356,12 +344,10 @@ cases:
     asciimath: rm(G&#x2126;)
     latex: "\\mathrm{G&#x2126;}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="normal">
-            <mi>G&#x2126;</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="normal">
+          <mi>G&#x2126;</mi>
+        </mrow>
       </math>
     unicodemath: "\\mupGΩ"
     omml: |
@@ -418,14 +404,12 @@ cases:
     asciimath: intent(x + y)("plus(x, y)")
     latex: "\\intent{ \\left ( x + y \\right ) }{\\text{plus(x, y)}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow intent="plus(x, y)">
-            <mi>x</mi>
-            <mo>+</mo>
-            <mi>y</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow intent="plus(x, y)">
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>y</mi>
+        </mrow>
       </math>
     unicodemath: ⓘ("plus(x, y)"x + y)
     omml: |
@@ -495,10 +479,8 @@ cases:
     asciimath: bar
     latex: bar
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>bar</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>bar</mi>
       </math>
     unicodemath: bar
     omml: |
@@ -538,12 +520,10 @@ cases:
     asciimath: rm(bar)
     latex: "\\mathrm{bar}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="normal">
-            <mi>bar</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="normal">
+          <mi>bar</mi>
+        </mrow>
       </math>
     unicodemath: "\\mupbar"
     omml: |
@@ -588,13 +568,11 @@ cases:
     asciimath: sin
     latex: "\\sin{}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>sin</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>sin</mi>
+        </mrow>
       </math>
     unicodemath: sin⁡
     omml: |
@@ -631,10 +609,8 @@ cases:
     asciimath: frac
     latex: frac
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>frac</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>frac</mi>
       </math>
     unicodemath: frac
     omml: |
@@ -671,10 +647,8 @@ cases:
     asciimath: sum
     latex: "\\sum"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x2211;</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x2211;</mo>
       </math>
     unicodemath: "∑"
     omml: |
@@ -723,18 +697,16 @@ cases:
     asciimath: " x   D  sin mathcal( L )"
     latex: " x   D  \\sin{} \\mathcal{ L }"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi> x </mi>
-          <mi> D </mi>
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>sin</mi>
-          </mrow>
-          <mstyle mathvariant="script">
-            <mi> L </mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi> x </mi>
+        <mi> D </mi>
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>sin</mi>
+        </mrow>
+        <mrow mathvariant="script">
+          <mi> L </mi>
+        </mrow>
       </math>
     unicodemath: " x   D  sin⁡ \\mscr L "
     omml: |
@@ -812,19 +784,17 @@ cases:
     asciimath: 'sin"P{funcapply}"  x '
     latex: "\\sin{\\text{P[funcapply]}}  x "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>sin</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
+              <mi>sin</mi>
+              <mi>&#x2061;</mi>
             </mrow>
-            <mi> x </mi>
           </mrow>
-        </mstyle>
+          <mi> x </mi>
+        </mrow>
       </math>
     unicodemath: 'sin⁡⁡  x '
     omml: |
@@ -914,16 +884,14 @@ cases:
     asciimath: " 1  + ... +  n "
     latex: " 1  + \\ldots +  n "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn> 1 </mn>
-            <mo>+</mo>
-            <mo>&#x2026;</mo>
-            <mo>+</mo>
-            <mi> n </mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn> 1 </mn>
+          <mo>+</mo>
+          <mo>&#x2026;</mo>
+          <mo>+</mo>
+          <mi> n </mi>
+        </mrow>
       </math>
     unicodemath: " 1  + ... +  n "
     omml: |
@@ -1005,12 +973,10 @@ cases:
     asciimath: 'pi "P{ii}"  &#x2147; '
     latex: "\\pi \\ComplexI  &#x2147; "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3c0;</mi>
-          <mi>&#x2148;</mi>
-          <mi intent=" ⅇ "> &#x2147; </mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3c0;</mi>
+        <mi>&#x2148;</mi>
+        <mi intent=" ⅇ "> &#x2147; </mi>
       </math>
     unicodemath: 'π ⅈ  ⅇ '
     omml: |
@@ -1076,16 +1042,14 @@ cases:
     asciimath: " 2   0.123   1,000,000   2.1e10   0xFFEF   MCMLXIX   twenty one "
     latex: " 2   0.123   1,000,000   2.1e10   0xFFEF   MCMLXIX   twenty one "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn> 2 </mn>
-          <mn> 0.123 </mn>
-          <mn> 1,000,000 </mn>
-          <mn> 2.1e10 </mn>
-          <mn> 0xFFEF </mn>
-          <mn> MCMLXIX </mn>
-          <mn> twenty one </mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn> 2 </mn>
+        <mn> 0.123 </mn>
+        <mn> 1,000,000 </mn>
+        <mn> 2.1e10 </mn>
+        <mn> 0xFFEF </mn>
+        <mn> MCMLXIX </mn>
+        <mn> twenty one </mn>
       </math>
     unicodemath: " 2   0.123   1,000,000   2.1e10   0xFFEF   MCMLXIX   twenty one "
     omml: |
@@ -1206,21 +1170,19 @@ cases:
     asciimath: "+ lt le  &#x3c;=   ++  sum  .NOT.   and   &#x2062;  mathbf(+)"
     latex: "+ < \\le  &#x3c;=   ++  \\sum  .NOT.   and   &#x2062;  \\mathbf{+}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>+</mo>
+        <mo>&#x3c;</mo>
+        <mo>&#x2264;</mo>
+        <mi> &#x3c;= </mi>
+        <mi> ++ </mi>
+        <mo>&#x2211;</mo>
+        <mi> .NOT. </mi>
+        <mi> and </mi>
+        <mi> &#x2062; </mi>
+        <mrow mathvariant="bold">
           <mo>+</mo>
-          <mo>&#x3c;</mo>
-          <mo>&#x2264;</mo>
-          <mi> &#x3c;= </mi>
-          <mi> ++ </mi>
-          <mo>&#x2211;</mo>
-          <mi> .NOT. </mi>
-          <mi> and </mi>
-          <mi> &#x2062; </mi>
-          <mstyle mathvariant="bold">
-            <mo>+</mo>
-          </mstyle>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "+ < ≤  <=   ++  ∑  .NOT.   and   ⁢  \\mbf+"
     omml: |
@@ -1348,18 +1310,16 @@ cases:
     asciimath: "( a  +  b )"
     latex: "(  a  +  b  )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
           <mrow>
-            <mo>(</mo>
-            <mrow>
-              <mi> a </mi>
-              <mo>+</mo>
-              <mi> b </mi>
-            </mrow>
-            <mo>)</mo>
+            <mi> a </mi>
+            <mo>+</mo>
+            <mi> b </mi>
           </mrow>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "( a  +  b )"
     omml: |
@@ -1461,18 +1421,16 @@ cases:
     asciimath: "[ 0  ,  1 )"
     latex: "[  0  ,  1  )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
           <mrow>
-            <mo>[</mo>
-            <mrow>
-              <mn> 0 </mn>
-              <mo>,</mo>
-              <mn> 1 </mn>
-            </mrow>
-            <mo>)</mo>
+            <mn> 0 </mn>
+            <mo>,</mo>
+            <mn> 1 </mn>
           </mrow>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "[ 0  ,  1 )"
     omml: |
@@ -1588,22 +1546,20 @@ cases:
     asciimath: ' f  "P{funcapply}" ( x  ,  y )'
     latex: " f  \\text{P[funcapply]} (  x  ,  y  )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi> f </mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi> f </mi>
-            <mi>&#x2061;</mi>
+            <mo>(</mo>
             <mrow>
-              <mo>(</mo>
-              <mrow>
-                <mi> x </mi>
-                <mo>,</mo>
-                <mi> y </mi>
-              </mrow>
-              <mo>)</mo>
+              <mi> x </mi>
+              <mo>,</mo>
+              <mi> y </mi>
             </mrow>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: " f  ⁡ ( x  ,  y )"
     omml: |
@@ -1718,14 +1674,12 @@ cases:
     asciimath: " x   &#x2062;   y "
     latex: " x   &#x2062;   y "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi> x </mi>
-            <mi> &#x2062; </mi>
-            <mi> y </mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi> x </mi>
+          <mi> &#x2062; </mi>
+          <mi> y </mi>
+        </mrow>
       </math>
     unicodemath: " x   ⁢   y "
     omml: |
@@ -1832,33 +1786,31 @@ cases:
     asciimath: ' there exists  delta gt  0   such that   f  "P{funcapply}" ( x ) lt  1 '
     latex: " there exists  \\delta >  0   such that   f  \\text{P[funcapply]} (  x  ) <  1 "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi> there exists </mi>
           <mrow>
-            <mi> there exists </mi>
+            <mrow>
+              <mi>&#x3b4;</mi>
+              <mo>&#x3e;</mo>
+              <mn> 0 </mn>
+            </mrow>
+            <mi> such that </mi>
             <mrow>
               <mrow>
-                <mi>&#x3b4;</mi>
-                <mo>&#x3e;</mo>
-                <mn> 0 </mn>
-              </mrow>
-              <mi> such that </mi>
-              <mrow>
+                <mi> f </mi>
+                <mi>&#x2061;</mi>
                 <mrow>
-                  <mi> f </mi>
-                  <mi>&#x2061;</mi>
-                  <mrow>
-                    <mo>(</mo>
-                    <mi> x </mi>
-                    <mo>)</mo>
-                  </mrow>
+                  <mo>(</mo>
+                  <mi> x </mi>
+                  <mo>)</mo>
                 </mrow>
-                <mo>&#x3c;</mo>
-                <mn> 1 </mn>
               </mrow>
+              <mo>&#x3c;</mo>
+              <mn> 1 </mn>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: " there exists  δ >  0   such that   f  ⁡ ( x ) <  1 "
     omml: |
@@ -2047,20 +1999,18 @@ cases:
     asciimath: " 2   &#x2062;   x  +  y  -  z "
     latex: " 2   &#x2062;   x  +  y  -  z "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
-            <mrow>
-              <mn> 2 </mn>
-              <mi> &#x2062; </mi>
-              <mi> x </mi>
-            </mrow>
-            <mo>+</mo>
-            <mi> y </mi>
-            <mo>&#x2212;</mo>
-            <mi> z </mi>
+            <mn> 2 </mn>
+            <mi> &#x2062; </mi>
+            <mi> x </mi>
           </mrow>
-        </mstyle>
+          <mo>+</mo>
+          <mi> y </mi>
+          <mo>&#x2212;</mo>
+          <mi> z </mi>
+        </mrow>
       </math>
     unicodemath: " 2   ⁢   x  +  y  −  z "
     omml: |
@@ -2175,18 +2125,16 @@ cases:
     asciimath: "( x  ,  y )"
     latex: "(  x  ,  y  )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
           <mrow>
-            <mo>(</mo>
-            <mrow>
-              <mi> x </mi>
-              <mo>,</mo>
-              <mi> y </mi>
-            </mrow>
-            <mo>)</mo>
+            <mi> x </mi>
+            <mo>,</mo>
+            <mi> y </mi>
           </mrow>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "( x  ,  y )"
     omml: |
@@ -2272,10 +2220,8 @@ cases:
     asciimath: '0x7F800000'
     latex: '0x7F800000'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>0x7F800000</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>0x7F800000</mn>
       </math>
     unicodemath: '0x7F800000'
     omml: |
@@ -2326,14 +2272,12 @@ cases:
     asciimath: 22 / 7
     latex: 22 / 7
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>22</mn>
-            <mi>/</mi>
-            <mn>7</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>22</mn>
+          <mi>/</mi>
+          <mn>7</mn>
+        </mrow>
       </math>
     unicodemath: 22/7
     omml: |
@@ -2412,16 +2356,14 @@ cases:
     asciimath: 12.3 + 5 &#x2062; i
     latex: 12.3 + 5 &#x2062; i
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>12.3</mn>
-            <mo>+</mo>
-            <mn>5</mn>
-            <mi>&#x2062;</mi>
-            <mi>i</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>12.3</mn>
+          <mo>+</mo>
+          <mn>5</mn>
+          <mi>&#x2062;</mi>
+          <mi>i</mi>
+        </mrow>
       </math>
     unicodemath: 12.3 + 5 ⁢ i
     omml: |
@@ -2527,24 +2469,22 @@ cases:
     asciimath: '&#xa;    F&#xa;     "P{funcapply}" (&#xa;      A1&#xa;       , &#xa;      ...&#xa;       , &#xa;      A2&#xa;       , &#xa;      An&#xa;      )'
     latex: "&#xa;    F&#xa;     \\text{P[funcapply]} ( &#xa;      A1&#xa;       , &#xa;      ...&#xa;       , &#xa;      A2&#xa;       , &#xa;      An&#xa;       )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#xa;    F&#xa;    </mi>
+          <mi>&#x2061;</mi>
           <mrow>
-            <mi>&#xa;    F&#xa;    </mi>
-            <mi>&#x2061;</mi>
-            <mrow>
-              <mo>(</mo>
-              <mi>&#xa;      A1&#xa;      </mi>
-              <mo>,</mo>
-              <mi>&#xa;      ...&#xa;      </mi>
-              <mo>,</mo>
-              <mi>&#xa;      A2&#xa;      </mi>
-              <mo>,</mo>
-              <mi>&#xa;      An&#xa;      </mi>
-              <mo>)</mo>
-            </mrow>
+            <mo>(</mo>
+            <mi>&#xa;      A1&#xa;      </mi>
+            <mo>,</mo>
+            <mi>&#xa;      ...&#xa;      </mi>
+            <mo>,</mo>
+            <mi>&#xa;      A2&#xa;      </mi>
+            <mo>,</mo>
+            <mi>&#xa;      An&#xa;      </mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: "\n    F\n     ⁡ (\n      A1\n       , \n      ...\n       , \n      A2\n       , \n      An\n      )"
     omml: |
@@ -2694,21 +2634,19 @@ cases:
     asciimath: "&#xa;    B&#xa;     &#xa;      x1&#xa;       , &#xa;      ...&#xa;       , &#xa;      xn&#xa;     . &#xa;    S&#xa;  "
     latex: "&#xa;    B&#xa;     &#xa;      x1&#xa;       , &#xa;      ...&#xa;       , &#xa;      xn&#xa;     . &#xa;    S&#xa;  "
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#xa;    B&#xa;    </mi>
           <mrow>
-            <mi>&#xa;    B&#xa;    </mi>
-            <mrow>
-              <mi>&#xa;      x1&#xa;      </mi>
-              <mo>,</mo>
-              <mi>&#xa;      ...&#xa;      </mi>
-              <mo>,</mo>
-              <mi>&#xa;      xn&#xa;    </mi>
-            </mrow>
-            <mo>&#x2e;</mo>
-            <mi>&#xa;    S&#xa;  </mi>
+            <mi>&#xa;      x1&#xa;      </mi>
+            <mo>,</mo>
+            <mi>&#xa;      ...&#xa;      </mi>
+            <mo>,</mo>
+            <mi>&#xa;      xn&#xa;    </mi>
           </mrow>
-        </mstyle>
+          <mo>&#x2e;</mo>
+          <mi>&#xa;    S&#xa;  </mi>
+        </mrow>
       </math>
     unicodemath: "\n    B\n     \n      x1\n       , \n      ...\n       , \n      xn\n     . \n    S\n  "
     omml: |
@@ -2839,29 +2777,27 @@ cases:
     asciimath: x mapsto sin"P{funcapply}" (x + 1)
     latex: x \mapsto \sin{\text{P[funcapply]}} ( x + 1 )
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>x</mi>
+          <mi>&#x21a6;</mi>
           <mrow>
-            <mi>x</mi>
-            <mi>&#x21a6;</mi>
             <mrow>
+              <mo rspace="0.2778em"/>
               <mrow>
-                <mo rspace="thickmathspace"/>
-                <mrow>
-                  <mi>sin</mi>
-                  <mi>&#x2061;</mi>
-                </mrow>
-              </mrow>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>+</mo>
-                <mn>1</mn>
-                <mo>)</mo>
+                <mi>sin</mi>
+                <mi>&#x2061;</mi>
               </mrow>
             </mrow>
+            <mrow>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>+</mo>
+              <mn>1</mn>
+              <mo>)</mo>
+            </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: x ↦ sin⁡⁡ (x + 1)
     omml: |
@@ -3014,16 +2950,14 @@ cases:
     asciimath: f @ g @ h
     latex: f \circ g \circ h
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>f</mi>
-            <mi>&#x2218;</mi>
-            <mi>g</mi>
-            <mi>&#x2218;</mi>
-            <mi>h</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>f</mi>
+          <mi>&#x2218;</mi>
+          <mi>g</mi>
+          <mi>&#x2218;</mi>
+          <mi>h</mi>
+        </mrow>
       </math>
     unicodemath: f ∘ g ∘ h
     omml: |
@@ -3110,16 +3044,14 @@ cases:
     asciimath: "|__a / b__|"
     latex: "\\lfloor a / b \\rfloor"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⌊</mo>
-            <mi>a</mi>
-            <mi>/</mi>
-            <mi>b</mi>
-            <mo>⌋</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⌊</mo>
+          <mi>a</mi>
+          <mi>/</mi>
+          <mi>b</mi>
+          <mo>⌋</mo>
+        </mrow>
       </math>
     unicodemath: "⌊a/b⌋"
     omml: |
@@ -3204,13 +3136,11 @@ cases:
     asciimath: n !
     latex: n !
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>n</mi>
-            <mi>!</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>n</mi>
+          <mi>!</mi>
+        </mrow>
       </math>
     unicodemath: n !
     omml: |
@@ -3272,14 +3202,12 @@ cases:
     asciimath: a / b
     latex: a / b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>/</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>/</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a/b
     omml: |
@@ -3362,24 +3290,22 @@ cases:
     asciimath: max{2 , 3 , 5}
     latex: "\\max{\\{ 2 , 3 , 5 \\}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>max</mi>
             <mrow>
-              <mi>max</mi>
-              <mrow>
-                <mo>{</mo>
-                <mn>2</mn>
-                <mo>,</mo>
-                <mn>3</mn>
-                <mo>,</mo>
-                <mn>5</mn>
-                <mo>}</mo>
-              </mrow>
+              <mo>{</mo>
+              <mn>2</mn>
+              <mo>,</mo>
+              <mn>3</mn>
+              <mo>,</mo>
+              <mn>5</mn>
+              <mo>}</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: max⁡{2 , 3 , 5}
     omml: |
@@ -3508,22 +3434,20 @@ cases:
     asciimath: min{a , b}
     latex: "\\min{\\{ a , b \\}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo rspace="0.2778em"/>
           <mrow>
-            <mo rspace="thickmathspace"/>
+            <mi>min</mi>
             <mrow>
-              <mi>min</mi>
-              <mrow>
-                <mo>{</mo>
-                <mi>a</mi>
-                <mo>,</mo>
-                <mi>b</mi>
-                <mo>}</mo>
-              </mrow>
+              <mo>{</mo>
+              <mi>a</mi>
+              <mo>,</mo>
+              <mi>b</mi>
+              <mo>}</mo>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: min⁡{a , b}
     omml: |
@@ -3617,13 +3541,11 @@ cases:
     asciimath: "- 3"
     latex: "- 3"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2212;</mo>
-            <mn>3</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2212;</mo>
+          <mn>3</mn>
+        </mrow>
       </math>
     unicodemath: "− 3"
     omml: |
@@ -3688,14 +3610,12 @@ cases:
     asciimath: x - y
     latex: x - y
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>x</mi>
-            <mo>&#x2212;</mo>
-            <mi>y</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>x</mi>
+          <mo>&#x2212;</mo>
+          <mi>y</mi>
+        </mrow>
       </math>
     unicodemath: x − y
     omml: |
@@ -3768,16 +3688,14 @@ cases:
     asciimath: x + y + z
     latex: x + y + z
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>x</mi>
-            <mo>+</mo>
-            <mi>y</mi>
-            <mo>+</mo>
-            <mi>z</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>y</mi>
+          <mo>+</mo>
+          <mi>z</mi>
+        </mrow>
       </math>
     unicodemath: x + y + z
     omml: |
@@ -3860,14 +3778,12 @@ cases:
     asciimath: a mod b
     latex: "{a} \\mod {b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>mod</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>mod</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: amodb
     omml: |
@@ -3935,14 +3851,12 @@ cases:
     asciimath: a &#x2062; b
     latex: a &#x2062; b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>&#x2062;</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>&#x2062;</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a ⁢ b
     omml: |
@@ -4008,14 +3922,12 @@ cases:
     asciimath: a ^^ b
     latex: a \land b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mo>&#x2227;</mo>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2227;</mo>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a ∧ b
     omml: |
@@ -4084,14 +3996,12 @@ cases:
     asciimath: a "P{lor}" b
     latex: a \vee b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>&#x2228;</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>&#x2228;</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a ∨ b
     omml: |
@@ -4160,14 +4070,12 @@ cases:
     asciimath: a xor b
     latex: a xor b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>xor</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>xor</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a xor b
     omml: |
@@ -4234,13 +4142,11 @@ cases:
     asciimath: not a
     latex: "\\lnot a"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>&#xac;</mi>
-            <mi>a</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#xac;</mi>
+          <mi>a</mi>
+        </mrow>
       </math>
     unicodemath: "¬ a"
     omml: |
@@ -4302,14 +4208,12 @@ cases:
     asciimath: A Rightarrow B
     latex: A \Rightarrow B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x21d2;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x21d2;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ⇒ B
     omml: |
@@ -4378,14 +4282,12 @@ cases:
     asciimath: "|x|"
     latex: "| x |"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>|</mo>
-            <mi>x</mi>
-            <mo>|</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>|</mo>
+          <mi>x</mi>
+          <mo>|</mo>
+        </mrow>
       </math>
     unicodemath: "|(x)|"
     omml: |
@@ -4458,14 +4360,12 @@ cases:
     asciimath: "|__a__|"
     latex: "\\lfloor a \\rfloor"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⌊</mo>
-            <mi>a</mi>
-            <mo>⌋</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⌊</mo>
+          <mi>a</mi>
+          <mo>⌋</mo>
+        </mrow>
       </math>
     unicodemath: "⌊a⌋"
     omml: |
@@ -4538,14 +4438,12 @@ cases:
     asciimath: "|~a~|"
     latex: "\\lceil a \\rceil"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>⌈</mo>
-            <mi>a</mi>
-            <mo>⌉</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>⌈</mo>
+          <mi>a</mi>
+          <mo>⌉</mo>
+        </mrow>
       </math>
     unicodemath: "⌈a⌉"
     omml: |
@@ -4634,22 +4532,20 @@ cases:
     asciimath: 2 / 4 = 1 / 2
     latex: 2 / 4 = 1 / 2
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
-            <mrow>
-              <mn>2</mn>
-              <mi>/</mi>
-              <mn>4</mn>
-            </mrow>
-            <mo>=</mo>
-            <mrow>
-              <mn>1</mn>
-              <mi>/</mi>
-              <mn>2</mn>
-            </mrow>
+            <mn>2</mn>
+            <mi>/</mi>
+            <mn>4</mn>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow>
+            <mn>1</mn>
+            <mi>/</mi>
+            <mn>2</mn>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: 2/4 = 1/2
     omml: |
@@ -4772,14 +4668,12 @@ cases:
     asciimath: 3 ne 4
     latex: 3 \ne 4
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>3</mn>
-            <mo>&#x2260;</mo>
-            <mn>4</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>3</mn>
+          <mo>&#x2260;</mo>
+          <mn>4</mn>
+        </mrow>
       </math>
     unicodemath: 3 ≠ 4
     omml: |
@@ -4854,14 +4748,12 @@ cases:
     asciimath: 3 gt 2
     latex: 3 > 2
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>3</mn>
-            <mo>&#x3e;</mo>
-            <mn>2</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>3</mn>
+          <mo>&#x3e;</mo>
+          <mn>2</mn>
+        </mrow>
       </math>
     unicodemath: 3 > 2
     omml: |
@@ -4940,16 +4832,14 @@ cases:
     asciimath: 2 lt 3 lt 4
     latex: 2 < 3 < 4
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>2</mn>
-            <mo>&#x3c;</mo>
-            <mn>3</mn>
-            <mo>&#x3c;</mo>
-            <mn>4</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>2</mn>
+          <mo>&#x3c;</mo>
+          <mn>3</mn>
+          <mo>&#x3c;</mo>
+          <mn>4</mn>
+        </mrow>
       </math>
     unicodemath: 2 < 3 < 4
     omml: |
@@ -5045,16 +4935,14 @@ cases:
     asciimath: 4 ge 3 ge 3
     latex: 4 \geq 3 \geq 3
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>4</mn>
-            <mi>&#x2265;</mi>
-            <mn>3</mn>
-            <mi>&#x2265;</mi>
-            <mn>3</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>4</mn>
+          <mi>&#x2265;</mi>
+          <mn>3</mn>
+          <mi>&#x2265;</mi>
+          <mn>3</mn>
+        </mrow>
       </math>
     unicodemath: 4 ≥ 3 ≥ 3
     omml: |
@@ -5150,16 +5038,14 @@ cases:
     asciimath: 3 le 3 le 4
     latex: 3 \le 3 \le 4
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mn>3</mn>
-            <mo>&#x2264;</mo>
-            <mn>3</mn>
-            <mo>&#x2264;</mo>
-            <mn>4</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mn>3</mn>
+          <mo>&#x2264;</mo>
+          <mn>3</mn>
+          <mo>&#x2264;</mo>
+          <mn>4</mn>
+        </mrow>
       </math>
     unicodemath: 3 ≤ 3 ≤ 4
     omml: |
@@ -5263,20 +5149,18 @@ cases:
     asciimath: a equiv not not a
     latex: a \equiv \lnot \lnot a
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>&#x2261;</mi>
           <mrow>
-            <mi>a</mi>
-            <mi>&#x2261;</mi>
+            <mi>&#xac;</mi>
             <mrow>
               <mi>&#xac;</mi>
-              <mrow>
-                <mi>&#xac;</mi>
-                <mi>a</mi>
-              </mrow>
+              <mi>a</mi>
             </mrow>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: a ≡ ¬ ¬ a
     omml: |
@@ -5381,18 +5265,16 @@ cases:
     asciimath: pi "P{simeq}" 22 / 7
     latex: "\\pi \\simeq 22 / 7"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x3c0;</mi>
+          <mi>&#x2243;</mi>
           <mrow>
-            <mi>&#x3c0;</mi>
-            <mi>&#x2243;</mi>
-            <mrow>
-              <mn>22</mn>
-              <mi>/</mi>
-              <mn>7</mn>
-            </mrow>
+            <mn>22</mn>
+            <mi>/</mi>
+            <mn>7</mn>
           </mrow>
-        </mstyle>
+        </mrow>
       </math>
     unicodemath: π ≃ 22/7
     omml: |
@@ -5488,14 +5370,12 @@ cases:
     asciimath: a | b
     latex: a | b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mo>|</mo>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mo>|</mo>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: a | b
     omml: |
@@ -5570,23 +5450,21 @@ cases:
     asciimath: int sin = cos
     latex: "\\int \\sin{} = \\cos{}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo>&#x222b;</mo>
             <mrow>
-              <mo>&#x222b;</mo>
-              <mrow>
-                <mo rspace="thickmathspace"/>
-                <mi>sin</mi>
-              </mrow>
-            </mrow>
-            <mo>=</mo>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>cos</mi>
+              <mo rspace="0.2778em"/>
+              <mi>sin</mi>
             </mrow>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>cos</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: "∫ sin⁡ = cos⁡"
     omml: |
@@ -5671,14 +5549,12 @@ cases:
     asciimath: nabla * E
     latex: "\\nabla \\cdot E"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>&#x2207;</mi>
-            <mo>&#x22c5;</mo>
-            <mi>E</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2207;</mi>
+          <mo>&#x22c5;</mo>
+          <mi>E</mi>
+        </mrow>
       </math>
     unicodemath: "∇ ⋅ E"
     omml: |
@@ -5747,14 +5623,12 @@ cases:
     asciimath: nabla xx a
     latex: "\\nabla \\times a"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>&#x2207;</mi>
-            <mo>&#xd7;</mo>
-            <mi>a</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>&#x2207;</mi>
+          <mo>&#xd7;</mo>
+          <mi>a</mi>
+        </mrow>
       </math>
     unicodemath: "∇ × a"
     omml: |
@@ -5831,18 +5705,16 @@ cases:
     asciimath: "{a , b , c}"
     latex: "\\{ a , b , c \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mi>a</mi>
-            <mo>,</mo>
-            <mi>b</mi>
-            <mo>,</mo>
-            <mi>c</mi>
-            <mo>}</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{a , b , c}"
     omml: |
@@ -5955,20 +5827,18 @@ cases:
     asciimath: "{x | x lt 5}"
     latex: "\\{ x | x < 5 \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mi>x</mi>
+          <mo>|</mo>
           <mrow>
-            <mo>{</mo>
             <mi>x</mi>
-            <mo>|</mo>
-            <mrow>
-              <mi>x</mi>
-              <mo>&#x3c;</mo>
-              <mn>5</mn>
-            </mrow>
-            <mo>}</mo>
+            <mo>&#x3c;</mo>
+            <mn>5</mn>
           </mrow>
-        </mstyle>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{x | x < 5}"
     omml: |
@@ -6083,20 +5953,18 @@ cases:
     asciimath: "{S | S in T}"
     latex: "\\{ S | S \\in T \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mi>S</mi>
+          <mo>|</mo>
           <mrow>
-            <mo>{</mo>
             <mi>S</mi>
-            <mo>|</mo>
-            <mrow>
-              <mi>S</mi>
-              <mo>&#x2208;</mo>
-              <mi>T</mi>
-            </mrow>
-            <mo>}</mo>
+            <mo>&#x2208;</mo>
+            <mi>T</mi>
           </mrow>
-        </mstyle>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{S | S ∈ T}"
     omml: |
@@ -6232,32 +6100,30 @@ cases:
     asciimath: "{x | (x lt 5) ^^ x in mathbb(N)}"
     latex: "\\{ x | ( x < 5 ) \\land x \\in \\mathbb{N} \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mi>x</mi>
+          <mo>|</mo>
           <mrow>
-            <mo>{</mo>
-            <mi>x</mi>
-            <mo>|</mo>
             <mrow>
-              <mrow>
-                <mo>(</mo>
-                <mi>x</mi>
-                <mo>&#x3c;</mo>
-                <mn>5</mn>
-                <mo>)</mo>
-              </mrow>
-              <mo>&#x2227;</mo>
-              <mrow>
-                <mi>x</mi>
-                <mo>&#x2208;</mo>
-                <mstyle mathvariant="double-struck">
-                  <mi>N</mi>
-                </mstyle>
+              <mo>(</mo>
+              <mi>x</mi>
+              <mo>&#x3c;</mo>
+              <mn>5</mn>
+              <mo>)</mo>
+            </mrow>
+            <mo>&#x2227;</mo>
+            <mrow>
+              <mi>x</mi>
+              <mo>&#x2208;</mo>
+              <mrow mathvariant="double-struck">
+                <mi>N</mi>
               </mrow>
             </mrow>
-            <mo>}</mo>
           </mrow>
-        </mstyle>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{x | (x < 5) ∧ x ∈ \\BbbN}"
     omml: |
@@ -6443,18 +6309,16 @@ cases:
     asciimath: "(a , b , c)"
     latex: "( a , b , c )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>a</mi>
-            <mo>,</mo>
-            <mi>b</mi>
-            <mo>,</mo>
-            <mi>c</mi>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(a , b , c)"
     omml: |
@@ -6567,20 +6431,18 @@ cases:
     asciimath: "(x | x lt 5)"
     latex: "( x | x < 5 )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>|</mo>
           <mrow>
-            <mo>(</mo>
             <mi>x</mi>
-            <mo>|</mo>
-            <mrow>
-              <mi>x</mi>
-              <mo>&#x3c;</mo>
-              <mn>5</mn>
-            </mrow>
-            <mo>)</mo>
+            <mo>&#x3c;</mo>
+            <mn>5</mn>
           </mrow>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(x | x < 5)"
     omml: |
@@ -6691,14 +6553,12 @@ cases:
     asciimath: A uu B
     latex: A \cup B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mo>&#x222a;</mo>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mo>&#x222a;</mo>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ∪ B
     omml: |
@@ -6767,14 +6627,12 @@ cases:
     asciimath: A "P{Cap}" B
     latex: A \Cap B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2229;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2229;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ∩ B
     omml: |
@@ -6843,14 +6701,12 @@ cases:
     asciimath: a in A
     latex: a \in A
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mo>&#x2208;</mo>
-            <mi>A</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mo>&#x2208;</mo>
+          <mi>A</mi>
+        </mrow>
       </math>
     unicodemath: a ∈ A
     omml: |
@@ -6919,14 +6775,12 @@ cases:
     asciimath: a "P{nin}" A
     latex: a \notin A
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>&#x2209;</mi>
-            <mi>A</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>&#x2209;</mi>
+          <mi>A</mi>
+        </mrow>
       </math>
     unicodemath: a ∉ A
     omml: |
@@ -6995,14 +6849,12 @@ cases:
     asciimath: A subseteq B
     latex: A \subseteq B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2286;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2286;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ⊆ B
     omml: |
@@ -7071,14 +6923,12 @@ cases:
     asciimath: A subset B
     latex: A \subset B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2282;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2282;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ⊂ B
     omml: |
@@ -7147,14 +6997,12 @@ cases:
     asciimath: A "P{subseteq}" B
     latex: A \nsubseteq B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2288;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2288;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ⊈ B
     omml: |
@@ -7223,14 +7071,12 @@ cases:
     asciimath: A "P{nsub}" B
     latex: A \nsubset B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2284;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2284;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ⊄ B
     omml: |
@@ -7299,14 +7145,12 @@ cases:
     asciimath: A "P{setminus}" B
     latex: A \smallsetminus B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mi>&#x2216;</mi>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mi>&#x2216;</mi>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A ∖ B
     omml: |
@@ -7383,18 +7227,16 @@ cases:
     asciimath: "|A| = 5"
     latex: "| A | = 5"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
-            <mrow>
-              <mo>|</mo>
-              <mi>A</mi>
-              <mo>|</mo>
-            </mrow>
-            <mo>=</mo>
-            <mn>5</mn>
+            <mo>|</mo>
+            <mi>A</mi>
+            <mo>|</mo>
           </mrow>
-        </mstyle>
+          <mo>=</mo>
+          <mn>5</mn>
+        </mrow>
       </math>
     unicodemath: "|(A)| = 5"
     omml: |
@@ -7491,14 +7333,12 @@ cases:
     asciimath: A xx B
     latex: A \times B
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>A</mi>
-            <mo>&#xd7;</mo>
-            <mi>B</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>A</mi>
+          <mo>&#xd7;</mo>
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: A × B
     omml: |
@@ -7567,19 +7407,17 @@ cases:
     asciimath: sin"P{funcapply}" x
     latex: "\\sin{\\text{P[funcapply]}} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>sin</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
+              <mi>sin</mi>
+              <mi>&#x2061;</mi>
             </mrow>
-            <mi>x</mi>
           </mrow>
-        </mstyle>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: sin⁡⁡ x
     omml: |
@@ -7665,19 +7503,17 @@ cases:
     asciimath: arcsin"P{funcapply}" x
     latex: "\\arcsin{\\text{P[funcapply]}} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>arcsin</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
+              <mi>arcsin</mi>
+              <mi>&#x2061;</mi>
             </mrow>
-            <mi>x</mi>
           </mrow>
-        </mstyle>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: arcsin⁡⁡ x
     omml: |
@@ -7763,19 +7599,17 @@ cases:
     asciimath: sinh"P{funcapply}" x
     latex: "\\sinh{\\text{P[funcapply]}} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>sinh</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
+              <mi>sinh</mi>
+              <mi>&#x2061;</mi>
             </mrow>
-            <mi>x</mi>
           </mrow>
-        </mstyle>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: sinh⁡⁡ x
     omml: |
@@ -7861,14 +7695,12 @@ cases:
     asciimath: arcsinh "P{funcapply}" x
     latex: arcsinh \text{P[funcapply]} x
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>arcsinh</mi>
-            <mi>&#x2061;</mi>
-            <mi>x</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>arcsinh</mi>
+          <mi>&#x2061;</mi>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: arcsinh ⁡ x
     omml: |
@@ -7937,19 +7769,17 @@ cases:
     asciimath: ln"P{funcapply}" a
     latex: "\\ln{\\text{P[funcapply]}} a"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
+            <mo rspace="0.2778em"/>
             <mrow>
-              <mo rspace="thickmathspace"/>
-              <mrow>
-                <mi>ln</mi>
-                <mi>&#x2061;</mi>
-              </mrow>
+              <mi>ln</mi>
+              <mi>&#x2061;</mi>
             </mrow>
-            <mi>a</mi>
           </mrow>
-        </mstyle>
+          <mi>a</mi>
+        </mrow>
       </math>
     unicodemath: ln⁡⁡ a
     omml: |
@@ -8018,14 +7848,12 @@ cases:
     asciimath: log "P{funcapply}" x
     latex: "\\log \\text{P[funcapply]} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>log</mi>
-            <mi>&#x2061;</mi>
-            <mi>x</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>log</mi>
+          <mi>&#x2061;</mi>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: log ⁡ x
     omml: |
@@ -8097,22 +7925,20 @@ cases:
     asciimath: "<<3 , 4 , 3 , 7 , 4>>"
     latex: "\\langle 3 , 4 , 3 , 7 , 4 \\rangle"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2329;</mo>
-            <mn>3</mn>
-            <mo>,</mo>
-            <mn>4</mn>
-            <mo>,</mo>
-            <mn>3</mn>
-            <mo>,</mo>
-            <mn>7</mn>
-            <mo>,</mo>
-            <mn>4</mn>
-            <mo>&#x232a;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2329;</mo>
+          <mn>3</mn>
+          <mo>,</mo>
+          <mn>4</mn>
+          <mo>,</mo>
+          <mn>3</mn>
+          <mo>,</mo>
+          <mn>7</mn>
+          <mo>,</mo>
+          <mn>4</mn>
+          <mo>&#x232a;</mo>
+        </mrow>
       </math>
     unicodemath: "⟨3 , 4 , 3 , 7 , 4⟩"
     omml: |
@@ -8241,10 +8067,8 @@ cases:
     asciimath: "&#x27;&#x27;"
     latex: "&#x27;&#x27;"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x27;&#x27;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x27;&#x27;</mi>
       </math>
     unicodemath: "''"
     omml: |

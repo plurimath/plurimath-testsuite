@@ -22,12 +22,10 @@ cases:
     asciimath: mathbb(R)
     latex: "\\mathbb{R}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="double-struck">
-            <mi>R</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="double-struck">
+          <mi>R</mi>
+        </mrow>
       </math>
     unicodemath: "\\BbbR"
     omml: |
@@ -69,12 +67,10 @@ cases:
     asciimath: mathbf(x)
     latex: "\\mathbf{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="bold">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="bold">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\mbfx"
     omml: |
@@ -116,16 +112,14 @@ cases:
     asciimath: rm(a b c)
     latex: "\\mathrm{a b c}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="normal">
-            <mrow>
-              <mi>a</mi>
-              <mi>b</mi>
-              <mi>c</mi>
-            </mrow>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="normal">
+          <mrow>
+            <mi>a</mi>
+            <mi>b</mi>
+            <mi>c</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: "\\mupa b c"
     omml: |
@@ -196,12 +190,10 @@ cases:
     asciimath: mathcal(L)
     latex: "\\mathcal{L}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="script">
-            <mi>L</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="script">
+          <mi>L</mi>
+        </mrow>
       </math>
     unicodemath: "\\mscrL"
     omml: |
@@ -244,12 +236,10 @@ cases:
     asciimath: mathfrak(g)
     latex: "\\mathfrak{g}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="fraktur">
-            <mi>g</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="fraktur">
+          <mi>g</mi>
+        </mrow>
       </math>
     unicodemath: "\\mfrakg"
     omml: |
@@ -292,12 +282,10 @@ cases:
     asciimath: mathsf(A)
     latex: "\\mathsf{A}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="sans-serif">
-            <mi>A</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="sans-serif">
+          <mi>A</mi>
+        </mrow>
       </math>
     unicodemath: "\\msansA"
     omml: |
@@ -340,12 +328,10 @@ cases:
     asciimath: mathtt(z)
     latex: "\\mathtt{z}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="monospace">
-            <mi>z</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="monospace">
+          <mi>z</mi>
+        </mrow>
       </math>
     unicodemath: ￗ(z)
     omml: |
@@ -387,12 +373,10 @@ cases:
     asciimath: rm(d)
     latex: "\\mathrm{d}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="normal">
-            <mi>d</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="normal">
+          <mi>d</mi>
+        </mrow>
       </math>
     unicodemath: "\\mupd"
     omml: |
@@ -434,12 +418,10 @@ cases:
     asciimath: ii(x)
     latex: "\\mathit{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="italic">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="italic">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\mitx"
     omml: |
@@ -481,16 +463,14 @@ cases:
     asciimath: mathbf(A) + mathbf(B)
     latex: "\\mathbf{A} + \\mathbf{B}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="bold">
-            <mi>A</mi>
-          </mstyle>
-          <mo>+</mo>
-          <mstyle mathvariant="bold">
-            <mi>B</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="bold">
+          <mi>A</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow mathvariant="bold">
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: "\\mbfA + \\mbfB"
     omml: |

@@ -22,10 +22,8 @@ cases:
     asciimath: '2'
     latex: '2'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>2</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>2</mn>
       </math>
     unicodemath: '2'
     omml: |
@@ -62,10 +60,8 @@ cases:
     asciimath: '2.5'
     latex: '2.5'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>2.5</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>2.5</mn>
       </math>
     unicodemath: '2.5'
     omml: |
@@ -102,10 +98,8 @@ cases:
     asciimath: '0'
     latex: '0'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>0</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>0</mn>
       </math>
     unicodemath: '0'
     omml: |
@@ -142,10 +136,8 @@ cases:
     asciimath: '123'
     latex: '123'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>123</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>123</mn>
       </math>
     unicodemath: '123'
     omml: |
@@ -182,10 +174,8 @@ cases:
     asciimath: '3.14159'
     latex: '3.14159'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>3.14159</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>3.14159</mn>
       </math>
     unicodemath: '3.14159'
     omml: |

@@ -32,12 +32,10 @@ cases:
     asciimath: sqrt(sum)
     latex: "\\sqrt{\\sum}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mo>&#x2211;</mo>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mo>&#x2211;</mo>
+        </msqrt>
       </math>
     unicodemath: "√(∑)"
     omml: |
@@ -104,15 +102,13 @@ cases:
     asciimath: sqrt(s t)
     latex: "\\sqrt{s t}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mrow>
-              <mi>s</mi>
-              <mi>t</mi>
-            </mrow>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mrow>
+            <mi>s</mi>
+            <mi>t</mi>
+          </mrow>
+        </msqrt>
       </math>
     unicodemath: "√(s t)"
     omml: |
@@ -189,13 +185,11 @@ cases:
     asciimath: root(x)(theta)
     latex: "\\sqrt[x]{\\theta}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mi>&#x3b8;</mi>
-            <mi>x</mi>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mi>&#x3b8;</mi>
+          <mi>x</mi>
+        </mroot>
       </math>
     unicodemath: "√(x&θ)"
     omml: |
@@ -263,13 +257,11 @@ cases:
     asciimath: root(n)(a)
     latex: "\\sqrt[n]{a}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mi>a</mi>
-            <mi>n</mi>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mi>a</mi>
+          <mi>n</mi>
+        </mroot>
       </math>
     unicodemath: "√(n&a)"
     omml: |

@@ -22,13 +22,11 @@ cases:
     asciimath: frac(a)(b)
     latex: "\\frac{a}{b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mfrac>
       </math>
     unicodemath: "(a)/(b)"
     omml: |
@@ -90,13 +88,11 @@ cases:
     asciimath: frac(2)(3)
     latex: "\\frac{2}{3}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mn>2</mn>
-            <mn>3</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mn>2</mn>
+          <mn>3</mn>
+        </mfrac>
       </math>
     unicodemath: "(2)/(3)"
     omml: |
@@ -164,17 +160,15 @@ cases:
     asciimath: frac(a + b)(c)
     latex: "\\frac{a + b}{c}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-            </mrow>
-            <mi>c</mi>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+          </mrow>
+          <mi>c</mi>
+        </mfrac>
       </math>
     unicodemath: "(a + b)/(c)"
     omml: |
@@ -265,17 +259,15 @@ cases:
     asciimath: frac(x)(y + z)
     latex: "\\frac{x}{y + z}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>x</mi>
-            <mrow>
-              <mi>y</mi>
-              <mo>+</mo>
-              <mi>z</mi>
-            </mrow>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>x</mi>
+          <mrow>
+            <mi>y</mi>
+            <mo>+</mo>
+            <mi>z</mi>
+          </mrow>
+        </mfrac>
       </math>
     unicodemath: "(x)/(y + z)"
     omml: |
@@ -366,18 +358,16 @@ cases:
     asciimath: frac(a)(b) + frac(c)(d)
     latex: "\\frac{a}{b} + \\frac{c}{d}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mfrac>
-          <mo>+</mo>
-          <mfrac>
-            <mi>c</mi>
-            <mi>d</mi>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mfrac>
+        <mo>+</mo>
+        <mfrac>
+          <mi>c</mi>
+          <mi>d</mi>
+        </mfrac>
       </math>
     unicodemath: "(a)/(b) + (c)/(d)"
     omml: |
@@ -485,13 +475,11 @@ cases:
     asciimath: frac(a)(b)
     latex: "\\frac{a}{b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mfrac>
       </math>
     unicodemath: "(a)/(b)"
     omml: |

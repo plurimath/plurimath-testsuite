@@ -22,21 +22,19 @@ cases:
     asciimath: sum_(i = 1)^(n) i
     latex: "\\sum_{i = 1}^{n} i"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x2211;</mo>
-              <mrow>
-                <mi>i</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-            <mi>i</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x2211;</mo>
+            <mrow>
+              <mi>i</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>n</mi>
+          </munderover>
+          <mi>i</mi>
+        </mrow>
       </math>
     unicodemath: "∑_(i = 1)^(n)▒〖i〗"
     omml: |
@@ -134,24 +132,22 @@ cases:
     asciimath: sum_(i = 1)^(n) i^(2)
     latex: "\\sum_{i = 1}^{n} i^{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x2211;</mo>
-              <mrow>
-                <mi>i</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-            <msup>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x2211;</mo>
+            <mrow>
               <mi>i</mi>
-              <mn>2</mn>
-            </msup>
-          </mrow>
-        </mstyle>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>n</mi>
+          </munderover>
+          <msup>
+            <mi>i</mi>
+            <mn>2</mn>
+          </msup>
+        </mrow>
       </math>
     unicodemath: "∑_(i = 1)^(n)▒〖i^(2)〗"
     omml: |
@@ -279,11 +275,9 @@ cases:
     asciimath: sum x
     latex: "\\sum x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x2211;</mo>
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x2211;</mo>
+        <mi>x</mi>
       </math>
     unicodemath: "∑ x"
     omml: |
@@ -326,17 +320,15 @@ cases:
     asciimath: int_(0)^(1) x
     latex: "\\int_{0}^{1} x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <msubsup>
-              <mo>&#x222b;</mo>
-              <mn>0</mn>
-              <mn>1</mn>
-            </msubsup>
-            <mi>x</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <msubsup>
+            <mo>&#x222b;</mo>
+            <mn>0</mn>
+            <mn>1</mn>
+          </msubsup>
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "∫_(0)^(1)▒〖x〗"
     omml: |
@@ -412,24 +404,22 @@ cases:
     asciimath: int_(a)^(b) f (x) d x
     latex: "\\int_{a}^{b} f ( x ) d x"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <msubsup>
-              <mo>&#x222b;</mo>
-              <mi>a</mi>
-              <mi>b</mi>
-            </msubsup>
-            <mi>f</mi>
-          </mrow>
-          <mrow>
-            <mo>(</mo>
-            <mi>x</mi>
-            <mo>)</mo>
-          </mrow>
-          <mi>d</mi>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <msubsup>
+            <mo>&#x222b;</mo>
+            <mi>a</mi>
+            <mi>b</mi>
+          </msubsup>
+          <mi>f</mi>
+        </mrow>
+        <mrow>
+          <mo>(</mo>
           <mi>x</mi>
-        </mstyle>
+          <mo>)</mo>
+        </mrow>
+        <mi>d</mi>
+        <mi>x</mi>
       </math>
     unicodemath: "∫_(a)^(b)▒〖f〗 (x) d x"
     omml: |
@@ -553,16 +543,14 @@ cases:
     asciimath: prod_(k) k
     latex: "\\prod_{k} k"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munder>
-              <mo>&#x220f;</mo>
-              <mi>k</mi>
-            </munder>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munder>
+            <mo>&#x220f;</mo>
             <mi>k</mi>
-          </mrow>
-        </mstyle>
+          </munder>
+          <mi>k</mi>
+        </mrow>
       </math>
     unicodemath: "∏_(k)▒〖k〗"
     omml: |
@@ -628,21 +616,19 @@ cases:
     asciimath: prod_(i = 1)^(n) i
     latex: "\\prod_{i = 1}^{n} i"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <munderover>
-              <mo>&#x220f;</mo>
-              <mrow>
-                <mi>i</mi>
-                <mo>=</mo>
-                <mn>1</mn>
-              </mrow>
-              <mi>n</mi>
-            </munderover>
-            <mi>i</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <munderover>
+            <mo>&#x220f;</mo>
+            <mrow>
+              <mi>i</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>n</mi>
+          </munderover>
+          <mi>i</mi>
+        </mrow>
       </math>
     unicodemath: "∏_(i = 1)^(n)▒〖i〗"
     omml: |
@@ -740,16 +726,14 @@ cases:
     asciimath: oint_(C) f
     latex: "\\oint_{C} f"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <msub>
-              <mo>&#x222e;</mo>
-              <mi>C</mi>
-            </msub>
-            <mi>f</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <msub>
+            <mo>&#x222e;</mo>
+            <mi>C</mi>
+          </msub>
+          <mi>f</mi>
+        </mrow>
       </math>
     unicodemath: "∮_(C)▒〖f〗"
     omml: |
@@ -814,23 +798,21 @@ cases:
     asciimath: lim_(x to oo) f (x)
     latex: "\\lim_{x \\to \\infty} f ( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mo>lim</mo>
-            <mrow>
-              <mi>x</mi>
-              <mo>&#x2192;</mo>
-              <mo>&#x221e;</mo>
-            </mrow>
-          </munder>
-          <mi>f</mi>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mo>lim</mo>
           <mrow>
-            <mo>(</mo>
             <mi>x</mi>
-            <mo>)</mo>
+            <mo>&#x2192;</mo>
+            <mo>&#x221e;</mo>
           </mrow>
-        </mstyle>
+        </munder>
+        <mi>f</mi>
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: lim_(x → ∞) f (x)
     omml: |
@@ -972,17 +954,15 @@ cases:
     asciimath: '"P{duni}"_(i) A_(i)'
     latex: "\\bigcup_{i} A_{i}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>&#x22c3;</mi>
-            <mi>i</mi>
-          </msub>
-          <msub>
-            <mi>A</mi>
-            <mi>i</mi>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>&#x22c3;</mi>
+          <mi>i</mi>
+        </msub>
+        <msub>
+          <mi>A</mi>
+          <mi>i</mi>
+        </msub>
       </math>
     unicodemath: "⋃_(i) A_(i)"
     omml: |
@@ -1077,17 +1057,15 @@ cases:
     asciimath: '"P{dint}"_(i) A_(i)'
     latex: "\\bigcap_{i} A_{i}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>&#x22c2;</mi>
-            <mi>i</mi>
-          </msub>
-          <msub>
-            <mi>A</mi>
-            <mi>i</mi>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>&#x22c2;</mi>
+          <mi>i</mi>
+        </msub>
+        <msub>
+          <mi>A</mi>
+          <mi>i</mi>
+        </msub>
       </math>
     unicodemath: "⋂_(i) A_(i)"
     omml: |
@@ -1182,17 +1160,15 @@ cases:
     asciimath: '"P{coprod}"_(i) A_(i)'
     latex: "\\coprod_{i} A_{i}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mo>&#x2210;</mo>
-            <mi>i</mi>
-          </msub>
-          <msub>
-            <mi>A</mi>
-            <mi>i</mi>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mo>&#x2210;</mo>
+          <mi>i</mi>
+        </msub>
+        <msub>
+          <mi>A</mi>
+          <mi>i</mi>
+        </msub>
       </math>
     unicodemath: "∐_(i) A_(i)"
     omml: |
@@ -1287,11 +1263,9 @@ cases:
     asciimath: '"P{iint}" f'
     latex: "\\iint f"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x222c;</mi>
-          <mi>f</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x222c;</mi>
+        <mi>f</mi>
       </math>
     unicodemath: "∬ f"
     omml: |
@@ -1332,17 +1306,15 @@ cases:
     asciimath: '"P{bigoplus}"_(i) A_(i)'
     latex: "\\bigoplus_{i} A_{i}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mo>&#x2a01;</mo>
-            <mi>i</mi>
-          </msub>
-          <msub>
-            <mi>A</mi>
-            <mi>i</mi>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mo>&#x2a01;</mo>
+          <mi>i</mi>
+        </msub>
+        <msub>
+          <mi>A</mi>
+          <mi>i</mi>
+        </msub>
       </math>
     unicodemath: "⨁_(i) A_(i)"
     omml: |

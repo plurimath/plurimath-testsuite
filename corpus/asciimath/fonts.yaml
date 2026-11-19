@@ -22,12 +22,10 @@ cases:
     asciimath: mathbf(x)
     latex: "\\mathbf{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="bold">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="bold">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\mbfx"
     omml: |
@@ -76,12 +74,10 @@ cases:
     asciimath: mathbb(x)
     latex: "\\mathbb{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="double-struck">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="double-struck">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\Bbbx"
     omml: |
@@ -130,12 +126,10 @@ cases:
     asciimath: mathcal(x)
     latex: "\\mathcal{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="script">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="script">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\mscrx"
     omml: |
@@ -185,12 +179,10 @@ cases:
     asciimath: mathtt(x)
     latex: "\\mathtt{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="monospace">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="monospace">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: ￗ(x)
     omml: |
@@ -239,12 +231,10 @@ cases:
     asciimath: mathfrak(x)
     latex: "\\mathfrak{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="fraktur">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="fraktur">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\mfrakx"
     omml: |
@@ -294,12 +284,10 @@ cases:
     asciimath: mathsf(x)
     latex: "\\mathsf{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="sans-serif">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="sans-serif">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "\\msansx"
     omml: |
@@ -349,16 +337,14 @@ cases:
     asciimath: mathbf(A) + mathcal(B)
     latex: "\\mathbf{A} + \\mathcal{B}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathvariant="bold">
-            <mi>A</mi>
-          </mstyle>
-          <mo>+</mo>
-          <mstyle mathvariant="script">
-            <mi>B</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathvariant="bold">
+          <mi>A</mi>
+        </mrow>
+        <mo>+</mo>
+        <mrow mathvariant="script">
+          <mi>B</mi>
+        </mrow>
       </math>
     unicodemath: "\\mbfA + \\mscrB"
     omml: |

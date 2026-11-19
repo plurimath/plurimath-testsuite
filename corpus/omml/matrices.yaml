@@ -90,19 +90,17 @@ cases:
     asciimath: '[["a", "b"]]'
     latex: "\\left .\\begin{matrix}\\text{a} & \\text{b}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>a</mtext>
-              </mtd>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>a</mtext>
+            </mtd>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("a"&"b")
     omml: |
@@ -294,22 +292,20 @@ cases:
     asciimath: '[["a", "b", "c"]]'
     latex: "\\left .\\begin{matrix}\\text{a} & \\text{b} & \\text{c}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>a</mtext>
-              </mtd>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>a</mtext>
+            </mtd>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("a"&"b"&"c")
     omml: |
@@ -533,27 +529,25 @@ cases:
     asciimath: '[["b", "c"], ["d", "e"]]'
     latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>d</mtext>
-              </mtd>
-              <mtd>
-                <mtext>e</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>d</mtext>
+            </mtd>
+            <mtd>
+              <mtext>e</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("b"&"c"@"d"&"e")
     omml: |
@@ -822,33 +816,31 @@ cases:
     asciimath: '[["b", "c", "d"], ["e", "f", "g"]]'
     latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} & \\text{d} \\\\ \\text{e} & \\text{f} & \\text{g}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-              <mtd>
-                <mtext>d</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>e</mtext>
-              </mtd>
-              <mtd>
-                <mtext>f</mtext>
-              </mtd>
-              <mtd>
-                <mtext>g</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+            <mtd>
+              <mtext>d</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>e</mtext>
+            </mtd>
+            <mtd>
+              <mtext>f</mtext>
+            </mtd>
+            <mtd>
+              <mtext>g</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("b"&"c"&"d"@"e"&"f"&"g")
     omml: |
@@ -1157,35 +1149,33 @@ cases:
     asciimath: '[["b", "c"], ["d", "e"], ["f", "g"]]'
     latex: "\\left .\\begin{matrix}\\text{b} & \\text{c} \\\\ \\text{d} & \\text{e} \\\\ \\text{f} & \\text{g}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>d</mtext>
-              </mtd>
-              <mtd>
-                <mtext>e</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>f</mtext>
-              </mtd>
-              <mtd>
-                <mtext>g</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>d</mtext>
+            </mtd>
+            <mtd>
+              <mtext>e</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>f</mtext>
+            </mtd>
+            <mtd>
+              <mtext>g</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("b"&"c"@"d"&"e"@"f"&"g")
     omml: |
@@ -1531,44 +1521,42 @@ cases:
     asciimath: "[[1, 2, 3], [4, 5, 6], [7, 8, 9]]"
     latex: "\\left .\\begin{matrix}1 & 2 & 3 \\\\ 4 & 5 & 6 \\\\ 7 & 8 & 9\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd>
-                <mn>2</mn>
-              </mtd>
-              <mtd>
-                <mn>3</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>4</mn>
-              </mtd>
-              <mtd>
-                <mn>5</mn>
-              </mtd>
-              <mtd>
-                <mn>6</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>7</mn>
-              </mtd>
-              <mtd>
-                <mn>8</mn>
-              </mtd>
-              <mtd>
-                <mn>9</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>2</mn>
+            </mtd>
+            <mtd>
+              <mn>3</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>4</mn>
+            </mtd>
+            <mtd>
+              <mn>5</mn>
+            </mtd>
+            <mtd>
+              <mn>6</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>7</mn>
+            </mtd>
+            <mtd>
+              <mn>8</mn>
+            </mtd>
+            <mtd>
+              <mn>9</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&2&3@4&5&6@7&8&9)"
     omml: |
@@ -1932,27 +1920,25 @@ cases:
     asciimath: "[[1, 0], [0, 1]]"
     latex: "\\left .\\begin{matrix}1 & 0 \\\\ 0 & 1\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&0@0&1)"
     omml: |
@@ -2193,23 +2179,21 @@ cases:
     asciimath: "[[1, ], [, 1]]"
     latex: "\\left .\\begin{matrix}1 &  \\\\  & 1\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd/>
-            </mtr>
-            <mtr>
-              <mtd/>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd/>
+          </mtr>
+          <mtr>
+            <mtd/>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&@&1)"
     omml: |
@@ -2492,44 +2476,42 @@ cases:
     asciimath: "[[1, 0, 0], [0, 1, 0], [0, 0, 1]]"
     latex: "\\left .\\begin{matrix}1 & 0 & 0 \\\\ 0 & 1 & 0 \\\\ 0 & 0 & 1\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&0&0@0&1&0@0&0&1)"
     omml: |
@@ -2899,32 +2881,30 @@ cases:
     asciimath: "[[1, , ], [, 1, ], [, , 1]]"
     latex: "\\left .\\begin{matrix}1 &  &  \\\\  & 1 &  \\\\  &  & 1\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd/>
-              <mtd/>
-            </mtr>
-            <mtr>
-              <mtd/>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd/>
-            </mtr>
-            <mtr>
-              <mtd/>
-              <mtd/>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd/>
+            <mtd/>
+          </mtr>
+          <mtr>
+            <mtd/>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd/>
+          </mtr>
+          <mtr>
+            <mtd/>
+            <mtd/>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&&@&1&@&&1)"
     omml: |
@@ -3204,27 +3184,25 @@ cases:
     asciimath: "[[1, 1], [0, 0]]"
     latex: "\\left .\\begin{matrix}1 & 1 \\\\ 0 & 0\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-              <mtd>
-                <mn>1</mn>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-              <mtd>
-                <mn>0</mn>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+            <mtd>
+              <mn>1</mn>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+            <mtd>
+              <mn>0</mn>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: "■(1&1@0&0)"
     omml: |
@@ -3501,31 +3479,29 @@ cases:
     asciimath: "[[1, 1], [0, 0]]"
     latex: "\\left [\\begin{matrix}1 & 1 \\\\ 0 & 0\\end{matrix}\\right ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: ⓢ(1&1@0&0)
     omml: |
@@ -3828,31 +3804,29 @@ cases:
     asciimath: "|[1, 1], [0, 0]|"
     latex: "\\left |\\begin{matrix}1 & 1 \\\\ 0 & 0\\end{matrix}\\right |"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>|</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>|</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>|</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>|</mo>
+        </mrow>
       </math>
     unicodemath: "⒱(1&1@0&0)"
     omml: |
@@ -4155,31 +4129,29 @@ cases:
     asciimath: norm[1, 1], [0, 0]norm
     latex: "\\begin{Vmatrix}1 & 1 \\\\ 0 & 0\\end{Vmatrix}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2016;</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-                <mtd>
-                  <mn>1</mn>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-                <mtd>
-                  <mn>0</mn>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>&#x2016;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2016;</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+              <mtd>
+                <mn>1</mn>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+              <mtd>
+                <mn>0</mn>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>&#x2016;</mo>
+        </mrow>
       </math>
     unicodemath: "(1&1@0&0)"
     omml: |
@@ -4516,44 +4488,42 @@ cases:
     asciimath: '[["a", cdots, "b"], [vdots, ddots, vdots], ["c", cdots, "d"]]'
     latex: "\\left .\\begin{matrix}\\text{a} & \\cdots & \\text{b} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\text{c} & \\cdots & \\text{d}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mtable>
-            <mtr>
-              <mtd>
-                <mtext>a</mtext>
-              </mtd>
-              <mtd>
-                <mo>&#x22ef;</mo>
-              </mtd>
-              <mtd>
-                <mtext>b</mtext>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mo>&#x22ee;</mo>
-              </mtd>
-              <mtd>
-                <mo>&#x22f1;</mo>
-              </mtd>
-              <mtd>
-                <mo>&#x22ee;</mo>
-              </mtd>
-            </mtr>
-            <mtr>
-              <mtd>
-                <mtext>c</mtext>
-              </mtd>
-              <mtd>
-                <mo>&#x22ef;</mo>
-              </mtd>
-              <mtd>
-                <mtext>d</mtext>
-              </mtd>
-            </mtr>
-          </mtable>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mtable>
+          <mtr>
+            <mtd>
+              <mtext>a</mtext>
+            </mtd>
+            <mtd>
+              <mo>&#x22ef;</mo>
+            </mtd>
+            <mtd>
+              <mtext>b</mtext>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mo>&#x22ee;</mo>
+            </mtd>
+            <mtd>
+              <mo>&#x22f1;</mo>
+            </mtd>
+            <mtd>
+              <mo>&#x22ee;</mo>
+            </mtd>
+          </mtr>
+          <mtr>
+            <mtd>
+              <mtext>c</mtext>
+            </mtd>
+            <mtd>
+              <mo>&#x22ef;</mo>
+            </mtd>
+            <mtd>
+              <mtext>d</mtext>
+            </mtd>
+          </mtr>
+        </mtable>
       </math>
     unicodemath: ■("a"&⋯&"b"@⋮&⋱&⋮@"c"&⋯&"d")
     omml: |
@@ -4968,48 +4938,46 @@ cases:
     asciimath: '[["a", cdots, "b"], [vdots, ddots, vdots], ["d", cdots, "c"]]'
     latex: "\\left [\\begin{matrix}\\text{a} & \\cdots & \\text{b} \\\\ \\vdots & \\ddots & \\vdots \\\\ \\text{d} & \\cdots & \\text{c}\\end{matrix}\\right ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mtext>a</mtext>
-                </mtd>
-                <mtd>
-                  <mo>&#x22ef;</mo>
-                </mtd>
-                <mtd>
-                  <mtext>b</mtext>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mo>&#x22ee;</mo>
-                </mtd>
-                <mtd>
-                  <mo>&#x22f1;</mo>
-                </mtd>
-                <mtd>
-                  <mo>&#x22ee;</mo>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mtext>d</mtext>
-                </mtd>
-                <mtd>
-                  <mo>&#x22ef;</mo>
-                </mtd>
-                <mtd>
-                  <mtext>c</mtext>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mtext>a</mtext>
+              </mtd>
+              <mtd>
+                <mo>&#x22ef;</mo>
+              </mtd>
+              <mtd>
+                <mtext>b</mtext>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mo>&#x22ee;</mo>
+              </mtd>
+              <mtd>
+                <mo>&#x22f1;</mo>
+              </mtd>
+              <mtd>
+                <mo>&#x22ee;</mo>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mtext>d</mtext>
+              </mtd>
+              <mtd>
+                <mo>&#x22ef;</mo>
+              </mtd>
+              <mtd>
+                <mtext>c</mtext>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: ⓢ("a"&⋯&"b"@⋮&⋱&⋮@"d"&⋯&"c")
     omml: |
@@ -5820,100 +5788,98 @@ cases:
     asciimath: '- ln ii("R") = {[2 ii("N")_("tot") ii(tau), "for " ii(tau) < ii(tau)_("o")], [2 ii("N")_("tot") ii(tau) - 4 ii("N")_("pair") (ii(tau) - ii(tau)_("o")), ''''  ii(tau) > ii(tau)_("o")]'
     latex: "- \\ln{} \\mathit{\\text{R}} = \\left \\{\\begin{matrix}2 \\mathit{\\text{N}}_{\\text{tot}} \\mathit{\\tau} & \\text{for } \\mathit{\\tau} < \\mathit{\\tau}_{\\text{o}} \\\\ 2 \\mathit{\\text{N}}_{\\text{tot}} \\mathit{\\tau} - 4 \\mathit{\\text{N}}_{\\text{pair}} ( \\mathit{\\tau} - \\mathit{\\tau}_{\\text{o}} ) & ''  \\mathit{\\tau} > \\mathit{\\tau}_{\\text{o}}\\end{matrix}\\right ."
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>-</mi>
-          <mrow>
-            <mo rspace="thickmathspace"/>
-            <mi>ln</mi>
-          </mrow>
-          <mstyle mathvariant="italic">
-            <mtext>R</mtext>
-          </mstyle>
-          <mo>=</mo>
-          <mrow>
-            <mo>{</mo>
-            <mtable>
-              <mtr>
-                <mtd>
-                  <mn>2</mn>
-                  <msub>
-                    <mstyle mathvariant="italic">
-                      <mtext>N</mtext>
-                    </mstyle>
-                    <mtext>tot</mtext>
-                  </msub>
-                  <mstyle mathvariant="italic">
-                    <mi>&#x3c4;</mi>
-                  </mstyle>
-                </mtd>
-                <mtd>
-                  <mtext>for </mtext>
-                  <mstyle mathvariant="italic">
-                    <mi>&#x3c4;</mi>
-                  </mstyle>
-                  <mi>&lt;</mi>
-                  <msub>
-                    <mstyle mathvariant="italic">
-                      <mi>&#x3c4;</mi>
-                    </mstyle>
-                    <mtext>o</mtext>
-                  </msub>
-                </mtd>
-              </mtr>
-              <mtr>
-                <mtd>
-                  <mn>2</mn>
-                  <msub>
-                    <mstyle mathvariant="italic">
-                      <mtext>N</mtext>
-                    </mstyle>
-                    <mtext>tot</mtext>
-                  </msub>
-                  <mstyle mathvariant="italic">
-                    <mi>&#x3c4;</mi>
-                  </mstyle>
-                  <mi>-</mi>
-                  <mn>4</mn>
-                  <msub>
-                    <mstyle mathvariant="italic">
-                      <mtext>N</mtext>
-                    </mstyle>
-                    <mtext>pair</mtext>
-                  </msub>
-                  <mrow>
-                    <mo>(</mo>
-                    <mstyle mathvariant="italic">
-                      <mi>&#x3c4;</mi>
-                    </mstyle>
-                    <mi>-</mi>
-                    <msub>
-                      <mstyle mathvariant="italic">
-                        <mi>&#x3c4;</mi>
-                      </mstyle>
-                      <mtext>o</mtext>
-                    </msub>
-                    <mo>)</mo>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>-</mi>
+        <mrow>
+          <mo rspace="0.2778em"/>
+          <mi>ln</mi>
+        </mrow>
+        <mrow mathvariant="italic">
+          <mtext>R</mtext>
+        </mrow>
+        <mo>=</mo>
+        <mrow>
+          <mo>{</mo>
+          <mtable>
+            <mtr>
+              <mtd>
+                <mn>2</mn>
+                <msub>
+                  <mrow mathvariant="italic">
+                    <mtext>N</mtext>
                   </mrow>
-                </mtd>
-                <mtd>
-                  <mi>'' </mi>
-                  <mstyle mathvariant="italic">
+                  <mtext>tot</mtext>
+                </msub>
+                <mrow mathvariant="italic">
+                  <mi>&#x3c4;</mi>
+                </mrow>
+              </mtd>
+              <mtd>
+                <mtext>for </mtext>
+                <mrow mathvariant="italic">
+                  <mi>&#x3c4;</mi>
+                </mrow>
+                <mi>&lt;</mi>
+                <msub>
+                  <mrow mathvariant="italic">
                     <mi>&#x3c4;</mi>
-                  </mstyle>
-                  <mi>&gt;</mi>
+                  </mrow>
+                  <mtext>o</mtext>
+                </msub>
+              </mtd>
+            </mtr>
+            <mtr>
+              <mtd>
+                <mn>2</mn>
+                <msub>
+                  <mrow mathvariant="italic">
+                    <mtext>N</mtext>
+                  </mrow>
+                  <mtext>tot</mtext>
+                </msub>
+                <mrow mathvariant="italic">
+                  <mi>&#x3c4;</mi>
+                </mrow>
+                <mi>-</mi>
+                <mn>4</mn>
+                <msub>
+                  <mrow mathvariant="italic">
+                    <mtext>N</mtext>
+                  </mrow>
+                  <mtext>pair</mtext>
+                </msub>
+                <mrow>
+                  <mo>(</mo>
+                  <mrow mathvariant="italic">
+                    <mi>&#x3c4;</mi>
+                  </mrow>
+                  <mi>-</mi>
                   <msub>
-                    <mstyle mathvariant="italic">
+                    <mrow mathvariant="italic">
                       <mi>&#x3c4;</mi>
-                    </mstyle>
+                    </mrow>
                     <mtext>o</mtext>
                   </msub>
-                </mtd>
-              </mtr>
-            </mtable>
-            <mo></mo>
-          </mrow>
-        </mstyle>
+                  <mo>)</mo>
+                </mrow>
+              </mtd>
+              <mtd>
+                <mi>'' </mi>
+                <mrow mathvariant="italic">
+                  <mi>&#x3c4;</mi>
+                </mrow>
+                <mi>&gt;</mi>
+                <msub>
+                  <mrow mathvariant="italic">
+                    <mi>&#x3c4;</mi>
+                  </mrow>
+                  <mtext>o</mtext>
+                </msub>
+              </mtd>
+            </mtr>
+          </mtable>
+          <mo></mo>
+        </mrow>
       </math>
     unicodemath: '- ln⁡ \mit"R" = Ⓢ(2\mit"N"_("tot")\mitτ&"for "\mitτ<\mitτ_("o")@2\mit"N"_("tot")\mitτ-4\mit"N"_("pair")(\mitτ - \mitτ_("o"))&'''' \mitτ>\mitτ_("o"))'
     omml: |

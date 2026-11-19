@@ -22,12 +22,10 @@ cases:
     asciimath: sqrt(2)
     latex: "\\sqrt{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mn>2</mn>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mn>2</mn>
+        </msqrt>
       </math>
     unicodemath: "√(2)"
     omml: |
@@ -89,16 +87,14 @@ cases:
     asciimath: sqrt(x + 1)
     latex: "\\sqrt{x + 1}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mrow>
-              <mi>x</mi>
-              <mo>+</mo>
-              <mn>1</mn>
-            </mrow>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mrow>
+            <mi>x</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+        </msqrt>
       </math>
     unicodemath: "√(x + 1)"
     omml: |
@@ -183,22 +179,20 @@ cases:
     asciimath: sqrt(a^(2) + b^(2))
     latex: "\\sqrt{a^{2} + b^{2}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msqrt>
-            <mrow>
-              <msup>
-                <mi>a</mi>
-                <mn>2</mn>
-              </msup>
-              <mo>+</mo>
-              <msup>
-                <mi>b</mi>
-                <mn>2</mn>
-              </msup>
-            </mrow>
-          </msqrt>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msqrt>
+          <mrow>
+            <msup>
+              <mi>a</mi>
+              <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <msup>
+              <mi>b</mi>
+              <mn>2</mn>
+            </msup>
+          </mrow>
+        </msqrt>
       </math>
     unicodemath: "√(a^(2) + b^(2))"
     omml: |
@@ -342,17 +336,15 @@ cases:
     asciimath: root(3)(x + 1)
     latex: "\\sqrt[3]{x + 1}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mroot>
-            <mrow>
-              <mi>x</mi>
-              <mo>+</mo>
-              <mn>1</mn>
-            </mrow>
-            <mn>3</mn>
-          </mroot>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mroot>
+          <mrow>
+            <mi>x</mi>
+            <mo>+</mo>
+            <mn>1</mn>
+          </mrow>
+          <mn>3</mn>
+        </mroot>
       </math>
     unicodemath: "√(3&x + 1)"
     omml: |

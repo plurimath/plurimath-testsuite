@@ -22,12 +22,10 @@ cases:
     asciimath: color(red)(x)
     latex: "{\\color{red} x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="red">
-            <mi>x</mi>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="red">
+          <mi>x</mi>
+        </mrow>
       </math>
     unicodemath: "✎(red&x)"
     omml: |
@@ -70,16 +68,14 @@ cases:
     asciimath: color(blue)(y + z)
     latex: "{\\color{blue} y + z}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="blue">
-            <mrow>
-              <mi>y</mi>
-              <mo>+</mo>
-              <mi>z</mi>
-            </mrow>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="blue">
+          <mrow>
+            <mi>y</mi>
+            <mo>+</mo>
+            <mi>z</mi>
+          </mrow>
+        </mrow>
       </math>
     unicodemath: "✎(blue&y + z)"
     omml: |
@@ -145,15 +141,13 @@ cases:
     asciimath: color(red)(frac(1)(2))
     latex: "{\\color{red} \\frac{1}{2}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mstyle mathcolor="red">
-            <mfrac>
-              <mn>1</mn>
-              <mn>2</mn>
-            </mfrac>
-          </mstyle>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow mathcolor="red">
+          <mfrac>
+            <mn>1</mn>
+            <mn>2</mn>
+          </mfrac>
+        </mrow>
       </math>
     unicodemath: "✎(red&(1)/(2))"
     omml: |

@@ -64,13 +64,11 @@ cases:
     asciimath: overset(_)("under")
     latex: "\\overset{\\_}{\\text{under}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover>
-            <mtext>under</mtext>
-            <mi>_</mi>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover>
+          <mtext>under</mtext>
+          <mi>_</mi>
+        </mover>
       </math>
     unicodemath: ("under")┴(_)
     omml: |
@@ -189,13 +187,11 @@ cases:
     asciimath: underset(⏟)("under")
     latex: "\\underset{⏟}{\\text{under}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <munder>
-            <mtext>under</mtext>
-            <mi>⏟</mi>
-          </munder>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <munder>
+          <mtext>under</mtext>
+          <mi>⏟</mi>
+        </munder>
       </math>
     unicodemath: ("under")┬⏟
     omml: |

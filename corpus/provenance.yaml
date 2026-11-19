@@ -10,7 +10,7 @@ generator:
   path: scripts/generate-corpus.rb
   sha256: 351209c1964a74f4d5e3b7d58c14492625b02a2a97c251da1ee2c87a5098f87b
   repository:
-    commit: 67ae25d96ebb38e6af2847abfbe7b112cfde3377
+    commit: dbcef51772725f4e4b4040bb626a705a3da7c807
     clean: true
     dirty_paths: []
   inputs:
@@ -22,9 +22,9 @@ generator:
     bytes: 378909
 oracle:
   gem: plurimath
-  version: 0.11.17
+  version: 0.11.20
   kind: git-checkout
-  commit: 2967dcc47a9f37d5b9a2dd13d94a2ad35d4cc256
+  commit: 1a3033d0881d6c6ba655ab3ce00e0dc3cccfe5b4
   clean: true
   dirty_paths: []
 ruby:
@@ -34,276 +34,292 @@ xml_engine: Plurimath::XmlEngine::OxEngine
 configuration: {}
 lockfile:
   path: Gemfile.lock
-  sha256: a6333753f03b00c2b79f368fe86de57a37809691820e69df50f7541148fc6631
-  resolved_gems: 81
+  sha256: f96dc6cd975477125156e67e1e9254993dc0dd6dc4ce517dd60b42d711d2a906
+  resolved_gems: 86
   platforms:
+  - aarch64-linux
   - aarch64-linux-gnu
   - aarch64-linux-musl
+  - arm-linux
+  - arm-linux-eabihf
   - arm-linux-gnu
   - arm-linux-musl
+  - arm-linux-musleabihf
   - arm64-darwin
   - x86_64-darwin
   - x86_64-linux-gnu
   - x86_64-linux-musl
   bundler: 4.0.3
 direct_runtime:
-  amath: 0.1.0
-  bigdecimal: 4.1.2
+  amath: 0.2.1
+  bigdecimal: 4.1.3
   htmlentities: 4.4.2
-  lutaml-model: 0.8.155
-  mml: 2.4.2
-  omml: 0.2.6
+  latexmath:
+    version: 1.0.0
+    platform: ruby
+    source_kind: git
+    source: https://github.com/plurimath/latexmath.git
+    revision: 372e377261c82e801ce755ebca7abfae1336ec39
+  lutaml-model: 0.8.176
+  mml: 2.4.8
+  omml: 0.2.12
   ostruct: 0.6.3
-  ox: 2.14.28
+  ox: 2.14.29
   parsanol:
-    version: 1.3.134
+    version: 1.5.9
     platform: x86_64-linux-musl
     source_kind: gem
     source: https://rubygems.org/
   parslet: 2.0.0
   thor: 1.5.0
-  unitsml: 0.6.8
+  umath: 0.2.4
+  unitsml:
+    version: 0.6.14
+    platform: ruby
+    source_kind: git
+    source: https://github.com/unitsml/unitsml-ruby.git
+    revision: d64c95a478427b482f9bde2c4cbb626b111cb059
 payloads:
 - path: asciimath/colour.yaml
-  sha256: 0fd701b50d6cfe9cc73b33558ece0a2376272949dd773f1f4eee02089524c36d
-  bytes: 7266
+  sha256: ec165d997b607445c4dd777354c6edb05ef6ed3a16e936c123f162a605b24f62
+  bytes: 7172
 - path: asciimath/fences.yaml
-  sha256: bd573a711b45675ca49306a10bd63d7e3f4ac129785781a9ba07ac47e5b88766
-  bytes: 20200
+  sha256: 73398a174939190e8ec79e6c721b41b2328821fb47ac7613874c0d87399db808
+  bytes: 19908
 - path: asciimath/fonts.yaml
-  sha256: 165709e0c55d1a08212802d65105f867ae77c8413d0acb0efea61ae1c8491dbf
-  bytes: 18721
+  sha256: ccf8baaf77c02c83c0547ae9e3571733598f75c2e74e8184679483d31b1b13b5
+  bytes: 18394
 - path: asciimath/frac.yaml
-  sha256: 254b15b16125084c30f02e888fb2073ad6bce2bb803f146c8e02e3910c2c5b30
-  bytes: 20760
+  sha256: bfeb718c847d39b64969db5f6d45462736cf9f817347274829030efd99d512c8
+  bytes: 20476
 - path: asciimath/left-right.yaml
-  sha256: b025bf9a049ea73697cfad0fe626763c8bd5f6a15e329f98cb9b8d2c71230c7c
-  bytes: 8568
+  sha256: 9324c947b973a8160a680358e2c8aa641d0edef2db7060b5dd18998fb5bfa346
+  bytes: 8439
 - path: asciimath/matrices.yaml
-  sha256: 20290949ec7f6de74dbe9c146ba63f091fe8e608988ca3c763153fb248e7703d
-  bytes: 10997
+  sha256: 5241d9df068f62938db54fa17d3a5f31c31fdc06e1061677aa3bc1d488913e18
+  bytes: 10851
 - path: asciimath/mixed.yaml
-  sha256: a70fa7e4f49c340c35cfbb8c4c306bf7f09575e99d70c0a36222082e55fe5d5b
-  bytes: 30016
+  sha256: b6d7f8d32a706928ed5a6c39ef3b08f0ac57d0a6392d2846e1a4571f736eaa92
+  bytes: 29687
 - path: asciimath/mod.yaml
-  sha256: d7a2800241aa6df75d202c2551852b55dce00e2f0ebeb37a5755c3ff3d122e2c
-  bytes: 9709
+  sha256: cf13b2ae774dc91cae2205fa24a091b539c419bc1f123b45590e9e76d2b1211f
+  bytes: 9562
 - path: asciimath/nary.yaml
-  sha256: 742f1718e06858652fdc878f224bd95a249500b75b9f6a6f6e6fa36f934f073e
-  bytes: 23884
+  sha256: 8327cdf8c715bc5e6a0b3fe884b642b455637d65d6cce856c14e8e190bd1be31
+  bytes: 23560
 - path: asciimath/number-formatting-base.yaml
-  sha256: 5a7a23c6c7d3cac68cb2b876a1c056663487a956b7248dcbf685593a4466dc25
-  bytes: 47528
+  sha256: '0962f6b6ffabccc9efb89c358fe6b6a47c8c9585d7a9c8313fa37568d1fb58ca'
+  bytes: 46673
 - path: asciimath/number-formatting-locale-symbols.yaml
-  sha256: 19b1c300e32e3bf65ab149e2c383a99d1f8f3c29367d6630b17c5354b4f35009
-  bytes: 20129
+  sha256: 495bb834d6525744ac1cb725ddd26aaad7ddad5f96fd6ac72272f8b419bd2b1d
+  bytes: 19801
 - path: asciimath/number-formatting-notation.yaml
-  sha256: 64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290
-  bytes: 39014
+  sha256: 4abb2e8c2362f429a81a4009ead8235f0a57959ef7a8eee4a8d03ce90da0c8a7
+  bytes: 38259
 - path: asciimath/number-formatting-precision.yaml
-  sha256: 1717f95bdd1fc626be1ff7a74217773bde5b2e48edc51c0af6c65185ff832a4d
-  bytes: 20023
+  sha256: 3cfdc19745a999b9b3cb6a9c6a2d3cd5b47a2eb65c3f64f2ed921947eefd8043
+  bytes: 19695
 - path: asciimath/number-formatting-sign-padding.yaml
-  sha256: 257aaede41bd9a3fa0b8b55f777486c07d7fbc982a1ac75297948e928cd857d7
-  bytes: 20735
+  sha256: d701b447017afbbab2fbbe62870be940de0ae0832a0f4e26098a7d5601dbaf39
+  bytes: 20377
 - path: asciimath/number-formatting-significant.yaml
-  sha256: 93d891ab63ed18bdafa663263fa0e925ea731e4667c3c8f8ac6c864c74c33d21
-  bytes: 14902
+  sha256: b096a78b7abc931fafbab989ca43209627c84815bf8cb5f4004feb7d71efc4f1
+  bytes: 14656
 - path: asciimath/number-formatting.yaml
-  sha256: 6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690
-  bytes: 5483
+  sha256: f94747b1b92eb3976419062d5595c3a04a4b45d230d1ca46c7d0b2e5be7da1de
+  bytes: 5401
 - path: asciimath/numbers.yaml
-  sha256: f6303f9334dc95e8de425cdf086b29f246336fd0840106e6ee3b2c4051481413
-  bytes: 10681
+  sha256: 07abb7e32aa53c2f3dc6203c7215965cd6ec29616bed5946c4ad887469d9c2c7
+  bytes: 10496
 - path: asciimath/operators.yaml
-  sha256: 639ef03b187cfbd86d648532c91929585407871779d00c4c5bdbe8ba5a41de05
-  bytes: 15094
+  sha256: 287b4655659c1936cced8ecd6d99b36df0835906d42dd69f290dba5c39fdd3e9
+  bytes: 14846
 - path: asciimath/partial-render.yaml
-  sha256: c92f82d70f654e5966facc6b79a4be165b591bf08eef1fc1bf6147521d071438
-  bytes: 3081
+  sha256: 0d1db48d402e5420c77ff93fce266d571b1123336ea61cad196630c3a17b7095
+  bytes: 3040
 - path: asciimath/permissive.yaml
-  sha256: 8b5f98576f1460a6c6e9e5c7b227e0c537b0a8f54538b77a81807b5df4c7b574
-  bytes: 14912
+  sha256: bb146aed881701461e53d41fe30dbadc3ce6759f371eb317c14c7544c026e0fa
+  bytes: 14664
 - path: asciimath/powers.yaml
-  sha256: 2d6e159df8e3ef1d13256d1ef48f705400648d4dd6c4cef09737cab077f1d037
-  bytes: 26726
+  sha256: f684ae55d5b3dd112e94210c8099f63a3b58c578819f566e0fbaf2ff79af70ed
+  bytes: 26358
 - path: asciimath/quoted-text.yaml
-  sha256: a1e7a3b87cd7295d32b51f91abccbd35ba800495152ff7f3905248396a470fcc
-  bytes: 6939
+  sha256: 5acb5ca6e90910dcc39bb8bea8f51968cd6ba71ba9a3528335af06f8fa524361
+  bytes: 6816
 - path: asciimath/rejections.yaml
   sha256: a27245e780228e44b752b3310431cd8e9371b43f8c9a2c67fc1da7bcdca409ac
   bytes: 2171
 - path: asciimath/roots.yaml
-  sha256: 46d1740c82ab63a9e5bb884609e08be157d3eec29afb965de84baeeb652f5994
-  bytes: 16433
+  sha256: af838f5ce86b152ba3678d325db0d1aee55981c370d7f7570cb977c9e2ce9116
+  bytes: 16231
 - path: asciimath/symbols.yaml
-  sha256: 6fa6f1a61e920ec37f4d6ef217c9e5cd801e111d16ae77422db86b3ba241f322
-  bytes: 14875
+  sha256: 3949747114171073a456f2cceb78adc89fb05908a725e4bac07ae78c1943f082
+  bytes: 14610
 - path: asciimath/unary-functions.yaml
-  sha256: 4bd3d4441d72624be02b26e7b66065e612516b948741e250e0fc999f9fe42029
-  bytes: 22370
+  sha256: 1f786953079aa52b86d080113f42e0d04b30cdf54e4268c81ff2b4192c988a82
+  bytes: 22013
 - path: asciimath/unitsml-xml.yaml
-  sha256: 1fd6d3a51d7502e828459b3fffea72f6fb39c692b35d0767920a63c51cdef188
-  bytes: 4889
+  sha256: dbc4600082929383b21de05aaebce8506b15120f2a4ea5f5971d81439a1a1130
+  bytes: 4679
 - path: asciimath/whitespace.yaml
-  sha256: 01ae9c99daea7ba0b2d9385b76b1ccf4ec6145ee1211aaf4b5df29e55f4074db
-  bytes: 14036
+  sha256: 1c5a04209cc614981fe7c80415c3a7d7a59d1a03bc396f1223e58482fcaa443f
+  bytes: 13823
 - path: html/rejections.yaml
   sha256: '0991ae165fc37398cca28fa4259004af1a547d2782ab8e142aae8c6aaefd3d70'
   bytes: 6003
 - path: latex/accents.yaml
-  sha256: b2b41a40a546302e91e14e7a8a054ce3b9dccf4cd35b94cbc7a99732d4805ed5
-  bytes: 34510
+  sha256: '0855b43258d328df0078564d1b5e724f4461587f6a3dc575495fcff7ea9d9d9c'
+  bytes: 33959
 - path: latex/colour.yaml
-  sha256: 9b2b1a7f13173022d18b45a7a3dce36707658910b4447322078dbc9b09e2c203
-  bytes: 9321
+  sha256: 5cd84fb0687592311be783145fe04245b84dae93f95ad3e2e101c7fb652244e8
+  bytes: 9172
 - path: latex/fences.yaml
-  sha256: 7be056c9ecbff31e41a4980ddc9d9183a50340749c5b7e6e7edb7c933c9e72cc
-  bytes: 14326
+  sha256: 3f8357b7c0204b8cfe754ef103717f0a62933462ba2a34d1b3dcc32ad550daab
+  bytes: 14101
 - path: latex/fonts.yaml
-  sha256: 93a33a6bee668ab41fb4c985d01ca17db676bf2aa835d8a59807d17e46b023b5
-  bytes: 25415
+  sha256: fb5a5b5aca8da1316646ab968e3e2c3bd820f12dbe66f7256d17bd1b13f7d8a5
+  bytes: 24945
 - path: latex/frac.yaml
-  sha256: 745d56c0c513845d0e74ae6032a587f323cf1dfa8cec0219140486fd152b0fd9
-  bytes: 23143
+  sha256: c65d867726beb334bd13862097ced31991d263d20e1a957f85cc8e38442e2b64
+  bytes: 22849
 - path: latex/left-right.yaml
-  sha256: c1eb819befb988cc8499172508de085e2c40d5af522b6b4d37376db84f52019e
-  bytes: 18000
+  sha256: c138345cb155842ad0f1c31ffb6960840d5c33a11d5acd3b643b71c7a2793fd9
+  bytes: 17740
 - path: latex/matrices.yaml
-  sha256: 2b4178c5ac9a241a15bd00bd2d3f9df32f64181b0980275628a2f6035009c2e3
-  bytes: 26180
+  sha256: 010f0343195d0a89cd72596785804491eaa0e78eba8b5b101ed2bccefd513d49
+  bytes: 25810
 - path: latex/mod.yaml
-  sha256: cde235d2f3871c1c3a4dcef3d1ea4a4cd5b7eb42d06845754d4e7b266d243809
-  bytes: 14745
+  sha256: 9a94217e78d68047e21de40cfe580ce9b38688ea2099b190c3fbe4553ab6ac7b
+  bytes: 14508
 - path: latex/nary.yaml
-  sha256: fec413d23b80e23cd7929654cfaaa79d3b9799da29b66f695afaa553beaab4f6
-  bytes: 53176
+  sha256: 729df8bbf2c64b5cae3fbcf5ea429fda01dc2669f6feed4cfab3253bdafc5915
+  bytes: 52434
 - path: latex/numbers.yaml
-  sha256: 21857e7964496d11fa9904c8312995848ed1a7ff470da9640b945c847b26b9f7
-  bytes: 12174
+  sha256: b7f16047dc9ef7e9696992ae564a26013ad9e10cd41d04d9ebb40bbc1e666218
+  bytes: 11977
 - path: latex/operators.yaml
-  sha256: 6def29208ee5bc81864b15f3491035194de2ed73a8d787dbd59364b08e7e1efa
-  bytes: 12289
+  sha256: 9f016c0453a220a71a76ec2161e4cc8bb9f68b5a800753692b445ae572874a62
+  bytes: 12084
 - path: latex/over-under.yaml
-  sha256: faafab42d7abefb367d18bd9255188249af53c88cff0815642cd82239bcf943f
-  bytes: 35399
+  sha256: 2599c4679aa36eebcc9cd2322a94f612fdff9746121b520eb9bcce7e52f4328f
+  bytes: 34874
 - path: latex/powers.yaml
-  sha256: 17963c7930afbb296fbfb025f198b4fe3b65df8abdf719745d4d07727810e6d1
-  bytes: 22608
+  sha256: 57d5ab4d21631ea40ea692c44f0ad030dca35dfe77143978fd92dc2785ad6e96
+  bytes: 22283
 - path: latex/quoted-text.yaml
-  sha256: 5d90bea784697376f18dbb51f8755c5affad415a64c2d21c67689b6f8765f96f
-  bytes: 8700
+  sha256: 8893b424c42835c75f684e13828da90941ed93444f2d3d265aea4931359da0a0
+  bytes: 8552
 - path: latex/rejections.yaml
   sha256: fd1ff7e0fc5e823028485bfa4eabac7e0c396bc0a620d686b77d7aba57dd3328
   bytes: 3125
 - path: latex/roots.yaml
-  sha256: 2d59a6f9dd52812ba0c591fcbce540f72c4154e4cfceab3db7f4d22ee2c3dcaa
-  bytes: 21854
+  sha256: f271126b7c34764c97e41dde2ee5abd5ee42a82021e4f3503fb57912c183e9d8
+  bytes: 21562
 - path: latex/symbols.yaml
-  sha256: 2ddd4fc51dddc3aa96de360cde4a482d4d3abaff23b79d3a61ac36f1fd451133
-  bytes: 8781
+  sha256: 9bd064e21803e518639eae097d3cdd6028dfa1738d7fe29300bcde77730e4f0c
+  bytes: 8633
 - path: latex/unary-functions.yaml
-  sha256: a4e9c6918a694c60efd2eb4f4b634ac5dd03fb83b50a710ad23c4e54748a369b
-  bytes: 26430
+  sha256: 3c3d70c725854b1f93f1e9c22b094a7433c22fc154d81cce38fbf0c015de1c16
+  bytes: 25937
 - path: latex/whitespace.yaml
-  sha256: d8c97228bc10534189bb0471d4359a66590066ad611ecb7626a5c1375d66af7d
-  bytes: 15813
+  sha256: 33bc739fc4da0008faa995d7a4a43232b307906eb1987a2eb9f92d7b0f5c36e6
+  bytes: 15563
 - path: mathml/elementary-math.yaml
-  sha256: a2659c9fba3b09759bae1cd4e018df286da65e128a392c77884923eae778763c
-  bytes: 47800
+  sha256: dcf8e3cca11e8bd51cc6457462bf6fbf47f90c62d133c0f5915f7b1ce629e809
+  bytes: 47182
 - path: mathml/enclose.yaml
-  sha256: 1b2eb76f3cfceaf9dee6263761dc9a50b9f5769d2e783bacf7e28058cedeb144
-  bytes: 3729
+  sha256: f3ecd08875fd6801bba9199bf03f32102e3bcaa1cca20f63a1efc8961a95bf3d
+  bytes: 3680
 - path: mathml/fences.yaml
-  sha256: 6db69077adff35aa2f4e69fc5beeea2898fa10c8e1a351c29614af641efc969b
-  bytes: 159855
+  sha256: 21f6b80630244cb893a0bfb65471f86ece61a0c83e756c9d08374c37bd025128
+  bytes: 157850
 - path: mathml/fractions.yaml
-  sha256: 46bc29a78abc749d68a1454f91661c9e37901d2b36dbfbf4b9ec0c4a3f803140
-  bytes: 68670
+  sha256: 8b037f59428a4a6c31cf87eee59f154fb49971ec676ebcc1e8d3923d240cad3b
+  bytes: 67873
 - path: mathml/layout.yaml
-  sha256: 0c248ba217024f7caa77383218b2ac9ab5fa20bc98e757bf05400349d1d474c0
-  bytes: 32195
+  sha256: b593415f339a12a3c8c408c597fcdc85567a68ba07b04d935a6e5467f438e8b1
+  bytes: 31676
 - path: mathml/over-under.yaml
-  sha256: 527aa46321fe8e3113002ccd3cfbbad5d27e464ac6dd298f9731cc1830798cde
-  bytes: 189075
+  sha256: d737f8820290f998318b5c96c31c5cbf865c40da7b7996b80afcf3e1a4c0d317
+  bytes: 186949
 - path: mathml/partial-render.yaml
-  sha256: a71e2d8c46a7c61608671f17a07c9ab57f749251f748d04fb046de2fe17f6e57
-  bytes: 169603
+  sha256: ff5c7baf2149e861580cb62b6dc18b976b115a0c463145ff8d8bb91a500f17a5
+  bytes: 167739
 - path: mathml/rejections.yaml
   sha256: ed781cf968dc8caba7b5b3b591f63c66e18d5a993a792fba1ac94a95c69dff82
   bytes: 3476
 - path: mathml/roots.yaml
-  sha256: 3106e38a81e151dba3572a79212148aeb27f376b7b3ff06a89132f49238c9e8c
-  bytes: 12364
+  sha256: acdd1733e35a804bbdbc7863711087172617350f041e60e0fcaa50b0f841d791
+  bytes: 12190
 - path: mathml/scripts.yaml
-  sha256: 36d02098a0da77de94c35086d8525762da855ea4372f07dc1603b90c58294588
-  bytes: 332878
+  sha256: 166e7685b9a3abfce0af9802044a22e4bc468ed328071e9fe08a43d887a3328e
+  bytes: 329288
 - path: mathml/tables.yaml
-  sha256: 688839a7ff62d6266668726f025956db5b72d659f75bfb5b70d40bc87f341681
-  bytes: 76065
+  sha256: 80a21eca2f815df3bb37c2d4b0e101d872aa18c8f329916d20500dc211e8f5b3
+  bytes: 75376
 - path: mathml/text.yaml
-  sha256: ac971d12c30121bfa22db80afb16e1c2d338f400ab32c292b9461d075b5fbc60
-  bytes: 29368
+  sha256: 2e7b8327b2f8780275b5638d9b3dedd653c8ea242b2b9bbc18e2bd4140a0aac1
+  bytes: 28947
 - path: mathml/tokens.yaml
-  sha256: be20caf8c0d8d5def8d5761a6b94585aba4cc53d242bfe0602d651d591677d6d
-  bytes: 304985
+  sha256: a4afee50db16c8bf232ef3be14989297e135fa77549a7285bb2c6b033a6c906e
+  bytes: 300549
 - path: omml/accents.yaml
-  sha256: d696f6db7bf47f88b3232493ffdd20721af5808e80b77b29c7ba9125416d4907
-  bytes: 25008
+  sha256: 53631a101b74da9359807f392ff87acb892bafd4ddffd58c70840172a3fadfe4
+  bytes: 24836
 - path: omml/boxes.yaml
-  sha256: 2522f8bc43c2341a7c361fe31670baa01b489832a01fdedd85da99d51108a9f9
-  bytes: 10555
+  sha256: '0803f1409fe35513f41a519afb4c912f45e4c84d3e736e32088482fb275ff797'
+  bytes: 10477
 - path: omml/delimiters.yaml
-  sha256: 3ba61e47f1a035d30618b83ad9363bd232708c85ef0af479ada2c2e4e4b05a05
-  bytes: 121100
+  sha256: 7e0571ae918c22644a24f83bcefdf162d5f2aac53b82d60fda9716ffd2121546
+  bytes: 120370
 - path: omml/equation-arrays.yaml
-  sha256: 87148248bbeb057ac6a0d834165f6186a1dca7e688e2df1dedab8c05406b2eb8
-  bytes: 117029
+  sha256: 2e7d4fac144e1eff284a18bfab584a44c5551bfa6cef8f46234e7628dcdba40b
+  bytes: 116412
 - path: omml/fractions.yaml
-  sha256: c2ec27f1c106fc15533b6d303aa3bb93da0230b6324832f423e855d41887f699
-  bytes: 58775
+  sha256: 37e0c9cc03179e71ac6b64598a3e3fd150a92c93abf8bffff23f802c9d2b17cc
+  bytes: 58444
 - path: omml/functions.yaml
-  sha256: '039637381e90f3ca97f3a13df3c471d5a788d5074c194a9a2f01f99bae4eb890'
-  bytes: 140387
+  sha256: 4733c62a997973a2a49eff44a89f303360394c5a176e453007b201e66997b2fb
+  bytes: 139461
 - path: omml/group-characters.yaml
-  sha256: 912b2cef0726dd5096223c48c7b1373f039f1a0fa3aacd7272da6c36cadc90e2
-  bytes: 16512
+  sha256: 7001a8ab52d65f63fae75bec073457717cbd232e9fc36176a367ba186b0c8cf0
+  bytes: 16426
 - path: omml/limits.yaml
-  sha256: 39e891ab597e5d23e2925c19c2e5d005f29d6240a2c844719aecd05272b9317a
-  bytes: 229417
+  sha256: b1f009951a4039f9f684e1f4619562c193e5b83cb38d3b63371cb05a5f4363f2
+  bytes: 228199
 - path: omml/matrices.yaml
-  sha256: aa3b1bb13a1dbb428d74db05e13745f8471f9f6aef8cd94da2ea9842336d27da
-  bytes: 270293
+  sha256: 1c0fafdd1fe96a3969c02a22901256a7b70cda787972212cb59ca5ed9beb1447
+  bytes: 268714
 - path: omml/nary.yaml
-  sha256: 9e6e58566e6ac265cec8ca5984fa233f029d878165a3ca1ad0c2a8318077850d
-  bytes: 96830
+  sha256: a99f3d01de5da8f3f099229795f2e5ce84a026494ec0fc4aa8be5491723280b4
+  bytes: 96263
 - path: omml/partial-render.yaml
-  sha256: 1720fec4131c0dba1785b440fced3b0d1904800ae56f9132c9037377f1e14361
-  bytes: 335451
+  sha256: 24da5a2b51dd5545170f6dba9f4b1008265ce0480adda13b56766bbd7ba2d397
+  bytes: 333524
 - path: omml/rejections.yaml
   sha256: 985e31c2c66b5bc7d2b6732ae21372670768809f107368acf58c5c0d94c1fcfb
   bytes: 2954
 - path: omml/roots.yaml
-  sha256: 500b4a3dbd6cbcf1500bbdf16e56c62b96792c50316e1a2d0aa9aab00ed0fb37
-  bytes: 30600
+  sha256: 78eeed13911282cde3c2be1f0060d0bc44286cceb5a02a063e33236963095509
+  bytes: 30430
 - path: omml/runs.yaml
-  sha256: b4c26086147c28557de0d931d3b07a0e304f4139b4b7002b87cbaddd45e3d7c8
-  bytes: 139464
+  sha256: fb958fecd53a6ff2868043fa6e25cd4c0d660c1f80aec1d7c507d3fc4fdf20b4
+  bytes: 138348
 - path: omml/scripts.yaml
-  sha256: 75b9b2319d641af627d060c98c10342bb36f2a8e100f1ac9e44bf4d9294770c3
-  bytes: 161595
+  sha256: cf4aa3605fbf8162f3a749bee5e8d575c64c72e7dc24b2c33090b93a7c49bac7
+  bytes: 160621
 - path: unicode/fences.yaml
-  sha256: c9477714fddf180345561275215b7f8be30291e07b70ba3bf491b9d2445806b8
-  bytes: 14321
+  sha256: 82bbdd6d0671250edada1fe0307423826f94eb7d930687d5f397c5aa60de2f08
+  bytes: 14096
 - path: unicode/numbers.yaml
-  sha256: 78e73dc4c8bd75bcef0dcae6b16f50cbe01f72e460bc2a751bb156e7ea0133f8
-  bytes: 12075
+  sha256: b13132f344909641e8837f36aed46dad4aa6f4644eebb0f676261dd34cf8a7d6
+  bytes: 11882
 - path: unicode/operators.yaml
-  sha256: be84f090f4673bfadc88c0d46511888adf6101cd0f72b5b4ed127bec8110a5ea
-  bytes: 15493
+  sha256: 9d5b5168b2b7f70daf0049c3e5710e6dd5d0cebf8e7168d92007c455eb611f95
+  bytes: 15247
 - path: unicode/rejections.yaml
   sha256: 406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a
   bytes: 7642
 - path: unicode/symbols.yaml
-  sha256: 1d8ddd2b56f26c0ae80fb5673d363b41a4717d37202ef9aa1b66b9bb1789de6c
-  bytes: 8875
+  sha256: 4ace7b75a929582e7d7bdcfbfc9361d48ed1cf2d5ac0191f09bae9d03c710666
+  bytes: 8727

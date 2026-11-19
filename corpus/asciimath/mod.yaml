@@ -22,14 +22,12 @@ cases:
     asciimath: a mod b
     latex: "{a} \\mod {b}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>a</mi>
-            <mi>mod</mi>
-            <mi>b</mi>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>a</mi>
+          <mi>mod</mi>
+          <mi>b</mi>
+        </mrow>
       </math>
     unicodemath: amodb
     omml: |
@@ -84,14 +82,12 @@ cases:
     asciimath: x mod 2
     latex: "{x} \\mod {2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mi>x</mi>
-            <mi>mod</mi>
-            <mn>2</mn>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mi>x</mi>
+          <mi>mod</mi>
+          <mn>2</mn>
+        </mrow>
       </math>
     unicodemath: xmod2
     omml: |
@@ -149,20 +145,18 @@ cases:
     asciimath: "(a + b) mod n"
     latex: "{( a + b )} \\mod {n}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
           <mrow>
-            <mrow>
-              <mo>(</mo>
-              <mi>a</mi>
-              <mo>+</mo>
-              <mi>b</mi>
-              <mo>)</mo>
-            </mrow>
-            <mi>mod</mi>
-            <mi>n</mi>
+            <mo>(</mo>
+            <mi>a</mi>
+            <mo>+</mo>
+            <mi>b</mi>
+            <mo>)</mo>
           </mrow>
-        </mstyle>
+          <mi>mod</mi>
+          <mi>n</mi>
+        </mrow>
       </math>
     unicodemath: "(a + b)modn"
     omml: |

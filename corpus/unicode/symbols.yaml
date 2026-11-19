@@ -22,10 +22,8 @@ cases:
     asciimath: alpha
     latex: "\\alpha"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3b1;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3b1;</mi>
       </math>
     unicodemath: α
     omml: |
@@ -58,10 +56,8 @@ cases:
     asciimath: pi
     latex: "\\pi"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3c0;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3c0;</mi>
       </math>
     unicodemath: π
     omml: |
@@ -94,10 +90,8 @@ cases:
     asciimath: oo
     latex: "\\infty"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x221e;</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x221e;</mo>
       </math>
     unicodemath: "∞"
     omml: |
@@ -130,10 +124,8 @@ cases:
     asciimath: '"P{emptyset}"'
     latex: "\\varnothing"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x2205;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x2205;</mi>
       </math>
     unicodemath: "∅"
     omml: |

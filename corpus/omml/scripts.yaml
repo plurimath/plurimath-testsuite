@@ -70,13 +70,11 @@ cases:
     asciimath: 1^(2)
     latex: 1^{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mn>1</mn>
-            <mn>2</mn>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mn>1</mn>
+          <mn>2</mn>
+        </msup>
       </math>
     unicodemath: 1^(2)
     omml: |
@@ -209,13 +207,11 @@ cases:
     asciimath: 1_(2)
     latex: 1_{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mn>1</mn>
-            <mn>2</mn>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mn>1</mn>
+          <mn>2</mn>
+        </msub>
       </math>
     unicodemath: 1_(2)
     omml: |
@@ -358,14 +354,12 @@ cases:
     asciimath: 1_(3)^(2)
     latex: 1_{3}^{2}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msubsup>
-            <mn>1</mn>
-            <mn>3</mn>
-            <mn>2</mn>
-          </msubsup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msubsup>
+          <mn>1</mn>
+          <mn>3</mn>
+          <mn>2</mn>
+        </msubsup>
       </math>
     unicodemath: 1_(3)^(2)
     omml: |
@@ -521,17 +515,15 @@ cases:
     asciimath: sin^(-1) "x"
     latex: "\\sin{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>sin</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>sin</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: sin⁡^(-1) "x"
     omml: |
@@ -674,17 +666,15 @@ cases:
     asciimath: cos^(-1) "x"
     latex: "\\cos{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>cos</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>cos</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: cos⁡^(-1) "x"
     omml: |
@@ -827,17 +817,15 @@ cases:
     asciimath: tan^(-1) "x"
     latex: "\\tan{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>tan</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>tan</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: tan⁡^(-1) "x"
     omml: |
@@ -980,17 +968,15 @@ cases:
     asciimath: csc^(-1) "x"
     latex: "\\csc{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>csc</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>csc</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: csc⁡^(-1) "x"
     omml: |
@@ -1133,17 +1119,15 @@ cases:
     asciimath: sec^(-1) "x"
     latex: "\\sec{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>sec</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>sec</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: sec⁡^(-1) "x"
     omml: |
@@ -1286,17 +1270,15 @@ cases:
     asciimath: cot^(-1) "x"
     latex: "\\cot{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>cot</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>cot</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: cot⁡^(-1) "x"
     omml: |
@@ -1439,17 +1421,15 @@ cases:
     asciimath: sinh^(-1) "x"
     latex: "\\sinh{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>sinh</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>sinh</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: sinh⁡^(-1) "x"
     omml: |
@@ -1592,17 +1572,15 @@ cases:
     asciimath: cosh^(-1) "x"
     latex: "\\cosh{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>cosh</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>cosh</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: cosh⁡^(-1) "x"
     omml: |
@@ -1745,17 +1723,15 @@ cases:
     asciimath: tanh^(-1) "x"
     latex: "\\tanh{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>tanh</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>tanh</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: tanh⁡^(-1) "x"
     omml: |
@@ -1898,17 +1874,15 @@ cases:
     asciimath: csch^(-1) "x"
     latex: "\\csch{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>csch</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>csch</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: csch⁡^(-1) "x"
     omml: |
@@ -2051,17 +2025,15 @@ cases:
     asciimath: sech^(-1) "x"
     latex: "\\sech{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>sech</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>sech</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: sech⁡^(-1) "x"
     omml: |
@@ -2204,17 +2176,15 @@ cases:
     asciimath: coth^(-1) "x"
     latex: "\\coth{}^{-1} \\text{x}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mrow>
-              <mo rspace="thickmathspace"/>
-              <mi>coth</mi>
-            </mrow>
-            <mi>-1</mi>
-          </msup>
-          <mtext>x</mtext>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mrow>
+            <mo rspace="0.2778em"/>
+            <mi>coth</mi>
+          </mrow>
+          <mi>-1</mi>
+        </msup>
+        <mtext>x</mtext>
       </math>
     unicodemath: coth⁡^(-1) "x"
     omml: |
@@ -2463,27 +2433,25 @@ cases:
     asciimath: '"a"^(2) = "b"^(2) + "c"^(2)'
     latex: "\\text{a}^{2} = \\text{b}^{2} + \\text{c}^{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <menclose notation="longdiv">
-            <mrow>
-              <msup>
-                <mtext>a</mtext>
-                <mn>2</mn>
-              </msup>
-              <mo>=</mo>
-              <msup>
-                <mtext>b</mtext>
-                <mn>2</mn>
-              </msup>
-              <mo>+</mo>
-              <msup>
-                <mtext>c</mtext>
-                <mn>2</mn>
-              </msup>
-            </mrow>
-          </menclose>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <menclose notation="longdiv">
+          <mrow>
+            <msup>
+              <mtext>a</mtext>
+              <mn>2</mn>
+            </msup>
+            <mo>=</mo>
+            <msup>
+              <mtext>b</mtext>
+              <mn>2</mn>
+            </msup>
+            <mo>+</mo>
+            <msup>
+              <mtext>c</mtext>
+              <mn>2</mn>
+            </msup>
+          </mrow>
+        </menclose>
       </math>
     unicodemath: ⟌("a"^(2) = "b"^(2) + "c"^(2))
     omml: |
@@ -2775,14 +2743,12 @@ cases:
     asciimath: log_("a") 2
     latex: "\\log_{\\text{a}} 2"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>log</mi>
-            <mtext>a</mtext>
-          </msub>
-          <mn>2</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>log</mi>
+          <mtext>a</mtext>
+        </msub>
+        <mn>2</mn>
       </math>
     unicodemath: log_("a") 2
     omml: |
@@ -2939,13 +2905,11 @@ cases:
     asciimath: log_("x")
     latex: "\\log_{\\text{x}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msub>
-            <mi>log</mi>
-            <mtext>x</mtext>
-          </msub>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msub>
+          <mi>log</mi>
+          <mtext>x</mtext>
+        </msub>
       </math>
     unicodemath: log_("x")
     omml: |

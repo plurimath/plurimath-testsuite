@@ -22,10 +22,8 @@ cases:
     asciimath: x
     latex: x
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
       </math>
     unicodemath: x
     omml: |
@@ -59,10 +57,8 @@ cases:
     asciimath: alpha
     latex: "\\alpha"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3b1;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3b1;</mi>
       </math>
     unicodemath: α
     omml: |
@@ -96,10 +92,8 @@ cases:
     asciimath: pi
     latex: "\\pi"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3c0;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3c0;</mi>
       </math>
     unicodemath: π
     omml: |
@@ -133,10 +127,8 @@ cases:
     asciimath: sigma
     latex: "\\sigma"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>&#x3c3;</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>&#x3c3;</mi>
       </math>
     unicodemath: σ
     omml: |
@@ -170,10 +162,8 @@ cases:
     asciimath: oo
     latex: "\\infty"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x221e;</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x221e;</mo>
       </math>
     unicodemath: "∞"
     omml: |
@@ -207,12 +197,10 @@ cases:
     asciimath: x y z
     latex: x y z
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-          <mi>y</mi>
-          <mi>z</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
+        <mi>y</mi>
+        <mi>z</mi>
       </math>
     unicodemath: x y z
     omml: |
@@ -264,11 +252,9 @@ cases:
     asciimath: x y
     latex: x y
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>x</mi>
-          <mi>y</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>x</mi>
+        <mi>y</mi>
       </math>
     unicodemath: x y
     omml: |

@@ -20,40 +20,38 @@ cases:
   expected:
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow xref="U_uF">
-              <mstyle mathvariant="normal">
-                <mi>&#xb5;F</mi>
-              </mstyle>
-              <Unit xmlns="https://schema.unitsml.org/unitsml/1.0" dimensionURL="#NISTd19" id="U_uF">
-                <UnitSystem name="SI" type="SI_derived" lang="en"/>
-                <UnitName lang="en">uF</UnitName>
-                <UnitSymbol type="HTML">µF</UnitSymbol>
-                <UnitSymbol type="MathMl">
-                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mi mathvariant="normal">µF</mi>
-                  </math>
-                </UnitSymbol>
-                <RootUnits>
-                  <EnumeratedRootUnit unit="farad" prefix="u"/>
-                </RootUnits>
-              </Unit>
-              <Prefix xmlns="https://schema.unitsml.org/unitsml/1.0" prefixBase="10" prefixPower="-6" id="NISTp10_-6">
-                <PrefixName lang="en">micro</PrefixName>
-                <PrefixSymbol type="ASCII">u</PrefixSymbol>
-                <PrefixSymbol type="unicode">μ</PrefixSymbol>
-                <PrefixSymbol type="LaTeX">$mu$</PrefixSymbol>
-                <PrefixSymbol type="HTML">µ</PrefixSymbol>
-              </Prefix>
-              <Dimension xmlns="https://schema.unitsml.org/unitsml/1.0" id="NISTd19">
-                <Length symbol="L" powerNumerator="-2"/>
-                <Mass symbol="M" powerNumerator="-1"/>
-                <Time symbol="T" powerNumerator="4"/>
-                <ElectricCurrent symbol="I" powerNumerator="2"/>
-              </Dimension>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow xref="U_uF">
+            <mrow mathvariant="normal">
+              <mi>&#xb5;F</mi>
             </mrow>
-          </mstyle>
+            <Unit xmlns="https://schema.unitsml.org/unitsml/1.0" dimensionURL="#NISTd19" id="U_uF">
+              <UnitSystem name="SI" type="SI_derived" lang="en"/>
+              <UnitName lang="en">uF</UnitName>
+              <UnitSymbol type="HTML">µF</UnitSymbol>
+              <UnitSymbol type="MathMl">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                  <mi mathvariant="normal">µF</mi>
+                </math>
+              </UnitSymbol>
+              <RootUnits>
+                <EnumeratedRootUnit unit="farad" prefix="u"/>
+              </RootUnits>
+            </Unit>
+            <Prefix xmlns="https://schema.unitsml.org/unitsml/1.0" prefixBase="10" prefixPower="-6" id="NISTp10_-6">
+              <PrefixName lang="en">micro</PrefixName>
+              <PrefixSymbol type="ASCII">u</PrefixSymbol>
+              <PrefixSymbol type="unicode">μ</PrefixSymbol>
+              <PrefixSymbol type="LaTeX">$mu$</PrefixSymbol>
+              <PrefixSymbol type="HTML">µ</PrefixSymbol>
+            </Prefix>
+            <Dimension xmlns="https://schema.unitsml.org/unitsml/1.0" id="NISTd19">
+              <Length symbol="L" powerNumerator="-2"/>
+              <Mass symbol="M" powerNumerator="-1"/>
+              <Time symbol="T" powerNumerator="4"/>
+              <ElectricCurrent symbol="I" powerNumerator="2"/>
+            </Dimension>
+          </mrow>
         </math>
   parse_tree:
     expr:
@@ -80,40 +78,38 @@ cases:
   expected:
     mathml:
       output: |
-        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-          <mstyle displaystyle="true">
-            <mrow xref="U_uH">
-              <mstyle mathvariant="normal">
-                <mi>&#xb5;H</mi>
-              </mstyle>
-              <Unit xmlns="https://schema.unitsml.org/unitsml/1.0" dimensionURL="#NISTd23" id="U_uH">
-                <UnitSystem name="SI" type="SI_derived" lang="en"/>
-                <UnitName lang="en">uH</UnitName>
-                <UnitSymbol type="HTML">µH</UnitSymbol>
-                <UnitSymbol type="MathMl">
-                  <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-                    <mi mathvariant="normal">µH</mi>
-                  </math>
-                </UnitSymbol>
-                <RootUnits>
-                  <EnumeratedRootUnit unit="henry" prefix="u"/>
-                </RootUnits>
-              </Unit>
-              <Prefix xmlns="https://schema.unitsml.org/unitsml/1.0" prefixBase="10" prefixPower="-6" id="NISTp10_-6">
-                <PrefixName lang="en">micro</PrefixName>
-                <PrefixSymbol type="ASCII">u</PrefixSymbol>
-                <PrefixSymbol type="unicode">μ</PrefixSymbol>
-                <PrefixSymbol type="LaTeX">$mu$</PrefixSymbol>
-                <PrefixSymbol type="HTML">µ</PrefixSymbol>
-              </Prefix>
-              <Dimension xmlns="https://schema.unitsml.org/unitsml/1.0" id="NISTd23">
-                <Length symbol="L" powerNumerator="2"/>
-                <Mass symbol="M" powerNumerator="1"/>
-                <Time symbol="T" powerNumerator="-2"/>
-                <ElectricCurrent symbol="I" powerNumerator="-2"/>
-              </Dimension>
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+          <mrow xref="U_uH">
+            <mrow mathvariant="normal">
+              <mi>&#xb5;H</mi>
             </mrow>
-          </mstyle>
+            <Unit xmlns="https://schema.unitsml.org/unitsml/1.0" dimensionURL="#NISTd23" id="U_uH">
+              <UnitSystem name="SI" type="SI_derived" lang="en"/>
+              <UnitName lang="en">uH</UnitName>
+              <UnitSymbol type="HTML">µH</UnitSymbol>
+              <UnitSymbol type="MathMl">
+                <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+                  <mi mathvariant="normal">µH</mi>
+                </math>
+              </UnitSymbol>
+              <RootUnits>
+                <EnumeratedRootUnit unit="henry" prefix="u"/>
+              </RootUnits>
+            </Unit>
+            <Prefix xmlns="https://schema.unitsml.org/unitsml/1.0" prefixBase="10" prefixPower="-6" id="NISTp10_-6">
+              <PrefixName lang="en">micro</PrefixName>
+              <PrefixSymbol type="ASCII">u</PrefixSymbol>
+              <PrefixSymbol type="unicode">μ</PrefixSymbol>
+              <PrefixSymbol type="LaTeX">$mu$</PrefixSymbol>
+              <PrefixSymbol type="HTML">µ</PrefixSymbol>
+            </Prefix>
+            <Dimension xmlns="https://schema.unitsml.org/unitsml/1.0" id="NISTd23">
+              <Length symbol="L" powerNumerator="2"/>
+              <Mass symbol="M" powerNumerator="1"/>
+              <Time symbol="T" powerNumerator="-2"/>
+              <ElectricCurrent symbol="I" powerNumerator="-2"/>
+            </Dimension>
+          </mrow>
         </math>
   parse_tree:
     expr:

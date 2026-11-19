@@ -22,12 +22,10 @@ cases:
     asciimath: a + b
     latex: a + b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>+</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>+</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a + b
     omml: |
@@ -77,12 +75,10 @@ cases:
     asciimath: a xx b
     latex: a \times b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>&#xd7;</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>&#xd7;</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a × b
     omml: |
@@ -132,12 +128,10 @@ cases:
     asciimath: a le b
     latex: a \le b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>&#x2264;</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>&#x2264;</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a ≤ b
     omml: |
@@ -187,12 +181,10 @@ cases:
     asciimath: a equiv b
     latex: a \equiv b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mi>&#x2261;</mi>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mi>&#x2261;</mi>
+        <mi>b</mi>
       </math>
     unicodemath: a ≡ b
     omml: |
@@ -242,12 +234,10 @@ cases:
     asciimath: a pm b
     latex: a \pm b
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mi>a</mi>
-          <mo>&#xb1;</mo>
-          <mi>b</mi>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mi>a</mi>
+        <mo>&#xb1;</mo>
+        <mi>b</mi>
       </math>
     unicodemath: a ± b
     omml: |

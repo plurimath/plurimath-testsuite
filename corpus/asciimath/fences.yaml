@@ -22,14 +22,12 @@ cases:
     asciimath: "(x)"
     latex: "( x )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>x</mi>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(x)"
     omml: |
@@ -90,16 +88,14 @@ cases:
     asciimath: "(x + y)"
     latex: "( x + y )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>x</mi>
-            <mo>+</mo>
-            <mi>y</mi>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>x</mi>
+          <mo>+</mo>
+          <mi>y</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(x + y)"
     omml: |
@@ -178,16 +174,14 @@ cases:
     asciimath: "[a , b]"
     latex: "[ a , b ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>[</mo>
-            <mi>a</mi>
-            <mo>,</mo>
-            <mi>b</mi>
-            <mo>]</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>[</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>]</mo>
+        </mrow>
       </math>
     unicodemath: "[a , b]"
     omml: |
@@ -265,14 +259,12 @@ cases:
     asciimath: "{x}"
     latex: "\\{ x \\}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>{</mo>
-            <mi>x</mi>
-            <mo>}</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>{</mo>
+          <mi>x</mi>
+          <mo>}</mo>
+        </mrow>
       </math>
     unicodemath: "{x}"
     omml: |
@@ -333,18 +325,16 @@ cases:
     asciimath: "(a , b , c)"
     latex: "( a , b , c )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mi>a</mi>
-            <mo>,</mo>
-            <mi>b</mi>
-            <mo>,</mo>
-            <mi>c</mi>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mi>a</mi>
+          <mo>,</mo>
+          <mi>b</mi>
+          <mo>,</mo>
+          <mi>c</mi>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: "(a , b , c)"
     omml: |
@@ -439,17 +429,15 @@ cases:
     asciimath: frac(x + y)(2)
     latex: "\\frac{x + y}{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mi>x</mi>
-              <mo>+</mo>
-              <mi>y</mi>
-            </mrow>
-            <mn>2</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mi>x</mi>
+            <mo>+</mo>
+            <mi>y</mi>
+          </mrow>
+          <mn>2</mn>
+        </mfrac>
       </math>
     unicodemath: "(x + y)/(2)"
     omml: |

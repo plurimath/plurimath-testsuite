@@ -50,13 +50,11 @@ cases:
     asciimath: hat("a")
     latex: "\\hat{\\text{a}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover accent="true">
-            <mtext>a</mtext>
-            <mo>^</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover accent="true">
+          <mtext>a</mtext>
+          <mo>^</mo>
+        </mover>
       </math>
     unicodemath: ("a")̂
     omml: |
@@ -142,13 +140,11 @@ cases:
     asciimath: obrace("c")
     latex: "\\overbrace{\\text{c}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover accent="true">
-            <mtext>c</mtext>
-            <mo>&#x23de;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover accent="true">
+          <mtext>c</mtext>
+          <mo>&#x23de;</mo>
+        </mover>
       </math>
     unicodemath: ⏞("c")
     omml: |
@@ -246,13 +242,11 @@ cases:
     asciimath: bar("under")
     latex: "\\overline{\\text{under}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover accent="false">
-            <mtext>under</mtext>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover accent="false">
+          <mtext>under</mtext>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: ("under")̅
     omml: |
@@ -336,13 +330,11 @@ cases:
     asciimath: bar("x")
     latex: "\\overline{\\text{x}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mover accent="true">
-            <mtext>x</mtext>
-            <mo>&#xaf;</mo>
-          </mover>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mover accent="true">
+          <mtext>x</mtext>
+          <mo>&#xaf;</mo>
+        </mover>
       </math>
     unicodemath: ("x")̅
     omml: |

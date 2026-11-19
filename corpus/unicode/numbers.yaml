@@ -22,10 +22,8 @@ cases:
     asciimath: '1'
     latex: '1'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>1</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>1</mn>
       </math>
     unicodemath: '1'
     omml: |
@@ -62,10 +60,8 @@ cases:
     asciimath: '3.14'
     latex: '3.14'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>3.14</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>3.14</mn>
       </math>
     unicodemath: '3.14'
     omml: |
@@ -106,10 +102,8 @@ cases:
     asciimath: '1,5'
     latex: '1,5'
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mn>1,5</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mn>1,5</mn>
       </math>
     unicodemath: '1,5'
     omml: |
@@ -150,11 +144,9 @@ cases:
     asciimath: "- 42"
     latex: "- 42"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>&#x2212;</mo>
-          <mn>42</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>&#x2212;</mo>
+        <mn>42</mn>
       </math>
     unicodemath: "− 42"
     omml: |
@@ -199,13 +191,11 @@ cases:
     asciimath: 2^(10)
     latex: 2^{10}
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <msup>
-            <mn>2</mn>
-            <mn>10</mn>
-          </msup>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <msup>
+          <mn>2</mn>
+          <mn>10</mn>
+        </msup>
       </math>
     unicodemath: 2^(10)
     omml: |

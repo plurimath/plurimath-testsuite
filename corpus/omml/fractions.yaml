@@ -76,15 +76,13 @@ cases:
     asciimath: frac(1 "")
     latex: "\\frac{1 \\text{}}{}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mrow>
-              <mn>1</mn>
-              <mtext></mtext>
-            </mrow>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mrow>
+            <mn>1</mn>
+            <mtext></mtext>
+          </mrow>
+        </mfrac>
       </math>
     unicodemath: (1 "")/
     omml: |
@@ -226,13 +224,11 @@ cases:
     asciimath: frac(1)(2)
     latex: "\\frac{1}{2}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mn>1</mn>
-            <mn>2</mn>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mn>1</mn>
+          <mn>2</mn>
+        </mfrac>
       </math>
     unicodemath: "(1)/(2)"
     omml: |
@@ -365,13 +361,11 @@ cases:
     asciimath: frac("a")("b")
     latex: "\\frac{\\text{a}}{\\text{b}}"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mtext>a</mtext>
-            <mtext>b</mtext>
-          </mfrac>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mtext>a</mtext>
+          <mtext>b</mtext>
+        </mfrac>
       </math>
     unicodemath: ("a")/("b")
     omml: |
@@ -514,17 +508,15 @@ cases:
     asciimath: (frac("n")("m"))
     latex: "( \\frac{\\text{n}}{\\text{m}} )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac>
-              <mtext>n</mtext>
-              <mtext>m</mtext>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac>
+            <mtext>n</mtext>
+            <mtext>m</mtext>
+          </mfrac>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: (("n")/("m"))
     omml: |
@@ -696,17 +688,15 @@ cases:
     asciimath: (frac("n")("k"))
     latex: "( \\frac{\\text{n}}{\\text{k}} )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>(</mo>
-            <mfrac>
-              <mtext>n</mtext>
-              <mtext>k</mtext>
-            </mfrac>
-            <mo>)</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>(</mo>
+          <mfrac>
+            <mtext>n</mtext>
+            <mtext>k</mtext>
+          </mfrac>
+          <mo>)</mo>
+        </mrow>
       </math>
     unicodemath: (("n")/("k"))
     omml: |
@@ -882,17 +872,15 @@ cases:
     asciimath: <<frac("n")("k")>>
     latex: "\\langle \\frac{\\text{n}}{\\text{k}} \\rangle"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mrow>
-            <mo>&#x2329;</mo>
-            <mfrac>
-              <mtext>n</mtext>
-              <mtext>k</mtext>
-            </mfrac>
-            <mo>&#x232a;</mo>
-          </mrow>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mrow>
+          <mo>&#x2329;</mo>
+          <mfrac>
+            <mtext>n</mtext>
+            <mtext>k</mtext>
+          </mfrac>
+          <mo>&#x232a;</mo>
+        </mrow>
       </math>
     unicodemath: ⟨("n")/("k")⟩
     omml: |
@@ -1048,14 +1036,12 @@ cases:
     asciimath: frac("x")("y") 2
     latex: "\\frac{\\text{x}}{\\text{y}} 2"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mfrac>
-            <mtext>x</mtext>
-            <mtext>y</mtext>
-          </mfrac>
-          <mn>2</mn>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mfrac>
+          <mtext>x</mtext>
+          <mtext>y</mtext>
+        </mfrac>
+        <mn>2</mn>
       </math>
     unicodemath: ("x")/("y") 2
     omml: |

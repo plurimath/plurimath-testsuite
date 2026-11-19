@@ -22,12 +22,10 @@ cases:
     asciimath: left( x right)
     latex: "\\left ( x \\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>(</mo>
-          <mi>x</mi>
-          <mo>)</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>(</mo>
+        <mi>x</mi>
+        <mo>)</mo>
       </math>
     unicodemath: "( x )"
     omml: |
@@ -76,12 +74,10 @@ cases:
     asciimath: left[ x right]
     latex: "\\left [ x \\right ]"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>[</mo>
-          <mi>x</mi>
-          <mo>]</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>[</mo>
+        <mi>x</mi>
+        <mo>]</mo>
       </math>
     unicodemath: "[ x ]"
     omml: |
@@ -130,15 +126,13 @@ cases:
     asciimath: left( frac(a)(b) right)
     latex: "\\left ( \\frac{a}{b} \\right )"
     mathml: |
-      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
-        <mstyle displaystyle="true">
-          <mo>(</mo>
-          <mfrac>
-            <mi>a</mi>
-            <mi>b</mi>
-          </mfrac>
-          <mo>)</mo>
-        </mstyle>
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block" displaystyle="true">
+        <mo>(</mo>
+        <mfrac>
+          <mi>a</mi>
+          <mi>b</mi>
+        </mfrac>
+        <mo>)</mo>
       </math>
     unicodemath: "( (a)/(b) )"
     omml: |
