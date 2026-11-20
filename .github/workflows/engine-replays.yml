@@ -59,6 +59,10 @@ jobs:
             artifacts
             grammars
 
+      # Both harnesses read sealed YAML using Psych's producer semantics.
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.4"
       - if: matrix.engine == 'wasm'
         uses: actions/setup-node@v4
         with:
@@ -85,10 +89,6 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: "1.95.0"
-      # Both harnesses read sealed YAML using Psych's producer semantics.
-      - uses: ruby/setup-ruby@v1
-        with:
-          ruby-version: "3.4"
       # The Rust replay reads JSON, so the YAML payloads are converted first.
       - if: matrix.engine == 'rust'
         name: Convert payloads to JSON
