@@ -27,13 +27,15 @@ class PortableYamlTest(unittest.TestCase):
     def test_portable_nested_stage_payload(self):
         result = self.run_check(
             'cases:\n- id: "smoke"\n  input: "yes 1:20 017 α"\n'
-            '  values: [true, false, null, 17, 1.5, 0.00001]\n', nested=True
+            '  values: [true, false, null, 17, 1.5, 0.00001]\n'
+            '  outputs: ["0e0", "1e21", "1.123_456_789"]\n', nested=True
         )
         self.assertEqual(result.returncode, 0, result.stderr)
         self.assertIn("1 files checked, 0 failures", result.stdout)
 
     def test_ambiguous_scalars(self):
-        for scalar in ["yes", "on", "1:20", "017", "0o17", "1e-3"]:
+        for scalar in ["yes", "on", "1:20", "017", "0o17", "1e-3",
+                       "0e0", "1e21", "1.123_456_789"]:
             with self.subTest(scalar=scalar):
                 result = self.run_check(f"value: {scalar}\n")
                 self.assertEqual(result.returncode, 1, result.stdout)

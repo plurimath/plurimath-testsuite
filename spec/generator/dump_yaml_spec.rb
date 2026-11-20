@@ -36,4 +36,16 @@ RSpec.describe CorpusGenerator, ".dump_yaml" do
     expect(YAML.safe_load(described_class.dump_yaml(data),
                           aliases: false)).to eq(data)
   end
+
+  it "quotes numeric strings that YAML 1.2 would otherwise read as numbers" do
+    strings = %w[0e0 1e21 1e-3 -1E+21 1.123_456_789 .123_456 0o17]
+    data = { "outputs" => strings, "numbers" => [0, 17, 1.5] }
+    yaml = described_class.dump_yaml(data)
+    nodes = Psych.parse_stream(yaml).each.grep(Psych::Nodes::Scalar)
+    outputs = nodes.select { |node| strings.include?(node.value) }
+
+    expect(outputs.size).to eq(strings.size)
+    expect(outputs).to all(have_attributes(plain: false, quoted: true))
+    expect(YAML.safe_load(yaml, aliases: false)).to eq(data)
+  end
 end
