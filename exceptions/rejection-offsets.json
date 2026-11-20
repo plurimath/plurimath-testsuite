@@ -1,0 +1,32 @@
+{
+  "schema": "plurimath-rejection-offset-exceptions/1",
+  "testsuiteCommit": "025eff6747230fed73da1316f2dc9aebb6e98801",
+  "path": "corpus/unicode/rejections.yaml",
+  "sha256": "406b178dc37b4a4011090327e26c95936493f837404252b03259fe765402f85a",
+  "oracle": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "883011c2bd9239a6bac602476ef003aadd50b33f",
+    "umathVersion": "0.2.4",
+    "reason": "Current Ruby uses the shared Umath PARG stage, which reports the deepest failed position after the broken bar. Historical corpus bytes remain unchanged; require the exact current offset, never skip rejection checks."
+  },
+  "exceptions": [
+    {
+      "id": "unicode-trailing-broken-bar",
+      "input": "a¦",
+      "historicalOriginalOffset": 1,
+      "currentOriginalOffset": 2,
+      "rubyByteOffset": 3,
+      "rubyCharOffset": 2,
+      "historicalPreprocessedOffset": 2
+    },
+    {
+      "id": "unicode-greek-broken-bar",
+      "input": "α¦",
+      "historicalOriginalOffset": 1,
+      "currentOriginalOffset": 2,
+      "rubyByteOffset": 4,
+      "rubyCharOffset": 2,
+      "historicalPreprocessedOffset": 8
+    }
+  ]
+}
