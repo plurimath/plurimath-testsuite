@@ -25,11 +25,16 @@ module FacadeSuccessors
     sources = data.fetch("cases").map { |row| row.fetch("source").values_at("path", "id") }
     raise Error, "duplicate facade successor or source" unless ids.uniq == ids && sources.uniq == sources
 
+    # Several authored rows share one large immutable fixture file. Read one
+    # consistent snapshot per path, retaining each entry's checksum guard.
+    source_files = {}
     data.fetch("cases").each do |entry|
       source = entry.fetch("source")
       source_path = File.join(root, source.fetch("path"))
-      raise Error, "source checksum differs: #{source_path}" unless Digest::SHA256.file(source_path).hexdigest == source.fetch("sha256")
-      rows = YAML.safe_load_file(source_path, aliases: false).fetch("cases")
+      file = source_files[source_path] ||= { text: File.binread(source_path) }
+      file[:sha256] ||= Digest::SHA256.hexdigest(file.fetch(:text))
+      raise Error, "source checksum differs: #{source_path}" unless file.fetch(:sha256) == source.fetch("sha256")
+      rows = file[:rows] ||= YAML.safe_load(file.fetch(:text), aliases: false).fetch("cases")
       matches = rows.select { |row| row.fetch("id") == source.fetch("id") }
       raise Error, "expected exactly one frozen source row" unless matches.length == 1
       raise Error, "successor ID must name its source and profile" unless entry.fetch("id") == "#{source.fetch('id')}-#{profile}"
@@ -52,6 +57,8 @@ module FacadeSuccessors
 
         copy.fetch("expected")[target] = value
       end
+    elsif entry.key?("renderer_assertions")
+      apply_renderer_assertions(copy, entry)
     else
       raise Error, "refusal successor must reference renderer fixtures" unless entry.fetch("source").fetch("path") == "fixtures/renderer-expectations.yaml"
 
@@ -74,6 +81,48 @@ module FacadeSuccessors
       end
     end
     copy
+  end
+
+  def apply_renderer_assertions(copy, entry)
+    unless entry.fetch("source").fetch("path") == "fixtures/renderer-expectations.yaml"
+      raise Error, "renderer successor must reference renderer fixtures"
+    end
+
+    lines = entry.fetch("renderer_assertions").map { |item| item.fetch("assertion_line") }
+    raise Error, "duplicate renderer assertion line" unless lines.uniq == lines
+
+    entry.fetch("renderer_assertions").each do |replacement|
+      line = replacement.fetch("assertion_line")
+      if copy.key?("program")
+        steps = copy.fetch("program").fetch("steps")
+        matches = steps.select { |step| step["kind"] == "assert" && step["assertion_line"] == line }
+        raise Error, "expected exactly one original assertion" unless matches.length == 1
+
+        assertion = matches.first
+        previous = assertion["expected"]
+        if assertion.key?("expected_slot")
+          build = steps.find { |step| step["kind"] == "build" && step["save"] == assertion.fetch("expected_slot") }
+          recipe = build && build.fetch("recipe")
+          recipe = recipe.fetch("value") while recipe && recipe["kind"] == "memo"
+          raise Error, "renderer expected slot must build a literal string" unless recipe && recipe["kind"] == "literal"
+
+          previous = recipe.fetch("value")
+        end
+      else
+        raise Error, "renderer assertion line differs from source" unless copy.fetch("source").fetch("assertion_line") == line
+        raise Error, "renderer observations need their own successor" if copy.key?("observations")
+
+        assertion = copy
+        previous = copy.fetch("expected")
+      end
+      unless %w[eq eql be_xml_equivalent_to].include?(assertion.fetch("comparison")) && previous.is_a?(String)
+        raise Error, "renderer successor requires a string equality assertion"
+      end
+      raise Error, "successor must change the named expectation" if previous == replacement.fetch("expected")
+
+      assertion.delete("expected_slot")
+      assertion["expected"] = replacement.fetch("expected")
+    end
   end
 
   def select(data, path, rows)

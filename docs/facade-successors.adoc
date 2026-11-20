@@ -36,6 +36,26 @@ selected sources. It does not remove cases or suppress failures. Successful
 output where a refusal is expected, or a different exception or message,
 fails replay. A consumer without profile selection sees the old rows.
 
+== Authored writer assertions
+
+`contracts/facade/writer-authored-v1.json` adds six separately selected rows
+from the authored renderer fixtures. The original eighteen-row profile is
+unchanged. Five color rows replace one named string equality expectation each:
+the AsciiMath OMML example, three Math-zone OMML displays, and OMML line-break
+example 049. The enclosure round-trip row retains its MathML write and decode,
+while replacing both AsciiMath render/assert pairs with exact public refusals.
+
+`renderer_assertions` identifies the original assertion by source line. Only
+string equality expectations can be replaced. A slot-based expectation becomes
+a literal on that assertion; the frozen slot and every other operation and
+assertion remain intact. Unknown or duplicate lines, unchanged expectations,
+non-equality comparisons and combined successor types are errors.
+
+The authored generator measures these six rows only. Run it with the candidate
+bundle as below, substituting `generate-authored-successors.rb` for the original
+generator. Run `spec/authored_successors_spec.rb` for the authored guards.
+This additional profile requires the same owner approval as the original.
+
 == Validation and generation
 
 [source,sh]

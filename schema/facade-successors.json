@@ -276,6 +276,29 @@
                 "message"
               ]
             }
+          },
+          "renderer_assertions": {
+            "type": "array",
+            "minItems": 1,
+            "uniqueItems": true,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "properties": {
+                "assertion_line": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "expected": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "assertion_line",
+                "expected"
+              ]
+            }
           }
         },
         "required": [
@@ -286,22 +309,17 @@
           {
             "required": [
               "expected"
-            ],
-            "not": {
-              "required": [
-                "refusals"
-              ]
-            }
+            ]
           },
           {
             "required": [
               "refusals"
-            ],
-            "not": {
-              "required": [
-                "expected"
-              ]
-            }
+            ]
+          },
+          {
+            "required": [
+              "renderer_assertions"
+            ]
           }
         ]
       }
