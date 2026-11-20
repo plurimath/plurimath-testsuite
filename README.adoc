@@ -543,13 +543,24 @@ so they keep to a subset that every loader reads as the same values.
 
 CI enforces this with a conformance check across two standard YAML loaders, not
 a custom parser: Ruby's Psych (`YAML.safe_load`, aliases off) and Python's
-ruamel.yaml (YAML 1.2, safe) each load every fixture and
-`provenance/fixtures.yaml`, every mapping key must be a string, and both results
-must serialize to identical JSON with sorted keys and no NaN or Infinity. A
-file fails if either loader rejects it (an alias, a tag Psych does not permit,
-a date, `.nan`/`.inf`, a non-string key, a duplicate key, a second document,
+ruamel.yaml (YAML 1.2, safe) each load every YAML file in `fixtures/`,
+`provenance/`, `corpus/`, `stages/` and `generations/`. This includes stage
+payloads, provenance and generation ledgers. Every mapping key must be a
+string, and both loaders must produce identical JSON values with no NaN or
+Infinity. A file fails if either loader rejects it (an alias, a tag Psych does
+not permit, a date, `.nan`/`.inf`, a non-string key, a duplicate key, a second document,
 invalid Unicode such as `"\uD800"`), or if the two read a value differently
 (`1e-3`, `1:20`, `017`, `0o17`, `yes`).
+
+With Ruby and `.github/validator/requirements.txt` dependencies available, run:
+
+[source,sh]
+----
+python scripts/validate-portable-yaml.py fixtures provenance corpus stages generations
+----
+
+Explicit files or directories can be selected for a focused check; an empty directory fails. The check reads
+sealed generations without changing their bytes.
 
 Style rules, not checked by CI:
 
