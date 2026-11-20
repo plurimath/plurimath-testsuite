@@ -6,7 +6,7 @@
     "commit": "364c07c8b4912dc56842e841d6c59923668f4e90",
     "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
     "lockfile_sha256": "cbc910fb958c1f9e750af55f58cbdf1120d3f7cb9f2d001805ca730c30455983",
-    "generator_sha256": "8b895747dabb936cbb374a731488035b5c0b5b04882cb6009e156ae26e70fd9b",
+    "generator_sha256": "2cf2b938a5c2e779f6833cc42af4274ed6452ae4c5f270bc40e4670ec6491d04",
     "dependencies": {
       "amath": "0.2.1",
       "ansi": "1.6.0",
@@ -387,13 +387,13 @@
           "render_slot": "v6",
           "assertion_line": 853,
           "error_class": "Plurimath::Math::ParseError",
-          "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <menclose notation=\"updiagonalstrike\">\n      <msubsup>\n        <mi>a</mi>\n        <mi>b</mi>\n        <mi>c</mi>\n      </msubsup>\n    </menclose>\n  </mstyle>\n</math>\n\n---- FORMULA END ----\n"
+          "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
         },
         {
           "render_slot": "v8",
           "assertion_line": 855,
           "error_class": "Plurimath::Math::ParseError",
-          "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math xmlns=\"http://www.w3.org/1998/Math/MathML\" display=\"block\">\n  <mstyle displaystyle=\"true\">\n    <menclose notation=\"updiagonalstrike\">\n      <msubsup>\n        <mi>a</mi>\n        <mi>b</mi>\n        <mi>c</mi>\n      </msubsup>\n    </menclose>\n  </mstyle>\n</math>\n\n---- FORMULA END ----\n"
+          "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
         }
       ]
     }

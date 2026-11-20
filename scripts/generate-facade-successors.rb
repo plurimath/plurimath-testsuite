@@ -72,7 +72,9 @@ id = "renderer-mathml-mathml-820-1"
 row = YAML.safe_load_file(File.join(root, path), aliases: false).fetch("cases").find { |item| item.fetch("id") == id }
 steps = row.fetch("program").fetch("steps")
 input = steps.find { |step| step["save"] == "v4" }.fetch("recipe").fetch("value").fetch("value")
-formula = Plurimath::Math.parse(input.dup, :mathml)
+decode = steps.find { |step| step["kind"] == "decode" && step["save"] == "v5" }
+abort "renderer source boundary changed" unless decode.values_at("boundary", "format", "source") == %w[wrapper mathml v4]
+formula = Plurimath::Mathml.new(input.dup).to_formula
 refusals = %w[v6 v8].map do |slot|
   index = steps.index { |step| step["save"] == slot }
   method = steps.fetch(index).fetch("operation").fetch("method")
