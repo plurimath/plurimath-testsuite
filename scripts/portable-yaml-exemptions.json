@@ -1,0 +1,74 @@
+[
+  {
+    "generation": 1,
+    "path": "stages/asciimath/generations/000001/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 1,
+    "path": "stages/asciimath/generations/000001/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 2,
+    "path": "stages/asciimath/generations/000002/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 2,
+    "path": "stages/asciimath/generations/000002/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 3,
+    "path": "stages/asciimath/generations/000003/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 3,
+    "path": "stages/asciimath/generations/000003/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 4,
+    "path": "stages/asciimath/generations/000004/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 4,
+    "path": "stages/asciimath/generations/000004/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 5,
+    "path": "stages/asciimath/generations/000005/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 5,
+    "path": "stages/asciimath/generations/000005/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 6,
+    "path": "stages/asciimath/generations/000006/payloads/number-formatting-notation.yaml",
+    "sha256": "64973611a2896f5d66c21a43f0c1105096fe0f9c7b59667cdced6a1d353ac290",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  },
+  {
+    "generation": 6,
+    "path": "stages/asciimath/generations/000006/payloads/number-formatting.yaml",
+    "sha256": "6a83e1025cc24fb300c7aaa6f0fce4cef305db03ff490ae4a365584c3ffe9690",
+    "reason": "Pre-portability AsciiMath snapshot sealed on main; Psych preserves numeric output strings that YAML 1.2 resolves as floats. Re-quoting would invalidate the immutable snapshot digest."
+  }
+]
