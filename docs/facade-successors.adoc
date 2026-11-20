@@ -1,0 +1,81 @@
+= Proposed facade successor profiles
+
+Needs owner approval of successor contract; do not merge.
+
+This proposal is separate from layout revision 1 of the stage corpus contract.
+It changes no existing corpus, authored fixture, provenance, stage generation,
+or ledger. Existing consumers continue to select the original expectations.
+`supersede-mathml-stage.rb` remains limited to model-roundtrip stage rows.
+
+== Explicit selection
+
+`contracts/facade/writer-fidelity-v1.json` proposes eighteen successor rows for
+plurimath/plurimath#607 (Refs plurimath/plurimath#541). A consumer must pin the
+testsuite commit and explicitly name the profile. There is no latest-profile
+selection and no automatic activation based on the producer version.
+
+Each successor has a new ID consisting of the frozen ID and profile name.
+Its source records the frozen path, ID and complete file SHA-256. The source
+row must exist exactly once, and a changed source hash is an error. The
+profile records the clean candidate commit, Ruby and loaded gem versions,
+bundle lockfile hash and generator hash. It is a proposed candidate oracle,
+not an approved replacement for the historical oracle.
+
+Seventeen corpus successors replace only the named target expectation: nine OMML
+color outputs, the LaTeX output of `mathml-fences-021`, and seven enclosure
+rows found in the original PR conformance log. The enclosure successors
+record each changed target as an exact output or a public refusal. Input, parse tree,
+model, preprocessing and every other target remain those of the frozen row.
+The renderer successor replaces the two lossy enclosure render/assert pairs
+with exact exception-class and message assertions. Its MathML operation and
+assertion remain unchanged, as do all other program steps.
+
+`FacadeSuccessors.load` validates the schema and source integrity;
+`FacadeSuccessors.select` produces new in-memory rows only for explicitly
+selected sources. It does not remove cases or suppress failures. Successful
+output where a refusal is expected, or a different exception or message,
+fails replay. A consumer without profile selection sees the old rows.
+
+== Authored writer assertions
+
+`contracts/facade/writer-authored-v1.json` adds six separately selected rows
+from the authored renderer fixtures. The original eighteen-row profile is
+unchanged. Five color rows replace one named string equality expectation each:
+the AsciiMath OMML example, three Math-zone OMML displays, and OMML line-break
+example 049. The enclosure round-trip row retains its MathML write and decode,
+while replacing both AsciiMath render/assert pairs with exact public refusals.
+
+`renderer_assertions` identifies the original assertion by source line. Only
+string equality expectations can be replaced. A slot-based expectation becomes
+a literal on that assertion; the frozen slot and every other operation and
+assertion remain intact. Unknown or duplicate lines, unchanged expectations,
+non-equality comparisons and combined successor types are errors.
+
+The authored generator measures these six rows only. Run it with the candidate
+bundle as below, substituting `generate-authored-successors.rb` for the original
+generator. Run `spec/authored_successors_spec.rb` for the authored guards.
+This additional profile requires the same owner approval as the original.
+
+== Validation and generation
+
+[source,sh]
+----
+ruby --disable-gems scripts/validate-facade-successors.rb --base <PR-base>
+bundle exec rspec spec/facade_successors_spec.rb
+# Use the clean candidate's bundle, whose plurimath loads from CANDIDATE:
+BUNDLE_GEMFILE=<candidate-bundle> bundle exec ruby \
+  scripts/generate-facade-successors.rb CANDIDATE OUTPUT.json
+----
+
+The generator measures eighteen rows only. It refuses a dirty candidate,
+the wrong loaded checkout, missing source rows, unchanged output or a missing
+expected refusal. It records no timestamp or absolute machine path.
+It never writes existing payloads; review the generated candidate values
+before adopting the contract. Changes to an existing profile require a new
+profile version. The base check rejects edits, deletions or renames of frozen
+payloads and existing profiles; the CI stage job runs it before stage checks.
+
+Approval of this contract remains Ronald's decision. Both the testsuite PR
+and its consumer PR stay draft until that decision; green CI alone is not
+approval. Parser support for `\\boxed` is a separate dependency and is not
+asserted by these writer-only successor expectations.

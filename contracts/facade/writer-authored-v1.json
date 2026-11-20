@@ -1,0 +1,193 @@
+{
+  "schema": "plurimath-facade/successors/1",
+  "profile": "writer-authored-v1",
+  "producer": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "6781de27f7f60ac7842be895ed5d833a4eaf4b77",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+    "lockfile_sha256": "b15371ee3f8c2aa438756d1914c8944d80910a9f6411dd857a746ff067841955",
+    "generator_sha256": "a8e3b5c5b35177c1ca001b6327bda3df7be9ab2fe0a9d2044b71c9e389c1de25",
+    "dependencies": {
+      "amath": "0.2.1",
+      "ansi": "1.6.0",
+      "asciiunits": "0.1.6",
+      "ast": "2.4.3",
+      "base64": "0.3.0",
+      "bcp47_spec": "0.2.1",
+      "bigdecimal": "4.1.3",
+      "bundler": "4.0.3",
+      "canon": "0.3.127",
+      "concurrent-ruby": "1.3.8",
+      "csv": "3.3.7",
+      "diff-lcs": "1.6.2",
+      "ebnf": "2.6.0",
+      "erb": "6.0.7",
+      "ffi": "1.17.4",
+      "fiddle": "1.1.8",
+      "fuzzy_match": "2.1.0",
+      "htmlentities": "4.4.2",
+      "io-console": "0.9.5",
+      "irb": "1.19.0",
+      "json": "3.1.0",
+      "language_server-protocol": "3.17.0.6",
+      "latexmath": "1.0.0",
+      "leptris": "1.9.429.0",
+      "link_header": "0.0.8",
+      "lint_roller": "1.1.0",
+      "liquid": "5.14.0",
+      "logger": "1.7.0",
+      "lutaml-model": "0.8.176",
+      "matrix": "0.4.3",
+      "memo_wise": "1.13.0",
+      "mml": "2.4.8",
+      "moxml": "0.6.16",
+      "nokogiri": "1.19.7",
+      "oga": "3.5",
+      "omml": "0.2.12",
+      "opal": "1.8.3",
+      "opal-rspec": "1.1.0.alpha3",
+      "ostruct": "0.6.3",
+      "ox": "2.14.29",
+      "paint": "2.3.0",
+      "parallel": "2.3.0",
+      "parsanol": "1.5.9",
+      "parser": "3.3.14.0",
+      "parslet": "2.0.0",
+      "plurimath": "0.11.20",
+      "pp": "0.6.4",
+      "prettyprint": "0.2.1",
+      "prism": "2.1.0",
+      "racc": "1.8.1",
+      "rainbow": "3.1.1",
+      "rake": "12.3.3",
+      "rbs": "4.2.0",
+      "rdf": "3.3.1",
+      "rdf-turtle": "3.3.0",
+      "rdoc": "8.1.0",
+      "regexp_parser": "2.13.4",
+      "reline": "0.7.0",
+      "rspec": "3.13.2",
+      "rspec-core": "3.13.7",
+      "rspec-expectations": "3.13.6",
+      "rspec-mocks": "3.13.9",
+      "rspec-support": "3.13.8",
+      "rubocop": "1.92.3",
+      "rubocop-ast": "1.53.0",
+      "rubocop-performance": "1.27.0",
+      "rubocop-rake": "0.7.1",
+      "rubocop-rspec": "3.10.2",
+      "ruby-ll": "2.2.0",
+      "ruby-progressbar": "1.13.0",
+      "rubyzip": "3.7.0",
+      "scanf": "1.0.0",
+      "simplecov": "1.3.2",
+      "strscan": "3.1.8",
+      "sxp": "2.0.0",
+      "table_tennis": "0.0.7",
+      "thor": "1.5.0",
+      "tsort": "0.2.0",
+      "umath": "0.2.4",
+      "unicode-display_width": "3.3.0",
+      "unicode-emoji": "4.3.0",
+      "unicode-name": "1.15.1",
+      "unicode-types": "1.12.0",
+      "unitsdb": "2.2.15",
+      "unitsml": "0.6.14",
+      "yeptris": "0.6.75.0"
+    }
+  },
+  "cases": [
+    {
+      "id": "renderer-asciimath-asciimath-8025-1-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-asciimath-asciimath-8025-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "renderer_assertions": [
+        {
+          "assertion_line": 8041,
+          "expected": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>2</m:t>\n    </m:r>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>e</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      ]
+    },
+    {
+      "id": "renderer-pretty-mathml-396-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-pretty-mathml-396",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "refusals": [
+        {
+          "render_slot": "v3",
+          "assertion_line": 81,
+          "error_class": "Plurimath::Math::ParseError",
+          "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+        },
+        {
+          "render_slot": "v6",
+          "assertion_line": 85,
+          "error_class": "Plurimath::Math::ParseError",
+          "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+        }
+      ]
+    },
+    {
+      "id": "renderer-math_zone-math_zone-2578-1-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-math_zone-math_zone-2578-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "renderer_assertions": [
+        {
+          "assertion_line": 2609,
+          "expected": "|_ Math zone\n  |_ \"<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\"><m:oMath><m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r></m:oMath></m:oMathPara>\"\n     |_ \"<m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r>\" color\n        |_ \"<m:t>&#x3b8;</m:t>\" text\n"
+        }
+      ]
+    },
+    {
+      "id": "renderer-math_zone-math_zone-3453-1-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-math_zone-math_zone-3453-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "renderer_assertions": [
+        {
+          "assertion_line": 3484,
+          "expected": "|_ Math zone\n  |_ \"<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\"><m:oMath><m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r></m:oMath></m:oMathPara>\"\n     |_ \"<m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r>\" color\n        |_ \"<m:t>&#x3b8;</m:t>\" text\n"
+        }
+      ]
+    },
+    {
+      "id": "renderer-math_zone-math_zone-4491-1-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-math_zone-math_zone-4491-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "renderer_assertions": [
+        {
+          "assertion_line": 4532,
+          "expected": "|_ Math zone\n  |_ \"<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\"><m:oMath><m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r></m:oMath></m:oMathPara>\"\n     |_ \"<m:r><w:rPr><w:color w:val=\"FF0000\"/></w:rPr><m:t>&#x3b8;</m:t></m:r>\" color\n        |_ \"<m:t>&#x3b8;</m:t>\" text\n"
+        }
+      ]
+    },
+    {
+      "id": "renderer-omml-line_breaks-line_breaks-537-1-writer-authored-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-omml-line_breaks-line_breaks-537-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "renderer_assertions": [
+        {
+          "assertion_line": 544,
+          "expected": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>&#x3b8;</m:t>\n    </m:r>\n  </m:oMath>\n  <m:r>\n    <br/>\n  </m:r>\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>&#x3b3;</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+        }
+      ]
+    }
+  ]
+}

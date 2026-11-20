@@ -1,0 +1,401 @@
+{
+  "schema": "plurimath-facade/successors/1",
+  "profile": "writer-fidelity-v1",
+  "producer": {
+    "repository": "https://github.com/plurimath/plurimath",
+    "commit": "364c07c8b4912dc56842e841d6c59923668f4e90",
+    "ruby": "ruby 4.0.1 (2026-01-13 revision e04267a14b) +PRISM [x86_64-linux]",
+    "lockfile_sha256": "cbc910fb958c1f9e750af55f58cbdf1120d3f7cb9f2d001805ca730c30455983",
+    "generator_sha256": "2cf2b938a5c2e779f6833cc42af4274ed6452ae4c5f270bc40e4670ec6491d04",
+    "dependencies": {
+      "amath": "0.2.1",
+      "ansi": "1.6.0",
+      "asciiunits": "0.1.6",
+      "ast": "2.4.3",
+      "base64": "0.3.0",
+      "bcp47_spec": "0.2.1",
+      "bigdecimal": "4.1.3",
+      "bundler": "4.0.3",
+      "canon": "0.3.127",
+      "concurrent-ruby": "1.3.8",
+      "csv": "3.3.7",
+      "diff-lcs": "1.6.2",
+      "ebnf": "2.6.0",
+      "erb": "6.0.7",
+      "ffi": "1.17.4",
+      "fiddle": "1.1.8",
+      "fuzzy_match": "2.1.0",
+      "htmlentities": "4.4.2",
+      "io-console": "0.9.5",
+      "irb": "1.19.0",
+      "json": "3.1.0",
+      "language_server-protocol": "3.17.0.6",
+      "latexmath": "1.0.0",
+      "leptris": "1.9.429.0",
+      "link_header": "0.0.8",
+      "lint_roller": "1.1.0",
+      "liquid": "5.14.0",
+      "logger": "1.7.0",
+      "lutaml-model": "0.8.176",
+      "matrix": "0.4.3",
+      "memo_wise": "1.13.0",
+      "mml": "2.4.8",
+      "moxml": "0.6.16",
+      "nokogiri": "1.19.7",
+      "oga": "3.5",
+      "omml": "0.2.12",
+      "opal": "1.8.3",
+      "opal-rspec": "1.1.0.alpha3",
+      "ostruct": "0.6.3",
+      "ox": "2.14.29",
+      "paint": "2.3.0",
+      "parallel": "2.3.0",
+      "parsanol": "1.5.9",
+      "parser": "3.3.14.0",
+      "parslet": "2.0.0",
+      "plurimath": "0.11.20",
+      "pp": "0.6.4",
+      "prettyprint": "0.2.1",
+      "prism": "2.1.0",
+      "racc": "1.8.1",
+      "rainbow": "3.1.1",
+      "rake": "12.3.3",
+      "rbs": "4.2.0",
+      "rdf": "3.3.1",
+      "rdf-turtle": "3.3.0",
+      "rdoc": "8.1.0",
+      "regexp_parser": "2.13.4",
+      "reline": "0.7.0",
+      "rspec": "3.13.2",
+      "rspec-core": "3.13.7",
+      "rspec-expectations": "3.13.6",
+      "rspec-mocks": "3.13.9",
+      "rspec-support": "3.13.8",
+      "rubocop": "1.92.3",
+      "rubocop-ast": "1.53.0",
+      "rubocop-performance": "1.27.0",
+      "rubocop-rake": "0.7.1",
+      "rubocop-rspec": "3.10.2",
+      "ruby-ll": "2.2.0",
+      "ruby-progressbar": "1.13.0",
+      "rubyzip": "3.7.0",
+      "scanf": "1.0.0",
+      "simplecov": "1.3.2",
+      "strscan": "3.1.8",
+      "sxp": "2.0.0",
+      "table_tennis": "0.0.7",
+      "thor": "1.5.0",
+      "tsort": "0.2.0",
+      "umath": "0.2.4",
+      "unicode-display_width": "3.3.0",
+      "unicode-emoji": "4.3.0",
+      "unicode-name": "1.15.1",
+      "unicode-types": "1.12.0",
+      "unitsdb": "2.2.15",
+      "unitsml": "0.6.14",
+      "yeptris": "0.6.75.0"
+    }
+  },
+  "cases": [
+    {
+      "id": "colour-named-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/asciimath/colour.yaml",
+        "id": "colour-named",
+        "sha256": "ec165d997b607445c4dd777354c6edb05ef6ed3a16e936c123f162a605b24f62"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "colour-in-sum-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/asciimath/colour.yaml",
+        "id": "colour-in-sum",
+        "sha256": "ec165d997b607445c4dd777354c6edb05ef6ed3a16e936c123f162a605b24f62"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"0000FF\"/>\n      </w:rPr>\n      <m:t>x</m:t>\n    </m:r>\n    <m:r>\n      <m:t>+</m:t>\n    </m:r>\n    <m:r>\n      <m:t>y</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "latex-colour-named-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/latex/colour.yaml",
+        "id": "latex-colour-named",
+        "sha256": "5cd84fb0687592311be783145fe04245b84dae93f95ad3e2e101c7fb652244e8"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>x</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "latex-colour-in-sum-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/latex/colour.yaml",
+        "id": "latex-colour-in-sum",
+        "sha256": "5cd84fb0687592311be783145fe04245b84dae93f95ad3e2e101c7fb652244e8"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"0000FF\"/>\n      </w:rPr>\n      <m:t>y</m:t>\n    </m:r>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"0000FF\"/>\n      </w:rPr>\n      <m:t>+</m:t>\n    </m:r>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"0000FF\"/>\n      </w:rPr>\n      <m:t>z</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "latex-colour-over-frac-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/latex/colour.yaml",
+        "id": "latex-colour-over-frac",
+        "sha256": "5cd84fb0687592311be783145fe04245b84dae93f95ad3e2e101c7fb652244e8"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:f>\n      <m:fPr>\n        <m:ctrlPr>\n          <w:rPr>\n            <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n            <w:i/>\n          </w:rPr>\n        </m:ctrlPr>\n      </m:fPr>\n      <m:num>\n        <m:r>\n          <w:rPr>\n            <w:color w:val=\"FF0000\"/>\n          </w:rPr>\n          <m:t>1</m:t>\n        </m:r>\n      </m:num>\n      <m:den>\n        <m:r>\n          <w:rPr>\n            <w:color w:val=\"FF0000\"/>\n          </w:rPr>\n          <m:t>2</m:t>\n        </m:r>\n      </m:den>\n    </m:f>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "mathml-layout-008-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/layout.yaml",
+        "id": "mathml-layout-008",
+        "sha256": "b593415f339a12a3c8c408c597fcdc85567a68ba07b04d935a6e5467f438e8b1"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:scr m:val=\"fraktur\"/>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>d</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "mathml-layout-009-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/layout.yaml",
+        "id": "mathml-layout-009",
+        "sha256": "b593415f339a12a3c8c408c597fcdc85567a68ba07b04d935a6e5467f438e8b1"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>d</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "mathml-over-under-015-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/over-under.yaml",
+        "id": "mathml-over-under-015",
+        "sha256": "d737f8820290f998318b5c96c31c5cbf865c40da7b7996b80afcf3e1a4c0d317"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:nary>\n      <m:naryPr>\n        <m:chr m:val=\"∑\"/>\n        <m:limLoc m:val=\"undOvr\"/>\n        <m:subHide m:val=\"0\"/>\n        <m:supHide m:val=\"0\"/>\n      </m:naryPr>\n      <m:sub>\n        <m:r>\n          <m:t>i</m:t>\n        </m:r>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:r>\n          <w:rPr>\n            <w:color w:val=\"0000FF\"/>\n          </w:rPr>\n          <m:t>&#x2260;</m:t>\n        </m:r>\n      </m:sub>\n      <m:sup>\n        <m:r>\n          <m:t>33</m:t>\n        </m:r>\n      </m:sup>\n      <m:e>\n        <m:r>\n          <m:t>&#8203;</m:t>\n        </m:r>\n      </m:e>\n    </m:nary>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "mathml-text-008-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/text.yaml",
+        "id": "mathml-text-008",
+        "sha256": "2e7b8327b2f8780275b5638d9b3dedd653c8ea242b2b9bbc18e2bd4140a0aac1"
+      },
+      "expected": {
+        "omml": "<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:r>\n      <m:rPr>\n        <m:sty m:val=\"p\"/>\n      </m:rPr>\n      <w:rPr>\n        <w:color w:val=\"FF0000\"/>\n      </w:rPr>\n      <m:t>Assigned&#xa0;value</m:t>\n    </m:r>\n  </m:oMath>\n</m:oMathPara>\n"
+      }
+    },
+    {
+      "id": "mathml-fences-021-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/fences.yaml",
+        "id": "mathml-fences-021",
+        "sha256": "21f6b80630244cb893a0bfb65471f86ece61a0c83e756c9d08374c37bd025128"
+      },
+      "expected": {
+        "latex": "\\operatorname{lcm}{\\text{P[funcapply]}} ( a b c )"
+      }
+    },
+    {
+      "id": "mathml-elementary-math-006-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/elementary-math.yaml",
+        "id": "mathml-elementary-math-006",
+        "sha256": "dcf8e3cca11e8bd51cc6457462bf6fbf47f90c62d133c0f5915f7b1ce629e809"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "mathml-enclose-001-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/enclose.yaml",
+        "id": "mathml-enclose-001",
+        "sha256": "f3ecd08875fd6801bba9199bf03f32102e3bcaa1cca20f63a1efc8961a95bf3d"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <menclose notation='circle box'>\n    <mi> x </mi>\n    <mo> + </mo>\n    <mi> y </mi>\n  </menclose>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <menclose notation='circle box'>\n    <mi> x </mi>\n    <mo> + </mo>\n    <mi> y </mi>\n  </menclose>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "mathml-fractions-011-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/fractions.yaml",
+        "id": "mathml-fractions-011",
+        "sha256": "8b037f59428a4a6c31cf87eee59f154fb49971ec676ebcc1e8d3923d240cad3b"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <mi>C</mi>\n  <mrow>\n    <menclose notation='phasorangle'>\n      <mrow>\n        <mo>&#x2212;<!--MINUS SIGN--></mo>\n        <mfrac>\n          <mi>&#x3C0;<!--GREEK SMALL LETTER PI--></mi>\n          <mn>2</mn>\n        </mfrac>\n      </mrow>\n    </menclose>\n  </mrow>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <mi>C</mi>\n  <mrow>\n    <menclose notation='phasorangle'>\n      <mrow>\n        <mo>&#x2212;<!--MINUS SIGN--></mo>\n        <mfrac>\n          <mi>&#x3C0;<!--GREEK SMALL LETTER PI--></mi>\n          <mn>2</mn>\n        </mfrac>\n      </mrow>\n    </menclose>\n  </mrow>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "mathml-partial-011-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/partial-render.yaml",
+        "id": "mathml-partial-011",
+        "sha256": "ff5c7baf2149e861580cb62b6dc18b976b115a0c463145ff8d8bb91a500f17a5"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <menclose>\n    <mi> x </mi>\n    <mo> + </mo>\n    <mi> y </mi>\n  </menclose>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<math>\n  <menclose>\n    <mi> x </mi>\n    <mo> + </mo>\n    <mi> y </mi>\n  </menclose>\n</math>\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "mathml-scripts-018-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/mathml/scripts.yaml",
+        "id": "mathml-scripts-018",
+        "sha256": "166e7685b9a3abfce0af9802044a22e4bc468ed328071e9fe08a43d887a3328e"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "omml-boxes-001-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/omml/boxes.yaml",
+        "id": "omml-boxes-001",
+        "sha256": "0803f1409fe35513f41a519afb4c912f45e4c84d3e736e32088482fb275ff797"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:borderBox>\n      <m:borderBoxPr>\n        <m:hideTop m:val=\"on\"/>\n        <m:hideBot m:val=\"on\"/>\n        <m:hideLeft m:val=\"on\"/>\n        <m:hideRight m:val=\"on\"/>\n      </m:borderBoxPr>\n      <m:e>\n        <m:r>\n          <m:t>ax+b</m:t>\n        </m:r>\n      </m:e>\n    </m:borderBox>\n  </m:oMath>\n</m:oMathPara>\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:borderBox>\n      <m:borderBoxPr>\n        <m:hideTop m:val=\"on\"/>\n        <m:hideBot m:val=\"on\"/>\n        <m:hideLeft m:val=\"on\"/>\n        <m:hideRight m:val=\"on\"/>\n      </m:borderBoxPr>\n      <m:e>\n        <m:r>\n          <m:t>ax+b</m:t>\n        </m:r>\n      </m:e>\n    </m:borderBox>\n  </m:oMath>\n</m:oMathPara>\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "omml-scripts-016-writer-fidelity-v1",
+      "source": {
+        "path": "corpus/omml/scripts.yaml",
+        "id": "omml-scripts-016",
+        "sha256": "cf4aa3605fbf8162f3a749bee5e8d575c64c72e7dc24b2c33090b93a7c49bac7"
+      },
+      "expected": {
+        "asciimath": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:borderBox>\n      <m:borderBoxPr>\n        <m:hideTop m:val=\"on\"/>\n        <m:hideBot m:val=\"on\"/>\n        <m:hideLeft m:val=\"on\"/>\n        <m:hideRight m:val=\"on\"/>\n      </m:borderBoxPr>\n      <m:e>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>a</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>b</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n        <m:r>\n          <m:t>+</m:t>\n        </m:r>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>c</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n      </m:e>\n    </m:borderBox>\n  </m:oMath>\n</m:oMathPara>\n\n---- FORMULA END ----\n"
+          }
+        },
+        "latex": {
+          "error": {
+            "category": "parse_error",
+            "error_class": "Plurimath::Math::ParseError",
+            "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n<m:oMathPara xmlns:m=\"http://schemas.openxmlformats.org/officeDocument/2006/math\" xmlns:mc=\"http://schemas.openxmlformats.org/markup-compatibility/2006\" xmlns:mo=\"http://schemas.microsoft.com/office/mac/office/2008/main\" xmlns:mv=\"urn:schemas-microsoft-com:mac:vml\" xmlns:o=\"urn:schemas-microsoft-com:office:office\" xmlns:r=\"http://schemas.openxmlformats.org/officeDocument/2006/relationships\" xmlns:v=\"urn:schemas-microsoft-com:vml\" xmlns:w=\"http://schemas.openxmlformats.org/wordprocessingml/2006/main\" xmlns:w10=\"urn:schemas-microsoft-com:office:word\" xmlns:w14=\"http://schemas.microsoft.com/office/word/2010/wordml\" xmlns:w15=\"http://schemas.microsoft.com/office/word/2012/wordml\" xmlns:wne=\"http://schemas.microsoft.com/office/word/2006/wordml\" xmlns:wp=\"http://schemas.openxmlformats.org/drawingml/2006/wordprocessingDrawing\" xmlns:wp14=\"http://schemas.microsoft.com/office/word/2010/wordprocessingDrawing\" xmlns:wpc=\"http://schemas.microsoft.com/office/word/2010/wordprocessingCanvas\" xmlns:wpg=\"http://schemas.microsoft.com/office/word/2010/wordprocessingGroup\" xmlns:wpi=\"http://schemas.microsoft.com/office/word/2010/wordprocessingInk\" xmlns:wps=\"http://schemas.microsoft.com/office/word/2010/wordprocessingShape\">\n  <m:oMath>\n    <m:borderBox>\n      <m:borderBoxPr>\n        <m:hideTop m:val=\"on\"/>\n        <m:hideBot m:val=\"on\"/>\n        <m:hideLeft m:val=\"on\"/>\n        <m:hideRight m:val=\"on\"/>\n      </m:borderBoxPr>\n      <m:e>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>a</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n        <m:r>\n          <m:t>=</m:t>\n        </m:r>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>b</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n        <m:r>\n          <m:t>+</m:t>\n        </m:r>\n        <m:sSup>\n          <m:sSupPr>\n            <m:ctrlPr>\n              <w:rPr>\n                <w:rFonts w:ascii=\"Cambria Math\" w:hAnsi=\"Cambria Math\"/>\n                <w:i/>\n              </w:rPr>\n            </m:ctrlPr>\n          </m:sSupPr>\n          <m:e>\n            <m:r>\n              <m:t>c</m:t>\n            </m:r>\n          </m:e>\n          <m:sup>\n            <m:r>\n              <m:t>2</m:t>\n            </m:r>\n          </m:sup>\n        </m:sSup>\n      </m:e>\n    </m:borderBox>\n  </m:oMath>\n</m:oMathPara>\n\n---- FORMULA END ----\n"
+          }
+        }
+      }
+    },
+    {
+      "id": "renderer-mathml-mathml-820-1-writer-fidelity-v1",
+      "source": {
+        "path": "fixtures/renderer-expectations.yaml",
+        "id": "renderer-mathml-mathml-820-1",
+        "sha256": "23556eee09dc9b32cda348b727ced4796de1da657f9f1cbfdae4a2b1f9aead31"
+      },
+      "refusals": [
+        {
+          "render_slot": "v6",
+          "assertion_line": 853,
+          "error_class": "Plurimath::Math::ParseError",
+          "message": "[plurimath] Error: Failed to parse the following formula with type `latex`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+        },
+        {
+          "render_slot": "v8",
+          "assertion_line": 855,
+          "error_class": "Plurimath::Math::ParseError",
+          "message": "[plurimath] Error: Failed to parse the following formula with type `asciimath`.\n[plurimath] Please first manually validate the formula.\n[plurimath] If this is a bug, please report the formula at our issue tracker at:\n[plurimath] https://github.com/plurimath/plurimath/issues\n---- FORMULA BEGIN ----\n\n---- FORMULA END ----\n"
+        }
+      ]
+    }
+  ]
+}
