@@ -35,8 +35,8 @@
 import { existsSync, readFileSync, readdirSync, statSync, writeFileSync } from "node:fs";
 import { basename, dirname, join, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
-import { parse as parseYaml } from "yaml";
 import { PargRuntime } from "parsanol";
+import { readStagePayload } from "./stage-payload.js";
 import { LANGUAGES, type StageLanguage } from "./stage-languages.js";
 import {
   type Canonical,
@@ -155,7 +155,7 @@ export function replayStage(options: ReplayOptions): ReplayReport {
 
   const rows: ReplayRow[] = [];
   for (const file of payloadFiles(options.payloads)) {
-    const doc = parseYaml(readFileSync(file, "utf8")) as { boundary?: string; cases?: PayloadCase[] };
+    const doc = readStagePayload(file) as { boundary?: string; cases?: PayloadCase[] };
     if (doc.boundary !== "raw-tree") continue;
     for (const row of doc.cases ?? []) {
       const decimal = row.options?.decimal ?? ".";

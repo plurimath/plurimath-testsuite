@@ -85,8 +85,8 @@ jobs:
         uses: dtolnay/rust-toolchain@master
         with:
           toolchain: "1.95.0"
-      - if: matrix.engine == 'rust'
-        uses: ruby/setup-ruby@v1
+      # Both harnesses read sealed YAML using Psych's producer semantics.
+      - uses: ruby/setup-ruby@v1
         with:
           ruby-version: "3.4"
       # The Rust replay reads JSON, so the YAML payloads are converted first.
