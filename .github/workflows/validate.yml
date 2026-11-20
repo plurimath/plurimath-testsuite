@@ -94,6 +94,10 @@ jobs:
           exit $rc
       - name: Validate sealed evaluation request profiles
         run: python -I scripts/validate-evaluation-profiles.py
+      - name: Validate exact historical rejection offset exceptions
+        run: |
+          ruby scripts/validate-rejection-offsets.rb
+          python -I scripts/test-rejection-offsets.py
 
   validate:
     runs-on: ubuntu-latest
