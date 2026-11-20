@@ -47,6 +47,8 @@ jobs:
       # keys, and serialize to identical sorted JSON. A load error, alias,
       # date, NaN/Inf, non-string key, duplicate key, extra document, or any
       # value the two read differently (1e-3, 1:20, 017, yes) fails.
+      # Only individually listed historical payloads with matching SHA-256
+      # may skip comparison (scripts/portable-yaml-exemptions.json).
       - name: Two YAML loaders read the same values
         run: |
           python scripts/validate-portable-yaml.py fixtures provenance corpus stages generations
