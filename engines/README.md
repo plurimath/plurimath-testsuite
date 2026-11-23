@@ -55,7 +55,11 @@ to main and each pull request.
 First check out the stage gem at its pinned commit, for example latexmath at
 `27e300a433742765486e3bead2fac19ee8fd55a0`, next to this repository.
 
-The wasm replay needs Node 22 or later:
+The wasm replay needs Node 22 or later and Ruby with its standard Psych and
+JSON libraries. Like the Rust replay's conversion step, it reads YAML through
+Psych before passing JSON values to the engine. This preserves the producer's
+scalar types in sealed generations, including numeric output strings such as
+`0e0`, `1e21` and `1.123_456_789`, without changing the snapshot bytes.
 
     cd engines/wasm
     npm ci

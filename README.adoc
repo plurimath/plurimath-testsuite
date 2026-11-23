@@ -543,13 +543,39 @@ so they keep to a subset that every loader reads as the same values.
 
 CI enforces this with a conformance check across two standard YAML loaders, not
 a custom parser: Ruby's Psych (`YAML.safe_load`, aliases off) and Python's
-ruamel.yaml (YAML 1.2, safe) each load every fixture and
-`provenance/fixtures.yaml`, every mapping key must be a string, and both results
-must serialize to identical JSON with sorted keys and no NaN or Infinity. A
-file fails if either loader rejects it (an alias, a tag Psych does not permit,
-a date, `.nan`/`.inf`, a non-string key, a duplicate key, a second document,
+ruamel.yaml (YAML 1.2, safe) compare YAML files in `fixtures/`,
+`provenance/`, `corpus/`, `stages/` and `generations/`. This includes stage
+payloads, provenance and generation ledgers. Every mapping key must be a
+string, and both loaders must produce identical JSON values with no NaN or
+Infinity. A file fails if either loader rejects it (an alias, a tag Psych does
+not permit, a date, `.nan`/`.inf`, a non-string key, a duplicate key, a second document,
 invalid Unicode such as `"\uD800"`), or if the two read a value differently
 (`1e-3`, `1:20`, `017`, `0o17`, `yes`).
+
+The only exceptions are the 12 sealed AsciiMath payloads listed individually in
+`scripts/portable-yaml-exemptions.json`: `number-formatting.yaml` and
+`number-formatting-notation.yaml` in generations 1 through 6. Those historical
+snapshots predate this check. Psych preserves their numeric output strings;
+YAML 1.2 resolves 72 of those scalar occurrences as floats. Re-quoting them
+would change their immutable bytes and snapshot digests.
+
+Each reviewed exception records the generation, full payload path, SHA-256 and
+reason. The checker prints every exception and verifies its exact bytes before
+skipping the loader comparison. Changed bytes fail even if the new content is
+portable. An unlisted file or a new generation receives the normal comparison;
+there is no directory-wide or generation-wide exemption. Stage schema, provenance,
+digest and `validate-stages.rb --base` checks still apply to these snapshots.
+This exception preserves history; it does not certify those payloads as portable.
+
+With Ruby and `.github/validator/requirements.txt` dependencies available, run:
+
+[source,sh]
+----
+python scripts/validate-portable-yaml.py fixtures provenance corpus stages generations
+----
+
+Explicit files or directories can be selected for a focused check; an empty directory fails. The check reads
+sealed generations without changing their bytes.
 
 Style rules, not checked by CI:
 

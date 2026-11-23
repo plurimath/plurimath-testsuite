@@ -166,6 +166,22 @@ may move forward without forcing a new generation of another language. A
 deliberate upgrade changes commit, generation and digest together and says
 why.
 
+== YAML portability
+
+CI runs `scripts/validate-portable-yaml.py` on every stage payload, provenance
+record and generation ledger, alongside the legacy corpus and fixtures.
+Ruby's Psych (YAML 1.1) and Python's ruamel.yaml (YAML 1.2) must read the same
+JSON values. Duplicate keys, aliases, dates, non-finite numbers, non-string
+keys and ambiguous scalars fail before a cross-runtime replay can claim
+parity. This check reads snapshots without modifying sealed generations.
+
+`scripts/portable-yaml-exemptions.json` lists the 12 historical AsciiMath
+number-formatting payloads in generations 1 through 6 whose numeric output
+strings are read differently. Each reviewed entry pins a full payload path,
+generation, SHA-256 and reason. Only those exact bytes skip loader comparison;
+changed files, unlisted payloads and new generations do not. All stage schema,
+provenance and immutable-base checks still apply. See README "Portable YAML".
+
 == Validator
 
 [source,sh]
