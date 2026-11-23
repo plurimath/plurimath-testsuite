@@ -44,3 +44,13 @@ entries:
     output in mstyle (plurimath#477), changing their MathML outputs. The 92 generation 2
     rows are kept byte for byte and the 44 -r2 rows are classified superseded by
     their -r3 siblings. The two refusal cases are unchanged.
+- generation: 4
+  path: stages/roundtrip/generations/000004
+  snapshot_digest: sha256:08efc1479ecec45dede335acbd34ac8750cbbcd017046ef4a178ffa20e9f127f
+  payloads: 10
+  rows: 162
+  producer_kinds:
+  - legacy-oracle
+  change: extend
+  rationale: 'plurimath#585: OpenMath 0.2.1 integration across six presentation notations,
+    with measured target refusals; earlier rows unchanged.'

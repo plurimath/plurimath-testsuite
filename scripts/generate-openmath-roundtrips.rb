@@ -158,7 +158,9 @@ module OpenmathRoundtrips
       "change" => "extend",
       "rationale" => "plurimath#585: OpenMath 0.2.1 integration across six presentation notations, with measured target refusals; earlier rows unchanged."
     }
-    dump(ledger_path, ledger)
+    File.open(ledger_path, "a") do |stream|
+      stream.write(YAML.dump([ledger.fetch("entries").last]).delete_prefix("---\n"))
+    end
     puts "generation #{number}: #{data.fetch('cases').size} new rows"
   end
 end
