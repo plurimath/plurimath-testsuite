@@ -52,7 +52,7 @@ assertion remain intact. Unknown or duplicate lines, unchanged expectations,
 non-equality comparisons and combined successor types are errors.
 
 The authored generator measures these six rows only. Run it with the candidate
-bundle as below, substituting `generate-authored-successors.rb` for the original
+bundle as below, substituting `generate_authored_successors.rb` for the original
 generator. Run `spec/authored_successors_spec.rb` for the authored guards.
 This additional profile requires the same owner approval as the original.
 
@@ -61,13 +61,25 @@ This additional profile requires the same owner approval as the original.
 [source,sh]
 ----
 ruby --disable-gems scripts/validate-facade-successors.rb --base <PR-base>
-bundle exec rspec spec/facade_successors_spec.rb
+bundle exec rspec spec/facade_successors_spec.rb spec/authored_successors_spec.rb
 # Use the clean candidate's bundle, whose plurimath loads from CANDIDATE:
 BUNDLE_GEMFILE=<candidate-bundle> bundle exec ruby \
-  scripts/generate-facade-successors.rb CANDIDATE OUTPUT.json
+  CANDIDATE/scripts/generate_facade_successors.rb CANDIDATE FACADE.json TESTSUITE
+BUNDLE_GEMFILE=<candidate-bundle> bundle exec ruby \
+  CANDIDATE/scripts/generate_authored_successors.rb CANDIDATE AUTHORED.json TESTSUITE
 ----
 
-The generator measures eighteen rows only. It refuses a dirty candidate,
+The generators live in the candidate Plurimath checkout: they load Plurimath,
+and the authored generator also uses its shared renderer helper. `TESTSUITE`
+is the explicit testsuite checkout at the intended commit; omit it to use
+`CANDIDATE/submodules/plurimath-testsuite`. Run validation and the guard specs
+above from the testsuite checkout. The validators, schemas, profiles and specs
+remain here.
+
+Moving a generator changes its recorded `generator_sha256`; the checked-in
+profiles retain the hashes of the original generators that produced them.
+
+The original generator measures eighteen rows only. It refuses a dirty candidate,
 the wrong loaded checkout, missing source rows, unchanged output or a missing
 expected refusal. It records no timestamp or absolute machine path.
 It never writes existing payloads; review the generated candidate values
