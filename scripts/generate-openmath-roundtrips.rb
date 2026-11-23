@@ -68,8 +68,8 @@ module OpenmathRoundtrips
       "OpenMath and all six presentation notations; unsupported semantic and presentation constructs retain explicit target refusals.", entries)
   end
 
-  def measured_payload
-    runs = RoundtripCases::ENGINES.keys.map do |engine|
+  def measured_payload(engines)
+    runs = engines.map do |engine|
       RoundtripCases.with_engine(engine) { payload }
     end
     raise "XML engines disagree; nothing written" unless runs.uniq.size == 1
@@ -77,7 +77,7 @@ module OpenmathRoundtrips
     runs.first
   end
 
-  def producer(gem_root)
+  def producer(gem_root, engines)
     data = RoundtripCases.producer
     data["inputs"] = [data.fetch("generator"),
       file(gem_root, RoundtripCases::REPOSITORY, "docs/openmath.adoc")]
@@ -86,10 +86,14 @@ module OpenmathRoundtrips
     raise "requires published openmath 0.2.1" unless openmath.version.to_s == "0.2.1"
 
     data["configuration"].merge!(
+      "xml_engines" => engines,
       "input_notations" => PRESENTATION + ["openmath"],
       "openmath_version" => openmath.version.to_s,
       "openmath_binding_table_sha256" => Digest::SHA256.file(
         File.join(openmath.full_gem_path, "data/binding-table-1.yml")).hexdigest)
+    data["environment"]["xml_engine"] = engines.map do |name|
+      RoundtripCases::ENGINES.fetch(name).first.name
+    end.join(", ")
     archive = File.join(openmath.base_dir, "cache", "openmath-0.2.1.gem")
     data["configuration"]["openmath_archive_sha256"] = Digest::SHA256.file(archive).hexdigest
     data
@@ -108,7 +112,10 @@ module OpenmathRoundtrips
 
   def run(argv)
     options = {}
-    OptionParser.new { |o| o.on("--gem PATH") { |p| options[:gem] = File.expand_path(p) } }.parse!(argv)
+    OptionParser.new do |o|
+      o.on("--gem PATH") { |p| options[:gem] = File.expand_path(p) }
+      o.on("--xml-engine NAME", %w[ox oga]) { |name| options[:engine] = name }
+    end.parse!(argv)
     gem_root = options.fetch(:gem)
     [ROOT, gem_root].each do |root|
       raise "needs a clean checkout: #{root}" unless git(root, "status", "--porcelain").empty?
@@ -116,8 +123,9 @@ module OpenmathRoundtrips
     require File.join(gem_root, "scripts/roundtrip_cases")
     raise "oracle lacks six-notation roundtrip writers" unless
       (PRESENTATION + ["openmath"] - RoundtripCases::TARGETS).empty?
-    data = measured_payload
-    block = producer(gem_root)
+    engines = options[:engine] ? [options[:engine]] : RoundtripCases::ENGINES.keys
+    data = measured_payload(engines)
+    block = producer(gem_root, engines)
     ledger_path = File.join(ROOT, "generations/roundtrip.yaml")
     ledger = YAML.safe_load_file(ledger_path)
     previous = ledger.fetch("entries").last
@@ -129,7 +137,7 @@ module OpenmathRoundtrips
     FileUtils.cp_r(File.join(ROOT, previous.fetch("path")), output)
     provenance = YAML.safe_load_file(File.join(output, "provenance.yaml"))
     provenance["generation"] = number
-    provenance["notes"] = "Earlier rows and their producers preserved; OpenMath integration rows measured on Ox and Oga with published openmath 0.2.1."
+    provenance["notes"] = "Earlier rows and their producers preserved; OpenMath integration rows measured on #{engines.join(', ')} with published openmath 0.2.1. Single-engine generation does not establish cross-engine replay acceptance."
     provenance.fetch("producers")["openmath-integration"] = block
     path = "payloads/openmath-integration.yaml"
     dump(File.join(output, path), data)

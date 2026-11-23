@@ -21,7 +21,16 @@ Lossless flags use Formula equality, including any observed losses.
 Unbound symbols, bindings and errors record presentation refusals while
 preserving their OpenMath representation. Uncertainty and an unbound function
 exercise refusal in the other direction. No expected output is a literal seed.
-Both XML engines must agree before anything is written.
+By default both XML engines must agree before anything is written. For a
+diagnostic snapshot, `--xml-engine ox` (or `oga`) records only that engine's
+actual results and identifies it in provenance. Such a snapshot is not ready
+for adoption until the native consumer replay passes on both engines.
+
+The prepared generation 4 uses `--xml-engine ox`: the current OpenMath writer
+emits self-closing empty elements on Ox and expanded empty elements on Oga.
+The native byte-exact replay reports those differences; they are not normalized
+or hand-edited out of the corpus. Consumer serialization must be settled before
+this generation can be adopted.
 
 The producer records the published OpenMath 0.2.1 version and archive checksum,
 binding-table checksum, dependency resolution, native roundtrip generator,
