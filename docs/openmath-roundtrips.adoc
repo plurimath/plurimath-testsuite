@@ -28,9 +28,13 @@ for adoption until the native consumer replay passes on both engines.
 
 The prepared generation 4 uses `--xml-engine ox`: the current OpenMath writer
 emits self-closing empty elements on Ox and expanded empty elements on Oga.
-The native byte-exact replay reports those differences; they are not normalized
-or hand-edited out of the corpus. Consumer serialization must be settled before
-this generation can be adopted.
+These spellings describe the same XML. The companion plurimath replayer uses
+the specs' Canon XML equivalence convention for the OpenMath target only,
+checking element names, namespaces, attributes, text and child order. Other
+targets retain their byte comparisons. Model, readback loss and refusal checks
+still apply. Generation 4's measured bytes and provenance remain unchanged;
+no expected rows need regeneration for this comparison change. Adoption still
+requires native consumer replay on both engines.
 
 The producer records the published OpenMath 0.2.1 version and archive checksum,
 binding-table checksum, dependency resolution, native roundtrip generator,
