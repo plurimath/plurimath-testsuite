@@ -2,6 +2,10 @@
 # scripts/generate-corpus.rb; do not edit.
 # Each `payloads[].sha256` covers that whole payload file, header comments
 # included.
+# Serialization repair: number-formatting and number-formatting-notation
+# were re-emitted with CorpusGenerator.dump_yaml to quote numeric strings.
+# Oracle values and the original extraction identities are unchanged;
+# the payload sizes and hashes below include that repair. No oracle rerun.
 ---
 schema: plurimath-corpus/provenance/3
 committable: true
@@ -114,8 +118,8 @@ payloads:
   sha256: 495bb834d6525744ac1cb725ddd26aaad7ddad5f96fd6ac72272f8b419bd2b1d
   bytes: 19801
 - path: asciimath/number-formatting-notation.yaml
-  sha256: 4abb2e8c2362f429a81a4009ead8235f0a57959ef7a8eee4a8d03ce90da0c8a7
-  bytes: 38259
+  sha256: 1b58f208b3a423160f25b47d79ae241ef9f26c2bb8228259e0bbb2d68379bab3
+  bytes: 38275
 - path: asciimath/number-formatting-precision.yaml
   sha256: 3cfdc19745a999b9b3cb6a9c6a2d3cd5b47a2eb65c3f64f2ed921947eefd8043
   bytes: 19695
@@ -126,8 +130,8 @@ payloads:
   sha256: b096a78b7abc931fafbab989ca43209627c84815bf8cb5f4004feb7d71efc4f1
   bytes: 14656
 - path: asciimath/number-formatting.yaml
-  sha256: f94747b1b92eb3976419062d5595c3a04a4b45d230d1ca46c7d0b2e5be7da1de
-  bytes: 5401
+  sha256: ad345212396e72271b51061b5d0a4903b2985094374d6a622c899d9bc463fec3
+  bytes: 5409
 - path: asciimath/numbers.yaml
   sha256: 07abb7e32aa53c2f3dc6203c7215965cd6ec29616bed5946c4ad887469d9c2c7
   bytes: 10496

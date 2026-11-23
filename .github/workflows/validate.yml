@@ -43,46 +43,17 @@ jobs:
           fi
       # Conformance across two standard YAML loaders, not a custom parser:
       # Ruby's Psych (safe_load, no aliases) and Python's ruamel.yaml (YAML
-      # 1.2, safe) must each load every file to plain JSON values with string
+      # 1.2, safe) must each load fixtures, corpus and stage data to JSON with string
       # keys, and serialize to identical sorted JSON. A load error, alias,
       # date, NaN/Inf, non-string key, duplicate key, extra document, or any
       # value the two read differently (1e-3, 1:20, 017, yes) fails.
+      # Only individually listed historical payloads with matching SHA-256
+      # may skip comparison (scripts/portable-yaml-exemptions.json).
       - name: Two YAML loaders read the same values
         run: |
-          rc=0
-          out="${RUNNER_TEMP:-/tmp}/yaml-loaders"
-          mkdir -p "$out"
-          for f in $(printf 'fixtures/%s.yaml\n' $FIXTURES) provenance/fixtures.yaml; do
-            base="$out/$(echo "$f" | tr / _)"
-            ruby -ryaml -rjson -e '
-              c = lambda do |o|
-                case o
-                when Hash
-                  o.each_key { |k| k.is_a?(String) or abort "#{ARGV[0]}: non-string key #{k.inspect}" }
-                  o.keys.sort.to_h { |k| [k, c.(o[k])] }
-                when Array then o.map(&c)
-                else o
-                end
-              end
-              puts JSON.generate(c.(YAML.safe_load(File.read(ARGV[0], encoding: "UTF-8"), aliases: false)), allow_nan: false, max_nesting: false)
-            ' "$f" > "$base.psych.json" || { echo "::error file=$f::Psych failed on $f"; rc=1; continue; }
-            python -c '
-          import json, sys
-          from ruamel.yaml import YAML
-          def c(o):
-              if isinstance(o, dict):
-                  for k in o:
-                      if not isinstance(k, str): sys.exit(f"{sys.argv[1]}: non-string key {k!r}")
-                  return {k: c(v) for k, v in o.items()}
-              if isinstance(o, list): return [c(v) for v in o]
-              if o is None or isinstance(o, (str, bool, int, float)): return o
-              sys.exit(f"{sys.argv[1]}: {type(o).__name__} value")
-          with open(sys.argv[1], encoding="utf-8") as fh: doc = YAML(typ="safe").load(fh)
-          sys.stdout.buffer.write(json.dumps(c(doc), allow_nan=False, sort_keys=True, ensure_ascii=False, separators=(",", ":")).encode("utf-8") + b"\n")
-            ' "$f" > "$base.ruamel.json" || { echo "::error file=$f::ruamel.yaml failed on $f"; rc=1; continue; }
-            cmp "$base.psych.json" "$base.ruamel.json" || { echo "::error file=$f::Psych and ruamel.yaml load $f differently"; rc=1; }
-          done
-          exit $rc
+          python scripts/validate-portable-yaml.py fixtures provenance corpus stages generations
+      - name: Portable YAML checker regressions
+        run: python spec/portable_yaml_test.py
       - name: Validate each fixture against its schema
         run: |
           rc=0
@@ -94,6 +65,10 @@ jobs:
           exit $rc
       - name: Validate sealed evaluation request profiles
         run: python -I scripts/validate-evaluation-profiles.py
+      - name: Validate exact historical rejection offset exceptions
+        run: |
+          ruby scripts/validate-rejection-offsets.rb
+          python -I scripts/test-rejection-offsets.py
 
   validate:
     runs-on: ubuntu-latest

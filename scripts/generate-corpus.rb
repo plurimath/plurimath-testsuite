@@ -2065,13 +2065,37 @@ module CorpusGenerator
     end
   end
 
+  # Psych's YAML 1.1 resolver leaves some numeric-looking strings plain
+  # (0e0, 1e21, 1.123_456_789); YAML 1.2 readers resolve them as numbers.
+  # Quote these at the String visitor, so actual numeric values stay numeric.
+  class PortableYamlTree < Psych::Visitors::YAMLTree
+    NUMERIC_STRING = /\A[-+]?(?:
+      (?:[0-9][0-9_]*(?:\.[0-9_]*)?|\.[0-9_]+)(?:[eE][-+]?[0-9]+)?
+      |0[oO][0-7_]+
+    )\z/x
+
+    # The method name is Psych's visitor interface.
+    def visit_String(value) # rubocop:disable Naming/MethodName
+      node = super
+      if node.style == Psych::Nodes::Scalar::PLAIN &&
+          NUMERIC_STRING.match?(value)
+        node.style = Psych::Nodes::Scalar::DOUBLE_QUOTED
+        node.plain = false
+        node.quoted = true
+      end
+      node
+    end
+  end
+
   def dump_yaml(data)
     # Psych emits YAML anchors/aliases whenever one object is referenced twice.
     # The corpus is consumed by parsers in other languages, so the payload must
     # be self-contained. Marshal is no help here — it preserves shared
     # references by design — so rebuild the structure to break identity.
     data = unshare(data)
-    yaml = Psych.dump(data, line_width: -1)
+    visitor = PortableYamlTree.create(line_width: -1)
+    visitor << data
+    yaml = visitor.tree.yaml(nil, line_width: -1)
     # Psych writes a nil value as `key: `, with a trailing space. Parsers do not
     # care, but these are committed data files, so every regeneration would
     # reintroduce whitespace a linter or reviewer flags. Stripping it is safe
