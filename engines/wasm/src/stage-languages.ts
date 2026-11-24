@@ -7,9 +7,11 @@
 //!   latex      latexmath Latexmath::RawParser: the declared bindings'
 //!              latex_tree capture, with CAPTURE_RENAMES (row_break ->
 //!              "\\\\") (scripts/stage_cases.rb).
-//!   asciimath  amath Amath.parse: the bare parse (no bindings), its :root
-//!              unwrapped, then Amath::Renester rebuilding the nested tree
-//!              of each flattened expression chain (lib/amath/parser.rb,
+//!   asciimath  amath Amath::Parser.raw (Amath::RawTree.legacy): the bare
+//!              parse (no bindings), its :root unwrapped, the wrapper
+//!              captures listed in grammars/asciimath.wrappers.json removed,
+//!              then Amath::Renester rebuilding the nested tree of each
+//!              flattened expression chain (lib/amath/raw_tree.rb,
 //!              lib/amath/renester.rb).
 //!   unicode    umath Umath::RawParser: Umath::Preprocessor on the caller
 //!              input (lib/umath/preprocessor.rb), the declared bindings'
@@ -76,7 +78,11 @@ export const LANGUAGES: Record<string, StageLanguage> = {
     bindings: false,
     decimalEntries: DECIMAL_ENTRIES,
     renames: {},
-    transform: (tree, context) => renest(tree, context.source),
+    wrappers: true,
+    transform: (tree, context) => {
+      if (!context.wrappers) throw new Error("asciimath replay needs the wrapper table");
+      return renest(unwrap(tree, context.wrappers, context.source), context.source);
+    },
   },
   unicode: {
     name: "unicode",

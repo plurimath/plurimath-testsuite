@@ -78,6 +78,8 @@ export interface ReplayReport {
   compilerVersion: string | null;
   bindings: string | null;
   rows: ReplayRow[];
+  /** Ids of rows a `<id>-r2` sibling supersedes; recorded, not replayed. */
+  superseded: string[];
   equal: number;
   differ: number;
 }
@@ -154,10 +156,23 @@ export function replayStage(options: ReplayOptions): ReplayReport {
   const first = runtimeFor(entries["."] ?? Object.values(entries)[0]);
 
   const rows: ReplayRow[] = [];
+  const superseded: string[] = [];
+  // A row whose id has a `<id>-r2` sibling is kept byte for byte in the
+  // generation but superseded by it, so it is recorded and not replayed.
+  const ids = new Set<string>();
+  for (const file of payloadFiles(options.payloads)) {
+    const doc = readStagePayload(file) as { boundary?: string; cases?: PayloadCase[] };
+    if (doc.boundary !== "raw-tree") continue;
+    for (const row of doc.cases ?? []) ids.add(row.id);
+  }
   for (const file of payloadFiles(options.payloads)) {
     const doc = readStagePayload(file) as { boundary?: string; cases?: PayloadCase[] };
     if (doc.boundary !== "raw-tree") continue;
     for (const row of doc.cases ?? []) {
+      if (ids.has(`${row.id}-r2`)) {
+        superseded.push(row.id);
+        continue;
+      }
       const decimal = row.options?.decimal ?? ".";
       const entry = entries[decimal];
       if (!entry) throw new Error(`${row.id}: no entry for decimal marker ${JSON.stringify(decimal)}`);
@@ -230,6 +245,7 @@ export function replayStage(options: ReplayOptions): ReplayReport {
     compilerVersion: first.compilerVersion,
     bindings: bindingsPath,
     rows,
+    superseded,
     equal: rows.length - differ,
     differ,
   };
@@ -243,6 +259,9 @@ export function formatReport(report: ReplayReport): string {
     `bindings ${report.bindings ?? "none (raw shape)"}`,
     `${report.rows.length} rows: ${report.equal} equal, ${report.differ} differ`,
   ];
+  if (report.superseded.length > 0) {
+    lines.push(`${report.superseded.length} rows superseded by -r2 siblings, not replayed`);
+  }
   for (const row of report.rows.filter((r) => r.status === "differ")) {
     lines.push(
       `DIFFER ${row.payload} ${row.id}: ${row.reason}`,
