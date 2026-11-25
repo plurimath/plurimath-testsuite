@@ -84,10 +84,11 @@ fn a_changed_payload_is_reported_as_differing() {
     let Some((artifact, payloads)) = gated() else {
         return;
     };
-    // The first slice of a raw-tree payload: its byte offset moved by 99.
+    // The last slice of a raw-tree payload (a row no `-r2` sibling supersedes):
+    // its byte offset moved by 99.
     const KEY: &str = "\"byte_offset\":";
     let first_slice = |text: &str| {
-        let at = text.find(",\"char_offset\"")?;
+        let at = text.rfind(",\"char_offset\"")?;
         let start = text[..at].rfind(KEY)? + KEY.len();
         Some((start, at))
     };

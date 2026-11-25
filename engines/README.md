@@ -18,7 +18,7 @@ stage-gem producer.
 Only payloads with `boundary: raw-tree` are replayed. The generations are:
 
 - latex: `stages/latex/generations/000003`, latexmath artifact `latex.json`
-- asciimath: `stages/asciimath/generations/000003`, amath artifact
+- asciimath: `stages/asciimath/generations/000005`, amath artifact
   `asciimath.json`
 - unicode: `stages/unicode/generations/000004`, umath artifact `umath.json`
   and its wrapper table `grammars/umath.wrappers.json`

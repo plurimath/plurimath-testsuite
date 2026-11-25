@@ -53,6 +53,8 @@ pub struct ReplayRow {
 pub struct ReplayReport {
     pub language: &'static str,
     pub rows: Vec<ReplayRow>,
+    /// Ids of rows a `<id>-r2` sibling supersedes: recorded, not replayed.
+    pub superseded: Vec<String>,
 }
 
 impl ReplayReport {
@@ -73,6 +75,12 @@ impl ReplayReport {
             self.equal(),
             self.differ()
         );
+        if !self.superseded.is_empty() {
+            out.push_str(&format!(
+                "{} rows superseded by -r2 siblings, not replayed\n",
+                self.superseded.len()
+            ));
+        }
         for row in self.rows.iter().filter(|r| r.differ.is_some()) {
             out.push_str(&format!(
                 "DIFFER {} {}: {}\n  input:    {:?}\n  parsed:   {:?}\n  expected: {}\n  actual:   {}\n",
@@ -311,6 +319,21 @@ pub fn replay_stage(artifact_path: &Path, payloads: &Path, language: &str) -> Re
         .collect();
 
     let mut rows = Vec::new();
+    let mut superseded = Vec::new();
+    // A row whose id has a `<id>-r2` sibling is kept byte for byte in the
+    // generation but superseded by it, so it is recorded and not replayed.
+    let mut ids = std::collections::HashSet::new();
+    for file in payload_files(payloads) {
+        let text = std::fs::read_to_string(&file).expect("payload readable");
+        let doc: Value = serde_json::from_str(&text)
+            .unwrap_or_else(|err| panic!("{}: not JSON: {err}", file.display()));
+        if doc["boundary"] != "raw-tree" {
+            continue;
+        }
+        for case in doc["cases"].as_array().into_iter().flatten() {
+            ids.insert(case["id"].as_str().unwrap_or("?").to_string());
+        }
+    }
     for file in payload_files(payloads) {
         let text = std::fs::read_to_string(&file).expect("payload readable");
         let doc: Value = serde_json::from_str(&text)
@@ -321,6 +344,10 @@ pub fn replay_stage(artifact_path: &Path, payloads: &Path, language: &str) -> Re
         let payload = file.file_name().unwrap().to_string_lossy().into_owned();
         for case in doc["cases"].as_array().into_iter().flatten() {
             let id = case["id"].as_str().unwrap_or("?").to_string();
+            if ids.contains(&format!("{id}-r2")) {
+                superseded.push(id);
+                continue;
+            }
             let decimal = case["options"]["decimal"].as_str().unwrap_or(".");
             let entry = *entries
                 .get(decimal)
@@ -406,5 +433,6 @@ pub fn replay_stage(artifact_path: &Path, payloads: &Path, language: &str) -> Re
     ReplayReport {
         language: language.name,
         rows,
+        superseded,
     }
 }
