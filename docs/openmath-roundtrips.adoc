@@ -1,0 +1,51 @@
+= OpenMath facade roundtrips
+
+`scripts/generate-openmath-roundtrips.rb` adds a roundtrip generation for
+plurimath#585. Run it from a clean plurimath checkout in its own bundle:
+
+[source,shell]
+----
+bundle exec ruby <testsuite>/scripts/generate-openmath-roundtrips.rb --gem "$PWD"
+----
+
+The testsuite checkout must also be clean. The generator copies the latest
+roundtrip generation, preserves all earlier rows and producer records, and
+adds measured OpenMath integration rows. It writes provenance, computes the
+snapshot digest, and appends the ledger entry. Earlier generations are immutable.
+
+Three mapped expressions (addition, symbolic division and precedence) each
+start in OpenMath and in AsciiMath, LaTeX, UnicodeMath, MathML, OMML and HTML.
+Every row writes all seven targets and reads each output back. Source text for
+the six presentation inputs comes from the OpenMath formula's actual writer.
+Lossless flags use Formula equality, including any observed losses.
+Unbound symbols, bindings and errors record presentation refusals while
+preserving their OpenMath representation. Uncertainty and an unbound function
+exercise refusal in the other direction. No expected output is a literal seed.
+By default both XML engines must agree before anything is written. For a
+diagnostic snapshot, `--xml-engine ox` (or `oga`) records only that engine's
+actual results and identifies it in provenance. Such a snapshot is not ready
+for adoption until the native consumer replay passes on both engines.
+
+The prepared generation 4 uses `--xml-engine ox`: the current OpenMath writer
+emits self-closing empty elements on Ox and expanded empty elements on Oga.
+These spellings describe the same XML. The companion plurimath replayer uses
+the specs' Canon XML equivalence convention for the OpenMath target only,
+checking element names, namespaces, attributes, text and child order. Other
+targets retain their byte comparisons. Model, readback loss and refusal checks
+still apply. Generation 4's measured bytes and provenance remain unchanged;
+no expected rows need regeneration for this comparison change. Adoption still
+requires native consumer replay on both engines.
+
+The producer records the published OpenMath 0.2.1 version and archive checksum,
+binding-table checksum, dependency resolution, native roundtrip generator,
+testsuite generator, and both repository commits. The environment uses the
+producer's recorded task bundle; it does not claim verification of unrelated
+development git pins in plurimath's root Gemfile.
+
+Consumers must support OpenMath, LaTeX and HTML in their roundtrip writer
+registry, preserve the four required legacy targets, and account for source
+and target refusals separately. These additions to plurimath's generator and
+replayer accompany the corpus. Updating the submodule alone is insufficient:
+advance `spec/fixtures/roundtrip-pin.yml` commit, generation and digest together,
+and adjust the conformance spec's active case count. Full conformance remains
+the consumer PR's CI responsibility.

@@ -312,7 +312,8 @@
         "unicode",
         "mathml",
         "omml",
-        "html"
+        "html",
+        "openmath"
       ]
     },
     "case": {

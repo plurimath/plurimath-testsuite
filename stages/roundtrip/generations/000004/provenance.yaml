@@ -1,0 +1,534 @@
+---
+schema: plurimath-stage/provenance/1
+language: roundtrip
+generation: 4
+notes: Earlier rows and their producers preserved; OpenMath integration rows measured
+  on ox with published openmath 0.2.1. Single-engine generation does not establish
+  cross-engine replay acceptance.
+producers:
+  plurimath:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: fcdec72cd48eeaf39378ac0a96d28989bf49157c
+    version: 0.11.20
+    generator:
+      repository: https://github.com/plurimath/plurimath
+      commit: fcdec72cd48eeaf39378ac0a96d28989bf49157c
+      path: scripts/roundtrip_cases.rb
+      sha256: 67beeef4cf34b9922418de5540a0ad6d1c95b7305847dcfb44b894e8fcd108a3
+    inputs: []
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine, Plurimath::XmlEngine::Oga
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.3
+        resolved:
+          amath: 0.2.1
+          ansi: 1.6.0
+          asciiunits: 0.1.6
+          ast: 2.4.3
+          base64: 0.3.0
+          bcp47_spec: 0.2.1
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          canon: 0.3.127
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ebnf: 2.6.0
+          erb: 6.0.7
+          ffi: 1.17.4
+          fiddle: 1.1.8
+          fuzzy_match: 2.1.0
+          htmlentities: 4.4.2
+          io-console: 0.9.5
+          irb: 1.19.0
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          lasem: 0.1.0
+          latexmath: 1.0.0
+          leptris: 1.9.429.0
+          link_header: 0.0.8
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          logger: 1.7.0
+          lutaml-model: 0.8.176
+          matrix: 0.4.3
+          memo_wise: 1.13.0
+          mml: 2.4.8
+          moxml: 0.6.16
+          nokogiri: 1.19.7
+          oga: '3.5'
+          omml: 0.2.12
+          opal: 1.8.3
+          opal-rspec: 1.1.0.alpha3
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.3.0
+          parsanol: 1.5.9
+          parser: 3.3.14.0
+          parslet: 2.0.0
+          plurimath: 0.11.20
+          pp: 0.6.4
+          prettyprint: 0.2.1
+          prism: 2.1.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rake: 12.3.3
+          rbs: 4.2.0
+          rdf: 3.3.1
+          rdf-turtle: 3.3.0
+          rdoc: 8.1.0
+          regexp_parser: 2.13.4
+          reline: 0.7.0
+          rspec: 3.13.2
+          rspec-core: 3.13.7
+          rspec-expectations: 3.13.6
+          rspec-mocks: 3.13.9
+          rspec-support: 3.13.8
+          rubocop: 1.92.3
+          rubocop-ast: 1.53.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-ll: 2.2.0
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          scanf: 1.0.0
+          simplecov: 1.3.2
+          strscan: 3.1.8
+          sxp: 2.0.0
+          table_tennis: 0.0.7
+          thor: 1.5.0
+          tsort: 0.2.0
+          umath: 0.2.4
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          unitsdb: 2.2.15
+          unitsml: 0.6.14
+          yeptris: 0.6.75.0
+      dependencies:
+        amath: 0.2.1
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        latexmath: 1.0.0
+        lutaml-model: 0.8.176
+        mml: 2.4.8
+        omml: 0.2.12
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parsanol: 1.5.9
+        parslet: 2.0.0
+        thor: 1.5.0
+        umath: 0.2.4
+        unitsml: 0.6.14
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: roundtrip
+    configuration:
+      entry_point: Plurimath::Math.parse, Formula#to_<target>
+      targets:
+      - asciimath
+      - unicode
+      - mathml
+      - omml
+      xml_engines:
+      - ox
+      - oga
+  openmath-integration:
+    kind: legacy-oracle
+    repository: https://github.com/plurimath/plurimath
+    commit: 53d0f20c9054894f7e55fd95f8722af0727cd574
+    version: 0.11.20
+    generator:
+      repository: https://github.com/plurimath/plurimath-testsuite
+      commit: ac1e6e03845c08665d261b9bcf597fde15356cda
+      path: scripts/generate-openmath-roundtrips.rb
+      sha256: 4ea328a8930db2988688488dafb16d9e274d6fd8dce5be46c51bcaa7d6af033b
+    inputs:
+    - repository: https://github.com/plurimath/plurimath
+      commit: 53d0f20c9054894f7e55fd95f8722af0727cd574
+      path: scripts/roundtrip_cases.rb
+      sha256: 6dcefafa220f0231e935e6a9939444b42ced111cd97fe6853037a1a10b3d8cdd
+    - repository: https://github.com/plurimath/plurimath
+      commit: 53d0f20c9054894f7e55fd95f8722af0727cd574
+      path: docs/openmath.adoc
+      sha256: 66a111135ab4dc50ec73a969bdf52d8fa6319cc1e6e72cb4cb0ec7b797123e7c
+    environment:
+      ruby:
+        engine: ruby
+        version: 4.0.1
+      xml_engine: Plurimath::XmlEngine::OxEngine
+      lockfile:
+        path: Gemfile.lock
+        committed: false
+        bundler: 4.0.3
+        resolved:
+          amath: 0.2.1
+          ansi: 1.6.0
+          asciiunits: 0.1.6
+          ast: 2.4.3
+          base64: 0.3.0
+          bcp47_spec: 0.2.1
+          bigdecimal: 4.1.3
+          bundler: 4.0.3
+          canon: 0.3.127
+          concurrent-ruby: 1.3.8
+          csv: 3.3.7
+          diff-lcs: 1.6.2
+          ebnf: 2.6.0
+          ffi: 1.17.4
+          fuzzy_match: 2.1.0
+          htmlentities: 4.4.2
+          json: 3.1.0
+          language_server-protocol: 3.17.0.6
+          latexmath: 1.0.1
+          leptris: 1.9.439.0
+          link_header: 0.0.8
+          lint_roller: 1.1.0
+          liquid: 5.14.0
+          logger: 1.7.0
+          lutaml-model: 0.8.176
+          matrix: 0.4.3
+          memo_wise: 1.13.0
+          mml: 2.4.8
+          moxml: 0.6.16
+          nokogiri: 1.19.7
+          oga: '3.5'
+          omml: 0.2.12
+          openmath: 0.2.1
+          ostruct: 0.6.3
+          ox: 2.14.29
+          paint: 2.3.0
+          parallel: 2.3.0
+          parsanol: 1.5.9
+          parser: 3.3.14.0
+          parslet: 2.0.0
+          plurimath: 0.11.20
+          prism: 2.1.0
+          racc: 1.8.1
+          rainbow: 3.1.1
+          rdf: 3.3.1
+          rdf-turtle: 3.3.0
+          regexp_parser: 2.13.4
+          rspec: 3.13.2
+          rspec-core: 3.13.7
+          rspec-expectations: 3.13.6
+          rspec-mocks: 3.13.9
+          rspec-support: 3.13.8
+          rubocop: 1.92.3
+          rubocop-ast: 1.53.0
+          rubocop-performance: 1.27.0
+          rubocop-rake: 0.7.1
+          rubocop-rspec: 3.10.2
+          ruby-ll: 2.2.0
+          ruby-progressbar: 1.13.0
+          rubyzip: 3.7.0
+          scanf: 1.0.0
+          simplecov: 1.3.2
+          strscan: 3.1.8
+          sxp: 2.0.0
+          table_tennis: 0.0.7
+          thor: 1.5.0
+          umath: 0.2.4
+          unicode-display_width: 3.3.0
+          unicode-emoji: 4.3.0
+          unicode-name: 1.15.1
+          unicode-types: 1.12.0
+          unitsdb: 2.2.15
+          unitsml: 0.6.15
+          yeptris: 0.6.77.0
+      dependencies:
+        amath: 0.2.1
+        bigdecimal: 4.1.3
+        htmlentities: 4.4.2
+        latexmath: 1.0.1
+        lutaml-model: 0.8.176
+        mml: 2.4.8
+        omml: 0.2.12
+        openmath: 0.2.1
+        ostruct: 0.6.3
+        ox: 2.14.29
+        parsanol: 1.5.9
+        parslet: 2.0.0
+        thor: 1.5.0
+        umath: 0.2.4
+        unitsml: 0.6.15
+      compiler: 
+      binding: 
+      lml: 
+    semantic_boundary: roundtrip
+    configuration:
+      entry_point: Plurimath::Math.parse, Formula#to_<target>
+      targets:
+      - asciimath
+      - unicode
+      - mathml
+      - omml
+      - latex
+      - html
+      - openmath
+      xml_engines:
+      - ox
+      input_notations:
+      - asciimath
+      - latex
+      - unicode
+      - mathml
+      - omml
+      - html
+      - openmath
+      openmath_version: 0.2.1
+      openmath_binding_table_sha256: 3f9c4df3303c5fe403f3a27e9e770f1842e99c5222a72e619c63b6f883b2e221
+      openmath_archive_sha256: 6c1e69b1983d6362257a9ade066fd1bd6be43de5a85caeaaad0a5397f7e45dbe
+payloads:
+- path: payloads/asciimath-coverage-interval.yaml
+  bytes: 65808
+  sha256: 0365daf732f5ffba8ee35d0ffae259af2a752e646b388746a8c4f96481a43d48
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-coverage-interval.unspecified
+  - asciimath-coverage-interval.shortest
+  - asciimath-coverage-interval.symmetric
+  - asciimath-coverage-interval.negative
+  - asciimath-coverage-interval.unspecified-r2
+  - asciimath-coverage-interval.shortest-r2
+  - asciimath-coverage-interval.symmetric-r2
+  - asciimath-coverage-interval.negative-r2
+  - asciimath-coverage-interval.unspecified-r3
+  - asciimath-coverage-interval.shortest-r3
+  - asciimath-coverage-interval.symmetric-r3
+  - asciimath-coverage-interval.negative-r3
+- path: payloads/asciimath-expanded.yaml
+  bytes: 46268
+  sha256: 2e26356fec9c0abbc8657cd616f1d71398dbb509e5c1bd1642f85ffd6f4927d3
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-expanded.k
+  - asciimath-expanded.k-p
+  - asciimath-expanded.negative
+  - asciimath-expanded.k-r2
+  - asciimath-expanded.k-p-r2
+  - asciimath-expanded.negative-r2
+  - asciimath-expanded.k-r3
+  - asciimath-expanded.k-p-r3
+  - asciimath-expanded.negative-r3
+- path: payloads/asciimath-invalid.yaml
+  bytes: 2615
+  sha256: d0012898578634a5e5f823c56b356c8cef3cf3741537993586f9f5ae3d5bdf0d
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-invalid.zero-k
+  - asciimath-invalid.reversed-interval
+  - asciimath-invalid.zero-k-r2
+  - asciimath-invalid.reversed-interval-r2
+- path: payloads/asciimath-locale.yaml
+  bytes: 26619
+  sha256: b113557ecced0519074ed4220845416d202a67955b5f246487decc62bf2bfc9d
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-locale.fr-dot
+  - asciimath-locale.fr-comma
+  - asciimath-locale.fr-comma-pair
+  - asciimath-locale.fr-dot-r2
+  - asciimath-locale.fr-comma-r2
+  - asciimath-locale.fr-comma-pair-r2
+  - asciimath-locale.fr-dot-r3
+  - asciimath-locale.fr-comma-r3
+  - asciimath-locale.fr-comma-pair-r3
+- path: payloads/asciimath-shared-exponent.yaml
+  bytes: 58510
+  sha256: 358bef4fb0d51f39005600c9d1ba5a53a1b0f38672a7d7aebfe8f5d8e1d90fba
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-shared-exponent.standard
+  - asciimath-shared-exponent.concise
+  - asciimath-shared-exponent.expanded
+  - asciimath-shared-exponent.interval
+  - asciimath-shared-exponent.standard-r2
+  - asciimath-shared-exponent.concise-r2
+  - asciimath-shared-exponent.expanded-r2
+  - asciimath-shared-exponent.interval-r2
+  - asciimath-shared-exponent.standard-r3
+  - asciimath-shared-exponent.concise-r3
+  - asciimath-shared-exponent.expanded-r3
+  - asciimath-shared-exponent.interval-r3
+- path: payloads/asciimath-standard.yaml
+  bytes: 74734
+  sha256: 966e97e67823070b1ca2092f6e4f3723a416fbffd37bdb985be7c9475f8858ea
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-standard.absolute
+  - asciimath-standard.concise
+  - asciimath-standard.concise-long
+  - asciimath-standard.negative
+  - asciimath-standard.negative-concise
+  - asciimath-standard.zero-magnitude
+  - asciimath-standard.absolute-r2
+  - asciimath-standard.concise-r2
+  - asciimath-standard.concise-long-r2
+  - asciimath-standard.negative-r2
+  - asciimath-standard.negative-concise-r2
+  - asciimath-standard.zero-magnitude-r2
+  - asciimath-standard.absolute-r3
+  - asciimath-standard.concise-r3
+  - asciimath-standard.concise-long-r3
+  - asciimath-standard.negative-r3
+  - asciimath-standard.negative-concise-r3
+  - asciimath-standard.zero-magnitude-r3
+- path: payloads/asciimath-units.yaml
+  bytes: 119261
+  sha256: 0b2ad2b209948a02ed9ca40cdb1c75539a57a1251a088efe3e08f4e8313342c5
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - asciimath-units.expanded-g
+  - asciimath-units.standard-kg
+  - asciimath-units.standard-m-per-s
+  - asciimath-units.standard-kg-m2
+  - asciimath-units.standard-um
+  - asciimath-units.concise-g
+  - asciimath-units.interval-m
+  - asciimath-units.expanded-g-r2
+  - asciimath-units.standard-kg-r2
+  - asciimath-units.standard-m-per-s-r2
+  - asciimath-units.standard-kg-m2-r2
+  - asciimath-units.standard-um-r2
+  - asciimath-units.concise-g-r2
+  - asciimath-units.interval-m-r2
+  - asciimath-units.expanded-g-r3
+  - asciimath-units.standard-kg-r3
+  - asciimath-units.standard-m-per-s-r3
+  - asciimath-units.standard-kg-m2-r3
+  - asciimath-units.standard-um-r3
+  - asciimath-units.concise-g-r3
+  - asciimath-units.interval-m-r3
+- path: payloads/mathml-markers.yaml
+  bytes: 71662
+  sha256: 8c6d0c7f2f6d0e01e6a2bd62f3066332a3950ce5599fef06176bdfd6f54e73c0
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - mathml-markers.standard
+  - mathml-markers.concise
+  - mathml-markers.expanded
+  - mathml-markers.unit-kg
+  - mathml-markers.unit-kg-m2
+  - mathml-markers.standard-r2
+  - mathml-markers.concise-r2
+  - mathml-markers.expanded-r2
+  - mathml-markers.unit-kg-r2
+  - mathml-markers.unit-kg-m2-r2
+  - mathml-markers.standard-r3
+  - mathml-markers.concise-r3
+  - mathml-markers.expanded-r3
+  - mathml-markers.unit-kg-r3
+  - mathml-markers.unit-kg-m2-r3
+- path: payloads/openmath-integration.yaml
+  bytes: 78538
+  sha256: 10936f60aab66cbc1f424ab85070910ababb6b90ef7a9fef818cd22dc3a191ab
+  producer: openmath-integration
+  source:
+    relation: generated
+    file: 
+  rows:
+  - openmath-integration.addition-from-openmath
+  - openmath-integration.addition-from-asciimath
+  - openmath-integration.addition-from-latex
+  - openmath-integration.addition-from-unicode
+  - openmath-integration.addition-from-mathml
+  - openmath-integration.addition-from-omml
+  - openmath-integration.addition-from-html
+  - openmath-integration.division-from-openmath
+  - openmath-integration.division-from-asciimath
+  - openmath-integration.division-from-latex
+  - openmath-integration.division-from-unicode
+  - openmath-integration.division-from-mathml
+  - openmath-integration.division-from-omml
+  - openmath-integration.division-from-html
+  - openmath-integration.precedence-from-openmath
+  - openmath-integration.precedence-from-asciimath
+  - openmath-integration.precedence-from-latex
+  - openmath-integration.precedence-from-unicode
+  - openmath-integration.precedence-from-mathml
+  - openmath-integration.precedence-from-omml
+  - openmath-integration.precedence-from-html
+  - openmath-integration.unbound-symbol-from-openmath
+  - openmath-integration.binding-from-openmath
+  - openmath-integration.error-from-openmath
+  - openmath-integration.uncertainty-to-openmath
+  - openmath-integration.unbound-function-to-openmath
+- path: payloads/unicode-markers.yaml
+  bytes: 168649
+  sha256: 9a88f40ac8306472550b281b86b7807f1687b5e6f4b114e0bb04db29da1ac6c8
+  producer: plurimath
+  source:
+    relation: generated
+    file: 
+  rows:
+  - unicode-markers.standard
+  - unicode-markers.concise
+  - unicode-markers.expanded-p
+  - unicode-markers.expanded-spaced
+  - unicode-markers.interval-shortest
+  - unicode-markers.negative
+  - unicode-markers.unit-g
+  - unicode-markers.unit-kg
+  - unicode-markers.unit-kg-quoted
+  - unicode-markers.unit-m-per-s
+  - unicode-markers.unit-um
+  - unicode-markers.unit-kg-m2
+  - unicode-markers.standard-r2
+  - unicode-markers.concise-r2
+  - unicode-markers.expanded-p-r2
+  - unicode-markers.expanded-spaced-r2
+  - unicode-markers.interval-shortest-r2
+  - unicode-markers.negative-r2
+  - unicode-markers.unit-g-r2
+  - unicode-markers.unit-kg-r2
+  - unicode-markers.unit-kg-quoted-r2
+  - unicode-markers.unit-m-per-s-r2
+  - unicode-markers.unit-um-r2
+  - unicode-markers.unit-kg-m2-r2
+  - unicode-markers.standard-r3
+  - unicode-markers.concise-r3
+  - unicode-markers.expanded-p-r3
+  - unicode-markers.expanded-spaced-r3
+  - unicode-markers.interval-shortest-r3
+  - unicode-markers.negative-r3
+  - unicode-markers.unit-g-r3
+  - unicode-markers.unit-kg-r3
+  - unicode-markers.unit-kg-quoted-r3
+  - unicode-markers.unit-m-per-s-r3
+  - unicode-markers.unit-um-r3
+  - unicode-markers.unit-kg-m2-r3
