@@ -15,7 +15,8 @@ stage-gem producer.
 
 ## What is replayed
 
-Only payloads with `boundary: raw-tree` are replayed. The generations are:
+On the parsanol engines only payloads with `boundary: raw-tree` are
+replayed. The generations are:
 
 - latex: `stages/latex/generations/000003`, latexmath artifact `latex.json`
 - asciimath: `stages/asciimath/generations/000005`, amath artifact
@@ -23,7 +24,26 @@ Only payloads with `boundary: raw-tree` are replayed. The generations are:
 - unicode: `stages/unicode/generations/000004`, umath artifact `umath.json`
   and its wrapper table `grammars/umath.wrappers.json`
 
-Each engine loads the artifact, parses every row, applies the gem's bindings
+The mathml and omml stages are XML and have no parsanol grammar. Their
+`boundary: model-roundtrip` rows are replayed by the Rust model crates
+instead:
+
+- mathml: `stages/mathml/generations/000003` on `plurimath/mml-rs`
+- omml: `stages/omml/generations/000002` on `plurimath/omml-rs`
+
+Each crate is pinned to a commit whose `tests/fixtures/corpus-pin.json`
+names that generation. Its `.github/scripts/extract-corpus.py` checks this
+checkout against the pin (snapshot digest, ledger entry, payload sizes and
+checksums, and the digest of the row IDs) and extracts the rows. Its
+`tests/corpus_replay.rs` then parses each input, writes it back, and
+requires the written XML to equal the row's expected `to_xml` output byte
+for byte, or the row to be refused when the generation records a refusal.
+The omml replay also compares the parsed model with the row's expected
+model. Rows whose input is not well-formed XML are listed in each crate as
+refusals by design. These crates have no wasm replay yet: their wasm
+workflows only build the library for `wasm32-unknown-unknown`.
+
+Each parsanol engine loads the artifact, parses every row, applies the gem's bindings
 and its step from the parse result to the written tree where the gem has one,
 and writes the result in the canonical tagged form that the gems'
 `stage_cases.rb` uses.
@@ -76,6 +96,18 @@ The Rust replay reads JSON payloads, so convert the YAML ones first:
     cd engines/rust
     cargo run --locked -- ../../../latexmath/artifacts/latex.json /tmp/payloads \
       --language latex
+
+The mathml and omml replays run from a checkout of the crate at its pinned
+commit, for example mml-rs next to this repository:
+
+    cd ../mml-rs
+    mkdir -p target
+    python .github/scripts/extract-corpus.py ../plurimath-testsuite \
+      tests/fixtures/corpus-pin.json target/corpus.json
+    MML_CORPUS_CASES=target/corpus.json \
+      cargo test --locked --test corpus_replay -- --ignored --nocapture
+
+For omml-rs, set `OMML_CORPUS_CASES` and add `--features model-serde`.
 
 `--language` is `latex`, `asciimath` or `unicode`. The tests in each
 directory (`npm test`, `cargo test`) cover the canonical form and the
