@@ -1,8 +1,9 @@
 name: engine-replays
 
 # Replays the raw-tree rows of each language's stage generation on the
-# parsanol wasm and Rust engines and fails on any row that differs from the
-# Ruby-produced expectation. See engines/README.md.
+# parsanol wasm and Rust engines, and the model-roundtrip rows of the mathml
+# and omml generations on the Rust mml-rs and omml-rs crates. Fails on any
+# row that differs from the Ruby-produced expectation. See engines/README.md.
 
 on:
   push:
@@ -110,3 +111,56 @@ jobs:
           PARG_ARTIFACT: ${{ env.ARTIFACT }}
           STAGE_LANGUAGE: ${{ matrix.language }}
           STAGE_PAYLOADS: ${{ runner.temp }}/payloads
+
+  # The mathml and omml stages are XML, not parsanol grammars, so their
+  # model-roundtrip rows are replayed by the replay tests of the Rust model
+  # crates. Each crate is pinned to a commit whose tests/fixtures/corpus-pin.json
+  # names the generation below; its extractor checks this checkout against
+  # that pin (snapshot digest, ledger entry, payload checksums, row ID digest).
+  xml-replay:
+    name: replay (rust, ${{ matrix.language }})
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - language: mathml
+            crate: plurimath/mml-rs
+            ref: df975226d1537a35ddd88b3e1d672c9925356bd4
+            generation: stages/mathml/generations/000003
+            cases_env: MML_CORPUS_CASES
+            features: ""
+          - language: omml
+            crate: plurimath/omml-rs
+            ref: d3da15f070d93b2599a1974f82592acc2c216b27
+            generation: stages/omml/generations/000002
+            cases_env: OMML_CORPUS_CASES
+            features: --features model-serde
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          path: testsuite
+      - uses: actions/checkout@v4
+        with:
+          repository: ${{ matrix.crate }}
+          ref: ${{ matrix.ref }}
+          path: crate
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify and extract ${{ matrix.generation }}
+        working-directory: crate
+        run: |
+          python -m pip install PyYAML==6.0.2
+          mkdir -p target
+          test "$(python -c 'import json,sys; print(json.load(open(sys.argv[1]))["path"])' tests/fixtures/corpus-pin.json)" = "${{ matrix.generation }}"
+          python .github/scripts/extract-corpus.py "$GITHUB_WORKSPACE/testsuite" tests/fixtures/corpus-pin.json target/corpus.json
+      - uses: dtolnay/rust-toolchain@master
+        with:
+          toolchain: "1.95.0"
+      - name: Replay ${{ matrix.generation }}
+        working-directory: crate
+        run: |
+          export ${{ matrix.cases_env }}=target/corpus.json
+          cargo test --locked ${{ matrix.features }} --test corpus_replay -- --ignored --nocapture
