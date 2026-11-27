@@ -1,0 +1,22 @@
+{
+  "schema": "plurimath.evaluation-corpus/1",
+  "profile": "plurimath.evaluate.gum/1",
+  "producer": {
+    "implementation": "plurimath-numeric",
+    "repository": "https://github.com/plurimath/plurimath-rs",
+    "revision": "47410f0a6fdb0b896ceb250a3c13b432734b94a3",
+    "generator": "scripts/generate-lpu-adequacy-nonlinear.py"
+  },
+  "profiles": {
+    "lpu-adequacy-nonlinear-wires.json": {
+      "cases": 7,
+      "sha256": "93ea7e437c409c48418489cba4c7bb8b74d83327f53f20a4ad8726f6e800f009",
+      "qualification": {
+        "runtimes": [
+          "native Rust"
+        ],
+        "scope": "Exact frozen lpu_adequacy replies for 7 nonlinear models (2 adequate, 4 inadequate, 1 inconclusive) with an independent 1e6-sample MCM coverage check per row; no physical adequacy certification. Append-only: new directory, no existing profile changed."
+      }
+    }
+  }
+}
