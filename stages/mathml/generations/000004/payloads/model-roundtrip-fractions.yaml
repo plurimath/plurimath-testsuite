@@ -1,0 +1,3710 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-fractions
+description: Mml.parse model and to_xml output for every case of payloads/fractions.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: mathml-fractions-001.model-roundtrip
+  input:
+    str: |
+      <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+        <mstyle displaystyle="true">
+          <mstyle mathvariant="normal">
+            <mrow>
+              <mi>&#x394;</mi>
+              <mi>A</mi>
+            </mrow>
+          </mstyle>
+          <mo>=</mo>
+          <mstyle mathvariant="normal">
+            <mfrac>
+              <mi>b</mi>
+              <mrow>
+                <mn>2</mn>
+                <mo>&#x22c5;</mo>
+                <mi>C</mi>
+                <mi>C</mi>
+              </mrow>
+            </mfrac>
+          </mstyle>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mstyle_value
+              - array:
+                - node: Mml::V3::Mstyle
+                  fields:
+                  - - mrow_value
+                    - array:
+                      - node: Mml::V3::Mrow
+                        fields:
+                        - - mi_value
+                          - array:
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: Δ
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: Δ
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: A
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: A
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - mathvariant
+                    - str: normal
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mrow
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+                - node: Mml::V3::Mstyle
+                  fields:
+                  - - mfrac_value
+                    - array:
+                      - node: Mml::V3::Mfrac
+                        fields:
+                        - - mrow_value
+                          - array:
+                            - node: Mml::V3::Mrow
+                              fields:
+                              - - mi_value
+                                - array:
+                                  - node: Mml::V3::Mi
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: C
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: C
+                                  - node: Mml::V3::Mi
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: C
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: C
+                              - - mo_value
+                                - array:
+                                  - node: Mml::V3::Mo
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: "⋅"
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "⋅"
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: '2'
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: '2'
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mo
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mi
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mi
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - mi_value
+                          - array:
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: b
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: b
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mrow
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - mathvariant
+                    - str: normal
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mfrac
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "="
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "="
+            - - displaystyle
+              - str: 'true'
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mstyle
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mstyle
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - display
+        - str: block
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML" display="block">
+          <mstyle displaystyle="true">
+            <mstyle mathvariant="normal">
+              <mrow>
+                <mi>Δ</mi>
+                <mi>A</mi>
+              </mrow>
+            </mstyle>
+            <mo>=</mo>
+            <mstyle mathvariant="normal">
+              <mfrac>
+                <mi>b</mi>
+                <mrow>
+                  <mn>2</mn>
+                  <mo>⋅</mo>
+                  <mi>C</mi>
+                  <mi>C</mi>
+                </mrow>
+              </mfrac>
+            </mstyle>
+          </mstyle>
+        </math>
+- id: mathml-fractions-002.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mn> 2 </mn>
+          <mo> + </mo>
+          <mrow>
+            <mn> 3 </mn>
+            <mo> &#x2062;<!--INVISIBLE TIMES--> </mo>
+            <mi> &#x2148;<!--DOUBLE-STRUCK ITALIC SMALL I--> </mi>
+          </mrow>
+        </mrow>
+        <mfrac> <mn> 1 </mn> <mn> 2 </mn> </mfrac>
+        <mi> &#x3C0;<!--GREEK SMALL LETTER PI--> </mi>
+        <mi> &#x2147;<!--DOUBLE-STRUCK ITALIC SMALL E--> </mi>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mfrac_value
+        - array:
+          - node: Mml::V3::Mfrac
+            fields:
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 1 "
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 2 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 2 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ⅈ"
+                            - str: " "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ⅈ"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ⁢"
+                            - str: " "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ⁢"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 3 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 3 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " + "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " + "
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 2 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 2 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - mi_value
+        - array:
+          - node: Mml::V3::Mi
+            fields:
+            - - value
+              - array:
+                - str: " π"
+                - str: " "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " π"
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+          - node: Mml::V3::Mi
+            fields:
+            - - value
+              - array:
+                - str: " ⅇ"
+                - str: " "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " ⅇ"
+                - hash:
+                  - - str: type
+                    - str: Comment
+                  - - str: name
+                    - str: comment
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: " "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mfrac
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mi
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mi
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn> 2 </mn>
+            <mo> + </mo>
+            <mrow>
+              <mn> 3 </mn>
+              <mo> ⁢<!--INVISIBLE TIMES--> </mo>
+              <mi> ⅈ<!--DOUBLE-STRUCK ITALIC SMALL I--> </mi>
+            </mrow>
+          </mrow>
+          <mfrac>
+            <mn> 1 </mn>
+            <mn> 2 </mn>
+          </mfrac>
+          <mi> π<!--GREEK SMALL LETTER PI--> </mi>
+          <mi> ⅇ<!--DOUBLE-STRUCK ITALIC SMALL E--> </mi>
+        </math>
+- id: mathml-fractions-003.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mn> 2 </mn>
+          <mo> &#x2064;<!--INVISIBLE PLUS--> </mo>
+          <mfrac>
+            <mn> 3 </mn>
+            <mn> 4 </mn>
+          </mfrac>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 3 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 3 "
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 4 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 4 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ⁤"
+                      - str: " "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ⁤"
+                      - hash:
+                        - - str: type
+                          - str: Comment
+                        - - str: name
+                          - str: comment
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 2 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 2 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mn> 2 </mn>
+            <mo> ⁤<!--INVISIBLE PLUS--> </mo>
+            <mfrac>
+              <mn> 3 </mn>
+              <mn> 4 </mn>
+            </mfrac>
+          </mrow>
+        </math>
+- id: mathml-fractions-004.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mfrac>
+          <mo> &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+          <mrow>
+            <mo> &#x2146;<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+            <mi> x </mi>
+          </mrow>
+        </mfrac>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mfrac_value
+        - array:
+          - node: Mml::V3::Mfrac
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " x "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " x "
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ⅆ"
+                            - str: " "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ⅆ"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ⅆ"
+                      - str: " "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ⅆ"
+                      - hash:
+                        - - str: type
+                          - str: Comment
+                        - - str: name
+                          - str: comment
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mfrac
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mfrac>
+            <mo> ⅆ<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+            <mrow>
+              <mo> ⅆ<!--DOUBLE-STRUCK ITALIC SMALL D--> </mo>
+              <mi> x </mi>
+            </mrow>
+          </mfrac>
+        </math>
+- id: mathml-fractions-005.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mo maxsize="100%"> ( </mo>
+          <mfrac>
+            <mi> a </mi> <mi> b </mi>
+          </mfrac>
+          <mo minsize="100%"> ) </mo>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " a "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " a "
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " b "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " b "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ( "
+                  - - maxsize
+                    - str: 100%
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ( "
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ) "
+                  - - minsize
+                    - str: 100%
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ) "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mo maxsize="100%"> ( </mo>
+            <mfrac>
+              <mi> a </mi>
+              <mi> b </mi>
+            </mfrac>
+            <mo minsize="100%"> ) </mo>
+          </mrow>
+        </math>
+- id: mathml-fractions-006.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+           <mo> ( </mo>
+           <mfrac linethickness="0">
+              <mi> a </mi>
+              <mi> b </mi>
+           </mfrac>
+           <mo> ) </mo>
+        </mrow>
+        <mfrac linethickness="200%">
+           <mfrac>
+              <mi> a </mi>
+              <mi> b </mi>
+           </mfrac>
+           <mfrac>
+              <mi> c </mi>
+              <mi> d </mi>
+           </mfrac>
+        </mfrac>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mfrac_value
+        - array:
+          - node: Mml::V3::Mfrac
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " a "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " a "
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " b "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " b "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " c "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " c "
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " d "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " d "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+            - - linethickness
+              - str: 200%
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n     "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n     "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " a "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " a "
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " b "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " b "
+                  - - linethickness
+                    - str: '0'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n        "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n     "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ( "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ( "
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ) "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ) "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n     "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n     "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n     "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mfrac
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mo> ( </mo>
+            <mfrac linethickness="0">
+              <mi> a </mi>
+              <mi> b </mi>
+            </mfrac>
+            <mo> ) </mo>
+          </mrow>
+          <mfrac linethickness="200%">
+            <mfrac>
+              <mi> a </mi>
+              <mi> b </mi>
+            </mfrac>
+            <mfrac>
+              <mi> c </mi>
+              <mi> d </mi>
+            </mfrac>
+          </mfrac>
+        </math>
+- id: mathml-fractions-007.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mfrac>
+          <mrow>
+            <mn>1 </mn>
+            <mo>+ </mo>
+            <msqrt>
+              <mn>5 </mn>
+            </msqrt>
+          </mrow>
+          <mn>2 </mn>
+        </mfrac>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mfrac_value
+        - array:
+          - node: Mml::V3::Mfrac
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - msqrt_value
+                    - array:
+                      - node: Mml::V3::Msqrt
+                        fields:
+                        - - mn_value
+                          - array:
+                            - node: Mml::V3::Mn
+                              fields:
+                              - - value
+                                - array:
+                                  - str: '5 '
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: '5 '
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mn
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: "+ "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "+ "
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: '1 '
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '1 '
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: msqrt
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: '2 '
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: '2 '
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mfrac
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mfrac>
+            <mrow>
+              <mn>1 </mn>
+              <mo>+ </mo>
+              <msqrt>
+                <mn>5 </mn>
+              </msqrt>
+            </mrow>
+            <mn>2 </mn>
+          </mfrac>
+        </math>
+- id: mathml-fractions-008.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mo maxsize="100%"> ( </mo>
+          <mfrac> <mi> a </mi> <mi> b </mi> </mfrac>
+          <mo maxsize="100%"> ) </mo>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " a "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " a "
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: " b "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " b "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ( "
+                  - - maxsize
+                    - str: 100%
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ( "
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " ) "
+                  - - maxsize
+                    - str: 100%
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " ) "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mo maxsize="100%"> ( </mo>
+            <mfrac>
+              <mi> a </mi>
+              <mi> b </mi>
+            </mfrac>
+            <mo maxsize="100%"> ) </mo>
+          </mrow>
+        </math>
+- id: mathml-fractions-009.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mstyle maxsize="100%">
+          <mrow>
+            <mo> ( </mo>
+            <mfrac> <mi> a </mi> <mi> b </mi> </mfrac>
+            <mo> ) </mo>
+          </mrow>
+        </mstyle>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mstyle_value
+        - array:
+          - node: Mml::V3::Mstyle
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mfrac_value
+                    - array:
+                      - node: Mml::V3::Mfrac
+                        fields:
+                        - - mi_value
+                          - array:
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: " a "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: " a "
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: " b "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: " b "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " "
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ( "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ( "
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: " ) "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " ) "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mfrac
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - maxsize
+              - str: 100%
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mstyle
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mstyle maxsize="100%">
+            <mrow>
+              <mo> ( </mo>
+              <mfrac>
+                <mi> a </mi>
+                <mi> b </mi>
+              </mfrac>
+              <mo> ) </mo>
+            </mrow>
+          </mstyle>
+        </math>
+- id: mathml-fractions-010.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mfraction>
+          <mrow>
+            <mn> 1 </mn>
+            <mo> + </mo>
+            <msqrt>
+              <mn> 5 </mn>
+            </msqrt>
+          </mrow>
+          <mn> 2 </mn>
+        </mfraction>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mfraction_value
+        - array:
+          - node: Mml::V3::Mfraction
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - msqrt_value
+                    - array:
+                      - node: Mml::V3::Msqrt
+                        fields:
+                        - - mn_value
+                          - array:
+                            - node: Mml::V3::Mn
+                              fields:
+                              - - value
+                                - array:
+                                  - str: " 5 "
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: " 5 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mn
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: " + "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " + "
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: " 1 "
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: " 1 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: msqrt
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mn_value
+              - array:
+                - node: Mml::V3::Mn
+                  fields:
+                  - - value
+                    - array:
+                      - str: " 2 "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " 2 "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mn
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mfraction
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mfraction>
+            <mrow>
+              <mn> 1 </mn>
+              <mo> + </mo>
+              <msqrt>
+                <mn> 5 </mn>
+              </msqrt>
+            </mrow>
+            <mn> 2 </mn>
+          </mfraction>
+        </math>
+- id: mathml-fractions-011.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mi>C</mi>
+        <mrow>
+          <menclose notation='phasorangle'>
+            <mrow>
+              <mo>&#x2212;<!--MINUS SIGN--></mo>
+              <mfrac>
+                <mi>&#x3C0;<!--GREEK SMALL LETTER PI--></mi>
+                <mn>2</mn>
+              </mfrac>
+            </mrow>
+          </menclose>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - menclose_value
+              - array:
+                - node: Mml::V3::Menclose
+                  fields:
+                  - - mrow_value
+                    - array:
+                      - node: Mml::V3::Mrow
+                        fields:
+                        - - mfrac_value
+                          - array:
+                            - node: Mml::V3::Mfrac
+                              fields:
+                              - - mi_value
+                                - array:
+                                  - node: Mml::V3::Mi
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: π
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: π
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - mn_value
+                                - array:
+                                  - node: Mml::V3::Mn
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: '2'
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: '2'
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mi
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mn
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - mo_value
+                          - array:
+                            - node: Mml::V3::Mo
+                              fields:
+                              - - value
+                                - array:
+                                  - str: "−"
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "−"
+                                  - hash:
+                                    - - str: type
+                                      - str: Comment
+                                    - - str: name
+                                      - str: comment
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mo
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mfrac
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - notation
+                    - str: phasorangle
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mrow
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: menclose
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - mi_value
+        - array:
+          - node: Mml::V3::Mi
+            fields:
+            - - value
+              - array:
+                - str: C
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: C
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mi
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mi>C</mi>
+          <mrow>
+            <menclose notation="phasorangle">
+              <mrow>
+                <mo>−<!--MINUS SIGN--></mo>
+                <mfrac>
+                  <mi>π<!--GREEK SMALL LETTER PI--></mi>
+                  <mn>2</mn>
+                </mfrac>
+              </mrow>
+            </menclose>
+          </mrow>
+        </math>
+- id: mathml-fractions-012.model-roundtrip
+  input:
+    str: |
+      <math>
+        <merror>
+          <mtext>DivisionByZero:&#160;</mtext>
+          <mfrac>
+            <mi>x</mi>
+            <mn>0</mn>
+          </mfrac>
+        </merror>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - merror_value
+        - array:
+          - node: Mml::V3::Merror
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: x
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: x
+                  - - mn_value
+                    - array:
+                      - node: Mml::V3::Mn
+                        fields:
+                        - - value
+                          - array:
+                            - str: '0'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: '0'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mn
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mtext_value
+              - array:
+                - node: Mml::V3::Mtext
+                  fields:
+                  - - value
+                    - array:
+                      - str: DivisionByZero: 
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: DivisionByZero: 
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mtext
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: merror
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <merror>
+            <mtext>DivisionByZero: </mtext>
+            <mfrac>
+              <mi>x</mi>
+              <mn>0</mn>
+            </mfrac>
+          </merror>
+        </math>
+- id: mathml-fractions-013.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          <mfrac>
+            <mrow>
+              <mi>d</mi>
+              <mrow>
+                <mi>sin</mi>
+                <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+                <mi>x</mi>
+              </mrow>
+            </mrow>
+            <mrow>
+              <mi>d</mi>
+              <mi>x</mi>
+            </mrow>
+          </mfrac>
+          <mo>=</mo>
+          <mrow>
+            <mi>cos</mi>
+            <mo>&#x2061;<!--FUNCTION APPLICATION--></mo>
+            <mi>x</mi>
+          </mrow>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mfrac_value
+              - array:
+                - node: Mml::V3::Mfrac
+                  fields:
+                  - - mrow_value
+                    - array:
+                      - node: Mml::V3::Mrow
+                        fields:
+                        - - mrow_value
+                          - array:
+                            - node: Mml::V3::Mrow
+                              fields:
+                              - - mi_value
+                                - array:
+                                  - node: Mml::V3::Mi
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: sin
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: sin
+                                  - node: Mml::V3::Mi
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: x
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: x
+                              - - mo_value
+                                - array:
+                                  - node: Mml::V3::Mo
+                                    fields:
+                                    - - value
+                                      - array:
+                                        - str: "⁡"
+                                    - - "@element_order"
+                                      - array:
+                                        - hash:
+                                          - - str: type
+                                            - str: Text
+                                          - - str: name
+                                            - str: text
+                                          - - str: text
+                                            - str: "⁡"
+                                        - hash:
+                                          - - str: type
+                                            - str: Comment
+                                          - - str: name
+                                            - str: comment
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mi
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mo
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n          "
+                                  - hash:
+                                    - - str: type
+                                      - str: Element
+                                    - - str: name
+                                      - str: mi
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: "\n        "
+                        - - mi_value
+                          - array:
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: d
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: d
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mrow
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                      - node: Mml::V3::Mrow
+                        fields:
+                        - - mi_value
+                          - array:
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: d
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: d
+                            - node: Mml::V3::Mi
+                              fields:
+                              - - value
+                                - array:
+                                  - str: x
+                              - - "@element_order"
+                                - array:
+                                  - hash:
+                                    - - str: type
+                                      - str: Text
+                                    - - str: name
+                                      - str: text
+                                    - - str: text
+                                      - str: x
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n        "
+                            - hash:
+                              - - str: type
+                                - str: Element
+                              - - str: name
+                                - str: mi
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "\n      "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mrow
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mrow
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mi_value
+                    - array:
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: cos
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: cos
+                      - node: Mml::V3::Mi
+                        fields:
+                        - - value
+                          - array:
+                            - str: x
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: x
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: "⁡"
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "⁡"
+                            - hash:
+                              - - str: type
+                                - str: Comment
+                              - - str: name
+                                - str: comment
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mi
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "="
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "="
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mfrac
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            <mfrac>
+              <mrow>
+                <mi>d</mi>
+                <mrow>
+                  <mi>sin</mi>
+                  <mo>⁡<!--FUNCTION APPLICATION--></mo>
+                  <mi>x</mi>
+                </mrow>
+              </mrow>
+              <mrow>
+                <mi>d</mi>
+                <mi>x</mi>
+              </mrow>
+            </mfrac>
+            <mo>=</mo>
+            <mrow>
+              <mi>cos</mi>
+              <mo>⁡<!--FUNCTION APPLICATION--></mo>
+              <mi>x</mi>
+            </mrow>
+          </mrow>
+        </math>

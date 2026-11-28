@@ -1,0 +1,153 @@
+# Written by plurimath-testsuite scripts/generate-xml-stage-cases.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-enclose
+description: Mml.parse model and to_xml output for every case of payloads/enclose.yaml,
+  ids <id>.model-roundtrip. Each model is its class with the declared attributes that
+  are not at their default, in declaration order, plus @element_order where the model
+  tracks child order. An input the gem raises on is a refusal with the raising stage
+  and exception class.
+boundary: model-roundtrip
+cases:
+- id: mathml-enclose-001.model-roundtrip
+  input:
+    str: |
+      <math>
+        <menclose notation='circle box'>
+          <mi> x </mi>
+          <mo> + </mo>
+          <mi> y </mi>
+        </menclose>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - menclose_value
+        - array:
+          - node: Mml::V3::Menclose
+            fields:
+            - - mi_value
+              - array:
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " x "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " x "
+                - node: Mml::V3::Mi
+                  fields:
+                  - - value
+                    - array:
+                      - str: " y "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " y "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: " + "
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: " + "
+            - - notation
+              - str: circle box
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mi
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: menclose
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <menclose notation="circle box">
+            <mi> x </mi>
+            <mo> + </mo>
+            <mi> y </mi>
+          </menclose>
+        </math>
