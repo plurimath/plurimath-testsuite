@@ -39,3 +39,14 @@ entries:
   rationale: 'Generation 3: supersession of generation 2 — 1 model-roundtrip row(s)
     changed under mml 2.4.8 (dcc8daf) with lutaml-model 0.8.175 / moxml 0.6.15; the
     changed rows gain -r2 siblings, every payload copies byte for byte.'
+- generation: 4
+  path: stages/mathml/generations/000004
+  snapshot_digest: sha256:cdd9d47b3e571d1ff37562e1244fc8d17ca8c03f817e0c8166c1bfa897fb7b27
+  payloads: 29
+  rows: 606
+  producer_kinds:
+  - stage-gem
+  change: extend
+  rationale: 'Generation 4: supersession of generation 3 — 3 model-roundtrip row(s)
+    changed under mml 2.4.9 (071de05) with lutaml-model 0.8.190 / moxml 0.6.24; the
+    changed rows gain -r2 siblings, every payload copies byte for byte.'

@@ -140,7 +140,10 @@ module FacadeSuccessors
 
   def validate_base!(root, base)
     require "open3"
-    paths = %w[corpus fixtures provenance stages generations contracts/facade]
+    # generations/ is not listed: the ledger is append-only and its
+    # unchanged-prefix rule is validate-stages.rb --base's business, which
+    # runs in the same job; this list would forbid the appends it allows.
+    paths = %w[corpus fixtures provenance stages contracts/facade]
     output, error, status = Open3.capture3("git", "-C", root, "diff", "--name-only", "--diff-filter=CDMRTUXB", base, "--", *paths)
     raise Error, error unless status.success?
     raise Error, "frozen payloads or profiles changed:\n#{output}" unless output.empty?

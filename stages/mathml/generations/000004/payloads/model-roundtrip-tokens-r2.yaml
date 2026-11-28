@@ -1,0 +1,462 @@
+# Written by plurimath-testsuite scripts/supersede-mathml-stage.rb. Do not edit.
+---
+schema: plurimath-stage/mathml/cases/1
+group: model-roundtrip-tokens-r2
+description: 'Supersessions of model-roundtrip-tokens: the answers the current mml
+  gem returns for the rows its dependency resolution changed. -r2 ids supersede the
+  originals, which stay for history.'
+boundary: model-roundtrip
+cases:
+- id: mathml-tokens-030-r2.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          F
+          <mo>&#x2061;</mo>
+          <mrow>
+            <mo fence="true">(</mo>
+            A1
+            <mo separator="true">,</mo>
+            ...
+            <mo separator="true">,</mo>
+            A2
+            <mo separator="true">,</mo>
+            An
+            <mo fence="true">)</mo>
+          </mrow>
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: "("
+                        - - fence
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: "("
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ","
+                        - - separator
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ","
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ","
+                        - - separator
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ","
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ","
+                        - - separator
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ","
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ")"
+                        - - fence
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ")"
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      A1\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      ...\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      A2\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      An\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "⁡"
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "⁡"
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    F\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            F
+            <mo>⁡</mo><mrow><mo fence="true">(</mo>
+              A1
+              <mo separator="true">,</mo>
+              ...
+              <mo separator="true">,</mo>
+              A2
+              <mo separator="true">,</mo>
+              An
+              <mo fence="true">)</mo></mrow></mrow>
+        </math>
+- id: mathml-tokens-031-r2.model-roundtrip
+  input:
+    str: |
+      <math>
+        <mrow>
+          B
+          <mrow>
+            x1
+            <mo separator="true">,</mo>
+            ...
+            <mo separator="true">,</mo>
+            xn
+          </mrow>
+          <mo separator="true">.</mo>
+          S
+        </mrow>
+      </math>
+  options: {}
+  expected:
+    model:
+      node: Mml::V3::Math
+      fields:
+      - - mrow_value
+        - array:
+          - node: Mml::V3::Mrow
+            fields:
+            - - mrow_value
+              - array:
+                - node: Mml::V3::Mrow
+                  fields:
+                  - - mo_value
+                    - array:
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ","
+                        - - separator
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ","
+                      - node: Mml::V3::Mo
+                        fields:
+                        - - value
+                          - array:
+                            - str: ","
+                        - - separator
+                          - str: 'true'
+                        - - "@element_order"
+                          - array:
+                            - hash:
+                              - - str: type
+                                - str: Text
+                              - - str: name
+                                - str: text
+                              - - str: text
+                                - str: ","
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      x1\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      ...\n      "
+                      - hash:
+                        - - str: type
+                          - str: Element
+                        - - str: name
+                          - str: mo
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "\n      xn\n    "
+            - - mo_value
+              - array:
+                - node: Mml::V3::Mo
+                  fields:
+                  - - value
+                    - array:
+                      - str: "."
+                  - - separator
+                    - str: 'true'
+                  - - "@element_order"
+                    - array:
+                      - hash:
+                        - - str: type
+                          - str: Text
+                        - - str: name
+                          - str: text
+                        - - str: text
+                          - str: "."
+            - - "@element_order"
+              - array:
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    B\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mrow
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    "
+                - hash:
+                  - - str: type
+                    - str: Element
+                  - - str: name
+                    - str: mo
+                - hash:
+                  - - str: type
+                    - str: Text
+                  - - str: name
+                    - str: text
+                  - - str: text
+                    - str: "\n    S\n  "
+      - - "@element_order"
+        - array:
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n  "
+          - hash:
+            - - str: type
+              - str: Element
+            - - str: name
+              - str: mrow
+          - hash:
+            - - str: type
+              - str: Text
+            - - str: name
+              - str: text
+            - - str: text
+              - str: "\n"
+    output:
+      str: |-
+        <math xmlns="http://www.w3.org/1998/Math/MathML">
+          <mrow>
+            B
+            <mrow>
+              x1
+              <mo separator="true">,</mo>
+              ...
+              <mo separator="true">,</mo>
+              xn
+            </mrow><mo separator="true">.</mo>
+            S
+          </mrow>
+        </math>

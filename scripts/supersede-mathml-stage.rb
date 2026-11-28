@@ -50,6 +50,21 @@ prev_commit = Open3.capture2("git", "-C", root, "log", "--format=%H", "-1",
 # and collect the -r2 siblings of the rows whose answer changed.
 new_payloads = {}
 changed = []
+# Rows an existing -rN sibling already supersedes do not run (the replay's
+# own rule); the sibling's recorded answer is the current one. The sibling
+# lives in its own payload file, so the scan spans the whole generation.
+sibling_bases = {}
+prev_provenance["payloads"].each do |entry|
+  bytes = File.binread(File.join(prev_dir, entry["path"]))
+  doc = YAML.safe_load(bytes, aliases: false)
+  next unless doc.is_a?(Hash) && doc["boundary"] == "model-roundtrip"
+
+  doc["cases"].each do |row|
+    next unless row["id"].match?(/-r\d+\.model-roundtrip\z/)
+
+    sibling_bases[row["id"].sub(/-r\d+\.model-roundtrip\z/, "")] = true
+  end
+end
 prev_provenance["payloads"].each do |entry|
   name = entry["path"]
   bytes = File.binread(File.join(prev_dir, name))
@@ -59,6 +74,8 @@ prev_provenance["payloads"].each do |entry|
   next unless doc["boundary"] == "model-roundtrip"
 
   supers = doc["cases"].filter_map do |row|
+    next if sibling_bases.key?(row["id"].sub(/\.model-roundtrip\z/, ""))
+
     actual = MmlReplayCorpus.outcome(row["input"]["str"])
     next if actual == row["expected"]
 
@@ -93,6 +110,9 @@ changed.each do |name, doc, supers|
          "scripts/supersede-mathml-stage.rb. Do not edit.\n" +
          YAML.dump(payload)
   r2_name = name.sub(/\.yaml\z/, "-r2.yaml")
+  abort "#{r2_name} already exists in generation #{prev_number}: " \
+        "superseding its rows needs a new -r ordinal, not this script" if
+        new_payloads.key?(r2_name)
   File.binwrite(File.join(out_dir, File.basename(r2_name)), text)
   payload_entries << {
     "path" => "payloads/#{File.basename(r2_name)}",
