@@ -78,4 +78,24 @@ RSpec.describe FacadeSuccessors do
       expect { described_class.validate_base!(root, "HEAD") }.to raise_error(described_class::Error, /frozen payloads or profiles changed/)
     end
   end
+
+  it "lets the ledger be appended against the base; validate-stages owns the prefix rule" do
+    Dir.mktmpdir do |root|
+      FileUtils.mkdir_p(File.join(root, "generations"))
+      path = File.join(root, "generations/mathml.yaml")
+      File.write(path, "entries: []\n")
+      run = lambda do |*args|
+        _, error, status = Open3.capture3("git", "-C", root, *args)
+        raise error unless status.success?
+      end
+      run.call("init", "--quiet")
+      run.call("add", "generations/mathml.yaml")
+      run.call("-c", "user.name=spec", "-c", "user.email=spec@example.test", "commit", "--quiet", "-m", "Ledger at the base")
+      expect { described_class.validate_base!(root, "HEAD") }.not_to raise_error
+      File.open(path, "a") { |file| file.puts("- generation: 4\n") }
+      expect { described_class.validate_base!(root, "HEAD") }.not_to raise_error
+      File.write(File.join(root, "generations/other.yaml"), "entries: []\n")
+      expect { described_class.validate_base!(root, "HEAD") }.not_to raise_error
+    end
+  end
 end
